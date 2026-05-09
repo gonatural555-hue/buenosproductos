@@ -16,7 +16,6 @@ type BlogPreviewProps = {
   ctaHref: string;
   readLabel: string;
   posts: BlogPreviewPost[];
-  premiumOutdoorBranding?: boolean;
 };
 
 /**
@@ -29,50 +28,27 @@ export default function BlogPreview({
   ctaHref,
   readLabel,
   posts,
-  premiumOutdoorBranding = false,
 }: BlogPreviewProps) {
   if (posts.length === 0) return null;
 
   const shown = posts.slice(0, 3);
 
   return (
-    <section
-      className={
-        premiumOutdoorBranding
-          ? "border-t border-[color-mix(in_srgb,var(--brand-warm-sand)_8%,transparent)] bg-brand-charcoal py-20 md:py-28"
-          : "border-t border-white/[0.05] bg-[#0a0e0d] py-20 md:py-28"
-      }
-    >
+    <section className="border-t border-white/[0.05] bg-[#0a0e0d] py-20 md:py-28">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl space-y-4">
-              <h2
-                className={
-                  premiumOutdoorBranding
-                    ? "heading-lg text-brand-warm-sand text-[clamp(1.75rem,3.5vw,2.5rem)]"
-                    : "font-semibold tracking-tight text-text-primary text-[clamp(1.75rem,3.5vw,2.5rem)]"
-                }
-              >
+              <h2 className="font-semibold tracking-tight text-text-primary text-[clamp(1.75rem,3.5vw,2.5rem)]">
                 {title}
               </h2>
-              <p
-                className={
-                  premiumOutdoorBranding
-                    ? "body-base text-brand-muted-gray md:text-[1.0625rem]"
-                    : "text-sm leading-relaxed text-text-muted md:text-base"
-                }
-              >
+              <p className="text-sm leading-relaxed text-text-muted md:text-base">
                 {intro}
               </p>
             </div>
             <Link
               href={ctaHref}
-              className={
-                premiumOutdoorBranding
-                  ? "button-label shrink-0 text-brand-sun-amber transition hover:text-[color-mix(in_srgb,var(--brand-sun-amber)_85%,white)]"
-                  : "shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-accent-gold transition hover:text-accent-gold/85"
-              }
+              className="shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-accent-gold transition hover:text-accent-gold/85"
             >
               {ctaLabel}
             </Link>

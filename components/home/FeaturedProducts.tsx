@@ -10,7 +10,6 @@ type Props = {
   locale: Locale;
   title: string;
   subtitle: string;
-  premiumOutdoorBranding?: boolean;
   labels?: {
     viewProduct?: string;
     noImage?: string;
@@ -44,31 +43,15 @@ export default function FeaturedProducts({
   return (
     <section
       id="essential-gear"
-      className={
-        premiumOutdoorBranding
-          ? "scroll-mt-4 border-t border-[color-mix(in_srgb,var(--brand-warm-sand)_8%,transparent)] bg-brand-charcoal py-20 md:py-28 lg:py-32"
-          : "scroll-mt-4 border-t border-white/[0.05] bg-[#0a0e0d] py-20 md:py-28 lg:py-32"
-      }
+      className="scroll-mt-4 border-t border-white/[0.05] bg-[#0a0e0d] py-20 md:py-28 lg:py-32"
     >
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <header className="mx-auto max-w-2xl text-center">
-            <h2
-              className={
-                premiumOutdoorBranding
-                  ? "heading-lg text-brand-warm-sand text-[clamp(1.75rem,3.5vw,2.5rem)]"
-                  : "font-semibold tracking-tight text-text-primary text-[clamp(1.75rem,3.5vw,2.5rem)]"
-              }
-            >
+            <h2 className="font-semibold tracking-tight text-text-primary text-[clamp(1.75rem,3.5vw,2.5rem)]">
               {title}
             </h2>
-            <p
-              className={
-                premiumOutdoorBranding
-                  ? "body-base mt-4 text-brand-muted-gray md:text-[1.0625rem]"
-                  : "mt-4 text-sm leading-relaxed text-text-muted md:text-base"
-              }
-            >
+            <p className="mt-4 text-sm leading-relaxed text-text-muted md:text-base">
               {subtitle}
             </p>
           </header>

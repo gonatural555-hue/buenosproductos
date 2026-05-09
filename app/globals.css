@@ -11,30 +11,6 @@
   --color-accent-gold: #C89B3C;
   --color-accent-moss: #3A5F4A;
 
-  /* Go Natural — Premium Outdoor palette (Home 2 & tipografía display) */
-  --forest-black: #111713;
-  --warm-sand: #E8E1D3;
-  --soft-stone: #F5F2EC;
-  --mountain-green: #2F4A3A;
-  --moss-green: #6F7F5A;
-  --earth-brown: #8A6A4F;
-  --sun-amber: #D98A24;
-  --charcoal: #1A1A1A;
-  --muted-gray: #6B6B6B;
-  --white: #ffffff;
-
-  /* Alias con prefijo brand (Tailwind + utilidades) */
-  --brand-forest-black: var(--forest-black);
-  --brand-warm-sand: var(--warm-sand);
-  --brand-soft-stone: var(--soft-stone);
-  --brand-mountain-green: var(--mountain-green);
-  --brand-moss-green: var(--moss-green);
-  --brand-earth-brown: var(--earth-brown);
-  --brand-sun-amber: var(--sun-amber);
-  --brand-charcoal: var(--charcoal);
-  --brand-muted-gray: var(--muted-gray);
-  --brand-white: var(--white);
-
   /* Global background color */
   --bg-primary: #122220;
 
@@ -328,56 +304,4 @@ main[data-route="checkout"] .bg-gray-50 {
 main[data-route="order-success"] .bg-white,
 main[data-route="order-success"] .bg-gray-50 {
   background-color: #CCD0CF !important;
-}
-
-/* --------------------------------------------------------------------------
-   Tipografía premium (Fraunces display + Inter body) — utilidades globales
-   -------------------------------------------------------------------------- */
-
-.font-display {
-  font-family: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
-}
-
-.font-body {
-  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-.heading-xl {
-  font-family: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.06;
-}
-
-.heading-lg {
-  font-family: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.12;
-}
-
-.body-base {
-  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.body-muted {
-  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--brand-muted-gray);
-}
-
-.button-label {
-  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-/* Home 2: legibilidad editorial en bloques de marca */
-main[data-route="home-2"] {
-  font-family: var(--font-inter), system-ui, sans-serif;
 }

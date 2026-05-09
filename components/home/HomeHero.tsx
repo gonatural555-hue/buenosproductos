@@ -9,10 +9,6 @@ import {
   premiumPrimaryCtaClass,
   premiumSecondaryCtaClass,
 } from "@/lib/ui/premium-cta-classes";
-import {
-  premiumOutdoorPrimaryCtaClass,
-  premiumOutdoorSecondaryCtaClass,
-} from "@/lib/ui/premium-outdoor-classes";
 
 type HomeHeroProps = {
   locale: Locale;
@@ -21,8 +17,6 @@ type HomeHeroProps = {
   subtitle: string;
   ctaProducts: string;
   ctaJournal: string;
-  /** Paleta + tipografía Fraunces/Inter (solo Home 2) */
-  premiumOutdoorBranding?: boolean;
   /** Poster / fallback estático (LCP y prefers-reduced-motion) */
   imageSrc?: string;
   imageAlt?: string;
@@ -42,7 +36,6 @@ export default function HomeHero({
   subtitle,
   ctaProducts,
   ctaJournal,
-  premiumOutdoorBranding = false,
   imageSrc = "/assets/images/hero/hero.webp",
   imageAlt = "",
   videoSrc = "/assets/images/hero/hero-home.mp4",
@@ -74,21 +67,8 @@ export default function HomeHero({
   const fade = reduceMotion ? 1 : Math.max(0.35, 1 - scroll / 520);
   const lift = reduceMotion ? 0 : scroll * 0.12;
 
-  const primaryCta = premiumOutdoorBranding
-    ? premiumOutdoorPrimaryCtaClass
-    : premiumPrimaryCtaClass;
-  const secondaryCta = premiumOutdoorBranding
-    ? premiumOutdoorSecondaryCtaClass
-    : premiumSecondaryCtaClass;
-
   return (
-    <section
-      className={
-        premiumOutdoorBranding
-          ? "relative h-[100dvh] min-h-[28rem] w-full overflow-hidden bg-brand-forest-black"
-          : "relative h-[100dvh] min-h-[28rem] w-full overflow-hidden bg-dark-base"
-      }
-    >
+    <section className="relative h-[100dvh] min-h-[28rem] w-full overflow-hidden bg-dark-base">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 overflow-hidden"
@@ -135,39 +115,21 @@ export default function HomeHero({
           transform: reduceMotion ? undefined : `translateY(${lift}px)`,
         }}
       >
-        <p
-          className={
-            premiumOutdoorBranding
-              ? "text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-brand-sun-amber drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:text-xs"
-              : "text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent-gold drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:text-xs"
-          }
-        >
+        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent-gold drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:text-xs">
           {tagline}
         </p>
-        <h1
-          className={
-            premiumOutdoorBranding
-              ? "heading-xl mt-5 max-w-4xl text-brand-warm-sand text-[clamp(2.35rem,6.5vw,4.25rem)] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)]"
-              : "mt-5 max-w-4xl font-bold tracking-tight text-text-primary text-[clamp(2.35rem,6.5vw,4.25rem)] leading-[1.06] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)]"
-          }
-        >
+        <h1 className="mt-5 max-w-4xl font-bold tracking-tight text-text-primary text-[clamp(2.35rem,6.5vw,4.25rem)] leading-[1.06] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)]">
           {title}
         </h1>
-        <p
-          className={
-            premiumOutdoorBranding
-              ? "body-base mx-auto mt-6 max-w-xl text-[color-mix(in_srgb,var(--brand-warm-sand)_92%,transparent)] drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-lg"
-              : "mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/92 drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-lg"
-          }
-        >
+        <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/92 drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-lg">
           {subtitle}
         </p>
 
         <div className="mt-10 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
-          <Link href={`/${locale}/products`} className={primaryCta}>
+          <Link href={`/${locale}/products`} className={premiumPrimaryCtaClass}>
             {ctaProducts}
           </Link>
-          <Link href={`/${locale}/blog`} className={secondaryCta}>
+          <Link href={`/${locale}/blog`} className={premiumSecondaryCtaClass}>
             {ctaJournal}
           </Link>
         </div>

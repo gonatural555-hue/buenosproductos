@@ -1,0 +1,7 @@
+# Finales de lÃ­nea LF en el repositorio y en el working copy (coherente en Windows/Mac/Linux).
+# Evita avisos de Git tipo "LF will be replaced by CRLF" con core.autocrlf=true.
+* text=auto eol=lf
+
+# Scripts nativos de Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf

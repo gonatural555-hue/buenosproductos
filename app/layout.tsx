@@ -1,6 +1,6 @@
 import "./globals.css";
 import { headers } from "next/headers";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
 import { UserProvider } from "@/context/UserContext";
 import { AuthProvider } from "@/context/AuthContext";
@@ -14,12 +14,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
 export default async function RootLayout({
   children,
 }: {
@@ -29,10 +23,7 @@ export default async function RootLayout({
   const locale = requestHeaders.get("x-locale") || defaultLocale;
 
   return (
-    <html
-      lang={locale}
-      className={`${inter.variable} ${fraunces.variable}`}
-    >
+    <html lang={locale} className={inter.variable}>
       <body className={inter.className}>
         <GoogleAnalytics />
         <MicrosoftClarity />

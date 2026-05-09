@@ -21,7 +21,6 @@ type CategoryGridProps = {
   title: string;
   subtitle: string;
   cards: CategoryCard[];
-  premiumOutdoorBranding?: boolean;
 };
 
 export default function CategoryGrid({
@@ -29,37 +28,16 @@ export default function CategoryGrid({
   title,
   subtitle,
   cards,
-  premiumOutdoorBranding = false,
 }: CategoryGridProps) {
   return (
-    <section
-      className={
-        premiumOutdoorBranding
-          ? "border-t border-[color-mix(in_srgb,var(--brand-warm-sand)_8%,transparent)] bg-brand-forest-black py-20 md:py-28"
-          : "border-t border-white/[0.05] bg-dark-base py-20 md:py-28"
-      }
-    >
+    <section className="border-t border-white/[0.05] bg-dark-base py-20 md:py-28">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <header className="mx-auto max-w-2xl text-center">
-            <h2
-              className={
-                premiumOutdoorBranding
-                  ? "heading-lg text-brand-warm-sand text-[clamp(1.65rem,3.2vw,2.25rem)]"
-                  : "font-semibold tracking-tight text-text-primary text-[clamp(1.65rem,3.2vw,2.25rem)]"
-              }
-            >
+            <h2 className="font-semibold tracking-tight text-text-primary text-[clamp(1.65rem,3.2vw,2.25rem)]">
               {title}
             </h2>
-            <p
-              className={
-                premiumOutdoorBranding
-                  ? "body-base mt-3 text-brand-muted-gray md:text-[1.0625rem]"
-                  : "mt-3 text-sm text-text-muted md:text-base"
-              }
-            >
-              {subtitle}
-            </p>
+            <p className="mt-3 text-sm text-text-muted md:text-base">{subtitle}</p>
           </header>
         </ScrollReveal>
 
@@ -89,30 +67,12 @@ export default function CategoryGrid({
                     sizes="(max-width:640px)100vw,25vw"
                     className="object-cover object-center transition duration-[900ms] ease-out group-hover:scale-[1.06]"
                   />
-                  <div
-                    className={
-                      premiumOutdoorBranding
-                        ? "absolute inset-0 bg-gradient-to-t from-brand-forest-black via-[color-mix(in_srgb,var(--brand-forest-black)_35%,transparent)] to-transparent opacity-95 transition duration-500 group-hover:from-[color-mix(in_srgb,var(--brand-forest-black)_95%,transparent)]"
-                        : "absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/35 to-transparent opacity-95 transition duration-500 group-hover:from-dark-base/95"
-                    }
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/35 to-transparent opacity-95 transition duration-500 group-hover:from-dark-base/95" />
                   <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                    <span
-                      className={
-                        premiumOutdoorBranding
-                          ? "text-[0.65rem] font-medium uppercase tracking-[0.28em] text-brand-sun-amber/90"
-                          : "text-[0.65rem] font-medium uppercase tracking-[0.28em] text-accent-gold/85"
-                      }
-                    >
+                    <span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-accent-gold/85">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p
-                      className={
-                        premiumOutdoorBranding
-                          ? "font-body mt-2 font-medium leading-snug tracking-tight text-brand-warm-sand text-lg md:text-xl"
-                          : "mt-2 font-medium leading-snug tracking-tight text-text-primary text-lg md:text-xl"
-                      }
-                    >
+                    <p className="mt-2 font-medium leading-snug tracking-tight text-text-primary text-lg md:text-xl">
                       {card.label}
                     </p>
                   </div>
