@@ -75,7 +75,7 @@ export default function Footer() {
               aria-label="Go Natural"
             >
               <img
-                src="/assets/images/logo/logo.webp"
+                src="/assets/images/logo/GONATURAL-LOGO.svg"
                 alt="Go Natural"
                 className="h-10 w-auto transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-11 md:h-12"
                 loading="lazy"

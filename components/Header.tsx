@@ -284,7 +284,7 @@ export default function Header() {
               aria-label="Go Natural"
             >
               <img
-                src="/assets/images/logo/logo.webp"
+                src="/assets/images/logo/GONATURAL-LOGO.svg"
                 alt="Go Natural"
                 className="h-11 w-auto opacity-95 transition-transform duration-300 ease-out group-hover:scale-[1.06] sm:h-12 md:h-14 lg:h-16"
                 loading="lazy"
