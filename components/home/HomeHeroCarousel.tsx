@@ -9,6 +9,7 @@ import HomeHeroCategorySlide, {
 import HomeHeroProductsSlide, {
   type HeroProductPayload,
 } from "@/components/home/slides/HomeHeroProductsSlide";
+import HeroCompassCursor from "@/components/home/HeroCompassCursor";
 
 const SLIDE_COUNT = 3;
 
@@ -159,47 +160,50 @@ export default function HomeHeroCarousel({
   };
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden bg-warm-sand px-4 py-24 sm:px-6 sm:py-28 md:py-24">
+    <section className="relative flex min-h-[100dvh] w-full items-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10 xl:pl-14 xl:pr-12">
       <div
-        className="relative w-full max-w-[min(92vw,72rem)] transition-[opacity,transform] duration-300 ease-out md:px-10 lg:px-14"
+        className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 transition-[opacity,transform] duration-300 ease-out lg:flex-row lg:items-center lg:justify-between lg:gap-8 xl:gap-12"
         style={{
           opacity: fade,
           transform: reduceMotion ? undefined : `translateY(${lift}px)`,
         }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
       >
-        <CarouselDots
-          index={index}
-          onSelect={setIndex}
-          className="absolute left-0 top-1/2 z-30 hidden -translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:-translate-x-[calc(100%+18px)]"
-        />
-        <CarouselDots
-          index={index}
-          onSelect={setIndex}
-          className="absolute right-0 top-1/2 z-30 hidden translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:translate-x-[calc(100%+18px)]"
-        />
-
-        <CarouselArrow
-          direction="prev"
-          label="Previous slide"
-          onClick={() => go(-1)}
-          className="left-10 sm:left-3 md:left-4"
-        />
-        <CarouselArrow
-          direction="next"
-          label="Next slide"
-          onClick={() => go(1)}
-          className="right-10 sm:right-3 md:right-4"
-        />
-
-        <div className="relative w-full overflow-hidden rounded-2xl shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/[0.08]">
+        <div
+          className="relative w-full shrink-0 lg:w-[min(76vw,1120px)] lg:max-w-[calc(100%-11rem)] xl:max-w-[calc(100%-13rem)]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <CarouselDots
             index={index}
             onSelect={setIndex}
-            className="absolute left-3 top-1/2 z-[25] flex -translate-y-1/2 sm:hidden"
+            className="absolute left-0 top-1/2 z-30 hidden -translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:-translate-x-[calc(100%+18px)]"
           />
-          <div className="relative aspect-[4/5] min-h-[min(72vh,640px)] w-full sm:aspect-[16/10] sm:min-h-[min(68vh,560px)]">
+          <CarouselDots
+            index={index}
+            onSelect={setIndex}
+            className="absolute right-0 top-1/2 z-30 hidden translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:translate-x-[calc(100%+18px)]"
+          />
+
+          <CarouselArrow
+            direction="prev"
+            label="Previous slide"
+            onClick={() => go(-1)}
+            className="left-10 sm:left-3 md:left-4"
+          />
+          <CarouselArrow
+            direction="next"
+            label="Next slide"
+            onClick={() => go(1)}
+            className="right-10 sm:right-3 md:right-4"
+          />
+
+          <div className="relative w-full overflow-hidden rounded-[1.35rem] shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/[0.08] md:rounded-[1.75rem]">
+            <CarouselDots
+              index={index}
+              onSelect={setIndex}
+              className="absolute left-3 top-1/2 z-[25] flex -translate-y-1/2 sm:hidden"
+            />
+            <div className="relative aspect-[4/5] w-full min-h-[min(68vh,560px)] max-h-[86vh] sm:aspect-[16/10] sm:min-h-[min(56vh,520px)] lg:aspect-auto lg:h-[min(60vh,660px)] lg:min-h-[420px] lg:max-h-[680px]">
             <div
               className={`absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
                 index === 0 ? "z-10 opacity-100" : "pointer-events-none z-0 opacity-0"
@@ -253,7 +257,12 @@ export default function HomeHeroCarousel({
                 strip={productsSlide.strip}
               />
             </div>
+            </div>
           </div>
+        </div>
+
+        <div className="flex w-full shrink-0 justify-center lg:flex-1 lg:justify-center lg:py-2">
+          <HeroCompassCursor />
         </div>
       </div>
 
