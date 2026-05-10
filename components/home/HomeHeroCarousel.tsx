@@ -165,12 +165,12 @@ export default function HomeHeroCarousel({
       className={
         embedded
           ? "relative flex h-full min-h-0 w-full flex-col"
-          : "relative w-full max-w-[min(92vw,72rem)] md:px-6 lg:px-10"
+          : "relative w-full max-w-none"
       }
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className={embedded ? "relative flex h-full min-h-0 w-full flex-1 flex-col" : "relative mx-auto w-full lg:w-[min(76vw,1120px)]"}>
+      <div className={embedded ? "relative flex h-full min-h-0 w-full flex-1 flex-col" : "relative mx-auto w-full"}>
         {!embedded ? (
           <>
             <CarouselDots
@@ -286,7 +286,7 @@ export default function HomeHeroCarousel({
   }
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10">
+    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-warm-sand px-4 py-24 sm:px-5 sm:py-28 md:px-6 md:py-24 lg:px-8">
       <div
         className="relative w-full transition-[opacity,transform] duration-300 ease-out"
         style={{

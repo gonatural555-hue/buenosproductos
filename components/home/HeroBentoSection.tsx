@@ -46,13 +46,11 @@ export default function HeroBentoSection(props: HomeHeroCarouselProps) {
       className="relative bg-warm-sand pb-8 pt-[clamp(5.75rem,11vw,7.5rem)] sm:pb-10 sm:pt-24 md:pb-12 md:pt-28 lg:pt-[7.25rem]"
       aria-label="Hero"
     >
-      <div className="mx-auto w-full max-w-[min(92vw,72rem)] px-5 sm:px-8 md:px-6 lg:px-10">
-        <div className="flex flex-col gap-4 lg:min-h-[min(calc(100svh-6.75rem),880px)] lg:flex-row lg:items-stretch lg:gap-5">
-          {/* Columna izquierda: carrusel + banner */}
-          <div className="flex min-h-0 w-full flex-col gap-4 lg:flex-[7] lg:min-h-0">
-            <div
-              className={`${BENTO_CARD} ${BENTO_HOVER} flex min-h-[min(68vh,560px)] flex-1 flex-col lg:min-h-0`}
-            >
+      <div className="mx-auto w-full max-w-none px-4 sm:px-5 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0">
+        <div className="flex flex-col gap-4 lg:min-h-[min(calc(100svh-6.75rem),920px)] lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] lg:grid-rows-[1fr_1fr] lg:items-stretch lg:gap-6">
+          {/* Columna izquierda: carrusel + banner (~70 % del ancho) */}
+          <div className="flex min-h-0 w-full flex-col gap-4 lg:col-start-1 lg:row-span-2 lg:min-h-0">
+            <div className={`${BENTO_CARD} ${BENTO_HOVER} flex min-h-[min(68vh,560px)] flex-1 flex-col lg:min-h-0`}>
               <div className="relative min-h-0 flex-1">
                 <HomeHeroCarousel {...props} embedded />
               </div>
@@ -92,12 +90,12 @@ export default function HeroBentoSection(props: HomeHeroCarouselProps) {
             </Link>
           </div>
 
-          {/* Columna derecha: dos tarjetas iguales en altura */}
-          <div className="flex min-h-0 w-full flex-col gap-4 lg:flex-[3] lg:min-h-0">
+          {/* Columna derecha: dos tarjetas (~30 %), alturas iguales (1fr / 1fr) */}
+          <div className="contents">
             <Link
               href={`/${locale}/category/mountain-snow`}
               aria-label={`${t("heroBento.rightMountainTitle")} — ${t("heroBento.exploreAria")}`}
-              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-1 flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6`}
+              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6 lg:col-start-2 lg:row-start-1 lg:min-h-0`}
             >
               <Image
                 src={mountainImg}
@@ -124,7 +122,7 @@ export default function HeroBentoSection(props: HomeHeroCarouselProps) {
             <Link
               href={`/${locale}/products`}
               aria-label={`${t("heroBento.rightOutdoorTitle")} — ${t("heroBento.exploreAria")}`}
-              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-1 flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6`}
+              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6 lg:col-start-2 lg:row-start-2 lg:min-h-0`}
             >
               <Image
                 src={outdoorImg}

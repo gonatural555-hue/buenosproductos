@@ -175,11 +175,11 @@ export default function Header() {
 
   return (
     <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 font-sans">
-      {/* Misma caja horizontal que el Hero: max-w, padding lateral y ancho del carrusel */}
-      <div className="mx-auto w-full max-w-[min(92vw,72rem)] px-5 pt-3 sm:px-8 sm:pt-4 md:px-6 lg:px-10 lg:pt-4">
+      {/* Casi ancho completo: calc(100% - 48px) en desktop + márgenes seguros en móvil */}
+      <div className="mx-auto w-full max-w-none px-4 pt-3 sm:px-5 sm:pt-4 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0 lg:pt-4">
         {/* Desktop — una barra ancha tipo píldora */}
         <div
-          className={`pointer-events-auto mx-auto hidden w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5 md:flex lg:w-[min(76vw,1120px)] lg:gap-4 lg:px-6 lg:py-3 ${HEADER_BAR}`}
+          className={`pointer-events-auto mx-auto hidden w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5 md:flex lg:gap-4 lg:px-6 lg:py-3 ${HEADER_BAR}`}
         >
           <nav
             className="hidden min-w-0 shrink-0 items-center gap-0 md:flex md:gap-0.5 lg:gap-1"
@@ -417,7 +417,7 @@ export default function Header() {
           onMouseLeave={scheduleCloseCategories}
           aria-hidden={!categoriesOpen}
         >
-          <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
+          <div className="mx-auto w-full max-w-[min(100%,1600px)] px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
             <div className="columns-1 gap-x-16 gap-y-10 sm:columns-2 lg:columns-3 xl:columns-4">
               {mainCategories.map((category) => (
                 <div key={category.slug} className="mb-10 break-inside-avoid">
