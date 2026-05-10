@@ -130,9 +130,9 @@ export default function Header() {
     <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 font-sans">
       <div className="mx-auto max-w-7xl px-3 pt-3 sm:px-5 sm:pt-4">
         {/* Desktop: tres islas flotantes */}
-        <div className="pointer-events-auto hidden items-center justify-center gap-3 md:flex lg:gap-5">
+        <div className="pointer-events-auto relative hidden w-full items-center justify-between md:flex">
           <nav
-            className={`${FLOAT_ISLAND} flex items-center gap-1 px-2 py-2 lg:gap-1.5 lg:px-3`}
+            className={`relative z-[3] ${FLOAT_ISLAND} flex items-center gap-1 px-2 py-2 lg:gap-1.5 lg:px-3`}
             aria-label="Principal"
           >
             <Link href={`/${locale}`} className={`${NAV_LINK} whitespace-nowrap px-2 py-1`}>
@@ -163,19 +163,21 @@ export default function Header() {
             </div>
           </nav>
 
-          <div className={`${FLOAT_ISLAND} flex items-center px-3 py-2`}>
-            <Link href={`/${locale}`} className="group flex shrink-0 items-center" aria-label="Go Natural">
-              <img
-                src="/assets/images/logo/GONATURAL-LOGO.svg"
-                alt="Go Natural"
-                className="h-[3.25rem] w-auto opacity-[0.96] transition-transform duration-300 ease-out group-hover:scale-[1.04] md:h-[3.5rem] lg:h-[3.75rem]"
-                loading="eager"
-                decoding="async"
-              />
-            </Link>
-          </div>
+          <Link
+            href={`/${locale}`}
+            className="pointer-events-auto absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 shrink-0 items-center group"
+            aria-label="Go Natural"
+          >
+            <img
+              src="/assets/images/logo/GONATURAL-LOGO.svg"
+              alt="Go Natural"
+              className="h-[3.9rem] w-auto max-w-[min(52vw,20rem)] opacity-[0.96] transition-transform duration-300 ease-out group-hover:scale-[1.04] md:h-[4.2rem] lg:h-[4.5rem]"
+              loading="eager"
+              decoding="async"
+            />
+          </Link>
 
-          <div className={`${FLOAT_ISLAND} flex items-center gap-2 px-2 py-1.5 pl-3 lg:gap-2.5`}>
+          <div className={`relative z-[3] ${FLOAT_ISLAND} flex items-center gap-2 px-2 py-1.5 pl-3 lg:gap-2.5`}>
             <form
               className="hidden lg:block"
               onSubmit={(e) => {
@@ -319,10 +321,10 @@ export default function Header() {
 
         {/* Mobile */}
         <div className="pointer-events-auto flex flex-col gap-2 md:hidden">
-          <div className="flex items-center justify-between gap-2">
+          <div className="relative flex items-center justify-between gap-2">
             <button
               type="button"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/[0.07] bg-white/75 text-charcoal shadow-[0_8px_28px_-14px_rgba(17,23,19,0.18)] backdrop-blur-md transition-colors hover:text-mountain-green focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45"
+              className="relative z-[3] flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/[0.07] bg-white/75 text-charcoal shadow-[0_8px_28px_-14px_rgba(17,23,19,0.18)] backdrop-blur-md transition-colors hover:text-mountain-green focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45"
               onClick={() => {
                 setMobileMenuOpen((o) => !o);
                 setMobileSearchOpen(false);
@@ -341,19 +343,21 @@ export default function Header() {
               )}
             </button>
 
-            <div className={`${FLOAT_ISLAND} px-4 py-2`}>
-              <Link href={`/${locale}`} className="group flex items-center" aria-label="Go Natural">
-                <img
-                  src="/assets/images/logo/GONATURAL-LOGO.svg"
-                  alt="Go Natural"
-                  className="h-[3rem] w-auto opacity-[0.96] transition-transform group-hover:scale-[1.03]"
-                  loading="eager"
-                  decoding="async"
-                />
-              </Link>
-            </div>
+            <Link
+              href={`/${locale}`}
+              className="pointer-events-auto absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 items-center group"
+              aria-label="Go Natural"
+            >
+              <img
+                src="/assets/images/logo/GONATURAL-LOGO.svg"
+                alt="Go Natural"
+                className="h-[3.6rem] w-auto max-w-[46vw] opacity-[0.96] transition-transform group-hover:scale-[1.03]"
+                loading="eager"
+                decoding="async"
+              />
+            </Link>
 
-            <div className="flex shrink-0 items-center gap-1.5">
+            <div className="relative z-[3] flex shrink-0 items-center gap-1.5">
               <button
                 type="button"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-black/[0.07] bg-white/75 text-charcoal shadow-[0_8px_28px_-14px_rgba(17,23,19,0.18)] backdrop-blur-md hover:text-mountain-green focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45"
