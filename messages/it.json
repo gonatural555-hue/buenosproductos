@@ -103,6 +103,17 @@
     "communityCta": "Scrivici",
     "heroImageAlt": "Paesaggio aperto al tramonto"
   },
+  "heroBento": {
+    "bannerEyebrow": "Equipaggiamento in evidenza",
+    "bannerTitle": "Progettato per muoversi fuori",
+    "bannerSubtitle": "Selezione per montagna, acqua, trekking e avventura.",
+    "bannerCta": "Vedi in evidenza",
+    "rightMountainTitle": "Montagna e neve",
+    "rightMountainBody": "Strati tecnici, accessori e equipaggiamento per il freddo.",
+    "rightOutdoorTitle": "Essenziali outdoor",
+    "rightOutdoorBody": "Accessori leggeri per ogni uscita.",
+    "exploreAria": "Esplora"
+  },
   "homeCompass": {
     "compassAria": "Bussola — l’ago segue il puntatore sullo schermo",
     "north": "N",

@@ -1,2 +1,2 @@
-export { default } from "./HomeHeroCarousel";
+export { default } from "./HeroBentoSection";
 export type { HomeHeroCarouselProps } from "./HomeHeroCarousel";

@@ -36,6 +36,8 @@ export type HomeHeroCarouselProps = {
     main: HeroProductPayload;
     strip: HeroProductPayload[];
   };
+  /** Cuando true: sin sección full-viewport; rellena la tarjeta bento padre. */
+  embedded?: boolean;
 };
 
 function CarouselDots({
@@ -122,6 +124,7 @@ export default function HomeHeroCarousel({
   videoSrcMobile = "/assets/images/hero/hero-home-mobile.mp4",
   categorySlide,
   productsSlide,
+  embedded = false,
 }: HomeHeroCarouselProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -150,56 +153,75 @@ export default function HomeHeroCarousel({
     return () => window.clearInterval(id);
   }, [reduceMotion, paused]);
 
-  const fade = reduceMotion ? 1 : Math.max(0.35, 1 - scroll / 520);
-  const lift = reduceMotion ? 0 : scroll * 0.12;
+  const fade = embedded || reduceMotion ? 1 : Math.max(0.35, 1 - scroll / 520);
+  const lift = embedded || reduceMotion ? 0 : scroll * 0.12;
 
   const go = (delta: number) => {
     setIndex((i) => (i + delta + SLIDE_COUNT) % SLIDE_COUNT);
   };
 
-  return (
-    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10">
-      <div
-        className="relative w-full max-w-[min(92vw,72rem)] transition-[opacity,transform] duration-300 ease-out md:px-6 lg:px-10"
-        style={{
-          opacity: fade,
-          transform: reduceMotion ? undefined : `translateY(${lift}px)`,
-        }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div className="relative mx-auto w-full lg:w-[min(76vw,1120px)]">
-          <CarouselDots
-            index={index}
-            onSelect={setIndex}
-            className="absolute left-0 top-1/2 z-30 hidden -translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:-translate-x-[calc(100%+18px)]"
-          />
-          <CarouselDots
-            index={index}
-            onSelect={setIndex}
-            className="absolute right-0 top-1/2 z-30 hidden translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:translate-x-[calc(100%+18px)]"
-          />
-
-          <CarouselArrow
-            direction="prev"
-            label="Previous slide"
-            onClick={() => go(-1)}
-            className="left-10 sm:left-3 md:left-4"
-          />
-          <CarouselArrow
-            direction="next"
-            label="Next slide"
-            onClick={() => go(1)}
-            className="right-10 sm:right-3 md:right-4"
-          />
-
-          <div className="relative w-full overflow-hidden rounded-[1.35rem] shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/[0.08] md:rounded-[1.75rem]">
+  const shell = (
+    <div
+      className={
+        embedded
+          ? "relative flex h-full min-h-0 w-full flex-col"
+          : "relative w-full max-w-[min(92vw,72rem)] md:px-6 lg:px-10"
+      }
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className={embedded ? "relative flex h-full min-h-0 w-full flex-1 flex-col" : "relative mx-auto w-full lg:w-[min(76vw,1120px)]"}>
+        {!embedded ? (
+          <>
             <CarouselDots
               index={index}
               onSelect={setIndex}
-              className="absolute left-3 top-1/2 z-[25] flex -translate-y-1/2 sm:hidden"
+              className="absolute left-0 top-1/2 z-30 hidden -translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:-translate-x-[calc(100%+18px)]"
             />
-            <div className="relative aspect-[4/5] w-full min-h-[min(68vh,560px)] max-h-[86vh] sm:aspect-[16/10] sm:min-h-[min(56vh,520px)] lg:aspect-auto lg:h-[min(60vh,660px)] lg:min-h-[420px] lg:max-h-[680px]">
+            <CarouselDots
+              index={index}
+              onSelect={setIndex}
+              className="absolute right-0 top-1/2 z-30 hidden translate-x-[calc(100%+10px)] -translate-y-1/2 sm:flex md:translate-x-[calc(100%+18px)]"
+            />
+          </>
+        ) : null}
+
+        <CarouselArrow
+          direction="prev"
+          label="Previous slide"
+          onClick={() => go(-1)}
+          className={embedded ? "left-3 sm:left-3" : "left-10 sm:left-3 md:left-4"}
+        />
+        <CarouselArrow
+          direction="next"
+          label="Next slide"
+          onClick={() => go(1)}
+          className={embedded ? "right-3 sm:right-3" : "right-10 sm:right-3 md:right-4"}
+        />
+
+        <div
+          className={
+            embedded
+              ? "relative flex min-h-0 w-full flex-1 flex-col overflow-hidden rounded-[inherit] shadow-[0_20px_64px_-28px_rgba(0,0,0,0.45)] ring-0"
+              : "relative w-full overflow-hidden rounded-[1.35rem] shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-black/[0.08] md:rounded-[1.75rem]"
+          }
+        >
+          <CarouselDots
+            index={index}
+            onSelect={setIndex}
+            className={
+              embedded
+                ? "absolute left-3 top-1/2 z-[25] flex -translate-y-1/2"
+                : "absolute left-3 top-1/2 z-[25] flex -translate-y-1/2 sm:hidden"
+            }
+          />
+          <div
+            className={
+              embedded
+                ? "relative min-h-[min(52vh,420px)] w-full flex-1 sm:min-h-[min(48vh,460px)] lg:min-h-0 lg:h-full lg:max-h-none"
+                : "relative aspect-[4/5] w-full min-h-[min(68vh,560px)] max-h-[86vh] sm:aspect-[16/10] sm:min-h-[min(56vh,520px)] lg:aspect-auto lg:h-[min(60vh,660px)] lg:min-h-[420px] lg:max-h-[680px]"
+            }
+          >
             <div
               className={`absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
                 index === 0 ? "z-10 opacity-100" : "pointer-events-none z-0 opacity-0"
@@ -253,9 +275,28 @@ export default function HomeHeroCarousel({
                 strip={productsSlide.strip}
               />
             </div>
-            </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+
+  if (embedded) {
+    return <div className="relative h-full min-h-0 w-full overflow-x-hidden">{shell}</div>;
+  }
+
+  return (
+    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10">
+      <div
+        className="relative w-full transition-[opacity,transform] duration-300 ease-out"
+        style={{
+          opacity: fade,
+          transform: reduceMotion ? undefined : `translateY(${lift}px)`,
+        }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {shell}
       </div>
 
       <div

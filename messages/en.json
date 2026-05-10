@@ -103,6 +103,17 @@
     "communityCta": "Contact us",
     "heroImageAlt": "Open landscape at dusk"
   },
+  "heroBento": {
+    "bannerEyebrow": "Featured gear",
+    "bannerTitle": "Built to move outside",
+    "bannerSubtitle": "Curated picks for mountain, water, trekking, and adventure.",
+    "bannerCta": "View highlights",
+    "rightMountainTitle": "Mountain & Snow",
+    "rightMountainBody": "Technical layers, accessories, and cold-weather kit.",
+    "rightOutdoorTitle": "Outdoor essentials",
+    "rightOutdoorBody": "Light accessories for every outing.",
+    "exploreAria": "Explore"
+  },
   "homeCompass": {
     "compassAria": "Compass — needle follows your pointer across the screen",
     "north": "N",
