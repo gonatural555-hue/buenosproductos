@@ -103,6 +103,13 @@
     "communityCta": "Contact us",
     "heroImageAlt": "Open landscape at dusk"
   },
+  "homeCompass": {
+    "compassAria": "Compass — needle follows your pointer across the screen",
+    "north": "N",
+    "south": "S",
+    "east": "E",
+    "west": "W"
+  },
   "homeImmersive": {
     "heroHeading": "Move, explore, live",
     "scrollHint": "Discover",

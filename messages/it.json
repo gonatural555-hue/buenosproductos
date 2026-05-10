@@ -103,6 +103,13 @@
     "communityCta": "Scrivici",
     "heroImageAlt": "Paesaggio aperto al tramonto"
   },
+  "homeCompass": {
+    "compassAria": "Bussola — l’ago segue il puntatore sullo schermo",
+    "north": "N",
+    "south": "S",
+    "east": "E",
+    "west": "O"
+  },
   "homeImmersive": {
     "heroHeading": "Muoviti, esplora, vivi",
     "scrollHint": "Scopri",

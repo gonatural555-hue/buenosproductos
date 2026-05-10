@@ -103,6 +103,13 @@
     "communityCta": "Nous écrire",
     "heroImageAlt": "Paysage ouvert au crépuscule"
   },
+  "homeCompass": {
+    "compassAria": "Boussole — l’aiguille suit le pointeur à l’écran",
+    "north": "N",
+    "south": "S",
+    "east": "E",
+    "west": "O"
+  },
   "homeImmersive": {
     "heroHeading": "Bouge, explore, vis",
     "scrollHint": "Découvrir",

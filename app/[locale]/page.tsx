@@ -1,4 +1,5 @@
 import HomeHero from "@/components/home/HomeHero";
+import HomeCompassCategories from "@/components/home/HomeCompassCategories";
 import BrandStatement from "@/components/home/BrandStatement";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import ImageStorySection from "@/components/home/ImageStorySection";
@@ -240,6 +241,18 @@ export default async function HomePage({
           cards: heroCategoryCards,
         }}
         productsSlide={productsSlidePayload}
+      />
+
+      <HomeCompassCategories
+        locale={locale}
+        cards={heroCategoryCards}
+        cardinalLabels={{
+          north: t("homeCompass.north"),
+          south: t("homeCompass.south"),
+          east: t("homeCompass.east"),
+          west: t("homeCompass.west"),
+        }}
+        compassAriaLabel={t("homeCompass.compassAria")}
       />
 
       <BrandStatement text={h.brandStatement ?? t("story.title")} />

@@ -9,8 +9,6 @@ import HomeHeroCategorySlide, {
 import HomeHeroProductsSlide, {
   type HeroProductPayload,
 } from "@/components/home/slides/HomeHeroProductsSlide";
-import HeroCompassCursor from "@/components/home/HeroCompassCursor";
-
 const SLIDE_COUNT = 3;
 
 export type HomeHeroCarouselProps = {
@@ -160,19 +158,17 @@ export default function HomeHeroCarousel({
   };
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10 xl:pl-14 xl:pr-12">
+    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-warm-sand px-5 py-24 sm:px-8 sm:py-28 md:py-24 lg:px-10">
       <div
-        className="mx-auto flex w-full max-w-[1920px] flex-col gap-10 transition-[opacity,transform] duration-300 ease-out lg:flex-row lg:items-center lg:justify-between lg:gap-8 xl:gap-12"
+        className="relative w-full max-w-[min(92vw,72rem)] transition-[opacity,transform] duration-300 ease-out md:px-6 lg:px-10"
         style={{
           opacity: fade,
           transform: reduceMotion ? undefined : `translateY(${lift}px)`,
         }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
       >
-        <div
-          className="relative w-full shrink-0 lg:w-[min(76vw,1120px)] lg:max-w-[calc(100%-11rem)] xl:max-w-[calc(100%-13rem)]"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        <div className="relative mx-auto w-full lg:w-[min(76vw,1120px)]">
           <CarouselDots
             index={index}
             onSelect={setIndex}
@@ -259,10 +255,6 @@ export default function HomeHeroCarousel({
             </div>
             </div>
           </div>
-        </div>
-
-        <div className="flex w-full shrink-0 justify-center lg:flex-1 lg:justify-center lg:py-2">
-          <HeroCompassCursor />
         </div>
       </div>
 
