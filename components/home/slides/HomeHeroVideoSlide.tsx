@@ -105,12 +105,13 @@ export default function HomeHeroVideoSlide({
       </div>
       <PremiumImageOverlay />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center px-5 pb-[clamp(4.5rem,14vh,8rem)] pt-[clamp(2.25rem,10vh,5rem)] text-center sm:px-10 sm:pb-[clamp(5rem,16vh,9rem)] sm:pt-[clamp(3rem,12vh,6rem)] md:pb-32 md:pt-16">
-        <div className="flex w-full max-w-3xl flex-col items-center">
+      {/* CTAs anclados al borde inferior: misma posición en todos los idiomas (ES suele ocupar más líneas). */}
+      <div className="absolute inset-0 z-10 px-5 pt-[clamp(2.25rem,10vh,5rem)] text-center sm:px-10 sm:pt-[clamp(3rem,12vh,6rem)] md:pt-16">
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center pb-[clamp(7.75rem,21vh,11rem)] sm:pb-[clamp(8.5rem,23vh,12rem)] md:pb-[clamp(9.25rem,25vh,13rem)]">
           <img
-            src="/assets/images/logo/GONATURAL-LOGO.svg"
+            src="/assets/images/logo/logo-blanco.svg"
             alt="Go Natural"
-            className="mb-4 h-14 w-auto max-w-[min(88vw,20rem)] opacity-[0.98] drop-shadow-[0_4px_28px_rgba(0,0,0,0.45)] sm:mb-5 sm:h-[4.25rem] md:h-[5rem] lg:h-[5.5rem]"
+            className="mb-4 h-14 w-auto max-w-[min(88vw,20rem)] opacity-[0.98] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)] sm:mb-5 sm:h-[4.25rem] md:h-[5rem] lg:h-[5.5rem]"
             loading="eager"
             decoding="async"
           />
@@ -122,7 +123,9 @@ export default function HomeHeroVideoSlide({
           </p>
         </div>
 
-        <div className="flex w-full max-w-md flex-col items-stretch gap-3 pt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4 sm:pt-12 md:pt-14">
+        <div
+          className="pointer-events-auto absolute bottom-[clamp(4.25rem,12vh,7.5rem)] left-5 right-5 z-[11] mx-auto flex w-full max-w-md flex-col items-stretch gap-3 sm:bottom-[clamp(4.75rem,13vh,8rem)] sm:left-10 sm:right-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4 md:bottom-[clamp(5.25rem,14vh,8.75rem)]"
+        >
           <Link href={`/${locale}/products`} className={premiumPrimaryCtaClass}>
             {ctaProducts}
           </Link>
