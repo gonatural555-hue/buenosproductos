@@ -11,12 +11,24 @@ import { locales, type Locale } from "@/lib/i18n/config";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-/** Navegación: Inter, compacta, legible (sin display). */
+/** Navegación inline (sans, compacta). */
 const NAV_LINK =
-  "font-sans text-[13px] font-medium tracking-[0.02em] text-charcoal transition-colors duration-200 hover:text-mountain-green";
+  "font-sans text-[12px] font-medium tracking-[0.02em] text-charcoal transition-colors duration-200 hover:text-mountain-green xl:text-[13px]";
 
-const FLOAT_ISLAND =
-  "rounded-full border border-black/[0.07] bg-white/70 shadow-[0_10px_36px_-18px_rgba(17,23,19,0.14)] backdrop-blur-xl supports-[backdrop-filter]:bg-white/58";
+/** Contenedor principal del header — barra ancha tipo píldora, glass (referencia Nitec-style). */
+const HEADER_BAR =
+  "rounded-full border border-black/[0.07] bg-white/65 shadow-[0_18px_56px_-24px_rgba(17,23,19,0.22)] backdrop-blur-xl supports-[backdrop-filter]:bg-white/52";
+
+/** Superficie blanca interior (search, iconos, perfil). */
+const INNER_SOLID =
+  "rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.05]";
+
+function userInitials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const a = parts[0]?.[0] ?? "?";
+  const b = parts.length > 1 ? parts[parts.length - 1]?.[0] ?? "" : parts[0]?.[1] ?? "";
+  return (a + b).toUpperCase().slice(0, 2);
+}
 
 export default function Header() {
   const { totalItems } = useCart();
@@ -123,25 +135,77 @@ export default function Header() {
   const categoriesPanelShell =
     "border-earth-brown/15 bg-soft-stone/98 shadow-[0_24px_56px_-20px_rgba(17,23,19,0.18)] ring-1 ring-earth-brown/10 backdrop-blur-md supports-[backdrop-filter]:bg-soft-stone/95";
 
-  const searchInputClass =
-    "font-sans h-9 w-full min-w-0 rounded-full border border-earth-brown/18 bg-white/90 pl-8 pr-3 text-[13px] text-charcoal placeholder:text-muted-gray/80 transition focus:border-accent-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/30";
+  const magnifierIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className="h-[18px] w-[18px]"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z"
+      />
+    </svg>
+  );
+
+  const cartIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.65}
+      stroke="currentColor"
+      className="h-[1.25rem] w-[1.25rem]"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.277M7.5 14.25l13.5-5.25M5.106 5.277c.194-1.01.937-1.777 1.936-1.777h13.916c.999 0 1.742.767 1.936 1.777M5.106 5.277L2.25 3m0 0h18.75M2.25 3v18m18.75-18v18"
+      />
+    </svg>
+  );
 
   return (
     <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 font-sans">
-      <div className="mx-auto max-w-7xl px-3 pt-3 sm:px-5 sm:pt-4">
-        {/* Desktop: tres islas flotantes */}
-        <div className="pointer-events-auto relative hidden w-full items-center justify-between md:flex">
+      <div className="mx-auto max-w-[min(96vw,1400px)] px-3 pt-3 sm:px-5 sm:pt-4">
+        {/* Desktop — una barra ancha tipo píldora */}
+        <div
+          className={`pointer-events-auto hidden w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5 md:flex lg:gap-4 lg:px-6 lg:py-3 ${HEADER_BAR}`}
+        >
+          <Link
+            href={`/${locale}`}
+            className="group flex shrink-0 items-center"
+            aria-label="Go Natural"
+          >
+            <img
+              src="/assets/images/logo/GONATURAL-LOGO.svg"
+              alt="Go Natural"
+              className="h-9 w-auto max-h-10 opacity-[0.97] transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-10 md:max-h-11"
+              loading="eager"
+              decoding="async"
+            />
+          </Link>
+
           <nav
-            className={`relative z-[3] ${FLOAT_ISLAND} flex items-center gap-1 px-2 py-2 lg:gap-1.5 lg:px-3`}
+            className="hidden min-w-0 items-center gap-0 md:flex md:gap-0.5 lg:gap-1"
             aria-label="Principal"
           >
-            <Link href={`/${locale}`} className={`${NAV_LINK} whitespace-nowrap px-2 py-1`}>
+            <Link href={`/${locale}`} className={`${NAV_LINK} whitespace-nowrap px-1 py-1.5 md:px-1.5 xl:px-2`}>
               {t("header.nav.home")}
             </Link>
-            <Link href={`/${locale}/products`} className={`${NAV_LINK} whitespace-nowrap px-2 py-1`}>
+            <Link
+              href={`/${locale}/products`}
+              className={`${NAV_LINK} whitespace-nowrap px-1 py-1.5 md:px-1.5 xl:px-2`}
+            >
               {t("header.nav.products")}
             </Link>
-            <Link href={`/${locale}/blog`} className={`${NAV_LINK} whitespace-nowrap px-2 py-1`}>
+            <Link href={`/${locale}/blog`} className={`${NAV_LINK} whitespace-nowrap px-1 py-1.5 md:px-1.5 xl:px-2`}>
               {t("header.nav.blog")}
             </Link>
             <div
@@ -151,7 +215,7 @@ export default function Header() {
             >
               <button
                 type="button"
-                className={`${NAV_LINK} cursor-pointer whitespace-nowrap border-0 bg-transparent px-2 py-1 text-left`}
+                className={`${NAV_LINK} cursor-pointer whitespace-nowrap border-0 bg-transparent px-1 py-1.5 text-left md:px-1.5 xl:px-2`}
                 aria-expanded={categoriesOpen}
                 aria-haspopup="true"
                 aria-controls="header-categories-mega"
@@ -163,155 +227,151 @@ export default function Header() {
             </div>
           </nav>
 
-          <Link
-            href={`/${locale}`}
-            className="pointer-events-auto absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 shrink-0 items-center group"
-            aria-label="Go Natural"
+          <form
+            className="flex min-w-0 flex-1 items-center justify-end"
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitSearch();
+            }}
+            role="search"
           >
+            <label htmlFor="header-search" className="sr-only">
+              {t("common.searchLabel")}
+            </label>
+            <div
+              className={`flex w-full max-w-xl min-w-[8rem] items-center gap-1 pl-3 sm:pl-4 ${INNER_SOLID} py-1 pr-1 lg:max-w-2xl`}
+            >
+              <input
+                id="header-search"
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t("common.searchPlaceholder")}
+                className="font-sans min-h-[38px] min-w-0 flex-1 border-0 bg-transparent text-[13px] text-charcoal placeholder:text-muted-gray/75 outline-none focus:ring-0"
+              />
+              <button
+                type="submit"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-charcoal text-white transition hover:bg-dark-base focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/40 focus-visible:ring-offset-2"
+                aria-label={t("common.searchLabel")}
+              >
+                {magnifierIcon}
+              </button>
+            </div>
+          </form>
+
+          <div
+            className={`hidden shrink-0 items-center gap-0.5 px-1 py-0.5 md:flex ${INNER_SOLID}`}
+          >
+            {locales.map((lang) => (
+              <Link
+                key={lang}
+                href={buildLocaleHref(lang)}
+                className={`rounded-full px-2 py-1.5 font-sans text-[10px] font-semibold tracking-[0.12em] transition-colors sm:text-[11px] ${
+                  lang === locale
+                    ? "bg-soft-stone text-charcoal"
+                    : "text-muted-gray hover:bg-soft-stone/70 hover:text-charcoal"
+                }`}
+              >
+                {lang.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            href={`/${locale}/cart`}
+            className={`relative flex h-10 w-10 shrink-0 items-center justify-center text-charcoal transition hover:text-mountain-green ${INNER_SOLID}`}
+            aria-label={`Cart with ${totalItems} items`}
+          >
+            {cartIcon}
+            {totalItems > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-accent-gold px-0.5 font-sans text-[9px] font-semibold text-dark-base">
+                {totalItems > 99 ? "99+" : totalItems}
+              </span>
+            )}
+          </Link>
+
+          {isLoggedIn && user ? (
+            <Link
+              href={`/${locale}/account`}
+              className={`flex max-w-[11rem] shrink-0 items-center gap-2 pl-3 pr-1.5 py-1 transition hover:ring-black/10 ${INNER_SOLID}`}
+            >
+              <span className="truncate font-sans text-[12px] font-medium text-charcoal sm:text-[13px]">
+                {user.name}
+              </span>
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-mountain-green to-moss-green font-sans text-[10px] font-semibold uppercase tracking-wide text-white shadow-inner"
+                aria-hidden
+              >
+                {userInitials(user.name)}
+              </span>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => openAuthModal("login")}
+              className={`shrink-0 px-4 py-2 font-sans text-[12px] font-medium text-charcoal transition hover:bg-soft-stone sm:text-[13px] ${INNER_SOLID}`}
+            >
+              {t("header.account")}
+            </button>
+          )}
+        </div>
+
+        {/* Mobile — misma línea visual: píldora ancha */}
+        <div
+          className={`pointer-events-auto flex md:hidden ${HEADER_BAR} items-center justify-between gap-2 px-3 py-2`}
+        >
+          <button
+            type="button"
+            className={`flex h-10 w-10 shrink-0 items-center justify-center text-charcoal transition hover:bg-soft-stone/80 ${INNER_SOLID}`}
+            onClick={() => {
+              setMobileMenuOpen((o) => !o);
+              setMobileSearchOpen(false);
+            }}
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-5 w-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-5 w-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
+          </button>
+
+          <Link href={`/${locale}`} className="group flex min-w-0 flex-1 justify-center px-1" aria-label="Go Natural">
             <img
               src="/assets/images/logo/GONATURAL-LOGO.svg"
               alt="Go Natural"
-              className="h-[3.9rem] w-auto max-w-[min(52vw,20rem)] opacity-[0.96] transition-transform duration-300 ease-out group-hover:scale-[1.04] md:h-[4.2rem] lg:h-[4.5rem]"
+              className="mx-auto h-9 w-auto max-w-[min(46vw,11rem)] opacity-[0.97] transition-transform group-hover:scale-[1.02]"
               loading="eager"
               decoding="async"
             />
           </Link>
 
-          <div className={`relative z-[3] ${FLOAT_ISLAND} flex items-center gap-2 px-2 py-1.5 pl-3 lg:gap-2.5`}>
-            <form
-              className="hidden lg:block"
-              onSubmit={(e) => {
-                e.preventDefault();
-                submitSearch();
+          <div className="flex shrink-0 items-center gap-2">
+            <button
+              type="button"
+              className={`flex h-10 w-10 items-center justify-center text-charcoal ${INNER_SOLID}`}
+              onClick={() => {
+                setMobileSearchOpen((o) => !o);
+                setMobileMenuOpen(false);
               }}
-              role="search"
+              aria-label={t("common.searchLabel")}
+              aria-expanded={mobileSearchOpen}
             >
-              <label htmlFor="header-search" className="sr-only">
-                {t("common.searchLabel")}
-              </label>
-              <div className="relative w-[10.5rem] xl:w-[12rem]">
-                <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-gray">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-3.5 w-3.5"
-                    aria-hidden
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z"
-                    />
-                  </svg>
-                </span>
-                <input
-                  id="header-search"
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t("common.searchPlaceholder")}
-                  className={searchInputClass}
-                />
-              </div>
-            </form>
-
-            <form
-              className="lg:hidden"
-              onSubmit={(e) => {
-                e.preventDefault();
-                submitSearch();
-              }}
-              role="search"
-            >
-              <label htmlFor="header-search-md" className="sr-only">
-                {t("common.searchLabel")}
-              </label>
-              <div className="relative w-[8.25rem] sm:w-[9rem]">
-                <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-gray">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-3.5 w-3.5"
-                    aria-hidden
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z"
-                    />
-                  </svg>
-                </span>
-                <input
-                  id="header-search-md"
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t("common.searchPlaceholder")}
-                  className={searchInputClass}
-                />
-              </div>
-            </form>
-
-            <div className="flex items-center gap-1 border-l border-earth-brown/15 pl-2 lg:gap-1.5 lg:pl-2.5">
-              {locales.map((lang) => (
-                <Link
-                  key={lang}
-                  href={buildLocaleHref(lang)}
-                  className={`font-sans text-[11px] font-semibold tracking-[0.14em] transition-colors ${
-                    lang === locale
-                      ? "text-accent-gold"
-                      : "text-muted-gray hover:text-charcoal"
-                  }`}
-                >
-                  {lang.toUpperCase()}
-                </Link>
-              ))}
-            </div>
-
-            {isLoggedIn && user ? (
-              <Link
-                href={`/${locale}/account`}
-                className={`${NAV_LINK} hidden max-w-[6.5rem] truncate font-semibold lg:inline lg:max-w-[8.5rem] xl:max-w-[10rem]`}
-              >
-                {t("header.greeting")}, {user.name}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => openAuthModal("login")}
-                className={`${NAV_LINK} hidden font-semibold lg:inline`}
-              >
-                {t("header.account")}
-              </button>
-            )}
-
+              <span className="text-charcoal">{magnifierIcon}</span>
+            </button>
             <Link
               href={`/${locale}/cart`}
-              className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-charcoal transition-colors hover:text-mountain-green"
+              className={`relative flex h-10 w-10 items-center justify-center text-charcoal ${INNER_SOLID}`}
               aria-label={`Cart with ${totalItems} items`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-[1.35rem] w-[1.35rem]"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.277M7.5 14.25l13.5-5.25M5.106 5.277c.194-1.01.937-1.777 1.936-1.777h13.916c.999 0 1.742.767 1.936 1.777M5.106 5.277L2.25 3m0 0h18.75M2.25 3v18m18.75-18v18"
-                />
-              </svg>
+              {cartIcon}
               {totalItems > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent-gold px-1 font-sans text-[10px] font-semibold text-dark-base">
+                <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-accent-gold px-0.5 font-sans text-[9px] font-semibold text-dark-base">
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
               )}
@@ -319,107 +379,38 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile */}
-        <div className="pointer-events-auto flex flex-col gap-2 md:hidden">
-          <div className="relative flex items-center justify-between gap-2">
-            <button
-              type="button"
-              className="relative z-[3] flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/[0.07] bg-white/75 text-charcoal shadow-[0_8px_28px_-14px_rgba(17,23,19,0.18)] backdrop-blur-md transition-colors hover:text-mountain-green focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45"
-              onClick={() => {
-                setMobileMenuOpen((o) => !o);
-                setMobileSearchOpen(false);
-              }}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-              )}
-            </button>
-
-            <Link
-              href={`/${locale}`}
-              className="pointer-events-auto absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 items-center group"
-              aria-label="Go Natural"
-            >
-              <img
-                src="/assets/images/logo/GONATURAL-LOGO.svg"
-                alt="Go Natural"
-                className="h-[3.6rem] w-auto max-w-[46vw] opacity-[0.96] transition-transform group-hover:scale-[1.03]"
-                loading="eager"
-                decoding="async"
+        {mobileSearchOpen ? (
+          <form
+            className={`pointer-events-auto mt-2 flex px-3 py-2 md:hidden ${HEADER_BAR}`}
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitSearch();
+            }}
+            role="search"
+          >
+            <label htmlFor="header-search-mobile-bar" className="sr-only">
+              {t("common.searchLabel")}
+            </label>
+            <div className={`flex w-full items-center gap-1 pl-3 ${INNER_SOLID} py-1 pr-1`}>
+              <input
+                id="header-search-mobile-bar"
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t("common.searchPlaceholder")}
+                className="font-sans min-h-[40px] min-w-0 flex-1 border-0 bg-transparent text-sm text-charcoal placeholder:text-muted-gray outline-none"
+                autoFocus
               />
-            </Link>
-
-            <div className="relative z-[3] flex shrink-0 items-center gap-1.5">
               <button
-                type="button"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/[0.07] bg-white/75 text-charcoal shadow-[0_8px_28px_-14px_rgba(17,23,19,0.18)] backdrop-blur-md hover:text-mountain-green focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45"
-                onClick={() => {
-                  setMobileSearchOpen((o) => !o);
-                  setMobileMenuOpen(false);
-                }}
+                type="submit"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-charcoal text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/40"
                 aria-label={t("common.searchLabel")}
-                aria-expanded={mobileSearchOpen}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z" />
-                </svg>
+                {magnifierIcon}
               </button>
-              <Link
-                href={`/${locale}/cart`}
-                className={`${FLOAT_ISLAND} relative flex h-11 w-11 items-center justify-center text-charcoal`}
-                aria-label={`Cart with ${totalItems} items`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-[1.35rem] w-[1.35rem]">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.277M7.5 14.25l13.5-5.25M5.106 5.277c.194-1.01.937-1.777 1.936-1.777h13.916c.999 0 1.742.767 1.936 1.777M5.106 5.277L2.25 3m0 0h18.75M2.25 3v18m18.75-18v18" />
-                </svg>
-                {totalItems > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent-gold px-1 font-sans text-[10px] font-semibold text-dark-base">
-                    {totalItems > 99 ? "99+" : totalItems}
-                  </span>
-                )}
-              </Link>
             </div>
-          </div>
-
-          {mobileSearchOpen ? (
-            <form
-              className={`${FLOAT_ISLAND} flex px-3 py-2`}
-              onSubmit={(e) => {
-                e.preventDefault();
-                submitSearch();
-              }}
-              role="search"
-            >
-              <label htmlFor="header-search-mobile-bar" className="sr-only">
-                {t("common.searchLabel")}
-              </label>
-              <div className="relative w-full">
-                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-gray">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6Z" />
-                  </svg>
-                </span>
-                <input
-                  id="header-search-mobile-bar"
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t("common.searchPlaceholder")}
-                  className="font-sans h-10 w-full rounded-full border border-earth-brown/18 bg-white/95 py-2 pl-10 pr-3 text-sm text-charcoal placeholder:text-muted-gray focus:border-accent-gold/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/30"
-                  autoFocus
-                />
-              </div>
-            </form>
-          ) : null}
-        </div>
+          </form>
+        ) : null}
 
         {/* Mega menu backdrop */}
         <div
@@ -436,7 +427,7 @@ export default function Header() {
           id="header-categories-mega"
           className={[
             "pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t transition-all duration-200 ease-out",
-            "top-[6.75rem] md:top-[7.25rem]",
+            "top-[5.25rem] sm:top-[5.5rem] md:top-[6rem]",
             "overflow-y-auto overscroll-contain",
             categoriesPanelShell,
             categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
