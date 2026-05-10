@@ -181,22 +181,8 @@ export default function Header() {
         <div
           className={`pointer-events-auto mx-auto hidden w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5 md:flex lg:w-[min(76vw,1120px)] lg:gap-4 lg:px-6 lg:py-3 ${HEADER_BAR}`}
         >
-          <Link
-            href={`/${locale}`}
-            className="group flex shrink-0 items-center"
-            aria-label="Go Natural"
-          >
-            <img
-              src="/assets/images/logo/GONATURAL-LOGO.svg"
-              alt="Go Natural"
-              className="h-11 w-auto opacity-[0.97] transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-12 md:h-[3.45rem] lg:h-[3.85rem]"
-              loading="eager"
-              decoding="async"
-            />
-          </Link>
-
           <nav
-            className="hidden min-w-0 items-center gap-0 md:flex md:gap-0.5 lg:gap-1"
+            className="hidden min-w-0 shrink-0 items-center gap-0 md:flex md:gap-0.5 lg:gap-1"
             aria-label="Principal"
           >
             <Link href={`/${locale}`} className={`${NAV_LINK} whitespace-nowrap px-1 py-1.5 md:px-1.5 xl:px-2`}>
@@ -344,15 +330,7 @@ export default function Header() {
             )}
           </button>
 
-          <Link href={`/${locale}`} className="group flex min-w-0 flex-1 justify-center px-1" aria-label="Go Natural">
-            <img
-              src="/assets/images/logo/GONATURAL-LOGO.svg"
-              alt="Go Natural"
-              className="mx-auto h-11 w-auto max-w-[min(52vw,13rem)] opacity-[0.97] transition-transform group-hover:scale-[1.02] sm:h-12 sm:max-w-[min(48vw,14rem)]"
-              loading="eager"
-              decoding="async"
-            />
-          </Link>
+          <div className="min-w-0 flex-1" aria-hidden />
 
           <div className="flex shrink-0 items-center gap-2">
             <button

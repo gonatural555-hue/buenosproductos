@@ -29,7 +29,7 @@ export type HomeHeroVideoSlideProps = {
 
 export default function HomeHeroVideoSlide({
   locale,
-  tagline,
+  tagline: _tagline,
   title,
   subtitle,
   ctaProducts,
@@ -105,25 +105,24 @@ export default function HomeHeroVideoSlide({
       </div>
       <PremiumImageOverlay />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-5 pb-8 pt-12 text-center sm:px-10 sm:pb-10 sm:pt-14">
-        <img
-          src="/assets/images/logo/GONATURAL-LOGO.svg"
-          alt="Go Natural"
-          className="mb-5 h-16 w-auto max-w-[min(88vw,22rem)] opacity-[0.98] drop-shadow-[0_4px_28px_rgba(0,0,0,0.45)] sm:mb-6 sm:h-[4.75rem] md:h-[5.5rem] lg:h-[6rem]"
-          loading="eager"
-          decoding="async"
-        />
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accent-gold drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:text-xs">
-          {tagline}
-        </p>
-        <h1 className="font-display mt-4 max-w-full font-bold leading-[1.06] tracking-tight text-white text-[clamp(1.85rem,5.2vw,3.35rem)] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)] sm:mt-5 sm:max-w-3xl md:text-[clamp(2.1rem,4.2vw,3.75rem)]">
-          {title}
-        </h1>
-        <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/92 drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:mt-5 sm:max-w-xl sm:text-base md:text-lg">
-          {subtitle}
-        </p>
+      <div className="absolute inset-0 z-10 flex flex-col items-center px-5 pb-[clamp(4.5rem,14vh,8rem)] pt-[clamp(2.25rem,10vh,5rem)] text-center sm:px-10 sm:pb-[clamp(5rem,16vh,9rem)] sm:pt-[clamp(3rem,12vh,6rem)] md:pb-32 md:pt-16">
+        <div className="flex w-full max-w-3xl flex-col items-center">
+          <img
+            src="/assets/images/logo/GONATURAL-LOGO.svg"
+            alt="Go Natural"
+            className="mb-4 h-14 w-auto max-w-[min(88vw,20rem)] opacity-[0.98] drop-shadow-[0_4px_28px_rgba(0,0,0,0.45)] sm:mb-5 sm:h-[4.25rem] md:h-[5rem] lg:h-[5.5rem]"
+            loading="eager"
+            decoding="async"
+          />
+          <h1 className="font-display max-w-full font-bold leading-[1.06] tracking-tight text-white text-[clamp(1.85rem,5.2vw,3.35rem)] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)] sm:max-w-3xl md:text-[clamp(2.1rem,4.2vw,3.75rem)]">
+            {title}
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm font-semibold leading-relaxed tracking-[0.06em] text-accent-gold drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:mt-5 sm:max-w-2xl sm:text-base md:text-[1.05rem]">
+            {subtitle}
+          </p>
+        </div>
 
-        <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
+        <div className="flex w-full max-w-md flex-col items-stretch gap-3 pt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4 sm:pt-12 md:pt-14">
           <Link href={`/${locale}/products`} className={premiumPrimaryCtaClass}>
             {ctaProducts}
           </Link>
