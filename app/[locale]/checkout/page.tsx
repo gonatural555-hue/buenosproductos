@@ -238,7 +238,7 @@ export default function CheckoutPage() {
         <p className="text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90 mb-4">
           Checkout
         </p>
-        <h1 className="font-display text-3xl md:text-4xl font-semibold text-text-primary mb-4">
+        <h1 className="font-sans text-3xl md:text-4xl font-semibold text-text-primary mb-4">
           {t("checkoutPage.emptyTitle")}
         </h1>
         <p className="text-text-muted mb-10 leading-relaxed">
@@ -300,7 +300,7 @@ export default function CheckoutPage() {
     >
       <header className="mb-8 md:mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-xl">
-          <h1 className="font-display text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">
+          <h1 className="font-sans text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">
             {t("checkoutPage.title")}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-gray md:text-base">

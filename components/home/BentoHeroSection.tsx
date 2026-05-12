@@ -66,7 +66,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
                 <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-accent-gold">
                   {t("heroBento.bannerEyebrow")}
                 </p>
-                <h2 className="font-display mt-2 text-xl font-semibold leading-tight tracking-tight text-dark-base sm:text-2xl">
+                <h2 className="section-display mt-2 text-xl font-semibold leading-tight tracking-tight text-dark-base sm:text-2xl">
                   {t("heroBento.bannerTitle")}
                 </h2>
                 <p className="mt-2 font-sans text-sm leading-relaxed text-muted-gray sm:text-[0.95rem]">
@@ -108,7 +108,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/55 to-dark-base/10" />
               <div className="relative z-[1] flex items-end justify-between gap-3">
                 <div className="min-w-0 text-left">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
+                  <h3 className="section-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                     {t("heroBento.rightMountainTitle")}
                   </h3>
                   <p className="mt-1 font-sans text-xs leading-snug text-white/85 sm:text-sm">
@@ -135,7 +135,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-mountain-green/95 via-mountain-green/45 to-moss-green/20" />
               <div className="relative z-[1] flex items-end justify-between gap-3">
                 <div className="min-w-0 text-left">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
+                  <h3 className="section-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                     {t("heroBento.rightOutdoorTitle")}
                   </h3>
                   <p className="mt-1 font-sans text-xs leading-snug text-white/88 sm:text-sm">

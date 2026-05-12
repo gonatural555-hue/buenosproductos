@@ -23,7 +23,7 @@ export default function BlogPostHero({
       <PremiumImageOverlay />
       <div className="relative z-10 w-full">
         <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 pb-14 md:pb-18">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary [text-shadow:0_2px_28px_rgba(0,0,0,0.5),0_1px_2px_rgba(0,0,0,0.4)]">
+          <h1 className="hero-display text-4xl md:text-5xl font-bold text-text-primary [text-shadow:0_2px_28px_rgba(0,0,0,0.5),0_1px_2px_rgba(0,0,0,0.4)]">
             {title}
           </h1>
           {subtitle && (

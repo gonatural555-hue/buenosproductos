@@ -162,7 +162,7 @@ export default async function ProductPage({ params }: Props) {
   if (!product) {
     return (
       <main className="mx-auto max-w-6xl bg-[#FFFFFF] px-4 py-20 text-neutral-900">
-        <h1 className="font-display text-2xl font-semibold">Producto no encontrado</h1>
+        <h1 className="font-sans text-2xl font-semibold">Producto no encontrado</h1>
       </main>
     );
   }

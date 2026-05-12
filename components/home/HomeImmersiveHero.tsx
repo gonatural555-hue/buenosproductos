@@ -43,7 +43,7 @@ export default function HomeImmersiveHero({
       <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-[#1F2D26]/95 pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8 text-center max-w-4xl mx-auto py-24 md:py-32">
-        <h1 className="home-hero-fade font-display text-[clamp(2.35rem,7.25vw,4.35rem)] font-semibold leading-[1.06] tracking-[0.04em] text-[#FFFEF9] [text-shadow:0_2px_40px_rgba(0,0,0,0.45),0_1px_3px_rgba(0,0,0,0.35)]">
+        <h1 className="home-hero-fade hero-display text-[clamp(2.35rem,7.25vw,4.35rem)] font-semibold leading-[1.06] tracking-[0.04em] text-[#FFFEF9] [text-shadow:0_2px_40px_rgba(0,0,0,0.45),0_1px_3px_rgba(0,0,0,0.35)]">
           {heading}
         </h1>
 

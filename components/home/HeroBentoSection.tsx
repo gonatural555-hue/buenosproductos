@@ -73,7 +73,7 @@ export default function HeroBentoSection({
         <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-accent-gold/90 sm:text-xs">
           {tagline}
         </p>
-        <h1 className="font-display mt-6 max-w-4xl font-semibold tracking-tight text-white text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">
+        <h1 className="hero-display mt-6 max-w-4xl font-semibold tracking-tight text-white text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">
           {title}
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">

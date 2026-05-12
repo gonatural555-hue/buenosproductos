@@ -116,7 +116,7 @@ function CornerCard({
 
         <div className="relative z-[2] mt-auto flex items-end justify-between gap-6 border-t border-white/10 bg-gradient-to-t from-black/50 via-black/28 to-transparent px-8 pb-8 pt-20 backdrop-blur-[10px] sm:px-10 sm:pb-8 sm:pt-24 supports-[backdrop-filter]:from-black/40 supports-[backdrop-filter]:via-black/18">
           <div className="min-w-0 flex-1 pr-4 text-left">
-            <p className="font-display line-clamp-2 text-[0.875rem] font-semibold uppercase leading-snug tracking-[0.32em] text-accent-gold sm:text-[0.95rem] sm:tracking-[0.34em]">
+            <p className="font-sans line-clamp-2 text-[0.875rem] font-semibold uppercase leading-snug tracking-[0.32em] text-accent-gold sm:text-[0.95rem] sm:tracking-[0.34em]">
               {card.title}
             </p>
             <p className="mt-3 line-clamp-3 font-sans text-[0.9375rem] font-normal leading-relaxed tracking-[0.01em] text-white/78 transition-colors duration-[720ms] group-hover/card:text-white/90 sm:text-base">

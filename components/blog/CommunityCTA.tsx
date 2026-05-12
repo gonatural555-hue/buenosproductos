@@ -26,7 +26,7 @@ export default function CommunityCTA({
     <section className={`border-t border-earth-brown/10 bg-[#FFFFFF] py-20 md:py-28 lg:py-32 ${LUMINOUS_EDGE_LIGHT}`}>
       <div className="mx-auto max-w-3xl px-6 text-center sm:px-10">
         <ScrollReveal>
-          <h2 className="font-display font-bold tracking-tight text-dark-base text-[clamp(1.85rem,4vw,2.75rem)] leading-tight">
+          <h2 className="section-display font-bold tracking-tight text-dark-base text-[clamp(1.85rem,4vw,2.75rem)] leading-tight">
             {title}
           </h2>
           {tagline ? (

@@ -117,7 +117,7 @@ export default function HomeHeroVideoSlide({
             sizes="(max-width: 640px) 88vw, 20rem"
             className="mb-5 h-14 w-auto max-w-[min(88vw,20rem)] shrink-0 rounded-lg shadow-[0_8px_36px_rgba(0,0,0,0.45)] ring-1 ring-black/10 sm:mb-6 sm:h-[4.25rem] md:h-[5rem] lg:h-[5.5rem]"
           />
-          <h1 className="font-display max-w-full shrink-0 font-bold leading-[1.08] tracking-tight text-white text-[clamp(1.85rem,5.2vw,3.35rem)] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)] sm:max-w-3xl md:text-[clamp(2.1rem,4.2vw,3.75rem)]">
+          <h1 className="hero-display max-w-full shrink-0 font-bold leading-[1.08] tracking-tight text-white text-[clamp(1.85rem,5.2vw,3.35rem)] [text-shadow:0_2px_32px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.45)] sm:max-w-3xl md:text-[clamp(2.1rem,4.2vw,3.75rem)]">
             {title}
           </h1>
           <div className="pointer-events-auto mt-8 flex w-full max-w-md shrink-0 flex-col items-stretch gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4 md:mt-12">

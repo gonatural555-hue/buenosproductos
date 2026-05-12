@@ -21,7 +21,7 @@ export default function BlogCategoryLayout({
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-gold/95">
             Blog
           </p>
-          <h1 className="font-display mt-4 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
+          <h1 className="font-sans mt-4 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
             {section.title}
           </h1>
         </div>

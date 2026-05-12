@@ -49,7 +49,7 @@ export default function FeaturedProducts({
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <header className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display font-semibold tracking-tight text-dark-base text-[clamp(1.75rem,3.5vw,2.5rem)]">
+            <h2 className="section-display font-semibold tracking-tight text-dark-base text-[clamp(1.75rem,3.5vw,2.5rem)]">
               {title}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-gray md:text-base">

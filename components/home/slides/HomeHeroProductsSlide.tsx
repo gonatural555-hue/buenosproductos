@@ -94,7 +94,7 @@ export default function HomeHeroProductsSlide({
         <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-accent-gold/90">
           {eyebrow}
         </p>
-        <h2 className="font-display mt-3 text-2xl font-semibold leading-[1.08] tracking-tight text-white sm:text-[clamp(1.5rem,3.5vw,2.25rem)]">
+        <h2 className="hero-display mt-3 text-2xl font-semibold leading-[1.08] tracking-tight text-white sm:text-[clamp(1.5rem,3.5vw,2.25rem)]">
           {headline}
         </h2>
         <p className="mt-3 max-w-md font-sans text-sm leading-relaxed text-white/78">
@@ -102,7 +102,7 @@ export default function HomeHeroProductsSlide({
         </p>
 
         <div className="mt-5 flex items-baseline gap-3">
-          <span className="font-display text-xl font-semibold tabular-nums text-white sm:text-2xl">
+          <span className="font-sans text-xl font-semibold tabular-nums text-white sm:text-2xl">
             {formatUsd(main.price)}
           </span>
           <span className="font-sans text-xs text-white/45 line-clamp-1">{main.title}</span>

@@ -122,7 +122,7 @@ export default function OrderSuccessPage() {
         <p className="text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90 mb-4">
           Go Natural
         </p>
-        <h1 className="font-display text-3xl md:text-[2.15rem] font-semibold text-text-primary tracking-tight leading-tight mb-4">
+        <h1 className="font-sans text-3xl md:text-[2.15rem] font-semibold text-text-primary tracking-tight leading-tight mb-4">
           {t("orderSuccessPage.headline")}
         </h1>
         <p className="text-base md:text-lg text-text-muted leading-relaxed">

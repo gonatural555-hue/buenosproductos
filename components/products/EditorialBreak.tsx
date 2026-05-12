@@ -30,7 +30,7 @@ export default function EditorialBreak({
             />
             <PremiumImageOverlay />
             <div className="absolute inset-0 flex items-center justify-center px-6">
-              <p className="font-display max-w-2xl text-center font-medium leading-tight tracking-tight text-white text-[clamp(1.25rem,3.5vw,2rem)] [text-shadow:0_2px_28px_rgba(0,0,0,0.55),0_1px_2px_rgba(0,0,0,0.45)]">
+              <p className="font-editorial max-w-2xl text-center font-medium leading-tight tracking-tight text-white text-[clamp(1.25rem,3.5vw,2rem)] [text-shadow:0_2px_28px_rgba(0,0,0,0.55),0_1px_2px_rgba(0,0,0,0.45)]">
                 {title}
               </p>
             </div>
@@ -43,7 +43,7 @@ export default function EditorialBreak({
   return (
     <section className="border-y border-earth-brown/12 bg-soft-stone py-14 md:py-20">
       <ScrollReveal>
-        <p className="font-display mx-auto max-w-2xl px-6 text-center font-medium leading-snug tracking-tight text-dark-base text-[clamp(1.2rem,3vw,1.85rem)]">
+        <p className="font-editorial mx-auto max-w-2xl px-6 text-center font-medium leading-snug tracking-tight text-dark-base text-[clamp(1.2rem,3vw,1.85rem)]">
           {title}
         </p>
       </ScrollReveal>

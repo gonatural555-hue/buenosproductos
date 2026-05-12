@@ -265,7 +265,7 @@ export default async function CategoryPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-b from-dark-base/60 via-dark-base/40 to-dark-base/90" />
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pb-16 md:pb-20">
-            <h1 className="font-display text-4xl md:text-5xl font-semibold text-text-primary">
+            <h1 className="font-sans text-4xl md:text-5xl font-semibold text-text-primary">
               {seoH1}
             </h1>
           </div>
@@ -341,7 +341,7 @@ export default async function CategoryPage({ params }: Props) {
       {/* Final soft CTA */}
       <section className="py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-text-primary">
+          <h2 className="font-sans text-2xl md:text-3xl font-semibold text-text-primary">
             {t("categoriesPage.ctaTitle")}
           </h2>
           <div className="mt-6">

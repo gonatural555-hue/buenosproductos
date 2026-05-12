@@ -87,7 +87,7 @@ export default function AccountPage() {
       <main className="min-h-[100dvh] bg-dark-base px-6 pb-16 pt-24 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-xl">
           <div className="rounded-3xl border border-white/10 bg-dark-surface/40 p-8 text-center">
-            <h1 className="font-display text-2xl font-semibold text-text-primary">
+            <h1 className="font-sans text-2xl font-semibold text-text-primary">
               Mi cuenta
             </h1>
             <p className="mt-3 text-sm text-text-muted">
@@ -111,7 +111,7 @@ export default function AccountPage() {
       <main className="min-h-[100dvh] bg-dark-base px-6 pb-16 pt-24 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
-          <h1 className="font-display text-3xl font-semibold text-text-primary">
+          <h1 className="font-sans text-3xl font-semibold text-text-primary">
             Mi cuenta
           </h1>
           <p className="mt-2 text-sm text-text-muted">

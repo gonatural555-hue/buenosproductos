@@ -40,7 +40,7 @@ export default async function CategoriesPage({
   return (
     <main className="max-w-7xl mx-auto px-4 py-16">
       <header className="mb-12">
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="font-sans text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           {t("header.nav.products")}
         </h1>
         <p className="text-gray-600 max-w-2xl">

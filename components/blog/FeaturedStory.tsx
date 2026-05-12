@@ -50,7 +50,7 @@ export default function FeaturedStory({
             </div>
 
             <div className="relative z-[1] -mt-16 px-2 text-center sm:-mt-20 md:-mt-24 md:px-8">
-              <h2 className="font-display mx-auto max-w-4xl font-bold tracking-tight text-white text-[clamp(1.75rem,4vw,3rem)] leading-[1.12]">
+              <h2 className="hero-display mx-auto max-w-4xl font-bold tracking-tight text-white text-[clamp(1.75rem,4vw,3rem)] leading-[1.12]">
                 {post.title}
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base">

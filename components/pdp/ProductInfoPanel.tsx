@@ -157,8 +157,8 @@ export default function ProductInfoPanel({
         <h1
           className={
             L
-              ? "font-display text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-neutral-900 xl:text-[2rem]"
-              : "font-display text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-text-primary xl:text-[2rem]"
+              ? "font-sans text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-neutral-900 xl:text-[2rem]"
+              : "font-sans text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-text-primary xl:text-[2rem]"
           }
         >
           {seoH1}

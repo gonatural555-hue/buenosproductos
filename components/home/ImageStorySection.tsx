@@ -32,7 +32,7 @@ export default function ImageStorySection({
 
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
           <ScrollReveal>
-            <p className="font-display max-w-3xl text-center font-light leading-tight tracking-tight text-white text-[clamp(1.5rem,4vw,2.75rem)] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
+            <p className="font-editorial max-w-3xl text-center font-light leading-tight tracking-tight text-white text-[clamp(1.5rem,4vw,2.75rem)] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
               {title}
             </p>
           </ScrollReveal>

@@ -52,7 +52,7 @@ export default function ProductsHero({
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-accent-gold drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)] sm:text-xs">
           {tagline}
         </p>
-        <h1 className="font-display mt-5 font-bold tracking-tight text-text-primary text-[clamp(1.85rem,4.5vw,2.85rem)] leading-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.5),0_1px_3px_rgba(0,0,0,0.4)]">
+        <h1 className="hero-display mt-5 font-bold tracking-tight text-text-primary text-[clamp(1.85rem,4.5vw,2.85rem)] leading-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.5),0_1px_3px_rgba(0,0,0,0.4)]">
           {title}
         </h1>
         <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/[0.92] drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] md:text-base">

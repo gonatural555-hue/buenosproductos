@@ -46,7 +46,7 @@ export default function PdpImageStorySection({
         />
       </div>
       <div className="relative z-10 flex min-h-[min(72vh,640px)] items-end px-6 pb-16 pt-24 sm:px-10 sm:pb-20 lg:px-16">
-        <p className="font-display max-w-xl font-semibold leading-[1.15] tracking-tight text-white text-[clamp(1.75rem,5vw,2.75rem)] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+        <p className="font-editorial max-w-xl font-semibold leading-[1.15] tracking-tight text-white text-[clamp(1.75rem,5vw,2.75rem)] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
           {overlayText}
         </p>
       </div>

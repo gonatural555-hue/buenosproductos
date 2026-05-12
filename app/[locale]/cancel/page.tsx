@@ -24,7 +24,7 @@ export default function CancelPage() {
           </div>
         </div>
 
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="font-sans text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Pago cancelado
         </h1>
 

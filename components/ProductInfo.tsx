@@ -17,7 +17,7 @@ type Props = {
 export default function ProductInfo({ product }: Props) {
   return (
     <div>
-      <h1 className="font-display text-3xl font-bold mb-4">{product.title}</h1>
+      <h1 className="font-sans text-3xl font-bold mb-4">{product.title}</h1>
 
       <p className="text-2xl font-semibold mb-6">${product.price}</p>
 

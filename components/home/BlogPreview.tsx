@@ -40,7 +40,7 @@ export default function BlogPreview({
         <ScrollReveal>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl space-y-4">
-              <h2 className="font-display font-semibold tracking-tight text-dark-base text-[clamp(1.75rem,3.5vw,2.5rem)]">
+              <h2 className="section-display font-semibold tracking-tight text-dark-base text-[clamp(1.75rem,3.5vw,2.5rem)]">
                 {title}
               </h2>
               <p className="text-sm leading-relaxed text-muted-gray md:text-base">

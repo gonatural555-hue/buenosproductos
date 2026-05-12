@@ -33,7 +33,7 @@ export default function Hero({
       <div className="relative z-10 w-full">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-24">
           <div className="max-w-2xl">
-            <h1 className="hero-fade-up font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
+            <h1 className="hero-fade-up hero-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
               {titleLine1}
               <br />
               {titleLine2}

@@ -44,7 +44,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
         {/* Columna izquierda - Información de contacto */}
         <div>
-          <h1 className="font-display mb-8 text-3xl font-bold tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)] md:text-4xl">
+          <h1 className="hero-display mb-8 text-3xl font-bold tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.45)] md:text-4xl">
             {t("contactPage.title")}
           </h1>
           <div className="space-y-7 leading-relaxed text-white/[0.9]">

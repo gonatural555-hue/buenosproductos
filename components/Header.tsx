@@ -14,11 +14,11 @@ import { LUMINOUS_INNER_CHROME } from "@/lib/ui/luminous-edge";
 
 /** Enlaces en panel claro (móvil / mega). */
 const NAV_LINK =
-  "font-display text-[0.8125rem] font-semibold tracking-[0.06em] text-charcoal transition-colors duration-200 hover:text-mountain-green sm:text-[0.875rem]";
+  "font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-charcoal transition-colors duration-200 hover:text-mountain-green sm:text-[0.875rem]";
 
 /** Navegación principal flotante sobre el hero — alineada con tipografía display del sitio. */
 const NAV_LINK_TOP =
-  "font-display text-[10px] font-semibold uppercase tracking-[0.24em] text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.7),0_0_1px_rgba(0,0,0,0.85)] transition-colors duration-200 hover:text-white/90 sm:text-[11px] sm:tracking-[0.26em] md:text-xs md:tracking-[0.28em]";
+  "font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.7),0_0_1px_rgba(0,0,0,0.85)] transition-colors duration-200 hover:text-white/90 sm:text-[11px] sm:tracking-[0.26em] md:text-xs md:tracking-[0.28em]";
 
 /** Superficie blanca interior (search, iconos, perfil). */
 const INNER_SOLID = `rounded-full bg-white ${LUMINOUS_INNER_CHROME} ring-1 ring-black/[0.05]`;
@@ -125,10 +125,10 @@ export default function Header() {
   const mobileNavLinkClass = `${NAV_LINK} rounded-md py-2 px-2`;
 
   const megaCatTitle =
-    "font-display text-[calc(1rem*1.05)] font-semibold tracking-[0.06em] text-dark-base hover:text-accent-gold transition-colors duration-200";
+    "font-sans text-[calc(1rem*1.05)] font-semibold tracking-[0.06em] text-dark-base hover:text-accent-gold transition-colors duration-200";
 
   const megaCatSub =
-    "mb-2 block break-inside-avoid font-display text-[calc(0.875rem*1.05)] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base transition-colors duration-200";
+    "mb-2 block break-inside-avoid font-sans text-[calc(0.875rem*1.05)] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base transition-colors duration-200";
 
   const categoriesBackdropClass = "bg-black/45 backdrop-blur-sm";
 
@@ -251,7 +251,7 @@ export default function Header() {
               <Link
                 key={lang}
                 href={buildLocaleHref(lang)}
-                className={`rounded-full px-2 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors sm:text-[11px] sm:tracking-[0.22em] ${
+                className={`rounded-full px-2 py-1.5 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors sm:text-[11px] sm:tracking-[0.22em] ${
                   lang === locale
                     ? "bg-soft-stone text-charcoal"
                     : "text-muted-gray hover:bg-soft-stone/70 hover:text-charcoal"
@@ -280,7 +280,7 @@ export default function Header() {
               href={`/${locale}/account`}
               className={`flex max-w-[11rem] shrink-0 items-center gap-2 pl-3 pr-1.5 py-1 transition hover:ring-black/10 ${INNER_SOLID}`}
             >
-              <span className="truncate font-display text-[12px] font-semibold tracking-[0.04em] text-charcoal sm:text-[13px]">
+              <span className="truncate font-sans text-[12px] font-semibold tracking-[0.04em] text-charcoal sm:text-[13px]">
                 {user.name}
               </span>
               <span
@@ -294,7 +294,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => openAuthModal("login")}
-              className={`shrink-0 px-4 py-2 font-display text-[12px] font-semibold tracking-[0.05em] text-charcoal transition hover:bg-soft-stone sm:text-[13px] ${INNER_SOLID}`}
+              className={`shrink-0 px-4 py-2 font-sans text-[12px] font-semibold tracking-[0.05em] text-charcoal transition hover:bg-soft-stone sm:text-[13px] ${INNER_SOLID}`}
             >
               {t("header.account")}
             </button>
@@ -462,7 +462,7 @@ export default function Header() {
                   aria-controls="mobile-categories-menu"
                 >
                   <span>{t("header.nav.categories")}</span>
-                  <span className="font-display text-[13px] font-semibold tracking-[0.04em] text-muted-gray">{mobileCategoriesOpen ? "−" : "+"}</span>
+                  <span className="font-sans text-[13px] font-semibold tracking-[0.04em] text-muted-gray">{mobileCategoriesOpen ? "−" : "+"}</span>
                 </button>
                 {mobileCategoriesOpen ? (
                   <div id="mobile-categories-menu" className="space-y-4 border-l border-earth-brown/20 pl-3">
@@ -470,7 +470,7 @@ export default function Header() {
                       <div key={category.slug} className="space-y-2">
                         <Link
                           href={`/${locale}/category/${category.slug}`}
-                          className="font-display text-[13px] font-semibold tracking-[0.04em] text-dark-base hover:text-accent-gold"
+                          className="font-sans text-[13px] font-semibold tracking-[0.04em] text-dark-base hover:text-accent-gold"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {t(`categories.names.${category.slug}`, category.name)}
@@ -480,7 +480,7 @@ export default function Header() {
                             <Link
                               key={sub.slug}
                               href={`/${locale}/category/${sub.slug}`}
-                              className="font-display text-[13px] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base"
+                              className="font-sans text-[13px] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {t(`categories.names.${sub.slug}`, sub.name)}
@@ -497,7 +497,7 @@ export default function Header() {
                   <Link
                     key={lang}
                     href={buildLocaleHref(lang)}
-                    className={`font-display text-[12px] font-semibold uppercase tracking-[0.18em] transition-colors ${
+                    className={`font-sans text-[12px] font-semibold uppercase tracking-[0.18em] transition-colors ${
                       lang === locale ? "text-accent-gold" : "text-muted-gray hover:text-dark-base"
                     }`}
                   >

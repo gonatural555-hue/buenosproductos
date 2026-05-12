@@ -61,7 +61,7 @@ export default function HomeCategoryCarousel({
       <div className="py-16 md:py-24 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <header className="flex flex-col items-center text-center gap-4">
-            <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-text-primary max-w-[20ch] md:max-w-none">
+            <h2 className="section-display text-3xl md:text-4xl font-semibold tracking-tight text-text-primary max-w-[20ch] md:max-w-none">
               {title}
             </h2>
             <Link

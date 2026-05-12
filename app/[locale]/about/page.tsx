@@ -45,7 +45,7 @@ export default async function AboutPage({
         <div className="relative z-10 space-y-10">
           {/* 1️⃣ HERO DE MARCA */}
           <section className="mb-16 md:mb-24">
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            <h1 className="hero-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               {about.heroTitle}
             </h1>
             <p className="text-lg md:text-xl text-white leading-relaxed max-w-2xl">
@@ -55,7 +55,7 @@ export default async function AboutPage({
 
         {/* 2️⃣ HISTORIA REAL DE GO NATURAL */}
         <section className="mb-16 md:mb-24">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
+          <h2 className="section-display text-2xl md:text-3xl font-bold text-white mb-6">
             {about.storyTitle}
           </h2>
           <div className="space-y-4 text-white leading-relaxed">
@@ -67,7 +67,7 @@ export default async function AboutPage({
 
         {/* 3️⃣ FILOSOFÍA DE PRODUCTO */}
         <section className="mb-16 md:mb-24">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
+          <h2 className="section-display text-2xl md:text-3xl font-bold text-white mb-6">
             {about.philosophyTitle}
           </h2>
           <div className="space-y-6">
@@ -101,7 +101,7 @@ export default async function AboutPage({
 
         {/* 4️⃣ VALORES DE MARCA */}
         <section className="mb-16 md:mb-24">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="section-display text-2xl md:text-3xl font-bold text-white mb-8">
             {about.valuesTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -139,7 +139,7 @@ export default async function AboutPage({
 
           {/* 6️⃣ CTA FINAL */}
           <section className="text-center py-12 md:py-16 border-t border-gray-200">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="section-display text-2xl md:text-3xl font-bold text-white mb-4">
               {about.ctaTitle}
             </h2>
             <p className="text-white mb-8 max-w-xl mx-auto">{about.ctaText}</p>

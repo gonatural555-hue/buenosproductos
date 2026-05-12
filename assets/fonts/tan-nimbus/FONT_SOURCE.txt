@@ -5,4 +5,10 @@ Archivos en esta carpeta:
 
 Para construir el proyecto sin licencia TAN Nimbus todavía, se incluyen temporalmente archivos WOFF2 latin de la familia "Cormorant Garamond" (SIL Open Font License 1.1), renombrados como arriba.
 
-Cuando dispongas de TAN Nimbus en formato web, reemplaza estos tres archivos por tus variantes licenciadas y mantén los mismos nombres de archivo (o actualiza src en lib/fonts.ts).
+La tipografía de marca TAN Nimbus se carga desde el proyecto en:
+
+  /public/fonts/TAN-Nimbus.otf
+
+(configuración en app/layout.tsx con next/font/local, variable CSS --font-tan-nimbus).
+
+Los WOFF2 en esta carpeta ya no se usan en la app; puedes conservarlos como respaldo o eliminarlos si migras todo a OTF.

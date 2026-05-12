@@ -68,7 +68,7 @@ export default function HomeHeroCategorySlide({
         <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-accent-gold/90">
           {eyebrow}
         </p>
-        <h2 className="font-display mx-auto mt-3 max-w-xl text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl md:text-[clamp(1.35rem,2.8vw,1.85rem)]">
+        <h2 className="section-display mx-auto mt-3 max-w-xl text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl md:text-[clamp(1.35rem,2.8vw,1.85rem)]">
           {headline}
         </h2>
       </div>
