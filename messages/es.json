@@ -123,10 +123,12 @@
     "west": "O"
   },
   "homeBrandHero": {
-    "title": "Volver a lo esencial",
+    "eyebrow": "GO NATURAL",
+    "title": "Vuelve\na lo esencial",
     "subtitle": "Equipamiento pensado para moverte, conectar con la naturaleza y volver afuera.",
     "ctaPrimary": "Comprar equipo outdoor",
-    "ctaSecondary": "Explorar journal"
+    "ctaSecondary": "Explorar journal",
+    "scrollHint": "Desliza para explorar"
   },
   "homeImmersive": {
     "heroHeading": "Muévete, explora, vive",

@@ -128,10 +128,12 @@ export default async function HomePage({
       <div className="relative z-10 flex flex-1 flex-col">
         <HomeBrandHero
           locale={locale}
+          eyebrow={t("homeBrandHero.eyebrow")}
           title={t("homeBrandHero.title")}
           subtitle={t("homeBrandHero.subtitle")}
           ctaPrimary={t("homeBrandHero.ctaPrimary")}
           ctaSecondary={t("homeBrandHero.ctaSecondary")}
+          scrollHint={t("homeBrandHero.scrollHint")}
           cardinalLabels={{
             north: t("homeCompass.north"),
             south: t("homeCompass.south"),
