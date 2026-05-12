@@ -10,22 +10,15 @@ import { getAllCategories } from "@/lib/categories";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { LUMINOUS_INNER_CHROME } from "@/lib/ui/luminous-edge";
 
-/** Navegación secundaria / hojas móvil (sobre fondos claros). */
+/** Enlaces en panel claro (móvil / mega). */
 const NAV_LINK =
-  "font-sans text-[12px] font-medium tracking-[0.02em] text-charcoal transition-colors duration-200 hover:text-mountain-green xl:text-[13px]";
+  "font-display text-[0.8125rem] font-semibold tracking-[0.06em] text-charcoal transition-colors duration-200 hover:text-mountain-green sm:text-[0.875rem]";
 
-/** Enlaces de primer nivel en la barra oscura (inicio, productos, blog, categorías). */
+/** Navegación principal flotante sobre el hero — alineada con tipografía display del sitio. */
 const NAV_LINK_TOP =
-  "font-sans text-[12px] font-medium tracking-[0.02em] text-[#FFFFFF] transition-colors duration-200 hover:text-white/85 xl:text-[13px]";
-
-import { LUMINOUS_HEADER_BAR, LUMINOUS_INNER_CHROME } from "@/lib/ui/luminous-edge";
-
-/** Mismo redondeo que el contenedor del carrusel Hero (`HomeHeroCarousel`). */
-const HEADER_BAR_RADIUS = "rounded-[1.35rem] md:rounded-[1.75rem]";
-
-/** Contenedor principal del header — fondo marca, relieve e iluminación en bordes. */
-const HEADER_BAR = `${HEADER_BAR_RADIUS} border border-white/[0.14] bg-[#2A2E4B] ${LUMINOUS_HEADER_BAR}`;
+  "font-display text-[10px] font-semibold uppercase tracking-[0.24em] text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.7),0_0_1px_rgba(0,0,0,0.85)] transition-colors duration-200 hover:text-white/90 sm:text-[11px] sm:tracking-[0.26em] md:text-xs md:tracking-[0.28em]";
 
 /** Superficie blanca interior (search, iconos, perfil). */
 const INNER_SOLID = `rounded-full bg-white ${LUMINOUS_INNER_CHROME} ring-1 ring-black/[0.05]`;
@@ -132,10 +125,10 @@ export default function Header() {
   const mobileNavLinkClass = `${NAV_LINK} rounded-md py-2 px-2`;
 
   const megaCatTitle =
-    "font-sans text-[calc(1rem*1.05)] font-semibold tracking-[0.02em] text-dark-base hover:text-accent-gold transition-colors duration-200";
+    "font-display text-[calc(1rem*1.05)] font-semibold tracking-[0.06em] text-dark-base hover:text-accent-gold transition-colors duration-200";
 
   const megaCatSub =
-    "mb-2 block break-inside-avoid font-sans text-[calc(0.875rem*1.05)] text-muted-gray hover:text-dark-base transition-colors duration-200";
+    "mb-2 block break-inside-avoid font-display text-[calc(0.875rem*1.05)] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base transition-colors duration-200";
 
   const categoriesBackdropClass = "bg-black/45 backdrop-blur-sm";
 
@@ -179,13 +172,11 @@ export default function Header() {
   );
 
   return (
-    <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 font-sans">
+    <header className="pointer-events-none fixed left-0 right-0 top-0 z-50">
       {/* Casi ancho completo: calc(100% - 48px) en desktop + márgenes seguros en móvil */}
       <div className="mx-auto w-full max-w-none px-4 pt-2.5 sm:px-5 sm:pt-3 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0 lg:pt-3">
-        {/* Desktop — una barra ancha tipo píldora */}
-        <div
-          className={`pointer-events-auto mx-auto hidden w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5 md:flex lg:gap-4 lg:px-6 lg:py-2.5 ${HEADER_BAR}`}
-        >
+        {/* Desktop — elementos flotantes (sin contenedor tipo píldora) */}
+        <div className="pointer-events-auto mx-auto hidden w-full items-center gap-3 px-1 py-2 sm:gap-4 sm:px-2 sm:py-2.5 md:flex lg:gap-5 lg:px-3 lg:py-3">
           <nav
             className="hidden min-w-0 shrink-0 items-center gap-0 md:flex md:gap-0.5 lg:gap-1"
             aria-label="Principal"
@@ -260,7 +251,7 @@ export default function Header() {
               <Link
                 key={lang}
                 href={buildLocaleHref(lang)}
-                className={`rounded-full px-2 py-1.5 font-sans text-[10px] font-semibold tracking-[0.12em] transition-colors sm:text-[11px] ${
+                className={`rounded-full px-2 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors sm:text-[11px] sm:tracking-[0.22em] ${
                   lang === locale
                     ? "bg-soft-stone text-charcoal"
                     : "text-muted-gray hover:bg-soft-stone/70 hover:text-charcoal"
@@ -289,7 +280,7 @@ export default function Header() {
               href={`/${locale}/account`}
               className={`flex max-w-[11rem] shrink-0 items-center gap-2 pl-3 pr-1.5 py-1 transition hover:ring-black/10 ${INNER_SOLID}`}
             >
-              <span className="truncate font-sans text-[12px] font-medium text-charcoal sm:text-[13px]">
+              <span className="truncate font-display text-[12px] font-semibold tracking-[0.04em] text-charcoal sm:text-[13px]">
                 {user.name}
               </span>
               <span
@@ -303,17 +294,15 @@ export default function Header() {
             <button
               type="button"
               onClick={() => openAuthModal("login")}
-              className={`shrink-0 px-4 py-2 font-sans text-[12px] font-medium text-charcoal transition hover:bg-soft-stone sm:text-[13px] ${INNER_SOLID}`}
+              className={`shrink-0 px-4 py-2 font-display text-[12px] font-semibold tracking-[0.05em] text-charcoal transition hover:bg-soft-stone sm:text-[13px] ${INNER_SOLID}`}
             >
               {t("header.account")}
             </button>
           )}
         </div>
 
-        {/* Mobile — mismo ancho útil que la franja del Hero */}
-        <div
-          className={`pointer-events-auto mx-auto flex w-full md:hidden ${HEADER_BAR} items-center justify-between gap-2 px-3 py-2`}
-        >
+        {/* Mobile — iconos flotantes */}
+        <div className="pointer-events-auto mx-auto flex w-full items-center justify-between gap-2 px-1 py-2 md:hidden">
           <button
             type="button"
             className={`flex h-10 w-10 shrink-0 items-center justify-center text-charcoal transition hover:bg-soft-stone/80 ${INNER_SOLID}`}
@@ -367,7 +356,7 @@ export default function Header() {
 
         {mobileSearchOpen ? (
           <form
-            className={`pointer-events-auto mx-auto mt-2 flex w-full px-3 py-2 md:hidden ${HEADER_BAR}`}
+            className="pointer-events-auto mx-auto mt-2 flex w-full px-1 py-1 md:hidden"
             onSubmit={(e) => {
               e.preventDefault();
               submitSearch();
@@ -473,7 +462,7 @@ export default function Header() {
                   aria-controls="mobile-categories-menu"
                 >
                   <span>{t("header.nav.categories")}</span>
-                  <span className="font-sans text-[13px] text-muted-gray">{mobileCategoriesOpen ? "−" : "+"}</span>
+                  <span className="font-display text-[13px] font-semibold tracking-[0.04em] text-muted-gray">{mobileCategoriesOpen ? "−" : "+"}</span>
                 </button>
                 {mobileCategoriesOpen ? (
                   <div id="mobile-categories-menu" className="space-y-4 border-l border-earth-brown/20 pl-3">
@@ -481,7 +470,7 @@ export default function Header() {
                       <div key={category.slug} className="space-y-2">
                         <Link
                           href={`/${locale}/category/${category.slug}`}
-                          className="font-sans text-[13px] font-semibold text-dark-base hover:text-accent-gold"
+                          className="font-display text-[13px] font-semibold tracking-[0.04em] text-dark-base hover:text-accent-gold"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {t(`categories.names.${category.slug}`, category.name)}
@@ -491,7 +480,7 @@ export default function Header() {
                             <Link
                               key={sub.slug}
                               href={`/${locale}/category/${sub.slug}`}
-                              className="font-sans text-[13px] text-muted-gray hover:text-dark-base"
+                              className="font-display text-[13px] font-medium tracking-[0.02em] text-muted-gray hover:text-dark-base"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {t(`categories.names.${sub.slug}`, sub.name)}
@@ -508,7 +497,7 @@ export default function Header() {
                   <Link
                     key={lang}
                     href={buildLocaleHref(lang)}
-                    className={`font-sans text-[12px] font-semibold tracking-[0.12em] transition-colors ${
+                    className={`font-display text-[12px] font-semibold uppercase tracking-[0.18em] transition-colors ${
                       lang === locale ? "text-accent-gold" : "text-muted-gray hover:text-dark-base"
                     }`}
                   >

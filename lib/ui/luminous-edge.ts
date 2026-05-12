@@ -13,10 +13,6 @@ export const LUMINOUS_EDGE_CARD =
 export const LUMINOUS_EDGE_DARK =
   "shadow-[inset_0_1px_0_rgba(255,255,255,0.11),inset_0_-2px_0_rgba(0,0,0,0.42),0_0_0_1px_rgba(0,0,0,0.22),0_28px_56px_-22px_rgba(0,0,0,0.5)]";
 
-/** Header oscuro: ribete superior claro + volumen. */
-export const LUMINOUS_HEADER_BAR =
-  "shadow-[inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-1px_0_rgba(0,0,0,0.38),0_22px_52px_-18px_rgba(0,0,0,0.52),0_10px_28px_-12px_rgba(0,0,0,0.32)]";
-
 /** Controles blancos sobre barra oscura. */
 export const LUMINOUS_INNER_CHROME =
   "shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_1px_4px_rgba(0,0,0,0.1),0_0_0_1px_rgba(0,0,0,0.07)]";
