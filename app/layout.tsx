@@ -1,5 +1,6 @@
 import "./globals.css";
 import { headers } from "next/headers";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { CartProvider } from "@/context/CartContext";
 import { UserProvider } from "@/context/UserContext";
@@ -16,6 +17,12 @@ const tanNimbus = localFont({
   fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -25,7 +32,7 @@ export default async function RootLayout({
   const locale = requestHeaders.get("x-locale") || defaultLocale;
 
   return (
-    <html lang={locale} className={tanNimbus.variable}>
+    <html lang={locale} className={`${tanNimbus.variable} ${inter.variable}`}>
       <body>
         <GoogleAnalytics />
         <MicrosoftClarity />

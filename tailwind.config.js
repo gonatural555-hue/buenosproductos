@@ -17,6 +17,16 @@ const config = {
           "Arial",
           "sans-serif",
         ],
+        inter: [
+          "var(--font-inter)",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
         display: [
           "var(--font-tan-nimbus)",
           "Georgia",
