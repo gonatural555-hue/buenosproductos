@@ -421,6 +421,7 @@ main[data-route="order-success"] .bg-gray-50 {
     letter-spacing: -0.032em;
     color: var(--gn-forest);
     font-weight: 600;
+    text-align: center;
     text-wrap: balance;
     text-rendering: optimizeLegibility;
     max-width: min(100%, 38rem);

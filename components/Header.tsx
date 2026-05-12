@@ -65,8 +65,8 @@ function BrandLogoLink({
         <Image
           src="/assets/images/logo/LOG-GONATURAL.png"
           alt={alt}
-          width={320}
-          height={96}
+          width={960}
+          height={288}
           priority
           draggable={false}
           className={imageClassName}
@@ -195,8 +195,8 @@ export default function Header() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 font-inter">
       <div className="mx-auto w-full max-w-gn-content px-8 pb-1 pt-3 lg:px-12 md:pt-4">
       {/* Desktop — idiomas + Home/Blog | logo centrado | Products/Categorías + utilidades */}
-      <div className="pointer-events-auto hidden w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-2 gap-y-2 md:grid md:min-h-[76px] lg:min-h-[80px] lg:gap-x-4">
-        <div className="flex min-w-0 items-center justify-start gap-2">
+      <div className="pointer-events-auto hidden w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-0.5 gap-y-2 md:grid md:min-h-[7.5rem] lg:min-h-[8rem] lg:gap-x-1">
+        <div className="flex min-w-0 items-center justify-end gap-1.5 pr-0.5 lg:gap-2 lg:pr-1">
           <nav
             className={`${HEADER_ISLAND} flex shrink-0 items-center gap-0.5 px-1.5 py-1`}
             aria-label={t("header.localeNavAria")}
@@ -216,7 +216,7 @@ export default function Header() {
             ))}
           </nav>
           <nav
-            className={`${HEADER_ISLAND} relative z-10 flex max-w-full flex-wrap items-center gap-0.5 px-2 py-1.5 sm:gap-1 sm:px-2.5 sm:py-2`}
+            className={`${HEADER_ISLAND} relative z-10 flex max-w-full flex-wrap items-center gap-0.5 px-1.5 py-1 sm:gap-1 sm:px-2 sm:py-1.5`}
             aria-label="Principal"
           >
             <Link href={`/${locale}`} className={NAV_HEADER_HOME}>
@@ -228,17 +228,17 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex shrink-0 justify-center px-2">
+        <div className="flex shrink-0 justify-center px-0.5 md:px-1">
           <BrandLogoLink
             locale={locale}
             alt={t("header.logoAlt")}
-            imageClassName="h-8 w-auto max-w-[min(46vw,11rem)] object-contain object-center md:h-9 md:max-w-[min(36vw,13rem)] lg:h-10 lg:max-w-[15rem]"
+            imageClassName="h-[5.25rem] w-auto max-w-[min(88vw,22rem)] object-contain object-center md:h-24 md:max-w-[min(72vw,26rem)] lg:h-[7.5rem] lg:max-w-[min(42vw,30rem)]"
           />
         </div>
 
-        <div className="relative z-10 flex min-w-0 shrink-0 items-center justify-end gap-2 lg:gap-2.5">
+        <div className="relative z-10 flex min-w-0 shrink-0 items-center justify-start gap-1.5 pl-0.5 lg:gap-2 lg:pl-1">
           <nav
-            className={`${HEADER_ISLAND} flex max-w-full flex-wrap items-center justify-center gap-0.5 px-2 py-1.5 sm:gap-1 sm:px-2.5 sm:py-2`}
+            className={`${HEADER_ISLAND} flex max-w-full flex-wrap items-center justify-center gap-0.5 px-1.5 py-1.5 sm:gap-1 sm:px-2 sm:py-2`}
             aria-label={`${t("header.nav.products")}, ${t("header.nav.categories")}`}
           >
             <Link href={`/${locale}/products`} className={NAV_HEADER_PRODUCTS}>
@@ -262,6 +262,7 @@ export default function Header() {
               </button>
             </div>
           </nav>
+          <div className="ml-auto flex shrink-0 items-center gap-2 lg:gap-2.5">
           <Link
             href={`/${locale}/cart`}
             className={`${HEADER_ISLAND} relative flex h-10 w-10 shrink-0 items-center justify-center text-[#2E4A36] transition hover:text-[#C9622B]`}
@@ -299,11 +300,12 @@ export default function Header() {
               {t("header.account")}
             </button>
           )}
+          </div>
         </div>
       </div>
 
       {/* Mobile — idiomas | logo | menú | carrito */}
-      <div className="pointer-events-auto flex min-h-16 w-full items-center gap-2 md:hidden">
+      <div className="pointer-events-auto flex min-h-[5.5rem] w-full items-center gap-1.5 md:hidden">
         <nav
           className={`${HEADER_ISLAND} flex shrink-0 items-center gap-0.5 px-1.5 py-1`}
           aria-label={t("header.localeNavAria")}
@@ -327,7 +329,7 @@ export default function Header() {
           <BrandLogoLink
             locale={locale}
             alt={t("header.logoAlt")}
-            imageClassName="h-7 w-auto max-w-[min(42vw,9.5rem)] object-contain object-center"
+            imageClassName="h-[5.25rem] w-auto max-w-[min(52vw,13rem)] object-contain object-center"
           />
         </div>
 
@@ -382,7 +384,7 @@ export default function Header() {
           id="header-categories-mega"
           className={[
             "pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t transition-all duration-200 ease-out",
-            "top-[6.75rem] sm:top-[7rem] md:top-[7.25rem]",
+            "top-[8rem] sm:top-[8.25rem] md:top-[8.75rem]",
             "overflow-y-auto overscroll-contain",
             categoriesPanelShell,
             categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",

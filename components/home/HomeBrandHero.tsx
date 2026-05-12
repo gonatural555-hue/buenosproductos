@@ -9,7 +9,6 @@ import { GN_EASE_PREMIUM, GN_HEADER_TITLE_WORD_COLORS } from "@/lib/ui/gonatural
 
 export type HomeBrandHeroProps = {
   locale: Locale;
-  eyebrow: string;
   title: string;
   subtitle: string;
   ctaPrimary: string;
@@ -49,7 +48,6 @@ function buildTitleRows(title: string) {
 
 export default function HomeBrandHero({
   locale,
-  eyebrow,
   title,
   subtitle,
   ctaPrimary,
@@ -108,17 +106,13 @@ export default function HomeBrandHero({
         initial="hidden"
         animate="show"
       >
-        <div className="flex min-h-0 flex-1 flex-col justify-center">
-          <motion.p
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center">
+          <motion.h1
             variants={itemVariants}
-            className="mb-gn-m font-sans text-[clamp(10px,1.05vw,12.5px)] font-semibold uppercase tracking-[0.32em] text-gn-burnt"
+            className="gn-hero-title mx-auto w-full min-w-0 text-center"
           >
-            {eyebrow}
-          </motion.p>
-
-          <motion.h1 variants={itemVariants} className="gn-hero-title w-full min-w-0 text-center">
             {titleRows.map((row) => (
-              <span key={row.key} className="block w-full min-w-0 py-px">
+              <span key={row.key} className="flex w-full min-w-0 justify-center py-px">
                 <span className="inline-flex max-w-full flex-wrap justify-center gap-x-[0.14em] gap-y-1">
                   {row.words.map(({ word, color, colorKey }) => (
                     <motion.span
