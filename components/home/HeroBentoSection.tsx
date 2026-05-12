@@ -43,7 +43,7 @@ export default function HeroBentoSection(props: HomeHeroCarouselProps) {
 
   return (
     <section
-      className="relative bg-[#6E1F28] pb-8 pt-[calc(env(safe-area-inset-top,0px)+4.75rem+1rem)] sm:pb-10 sm:pt-[calc(env(safe-area-inset-top,0px)+5rem+1rem)] md:pb-12 md:pt-[calc(env(safe-area-inset-top,0px)+5.25rem+1rem)] lg:pt-[calc(env(safe-area-inset-top,0px)+5.5rem+1.25rem)]"
+      className="relative bg-[#FFFFFF] pb-8 pt-[calc(env(safe-area-inset-top,0px)+4.75rem+1rem)] sm:pb-10 sm:pt-[calc(env(safe-area-inset-top,0px)+5rem+1rem)] md:pb-12 md:pt-[calc(env(safe-area-inset-top,0px)+5.25rem+1rem)] lg:pt-[calc(env(safe-area-inset-top,0px)+5.5rem+1.25rem)]"
       aria-label="Hero"
     >
       <div className="mx-auto w-full max-w-none px-4 sm:px-5 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0">
@@ -85,7 +85,7 @@ export default function HeroBentoSection(props: HomeHeroCarouselProps) {
                   sizes="(max-width:640px) 100vw, 38vw"
                   onError={() => setBannerImg(FALLBACK_IMG)}
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#6E1F28]/92 sm:via-[#6E1F28]/45" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/95 sm:via-white/55" />
               </div>
             </Link>
           </div>

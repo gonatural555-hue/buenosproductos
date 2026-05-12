@@ -68,7 +68,7 @@ function CornerCard({
       href={`/${locale}/category/${card.slug}`}
       onMouseEnter={onCardEnter}
       onMouseLeave={onCardLeave}
-      className={`group/card relative block w-full max-w-[810px] outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45 focus-visible:ring-offset-4 focus-visible:ring-offset-[#C9622B] md:max-w-[756px] lg:max-w-[810px] ${gridClass}`}
+      className={`group/card relative block w-full max-w-[810px] outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/45 focus-visible:ring-offset-4 focus-visible:ring-offset-white md:max-w-[756px] lg:max-w-[810px] ${gridClass}`}
     >
       <motion.div
         className={`relative flex min-h-[378px] w-full flex-col overflow-hidden sm:min-h-[432px] md:min-h-[454px] lg:min-h-[476px] ${CARD_RADIUS} border border-white/16 bg-white/[0.04] shadow-[0_20px_56px_-28px_rgba(17,23,19,0.42),0_0_0_1px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_48px_rgba(255,255,255,0.03)] ring-1 ring-black/[0.05]`}
@@ -158,17 +158,17 @@ export default function HomeCompassCategories({
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#C9622B] py-16 sm:py-20 md:py-28">
+    <section className="relative overflow-hidden bg-[#FFFFFF] py-16 sm:py-20 md:py-28">
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#d9733a]/90 via-transparent to-[#a84d1f]/55"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-transparent to-neutral-100/40"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_70%_at_50%_-5%,rgba(255,220,190,0.22),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_70%_at_50%_-5%,rgba(255,255,255,0.9),transparent_55%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_85%_95%,rgba(110,31,40,0.12),transparent_52%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_85%_95%,rgba(0,0,0,0.03),transparent_52%)]"
         aria-hidden
       />
       <div

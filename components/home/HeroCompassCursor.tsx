@@ -114,7 +114,7 @@ export default function HeroCompassCursor({
       ref={rootRef}
       type="button"
       aria-label={ariaLabel}
-      className="relative isolate shrink-0 px-[2.5rem] pb-[2.85rem] pt-[2.5rem] transition-[filter] duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/40 focus-visible:ring-offset-4 focus-visible:ring-offset-[#C9622B] md:px-[2.75rem] md:pb-[3rem] md:pt-[2.75rem]"
+      className="relative isolate shrink-0 px-[2.5rem] pb-[2.85rem] pt-[2.5rem] transition-[filter] duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/40 focus-visible:ring-offset-4 focus-visible:ring-offset-white md:px-[2.75rem] md:pb-[3rem] md:pt-[2.75rem]"
     >
       <span className={`${labelClass} left-1/2 top-0 -translate-x-1/2`} aria-hidden>
         {north}

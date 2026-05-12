@@ -63,7 +63,7 @@ function CarouselDots({
           aria-selected={index === i}
           aria-label={`Slide ${i + 1}`}
           onClick={() => onSelect(i)}
-          className={`h-2 w-2 rounded-full border transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#6E1F28] ${
+          className={`h-2 w-2 rounded-full border transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
             index === i
               ? "scale-125 border-accent-gold bg-accent-gold shadow-[0_0_14px_rgba(217,138,36,0.4)]"
               : "border-earth-brown/40 bg-soft-stone/90 hover:border-earth-brown/55 hover:bg-white"
@@ -286,7 +286,7 @@ export default function HomeHeroCarousel({
   }
 
   return (
-    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-[#6E1F28] px-4 py-24 sm:px-5 sm:py-28 md:px-6 md:py-24 lg:px-8">
+    <section className="relative flex min-h-[100dvh] w-full items-center justify-center overflow-x-hidden bg-[#FFFFFF] px-4 py-24 sm:px-5 sm:py-28 md:px-6 md:py-24 lg:px-8">
       <div
         className="relative w-full transition-[opacity,transform] duration-300 ease-out"
         style={{
