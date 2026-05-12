@@ -1,14 +1,16 @@
-Archivos en esta carpeta:
+Fuente de marca (única ruta usada por la app):
+
+  /public/fonts/TAN-Nimbus.otf
+
+(configuración: app/layout.tsx → next/font/local → variable CSS --font-tan-nimbus).
+
+---
+
+Archivos legacy en esta carpeta (no referenciados por Next.js):
 - TANNimbus-Regular.woff2 (peso 400)
 - TANNimbus-Semibold.woff2 (peso 600)
 - TANNimbus-Bold.woff2 (peso 700)
 
 Para construir el proyecto sin licencia TAN Nimbus todavía, se incluyen temporalmente archivos WOFF2 latin de la familia "Cormorant Garamond" (SIL Open Font License 1.1), renombrados como arriba.
-
-La tipografía de marca TAN Nimbus se carga desde el proyecto en:
-
-  /public/fonts/TAN-Nimbus.otf
-
-(configuración en app/layout.tsx con next/font/local, variable CSS --font-tan-nimbus).
 
 Los WOFF2 en esta carpeta ya no se usan en la app; puedes conservarlos como respaldo o eliminarlos si migras todo a OTF.

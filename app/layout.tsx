@@ -8,10 +8,7 @@ import { defaultLocale } from "@/lib/i18n/config";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 
-/**
- * TAN Nimbus — coloca tu archivo en `/public/fonts/TAN-Nimbus.otf` y reinicia el servidor.
- * Hasta entonces, el repo incluye en esa ruta un WOFF2 de respaldo (mismo nombre de archivo) para que el build funcione; sustitúyelo por tu OTF cuando lo tengas.
- */
+/** TAN Nimbus — archivo local: `public/fonts/TAN-Nimbus.otf` (variable CSS `--font-tan-nimbus`). */
 const tanNimbus = localFont({
   src: "../public/fonts/TAN-Nimbus.otf",
   variable: "--font-tan-nimbus",
