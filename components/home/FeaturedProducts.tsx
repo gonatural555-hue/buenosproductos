@@ -43,7 +43,7 @@ export default function FeaturedProducts({
   return (
     <section
       id="essential-gear"
-      className="scroll-mt-4 border-t border-earth-brown/15 bg-warm-sand py-20 md:py-28 lg:py-32"
+      className="scroll-mt-4 border-t border-earth-brown/10 bg-[#FFFFFF] py-20 md:py-28 lg:py-32"
     >
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>

@@ -22,7 +22,7 @@ export default function CommunityCTA({
   href,
 }: CommunityCTAProps) {
   return (
-    <section className="border-t border-earth-brown/15 bg-soft-stone py-20 md:py-28 lg:py-32">
+    <section className="border-t border-earth-brown/10 bg-[#FFFFFF] py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-3xl px-6 text-center sm:px-10">
         <ScrollReveal>
           <h2 className="font-display font-bold tracking-tight text-dark-base text-[clamp(1.85rem,4vw,2.75rem)] leading-tight">

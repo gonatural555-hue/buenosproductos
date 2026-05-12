@@ -34,7 +34,7 @@ export default function BlogPreview({
   const shown = posts.slice(0, 3);
 
   return (
-    <section className="border-t border-earth-brown/15 bg-warm-sand py-20 md:py-28">
+    <section className="border-t border-earth-brown/10 bg-[#FFFFFF] py-20 md:py-28">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">

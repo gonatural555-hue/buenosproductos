@@ -30,7 +30,7 @@ export default function CategoryGrid({
   cards,
 }: CategoryGridProps) {
   return (
-    <section className="border-t border-earth-brown/15 bg-soft-stone py-20 md:py-28">
+    <section className="border-t border-earth-brown/10 bg-[#FFFFFF] py-20 md:py-28">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <header className="mx-auto max-w-2xl text-center">
