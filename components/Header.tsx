@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
@@ -177,9 +176,9 @@ export default function Header() {
 
   return (
     <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 mx-auto w-full max-w-none px-4 pt-2.5 sm:px-5 sm:pt-3 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0 lg:pt-3">
-      {/* Desktop — isla flotante: nav | logo centrado | búsqueda + idioma + carrito */}
+      {/* Desktop — isla flotante: nav | búsqueda + idioma + carrito */}
       <div className="pointer-events-auto hidden w-full md:block">
-          <div className={`relative flex items-center gap-2 py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 lg:gap-3 lg:pl-7 lg:pr-4 ${HEADER_ISLAND}`}>
+          <div className={`relative flex items-center justify-between gap-2 py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 lg:gap-3 lg:pl-7 lg:pr-4 ${HEADER_ISLAND}`}>
             <nav
               className="relative z-10 flex min-w-0 shrink-0 flex-wrap items-center gap-0.5 lg:gap-1"
               aria-label="Principal"
@@ -208,24 +207,9 @@ export default function Header() {
               </div>
             </nav>
 
-            <Link
-              href={`/${locale}`}
-              className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-md outline-none transition duration-300 hover:opacity-[0.9] focus-visible:ring-2 focus-visible:ring-[#C9622B]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD]"
-              aria-label="Go Natural — inicio"
-            >
-              <Image
-                src="/assets/images/logo/LOGO.png"
-                alt="Go Natural"
-                width={220}
-                height={88}
-                className="h-9 w-auto sm:h-10 lg:h-11"
-                priority
-              />
-            </Link>
-
-            <div className="relative z-10 ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 lg:gap-2.5">
+            <div className="relative z-10 flex min-w-0 flex-1 items-center justify-end gap-2 lg:gap-2.5">
               <form
-                className="mx-auto hidden min-w-0 max-w-[11rem] flex-1 md:block lg:max-w-[14rem] xl:max-w-[16rem]"
+                className="hidden min-w-0 max-w-[11rem] flex-1 md:block lg:max-w-[14rem] xl:max-w-[16rem]"
                 onSubmit={(e) => {
                   e.preventDefault();
                   submitSearch();
@@ -311,7 +295,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile — isla con logo centrado */}
+        {/* Mobile — isla: menú | búsqueda + carrito */}
         <div className={`pointer-events-auto mx-auto flex w-full items-center justify-between gap-2 px-3 py-2 md:hidden ${HEADER_ISLAND}`}>
           <button
             type="button"
@@ -333,21 +317,6 @@ export default function Header() {
               </svg>
             )}
           </button>
-
-          <Link
-            href={`/${locale}`}
-            className="flex min-w-0 max-w-[48%] shrink-0 items-center justify-center"
-            aria-label="Go Natural — inicio"
-          >
-            <Image
-              src="/assets/images/logo/LOGO.png"
-              alt="Go Natural"
-              width={200}
-              height={80}
-              className="h-8 w-auto max-w-full object-contain object-center"
-              priority
-            />
-          </Link>
 
           <div className="flex shrink-0 items-center gap-2">
             <button
