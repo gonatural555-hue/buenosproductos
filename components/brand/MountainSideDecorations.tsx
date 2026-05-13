@@ -237,8 +237,8 @@ export default function MountainSideDecorations() {
     if (!main) return;
 
     const measure = () => {
-      const pad = Math.round(window.innerHeight * 0.14);
-      setTrackPx(main.scrollHeight + pad);
+      // Debe coincidir con la altura de scroll del <main>: un track más alto añade overflow fantasma y una “segunda” sensación de scroll.
+      setTrackPx(main.scrollHeight);
     };
 
     measure();

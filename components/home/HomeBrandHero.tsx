@@ -62,21 +62,22 @@ export default function HomeBrandHero({
     },
   };
 
+  /* Espacio bajo header fijo (pt-6 + fila ~84px) sin crear contenedor extra de scroll */
   const heroTopPad =
-    "pt-[calc(env(safe-area-inset-top,0px)+1.25rem)] sm:pt-[calc(env(safe-area-inset-top,0px)+1.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+1.75rem)]";
+    "pt-[calc(env(safe-area-inset-top,0px)+1.5rem+5.25rem+8px)] sm:pt-[calc(env(safe-area-inset-top,0px)+1.5rem+5.25rem+10px)] md:pt-[calc(env(safe-area-inset-top,0px)+1.5rem+5.25rem+12px)]";
 
   return (
     <section
-      className="relative isolate flex w-full flex-col overflow-x-clip overflow-y-visible bg-[#f5ece1]"
+      className="relative isolate flex w-full flex-col overflow-x-clip bg-[#f5ece1]"
       aria-label="Hero"
     >
       <motion.div
-        className={`relative z-[1] mx-auto flex min-h-[88svh] min-h-[88dvh] w-full min-w-0 max-w-[1040px] flex-col px-[18px] pb-8 md:px-[28px] md:pb-10 lg:px-[48px] ${heroTopPad}`}
+        className={`relative z-[1] mx-auto flex w-full min-w-0 max-w-[1040px] flex-col px-[18px] pb-12 md:px-[28px] md:pb-16 lg:px-[48px] ${heroTopPad}`}
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <div className="flex min-h-0 flex-1 flex-col items-center justify-center pt-4 md:pt-6">
+        <div className="flex flex-col items-center py-10 md:py-14 lg:py-16">
           <motion.h1 variants={itemVariants} className="gn-hero-editorial w-full">
             {lines.map((line, lineIdx) => {
               const isFirst = lineIdx === 0;

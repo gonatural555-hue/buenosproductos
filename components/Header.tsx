@@ -204,7 +204,7 @@ export default function Header() {
   );
 
   return (
-    <header className="relative z-50 w-full font-inter">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 w-full font-inter">
       <div className="mx-auto w-full max-w-[1440px] px-[18px] pt-6 md:px-7 lg:px-12">
         {/* Desktop: idiomas a la izquierda; Home/Blog al borde interior (junto al logo); Products/Categories + utilidades */}
         <div className={`${HEADER_FLOAT_ROW} pointer-events-auto hidden w-full md:flex`}>
