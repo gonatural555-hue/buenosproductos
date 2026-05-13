@@ -73,7 +73,7 @@ function BrandLogoLink({
         aria-label={alt}
       >
         <Image
-          src="/assets/images/logo/LOGO.png"
+          src="/assets/images/logo/LOGO-GONATURAL.png"
           alt={alt}
           width={640}
           height={256}
