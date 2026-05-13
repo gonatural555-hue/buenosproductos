@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { GN_EASE_PREMIUM } from "@/lib/ui/gonatural-design";
-import HeroCompassCursor from "@/components/home/HeroCompassCursor";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 
 export type HomeBrandHeroProps = {
@@ -114,23 +113,7 @@ export default function HomeBrandHero({
 
           <motion.div
             variants={itemVariants}
-            className="mt-12 flex flex-col items-center md:mt-14 lg:mt-16"
-          >
-            <HeroCompassCursor
-              ariaLabel={t("homeCompass.compassAria")}
-              cardinalLabels={{
-                north: t("homeCompass.north"),
-                south: t("homeCompass.south"),
-                east: t("homeCompass.east"),
-                west: t("homeCompass.west"),
-              }}
-              variant="brand"
-            />
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-5 flex flex-col items-center gap-2 text-center md:mt-6"
+            className="mt-10 flex flex-col items-center gap-2 text-center md:mt-12"
           >
             <div
               className="flex h-7 w-[18px] items-start justify-center rounded-full border border-[rgba(46,74,54,0.32)] pt-1.5"

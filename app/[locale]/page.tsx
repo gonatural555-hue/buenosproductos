@@ -1,4 +1,3 @@
-import MountainSideDecorations from "@/components/brand/MountainSideDecorations";
 import HomeBrandHero from "@/components/home/HomeBrandHero";
 import BrandStatement from "@/components/home/BrandStatement";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
@@ -123,8 +122,6 @@ export default async function HomePage({
     <main
       className={`relative overflow-x-hidden flex min-h-screen flex-col bg-[#F4EBDD] text-dark-base ${LUMINOUS_EDGE_LIGHT}`}
     >
-      <MountainSideDecorations />
-
       <div className="relative z-10 flex flex-1 flex-col">
         <HomeBrandHero
           locale={locale}
