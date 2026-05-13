@@ -410,17 +410,74 @@ main[data-route="order-success"] .bg-gray-50 {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
+  @keyframes gn-scroll-hint-nudge {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.72;
+    }
+    50% {
+      transform: translateY(5px);
+      opacity: 1;
+    }
+  }
+
   /**
-   * Hero marca home — bloque editorial (3 líneas + subtítulo refinados).
+   * Hero marca home — titular editorial 2 líneas (TAN Nimbus), tono controlado.
    */
   .gn-hero-editorial {
-    max-width: 800px;
+    max-width: 980px;
     margin-left: auto;
     margin-right: auto;
     font-family: var(--font-tan-nimbus), Georgia, "Times New Roman", serif;
     font-weight: 600;
     text-align: center;
     text-rendering: optimizeLegibility;
+  }
+
+  .gn-hero-editorial-two-line {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-tan-nimbus), Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  .gn-hero-editorial-two-line > span {
+    display: block;
+    font-size: clamp(46px, 12vw, 68px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 768px) {
+    .gn-hero-editorial-two-line > span {
+      font-size: clamp(76px, 8vw, 128px);
+      line-height: 0.9;
+    }
+  }
+
+  .gn-hero-editorial-line-forest {
+    color: #2e4a36;
+  }
+
+  .gn-hero-editorial-line-mustard {
+    color: #d9a441;
+    margin-top: 0.04em;
+  }
+
+  .gn-hero-scroll-dot {
+    animation: gn-scroll-hint-nudge 2.6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gn-hero-scroll-dot {
+      animation: none;
+    }
   }
 
   /* Título multicolor — tonos suavizados (mezcla con crema editorial) */
@@ -519,18 +576,18 @@ main[data-route="order-success"] .bg-gray-50 {
 
   .gn-hero-subtitle {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
+    font-size: clamp(16px, 3.8vw, 17px);
     line-height: 1.65;
     color: rgba(46, 74, 54, 0.82);
     text-wrap: pretty;
-    max-width: min(100%, 640px);
+    max-width: min(100%, 660px);
   }
 
   @media (min-width: 768px) {
     .gn-hero-subtitle {
-      font-size: 19px;
+      font-size: clamp(20px, 1.35vw, 22px);
       line-height: 1.65;
-      max-width: min(100%, 640px);
+      max-width: min(100%, 660px);
     }
   }
 

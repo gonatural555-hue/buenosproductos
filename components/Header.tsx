@@ -14,18 +14,18 @@ import { locales, type Locale } from "@/lib/i18n/config";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useSearchParams } from "next/navigation";
 
-/**
- * Barra flotante **sin** pastilla contenedora (sin fondo/borde/sombra envolviendo todo el header).
- * Criterio de producto: no reintroducir un envoltorio tipo píldora alrededor de la fila del header.
- */
-const HEADER_FLOAT_ROW =
-  "relative flex min-h-[10rem] w-full max-w-[1440px] items-center py-2 md:min-h-[10.5rem] md:py-2.5";
+/** Fila interior de la pastilla (altura la marca el logo + alineación). */
+const HEADER_TOOLBAR_ROW =
+  "relative flex w-full max-w-[1440px] items-center gap-2 py-1.5 md:gap-3 md:py-2";
+
+const HEADER_PILL =
+  "pointer-events-auto relative mx-auto w-full rounded-full border border-[rgba(46,74,54,0.10)] bg-[rgba(244,235,221,0.72)] px-2 shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-[16px] supports-[backdrop-filter]:bg-[rgba(244,235,221,0.62)] sm:px-3 md:px-4";
 
 const NAV_LINK_HEADER_DESKTOP =
-  "whitespace-nowrap text-[12px] font-semibold uppercase tracking-[0.18em] text-[rgba(46,74,54,0.65)] transition-colors duration-200 hover:text-[#2E4A36]";
+  "whitespace-nowrap font-inter text-[13px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors duration-200 hover:text-[#2E4A36]";
 
 const LOCALE_FLOAT =
-  "rounded-full px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.16em] text-[rgba(46,74,54,0.65)] transition-colors hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36] md:text-[12px] md:tracking-[0.18em]";
+  "rounded-full px-2 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36] md:text-[12px] md:tracking-[0.12em]";
 
 const ICON_GHOST =
   "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[rgba(46,74,54,0.65)] transition-colors hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36]";
@@ -69,7 +69,7 @@ function BrandLogoLink({
     >
       <Link
         href={`/${locale}`}
-        className="relative block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD]"
+        className="relative block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgba(244,235,221,0.9)]"
         aria-label={alt}
       >
         <Image
@@ -150,6 +150,8 @@ export default function Header() {
       el.id = id;
       document.body.insertAdjacentElement("afterbegin", el);
     }
+    // Portal: un único setState tras crear el nodo en body (patrón createPortal).
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sincronizar nodo DOM para portal del header
     setHeaderPortalRoot(el);
   }, []);
 
@@ -219,10 +221,11 @@ export default function Header() {
 
   const headerUi = (
     <header className="pointer-events-none !fixed inset-x-0 top-0 z-50 w-full font-inter">
-      <div className="mx-auto w-full max-w-[1440px] px-[18px] pt-6 md:px-7 lg:px-12">
-        {/* Desktop: idiomas a la izquierda; Home/Blog al borde interior (junto al logo); Products/Categories + utilidades */}
-        <div className={`${HEADER_FLOAT_ROW} pointer-events-auto hidden w-full md:flex`}>
-          <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(9.5rem+8px)] md:pr-[calc(10rem+10px)] lg:pr-[calc(10.5rem+12px)]">
+      <div className="mx-auto w-full max-w-[1440px] px-[18px] pt-4 md:px-7 md:pt-5 lg:px-12">
+        <div className={HEADER_PILL}>
+        {/* Desktop */}
+        <div className={`${HEADER_TOOLBAR_ROW} hidden w-full md:flex`}>
+          <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(11.5rem+6px)] md:pr-[calc(12rem+8px)] lg:pr-[calc(12.75rem+10px)]">
             <nav
               className="flex shrink-0 items-center gap-0.5"
               aria-label={t("header.localeNavAria")}
@@ -241,7 +244,7 @@ export default function Header() {
             </nav>
             <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end">
               <nav
-                className="flex shrink-0 items-center gap-4 md:gap-5 lg:gap-6"
+                className="flex shrink-0 items-center gap-3 md:gap-4"
                 aria-label={`${t("header.nav.home")}, ${t("header.nav.blog")}`}
               >
                 <Link href={`/${locale}`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
@@ -259,14 +262,14 @@ export default function Header() {
               <BrandLogoLink
                 locale={locale}
                 alt={t("header.logoAlt")}
-                imageClassName="h-[7.5rem] w-auto max-h-[8rem] max-w-[min(28vw,16.5rem)] object-contain object-center md:h-[8rem] md:max-h-[8.5rem] md:max-w-[18rem] lg:max-h-[9rem] lg:max-w-[19rem]"
+                imageClassName="h-[9.375rem] w-auto max-h-[10rem] max-w-[min(30vw,20.5rem)] object-contain object-center md:h-[10rem] md:max-h-[10.5rem] md:max-w-[22.5rem] lg:max-h-[11.25rem] lg:max-w-[23.75rem]"
               />
             </div>
           </div>
 
-          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(9.5rem+8px)] md:gap-3 md:pl-[calc(10rem+10px)] lg:pl-[calc(10.5rem+12px)]">
+          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(11.5rem+6px)] md:gap-2 md:pl-[calc(12rem+8px)] lg:pl-[calc(12.75rem+10px)]">
             <nav
-              className="flex min-w-0 shrink-0 items-center gap-4 md:gap-5 lg:gap-6"
+              className="flex min-w-0 shrink-0 items-center gap-3 md:gap-4"
               aria-label={`${t("header.nav.products")}, ${t("header.nav.categories")}`}
             >
               <Link href={`/${locale}/products`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
@@ -308,7 +311,7 @@ export default function Header() {
               {isLoggedIn && user ? (
                 <Link
                   href={`/${locale}/account`}
-                  className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
+                  className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
                 >
                   <span className="truncate">{user.name}</span>
                   <span
@@ -322,7 +325,7 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => openAuthModal("login")}
-                  className="shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.18em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
+                  className="shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
                 >
                   {t("header.account")}
                 </button>
@@ -331,9 +334,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile — sin pastilla contenedora */}
+        {/* Mobile */}
         <div
-          className={`${HEADER_FLOAT_ROW} pointer-events-auto flex w-full items-center justify-between gap-2 md:hidden`}
+          className={`${HEADER_TOOLBAR_ROW} flex w-full items-center justify-between gap-2 md:hidden`}
         >
           <nav
             className="flex shrink-0 items-center gap-0.5"
@@ -356,7 +359,7 @@ export default function Header() {
             <BrandLogoLink
               locale={locale}
               alt={t("header.logoAlt")}
-              imageClassName="h-[8.5rem] w-auto max-w-[min(48vw,20rem)] object-contain object-center"
+              imageClassName="h-[10.625rem] w-auto max-w-[min(52vw,25rem)] object-contain object-center"
             />
           </div>
 
@@ -417,62 +420,9 @@ export default function Header() {
             )}
           </div>
         </div>
-      </div>
-
-      {/* Mega menu backdrop */}
-      <div
-          className={[
-            "pointer-events-auto fixed inset-0 z-[38] transition-all duration-200 ease-out",
-            categoriesBackdropClass,
-            categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
-          ].join(" ")}
-          aria-hidden={!categoriesOpen}
-          onClick={closeCategoriesMenu}
-        />
-
-        <div
-          id="header-categories-mega"
-          className={[
-            "pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t transition-all duration-200 ease-out",
-            "top-[calc(1.5rem+10.5rem+10px)] md:top-[calc(1.5rem+10.5rem+12px)]",
-            "overflow-y-auto overscroll-contain",
-            categoriesPanelShell,
-            categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
-          ].join(" ")}
-          onMouseEnter={openCategoriesMenu}
-          onMouseLeave={scheduleCloseCategories}
-          aria-hidden={!categoriesOpen}
-        >
-          <div className="mx-auto w-full max-w-[min(100%,1600px)] px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
-            <div className="columns-1 gap-x-16 gap-y-10 sm:columns-2 lg:columns-3 xl:columns-4">
-              {mainCategories.map((category) => (
-                <div key={category.slug} className="mb-10 break-inside-avoid">
-                  <Link
-                    href={`/${locale}/category/${category.slug}`}
-                    className={megaCatTitle}
-                    onClick={closeCategoriesMenu}
-                  >
-                    {t(`categories.names.${category.slug}`, category.name)}
-                  </Link>
-                  <div className="mt-3 space-y-2">
-                    {(subCategoriesByParent[category.slug] || []).map((sub) => (
-                      <Link
-                        key={sub.slug}
-                        href={`/${locale}/category/${sub.slug}`}
-                        className={megaCatSub}
-                        onClick={closeCategoriesMenu}
-                      >
-                        {t(`categories.names.${sub.slug}`, sub.name)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Mobile sheet menu */}
+        {/* Mobile sheet — debajo de la pastilla */}
         {mobileMenuOpen ? (
           <nav className="pointer-events-auto mt-2 rounded-2xl border border-earth-brown/18 bg-soft-stone/98 p-4 shadow-[0_20px_50px_-24px_rgba(17,23,19,0.2)] ring-1 ring-earth-brown/10 backdrop-blur-md md:hidden">
             <div className="flex flex-col gap-3">
@@ -557,6 +507,60 @@ export default function Header() {
             </div>
           </nav>
         ) : null}
+      </div>
+
+      {/* Mega menu backdrop */}
+      <div
+          className={[
+            "pointer-events-auto fixed inset-0 z-[38] transition-all duration-200 ease-out",
+            categoriesBackdropClass,
+            categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
+          ].join(" ")}
+          aria-hidden={!categoriesOpen}
+          onClick={closeCategoriesMenu}
+        />
+
+        <div
+          id="header-categories-mega"
+          className={[
+            "pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t transition-all duration-200 ease-out",
+            "top-[calc(1rem+14rem+8px)] md:top-[calc(1.25rem+14.25rem+10px)]",
+            "overflow-y-auto overscroll-contain",
+            categoriesPanelShell,
+            categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
+          ].join(" ")}
+          onMouseEnter={openCategoriesMenu}
+          onMouseLeave={scheduleCloseCategories}
+          aria-hidden={!categoriesOpen}
+        >
+          <div className="mx-auto w-full max-w-[min(100%,1600px)] px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
+            <div className="columns-1 gap-x-16 gap-y-10 sm:columns-2 lg:columns-3 xl:columns-4">
+              {mainCategories.map((category) => (
+                <div key={category.slug} className="mb-10 break-inside-avoid">
+                  <Link
+                    href={`/${locale}/category/${category.slug}`}
+                    className={megaCatTitle}
+                    onClick={closeCategoriesMenu}
+                  >
+                    {t(`categories.names.${category.slug}`, category.name)}
+                  </Link>
+                  <div className="mt-3 space-y-2">
+                    {(subCategoriesByParent[category.slug] || []).map((sub) => (
+                      <Link
+                        key={sub.slug}
+                        href={`/${locale}/category/${sub.slug}`}
+                        className={megaCatSub}
+                        onClick={closeCategoriesMenu}
+                      >
+                        {t(`categories.names.${sub.slug}`, sub.name)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} initialTab={initialTab} />
     </header>

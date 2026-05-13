@@ -110,7 +110,7 @@ export default function HeroCompassCursor({
     "pointer-events-none absolute font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2E4A36]/72 md:text-[11px]";
 
   const dialLuxury =
-    "relative mx-auto flex h-[13.75rem] w-[13.75rem] max-h-[220px] max-w-[220px] items-center justify-center md:h-[clamp(17.5rem,26vmin,20rem)] md:w-[clamp(17.5rem,26vmin,20rem)] md:max-h-[320px] md:max-w-[320px] lg:h-[clamp(17.5rem,24vmin,20rem)] lg:w-[clamp(17.5rem,24vmin,20rem)]";
+    "relative mx-auto flex h-[13.125rem] w-[13.125rem] max-h-[15rem] max-w-[15rem] items-center justify-center md:h-[17.5rem] md:w-[17.5rem] md:max-h-[20rem] md:max-w-[20rem]";
 
   const focusLuxury =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/45 focus-visible:ring-offset-4 focus-visible:ring-offset-[#F4EBDD]";
@@ -121,7 +121,7 @@ export default function HeroCompassCursor({
         ref={rootRef}
         type="button"
         aria-label={ariaLabel}
-        className={`relative isolate shrink-0 px-4 pb-5 pt-4 transition-[filter,transform] duration-500 ease-out md:px-6 md:pb-6 md:pt-5 ${focusLuxury}`}
+        className={`relative isolate shrink-0 px-3 pb-3 pt-2 transition-[filter,transform] duration-500 ease-out md:px-4 md:pb-4 md:pt-3 ${focusLuxury}`}
       >
         <span className={`${labelLuxury} left-1/2 top-0 -translate-x-1/2`} aria-hidden>
           {north}
