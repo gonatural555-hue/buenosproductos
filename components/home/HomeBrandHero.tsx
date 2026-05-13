@@ -70,7 +70,7 @@ export default function HomeBrandHero({
   };
 
   const heroTopPad =
-    "pt-[calc(env(safe-area-inset-top,0px)+6.75rem)] sm:pt-[calc(env(safe-area-inset-top,0px)+7rem)] md:pt-[calc(env(safe-area-inset-top,0px)+7.125rem)]";
+    "pt-[calc(env(safe-area-inset-top,0px)+10rem)] sm:pt-[calc(env(safe-area-inset-top,0px)+10.25rem)] md:pt-[calc(env(safe-area-inset-top,0px)+10.5rem)] lg:pt-[calc(env(safe-area-inset-top,0px)+10.75rem)]";
 
   return (
     <section
@@ -83,7 +83,7 @@ export default function HomeBrandHero({
         initial="hidden"
         animate="show"
       >
-        <div className="flex min-h-0 flex-1 flex-col items-center justify-center">
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center pt-6 md:pt-8">
           <motion.h1 variants={itemVariants} className="gn-hero-editorial w-full">
             {lines.map((line, lineIdx) => {
               const isFirst = lineIdx === 0;
