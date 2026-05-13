@@ -70,7 +70,7 @@ export default function HomeBrandHero({
   };
 
   const heroTopPad =
-    "pt-[calc(env(safe-area-inset-top,0px)+1rem+14rem+8px)] sm:pt-[calc(env(safe-area-inset-top,0px)+1rem+14rem+10px)] md:pt-[calc(env(safe-area-inset-top,0px)+1.25rem+14.25rem+12px)]";
+    "pt-[calc(env(safe-area-inset-top,0px)+0.75rem+11.5rem+6px)] sm:pt-[calc(env(safe-area-inset-top,0px)+0.75rem+11.75rem+8px)] md:pt-[calc(env(safe-area-inset-top,0px)+1rem+12rem+8px)]";
 
   return (
     <section
