@@ -169,21 +169,24 @@ export default function Header() {
   const categoriesPanelShell =
     "border-earth-brown/15 bg-soft-stone/98 shadow-[0_24px_56px_-20px_rgba(17,23,19,0.18)] ring-1 ring-earth-brown/10 backdrop-blur-md supports-[backdrop-filter]:bg-soft-stone/95";
 
+  /** Carrito reconocible (cesta + ruedas), trazo clásico tipo carrito de compras */
   const cartIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.65}
+      strokeWidth={1.75}
       stroke="currentColor"
-      className="h-[1.25rem] w-[1.25rem]"
+      className="h-[1.35rem] w-[1.35rem]"
       aria-hidden
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.277M7.5 14.25l13.5-5.25M5.106 5.277c.194-1.01.937-1.777 1.936-1.777h13.916c.999 0 1.742.767 1.936 1.777M5.106 5.277L2.25 3m0 0h18.75M2.25 3v18m18.75-18v18"
+        d="M2.5 3.5h3l2.2 10.4a2 2 0 0 0 2 1.6h7.1a2 2 0 0 0 2-1.6l1.7-8.4H6.1"
       />
+      <circle cx="9" cy="20" r="1.25" />
+      <circle cx="18" cy="20" r="1.25" />
     </svg>
   );
 
@@ -192,9 +195,10 @@ export default function Header() {
       <div className="mx-auto w-full max-w-[1440px] px-[18px] pt-6 md:px-7 lg:px-12">
         {/* Desktop — pastilla única; logo anclado al centro geométrico */}
         <div
-          className={`${HEADER_PILL_BAR} pointer-events-auto hidden w-full md:flex md:px-5 lg:px-8`}
+          className={`${HEADER_PILL_BAR} pointer-events-auto relative hidden w-full md:flex md:px-5 lg:px-8`}
         >
-          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end gap-4 pr-[4.25rem] lg:gap-6 lg:pr-[5.25rem]">
+          {/* Izquierda: idiomas + Productos + Categorías (pegados al logo) */}
+          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end gap-3 pr-[calc(5.5rem+10px)] md:gap-4 md:pr-[calc(5.75rem+12px)] lg:gap-5 lg:pr-[calc(6rem+14px)]">
             <nav
               className="flex shrink-0 items-center gap-0.5"
               aria-label={t("header.localeNavAria")}
@@ -212,15 +216,9 @@ export default function Header() {
               ))}
             </nav>
             <nav
-              className="hidden min-w-0 flex-wrap items-center justify-end gap-6 md:flex lg:gap-8"
-              aria-label="Principal"
+              className="flex min-w-0 shrink-0 items-center gap-4 md:gap-6 lg:gap-7"
+              aria-label={`${t("header.nav.products")}, ${t("header.nav.categories")}`}
             >
-              <Link href={`/${locale}`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
-                {t("header.nav.home")}
-              </Link>
-              <Link href={`/${locale}/blog`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
-                {t("header.nav.blog")}
-              </Link>
               <Link href={`/${locale}/products`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
                 {t("header.nav.products")}
               </Link>
@@ -254,42 +252,57 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[4.25rem] lg:gap-3 lg:pl-[5.25rem]">
-            <Link
-              href={`/${locale}/cart`}
-              className={`${ICON_GHOST} relative`}
-              aria-label={`Cart with ${totalItems} items`}
+          {/* Derecha: Inicio + Blog junto al logo; carrito + cuenta en la esquina */}
+          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(5.5rem+10px)] md:gap-3 md:pl-[calc(5.75rem+12px)] lg:pl-[calc(6rem+14px)]">
+            <nav
+              className="flex min-w-0 shrink-0 items-center gap-4 md:gap-6 lg:gap-7"
+              aria-label={`${t("header.nav.home")}, ${t("header.nav.blog")}`}
             >
-              {cartIcon}
-              {totalItems > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-[#D9A441] px-0.5 font-inter text-[9px] font-semibold text-[#2E4A36]">
-                  {totalItems > 99 ? "99+" : totalItems}
-                </span>
-              )}
-            </Link>
-
-            {isLoggedIn && user ? (
-              <Link
-                href={`/${locale}/account`}
-                className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
-              >
-                <span className="truncate">{user.name}</span>
-                <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#2E4A36] to-[#1e3228] font-inter text-[10px] font-semibold uppercase tracking-wide text-[#F4EBDD] shadow-inner"
-                  aria-hidden
-                >
-                  {userInitials(user.name)}
-                </span>
+              <Link href={`/${locale}`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
+                {t("header.nav.home")}
               </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => openAuthModal("login")}
-                className="shrink-0 rounded-full border border-transparent px-4 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.18em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
+              <Link href={`/${locale}/blog`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
+                {t("header.nav.blog")}
+              </Link>
+            </nav>
+
+            <div className="ml-auto flex shrink-0 items-center gap-1 lg:gap-2">
+              <Link
+                href={`/${locale}/cart`}
+                className={`${ICON_GHOST} relative`}
+                aria-label={`Cart with ${totalItems} items`}
               >
-                {t("header.account")}
-              </button>
-            )}
+                {cartIcon}
+                {totalItems > 0 && (
+                  <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-[#D9A441] px-0.5 font-inter text-[9px] font-semibold text-[#2E4A36]">
+                    {totalItems > 99 ? "99+" : totalItems}
+                  </span>
+                )}
+              </Link>
+
+              {isLoggedIn && user ? (
+                <Link
+                  href={`/${locale}/account`}
+                  className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
+                >
+                  <span className="truncate">{user.name}</span>
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#2E4A36] to-[#1e3228] font-inter text-[10px] font-semibold uppercase tracking-wide text-[#F4EBDD] shadow-inner"
+                    aria-hidden
+                  >
+                    {userInitials(user.name)}
+                  </span>
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => openAuthModal("login")}
+                  className="shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.18em] text-[rgba(46,74,54,0.65)] transition-colors hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
+                >
+                  {t("header.account")}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -351,6 +364,32 @@ export default function Header() {
                 </span>
               )}
             </Link>
+
+            {isLoggedIn && user ? (
+              <Link
+                href={`/${locale}/account`}
+                className={`${ICON_GHOST} relative`}
+                aria-label={t("header.account")}
+              >
+                <span
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#2E4A36] to-[#1e3228] font-inter text-[10px] font-semibold uppercase tracking-wide text-[#F4EBDD]"
+                  aria-hidden
+                >
+                  {userInitials(user.name)}
+                </span>
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className={ICON_GHOST}
+                onClick={() => openAuthModal("login")}
+                aria-label={t("header.account")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.65} stroke="currentColor" className="h-5 w-5" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </div>

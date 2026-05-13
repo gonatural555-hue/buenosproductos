@@ -9,7 +9,6 @@ import { GN_EASE_PREMIUM } from "@/lib/ui/gonatural-design";
 
 export type HomeBrandHeroProps = {
   locale: Locale;
-  eyebrow: string;
   title: string;
   subtitle: string;
   ctaPrimary: string;
@@ -38,7 +37,6 @@ const LINE1_WORD_CLASS: [string, string] = ["gn-hero-c-navy", "gn-hero-c-burgund
 
 export default function HomeBrandHero({
   locale,
-  eyebrow,
   title,
   subtitle,
   ctaPrimary,
@@ -86,10 +84,6 @@ export default function HomeBrandHero({
         animate="show"
       >
         <div className="flex min-h-0 flex-1 flex-col items-center justify-center">
-          <motion.p variants={itemVariants} className="gn-hero-label w-full max-w-[920px]">
-            {eyebrow}
-          </motion.p>
-
           <motion.h1 variants={itemVariants} className="gn-hero-editorial w-full">
             {lines.map((line, lineIdx) => {
               const isFirst = lineIdx === 0;
