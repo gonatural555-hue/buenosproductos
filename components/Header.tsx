@@ -13,9 +13,13 @@ import { locales, type Locale } from "@/lib/i18n/config";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useSearchParams } from "next/navigation";
 
-/** Fila flotante sin pastilla: altura mínima para el logo sin desbordar sobre el Hero. */
-const HEADER_FLOAT_ROW =
-  "relative flex min-h-[92px] w-full max-w-[1440px] items-center py-2 md:min-h-[96px] md:py-2.5";
+/** Pastilla flotante desktop — cristal editorial. */
+const HEADER_PILL_BAR =
+  "relative flex h-[76px] w-full max-w-[1440px] items-center rounded-full border border-[rgba(46,74,54,0.08)] bg-[rgba(255,255,255,0.55)] shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-[18px]";
+
+/** Móvil: misma lectura de marca; altura táctil cómoda. */
+const HEADER_MOBILE_BAR =
+  "relative flex h-[76px] w-full max-w-[1440px] items-center rounded-full border border-[rgba(46,74,54,0.08)] bg-[rgba(255,255,255,0.55)] shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-[18px]";
 
 const NAV_LINK_HEADER_DESKTOP =
   "whitespace-nowrap text-[12px] font-semibold uppercase tracking-[0.18em] text-[rgba(46,74,54,0.65)] transition-colors duration-200 hover:text-[#2E4A36]";
@@ -44,7 +48,7 @@ function BrandLogoLink({
   const reduceMotion = useReducedMotion() ?? false;
   return (
     <motion.div
-      className="flex shrink-0 justify-center"
+      className="flex shrink-0 justify-center will-change-transform"
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -52,6 +56,16 @@ function BrandLogoLink({
         ease: logoEase,
         delay: reduceMotion ? 0 : 0.06,
       }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              scale: 1.06,
+              y: -3,
+              transition: { duration: 0.3, ease: logoEase },
+            }
+      }
+      whileTap={reduceMotion ? undefined : { scale: 0.98, transition: { duration: 0.15, ease: logoEase } }}
     >
       <Link
         href={`/${locale}`}
@@ -65,7 +79,7 @@ function BrandLogoLink({
           height={288}
           priority
           draggable={false}
-          className={imageClassName}
+          className={`${imageClassName} drop-shadow-[0_6px_20px_rgba(46,74,54,0.08)]`}
         />
       </Link>
     </motion.div>
@@ -193,10 +207,12 @@ export default function Header() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 font-inter">
       <div className="mx-auto w-full max-w-[1440px] px-[18px] pt-6 md:px-7 lg:px-12">
-        {/* Desktop: idiomas a la izquierda | Productos + Categorías (izq. del logo) | logo | Inicio + Blog | carrito + cuenta */}
-        <div className={`${HEADER_FLOAT_ROW} pointer-events-auto hidden w-full md:flex md:gap-5 lg:gap-6`}>
+        {/* Desktop: pastilla | idiomas | Home Blog | LOGO | Products Categories | … | cart cuenta */}
+        <div
+          className={`${HEADER_PILL_BAR} pointer-events-auto hidden w-full gap-3 md:flex md:px-5 md:gap-4 lg:px-8 lg:gap-5`}
+        >
           <nav
-            className="flex shrink-0 items-center gap-0.5 self-center"
+            className="flex shrink-0 items-center gap-0.5"
             aria-label={t("header.localeNavAria")}
           >
             {locales.map((lang) => (
@@ -213,6 +229,30 @@ export default function Header() {
           </nav>
 
           <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end pr-[calc(5.25rem+12px)] md:pr-[calc(5.5rem+14px)] lg:pr-[calc(5.75rem+16px)]">
+            <nav
+              className="flex min-w-0 shrink-0 items-center gap-5 md:gap-6 lg:gap-8"
+              aria-label={`${t("header.nav.home")}, ${t("header.nav.blog")}`}
+            >
+              <Link href={`/${locale}`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
+                {t("header.nav.home")}
+              </Link>
+              <Link href={`/${locale}/blog`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
+                {t("header.nav.blog")}
+              </Link>
+            </nav>
+          </div>
+
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+            <div className="pointer-events-auto">
+              <BrandLogoLink
+                locale={locale}
+                alt={t("header.logoAlt")}
+                imageClassName="h-[3.75rem] w-auto max-h-[4rem] max-w-[min(28vw,8.25rem)] object-contain object-center md:h-[4rem] md:max-h-[4.25rem] md:max-w-[9rem] lg:max-h-[4.5rem] lg:max-w-[9.5rem]"
+              />
+            </div>
+          </div>
+
+          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(5.25rem+12px)] md:gap-3 md:pl-[calc(5.5rem+14px)] lg:pl-[calc(5.75rem+16px)]">
             <nav
               className="flex min-w-0 shrink-0 items-center gap-5 md:gap-6 lg:gap-8"
               aria-label={`${t("header.nav.products")}, ${t("header.nav.categories")}`}
@@ -237,30 +277,6 @@ export default function Header() {
                   {t("header.nav.categories")}
                 </button>
               </div>
-            </nav>
-          </div>
-
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-            <div className="pointer-events-auto">
-              <BrandLogoLink
-                locale={locale}
-                alt={t("header.logoAlt")}
-                imageClassName="h-[4rem] w-auto max-h-[4.25rem] max-w-[min(30vw,8.75rem)] object-contain object-center md:h-[4.25rem] md:max-h-[4.5rem] md:max-w-[9.5rem] lg:max-h-[4.75rem] lg:max-w-[10rem]"
-              />
-            </div>
-          </div>
-
-          <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-3 pl-[calc(5.25rem+12px)] md:gap-4 md:pl-[calc(5.5rem+14px)] lg:pl-[calc(5.75rem+16px)]">
-            <nav
-              className="flex min-w-0 shrink-0 items-center gap-5 md:gap-6 lg:gap-8"
-              aria-label={`${t("header.nav.home")}, ${t("header.nav.blog")}`}
-            >
-              <Link href={`/${locale}`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
-                {t("header.nav.home")}
-              </Link>
-              <Link href={`/${locale}/blog`} className={`${NAV_LINK_HEADER_DESKTOP} font-inter`}>
-                {t("header.nav.blog")}
-              </Link>
             </nav>
 
             <div className="ml-auto flex shrink-0 items-center gap-1 lg:gap-2">
@@ -303,9 +319,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile — misma disposición flotante, sin pastilla */}
+        {/* Mobile — pastilla compacta */}
         <div
-          className={`${HEADER_FLOAT_ROW} pointer-events-auto flex w-full items-center justify-between gap-2 md:hidden min-h-[88px]`}
+          className={`${HEADER_MOBILE_BAR} pointer-events-auto flex w-full items-center justify-between gap-2 px-3 md:hidden`}
         >
           <nav
             className="flex shrink-0 items-center gap-0.5"
@@ -406,7 +422,7 @@ export default function Header() {
           id="header-categories-mega"
           className={[
             "pointer-events-auto fixed inset-x-0 bottom-0 z-40 border-t transition-all duration-200 ease-out",
-            "top-[calc(1.5rem+96px+10px)] md:top-[calc(1.5rem+96px+12px)]",
+            "top-[calc(1.5rem+76px+8px)] md:top-[calc(1.5rem+76px+10px)]",
             "overflow-y-auto overscroll-contain",
             categoriesPanelShell,
             categoriesOpen ? "opacity-100" : "pointer-events-none invisible opacity-0",
