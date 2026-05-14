@@ -50,9 +50,11 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
       aria-label="Hero"
     >
       <div className="mx-auto w-full max-w-none px-4 sm:px-5 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0">
-        <div className="flex flex-col gap-4 lg:min-h-[min(calc(100svh-14.5rem),820px)] lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] lg:grid-rows-[1fr_1fr] lg:items-stretch lg:gap-5">
+        <div className="flex flex-col gap-4 lg:min-h-[min(calc(100svh-13.25rem),min(96svh,1000px))] lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] lg:grid-rows-[1fr_1fr] lg:items-stretch lg:gap-5">
           <div className="flex min-h-0 w-full flex-col gap-4 lg:col-start-1 lg:row-span-2 lg:min-h-0">
-            <div className={`${BENTO_CARD} ${BENTO_HOVER} flex min-h-[min(68vh,560px)] flex-1 flex-col lg:min-h-0`}>
+            <div
+              className={`${BENTO_CARD} ${BENTO_HOVER} flex min-h-[min(64vh,520px)] flex-1 flex-col sm:min-h-[min(68vh,580px)] md:min-h-[min(72vh,640px)] lg:min-h-0`}
+            >
               <div className="relative min-h-0 flex-1">
                 <HomeHeroCarousel {...props} embedded />
               </div>
@@ -96,7 +98,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
             <Link
               href={`/${locale}/category/mountain-snow`}
               aria-label={`${t("heroBento.rightMountainTitle")} — ${t("heroBento.exploreAria")}`}
-              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6 lg:col-start-2 lg:row-start-1 lg:min-h-0`}
+              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[14.25rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[16rem] sm:p-6 lg:col-start-2 lg:row-start-1 lg:min-h-0`}
             >
               <Image
                 src={mountainImg}
@@ -123,7 +125,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
             <Link
               href={`/${locale}/products`}
               aria-label={`${t("heroBento.rightOutdoorTitle")} — ${t("heroBento.exploreAria")}`}
-              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[13rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[14rem] sm:p-6 lg:col-start-2 lg:row-start-2 lg:min-h-0`}
+              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[14.25rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[16rem] sm:p-6 lg:col-start-2 lg:row-start-2 lg:min-h-0`}
             >
               <Image
                 src={outdoorImg}
