@@ -176,32 +176,42 @@ export default async function ProductsPage({
     noImage: t("common.noImage"),
   };
 
-  const heroFeatured = displayProducts.slice(0, 12);
-
   return (
-    <main className="min-h-screen bg-[#F4EBDD] text-[#2E4A36]">
+    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-dark-base text-text-primary">
       <ProductsHero
         locale={locale}
-        featuredProducts={heroFeatured}
-        labels={cardLabels}
-        eyebrow={t("productsPage.heroShopEyebrow")}
         title={t("productsPage.heroEssentialTitle")}
         subtitle={t("productsPage.heroEditorialSubtitle")}
-        freeShippingBadge={t("productsPage.heroFreeShippingBadge")}
-        compassAria={t("homeCompass.compassAria")}
-        compassLabels={{
-          north: t("homeCompass.north"),
-          south: t("homeCompass.south"),
-          east: t("homeCompass.east"),
-          west: t("homeCompass.west"),
-        }}
-        featuredRailLabel={t("productsPage.heroCarouselRail")}
-        carouselPrevAria={t("productsPage.heroCarouselPrevAria")}
-        carouselNextAria={t("productsPage.heroCarouselNextAria")}
+        discoverCtaLabel={t("productsPage.heroDiscoverProducts")}
+        categoryCtas={[
+          {
+            slug: "fishing",
+            label: t("productsPage.segmentFishing"),
+            tone: "forest",
+          },
+          {
+            slug: "mountain-snow",
+            label: t("productsPage.segmentMountainSnow"),
+            tone: "burgundy",
+          },
+          {
+            slug: "water-sports",
+            label: t("productsPage.segmentWaterSports"),
+            tone: "burnt",
+          },
+          {
+            slug: "outdoor-adventure",
+            label: t("productsPage.segmentOutdoorAdventure"),
+            tone: "mustard",
+          },
+        ]}
         searchHint={searchHint}
       />
 
-      <section className="border-b border-white/[0.05] bg-[#0a0e0d] py-12 md:py-16">
+      <section
+        id="products-catalog"
+        className="scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] border-b border-white/[0.05] bg-[#0a0e0d] py-12 md:py-16"
+      >
         <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
             <CategorySelector

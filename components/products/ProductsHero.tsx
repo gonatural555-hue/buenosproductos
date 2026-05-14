@@ -1,236 +1,179 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Product } from "@/lib/products";
+import Link from "next/link";
+import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
-import ProductCardSimple from "@/components/ProductCardSimple";
-import ProductsHeroLuxuryCompass from "@/components/products/ProductsHeroLuxuryCompass";
-import { LUMINOUS_EDGE_CARD } from "@/lib/ui/luminous-edge";
+import { useTranslations } from "@/components/i18n/LocaleProvider";
+import { GN_EASE_PREMIUM, GN_HERO_TOP_PAD } from "@/lib/ui/gonatural-design";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const easeOut = GN_EASE_PREMIUM;
 
-/** Hero /products: acerca el bloque al header respecto al patrón global del home. */
-const PRODUCTS_HERO_TOP_PAD =
-  "pt-[calc(env(safe-area-inset-top,0px)+0.5rem+9.375rem+6px)] sm:pt-[calc(env(safe-area-inset-top,0px)+0.5rem+9.625rem+6px)] md:pt-[calc(env(safe-area-inset-top,0px)+0.75rem+9.875rem+6px)]";
+/** Igual que `HomeBrandHero`: título en 2 bloques editoriales. */
+function editorialHeadlineFromTitle(title: string): { line1: string; line2: string | null } {
+  const raw = title.trim();
+  if (!raw) return { line1: "", line2: null };
+  const lines = raw.split("\n").map((l) => l.trim()).filter(Boolean);
+  if (lines.length >= 3) {
+    return { line1: lines[0] ?? "", line2: lines.slice(1).join(" ") };
+  }
+  if (lines.length === 2) {
+    return { line1: lines[0] ?? "", line2: lines[1] ?? "" };
+  }
+  return { line1: lines[0] ?? "", line2: null };
+}
 
-type CompassLabels = {
-  north: string;
-  south: string;
-  east: string;
-  west: string;
+export type ProductsHeroCategoryTone = "forest" | "burgundy" | "burnt" | "mustard";
+
+export type ProductsHeroCategoryCta = {
+  slug: string;
+  label: string;
+  tone: ProductsHeroCategoryTone;
 };
+
+const CATEGORY_CTA_CLASS: Record<
+  ProductsHeroCategoryTone,
+  string
+> = {
+  forest:
+    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_10px_36px_rgba(46,74,54,0.18)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_14px_44px_rgba(46,74,54,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
+  burgundy:
+    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(145deg,#5a1820_0%,#6E1F28_45%,#4a151c_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_36px_rgba(46,74,54,0.2)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
+  burnt:
+    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(145deg,#a84d22_0%,#C9622B_50%,#8f401c_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_10px_36px_rgba(201,98,43,0.25)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2E4A36]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
+  mustard:
+    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full border-[1.5px] border-white/90 bg-[linear-gradient(145deg,#e4b84a_0%,#D9A441_50%,#c49a38_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#2E4A36] shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_10px_32px_-8px_rgba(46,74,54,0.15)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2E4A36]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
+};
+
+const discoverCtaClass =
+  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-9 text-center font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_44px_rgba(46,74,54,0.14)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_16px_52px_rgba(46,74,54,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-[13px]";
 
 type ProductsHeroProps = {
   locale: Locale;
-  /** Carrusel destacado (orden ya resuelto en servidor). */
-  featuredProducts: Product[];
-  labels: {
-    viewProduct: string;
-    addToCart: string;
-    noImage: string;
-  };
-  eyebrow: string;
   title: string;
   subtitle: string;
-  freeShippingBadge: string;
-  compassAria: string;
-  compassLabels: CompassLabels;
+  categoryCtas: ProductsHeroCategoryCta[];
+  discoverCtaLabel: string;
+  /** Ancla del bloque filtros + rejilla (scroll suave). */
+  catalogSectionId?: string;
   searchHint?: string | null;
-  featuredRailLabel: string;
-  carouselPrevAria?: string;
-  carouselNextAria?: string;
 };
-
-function usePerView() {
-  const [n, setN] = useState(3);
-  useEffect(() => {
-    const read = () => {
-      const w = typeof window !== "undefined" ? window.innerWidth : 1200;
-      if (w < 640) setN(1);
-      else if (w < 1024) setN(2);
-      else setN(3);
-    };
-    read();
-    window.addEventListener("resize", read, { passive: true });
-    return () => window.removeEventListener("resize", read);
-  }, []);
-  return n;
-}
 
 export default function ProductsHero({
   locale,
-  featuredProducts,
-  labels,
-  eyebrow,
   title,
   subtitle,
-  freeShippingBadge,
-  compassAria,
-  compassLabels,
+  categoryCtas,
+  discoverCtaLabel,
+  catalogSectionId = "products-catalog",
   searchHint,
-  featuredRailLabel,
-  carouselPrevAria = "Previous products",
-  carouselNextAria = "Next products",
 }: ProductsHeroProps) {
+  const t = useTranslations();
   const reduceMotion = useReducedMotion() ?? false;
-  const perView = usePerView();
-  const slides = useMemo(() => featuredProducts.filter(Boolean), [featuredProducts]);
-  const maxStart = Math.max(0, slides.length - perView);
-  const [start, setStart] = useState(0);
+  const off = reduceMotion ?? false;
 
-  useEffect(() => {
-    setStart((s) => Math.min(s, maxStart));
-  }, [maxStart]);
+  const { line1, line2 } = useMemo(() => editorialHeadlineFromTitle(title), [title]);
 
-  const visible = useMemo(
-    () => slides.slice(start, start + perView),
-    [slides, start, perView]
-  );
-
-  const goPrev = useCallback(() => {
-    setStart((s) => Math.max(0, s - 1));
-  }, []);
-  const goNext = useCallback(() => {
-    setStart((s) => Math.min(maxStart, s + 1));
-  }, [maxStart]);
-
-  const container = {
-    hidden: reduceMotion ? { opacity: 1 } : { opacity: 0 },
+  const containerVariants = {
+    hidden: off ? { opacity: 1 } : { opacity: 0 },
     show: {
       opacity: 1,
-      transition: reduceMotion
+      transition: off
         ? { duration: 0 }
-        : { staggerChildren: 0.08, delayChildren: 0.06, ease: EASE },
+        : { staggerChildren: 0.08, delayChildren: 0.04, ease: easeOut },
     },
   };
-  const item = {
-    hidden: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 },
+
+  const itemVariants = {
+    hidden: off ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.62, ease: EASE },
+      transition: { duration: 0.6, ease: easeOut },
     },
+  };
+
+  const scrollToCatalog = () => {
+    const el = document.getElementById(catalogSectionId);
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: off ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   return (
     <section
-      className="relative overflow-x-hidden border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD]"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD]"
       aria-label={title}
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(217,164,65,0.08),transparent_52%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(217,164,65,0.10),transparent_46%)]"
         aria-hidden
       />
-
       <motion.div
-        className={`relative z-[1] mx-auto w-full max-w-[1400px] px-[18px] pb-10 sm:px-7 sm:pb-12 md:px-10 md:pb-14 lg:px-12 lg:pb-16 ${PRODUCTS_HERO_TOP_PAD}`}
-        variants={container}
+        className={`relative z-[1] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GN_HERO_TOP_PAD}`}
+        variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <div className="grid grid-cols-1 items-center justify-items-center gap-6 text-center sm:gap-7 lg:grid-cols-2 lg:items-start lg:justify-items-stretch lg:gap-8 lg:text-left xl:gap-10">
-          <div className="flex min-w-0 max-w-xl flex-col items-center space-y-3 sm:space-y-3.5 lg:max-w-none lg:items-start lg:space-y-4">
-            <motion.p
-              variants={item}
-              className="font-inter text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C9622B] sm:text-xs"
-            >
-              {eyebrow}
-            </motion.p>
-            <motion.h1
-              variants={item}
-              className="max-w-xl font-[family-name:var(--font-tan-nimbus),Georgia,serif] text-[clamp(1.55rem,3.9vw,2.65rem)] font-semibold leading-[1.06] tracking-[-0.02em] text-[#2E4A36] sm:text-[clamp(1.65rem,3.5vw,2.7rem)] lg:mx-0 lg:text-[clamp(1.85rem,2.6vw,2.75rem)]"
-            >
-              {title}
+        <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 md:gap-4">
+          <div className="flex w-full max-w-[980px] flex-col items-center">
+            <motion.h1 variants={itemVariants} className="gn-hero-editorial-two-line w-full">
+              <span className="gn-hero-editorial-line-forest text-balance">{line1}</span>
+              {line2 ? (
+                <span className="gn-hero-editorial-line-mustard text-balance">{line2}</span>
+              ) : null}
             </motion.h1>
-            <motion.p
-              variants={item}
-              className="max-w-md font-inter text-sm leading-relaxed text-[rgba(46,74,54,0.82)] md:text-[15px] md:leading-relaxed lg:mx-0"
-            >
+
+            <motion.p variants={itemVariants} className="gn-hero-subtitle mt-4 text-center md:mt-5">
               {subtitle}
             </motion.p>
-            <motion.div variants={item} className="flex justify-center pt-1 lg:justify-start">
-              <span className="inline-flex rounded-full border border-[#2E4A36]/25 bg-[#2E4A36] px-4 py-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[0_8px_28px_-14px_rgba(46,74,54,0.35)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 md:text-xs">
-                {freeShippingBadge}
-              </span>
+
+            {searchHint ? (
+              <motion.p
+                variants={itemVariants}
+                className="mt-3 max-w-lg text-center font-inter text-xs leading-relaxed text-[rgba(46,74,54,0.72)] md:text-sm"
+              >
+                {searchHint}
+              </motion.p>
+            ) : null}
+
+            <motion.div
+              variants={itemVariants}
+              className="mt-6 grid w-full max-w-2xl grid-cols-2 gap-3 sm:max-w-none sm:grid-cols-2 sm:gap-4 md:mt-7 lg:grid-cols-4"
+            >
+              {categoryCtas.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`/${locale}/category/${cat.slug}`}
+                  className={CATEGORY_CTA_CLASS[cat.tone]}
+                >
+                  {cat.label}
+                </Link>
+              ))}
             </motion.div>
 
-            <motion.div variants={item} className="flex w-full justify-center pt-2 lg:justify-start lg:pt-3">
-              <ProductsHeroLuxuryCompass
-                ariaLabel={compassAria}
-                labels={compassLabels}
-                reduceMotion={reduceMotion}
-              />
+            <motion.div variants={itemVariants} className="mt-6 flex w-full justify-center md:mt-7">
+              <button type="button" onClick={scrollToCatalog} className={discoverCtaClass}>
+                {discoverCtaLabel}
+              </button>
             </motion.div>
           </div>
 
           <motion.div
-            variants={item}
-            className="flex w-full min-w-0 max-w-[min(100%,360px)] flex-col items-center max-lg:mt-1 lg:max-w-none lg:items-stretch lg:pl-1 xl:pl-2"
+            variants={itemVariants}
+            className="flex shrink-0 flex-col items-center gap-1.5 pb-1 pt-2 text-center"
           >
-            {slides.length > 0 ? (
-              <div className="relative w-full lg:-mt-1">
-                <div
-                  className={`overflow-hidden rounded-[1.2rem] border border-[rgba(46,74,54,0.1)] bg-[#F4EBDD]/90 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_12px_40px_-18px_rgba(17,23,19,0.1)] ring-1 ring-[rgba(46,74,54,0.06)] sm:rounded-[1.35rem] sm:p-4 md:rounded-[1.65rem] md:p-5 ${LUMINOUS_EDGE_CARD}`}
-                >
-                  <div className="mb-3 flex w-full flex-col items-center gap-2.5 sm:mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-                    <p className="text-center font-inter text-[11px] font-medium uppercase tracking-[0.2em] text-[rgba(46,74,54,0.55)] sm:text-left">
-                      {featuredRailLabel}
-                    </p>
-                    <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-2">
-                      <button
-                        type="button"
-                        onClick={goPrev}
-                        disabled={start <= 0}
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(46,74,54,0.15)] text-[#2E4A36] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#2E4A36]/35 hover:bg-[rgba(46,74,54,0.04)] disabled:pointer-events-none disabled:opacity-35"
-                        aria-label={carouselPrevAria}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                        </svg>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={goNext}
-                        disabled={start >= maxStart}
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(46,74,54,0.15)] text-[#2E4A36] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[#2E4A36]/35 hover:bg-[rgba(46,74,54,0.04)] disabled:pointer-events-none disabled:opacity-35"
-                        aria-label={carouselNextAria}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  <motion.div
-                    key={`${start}-${perView}`}
-                    initial={reduceMotion ? false : { opacity: 0.85, x: 8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.55, ease: EASE }}
-                    className="grid grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:justify-items-stretch lg:gap-6"
-                  >
-                    {visible.map((product) => (
-                      <div key={product.id} className="min-w-0">
-                        <ProductCardSimple
-                          product={product}
-                          locale={locale}
-                          labels={labels}
-                          analyticsListId="products_hero"
-                          analyticsListName="products_hero_carousel"
-                          surface="light"
-                        />
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-              </div>
-            ) : null}
-            {searchHint ? (
-              <p className="mt-4 text-center font-inter text-xs text-[rgba(46,74,54,0.72)] md:text-sm">
-                {searchHint}
-              </p>
-            ) : null}
+            <div
+              className="flex h-6 w-4 items-start justify-center rounded-full border border-[rgba(46,74,54,0.32)] pt-1"
+              aria-hidden
+            >
+              <span className="gn-hero-scroll-dot block h-1.5 w-[3px] rounded-full bg-[rgba(46,74,54,0.42)]" />
+            </div>
+            <p className="max-w-xs font-inter text-[11px] font-medium uppercase tracking-[0.2em] text-[rgba(46,74,54,0.72)] md:text-xs">
+              {t("homeBrandHero.scrollHint")}
+            </p>
           </motion.div>
         </div>
       </motion.div>
