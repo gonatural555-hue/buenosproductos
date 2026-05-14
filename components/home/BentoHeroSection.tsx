@@ -46,10 +46,12 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
 
   return (
     <section
-      className={`relative overflow-x-hidden bg-[#FFFFFF] pb-8 ${GN_HERO_TOP_PAD} sm:pb-10 md:pb-12 ${LUMINOUS_EDGE_LIGHT}`}
+      className={`relative overflow-x-hidden bg-[#FFFFFF] pb-8 sm:pb-10 md:pb-12 ${LUMINOUS_EDGE_LIGHT}`}
       aria-label="Hero"
     >
-      <div className="mx-auto w-full max-w-none px-4 sm:px-5 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0">
+      <div
+        className={`mx-auto w-full max-w-none px-4 sm:px-5 md:px-6 lg:w-[calc(100%-48px)] lg:max-w-none lg:px-0 ${GN_HERO_TOP_PAD}`}
+      >
         <div className="flex flex-col gap-4 lg:min-h-[min(calc(100svh-13.25rem),min(96svh,1000px))] lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] lg:grid-rows-[1fr_1fr] lg:items-stretch lg:gap-5">
           <div className="flex min-h-0 w-full flex-col gap-4 lg:col-start-1 lg:row-span-2 lg:min-h-0">
             <div
