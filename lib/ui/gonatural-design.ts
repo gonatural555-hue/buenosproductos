@@ -9,7 +9,7 @@ export const GN_EASE_PREMIUM = [0.22, 1, 0.36, 1] as const;
  * alineada con la barra de cabecera fija (misma secuencia que `HomeBrandHero`).
  */
 export const GN_HERO_TOP_PAD =
-  "pt-[calc(env(safe-area-inset-top,0px)+0.5rem+10.5rem+6px)] sm:pt-[calc(env(safe-area-inset-top,0px)+0.5rem+10.75rem+6px)] md:pt-[calc(env(safe-area-inset-top,0px)+0.75rem+11rem+6px)]";
+  "pt-[calc(env(safe-area-inset-top,0px)+2.5rem+10.5rem+6px)] sm:pt-[calc(env(safe-area-inset-top,0px)+0.5rem+10.75rem+6px)] md:pt-[calc(env(safe-area-inset-top,0px)+0.75rem+11rem+6px)]";
 
 export const GN_SPACE_PX = {
   xs: 8,
