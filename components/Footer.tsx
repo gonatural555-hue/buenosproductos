@@ -65,7 +65,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mt-auto border-t border-mountain-green/25 bg-dark-base font-sans text-warm-sand/70">
+    <footer className="mt-auto border-t border-[rgba(46,74,54,0.18)] bg-[#F8ECDB] font-sans text-[rgba(46,74,54,0.78)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Branding: solo marca gráfica, ocupa el área que antes cubrían logo + copy */}
@@ -89,7 +89,7 @@ export default function Footer() {
 
           {/* Navigation Section */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-warm-sand">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#2E4A36]">
               {t("footer.navigationTitle")}
             </h3>
             <ul className="space-y-3">
@@ -108,7 +108,7 @@ export default function Footer() {
 
           {/* Company Section */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-warm-sand">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#2E4A36]">
               {t("footer.companyTitle")}
             </h3>
             <ul className="space-y-3">
@@ -127,7 +127,7 @@ export default function Footer() {
 
           {/* Legal Section */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-warm-sand">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#2E4A36]">
               {t("footer.legalTitle")}
             </h3>
             <ul className="space-y-3">
@@ -135,7 +135,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs text-warm-sand/55 transition-colors duration-200 hover:text-warm-sand"
+                    className="text-xs text-[rgba(46,74,54,0.58)] transition-colors duration-200 hover:text-[#2E4A36]"
                   >
                     {link.label}
                   </Link>
@@ -146,10 +146,10 @@ export default function Footer() {
 
           {/* Trust Section */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-warm-sand">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#2E4A36]">
               {t("footer.trustTitle")}
             </h3>
-            <ul className="space-y-3 text-sm text-warm-sand/70">
+            <ul className="space-y-3 text-sm text-[rgba(46,74,54,0.82)]">
               <li className="flex items-start gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +157,7 @@ export default function Footer() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-warm-sand/45"
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-[rgba(46,74,54,0.45)]"
                 >
                   <path
                     strokeLinecap="round"
@@ -174,7 +174,7 @@ export default function Footer() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-warm-sand/45"
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-[rgba(46,74,54,0.45)]"
                 >
                   <path
                     strokeLinecap="round"
@@ -191,7 +191,7 @@ export default function Footer() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-warm-sand/45"
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-[rgba(46,74,54,0.45)]"
                 >
                   <path
                     strokeLinecap="round"
@@ -208,7 +208,7 @@ export default function Footer() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-warm-sand/45"
+                  className="mt-0.5 h-5 w-5 flex-shrink-0 text-[rgba(46,74,54,0.45)]"
                 >
                   <path
                     strokeLinecap="round"
@@ -223,8 +223,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 border-t border-mountain-green/25 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 text-sm text-warm-sand/55 sm:flex-row">
+        <div className="mt-12 border-t border-[rgba(46,74,54,0.18)] pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 text-sm text-[rgba(46,74,54,0.58)] sm:flex-row">
             <p>
               © {currentYear} Go Natural. {t("footer.rights")}
             </p>
