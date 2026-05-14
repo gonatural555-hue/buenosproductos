@@ -5,11 +5,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
 import ProductCardSimple from "@/components/ProductCardSimple";
-import HeroCompassCursor from "@/components/home/HeroCompassCursor";
+import ProductsHeroLuxuryCompass from "@/components/products/ProductsHeroLuxuryCompass";
 import { LUMINOUS_EDGE_CARD } from "@/lib/ui/luminous-edge";
-import { GN_HERO_TOP_PAD } from "@/lib/ui/gonatural-design";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Hero /products: acerca el bloque al header respecto al patrón global del home. */
+const PRODUCTS_HERO_TOP_PAD =
+  "pt-[calc(env(safe-area-inset-top,0px)+0.5rem+9.375rem+6px)] sm:pt-[calc(env(safe-area-inset-top,0px)+0.5rem+9.625rem+6px)] md:pt-[calc(env(safe-area-inset-top,0px)+0.75rem+9.875rem+6px)]";
 
 type CompassLabels = {
   north: string;
@@ -121,13 +124,13 @@ export default function ProductsHero({
       />
 
       <motion.div
-        className={`relative z-[1] mx-auto w-full max-w-[1400px] px-[18px] pb-12 sm:px-7 sm:pb-14 md:px-10 md:pb-16 lg:px-12 ${GN_HERO_TOP_PAD}`}
+        className={`relative z-[1] mx-auto w-full max-w-[1400px] px-[18px] pb-10 sm:px-7 sm:pb-12 md:px-10 md:pb-14 lg:px-12 lg:pb-16 ${PRODUCTS_HERO_TOP_PAD}`}
         variants={container}
         initial="hidden"
         animate="show"
       >
-        <div className="grid grid-cols-1 items-center justify-items-center gap-10 text-center lg:grid-cols-2 lg:items-center lg:justify-items-stretch lg:gap-12 lg:text-left xl:gap-16">
-          <div className="flex min-w-0 max-w-xl flex-col items-center lg:max-w-none lg:items-start">
+        <div className="grid grid-cols-1 items-center justify-items-center gap-6 text-center sm:gap-7 lg:grid-cols-2 lg:items-start lg:justify-items-stretch lg:gap-8 lg:text-left xl:gap-10">
+          <div className="flex min-w-0 max-w-xl flex-col items-center space-y-3 sm:space-y-3.5 lg:max-w-none lg:items-start lg:space-y-4">
             <motion.p
               variants={item}
               className="font-inter text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C9622B] sm:text-xs"
@@ -136,47 +139,45 @@ export default function ProductsHero({
             </motion.p>
             <motion.h1
               variants={item}
-              className="mt-4 max-w-xl font-[family-name:var(--font-tan-nimbus),Georgia,serif] text-[clamp(1.85rem,4.2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-[#2E4A36] lg:mx-0"
+              className="max-w-xl font-[family-name:var(--font-tan-nimbus),Georgia,serif] text-[clamp(1.55rem,3.9vw,2.65rem)] font-semibold leading-[1.06] tracking-[-0.02em] text-[#2E4A36] sm:text-[clamp(1.65rem,3.5vw,2.7rem)] lg:mx-0 lg:text-[clamp(1.85rem,2.6vw,2.75rem)]"
             >
               {title}
             </motion.h1>
             <motion.p
               variants={item}
-              className="mt-4 max-w-md font-inter text-sm leading-relaxed text-[rgba(46,74,54,0.82)] md:text-[15px] md:leading-relaxed lg:mx-0"
+              className="max-w-md font-inter text-sm leading-relaxed text-[rgba(46,74,54,0.82)] md:text-[15px] md:leading-relaxed lg:mx-0"
             >
               {subtitle}
             </motion.p>
-            <motion.div variants={item} className="mt-6 flex justify-center lg:justify-start">
+            <motion.div variants={item} className="flex justify-center pt-1 lg:justify-start">
               <span className="inline-flex rounded-full border border-[#2E4A36]/25 bg-[#2E4A36] px-4 py-2 font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[0_8px_28px_-14px_rgba(46,74,54,0.35)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 md:text-xs">
                 {freeShippingBadge}
               </span>
             </motion.div>
 
-            <motion.div
-              variants={item}
-              className="mt-8 flex items-end justify-center gap-6 md:mt-10 lg:justify-start"
-            >
-              <div className="origin-top scale-[0.72] sm:scale-[0.78] md:scale-[0.85]">
-                <HeroCompassCursor
-                  ariaLabel={compassAria}
-                  cardinalLabels={compassLabels}
-                  variant="brand"
-                />
-              </div>
+            <motion.div variants={item} className="flex w-full justify-center pt-2 lg:justify-start lg:pt-3">
+              <ProductsHeroLuxuryCompass
+                ariaLabel={compassAria}
+                labels={compassLabels}
+                reduceMotion={reduceMotion}
+              />
             </motion.div>
           </div>
 
-          <motion.div variants={item} className="flex w-full min-w-0 max-w-[min(100%,420px)] flex-col items-center lg:max-w-none lg:items-stretch">
+          <motion.div
+            variants={item}
+            className="flex w-full min-w-0 max-w-[min(100%,360px)] flex-col items-center max-lg:mt-1 lg:max-w-none lg:items-stretch lg:pl-1 xl:pl-2"
+          >
             {slides.length > 0 ? (
-              <div className="relative w-full">
+              <div className="relative w-full lg:-mt-1">
                 <div
-                  className={`overflow-hidden rounded-[1.35rem] border border-[rgba(46,74,54,0.1)] bg-[#F4EBDD]/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_16px_48px_-20px_rgba(17,23,19,0.12)] ring-1 ring-[rgba(46,74,54,0.06)] sm:p-5 md:rounded-[1.75rem] md:p-6 ${LUMINOUS_EDGE_CARD}`}
+                  className={`overflow-hidden rounded-[1.2rem] border border-[rgba(46,74,54,0.1)] bg-[#F4EBDD]/90 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_12px_40px_-18px_rgba(17,23,19,0.1)] ring-1 ring-[rgba(46,74,54,0.06)] sm:rounded-[1.35rem] sm:p-4 md:rounded-[1.65rem] md:p-5 ${LUMINOUS_EDGE_CARD}`}
                 >
-                  <div className="mb-4 flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="font-inter text-[11px] font-medium uppercase tracking-[0.2em] text-[rgba(46,74,54,0.55)]">
+                  <div className="mb-3 flex w-full flex-col items-center gap-2.5 sm:mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <p className="text-center font-inter text-[11px] font-medium uppercase tracking-[0.2em] text-[rgba(46,74,54,0.55)] sm:text-left">
                       {featuredRailLabel}
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-2">
                       <button
                         type="button"
                         onClick={goPrev}

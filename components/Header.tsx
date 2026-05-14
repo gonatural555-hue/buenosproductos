@@ -7,7 +7,7 @@ import { useCart } from "@/context/CartContext";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
 import AuthModal from "@/components/AuthModal";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAllCategories } from "@/lib/categories";
 import { locales, type Locale } from "@/lib/i18n/config";
@@ -16,9 +16,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 const PREMIUM_EASE = [0.22, 1, 0.36, 1] as const;
 const PREMIUM_MS = 0.58;
-const MEGA_CLOSE_MS = 480;
 
-/** Orden editorial del mega menú (coincide con categorías padre). */
+/** Orden editorial del menú móvil de categorías (coincide con categorías padre). */
 const MAIN_CATEGORY_ORDER = [
   "fishing",
   "water-sports",
@@ -161,8 +160,6 @@ export default function Header() {
   const { authOpen, setAuthOpen, openAuthModal, initialTab } = useAuth();
   const reduceMotion = useReducedMotion() ?? false;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [categoriesOpen, setCategoriesOpen] = useState(false);
-  const categoriesCloseTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
   const locale = useLocale();
   const t = useTranslations();
@@ -178,40 +175,6 @@ export default function Header() {
       locales.includes(s[0] as Locale)
     );
   }, [pathname]);
-
-  const openCategoriesMenu = () => {
-    if (categoriesCloseTimeout.current) {
-      clearTimeout(categoriesCloseTimeout.current);
-      categoriesCloseTimeout.current = null;
-    }
-    setCategoriesOpen(true);
-  };
-
-  const scheduleCloseCategories = () => {
-    if (categoriesCloseTimeout.current) {
-      clearTimeout(categoriesCloseTimeout.current);
-    }
-    categoriesCloseTimeout.current = setTimeout(() => {
-      setCategoriesOpen(false);
-    }, MEGA_CLOSE_MS);
-  };
-
-  const closeCategoriesMenu = () => {
-    if (categoriesCloseTimeout.current) {
-      clearTimeout(categoriesCloseTimeout.current);
-      categoriesCloseTimeout.current = null;
-    }
-    setCategoriesOpen(false);
-  };
-
-  useEffect(() => {
-    if (!categoriesOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [categoriesOpen]);
 
   const [headerPortalRoot, setHeaderPortalRoot] = useState<HTMLElement | null>(null);
   useLayoutEffect(() => {
@@ -284,9 +247,6 @@ export default function Header() {
     </svg>
   );
 
-  const megaTopClass =
-    "top-[calc(env(safe-area-inset-top,0px)+0.75rem+11.25rem)] md:top-[calc(env(safe-area-inset-top,0px)+1rem+12rem)]";
-
   const headerShellClass = isPdp
     ? "pointer-events-auto relative z-50 w-full overflow-x-hidden font-inter"
     : "pointer-events-none !fixed inset-x-0 top-0 z-50 w-full overflow-x-hidden font-inter";
@@ -340,29 +300,9 @@ export default function Header() {
                 className="flex min-w-0 shrink-0 items-center"
                 aria-label={t("header.nav.shopByCategories")}
               >
-                <div
-                  className="relative"
-                  onMouseEnter={openCategoriesMenu}
-                  onMouseLeave={scheduleCloseCategories}
-                >
-                  <motion.span
-                    className="inline-flex will-change-transform"
-                    whileHover={reduceMotion ? undefined : { y: -2 }}
-                    transition={{ duration: PREMIUM_MS, ease: PREMIUM_EASE }}
-                  >
-                    <Link
-                      href={`/${locale}/products`}
-                      className="relative inline-block whitespace-nowrap rounded-full border-0 bg-transparent px-1.5 py-1 text-left font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-[color,box-shadow] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] hover:shadow-[0_0_36px_rgba(217,164,65,0.16),0_10px_32px_-14px_rgba(46,74,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgba(244,235,221,0.85)] md:text-[14px]"
-                      aria-expanded={categoriesOpen}
-                      aria-haspopup="dialog"
-                      aria-controls="header-categories-mega"
-                      onFocus={openCategoriesMenu}
-                      onBlur={scheduleCloseCategories}
-                    >
-                      {t("header.nav.shopByCategories")}
-                    </Link>
-                  </motion.span>
-                </div>
+                <PremiumNavLink href={`/${locale}/products`}>
+                  {t("header.nav.shopByCategories")}
+                </PremiumNavLink>
               </nav>
 
               <div className="ml-auto flex shrink-0 items-center gap-1 lg:gap-2">
@@ -612,104 +552,6 @@ export default function Header() {
           </motion.nav>
         ) : null}
       </div>
-
-      <AnimatePresence>
-        {categoriesOpen ? (
-          <>
-            <motion.div
-              key="mega-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.48, ease: PREMIUM_EASE }}
-              className="pointer-events-auto fixed inset-0 z-[38] bg-black/22"
-              aria-hidden
-              onClick={closeCategoriesMenu}
-            />
-            <motion.div
-              key="mega-shell"
-              id="header-categories-mega"
-              role="dialog"
-              aria-modal="true"
-              aria-label={t("header.nav.shopByCategories")}
-              initial={{ opacity: 0, y: -18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.68, ease: PREMIUM_EASE }}
-              className={[
-                "pointer-events-auto fixed left-1/2 z-40 w-[min(84vw,1240px)] max-w-[1240px] -translate-x-1/2",
-                "-mt-1 max-h-[min(72vh,calc(100dvh-10rem))] overflow-y-auto overscroll-contain rounded-[28px]",
-                "border border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-10 py-12 shadow-[0_20px_60px_rgba(0,0,0,0.06)] sm:px-12 md:px-14 md:py-14",
-                megaTopClass,
-              ].join(" ")}
-              onMouseEnter={openCategoriesMenu}
-              onMouseLeave={scheduleCloseCategories}
-            >
-              <div className="grid grid-cols-1 gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-                {mainCategories.map((category, colIdx) => (
-                  <motion.div
-                    key={category.slug}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.1 + colIdx * 0.065,
-                      duration: 0.62,
-                      ease: PREMIUM_EASE,
-                    }}
-                    className={
-                      colIdx === mainCategories.length - 1 && mainCategories.length === 5
-                        ? "sm:col-span-2 lg:col-span-4 lg:flex lg:justify-center"
-                        : ""
-                    }
-                  >
-                    <div
-                      className={
-                        colIdx === mainCategories.length - 1 && mainCategories.length === 5
-                          ? "w-full max-w-md lg:text-center"
-                          : ""
-                      }
-                    >
-                      <Link
-                        href={`/${locale}/category/${category.slug}`}
-                        onClick={closeCategoriesMenu}
-                        className="inline-block font-inter text-[clamp(1.35rem,1.9vw,1.65rem)] font-semibold tracking-[-0.02em] text-[#2E4A36] transition-[color,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#243d2e] hover:drop-shadow-[0_0_14px_rgba(46,74,54,0.12)]"
-                      >
-                        {t(`categories.names.${category.slug}`, category.name)}
-                      </Link>
-                      <div
-                        className={`mt-4 flex flex-col gap-0.5 ${
-                          colIdx === mainCategories.length - 1 && mainCategories.length === 5
-                            ? "lg:mx-auto lg:max-w-sm lg:items-start lg:text-left"
-                            : ""
-                        }`}
-                      >
-                        {(subCategoriesByParent[category.slug] || []).map((sub, si) => (
-                          <motion.div
-                            key={sub.slug}
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: 0.22 + colIdx * 0.05 + si * 0.045,
-                              duration: 0.52,
-                              ease: PREMIUM_EASE,
-                            }}
-                          >
-                            <MegaSubLink
-                              href={`/${locale}/category/${sub.slug}`}
-                              label={t(`categories.names.${sub.slug}`, sub.name)}
-                              onNavigate={closeCategoriesMenu}
-                            />
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </>
-        ) : null}
-      </AnimatePresence>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} initialTab={initialTab} />
     </header>
