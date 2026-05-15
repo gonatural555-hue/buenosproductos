@@ -109,7 +109,7 @@ export default async function BlogPage({
 
       <section className="border-b border-earth-brown/12 bg-soft-stone py-20 md:py-28 lg:py-32">
         <ScrollReveal>
-          <p className="mx-auto max-w-2xl px-6 text-center text-lg font-normal leading-relaxed text-dark-base md:text-xl md:leading-relaxed">
+          <p className="mx-auto max-w-2xl px-6 text-center font-display text-lg font-light leading-relaxed tracking-tight text-dark-base md:text-xl md:leading-relaxed">
             {manifesto}
           </p>
         </ScrollReveal>
