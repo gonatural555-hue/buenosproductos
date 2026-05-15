@@ -179,7 +179,6 @@ export default function Header() {
   }, [pathname]);
 
   const [headerPortalRoot, setHeaderPortalRoot] = useState<HTMLElement | null>(null);
-  const headerRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
     if (typeof document === "undefined") return;
@@ -202,18 +201,6 @@ export default function Header() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- portal root sync
     setHeaderPortalRoot(el);
   }, [isPdp]);
-
-  /** Con barra fija: la rueda sobre el header no debe desplazar la página (menú móvil abierto = se permite scroll). */
-  useEffect(() => {
-    if (isPdp || mobileMenuOpen) return;
-    const el = headerRef.current;
-    if (!el) return;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [isPdp, mobileMenuOpen]);
 
   const { mainCategories, subCategoriesByParent } = useMemo(() => {
     const all = getAllCategories();
@@ -281,10 +268,10 @@ export default function Header() {
     : "pointer-events-none !fixed inset-x-0 top-0 z-50 w-full overflow-x-hidden overflow-y-visible overscroll-none font-inter";
 
   const headerUi = (
-    <header ref={headerRef} className={headerShellClass}>
-      <div className="mx-auto w-full max-w-[1440px] overflow-x-hidden overflow-y-visible px-0 pt-4 md:px-7 md:pt-8 lg:px-12 lg:pt-10">
+    <header className={headerShellClass}>
+      <div className="mx-auto w-full max-w-[1440px] overflow-x-hidden overflow-y-visible px-0 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] md:px-7 md:pt-[calc(2.75rem+env(safe-area-inset-top,0px))] lg:px-12 lg:pt-[calc(3rem+env(safe-area-inset-top,0px))]">
         <div className={HEADER_PILL}>
-          <div className={`${HEADER_TOOLBAR_ROW} relative z-0 hidden w-full md:flex md:min-h-[3.25rem]`}>
+          <div className={`${HEADER_TOOLBAR_ROW} relative z-0 hidden w-full md:flex md:min-h-[3.5rem]`}>
             <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(7.5rem+6px)] md:pr-[calc(7rem+8px)] lg:pr-[calc(7.75rem+10px)]">
               <nav
                 className="flex shrink-0 items-center gap-0.5"
@@ -314,12 +301,12 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute left-1/2 top-0 z-[45] -translate-x-1/2 -translate-y-[46%] md:-translate-y-[48%] lg:-translate-y-[50%]">
-              <div className="pointer-events-auto drop-shadow-[0_10px_28px_rgba(46,74,54,0.1)]">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[45] -translate-x-1/2 -translate-y-1/2">
+              <div className="pointer-events-auto drop-shadow-[0_8px_24px_rgba(46,74,54,0.08)]">
                 <BrandLogoLink
                   locale={locale}
                   alt={t("header.logoAlt")}
-                  imageClassName="h-[9.375rem] w-auto max-h-[10rem] max-w-[min(30vw,20.5rem)] object-contain object-center md:h-[10rem] md:max-h-[10.5rem] md:max-w-[22.5rem] lg:max-h-[11.25rem] lg:max-w-[23.75rem]"
+                  imageClassName="h-[8.25rem] w-auto max-h-[9rem] max-w-[min(28vw,19rem)] object-contain object-center md:h-[8.5rem] md:max-h-[9rem] md:max-w-[21rem] lg:h-[9rem] lg:max-h-[9.5rem] lg:max-w-[22rem]"
                 />
               </div>
             </div>
