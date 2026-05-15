@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 import { GN_EASE_PREMIUM, GN_HERO_TOP_PAD } from "@/lib/ui/gonatural-design";
+import { splitHeroLineWithAccent } from "@/lib/ui/hero-title-accent";
 
 const easeOut = GN_EASE_PREMIUM;
 
@@ -120,7 +121,11 @@ export default function ProductsHero({
         <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 md:gap-4">
           <div className="flex w-full max-w-[980px] flex-col items-center">
             <motion.h1 variants={itemVariants} className="gn-hero-editorial-two-line w-full">
-              <span className="gn-hero-editorial-line-forest text-balance">{line1}</span>
+              {splitHeroLineWithAccent(
+                line1,
+                t("productsPage.heroAccentWord"),
+                "gn-hero-editorial-line-forest"
+              )}
               {line2 ? (
                 <span className="gn-hero-editorial-line-mustard text-balance">{line2}</span>
               ) : null}

@@ -127,6 +127,7 @@
   },
   "homeBrandHero": {
     "eyebrow": "GO NATURAL",
+    "titleAccentWord": "Retour",
     "title": "Retour\nà\nl’essentiel",
     "subtitle": "Un équipement pensé pour bouger, se reconnecter à la nature et repartir dehors.",
     "ctaPrimary": "Acheter l’équipement outdoor",
@@ -219,6 +220,7 @@
     "heroTagline": "Moins de bruit. Plus de nature.",
     "heroImageAlt": "Équipement outdoor en nature",
     "heroShopEyebrow": "BOUTIQUE GO NATURAL",
+    "heroAccentWord": "essentiel",
     "heroEssentialTitle": "L’essentiel\npour l’extérieur",
     "heroEditorialSubtitle": "Produits outdoor sélectionnés pour la montagne, l’eau, le trekking et le quotidien aventureux.",
     "heroDiscoverProducts": "Découvrir les produits",

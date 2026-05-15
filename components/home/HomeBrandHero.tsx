@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { GN_EASE_PREMIUM, GN_HERO_TOP_PAD } from "@/lib/ui/gonatural-design";
+import { splitHeroLineWithAccent } from "@/lib/ui/hero-title-accent";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 
 export type HomeBrandHeroProps = {
@@ -87,7 +88,11 @@ export default function HomeBrandHero({
         <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 md:gap-4">
           <div className="flex w-full max-w-[980px] flex-col items-center">
             <motion.h1 variants={itemVariants} className="gn-hero-editorial-two-line w-full">
-              <span className="gn-hero-editorial-line-forest text-balance">{line1}</span>
+              {splitHeroLineWithAccent(
+                line1,
+                t("homeBrandHero.titleAccentWord"),
+                "gn-hero-editorial-line-forest"
+              )}
               {line2 ? (
                 <span className="gn-hero-editorial-line-mustard text-balance">{line2}</span>
               ) : null}

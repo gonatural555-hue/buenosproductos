@@ -127,6 +127,7 @@
   },
   "homeBrandHero": {
     "eyebrow": "GO NATURAL",
+    "titleAccentWord": "Back",
     "title": "Go Back\nTo\nEssentials",
     "subtitle": "Gear designed for movement, nature and the moments that bring you back outside.",
     "ctaPrimary": "Shop Outdoor Gear",
@@ -219,6 +220,7 @@
     "heroTagline": "Less noise. More nature.",
     "heroImageAlt": "Outdoor gear in the wild",
     "heroShopEyebrow": "GO NATURAL SHOP",
+    "heroAccentWord": "Gear",
     "heroEssentialTitle": "Essential Gear\nFor The Outside",
     "heroEditorialSubtitle": "Curated outdoor products for mountain, water, trekking and everyday adventure.",
     "heroDiscoverProducts": "Discover products",
