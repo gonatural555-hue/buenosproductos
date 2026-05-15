@@ -22,6 +22,8 @@ export type HomeHeroVideoSlideProps = {
   isActive: boolean;
   scroll: number;
   reduceMotion: boolean;
+  /** En carrusel embebido (blog): un solo H1 vive en el hero editorial. */
+  titleHeadingTag?: "h1" | "h2";
 };
 
 /** Hero inicio: fondo crema, logo de marca, titular y subtítulo (sin vídeo ni foto de fondo). */
@@ -39,7 +41,11 @@ export default function HomeHeroVideoSlide({
   isActive: _isActive,
   scroll: _scroll,
   reduceMotion: _reduceMotion,
+  titleHeadingTag = "h1",
 }: HomeHeroVideoSlideProps) {
+  const displayTitle = title.replace(/\n/g, " ").replace(/\s+/g, " ").trim();
+  const TitleTag = titleHeadingTag;
+
   return (
     <div className="absolute inset-0 flex flex-col bg-[#F4EBDD]">
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center overflow-hidden px-5 py-10 text-center sm:px-10 sm:py-12 md:py-14">
@@ -53,9 +59,9 @@ export default function HomeHeroVideoSlide({
             sizes="(max-width: 640px) 90vw, 22rem"
             className="mb-6 h-auto w-full max-w-[min(90vw,22rem)] shrink-0 object-contain sm:max-w-[24rem] md:max-w-[26rem]"
           />
-          <h1 className="hero-display max-w-full shrink-0 text-balance text-[clamp(1.65rem,4.8vw,3rem)] font-semibold leading-[1.12] tracking-tight text-[#2E4A36] sm:max-w-3xl">
-            {title}
-          </h1>
+          <TitleTag className="hero-display max-w-full shrink-0 text-balance text-[clamp(1.65rem,4.8vw,3rem)] font-semibold leading-[1.12] tracking-tight text-[#2E4A36] sm:max-w-3xl">
+            {displayTitle}
+          </TitleTag>
           {subtitle ? (
             <p className="mt-5 max-w-2xl text-pretty font-sans text-base leading-relaxed text-[#D9A441] sm:mt-6 sm:text-lg">
               {subtitle}

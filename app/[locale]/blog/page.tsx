@@ -1,3 +1,4 @@
+import BlogEditorialHero from "@/components/blog/BlogEditorialHero";
 import BlogHero from "@/components/blog/BlogHero";
 import FeaturedStory from "@/components/blog/FeaturedStory";
 import EditorialGrid from "@/components/blog/EditorialGrid";
@@ -16,6 +17,7 @@ import { getProducts } from "@/lib/products";
 
 const FEATURED_SLUG = "edge-of-water";
 const FALLBACK_IMAGE = "/assets/images/blog/blog-hero.webp";
+const BLOG_POSTS_ANCHOR = "blog-posts";
 
 export async function generateMetadata({
   params,
@@ -91,21 +93,31 @@ export default async function BlogPage({
 
   const tagline = journal?.tagline ?? "";
   const manifesto = journal?.manifesto ?? t("blog.intro");
+  const blogTitle = t("blog.title");
+  const blogHeroAriaLabel = blogTitle.split("\n")[0]?.trim() || blogTitle;
 
   const products = getProducts();
   const blogHeroProps = buildHomeHeroCarouselProps(locale, t, products, {
     tagline,
-    title: t("blog.title"),
+    title: blogTitle,
     subtitle: t("blog.subtitle"),
     ctaProducts: t("hero.cta"),
     ctaJournal: t("homeJournal.cta"),
     imageSrc: "/assets/images/blog/blog-hero.webp",
-    imageAlt: `${t("blog.title")} — Go Natural`,
+    imageAlt: `${blogTitle.split("\n")[0]?.trim() ?? blogTitle} — Go Natural`,
   });
 
   return (
     <main className="bg-warm-sand text-dark-base">
-      <BlogHero {...blogHeroProps} />
+      <BlogEditorialHero
+        locale={locale}
+        title={blogTitle}
+        subtitle={t("blog.subtitle")}
+        eyebrow={t("blog.heroEyebrow")}
+        exploreCtaLabel={t("blog.heroExploreArticles")}
+        postsAnchorId={BLOG_POSTS_ANCHOR}
+        sectionAriaLabel={blogHeroAriaLabel}
+      />
 
       <section className="border-b border-earth-brown/12 bg-soft-stone py-20 md:py-28 lg:py-32">
         <ScrollReveal>
@@ -114,6 +126,10 @@ export default async function BlogPage({
           </p>
         </ScrollReveal>
       </section>
+
+      <ScrollReveal>
+        <BlogHero {...blogHeroProps} />
+      </ScrollReveal>
 
       {featured ? (
         <FeaturedStory
@@ -125,6 +141,7 @@ export default async function BlogPage({
           }}
           eyebrow={journal?.featuredLabel ?? ""}
           ctaLabel={t("common.readArticle")}
+          anchorId={BLOG_POSTS_ANCHOR}
         />
       ) : null}
 

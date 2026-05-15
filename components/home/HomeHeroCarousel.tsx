@@ -251,6 +251,7 @@ export default function HomeHeroCarousel({
                 isActive={index === 0}
                 scroll={scroll}
                 reduceMotion={reduceMotion}
+                titleHeadingTag={embedded ? "h2" : "h1"}
               />
             </div>
 

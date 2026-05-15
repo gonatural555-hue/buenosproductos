@@ -14,6 +14,8 @@ type FeaturedStoryProps = {
   post: FeaturedStoryPost;
   eyebrow: string;
   ctaLabel: string;
+  /** Ancla para scroll desde el hero (p. ej. lista de artículos). */
+  anchorId?: string;
 };
 
 /**
@@ -23,9 +25,17 @@ export default function FeaturedStory({
   post,
   eyebrow,
   ctaLabel,
+  anchorId,
 }: FeaturedStoryProps) {
   return (
-    <section className="bg-mountain-green py-16 md:py-24 lg:py-28">
+    <section
+      id={anchorId}
+      className={`bg-mountain-green py-16 md:py-24 lg:py-28${
+        anchorId
+          ? " scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)]"
+          : ""
+      }`}
+    >
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-12">
         <ScrollReveal>
           <p className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-accent-gold drop-shadow-[0_1px_10px_rgba(0,0,0,0.35)]">

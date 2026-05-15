@@ -727,8 +727,10 @@
     "ctaButton": "View the store"
   },
   "blog": {
-    "title": "Journal",
+    "title": "Journal\nMove with intention",
     "subtitle": "Stories about exploration, gear, and quiet journeys.",
+    "heroEyebrow": "Outdoor magazine",
+    "heroExploreArticles": "Explore articles",
     "intro": "Thoughts, stories, and insights for those who move with intention.",
     "journal": {
       "tagline": "Move with intention",

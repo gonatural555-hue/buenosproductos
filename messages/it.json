@@ -727,8 +727,10 @@
     "ctaButton": "Vedi il negozio"
   },
   "blog": {
-    "title": "Journal",
+    "title": "Journal\nMuoviti con intenzione",
     "subtitle": "Storie di esplorazione, gear e viaggi silenziosi.",
+    "heroEyebrow": "Rivista outdoor",
+    "heroExploreArticles": "Esplora gli articoli",
     "intro": "Pensieri e racconti per chi si muove con intenzione.",
     "journal": {
       "tagline": "Muoviti con intenzione",
