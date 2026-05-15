@@ -100,7 +100,7 @@ export default function BentoHeroSection(props: HomeHeroCarouselProps) {
             <Link
               href={`/${locale}/category/mountain-snow`}
               aria-label={`${t("heroBento.rightMountainTitle")} — ${t("heroBento.exploreAria")}`}
-              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[14.25rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[16rem] sm:p-6 lg:col-start-2 lg:row-start-1 lg:min-h-0`}
+              className={`${BENTO_CARD} ${BENTO_HOVER} group pointer-events-auto relative flex min-h-[18.25rem] flex-col justify-end overflow-hidden p-5 sm:min-h-[16rem] sm:p-6 lg:col-start-2 lg:row-start-1 lg:min-h-0`}
             >
               <Image
                 src={mountainImg}
