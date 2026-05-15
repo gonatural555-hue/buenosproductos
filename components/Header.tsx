@@ -30,7 +30,7 @@ const HEADER_TOOLBAR_ROW =
   "relative flex w-full max-w-[1440px] items-center gap-2 py-1.5 md:gap-3 md:py-2";
 
 const HEADER_PILL =
-  "pointer-events-auto relative w-full rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[rgba(244,235,221,0.72)] md:px-4 md:py-0 md:shadow-[0_10px_40px_rgba(0,0,0,0.05)] md:backdrop-blur-[16px] md:supports-[backdrop-filter]:bg-[rgba(244,235,221,0.62)]";
+  "pointer-events-auto relative w-full overflow-hidden rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[rgba(244,235,221,0.72)] md:px-4 md:py-0 md:shadow-[0_10px_40px_rgba(0,0,0,0.05)] md:backdrop-blur-[16px] md:supports-[backdrop-filter]:bg-[rgba(244,235,221,0.62)]";
 
 const LOCALE_FLOAT =
   "rounded-full px-2 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36] md:text-[12px] md:tracking-[0.12em]";
@@ -179,6 +179,8 @@ export default function Header() {
   }, [pathname]);
 
   const [headerPortalRoot, setHeaderPortalRoot] = useState<HTMLElement | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
+
   useLayoutEffect(() => {
     if (typeof document === "undefined") return;
     if (isPdp) {
@@ -194,9 +196,24 @@ export default function Header() {
       el.id = id;
       document.body.insertAdjacentElement("afterbegin", el);
     }
+    /** Sin altura en flujo: evita que el contenedor del portal genere scroll/overscroll propio. */
+    el.className =
+      "gn-header-portal pointer-events-none fixed inset-x-0 top-0 z-50 h-0 w-full overflow-visible";
     // eslint-disable-next-line react-hooks/set-state-in-effect -- portal root sync
     setHeaderPortalRoot(el);
   }, [isPdp]);
+
+  /** Con barra fija: la rueda sobre el header no debe desplazar la página (menú móvil abierto = se permite scroll). */
+  useEffect(() => {
+    if (isPdp || mobileMenuOpen) return;
+    const el = headerRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [isPdp, mobileMenuOpen]);
 
   const { mainCategories, subCategoriesByParent } = useMemo(() => {
     const all = getAllCategories();
@@ -260,11 +277,11 @@ export default function Header() {
   );
 
   const headerShellClass = isPdp
-    ? "pointer-events-auto relative z-50 w-full overflow-x-hidden font-inter"
-    : "pointer-events-none !fixed inset-x-0 top-0 z-50 w-full overflow-x-hidden font-inter";
+    ? "pointer-events-auto relative z-50 w-full overflow-x-hidden overscroll-none font-inter"
+    : "pointer-events-none !fixed inset-x-0 top-0 z-50 w-full overflow-x-hidden overscroll-none font-inter";
 
   const headerUi = (
-    <header className={headerShellClass}>
+    <header ref={headerRef} className={headerShellClass}>
       <div className="mx-auto w-full max-w-[1440px] px-0 pt-3 md:px-7 md:pt-5 lg:px-12">
         <div className={HEADER_PILL}>
           <div className={`${HEADER_TOOLBAR_ROW} hidden w-full md:flex`}>

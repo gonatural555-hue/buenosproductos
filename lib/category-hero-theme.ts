@@ -64,20 +64,34 @@ export function resolveCategoryHeroKind(category: {
   return "outdoor-adventure";
 }
 
-/** Acento de marca por familia (CTA + gráfica). El título principal sigue en forest. */
+/**
+ * Colores sólidos de los CTAs de segmento en `/products` (misma lógica que el título del hero de categoría).
+ * `forest` = Fishing (#2A2E4B), `burgundy` = Mountain & snow, `burnt` = Water sports, `mustard` = Outdoor.
+ */
+export const PRODUCTS_CATALOG_CTA_STYLE = {
+  forest: { bg: "#2A2E4B", fg: "#F4EBDD" },
+  burgundy: { bg: "#6E1F28", fg: "#F4EBDD" },
+  burnt: { bg: "#C9622B", fg: "#FFFFFF" },
+  mustard: { bg: "#D9A441", fg: "#2E4A36" },
+} as const;
+
+export type ProductsCatalogCtaTone = keyof typeof PRODUCTS_CATALOG_CTA_STYLE;
+
+/** Acento por familia: mismo hex que el botón correspondiente en la página Products. */
 export const CATEGORY_HERO_ACCENT: Record<CategoryHeroKind, string> = {
-  fishing: "#2E4A36",
-  "mountain-snow": "#2A2E4B",
-  "outdoor-adventure": "#D9A441",
-  "water-sports": "#6E1F28",
-  "active-sports": "#C9622B",
+  fishing: PRODUCTS_CATALOG_CTA_STYLE.forest.bg,
+  "mountain-snow": PRODUCTS_CATALOG_CTA_STYLE.burgundy.bg,
+  "water-sports": PRODUCTS_CATALOG_CTA_STYLE.burnt.bg,
+  "outdoor-adventure": PRODUCTS_CATALOG_CTA_STYLE.mustard.bg,
+  /** Sin CTA dedicado en Products; mismo tono “energía” que burnt. */
+  "active-sports": PRODUCTS_CATALOG_CTA_STYLE.burnt.bg,
 };
 
-/** Color de texto sobre el CTA (contraste con el acento). */
+/** Color de texto sobre el CTA del hero de categoría (alineado con Products cuando aplica). */
 export const CATEGORY_HERO_CTA_FG: Record<CategoryHeroKind, string> = {
-  fishing: "#F4EBDD",
-  "mountain-snow": "#F4EBDD",
-  "outdoor-adventure": "#2E4A36",
-  "water-sports": "#F4EBDD",
-  "active-sports": "#F4EBDD",
+  fishing: PRODUCTS_CATALOG_CTA_STYLE.forest.fg,
+  "mountain-snow": PRODUCTS_CATALOG_CTA_STYLE.burgundy.fg,
+  "water-sports": PRODUCTS_CATALOG_CTA_STYLE.burnt.fg,
+  "outdoor-adventure": PRODUCTS_CATALOG_CTA_STYLE.mustard.fg,
+  "active-sports": PRODUCTS_CATALOG_CTA_STYLE.burnt.fg,
 };

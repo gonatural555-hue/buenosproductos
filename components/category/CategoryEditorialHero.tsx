@@ -242,7 +242,8 @@ export default function CategoryEditorialHero({
           <motion.h1
             id="category-hero-heading"
             variants={itemVariants}
-            className="font-display mt-4 text-balance text-[clamp(2.1rem,4.8vw,3.65rem)] font-medium leading-[1.06] tracking-[-0.02em] text-[#2E4A36] md:mt-5"
+            className="font-display mt-4 text-balance text-[clamp(2.1rem,4.8vw,3.65rem)] font-medium leading-[1.06] tracking-[-0.02em] md:mt-5"
+            style={{ color: accent }}
           >
             {title}
           </motion.h1>

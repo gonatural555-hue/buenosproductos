@@ -5,10 +5,17 @@ import Link from "next/link";
 import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
+import {
+  PRODUCTS_CATALOG_CTA_STYLE,
+  type ProductsCatalogCtaTone,
+} from "@/lib/category-hero-theme";
 import { GN_EASE_PREMIUM, GN_HERO_TOP_PAD } from "@/lib/ui/gonatural-design";
 import { splitHeroLineWithAccent } from "@/lib/ui/hero-title-accent";
 
 const easeOut = GN_EASE_PREMIUM;
+
+const PRODUCTS_CATEGORY_CTA_BASE =
+  "inline-flex min-h-[52px] w-full items-center justify-center rounded-full px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] shadow-[0_10px_32px_-10px_rgba(46,74,54,0.22)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_rgba(46,74,54,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]";
 
 /** Igual que `HomeBrandHero`: título en 2 bloques editoriales. */
 function editorialHeadlineFromTitle(title: string): { line1: string; line2: string | null } {
@@ -24,26 +31,12 @@ function editorialHeadlineFromTitle(title: string): { line1: string; line2: stri
   return { line1: lines[0] ?? "", line2: null };
 }
 
-export type ProductsHeroCategoryTone = "forest" | "burgundy" | "burnt" | "mustard";
+export type ProductsHeroCategoryTone = ProductsCatalogCtaTone;
 
 export type ProductsHeroCategoryCta = {
   slug: string;
   label: string;
   tone: ProductsHeroCategoryTone;
-};
-
-const CATEGORY_CTA_CLASS: Record<
-  ProductsHeroCategoryTone,
-  string
-> = {
-  forest:
-    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_10px_36px_rgba(46,74,54,0.18)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_14px_44px_rgba(46,74,54,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
-  burgundy:
-    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(145deg,#5a1820_0%,#6E1F28_45%,#4a151c_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_36px_rgba(46,74,54,0.2)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
-  burnt:
-    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[linear-gradient(145deg,#a84d22_0%,#C9622B_50%,#8f401c_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_10px_36px_rgba(201,98,43,0.25)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2E4A36]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
-  mustard:
-    "inline-flex min-h-[52px] w-full items-center justify-center rounded-full border-[1.5px] border-white/90 bg-[linear-gradient(145deg,#e4b84a_0%,#D9A441_50%,#c49a38_100%)] px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[#2E4A36] shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_10px_32px_-8px_rgba(46,74,54,0.15)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2E4A36]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]",
 };
 
 const discoverCtaClass =
@@ -148,15 +141,25 @@ export default function ProductsHero({
               variants={itemVariants}
               className="mt-6 grid w-full max-w-2xl grid-cols-2 gap-3 sm:max-w-none sm:grid-cols-2 sm:gap-4 md:mt-7 lg:grid-cols-4"
             >
-              {categoryCtas.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  href={`/${locale}/category/${cat.slug}`}
-                  className={CATEGORY_CTA_CLASS[cat.tone]}
-                >
-                  {cat.label}
-                </Link>
-              ))}
+              {categoryCtas.map((cat) => {
+                const cta = PRODUCTS_CATALOG_CTA_STYLE[cat.tone];
+                return (
+                  <Link
+                    key={cat.slug}
+                    href={`/${locale}/category/${cat.slug}`}
+                    className={`${PRODUCTS_CATEGORY_CTA_BASE} ${
+                      cat.tone === "mustard" ? "border-[1.5px] border-white/90" : ""
+                    }`}
+                    style={{
+                      backgroundColor: cta.bg,
+                      color: cta.fg,
+                      boxShadow: `inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px -10px ${cta.bg}66`,
+                    }}
+                  >
+                    {cat.label}
+                  </Link>
+                );
+              })}
             </motion.div>
 
             <motion.div variants={itemVariants} className="mt-6 flex w-full justify-center md:mt-7">
