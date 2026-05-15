@@ -307,7 +307,7 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(11.5rem+6px)] md:gap-2 md:pl-[calc(12rem+8px)] lg:pl-[calc(12.75rem+10px)]">
+            <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(8.5rem+6px)] md:gap-2 md:pl-[calc(9rem+8px)] lg:pl-[calc(9.75rem+10px)]">
               <nav
                 className="flex min-w-0 shrink-0 items-center"
                 aria-label={t("header.nav.shopByCategories")}
