@@ -6,14 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:alibaba": "node scripts/importers/import-alibaba-product.js"
   },
   "dependencies": {
     "@getbrevo/brevo": "^3.0.1",
     "@paypal/react-paypal-js": "^8.9.2",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.103.0",
+    "axios": "^1.16.1",
+    "cheerio": "^1.2.0",
     "framer-motion": "^11.18.0",
+    "fs-extra": "^11.3.5",
     "googleapis": "^171.4.0",
     "next": "16.1.0",
     "node-fetch": "^3.3.2",
@@ -21,6 +25,7 @@
     "react-dom": "19.2.3",
     "resend": "^6.9.1",
     "sharp": "^0.34.5",
+    "slugify": "^1.6.9",
     "stripe": "^20.1.0"
   },
   "devDependencies": {
