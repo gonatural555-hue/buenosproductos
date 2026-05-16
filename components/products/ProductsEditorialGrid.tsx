@@ -64,7 +64,7 @@ export default function ProductsEditorialGrid({
                   locale={locale}
                   labels={labels}
                   analyticsListName={analyticsListName}
-                  surface="burgundy"
+                  surface="light"
                 />
               ))}
             </div>

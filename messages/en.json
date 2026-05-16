@@ -530,11 +530,8 @@
     }
   },
   "footer": {
-    "navigationTitle": "Navigation",
-    "companyTitle": "Company",
-    "legalTitle": "Legal",
-    "trustTitle": "Trust",
-    "brandBlurb": "Quiet outdoor gear for those who move with intention.",
+    "rights": "All rights reserved.",
+    "copyrightBrand": "Go Natural",
     "links": {
       "home": "Home",
       "products": "Products",
@@ -547,13 +544,55 @@
       "terms": "Terms & Conditions",
       "disclaimer": "Disclaimer"
     },
-    "trustItems": [
-      "Secure payments",
-      "Reliable shipping",
-      "Human support",
-      "Purchase with peace of mind"
-    ],
-    "rights": "All rights reserved."
+    "editorial": {
+      "col1Heading": "We build gear that lasts.",
+      "col1Sub": "Lifetime outdoor philosophy",
+      "col2Heading": "Built for constant movement.",
+      "col2Sub": "Designed for real outdoor use",
+      "col3Heading": "We take responsibility.",
+      "col3Sub": "Our environmental vision",
+      "col4Heading": "Nature comes first.",
+      "col4Sub": "Organizations we support",
+      "col5Heading": "Outdoor with purpose.",
+      "col5Sub": "Read our commitment"
+    },
+    "join": {
+      "title": "Join Go Natural",
+      "subtitle": "Receive exclusive drops, outdoor stories and curated gear updates.",
+      "placeholder": "Email address",
+      "emailLabel": "Email",
+      "cta": "Subscribe",
+      "sending": "Sending…",
+      "success": "You’re subscribed. Thank you.",
+      "marketing": "I agree to receive marketing emails. See the",
+      "privacy": "privacy policy",
+      "errorDuplicate": "This email is already on the list.",
+      "errorInvalid": "Please enter a valid email.",
+      "errorGeneric": "Something went wrong. Try again shortly."
+    },
+    "help": {
+      "title": "Need help?",
+      "helpCenter": "Help Center",
+      "contact": "Contact",
+      "shipping": "Shipping",
+      "returns": "Returns",
+      "repairs": "Repairs",
+      "warranty": "Warranty"
+    },
+    "more": {
+      "title": "More information",
+      "contact": "Contact",
+      "stores": "Store locations",
+      "payment": "Payment methods",
+      "terms": "Terms & conditions"
+    },
+    "social": {
+      "title": "Follow",
+      "instagram": "Go Natural on Instagram",
+      "youtube": "Go Natural on YouTube",
+      "spotify": "Go Natural on Spotify",
+      "pinterest": "Go Natural on Pinterest"
+    }
   },
   "cookieConsent": {
     "text": "We use minimal cookies to improve the experience. Nothing invasive.",

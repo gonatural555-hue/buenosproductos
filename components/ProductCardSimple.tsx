@@ -21,7 +21,7 @@ type Props = {
   /** Origen del listado para GA4 `select_item` (p. ej. categoría, destacados). */
   analyticsListId?: string;
   analyticsListName?: string;
-  /** Tarjeta sobre fondo claro (p. ej. cross-sell en PDP). Listado /productos: surface burgundy. */
+  /** Tarjeta sobre fondo claro (p. ej. cross-sell en PDP). */
   surface?: UISurface;
   /** Listado editorial (/productos): imagen dominante, menos chrome. */
   editorial?: boolean;
@@ -44,8 +44,7 @@ export default function ProductCardSimple({
   editorial = false,
 }: Props) {
   const L = surface === "light";
-  const B = surface === "burgundy";
-  const E = editorial && !L && !B;
+  const E = editorial && !L;
   const localized = product.translations?.[locale];
   const title = localized?.title || product.title;
   const description =
@@ -70,13 +69,7 @@ export default function ProductCardSimple({
   return (
     <Link
       href={`/${locale}/products/${product.id}`}
-      className={
-        B
-          ? "block text-[#FFF9F2] [text-rendering:optimizeLegibility]"
-          : L
-            ? "block text-dark-base"
-            : "block text-white"
-      }
+      className={L ? "block text-dark-base" : "block text-white"}
       onClick={() => {
         trackSelectItem({
           item: {
@@ -94,11 +87,9 @@ export default function ProductCardSimple({
         className={
           E
             ? "group overflow-hidden rounded-sm border border-earth-brown/18 bg-dark-base/92 transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 hover:-translate-y-1 hover:scale-[1.02] hover:border-earth-brown/30 hover:shadow-[0_28px_56px_-24px_rgba(17,23,19,0.35)]"
-            : B
-              ? "group overflow-hidden rounded-xl border border-[rgba(255,252,247,0.14)] bg-[#6E1F28] shadow-[0_12px_36px_-16px_rgba(0,0,0,0.42)] transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-0.5 hover:border-[rgba(255,252,247,0.22)] hover:shadow-[0_18px_44px_-18px_rgba(0,0,0,0.5)]"
-              : L
-                ? "group overflow-hidden rounded-xl border border-earth-brown/15 bg-soft-stone shadow-[0_8px_28px_-14px_rgba(17,23,19,0.12)] transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-0.5 hover:border-earth-brown/25 hover:shadow-[0_14px_36px_-18px_rgba(17,23,19,0.16)]"
-                : "group overflow-hidden rounded-xl border border-earth-brown/22 bg-dark-surface shadow-[0_10px_28px_-14px_rgba(17,23,19,0.45)] transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-1 hover:border-earth-brown/35 hover:shadow-xl"
+            : L
+              ? "group overflow-hidden rounded-xl border border-earth-brown/15 bg-soft-stone shadow-[0_8px_28px_-14px_rgba(17,23,19,0.12)] transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-0.5 hover:border-earth-brown/25 hover:shadow-[0_14px_36px_-18px_rgba(17,23,19,0.16)]"
+              : "group overflow-hidden rounded-xl border border-earth-brown/22 bg-dark-surface shadow-[0_10px_28px_-14px_rgba(17,23,19,0.45)] transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-1 hover:border-earth-brown/35 hover:shadow-xl"
         }
       >
         {/* IMAGE */}
@@ -106,11 +97,9 @@ export default function ProductCardSimple({
           className={
             E
               ? "relative aspect-[4/5] w-full overflow-hidden bg-dark-base"
-              : B
-                ? "relative w-full overflow-hidden bg-[#5a1820]"
-                : L
-                  ? "relative w-full overflow-hidden bg-soft-stone"
-                  : "relative w-full overflow-hidden bg-dark-surface"
+              : L
+                ? "relative w-full overflow-hidden bg-soft-stone"
+                : "relative w-full overflow-hidden bg-dark-surface"
           }
         >
           {hasValidImage ? (
@@ -154,9 +143,7 @@ export default function ProductCardSimple({
                 className={
                   L
                     ? "flex items-center justify-center h-full text-sm text-neutral-500"
-                    : B
-                      ? "flex min-h-[140px] items-center justify-center px-4 text-sm text-[rgba(255,249,242,0.78)]"
-                      : "flex items-center justify-center h-full text-sm text-text-muted"
+                    : "flex items-center justify-center h-full text-sm text-text-muted"
                 }
               >
                 {noImageLabel}
@@ -167,9 +154,7 @@ export default function ProductCardSimple({
               className={
                 L
                   ? "flex items-center justify-center h-full text-sm text-neutral-500"
-                  : B
-                    ? "flex min-h-[140px] items-center justify-center px-4 text-sm text-[rgba(255,249,242,0.78)]"
-                    : "flex items-center justify-center h-full text-sm text-text-muted"
+                  : "flex items-center justify-center h-full text-sm text-text-muted"
               }
             >
               {noImageLabel}
@@ -183,11 +168,9 @@ export default function ProductCardSimple({
               className={
                 L
                   ? "absolute inset-0 bg-gradient-to-t from-neutral-900/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
-                  : B
-                    ? "absolute inset-0 bg-gradient-to-t from-[#1a080a]/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
-                    : E
-                      ? "absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
-                      : "absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
+                  : E
+                    ? "absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
+                    : "absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"
               }
             />
             <div className="absolute inset-x-0 bottom-4 flex items-center justify-center">
@@ -206,9 +189,7 @@ export default function ProductCardSimple({
                 className={
                   L
                     ? "pointer-events-auto rounded-full border border-earth-brown/25 bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-dark-base opacity-0 shadow-[0_8px_22px_-10px_rgba(17,23,19,0.15)] backdrop-blur-sm transition-all duration-300 ease-out translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 hover:border-accent-gold/55 hover:text-accent-gold active:scale-[0.98]"
-                    : B
-                      ? "pointer-events-auto rounded-full border border-[rgba(255,249,242,0.38)] bg-[rgba(26,8,12,0.58)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFFCF8] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.55)] backdrop-blur-md opacity-0 translate-y-2 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:border-[#F2DF8A]/70 hover:text-[#FFF8E8] active:scale-[0.98]"
-                      : "pointer-events-auto rounded-full border border-white/28 bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/95 shadow-[0_8px_22px_-8px_rgba(0,0,0,0.45)] backdrop-blur-md opacity-0 translate-y-2 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 hover:border-accent-gold/55 hover:text-accent-gold/95 active:scale-[0.98]"
+                    : "pointer-events-auto rounded-full border border-white/28 bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/95 shadow-[0_8px_22px_-8px_rgba(0,0,0,0.45)] backdrop-blur-md opacity-0 translate-y-2 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 hover:border-accent-gold/55 hover:text-accent-gold/95 active:scale-[0.98]"
                 }
                 aria-label={addToCartLabel}
               >
@@ -238,9 +219,7 @@ export default function ProductCardSimple({
                         ? "border-accent-gold bg-accent-gold"
                         : L
                           ? "border-earth-brown/30 bg-transparent hover:border-earth-brown/55"
-                          : B
-                            ? "border-[rgba(255,249,242,0.38)] bg-transparent hover:border-[#F2DF8A]/65"
-                            : "border-white/25 bg-transparent hover:border-white/45",
+                          : "border-white/25 bg-transparent hover:border-white/45",
                     ].join(" ")}
                   />
                 );
@@ -250,16 +229,14 @@ export default function ProductCardSimple({
         )}
 
         {/* INFO */}
-        <div className={E ? "space-y-2 p-4 md:p-5" : "space-y-2 p-4 md:p-5"}>
+        <div className={E ? "space-y-2 p-4 md:p-5" : "p-4 md:p-5 space-y-2"}>
           <h2
             className={
               E
                 ? "text-[0.95rem] font-semibold leading-snug tracking-tight text-white line-clamp-2 md:text-base"
-                : B
-                  ? "line-clamp-2 text-base font-semibold leading-snug tracking-tight text-[#FFF9F2] antialiased [text-shadow:0_1px_2px_rgba(0,0,0,0.45)] md:text-[1.03rem]"
-                  : L
-                    ? "line-clamp-2 text-base font-semibold text-dark-base"
-                    : "line-clamp-2 text-base font-semibold text-white"
+                : L
+                  ? "line-clamp-2 text-base font-semibold text-dark-base"
+                  : "line-clamp-2 text-base font-semibold text-white"
             }
           >
             {title}
@@ -268,11 +245,9 @@ export default function ProductCardSimple({
             className={
               E
                 ? "text-[0.7rem] leading-relaxed text-white/[0.78] line-clamp-2 md:text-xs"
-                : B
-                  ? "line-clamp-2 text-xs leading-relaxed text-[rgba(255,249,242,0.92)]"
-                  : L
-                    ? "line-clamp-2 text-xs text-muted-gray"
-                    : "line-clamp-2 text-xs text-white/75"
+                : L
+                  ? "line-clamp-2 text-xs text-muted-gray"
+                  : "line-clamp-2 text-xs text-white/75"
             }
           >
             {description}
@@ -282,22 +257,14 @@ export default function ProductCardSimple({
               className={
                 E
                   ? "text-sm font-medium tabular-nums text-white"
-                  : B
-                    ? "text-sm font-semibold tabular-nums text-[#FFF9F2] [text-shadow:0_1px_1px_rgba(0,0,0,0.42)]"
-                    : L
-                      ? "text-sm font-medium tabular-nums text-dark-base"
-                      : "text-sm font-medium tabular-nums text-white"
+                  : L
+                    ? "text-sm font-medium tabular-nums text-dark-base"
+                    : "text-sm font-medium tabular-nums text-white"
               }
             >
               ${product.price.toFixed(2)}
             </span>
-            <span
-              className={
-                B
-                  ? "text-xs font-medium text-[#F2DF8A] transition-colors duration-200 ease-out group-hover:text-[#FFF6C5]"
-                  : "text-xs text-accent-gold transition-colors duration-200 ease-out group-hover:text-accent-gold/90"
-              }
-            >
+            <span className="text-xs text-accent-gold transition-colors duration-200 ease-out group-hover:text-accent-gold/90">
               {viewProductLabel}
             </span>
           </div>

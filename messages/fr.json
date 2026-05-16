@@ -530,11 +530,8 @@
     }
   },
   "footer": {
-    "navigationTitle": "Navigation",
-    "companyTitle": "Entreprise",
-    "legalTitle": "Légal",
-    "trustTitle": "Confiance",
-    "brandBlurb": "Équipement outdoor discret pour ceux qui avancent avec intention.",
+    "rights": "Tous droits réservés.",
+    "copyrightBrand": "Go Natural",
     "links": {
       "home": "Accueil",
       "products": "Produits",
@@ -547,13 +544,55 @@
       "terms": "Conditions générales",
       "disclaimer": "Avis de non‑responsabilité"
     },
-    "trustItems": [
-      "Paiements sécurisés",
-      "Livraison fiable",
-      "Support humain",
-      "Achat en toute confiance"
-    ],
-    "rights": "Tous droits réservés."
+    "editorial": {
+      "col1Heading": "Nous créons du matériel qui dure.",
+      "col1Sub": "Philosophie outdoor à vie",
+      "col2Heading": "Pensé pour bouger sans cesse.",
+      "col2Sub": "Conçu pour un usage outdoor réel",
+      "col3Heading": "Nous assumons nos responsabilités.",
+      "col3Sub": "Notre vision environnementale",
+      "col4Heading": "La nature d’abord.",
+      "col4Sub": "Organisations que nous soutenons",
+      "col5Heading": "Outdoor avec intention.",
+      "col5Sub": "Lire notre engagement"
+    },
+    "join": {
+      "title": "Rejoignez Go Natural",
+      "subtitle": "Recevez des sorties exclusives, des récits outdoor et des nouveautés équipement soignées.",
+      "placeholder": "Adresse e-mail",
+      "emailLabel": "E-mail",
+      "cta": "S’inscrire",
+      "sending": "Envoi…",
+      "success": "Merci, vous êtes inscrit.",
+      "marketing": "J’accepte les e-mails marketing. Voir la",
+      "privacy": "politique de confidentialité",
+      "errorDuplicate": "Cette adresse est déjà inscrite.",
+      "errorInvalid": "Veuillez saisir une adresse e-mail valide.",
+      "errorGeneric": "Une erreur s’est produite. Réessayez bientôt."
+    },
+    "help": {
+      "title": "Besoin d’aide ?",
+      "helpCenter": "Centre d’aide",
+      "contact": "Contact",
+      "shipping": "Livraison",
+      "returns": "Retours",
+      "repairs": "Réparations",
+      "warranty": "Garantie"
+    },
+    "more": {
+      "title": "Plus d’informations",
+      "contact": "Contact",
+      "stores": "Points de vente",
+      "payment": "Moyens de paiement",
+      "terms": "Conditions générales"
+    },
+    "social": {
+      "title": "Suivre",
+      "instagram": "Go Natural sur Instagram",
+      "youtube": "Go Natural sur YouTube",
+      "spotify": "Go Natural sur Spotify",
+      "pinterest": "Go Natural sur Pinterest"
+    }
   },
   "cookieConsent": {
     "text": "Nous utilisons des cookies minimaux pour améliorer l'expérience. Rien d'invasif.",
