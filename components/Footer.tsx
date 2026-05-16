@@ -67,26 +67,7 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-[rgba(46,74,54,0.18)] bg-[#F8ECDB] font-sans text-[rgba(46,74,54,0.78)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
-          {/* Branding: solo marca gráfica, ocupa el área que antes cubrían logo + copy */}
-          <div className="flex min-h-[9.5rem] items-center lg:col-span-1 md:min-h-[10.5rem]">
-            <Link
-              href={`/${locale}`}
-              className="group flex h-full min-h-[inherit] w-full max-w-[min(100%,20rem)] items-center sm:max-w-[22rem] md:max-w-[24rem] lg:max-w-[26rem]"
-              aria-label={t("header.logoAlt")}
-            >
-              <Image
-                src="/assets/images/logo/LOGO.png"
-                alt={t("header.logoAlt")}
-                width={640}
-                height={640}
-                loading="lazy"
-                className="h-auto max-h-[8.25rem] w-full object-contain object-left transition-opacity duration-300 ease-out group-hover:opacity-90 sm:max-h-[9.25rem] md:max-h-[10.25rem] lg:max-h-[11rem]"
-                sizes="(max-width: 768px) 90vw, 400px"
-              />
-            </Link>
-          </div>
-
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-12 md:gap-y-10 lg:grid-cols-5 lg:gap-12">
           {/* Navigation Section */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#2E4A36]">
@@ -123,6 +104,25 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Logo: centered between Company and Legal / Trust */}
+          <div className="flex min-h-[7rem] flex-col items-center justify-center md:col-span-2 lg:col-span-1 lg:min-h-0">
+            <Link
+              href={`/${locale}`}
+              className="group flex w-full max-w-[min(100%,18rem)] items-center justify-center sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[15rem]"
+              aria-label={t("header.logoAlt")}
+            >
+              <Image
+                src="/assets/images/logo/LOGO.png"
+                alt={t("header.logoAlt")}
+                width={640}
+                height={640}
+                loading="lazy"
+                className="h-auto max-h-[6.5rem] w-full object-contain object-center transition-opacity duration-300 ease-out group-hover:opacity-90 sm:max-h-[7.5rem] md:max-h-[8.5rem] lg:max-h-[10rem]"
+                sizes="(max-width: 1024px) 90vw, 240px"
+              />
+            </Link>
           </div>
 
           {/* Legal Section */}
