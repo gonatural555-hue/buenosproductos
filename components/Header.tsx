@@ -36,21 +36,12 @@ const HEADER_PILL =
 const HEADER_PILL_PDP =
   "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[#F4EBDD] md:px-4 md:py-0 md:shadow-[0_10px_40px_rgba(46,74,54,0.06)]";
 
-/** Home: barra negra, enlaces blancos (prueba visual solo en `/[locale]`). */
+/** Home: barra blanca, enlaces bosque/negro (solo `/[locale]`, mismos hovers y brillo dorado). */
 const HEADER_PILL_HOME =
-  "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-white/10 bg-black px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-white/12 md:bg-black md:px-4 md:py-0 md:shadow-[0_12px_48px_-20px_rgba(0,0,0,0.45)]";
-
-const LOCALE_FLOAT_HOME =
-  "rounded-full px-2 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-white/[0.72] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/[0.08] hover:text-white md:text-[12px] md:tracking-[0.12em]";
-
-const ICON_GHOST_HOME =
-  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white/[0.72] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/[0.08] hover:text-white";
+  "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#FFFFFF] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[#FFFFFF] md:px-4 md:py-0 md:shadow-[0_12px_48px_-24px_rgba(46,74,54,0.12),0_8px_32px_-18px_rgba(0,0,0,0.06)]";
 
 const MOBILE_DRAWER_HOME =
-  "pointer-events-auto mt-2 overflow-x-clip rounded-[1.35rem] border border-white/12 bg-black p-5 shadow-[0_24px_64px_rgba(0,0,0,0.5)] md:hidden";
-
-const MOBILE_PRIMARY_HOME =
-  "font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-white/[0.78] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white";
+  "pointer-events-auto mt-2 overflow-x-clip rounded-[1.35rem] border border-[rgba(46,74,54,0.10)] bg-[#FFFFFF] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)] md:hidden";
 
 const LOCALE_FLOAT =
   "rounded-full px-2 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36] md:text-[12px] md:tracking-[0.12em]";
@@ -86,7 +77,7 @@ function PremiumNavLink({
         href={href}
         className={
           inverse
-            ? "relative inline-block whitespace-nowrap rounded-full px-1.5 py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-white/[0.78] transition-[color,box-shadow,opacity] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white hover:shadow-[0_0_36px_rgba(217,164,65,0.22),0_10px_32px_-14px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-black md:text-[14px]"
+            ? "relative inline-block whitespace-nowrap rounded-full px-1.5 py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-[color,box-shadow,opacity] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] hover:shadow-[0_0_36px_rgba(217,164,65,0.16),0_10px_32px_-14px_rgba(46,74,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:text-[14px]"
             : "relative inline-block whitespace-nowrap rounded-full px-1.5 py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-[color,box-shadow,opacity] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] hover:shadow-[0_0_36px_rgba(217,164,65,0.16),0_10px_32px_-14px_rgba(46,74,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgba(244,235,221,0.85)] md:text-[14px]"
         }
       >
@@ -100,22 +91,16 @@ function MegaSubLink({
   href,
   label,
   onNavigate,
-  inverse = false,
 }: {
   href: string;
   label: string;
   onNavigate: () => void;
-  inverse?: boolean;
 }) {
   return (
     <Link
       href={href}
       onClick={onNavigate}
-      className={
-        inverse
-          ? "group relative flex items-center gap-3 py-1.5 font-inter text-[15px] font-normal leading-snug text-white/[0.65] transition-[color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white md:text-[16px]"
-          : "group relative flex items-center gap-3 py-1.5 font-inter text-[15px] font-normal leading-snug text-[rgba(46,74,54,0.62)] transition-[color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] md:text-[16px]"
-      }
+      className="group relative flex items-center gap-3 py-1.5 font-inter text-[15px] font-normal leading-snug text-[rgba(46,74,54,0.62)] transition-[color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] md:text-[16px]"
     >
       <span
         className="flex h-2 w-2 shrink-0 items-center justify-center"
@@ -156,9 +141,7 @@ function BrandLogoLink({
           : {
               scale: 1.04,
               y: -2,
-              filter: inverse
-                ? "drop-shadow(0 0 22px rgba(217, 164, 65, 0.28)) drop-shadow(0 12px 28px rgba(255, 255, 255, 0.1))"
-                : "drop-shadow(0 0 22px rgba(217, 164, 65, 0.22)) drop-shadow(0 12px 28px rgba(46, 74, 54, 0.12))",
+              filter: "drop-shadow(0 0 22px rgba(217, 164, 65, 0.22)) drop-shadow(0 12px 28px rgba(46, 74, 54, 0.12))",
               transition: { duration: 0.55, ease: logoEase },
             }
       }
@@ -167,7 +150,7 @@ function BrandLogoLink({
       <Link
         href={`/${locale}`}
         className={`relative block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 ${
-          inverse ? "focus-visible:ring-offset-black" : "focus-visible:ring-offset-[rgba(244,235,221,0.9)]"
+          inverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[rgba(244,235,221,0.9)]"
         }`}
         aria-label={alt}
       >
@@ -178,9 +161,7 @@ function BrandLogoLink({
           height={256}
           priority
           draggable={false}
-          className={`${imageClassName} ${
-            inverse ? "drop-shadow-[0_6px_20px_rgba(255,255,255,0.1)]" : "drop-shadow-[0_6px_20px_rgba(46,74,54,0.08)]"
-          }`}
+          className={`${imageClassName} drop-shadow-[0_6px_20px_rgba(46,74,54,0.08)]`}
         />
       </Link>
     </motion.div>
@@ -225,13 +206,7 @@ export default function Header() {
 
   const headerInverse = isHome && !isPdp;
   const pillCls = isPdp ? HEADER_PILL_PDP : headerInverse ? HEADER_PILL_HOME : HEADER_PILL;
-  const localeFloatCls = headerInverse ? LOCALE_FLOAT_HOME : LOCALE_FLOAT;
-  const localeActiveCls = headerInverse
-    ? "bg-white/12 text-white"
-    : "bg-[rgba(46,74,54,0.1)] text-[#2E4A36]";
-  const iconGhostCls = headerInverse ? ICON_GHOST_HOME : ICON_GHOST;
   const mobileDrawerCls = headerInverse ? MOBILE_DRAWER_HOME : MOBILE_DRAWER;
-  const mobilePrimaryCls = headerInverse ? MOBILE_PRIMARY_HOME : MOBILE_PRIMARY_LINK;
 
   const [headerPortalRoot, setHeaderPortalRoot] = useState<HTMLElement | null>(null);
 
@@ -335,7 +310,9 @@ export default function Header() {
                   <Link
                     key={lang}
                     href={buildLocaleHref(lang)}
-                    className={`${localeFloatCls} ${lang === locale ? localeActiveCls : ""}`}
+                    className={`${LOCALE_FLOAT} ${
+                      lang === locale ? "bg-[rgba(46,74,54,0.1)] text-[#2E4A36]" : ""
+                    }`}
                   >
                     {lang.toUpperCase()}
                   </Link>
@@ -354,13 +331,7 @@ export default function Header() {
             </div>
 
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-[45] -translate-x-1/2 -translate-y-1/2">
-              <div
-                className={
-                  headerInverse
-                    ? "pointer-events-auto drop-shadow-[0_8px_24px_rgba(255,255,255,0.08)]"
-                    : "pointer-events-auto drop-shadow-[0_8px_24px_rgba(46,74,54,0.08)]"
-                }
-              >
+              <div className="pointer-events-auto drop-shadow-[0_8px_24px_rgba(46,74,54,0.08)]">
                 <BrandLogoLink
                   locale={locale}
                   alt={t("header.logoAlt")}
@@ -383,7 +354,7 @@ export default function Header() {
               <div className="ml-auto flex shrink-0 items-center gap-1 lg:gap-2">
                 <Link
                   href={`/${locale}/cart`}
-                  className={`${iconGhostCls} relative`}
+                  className={`${ICON_GHOST} relative`}
                   aria-label={`Cart with ${totalItems} items`}
                 >
                   {cartIcon}
@@ -397,11 +368,7 @@ export default function Header() {
                 {isLoggedIn && user ? (
                   <Link
                     href={`/${locale}/account`}
-                    className={
-                      headerInverse
-                        ? "flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-white/[0.78] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/10 hover:bg-white/[0.06] hover:text-white"
-                        : "flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
-                    }
+                    className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
                   >
                     <span className="truncate">{user.name}</span>
                     <span
@@ -415,11 +382,7 @@ export default function Header() {
                   <button
                     type="button"
                     onClick={() => openAuthModal("login")}
-                    className={
-                      headerInverse
-                        ? "shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-white/[0.78] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/10 hover:bg-white/[0.06] hover:text-white lg:px-4"
-                        : "shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
-                    }
+                    className="shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
                   >
                     {t("header.account")}
                   </button>
@@ -433,11 +396,9 @@ export default function Header() {
               <div ref={mobileLocaleWrapRef} className="relative shrink-0">
                 <button
                   type="button"
-                  className={
-                    headerInverse
-                      ? "inline-flex min-h-[40px] items-center gap-1 rounded-full border border-white/20 bg-white/[0.06] px-2.5 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-white/[0.1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                      : "inline-flex min-h-[40px] items-center gap-1 rounded-full border border-[rgba(46,74,54,0.14)] bg-[rgba(46,74,54,0.04)] px-2.5 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2E4A36] transition-colors duration-300 hover:bg-[rgba(46,74,54,0.07)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD]"
-                  }
+                  className={`inline-flex min-h-[40px] items-center gap-1 rounded-full border border-[rgba(46,74,54,0.14)] bg-[rgba(46,74,54,0.04)] px-2.5 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2E4A36] transition-colors duration-300 hover:bg-[rgba(46,74,54,0.07)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 ${
+                    headerInverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#F4EBDD]"
+                  }`}
                   aria-expanded={mobileLocaleOpen}
                   aria-haspopup="listbox"
                   aria-label={t("header.localeNavAria")}
@@ -450,9 +411,7 @@ export default function Header() {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    className={`h-3.5 w-3.5 transition-transform duration-300 ${mobileLocaleOpen ? "rotate-180" : ""} ${
-                      headerInverse ? "text-white/55" : "text-[rgba(46,74,54,0.55)]"
-                    }`}
+                    className={`h-3.5 w-3.5 text-[rgba(46,74,54,0.55)] transition-transform duration-300 ${mobileLocaleOpen ? "rotate-180" : ""}`}
                     aria-hidden
                   >
                     <path
@@ -467,7 +426,7 @@ export default function Header() {
                     role="listbox"
                     className={
                       headerInverse
-                        ? "absolute left-0 top-[calc(100%+6px)] z-40 min-w-[9.5rem] overflow-hidden rounded-xl border border-white/12 bg-black py-1 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+                        ? "absolute left-0 top-[calc(100%+6px)] z-40 min-w-[9.5rem] overflow-hidden rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#FFFFFF] py-1 shadow-[0_16px_40px_rgba(46,74,54,0.12)]"
                         : "absolute left-0 top-[calc(100%+6px)] z-40 min-w-[9.5rem] overflow-hidden rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#F4EBDD] py-1 shadow-[0_16px_40px_rgba(46,74,54,0.12)]"
                     }
                   >
@@ -479,12 +438,8 @@ export default function Header() {
                           href={buildLocaleHref(lang)}
                           className={`block px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] transition-colors ${
                             lang === locale
-                              ? headerInverse
-                                ? "bg-white/10 text-white"
-                                : "bg-[rgba(46,74,54,0.08)] text-[#2E4A36]"
-                              : headerInverse
-                                ? "text-white/70 hover:bg-white/[0.06] hover:text-white"
-                                : "text-[rgba(46,74,54,0.72)] hover:bg-[rgba(46,74,54,0.05)] hover:text-[#2E4A36]"
+                              ? "bg-[rgba(46,74,54,0.08)] text-[#2E4A36]"
+                              : "text-[rgba(46,74,54,0.72)] hover:bg-[rgba(46,74,54,0.05)] hover:text-[#2E4A36]"
                           }`}
                           onClick={() => setMobileLocaleOpen(false)}
                         >
@@ -498,11 +453,9 @@ export default function Header() {
 
               <Link
                 href={`/${locale}`}
-                className={
-                  headerInverse
-                    ? "inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-white/[0.82] transition-colors duration-300 hover:border-white/12 hover:bg-white/[0.06] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                    : "inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.78)] transition-colors duration-300 hover:border-[rgba(46,74,54,0.1)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD]"
-                }
+                className={`inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.78)] transition-colors duration-300 hover:border-[rgba(46,74,54,0.1)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 ${
+                  headerInverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#F4EBDD]"
+                }`}
               >
                 {t("header.nav.home")}
               </Link>
@@ -513,7 +466,7 @@ export default function Header() {
             <div className="flex shrink-0 items-center gap-1">
               <button
                 type="button"
-                className={iconGhostCls}
+                className={ICON_GHOST}
                 onClick={() => {
                   setMobileLocaleOpen(false);
                   setMobileMenuOpen((o) => !o);
@@ -532,7 +485,7 @@ export default function Header() {
                 )}
               </button>
 
-              <Link href={`/${locale}/cart`} className={`${iconGhostCls} relative`} aria-label={`Cart with ${totalItems} items`}>
+              <Link href={`/${locale}/cart`} className={`${ICON_GHOST} relative`} aria-label={`Cart with ${totalItems} items`}>
                 {cartIcon}
                 {totalItems > 0 && (
                   <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-[#D9A441] px-0.5 font-inter text-[9px] font-semibold text-[#2E4A36]">
@@ -544,7 +497,7 @@ export default function Header() {
               {isLoggedIn && user ? (
                 <Link
                   href={`/${locale}/account`}
-                  className={`${iconGhostCls} relative`}
+                  className={`${ICON_GHOST} relative`}
                   aria-label={t("header.account")}
                 >
                   <span
@@ -557,7 +510,7 @@ export default function Header() {
               ) : (
                 <button
                   type="button"
-                  className={iconGhostCls}
+                  className={ICON_GHOST}
                   onClick={() => openAuthModal("login")}
                   aria-label={t("header.account")}
                 >
@@ -580,50 +533,36 @@ export default function Header() {
             <div className="flex flex-col gap-4">
               <Link
                 href={`/${locale}`}
-                className={mobilePrimaryCls}
+                className={MOBILE_PRIMARY_LINK}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("header.nav.home")}
               </Link>
               <Link
                 href={`/${locale}/blog`}
-                className={mobilePrimaryCls}
+                className={MOBILE_PRIMARY_LINK}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("header.nav.outdoorKnowledge")}
               </Link>
               <Link
                 href={`/${locale}/products`}
-                className={mobilePrimaryCls}
+                className={MOBILE_PRIMARY_LINK}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("header.nav.shopByCategories")}
               </Link>
 
-              <div
-                className={
-                  headerInverse ? "border-t border-white/10 pt-4" : "border-t border-[rgba(46,74,54,0.08)] pt-4"
-                }
-              >
+              <div className="border-t border-[rgba(46,74,54,0.08)] pt-4">
                 <button
                   type="button"
-                  className={
-                    headerInverse
-                      ? "flex w-full items-center justify-between py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-white/[0.88] transition-opacity duration-500 hover:opacity-80"
-                      : "flex w-full items-center justify-between py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.82)] transition-opacity duration-500 hover:opacity-80"
-                  }
+                  className="flex w-full items-center justify-between py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.82)] transition-opacity duration-500 hover:opacity-80"
                   onClick={() => setMobileCategoriesOpen((open) => !open)}
                   aria-expanded={mobileCategoriesOpen}
                   aria-controls="mobile-categories-menu"
                 >
                   <span>{t("header.nav.categories")}</span>
-                  <span
-                    className={
-                      headerInverse
-                        ? "font-inter text-[12px] font-medium tracking-[0.16em] text-white/45"
-                        : "font-inter text-[12px] font-medium tracking-[0.16em] text-[rgba(46,74,54,0.45)]"
-                    }
-                  >
+                  <span className="font-inter text-[12px] font-medium tracking-[0.16em] text-[rgba(46,74,54,0.45)]">
                     {mobileCategoriesOpen ? "−" : "+"}
                   </span>
                 </button>
@@ -637,13 +576,7 @@ export default function Header() {
                       transition={{ duration: 0.55, ease: PREMIUM_EASE }}
                       className="overflow-hidden"
                     >
-                      <div
-                        className={
-                          headerInverse
-                            ? "mt-3 space-y-5 border-l border-white/12 pl-3"
-                            : "mt-3 space-y-5 border-l border-[rgba(46,74,54,0.1)] pl-3"
-                        }
-                      >
+                      <div className="mt-3 space-y-5 border-l border-[rgba(46,74,54,0.1)] pl-3">
                         {mainCategories.map((category, colIdx) => (
                           <motion.div
                             key={category.slug}
@@ -658,11 +591,7 @@ export default function Header() {
                           >
                             <Link
                               href={`/${locale}/category/${category.slug}`}
-                              className={
-                                headerInverse
-                                  ? "block font-inter text-[clamp(1.1rem,3.5vw,1.35rem)] font-semibold tracking-[-0.02em] text-white"
-                                  : "block font-inter text-[clamp(1.1rem,3.5vw,1.35rem)] font-semibold tracking-[-0.02em] text-[#2E4A36]"
-                              }
+                              className="block font-inter text-[clamp(1.1rem,3.5vw,1.35rem)] font-semibold tracking-[-0.02em] text-[#2E4A36]"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {t(`categories.names.${category.slug}`, category.name)}
@@ -683,7 +612,6 @@ export default function Header() {
                                     href={`/${locale}/category/${sub.slug}`}
                                     label={t(`categories.names.${sub.slug}`, sub.name)}
                                     onNavigate={() => setMobileMenuOpen(false)}
-                                    inverse={headerInverse}
                                   />
                                 </motion.div>
                               ))}
@@ -696,21 +624,11 @@ export default function Header() {
                 </AnimatePresence>
               </div>
 
-              <div
-                className={
-                  headerInverse
-                    ? "flex flex-wrap items-center gap-3 border-t border-white/10 pt-4"
-                    : "flex flex-wrap items-center gap-3 border-t border-[rgba(46,74,54,0.08)] pt-4"
-                }
-              >
+              <div className="flex flex-wrap items-center gap-3 border-t border-[rgba(46,74,54,0.08)] pt-4">
                 {isLoggedIn && user ? (
                   <Link
                     href={`/${locale}/account`}
-                    className={
-                      headerInverse
-                        ? "font-inter text-[13px] font-medium text-white/[0.92]"
-                        : "font-inter text-[13px] font-medium text-[#2E4A36]"
-                    }
+                    className="font-inter text-[13px] font-medium text-[#2E4A36]"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {t("header.greeting")}, {user.name}
@@ -718,11 +636,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={`/${locale}/auth?tab=login`}
-                    className={
-                      headerInverse
-                        ? "font-inter text-[13px] font-medium text-white/[0.92]"
-                        : "font-inter text-[13px] font-medium text-[#2E4A36]"
-                    }
+                    className="font-inter text-[13px] font-medium text-[#2E4A36]"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {t("header.account")}
