@@ -95,30 +95,7 @@ export default function BrandPanel({
       />
 
       {isGoNatural ? (
-        <>
-          <motion.div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_30%_20%,rgba(46,74,54,0.12),transparent_55%)]"
-            animate={{ opacity: isActive ? 1 : 0.55 }}
-            transition={{ duration: TRANSITION_MS / 1000 }}
-            aria-hidden
-          />
-          <motion.div
-            className="pointer-events-none absolute -right-[20%] bottom-[-15%] h-[70%] w-[90%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(46,74,54,0.14),transparent_68%)]"
-            animate={{ scale: isActive ? 1.04 : 1, opacity: isActive ? 0.9 : 0.45 }}
-            transition={{ duration: TRANSITION_MS / 1000 }}
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[38%] bg-[linear-gradient(to_top,rgba(46,74,54,0.08),transparent)]"
-            aria-hidden
-          />
-          <GoNaturalMountainLayer revealed={isGoNaturalHovered} parallax={parallax} />
-          {/* Isla editorial — protege logo/texto/CTA de montañas en hover */}
-          <div
-            className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_72%_58%_at_50%_52%,#F4EBDD_0%,#F4EBDD_42%,rgba(244,235,221,0.92)_58%,transparent_72%)]"
-            aria-hidden
-          />
-        </>
+        <GoNaturalMountainLayer revealed={isGoNaturalHovered} parallax={parallax} />
       ) : (
         <>
           <motion.div
