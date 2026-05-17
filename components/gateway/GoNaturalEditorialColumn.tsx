@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { GN_EASE_PREMIUM } from "@/lib/ui/gonatural-design";
@@ -7,6 +6,7 @@ import BrandHeroContent from "@/components/gateway/BrandHeroContent";
 const PANEL_EASE = GN_EASE_PREMIUM;
 
 export type GoNaturalEditorialColumnProps = {
+  title: string;
   tagline: string;
   cta: string;
   href: string;
@@ -14,6 +14,7 @@ export type GoNaturalEditorialColumnProps = {
 };
 
 export default function GoNaturalEditorialColumn({
+  title,
   tagline,
   cta,
   href,
@@ -25,26 +26,13 @@ export default function GoNaturalEditorialColumn({
         Outdoor
       </p>
 
-      <div className="w-full">
-        <Image
-          src="/assets/images/logo/LOGO-GONATURAL.png"
-          alt="Go Natural"
-          width={640}
-          height={256}
-          priority
-          draggable={false}
-          className="mx-auto h-auto w-full max-w-[min(72vw,288px)] object-contain md:max-w-[312px]"
-        />
-      </div>
+      <h2 className="mx-auto max-w-[14ch] font-display text-[clamp(2.25rem,5vw,3.75rem)] font-normal leading-[0.95] tracking-[-0.02em] text-[#2E4A36]">
+        {title}
+      </h2>
 
-      <p
-        aria-hidden
-        className="font-display w-full text-[clamp(1.65rem,4.5vw,2.35rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
-      >
-        GO NATURAL
+      <p className="max-w-md font-inter text-[15px] leading-relaxed text-[#D9A441] md:text-[16px]">
+        {tagline}
       </p>
-
-      <p className="gn-hero-subtitle max-w-[300px] leading-snug">{tagline}</p>
 
       <motion.div
         className="flex w-full justify-center"

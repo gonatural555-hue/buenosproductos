@@ -118,6 +118,7 @@ export default function BrandPanel({
       >
         {isGoNatural ? (
           <GoNaturalEditorialColumn
+            title={title}
             tagline={tagline}
             cta={cta}
             href={href}
