@@ -16,7 +16,7 @@ export type GatewayMountainSpec = {
   ambientOpacity: number;
 };
 
-/** Gateway Go Natural — 5 montañas repartidas en todo el hemisferio (arriba / medio / abajo). */
+/** Gateway Go Natural — 7 montañas en marco vertical (arriba / medio / abajo). */
 export const GN_GATEWAY_MOUNTAINS: GatewayMountainSpec[] = [
   {
     id: "left-1",
@@ -41,12 +41,23 @@ export const GN_GATEWAY_MOUNTAINS: GatewayMountainSpec[] = [
     ambientOpacity: 0.08,
   },
   {
+    id: "left-4",
+    src: "/assets/brand/mountains/left-4.png",
+    side: "left",
+    top: "68%",
+    width: "clamp(90px, 14vw, 185px)",
+    staggerIndex: 2,
+    edgeInset: 0,
+    hoverOpacity: 0.42,
+    ambientOpacity: 0.09,
+  },
+  {
     id: "left-3",
     src: "/assets/brand/mountains/left-3.png",
     side: "left",
     bottom: "6%",
     width: "clamp(118px, 19vw, 235px)",
-    staggerIndex: 2,
+    staggerIndex: 3,
     edgeInset: 0,
     hoverOpacity: 0.45,
     ambientOpacity: 0.1,
@@ -57,10 +68,21 @@ export const GN_GATEWAY_MOUNTAINS: GatewayMountainSpec[] = [
     side: "right",
     top: "14%",
     width: "clamp(100px, 15vw, 205px)",
-    staggerIndex: 3,
+    staggerIndex: 4,
     edgeInset: 0,
     hoverOpacity: 0.48,
     ambientOpacity: 0.1,
+  },
+  {
+    id: "right-3",
+    src: "/assets/brand/mountains/right-3.png",
+    side: "right",
+    top: "52%",
+    width: "clamp(92px, 14vw, 190px)",
+    staggerIndex: 5,
+    edgeInset: 0,
+    hoverOpacity: 0.44,
+    ambientOpacity: 0.09,
   },
   {
     id: "right-2",
@@ -68,7 +90,7 @@ export const GN_GATEWAY_MOUNTAINS: GatewayMountainSpec[] = [
     side: "right",
     bottom: "12%",
     width: "clamp(88px, 14vw, 175px)",
-    staggerIndex: 4,
+    staggerIndex: 6,
     edgeInset: 0,
     hoverOpacity: 0.42,
     ambientOpacity: 0.09,

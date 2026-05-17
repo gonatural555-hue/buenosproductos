@@ -13,7 +13,7 @@ export type GoNaturalEditorialColumnProps = {
 };
 
 /**
- * Columna editorial centrada: eyebrow, logo, wordmark, tagline y CTA en un solo eje.
+ * Columna editorial centrada y compacta — ritmo de espaciado alineado con HomeBrandHero.
  */
 export default function GoNaturalEditorialColumn({
   tagline,
@@ -22,12 +22,22 @@ export default function GoNaturalEditorialColumn({
   isActive,
 }: GoNaturalEditorialColumnProps) {
   return (
-    <div className="relative z-20 mx-auto flex w-full max-w-[340px] flex-col items-center text-center">
+    <motion.div
+      className="relative z-20 mx-auto flex w-full max-w-[340px] flex-col items-center text-center"
+      initial={false}
+      animate={{ opacity: isActive ? 1 : 0.92 }}
+      transition={{ duration: 0.6, ease: PANEL_EASE }}
+    >
       <p className="w-full font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[#D9A441]">
         Outdoor
       </p>
 
-      <div className="mt-4 w-full">
+      <motion.div
+        className="mt-2 w-full"
+        initial={false}
+        animate={{ y: isActive ? 0 : 2 }}
+        transition={{ duration: 0.6, ease: PANEL_EASE }}
+      >
         <Image
           src="/assets/images/logo/LOGO-GONATURAL.png"
           alt="Go Natural"
@@ -39,18 +49,16 @@ export default function GoNaturalEditorialColumn({
         />
         <p
           aria-hidden
-          className="font-display mt-3 w-full text-[clamp(1.65rem,4.5vw,2.35rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
+          className="font-display mt-1.5 w-full text-[clamp(1.65rem,4.5vw,2.35rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
         >
           GO NATURAL
         </p>
-      </div>
+      </motion.div>
 
-      <p className="mt-5 max-w-[300px] font-inter text-[15px] leading-relaxed text-[rgba(46,74,54,0.72)] md:text-[16px]">
-        {tagline}
-      </p>
+      <p className="gn-hero-subtitle mt-3 max-w-[300px] md:mt-4">{tagline}</p>
 
       <motion.div
-        className="relative z-20 mt-8 flex w-full justify-center"
+        className="relative z-20 mt-5 flex w-full justify-center md:mt-6"
         animate={{
           opacity: isActive ? 1 : 0.82,
           y: isActive ? 0 : 4,
@@ -72,8 +80,6 @@ export default function GoNaturalEditorialColumn({
           </span>
         </Link>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
-
-
