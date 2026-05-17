@@ -16,6 +16,31 @@
     "localeNavAria": "Choose language",
     "logoAlt": "Go Natural"
   },
+  "brandGateway": {
+    "goNatural": {
+      "title": "Go Natural",
+      "tagline": "Premium outdoor gear for calm exploration and quiet journeys.",
+      "cta": "Shop Go Natural"
+    },
+    "goodIdeas": {
+      "title": "Good Ideas",
+      "tagline": "Smart, useful products for home, tech and everyday life.",
+      "cta": "Shop Good Ideas"
+    },
+    "localeAria": "Choose language"
+  },
+  "goodIdeas": {
+    "nav": {
+      "productsSoon": "Products — coming soon",
+      "allBrands": "All brands"
+    },
+    "hero": {
+      "title": "Smart Products. Good Ideas.",
+      "subtitle": "Useful products for home, tech, lifestyle and everyday life.",
+      "cta": "Explore Products",
+      "comingSoon": "Our catalog is being curated. Check back soon for smart home gadgets, electronics and everyday essentials."
+    }
+  },
   "common": {
     "viewProduct": "View product",
     "addToCart": "Add to cart",
@@ -44,6 +69,14 @@
     "passwordMismatch": "Passwords do not match."
   },
   "seo": {
+    "gateway": {
+      "title": "Go Natural & Good Ideas | Choose Your Store",
+      "description": "Select Go Natural for outdoor gear or Good Ideas for smart home and lifestyle products."
+    },
+    "goodIdeas": {
+      "title": "Good Ideas | Smart Products for Everyday Life",
+      "description": "Useful gadgets, home tech and viral products for modern living. Coming soon."
+    },
     "home": {
       "title": "Premium Outdoor Gear for Slow Exploration",
       "description": "Thoughtfully designed equipment for camping, water and quiet outdoor journeys."

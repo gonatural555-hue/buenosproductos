@@ -16,6 +16,31 @@
     "localeNavAria": "Choisir la langue",
     "logoAlt": "Go Natural"
   },
+  "brandGateway": {
+    "goNatural": {
+      "title": "Go Natural",
+      "tagline": "Équipement outdoor premium pour une exploration sereine.",
+      "cta": "Découvrir Go Natural"
+    },
+    "goodIdeas": {
+      "title": "Good Ideas",
+      "tagline": "Produits malins pour la maison, la tech et le quotidien.",
+      "cta": "Découvrir Good Ideas"
+    },
+    "localeAria": "Choisir la langue"
+  },
+  "goodIdeas": {
+    "nav": {
+      "productsSoon": "Produits — bientôt",
+      "allBrands": "Toutes les marques"
+    },
+    "hero": {
+      "title": "Produits malins. Good Ideas.",
+      "subtitle": "Produits utiles pour la maison, la tech, le lifestyle et le quotidien.",
+      "cta": "Explorer les produits",
+      "comingSoon": "Notre catalogue est en préparation. Bientôt : gadgets maison, électronique et essentiels du quotidien."
+    }
+  },
   "common": {
     "viewProduct": "Voir le produit",
     "addToCart": "Ajouter au panier",
@@ -44,6 +69,14 @@
     "passwordMismatch": "Les mots de passe ne correspondent pas."
   },
   "seo": {
+    "gateway": {
+      "title": "Go Natural & Good Ideas | Choisissez votre boutique",
+      "description": "Go Natural pour l’outdoor ou Good Ideas pour la maison, la tech et le quotidien."
+    },
+    "goodIdeas": {
+      "title": "Good Ideas | Produits malins",
+      "description": "Gadgets utiles, tech maison et produits viraux. Bientôt disponible."
+    },
     "home": {
       "title": "Équipement outdoor premium pour l’exploration lente",
       "description": "Du matériel conçu avec intention pour le camping, l’eau et les voyages outdoor."

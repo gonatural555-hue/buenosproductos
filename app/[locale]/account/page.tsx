@@ -182,7 +182,7 @@ export default function AccountPage() {
               onClick={() => {
                 void (async () => {
                   await logout();
-                  router.push(`/${locale}`);
+                  router.push(`/${locale}/go-natural`);
                 })();
               }}
               className="w-full rounded-xl border border-earth-brown/15 bg-soft-stone px-4 py-3 text-left text-sm font-semibold text-muted-gray transition-colors duration-200 ease-out hover:text-dark-base"

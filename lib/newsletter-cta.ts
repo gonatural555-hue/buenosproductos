@@ -1,3 +1,5 @@
+import { isBrandGatewayPath } from "@/lib/routing/brands";
+
 /** Rutas donde el CTA newsletter no debe mostrarse (redundante o destructivo). */
 const EXCLUDED_PATH_SNIPPETS = ["/checkout", "/cart", "/account", "/auth"] as const;
 
@@ -7,6 +9,7 @@ const EXCLUDED_PATH_SNIPPETS = ["/checkout", "/cart", "/account", "/auth"] as co
  */
 export function shouldShowNewsletterCta(pathname: string | null): boolean {
   if (!pathname) return false;
+  if (isBrandGatewayPath(pathname)) return false;
   if (!/^\/[a-z]{2}(\/|$)/i.test(pathname)) return false;
   const lower = pathname.toLowerCase();
   return !EXCLUDED_PATH_SNIPPETS.some((snippet) => lower.includes(snippet));

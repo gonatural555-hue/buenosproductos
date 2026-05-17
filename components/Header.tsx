@@ -11,6 +11,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAllCategories } from "@/lib/categories";
 import { locales, type Locale } from "@/lib/i18n/config";
+import { goNaturalHomePath, isGoNaturalHomePath } from "@/lib/routing/brands";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -148,7 +149,7 @@ function BrandLogoLink({
       whileTap={reduceMotion ? undefined : { scale: 0.98, transition: { duration: 0.15, ease: logoEase } }}
     >
       <Link
-        href={`/${locale}`}
+        href={goNaturalHomePath(locale)}
         className={`relative block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 ${
           inverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[rgba(244,235,221,0.9)]"
         }`}
@@ -199,10 +200,7 @@ export default function Header() {
     );
   }, [pathname]);
 
-  const isHome = useMemo(() => {
-    const s = pathname.split("/").filter(Boolean);
-    return s.length === 1 && locales.includes(s[0] as Locale);
-  }, [pathname]);
+  const isHome = useMemo(() => isGoNaturalHomePath(pathname), [pathname]);
 
   const headerInverse = isHome && !isPdp;
   const pillCls = isPdp ? HEADER_PILL_PDP : headerInverse ? HEADER_PILL_HOME : HEADER_PILL;
@@ -452,7 +450,7 @@ export default function Header() {
               </div>
 
               <Link
-                href={`/${locale}`}
+                href={goNaturalHomePath(locale)}
                 className={`inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.78)] transition-colors duration-300 hover:border-[rgba(46,74,54,0.1)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 ${
                   headerInverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#F4EBDD]"
                 }`}
@@ -532,7 +530,7 @@ export default function Header() {
           >
             <div className="flex flex-col gap-4">
               <Link
-                href={`/${locale}`}
+                href={goNaturalHomePath(locale)}
                 className={MOBILE_PRIMARY_LINK}
                 onClick={() => setMobileMenuOpen(false)}
               >

@@ -6,7 +6,16 @@ import { getMessages } from "@/lib/i18n/messages";
 import { blogSections } from "@/lib/blog-sections";
 import { LEGAL_SLUGS, getSiteUrl } from "@/lib/seo";
 
-const BASE_PAGES = ["", "products", "categories", "about", "contact", "blog"];
+const BASE_PAGES = [
+  "",
+  "go-natural",
+  "good-ideas",
+  "products",
+  "categories",
+  "about",
+  "contact",
+  "blog",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();

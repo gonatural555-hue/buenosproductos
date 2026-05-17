@@ -16,6 +16,31 @@
     "localeNavAria": "Scegli la lingua",
     "logoAlt": "Go Natural"
   },
+  "brandGateway": {
+    "goNatural": {
+      "title": "Go Natural",
+      "tagline": "Attrezzatura outdoor premium per esplorare con calma.",
+      "cta": "Vai a Go Natural"
+    },
+    "goodIdeas": {
+      "title": "Good Ideas",
+      "tagline": "Prodotti smart per casa, tech e vita quotidiana.",
+      "cta": "Vai a Good Ideas"
+    },
+    "localeAria": "Scegli lingua"
+  },
+  "goodIdeas": {
+    "nav": {
+      "productsSoon": "Prodotti — in arrivo",
+      "allBrands": "Tutti i brand"
+    },
+    "hero": {
+      "title": "Prodotti smart. Good Ideas.",
+      "subtitle": "Prodotti utili per casa, tech, lifestyle e vita di tutti i giorni.",
+      "cta": "Esplora i prodotti",
+      "comingSoon": "Stiamo curando il catalogo. Presto troverai gadget per la casa, elettronica e essenziali quotidiani."
+    }
+  },
   "common": {
     "viewProduct": "Vedi prodotto",
     "addToCart": "Aggiungi al carrello",
@@ -44,6 +69,14 @@
     "passwordMismatch": "Le password non coincidono."
   },
   "seo": {
+    "gateway": {
+      "title": "Go Natural & Good Ideas | Scegli il negozio",
+      "description": "Go Natural per l’outdoor o Good Ideas per casa, tech e prodotti smart."
+    },
+    "goodIdeas": {
+      "title": "Good Ideas | Prodotti smart",
+      "description": "Gadget utili, tech per la casa e prodotti virali. In arrivo."
+    },
     "home": {
       "title": "Equipaggiamento outdoor premium per l’esplorazione lenta",
       "description": "Prodotti pensati con intenzione per camping, acqua e viaggi outdoor."
