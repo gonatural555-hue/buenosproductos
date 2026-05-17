@@ -13,8 +13,7 @@ export type GoNaturalEditorialColumnProps = {
 };
 
 /**
- * Opción A — columna editorial única: eyebrow, logo, wordmark, tagline y CTA
- * con el mismo eje de alineación.
+ * Columna editorial centrada: eyebrow, logo, wordmark, tagline y CTA en un solo eje.
  */
 export default function GoNaturalEditorialColumn({
   tagline,
@@ -23,8 +22,8 @@ export default function GoNaturalEditorialColumn({
   isActive,
 }: GoNaturalEditorialColumnProps) {
   return (
-    <div className="relative z-20 flex w-full max-w-[300px] flex-col items-start">
-      <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[#D9A441]">
+    <div className="relative z-20 mx-auto flex w-full max-w-[300px] flex-col items-center text-center">
+      <p className="w-full font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[#D9A441]">
         Outdoor
       </p>
 
@@ -40,7 +39,7 @@ export default function GoNaturalEditorialColumn({
         />
         <p
           aria-hidden
-          className="font-display mt-3 w-full text-center text-[clamp(1.5rem,4.2vw,2.15rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
+          className="font-display mt-3 w-full text-[clamp(1.5rem,4.2vw,2.15rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
         >
           GO NATURAL
         </p>
@@ -51,7 +50,7 @@ export default function GoNaturalEditorialColumn({
       </p>
 
       <motion.div
-        className="relative z-20 mt-8"
+        className="relative z-20 mt-8 flex w-full justify-center"
         animate={{
           opacity: isActive ? 1 : 0.82,
           y: isActive ? 0 : 4,
@@ -76,3 +75,5 @@ export default function GoNaturalEditorialColumn({
     </div>
   );
 }
+
+

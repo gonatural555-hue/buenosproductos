@@ -115,7 +115,7 @@ export default function BrandPanel({
           <GoNaturalMountainLayer revealed={isGoNaturalHovered} parallax={parallax} />
           {/* Isla editorial — protege logo/texto/CTA de montañas en hover */}
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[min(88%,560px)] bg-gradient-to-t from-[#F4EBDD] from-45% via-[#F4EBDD]/90 via-70% to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[min(88%,560px)] bg-[radial-gradient(ellipse_90%_80%_at_50%_100%,#F4EBDD_0%,#F4EBDD_42%,rgba(244,235,221,0.92)_58%,transparent_78%)]"
             aria-hidden
           />
         </>
@@ -135,9 +135,9 @@ export default function BrandPanel({
       )}
 
       <div
-        className={`relative z-10 flex h-full w-full flex-col justify-end px-8 pb-16 pt-24 sm:px-12 sm:pb-[4.5rem] md:px-14 md:pb-20 md:pt-28 ${
-          layout === "column" ? "min-h-[50dvh]" : ""
-        }`}
+        className={`relative z-10 flex h-full w-full flex-col px-8 pb-16 pt-24 sm:px-12 sm:pb-[4.5rem] md:px-14 md:pb-20 md:pt-28 ${
+          isGoNatural ? "items-center justify-end" : "justify-end"
+        } ${layout === "column" ? "min-h-[50dvh]" : ""}`}
       >
         {isGoNatural ? (
           <GoNaturalEditorialColumn
