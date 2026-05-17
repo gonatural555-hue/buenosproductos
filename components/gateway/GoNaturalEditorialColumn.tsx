@@ -52,7 +52,7 @@ export default function GoNaturalEditorialColumn({
 
       <p
         aria-hidden
-        className="font-display mt-0.15 w-full text-[clamp(1.65rem,4.5vw,2.35rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
+        className="font-display mt-0 w-full text-[clamp(1.65rem,4.5vw,2.35rem)] font-normal uppercase leading-none tracking-[-0.02em] text-[#2E4A36]"
       >
         GO NATURAL
       </p>
