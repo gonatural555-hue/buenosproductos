@@ -45,6 +45,12 @@ const config = {
           "Times New Roman",
           "serif",
         ],
+        "tan-nimbus": [
+          "var(--font-tan-nimbus)",
+          "Georgia",
+          "Times New Roman",
+          "serif",
+        ],
       },
       colors: {
         /* Go Natural — sistema editorial (globals :root --gn-*) */

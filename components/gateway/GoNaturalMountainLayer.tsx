@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   GN_GATEWAY_MOUNTAIN_EASE,
   GN_GATEWAY_MOUNTAIN_ENTER_S,
@@ -10,6 +10,8 @@ import {
   GN_GATEWAY_MOUNTAIN_MOBILE_OPACITY,
   GN_GATEWAY_MOUNTAIN_STAGGER_S,
   GN_GATEWAY_MOUNTAINS,
+  GN_GATEWAY_MOUNTAINS_MOBILE_IDS,
+  type GatewayMountainSpec,
 } from "@/lib/ui/gateway-mountains";
 
 type GoNaturalMountainLayerProps = {
@@ -31,6 +33,13 @@ function useIsDesktopHover() {
   return isDesktop;
 }
 
+function mountainPositionStyle(mountain: GatewayMountainSpec): React.CSSProperties {
+  if (mountain.bottom != null) {
+    return { bottom: mountain.bottom, top: "auto", width: mountain.width };
+  }
+  return { top: mountain.top, width: mountain.width };
+}
+
 /**
  * prefers-reduced-motion: sin slide/parallax en desktop; montañas estáticas suaves como en móvil.
  */
@@ -44,22 +53,27 @@ export default function GoNaturalMountainLayer({
   const staticAmbient = !isDesktop || reduceMotion;
   const showRevealed = !staticAmbient && revealed;
 
+  const visibleMountains = useMemo(() => {
+    if (isDesktop) return GN_GATEWAY_MOUNTAINS;
+    return GN_GATEWAY_MOUNTAINS.filter((m) =>
+      (GN_GATEWAY_MOUNTAINS_MOBILE_IDS as readonly string[]).includes(m.id)
+    );
+  }, [isDesktop]);
+
   return (
-    <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
-      {GN_GATEWAY_MOUNTAINS.map((mountain) => {
+    <motion.div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
+      {visibleMountains.map((mountain) => {
         const fromLeft = mountain.side === "left";
         const hiddenX = fromLeft ? "-115%" : "115%";
         const sideClass = fromLeft ? "left-0" : "right-0";
         const parallaxFactor = fromLeft ? 1 : -1;
+        const anchoredBottom = mountain.bottom != null;
 
         return (
           <motion.div
             key={mountain.id}
-            className={`absolute ${sideClass} -translate-y-1/2`}
-            style={{
-              top: mountain.top,
-              width: mountain.width,
-            }}
+            className={`absolute ${sideClass} ${anchoredBottom ? "" : "-translate-y-1/2"}`}
+            style={mountainPositionStyle(mountain)}
             initial={false}
             animate={{
               x: staticAmbient
@@ -71,7 +85,7 @@ export default function GoNaturalMountainLayer({
               opacity: staticAmbient
                 ? GN_GATEWAY_MOUNTAIN_MOBILE_OPACITY
                 : showRevealed
-                  ? 1
+                  ? mountain.hoverOpacity
                   : 0,
             }}
             transition={{
@@ -112,6 +126,6 @@ export default function GoNaturalMountainLayer({
           </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

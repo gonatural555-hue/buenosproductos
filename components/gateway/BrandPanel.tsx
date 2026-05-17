@@ -6,7 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import { GN_GATEWAY_PARALLAX_MAX_PX } from "@/lib/ui/gateway-mountains";
 import type { BrandId } from "@/lib/routing/brands";
 import { GN_EASE_PREMIUM } from "@/lib/ui/gonatural-design";
-import GoNaturalBrandMark from "@/components/gateway/GoNaturalBrandMark";
+import GoNaturalEditorialColumn from "@/components/gateway/GoNaturalEditorialColumn";
 import GoNaturalMountainLayer from "@/components/gateway/GoNaturalMountainLayer";
 
 const TRANSITION_MS = 600;
@@ -112,9 +112,11 @@ export default function BrandPanel({
             className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[38%] bg-[linear-gradient(to_top,rgba(46,74,54,0.08),transparent)]"
             aria-hidden
           />
-          <GoNaturalMountainLayer
-            revealed={isGoNaturalHovered}
-            parallax={parallax}
+          <GoNaturalMountainLayer revealed={isGoNaturalHovered} parallax={parallax} />
+          {/* Isla editorial — protege logo/texto/CTA de montañas en hover */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[min(88%,560px)] bg-gradient-to-t from-[#F4EBDD] from-45% via-[#F4EBDD]/90 via-70% to-transparent"
+            aria-hidden
           />
         </>
       ) : (
@@ -133,61 +135,53 @@ export default function BrandPanel({
       )}
 
       <div
-        className={`relative z-10 flex h-full w-full flex-col justify-end px-8 pb-12 pt-24 sm:px-12 sm:pb-14 md:px-14 md:pb-16 ${
+        className={`relative z-10 flex h-full w-full flex-col justify-end px-8 pb-16 pt-24 sm:px-12 sm:pb-[4.5rem] md:px-14 md:pb-20 md:pt-28 ${
           layout === "column" ? "min-h-[50dvh]" : ""
         }`}
       >
-        <p
-          className={`font-inter text-[11px] font-semibold uppercase tracking-[0.22em] ${
-            isGoNatural ? "text-[#D9A441]" : "text-[rgba(232,236,241,0.5)]"
-          }`}
-        >
-          {isGoNatural ? "Outdoor" : "Lifestyle & Tech"}
-        </p>
-
         {isGoNatural ? (
-          <GoNaturalBrandMark />
-        ) : (
-          <h2 className="mt-3 max-w-[14ch] font-tan-nimbus text-[clamp(2.25rem,5vw,3.75rem)] font-normal leading-[0.95] tracking-[-0.02em] text-[#E8ECF1]">
-            {title}
-          </h2>
-        )}
-
-        <p
-          className={`mt-4 max-w-md font-inter text-[15px] leading-relaxed md:text-[16px] ${
-            isGoNatural ? "text-[rgba(46,74,54,0.72)]" : "text-[rgba(232,236,241,0.72)]"
-          }`}
-        >
-          {tagline}
-        </p>
-
-        <motion.div
-          className="mt-8"
-          animate={{
-            opacity: isActive ? 1 : 0.82,
-            y: isActive ? 0 : 4,
-          }}
-          transition={{ duration: TRANSITION_MS / 1000, ease: PANEL_EASE }}
-        >
-          <Link
+          <GoNaturalEditorialColumn
+            tagline={tagline}
+            cta={cta}
             href={href}
-            className={`group inline-flex min-h-[52px] items-center justify-center rounded-full px-8 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] transition-[transform,box-shadow,background-color] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 motion-reduce:transition-none ${
-              isGoNatural
-                ? "bg-[#2E4A36] text-[#F4EBDD] shadow-[0_12px_40px_rgba(46,74,54,0.2)] hover:-translate-y-0.5 hover:shadow-[0_16px_48px_rgba(46,74,54,0.24)] focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-[#F4EBDD]"
-                : "bg-[#E8ECF1] text-[#0B0F14] shadow-[0_12px_40px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 hover:bg-white focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-[#0B0F14]"
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              {cta}
-              <span
-                className="inline-block transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5"
-                aria-hidden
+            isActive={isActive}
+          />
+        ) : (
+          <>
+            <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[rgba(232,236,241,0.5)]">
+              Lifestyle & Tech
+            </p>
+            <h2 className="mt-3 max-w-[14ch] font-display text-[clamp(2.25rem,5vw,3.75rem)] font-normal leading-[0.95] tracking-[-0.02em] text-[#E8ECF1]">
+              {title}
+            </h2>
+            <p className="mt-4 max-w-md font-inter text-[15px] leading-relaxed text-[rgba(232,236,241,0.72)] md:text-[16px]">
+              {tagline}
+            </p>
+            <motion.div
+              className="mt-8"
+              animate={{
+                opacity: isActive ? 1 : 0.82,
+                y: isActive ? 0 : 4,
+              }}
+              transition={{ duration: TRANSITION_MS / 1000, ease: PANEL_EASE }}
+            >
+              <Link
+                href={href}
+                className="group inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#E8ECF1] px-8 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0B0F14] shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-[transform,box-shadow,background-color] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none"
               >
-                →
-              </span>
-            </span>
-          </Link>
-        </motion.div>
+                <span className="flex items-center gap-2">
+                  {cta}
+                  <span
+                    className="inline-block transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5"
+                    aria-hidden
+                  >
+                    →
+                  </span>
+                </span>
+              </Link>
+            </motion.div>
+          </>
+        )}
       </div>
     </motion.section>
   );
