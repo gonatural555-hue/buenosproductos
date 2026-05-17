@@ -31,7 +31,10 @@
   },
   "goodIdeas": {
     "nav": {
-      "productsSoon": "Productos — próximamente",
+      "home": "Inicio",
+      "products": "Productos",
+      "blog": "Blog",
+      "cart": "Carrito",
       "allBrands": "Todas las marcas"
     },
     "hero": {
@@ -39,6 +42,62 @@
       "subtitle": "Productos útiles para hogar, tecnología, estilo de vida y el día a día.",
       "cta": "Explorar productos",
       "comingSoon": "Estamos preparando el catálogo. Pronto encontrarás gadgets para el hogar, electrónica y esenciales del día a día."
+    },
+    "products": {
+      "heroTitle": "Esenciales\npara el día a día",
+      "heroSubtitle": "Gadgets, hogar y lifestyle curados con criterio. Catálogo en preparación.",
+      "heroAccentWord": "Esenciales",
+      "heroDiscover": "Descubrir catálogo",
+      "scrollHint": "Desliza para explorar",
+      "comingSoonTitle": "Próximamente",
+      "comingSoonBody": "Estamos preparando el catálogo Good Ideas. Muy pronto podrás explorar productos para hogar, tecnología y lifestyle.",
+      "categories": {
+        "home": "Hogar",
+        "tech": "Tech",
+        "lifestyle": "Lifestyle",
+        "gifts": "Regalos"
+      }
+    },
+    "blog": {
+      "eyebrow": "Lifestyle & Tech",
+      "heroTitle": "Ideas\nque inspiran",
+      "heroSubtitle": "Guías, tendencias y productos útiles para hogar, tecnología y vida diaria.",
+      "exploreCta": "Explorar artículos",
+      "scrollHint": "Desliza para explorar",
+      "sectionAria": "Blog Good Ideas",
+      "comingSoonTitle": "Próximamente",
+      "comingSoonBody": "Estamos preparando el journal Good Ideas. Pronto encontrarás artículos sobre hogar, tech y lifestyle."
+    },
+    "cart": {
+      "title": "Tu carrito",
+      "empty": "Tu carrito Good Ideas está vacío.",
+      "emptyCta": "Explorar productos",
+      "comingSoonCheckout": "El checkout estará disponible cuando lancemos el catálogo.",
+      "subtotal": "Subtotal",
+      "checkout": "Ir al checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "comingSoonTitle": "Próximamente",
+      "comingSoonBody": "El proceso de pago Good Ideas se habilitará junto con el lanzamiento del catálogo.",
+      "backToCart": "Volver al carrito"
+    },
+    "product": {
+      "comingSoonTitle": "Producto no disponible",
+      "comingSoonBody": "Este producto formará parte del catálogo Good Ideas próximamente.",
+      "backToProducts": "Volver a productos"
+    },
+    "footer": {
+      "tagline": "Productos inteligentes para hogar, tecnología y vida diaria.",
+      "shopHeading": "Tienda",
+      "legalHeading": "Legal",
+      "home": "Inicio",
+      "products": "Productos",
+      "blog": "Blog",
+      "privacy": "Privacidad",
+      "cookies": "Cookies",
+      "terms": "Términos",
+      "rights": "Todos los derechos reservados."
     }
   },
   "common": {
@@ -75,7 +134,19 @@
     },
     "goodIdeas": {
       "title": "Good Ideas | Productos inteligentes",
-      "description": "Gadgets útiles, tecnología para el hogar y productos virales. Próximamente."
+      "description": "Gadgets útiles, tecnología para el hogar y productos virales. Próximamente.",
+      "products": {
+        "title": "Productos | Good Ideas",
+        "description": "Catálogo Good Ideas: hogar, tecnología y lifestyle. Próximamente."
+      },
+      "blog": {
+        "title": "Blog | Good Ideas",
+        "description": "Ideas, guías y tendencias sobre hogar, tech y lifestyle."
+      },
+      "cart": {
+        "title": "Carrito | Good Ideas",
+        "description": "Tu carrito Good Ideas."
+      }
     },
     "home": {
       "title": "Equipamiento outdoor premium para explorar con calma",

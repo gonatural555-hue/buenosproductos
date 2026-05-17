@@ -31,7 +31,10 @@
   },
   "goodIdeas": {
     "nav": {
-      "productsSoon": "Products — coming soon",
+      "home": "Home",
+      "products": "Products",
+      "blog": "Blog",
+      "cart": "Cart",
       "allBrands": "All brands"
     },
     "hero": {
@@ -39,6 +42,62 @@
       "subtitle": "Useful products for home, tech, lifestyle and everyday life.",
       "cta": "Explore Products",
       "comingSoon": "Our catalog is being curated. Check back soon for smart home gadgets, electronics and everyday essentials."
+    },
+    "products": {
+      "heroTitle": "Everyday\nEssentials",
+      "heroSubtitle": "Curated gadgets, home and lifestyle picks. Catalog coming soon.",
+      "heroAccentWord": "Everyday",
+      "heroDiscover": "Discover catalog",
+      "scrollHint": "Scroll to explore",
+      "comingSoonTitle": "Coming soon",
+      "comingSoonBody": "We are preparing the Good Ideas catalog. Home, tech and lifestyle products will be available soon.",
+      "categories": {
+        "home": "Home",
+        "tech": "Tech",
+        "lifestyle": "Lifestyle",
+        "gifts": "Gifts"
+      }
+    },
+    "blog": {
+      "eyebrow": "Lifestyle & Tech",
+      "heroTitle": "Ideas\nthat inspire",
+      "heroSubtitle": "Guides, trends and useful picks for home, technology and daily life.",
+      "exploreCta": "Explore articles",
+      "scrollHint": "Scroll to explore",
+      "sectionAria": "Good Ideas Blog",
+      "comingSoonTitle": "Coming soon",
+      "comingSoonBody": "The Good Ideas journal is on the way. Articles about home, tech and lifestyle will land here soon."
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your Good Ideas cart is empty.",
+      "emptyCta": "Explore products",
+      "comingSoonCheckout": "Checkout will be available when we launch the catalog.",
+      "subtotal": "Subtotal",
+      "checkout": "Go to checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "comingSoonTitle": "Coming soon",
+      "comingSoonBody": "Good Ideas checkout will open with the catalog launch.",
+      "backToCart": "Back to cart"
+    },
+    "product": {
+      "comingSoonTitle": "Product unavailable",
+      "comingSoonBody": "This product will be part of the Good Ideas catalog soon.",
+      "backToProducts": "Back to products"
+    },
+    "footer": {
+      "tagline": "Smart products for home, technology and everyday life.",
+      "shopHeading": "Shop",
+      "legalHeading": "Legal",
+      "home": "Home",
+      "products": "Products",
+      "blog": "Blog",
+      "privacy": "Privacy",
+      "cookies": "Cookies",
+      "terms": "Terms",
+      "rights": "All rights reserved."
     }
   },
   "common": {
@@ -75,7 +134,19 @@
     },
     "goodIdeas": {
       "title": "Good Ideas | Smart Products for Everyday Life",
-      "description": "Useful gadgets, home tech and viral products for modern living. Coming soon."
+      "description": "Useful gadgets, home tech and viral products for modern living. Coming soon.",
+      "products": {
+        "title": "Products | Good Ideas",
+        "description": "Good Ideas catalog: home, tech and lifestyle. Coming soon."
+      },
+      "blog": {
+        "title": "Blog | Good Ideas",
+        "description": "Ideas, guides and trends for home, tech and lifestyle."
+      },
+      "cart": {
+        "title": "Cart | Good Ideas",
+        "description": "Your Good Ideas cart."
+      }
     },
     "home": {
       "title": "Premium Outdoor Gear for Slow Exploration",

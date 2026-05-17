@@ -31,7 +31,10 @@
   },
   "goodIdeas": {
     "nav": {
-      "productsSoon": "Produits — bientôt",
+      "home": "Accueil",
+      "products": "Produits",
+      "blog": "Blog",
+      "cart": "Panier",
       "allBrands": "Toutes les marques"
     },
     "hero": {
@@ -39,6 +42,62 @@
       "subtitle": "Produits utiles pour la maison, la tech, le lifestyle et le quotidien.",
       "cta": "Explorer les produits",
       "comingSoon": "Notre catalogue est en préparation. Bientôt : gadgets maison, électronique et essentiels du quotidien."
+    },
+    "products": {
+      "heroTitle": "Essentiels\nau quotidien",
+      "heroSubtitle": "Gadgets, maison et lifestyle sélectionnés. Catalogue en préparation.",
+      "heroAccentWord": "Essentiels",
+      "heroDiscover": "Découvrir le catalogue",
+      "scrollHint": "Faites défiler",
+      "comingSoonTitle": "Bientôt",
+      "comingSoonBody": "Nous préparons le catalogue Good Ideas. Maison, tech et lifestyle arrivent très bientôt.",
+      "categories": {
+        "home": "Maison",
+        "tech": "Tech",
+        "lifestyle": "Lifestyle",
+        "gifts": "Cadeaux"
+      }
+    },
+    "blog": {
+      "eyebrow": "Lifestyle & Tech",
+      "heroTitle": "Des idées\nqui inspirent",
+      "heroSubtitle": "Guides, tendances et produits utiles pour la maison, la tech et le quotidien.",
+      "exploreCta": "Explorer les articles",
+      "scrollHint": "Faites défiler",
+      "sectionAria": "Blog Good Ideas",
+      "comingSoonTitle": "Bientôt",
+      "comingSoonBody": "Le journal Good Ideas arrive bientôt. Articles maison, tech et lifestyle à suivre."
+    },
+    "cart": {
+      "title": "Votre panier",
+      "empty": "Votre panier Good Ideas est vide.",
+      "emptyCta": "Explorer les produits",
+      "comingSoonCheckout": "Le paiement sera disponible au lancement du catalogue.",
+      "subtotal": "Sous-total",
+      "checkout": "Passer au paiement"
+    },
+    "checkout": {
+      "title": "Paiement",
+      "comingSoonTitle": "Bientôt",
+      "comingSoonBody": "Le checkout Good Ideas s’ouvrira avec le lancement du catalogue.",
+      "backToCart": "Retour au panier"
+    },
+    "product": {
+      "comingSoonTitle": "Produit indisponible",
+      "comingSoonBody": "Ce produit fera partie du catalogue Good Ideas prochainement.",
+      "backToProducts": "Retour aux produits"
+    },
+    "footer": {
+      "tagline": "Produits malins pour la maison, la tech et le quotidien.",
+      "shopHeading": "Boutique",
+      "legalHeading": "Mentions",
+      "home": "Accueil",
+      "products": "Produits",
+      "blog": "Blog",
+      "privacy": "Confidentialité",
+      "cookies": "Cookies",
+      "terms": "Conditions",
+      "rights": "Tous droits réservés."
     }
   },
   "common": {
@@ -75,7 +134,19 @@
     },
     "goodIdeas": {
       "title": "Good Ideas | Produits malins",
-      "description": "Gadgets utiles, tech maison et produits viraux. Bientôt disponible."
+      "description": "Gadgets utiles, tech maison et produits viraux. Bientôt disponible.",
+      "products": {
+        "title": "Produits | Good Ideas",
+        "description": "Catalogue Good Ideas : maison, tech et lifestyle. Bientôt."
+      },
+      "blog": {
+        "title": "Blog | Good Ideas",
+        "description": "Idées, guides et tendances maison, tech et lifestyle."
+      },
+      "cart": {
+        "title": "Panier | Good Ideas",
+        "description": "Votre panier Good Ideas."
+      }
     },
     "home": {
       "title": "Équipement outdoor premium pour l’exploration lente",

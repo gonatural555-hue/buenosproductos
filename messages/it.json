@@ -31,7 +31,10 @@
   },
   "goodIdeas": {
     "nav": {
-      "productsSoon": "Prodotti — in arrivo",
+      "home": "Home",
+      "products": "Prodotti",
+      "blog": "Blog",
+      "cart": "Carrello",
       "allBrands": "Tutti i brand"
     },
     "hero": {
@@ -39,6 +42,62 @@
       "subtitle": "Prodotti utili per casa, tech, lifestyle e vita di tutti i giorni.",
       "cta": "Esplora i prodotti",
       "comingSoon": "Stiamo curando il catalogo. Presto troverai gadget per la casa, elettronica e essenziali quotidiani."
+    },
+    "products": {
+      "heroTitle": "Essenziali\nquotidiani",
+      "heroSubtitle": "Gadget, casa e lifestyle selezionati. Catalogo in arrivo.",
+      "heroAccentWord": "Essenziali",
+      "heroDiscover": "Scopri il catalogo",
+      "scrollHint": "Scorri per esplorare",
+      "comingSoonTitle": "In arrivo",
+      "comingSoonBody": "Stiamo preparando il catalogo Good Ideas. Presto prodotti per casa, tech e lifestyle.",
+      "categories": {
+        "home": "Casa",
+        "tech": "Tech",
+        "lifestyle": "Lifestyle",
+        "gifts": "Regali"
+      }
+    },
+    "blog": {
+      "eyebrow": "Lifestyle & Tech",
+      "heroTitle": "Idee\nche ispirano",
+      "heroSubtitle": "Guide, trend e prodotti utili per casa, tecnologia e vita quotidiana.",
+      "exploreCta": "Esplora gli articoli",
+      "scrollHint": "Scorri per esplorare",
+      "sectionAria": "Blog Good Ideas",
+      "comingSoonTitle": "In arrivo",
+      "comingSoonBody": "Il journal Good Ideas è in preparazione. Articoli su casa, tech e lifestyle in arrivo."
+    },
+    "cart": {
+      "title": "Il tuo carrello",
+      "empty": "Il carrello Good Ideas è vuoto.",
+      "emptyCta": "Esplora i prodotti",
+      "comingSoonCheckout": "Il checkout sarà disponibile con il lancio del catalogo.",
+      "subtotal": "Subtotale",
+      "checkout": "Vai al checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "comingSoonTitle": "In arrivo",
+      "comingSoonBody": "Il checkout Good Ideas si aprirà con il lancio del catalogo.",
+      "backToCart": "Torna al carrello"
+    },
+    "product": {
+      "comingSoonTitle": "Prodotto non disponibile",
+      "comingSoonBody": "Questo prodotto farà parte del catalogo Good Ideas a breve.",
+      "backToProducts": "Torna ai prodotti"
+    },
+    "footer": {
+      "tagline": "Prodotti smart per casa, tecnologia e vita quotidiana.",
+      "shopHeading": "Shop",
+      "legalHeading": "Legale",
+      "home": "Home",
+      "products": "Prodotti",
+      "blog": "Blog",
+      "privacy": "Privacy",
+      "cookies": "Cookie",
+      "terms": "Termini",
+      "rights": "Tutti i diritti riservati."
     }
   },
   "common": {
@@ -75,7 +134,19 @@
     },
     "goodIdeas": {
       "title": "Good Ideas | Prodotti smart",
-      "description": "Gadget utili, tech per la casa e prodotti virali. In arrivo."
+      "description": "Gadget utili, tech per la casa e prodotti virali. In arrivo.",
+      "products": {
+        "title": "Prodotti | Good Ideas",
+        "description": "Catalogo Good Ideas: casa, tech e lifestyle. In arrivo."
+      },
+      "blog": {
+        "title": "Blog | Good Ideas",
+        "description": "Idee, guide e trend per casa, tech e lifestyle."
+      },
+      "cart": {
+        "title": "Carrello | Good Ideas",
+        "description": "Il tuo carrello Good Ideas."
+      }
     },
     "home": {
       "title": "Equipaggiamento outdoor premium per l’esplorazione lenta",

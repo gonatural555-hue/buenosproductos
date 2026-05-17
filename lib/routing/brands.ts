@@ -19,6 +19,30 @@ export function goodIdeasHomePath(locale: Locale): string {
   return `/${locale}/${BRAND_SEGMENTS.goodIdeas}`;
 }
 
+export function goodIdeasProductsPath(locale: Locale): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/products`;
+}
+
+export function goodIdeasProductPath(locale: Locale, id: string): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/products/${id}`;
+}
+
+export function goodIdeasBlogPath(locale: Locale): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/blog`;
+}
+
+export function goodIdeasBlogPostPath(locale: Locale, slug: string): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/blog/${slug}`;
+}
+
+export function goodIdeasCartPath(locale: Locale): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/cart`;
+}
+
+export function goodIdeasCheckoutPath(locale: Locale): string {
+  return `/${locale}/${BRAND_SEGMENTS.goodIdeas}/checkout`;
+}
+
 /** `true` when pathname is exactly `/[locale]` (multi-brand gateway). */
 export function isBrandGatewayPath(pathname: string): boolean {
   const segments = pathname.split("/").filter(Boolean);
