@@ -981,6 +981,132 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       },
     },
   },
+  {
+    id: "gi-regalos-001",
+    slug: "ai-remote-control-robot-dog",
+    title: "AI Remote Control Robot Dog",
+    price: 54.39,
+    category: "Regalos",
+    images: [
+      ...getGoodIdeasProductImagePaths("gi-regalos-001", 5),
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/normal.webp`,
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/housekeeping-claw.webp`,
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/watergun.webp`,
+    ],
+    description:
+      "AI-inspired remote control robot dog designed as an interactive tech gift. Remote control play, app programming, movement tricks, acrobatic actions, and playful interaction—ideal for kids, tech lovers, and families.",
+    shortDescription:
+      "AI-inspired remote control robot dog with interactive movement, app programming, playful tricks, and multiple versions for smart entertainment.",
+    longDescription: [
+      "Bring interactive robot dog play into the room with movement, personality, and tech-forward fun. Designed for kids, families, and anyone curious about robotics-style entertainment.",
+      "Remote control and app programming open up custom routines, tricks, and playful interaction that keeps sessions fresh beyond a simple toy.",
+      "Acrobatic movement and trick modes add spectacle—roll, spin, and respond in ways that feel lively and engaging during playtime.",
+      "Choose from three versions: Normal Robot Dog, Housekeeping Robot with Claw, or Robot Dog with Water Gun—each with its own play personality.",
+      "A smart gift for birthdays, holidays, and tech-curious households looking for modern robotic toy experiences and shared family entertainment.",
+      "Not suitable for children under 36 months.",
+    ],
+    features: [
+      "AI-inspired interactive robot dog",
+      "Remote control operation",
+      "App programming support",
+      "Acrobatic movement and tricks",
+      "Available in three versions",
+      "Smart gift for kids and tech lovers",
+      "Interactive family entertainment",
+      "Modern robotic toy design",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "version",
+      label: "Version",
+      default: "normal",
+      options: [
+        { value: "normal", label: "Normal Robot Dog" },
+        {
+          value: "housekeeping-claw",
+          label: "Housekeeping Robot with Claw",
+        },
+        { value: "watergun", label: "Robot Dog with Water Gun" },
+      ],
+    },
+    translations: {
+      es: {
+        title: "Perro robot AI con control remoto",
+        description:
+          "Perro robot con control remoto e inspiración AI: regalo tecnológico interactivo con programación por app, trucos, movimiento acrobático y tres versiones disponibles.",
+        shortDescription:
+          "Perro robot AI con control remoto, movimiento interactivo, programación por app, trucos y varias versiones para entretenimiento inteligente.",
+        longDescription: [
+          "Juego interactivo con un perro robot que combina movimiento, personalidad y diversión tecnológica para niños, familias y curiosos de la robótica.",
+          "Control remoto y programación por app para rutinas, trucos e interacción que va más allá de un juguete básico.",
+          "Movimiento acrobático y modos de trucos para sesiones de juego más dinámicas.",
+          "Tres versiones: perro robot normal, robot de limpieza con pinza o perro robot con pistola de agua.",
+          "Regalo inteligente para cumpleaños, fiestas y hogares con curiosidad tecnológica.",
+          "No apto para niños menores de 36 meses.",
+        ],
+        features: [
+          "Perro robot interactivo inspirado en AI",
+          "Funcionamiento con control remoto",
+          "Soporte de programación por app",
+          "Movimiento acrobático y trucos",
+          "Disponible en tres versiones",
+          "Regalo inteligente para niños y amantes de la tech",
+          "Entretenimiento familiar interactivo",
+          "Diseño de juguete robótico moderno",
+        ],
+      },
+      fr: {
+        title: "Chien robot AI télécommandé",
+        description:
+          "Chien robot télécommandé inspiré de l'IA : cadeau tech interactif avec programmation app, tricks, mouvements acrobatiques et trois versions.",
+        shortDescription:
+          "Chien robot AI télécommandé avec mouvement interactif, programmation app, tricks et plusieurs versions pour divertissement intelligent.",
+        longDescription: [
+          "Jeu interactif avec un chien robot au mouvement vivant et une touche tech pour enfants, familles et curieux.",
+          "Télécommande et programmation app pour routines et tricks personnalisés.",
+          "Mouvements acrobatiques et modes tricks pour des sessions dynamiques.",
+          "Trois versions : chien robot normal, robot ménage avec pince, ou chien robot avec pistolet à eau.",
+          "Cadeau intelligent pour anniversaires, fêtes et foyers curieux de technologie.",
+          "Ne convient pas aux enfants de moins de 36 mois.",
+        ],
+        features: [
+          "Chien robot interactif inspiré IA",
+          "Fonctionnement télécommandé",
+          "Programmation via application",
+          "Mouvements acrobatiques et tricks",
+          "Disponible en trois versions",
+          "Cadeau intelligent pour enfants et passionnés tech",
+          "Divertissement familial interactif",
+          "Design jouet robotique moderne",
+        ],
+      },
+      it: {
+        title: "Cane robot AI telecomandato",
+        description:
+          "Cane robot telecomandato ispirato all'AI: regalo tech interattivo con programmazione app, trick, movimenti acrobatici e tre versioni.",
+        shortDescription:
+          "Cane robot AI telecomandato con movimento interattivo, programmazione app, trick e più versioni per intrattenimento smart.",
+        longDescription: [
+          "Gioco interattivo con un cane robot dal movimento vivace per bambini, famiglie e curiosi di tecnologia.",
+          "Telecomando e programmazione app per routine e trick personalizzati.",
+          "Movimenti acrobatici e modalità trick per sessioni di gioco dinamiche.",
+          "Tre versioni: cane robot normale, robot pulizie con pinza, o cane robot con pistola ad acqua.",
+          "Regalo smart per compleanni, feste e famiglie appassionate di tech.",
+          "Non adatto a bambini di età inferiore a 36 mesi.",
+        ],
+        features: [
+          "Cane robot interattivo ispirato all'AI",
+          "Funzionamento con telecomando",
+          "Supporto programmazione via app",
+          "Movimenti acrobatici e trick",
+          "Disponibile in tre versioni",
+          "Regalo smart per bambini e amanti della tech",
+          "Intrattenimento familiare interattivo",
+          "Design giocattolo robotico moderno",
+        ],
+      },
+    },
+  },
 
 ];
 
