@@ -235,6 +235,97 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-tech-002",
+    slug: "gravity-car-phone-holder-air-vent",
+    title: "Gravity Car Phone Holder for Air Vent",
+    price: 2.69,
+    category: "Tech",
+    images: getGoodIdeasProductImagePaths("gi-tech-002", 5),
+    description:
+      "Gravity-style car phone holder mounted on the vehicle air vent, designed to hold a smartphone securely while driving with a simple automatic clamping mechanism. Hands-free navigation, easy one-hand placement, compact design, stable grip, and everyday driving convenience.",
+    shortDescription:
+      "Compact gravity car phone holder for air vents, designed for stable hands-free navigation, calls, and everyday driving.",
+    longDescription: [
+      "Drive with your phone securely in view and your hands freer for the wheel. This gravity car holder keeps navigation, calls, and alerts accessible without bulky mounts or complicated setup.",
+      "A simple gravity clamp mechanism grips your smartphone automatically when you place it in the holder—easy one-hand placement when you get in the car.",
+      "Air vent installation keeps the mount compact and out of the way, fitting cleanly into your car interior without taking up dashboard space.",
+      "Stable smartphone support helps reduce wobble on everyday roads, so GPS and calls stay readable at a glance.",
+      "A practical everyday driving accessory for commuters, delivery routes, and anyone who relies on navigation throughout the day.",
+    ],
+    features: [
+      "Gravity clamp phone holder",
+      "Air vent mounting design",
+      "One-hand phone placement",
+      "Stable grip while driving",
+      "Compact car-friendly structure",
+      "Suitable for GPS navigation and calls",
+      "Universal smartphone compatibility positioning",
+      "Practical everyday driving accessory",
+    ],
+    freeShipping: false,
+    translations: {
+      es: {
+        title: "Soporte de gravedad para móvil en rejilla de aire",
+        description:
+          "Soporte de gravedad para coche con montaje en rejilla de ventilación. Sujeta el smartphone de forma segura al conducir con un mecanismo de sujeción automático. Manos libres, colocación con una mano y diseño compacto.",
+        shortDescription:
+          "Soporte compacto de gravedad para rejilla de aire, ideal para navegación manos libres, llamadas y conducción diaria.",
+        longDescription: [
+          "Conduce con el móvil a la vista y las manos más libres para el volante. Mantiene navegación, llamadas y alertas accesibles sin soportes voluminosos.",
+          "El mecanismo de gravedad sujeta el smartphone al colocarlo—colocación sencilla con una mano al entrar al coche.",
+          "Montaje en rejilla de aire: compacto y discreto en el interior del vehículo.",
+          "Sujeción estable para que GPS y llamadas se lean de un vistazo en el día a día.",
+          "Accesorio práctico para commuting, repartos y quien depende de la navegación a diario.",
+        ],
+        features: [
+          "Soporte de gravedad para móvil",
+          "Montaje en rejilla de aire",
+          "Colocación del móvil con una mano",
+          "Agarre estable al conducir",
+          "Estructura compacta para el coche",
+          "Apto para GPS y llamadas",
+          "Posicionamiento de compatibilidad universal con smartphones",
+          "Accesorio práctico para conducción diaria",
+        ],
+      },
+      fr: {
+        title: "Support téléphone gravité pour bouche d'aération",
+        description:
+          "Support voiture à gravité pour bouche d'aération, maintient le smartphone en conduite avec serrage automatique. Navigation mains libres, pose à une main, design compact.",
+        shortDescription:
+          "Support compact à gravité pour bouche d'aération, pour navigation stable, appels et conduite quotidienne.",
+        features: [
+          "Support téléphone à gravité",
+          "Montage sur bouche d'aération",
+          "Pose du téléphone à une main",
+          "Prise stable en conduite",
+          "Structure compacte pour la voiture",
+          "Adapté GPS et appels",
+          "Positionnement compatibilité smartphone universelle",
+          "Accessoire pratique pour la conduite quotidienne",
+        ],
+      },
+      it: {
+        title: "Supporto auto a gravità per bocchetta aria",
+        description:
+          "Supporto auto a gravità per bocchetta dell'aria, tiene lo smartphone in sicurezza in guida con serraggio automatico. Navigazione hands-free, posa con una mano, design compatto.",
+        shortDescription:
+          "Supporto compatto a gravità per bocchetta aria, per navigazione stabile, chiamate e guida quotidiana.",
+        features: [
+          "Supporto telefono a gravità",
+          "Montaggio su bocchetta aria",
+          "Posizionamento con una mano",
+          "Presa stabile in guida",
+          "Struttura compatta per auto",
+          "Adatto a GPS e chiamate",
+          "Posizionamento compatibilità smartphone universale",
+          "Accessorio pratico per la guida quotidiana",
+        ],
+      },
+    },
+  },
+
+  {
 
     id: "gi-lifestyle-001",
 
