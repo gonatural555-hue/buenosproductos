@@ -1,0 +1,18 @@
+{
+  "id": "gi-lifestyle-002",
+  "brand": "Good Ideas",
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-lifestyle-002/image.webp"
+    ],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-1.webp",
+      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-2.webp",
+      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-3.webp",
+      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-4.webp",
+      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-5.webp"
+    ],
+    "lifestyle": [],
+    "extras": []
+  }
+}
