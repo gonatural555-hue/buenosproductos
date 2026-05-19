@@ -26,6 +26,8 @@ type Props = {
   open: boolean;
   item: AddedToCartLineSnapshot | null;
   onClose: () => void;
+  /** Ruta absoluta del carrito (p. ej. `/es/good-ideas/cart`). Por defecto carrito Go Natural. */
+  cartPath?: string;
 };
 
 function buildSummaryLine(
@@ -45,7 +47,12 @@ function buildSummaryLine(
   return variantPart ? `${variantPart} · ${pricePart}` : pricePart;
 }
 
-export default function AddedToCartModal({ open, item, onClose }: Props) {
+export default function AddedToCartModal({
+  open,
+  item,
+  onClose,
+  cartPath,
+}: Props) {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations();
@@ -74,7 +81,7 @@ export default function AddedToCartModal({ open, item, onClose }: Props) {
 
   const goToCart = () => {
     onClose();
-    router.push(`/${locale}/cart`);
+    router.push(cartPath ?? `/${locale}/cart`);
   };
 
   return (

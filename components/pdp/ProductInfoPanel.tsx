@@ -5,6 +5,7 @@ import Link from "next/link";
 import AddToCartButton, {
   type AddToCartLinePayload,
 } from "@/components/AddToCartButton";
+import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
 import VariantSelector from "@/components/VariantSelector";
 import ColorSwatchSelector from "@/components/pdp/ColorSwatchSelector";
 import SizeSelector from "@/components/pdp/SizeSelector";
@@ -55,6 +56,7 @@ type Props = {
     }[];
   };
   onAfterAdd?: (item: AddToCartLinePayload) => void;
+  cartBrand?: "go-natural" | "good-ideas";
 };
 
 function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) {
@@ -103,6 +105,7 @@ export default function ProductInfoPanel({
   pdpDesktop,
   cartPayload,
   onAfterAdd,
+  cartBrand = "go-natural",
 }: Props) {
   const L = surface === "light";
   const matrix = productVariants?.variantMatrix;
@@ -262,18 +265,32 @@ export default function ProductInfoPanel({
         {otherVariantsBlock}
 
         <div className="space-y-4">
-          <AddToCartButton
-            id={cartPayload.id}
-            title={cartPayload.title}
-            price={cartPayload.price}
-            image={cartPayload.image}
-            variantSelections={cartPayload.variantSelections}
-            label={ctaText}
-            disabled={ctaDisabled}
-            surface={surface}
-            className={pillCta}
-            onAfterAdd={onAfterAdd}
-          />
+          {cartBrand === "good-ideas" ? (
+            <GoodIdeasAddToCartButton
+              id={cartPayload.id}
+              title={cartPayload.title}
+              price={cartPayload.price}
+              image={cartPayload.image}
+              variantSelections={cartPayload.variantSelections}
+              label={ctaText}
+              disabled={ctaDisabled}
+              className={pillCta}
+              onAfterAdd={onAfterAdd}
+            />
+          ) : (
+            <AddToCartButton
+              id={cartPayload.id}
+              title={cartPayload.title}
+              price={cartPayload.price}
+              image={cartPayload.image}
+              variantSelections={cartPayload.variantSelections}
+              label={ctaText}
+              disabled={ctaDisabled}
+              surface={surface}
+              className={pillCta}
+              onAfterAdd={onAfterAdd}
+            />
+          )}
           <TrustBadges copy={trustBadgeCopy} surface={surface} />
         </div>
       </div>

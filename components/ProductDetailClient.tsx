@@ -7,6 +7,7 @@ import AddedToCartModal, {
 import AddToCartButton, {
   type AddToCartLinePayload,
 } from "@/components/AddToCartButton";
+import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
 import ProductGallery from "@/components/pdp/ProductGallery";
 import ProductInfoPanel from "@/components/pdp/ProductInfoPanel";
 import VariantSelector from "@/components/VariantSelector";
@@ -70,6 +71,8 @@ type Props = {
   sizeGuideHref?: string;
   /** Textos bajo CTA móvil (confianza) */
   mobileStickyTrustLines: [string, string, string];
+  cartBrand?: "go-natural" | "good-ideas";
+  cartPath?: string;
 };
 
 function getDefaultSelections(variants: VariantDefinition[]) {
@@ -113,6 +116,8 @@ export default function ProductDetailClient({
   sizeGuideLabel,
   sizeGuideHref,
   mobileStickyTrustLines,
+  cartBrand = "go-natural",
+  cartPath,
 }: Props) {
   const L = surface === "light";
   /** Gafas / horizontales: ver `lib/pdp-star-products.ts`. Pantalón ski: solo móvil legacy. */
@@ -345,6 +350,7 @@ export default function ProductDetailClient({
             variantSelections,
           }}
           onAfterAdd={handleAfterAddToCart}
+          cartBrand={cartBrand}
         />
       </section>
 
@@ -406,6 +412,7 @@ export default function ProductDetailClient({
               variantSelections,
             }}
             onAfterAdd={handleAfterAddToCart}
+            cartBrand={cartBrand}
           />
         </div>
       </section>
@@ -431,17 +438,30 @@ export default function ProductDetailClient({
             </p>
           </div>
 
-          <AddToCartButton
-            id={product.id}
-            title={product.title}
-            price={resolvedPrice}
-            image={cartImage}
-            variantSelections={variantSelections}
-            label={ctaLabel}
-            className="mt-0 w-full rounded-full py-3.5 text-base transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
-            surface={surface}
-            onAfterAdd={handleAfterAddToCart}
-          />
+          {cartBrand === "good-ideas" ? (
+            <GoodIdeasAddToCartButton
+              id={product.id}
+              title={product.title}
+              price={resolvedPrice}
+              image={cartImage}
+              variantSelections={variantSelections}
+              label={ctaLabel}
+              className="mt-0 w-full rounded-full py-3.5 text-base transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              onAfterAdd={handleAfterAddToCart}
+            />
+          ) : (
+            <AddToCartButton
+              id={product.id}
+              title={product.title}
+              price={resolvedPrice}
+              image={cartImage}
+              variantSelections={variantSelections}
+              label={ctaLabel}
+              className="mt-0 w-full rounded-full py-3.5 text-base transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              surface={surface}
+              onAfterAdd={handleAfterAddToCart}
+            />
+          )}
 
           <div
             className={
@@ -473,6 +493,7 @@ export default function ProductDetailClient({
         open={addedToCart !== null}
         item={addedToCart}
         onClose={() => setAddedToCart(null)}
+        cartPath={cartPath}
       />
     </>
   );

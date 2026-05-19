@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
 import { getProducts } from "@/lib/products";
+import { getGoodIdeasProducts } from "@/lib/good-ideas-products";
+import { BRAND_SEGMENTS } from "@/lib/routing/brands";
 import { getCategorySlugs } from "@/lib/categories";
 import { getMessages } from "@/lib/i18n/messages";
 import { blogSections } from "@/lib/blog-sections";
@@ -44,6 +46,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     products.forEach((product) => {
       urls.push({
         url: `${baseUrl}/${locale}/products/${product.id}`,
+        lastModified: now,
+      });
+    });
+  });
+
+  const giProducts = getGoodIdeasProducts();
+  locales.forEach((locale) => {
+    urls.push({
+      url: `${baseUrl}/${locale}/${BRAND_SEGMENTS.goodIdeas}/products`,
+      lastModified: now,
+    });
+    giProducts.forEach((product) => {
+      urls.push({
+        url: `${baseUrl}/${locale}/${BRAND_SEGMENTS.goodIdeas}/products/${product.id}`,
         lastModified: now,
       });
     });
