@@ -6,7 +6,7 @@ import {
   localizeGoodIdeasProduct,
   getGoodIdeasProductCopy,
 } from "@/lib/good-ideas-products";
-import { getProductImages } from "@/lib/product-images";
+import { getGoodIdeasProductImages } from "@/lib/good-ideas-product-images";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import { locales, type Locale } from "@/lib/i18n/config";
@@ -80,7 +80,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
     getGoodIdeasProductCopy(localizedProduct);
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
-  const productImages = await getProductImages(product.id);
+  const productImages = await getGoodIdeasProductImages(product.id);
 
   const pdpDesktop = {
     benefitsTitle: t("productPage.pdpDesktop.benefitsTitle"),
