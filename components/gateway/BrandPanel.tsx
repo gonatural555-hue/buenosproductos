@@ -88,7 +88,7 @@ export default function BrandPanel({
       <motion.div
         className={`absolute inset-0 transition-[opacity,transform] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isGoNatural
-            ? "bg-[#F4EBDD]"
+            ? "bg-[linear-gradient(to_bottom,#FFFFFF_0%,#FFFFFF_50%,#F4EBDD_50%,#F4EBDD_100%)] md:bg-[linear-gradient(to_right,#FFFFFF_0%,#FFFFFF_50%,#F4EBDD_50%,#F4EBDD_100%)]"
             : "bg-[linear-gradient(165deg,#0B0F14_0%,#151B24_48%,#1a2230_100%)]"
         } ${isActive ? "opacity-100" : isDimmed ? "opacity-[0.72]" : "opacity-95"}`}
         aria-hidden
