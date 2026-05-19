@@ -11,11 +11,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAllCategories } from "@/lib/categories";
 import { locales, type Locale } from "@/lib/i18n/config";
-import {
-  brandGatewayPath,
-  goNaturalHomePath,
-  isGoNaturalHomePath,
-} from "@/lib/routing/brands";
+import { goNaturalHomePath, isGoNaturalHomePath } from "@/lib/routing/brands";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -301,13 +297,6 @@ export default function Header() {
   const headerUi = (
     <header className={headerShellClass}>
       <div className="mx-auto w-full max-w-[1440px] overflow-x-clip px-0 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] md:px-7 md:pt-[calc(2.75rem+env(safe-area-inset-top,0px))] lg:px-12 lg:pt-[calc(3rem+env(safe-area-inset-top,0px))]">
-        {isHome ? (
-          <motion.div className="pointer-events-auto mb-2 flex justify-center md:mb-2.5">
-            <PremiumNavLink href={brandGatewayPath(locale)} inverse={headerInverse}>
-              {t("header.nav.allBrands")}
-            </PremiumNavLink>
-          </motion.div>
-        ) : null}
         <div className={pillCls}>
           <div className={`${HEADER_TOOLBAR_ROW} relative z-0 hidden w-full md:flex md:min-h-[3.5rem]`}>
             <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(7.5rem+6px)] md:pr-[calc(7rem+8px)] lg:pr-[calc(7.75rem+10px)]">
