@@ -3,12 +3,10 @@
   "brand": "Good Ideas",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-01.webp"
+      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-01.webp",
+      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-02.webp"
     ],
-    "gallery": [
-      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-02.webp",
-      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-03.webp"
-    ],
+    "gallery": [],
     "lifestyle": [],
     "extras": []
   }
