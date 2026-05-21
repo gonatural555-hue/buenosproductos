@@ -1,0 +1,53 @@
+{
+  "content": {
+    "name": "portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json",
+    "path": "data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json",
+    "sha": "5ad9c841fcbd3777c0ee5f3da8caab7fefa8b1c5",
+    "size": 413,
+    "url": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/contents/data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json?ref=main",
+    "html_url": "https://github.com/gonatural555-hue/ecommerce-headless/blob/main/data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json",
+    "git_url": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/git/blobs/5ad9c841fcbd3777c0ee5f3da8caab7fefa8b1c5",
+    "download_url": "https://raw.githubusercontent.com/gonatural555-hue/ecommerce-headless/main/data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/contents/data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json?ref=main",
+      "git": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/git/blobs/5ad9c841fcbd3777c0ee5f3da8caab7fefa8b1c5",
+      "html": "https://github.com/gonatural555-hue/ecommerce-headless/blob/main/data/products/portable-electric-nose-ear-trimmer-usb-rechargeable-waterproof.json"
+    }
+  },
+  "commit": {
+    "sha": "5533879c037370763e93764c553636f742dd7034",
+    "node_id": "C_kwDOREhWDdoAKDU1MzM4NzljMDM3MzcwNzYzZTkzNzY0YzU1MzYzNmY3NDJkZDcwMzQ",
+    "url": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/git/commits/5533879c037370763e93764c553636f742dd7034",
+    "html_url": "https://github.com/gonatural555-hue/ecommerce-headless/commit/5533879c037370763e93764c553636f742dd7034",
+    "author": {
+      "name": "gonatural555-hue",
+      "email": "go.natural.555@gmail.com",
+      "date": "2026-05-20T23:58:09Z"
+    },
+    "committer": {
+      "name": "gonatural555-hue",
+      "email": "go.natural.555@gmail.com",
+      "date": "2026-05-20T23:58:09Z"
+    },
+    "tree": {
+      "sha": "ff22c419d1e9a4fe238081c95c42c3fc7dea69b1",
+      "url": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/git/trees/ff22c419d1e9a4fe238081c95c42c3fc7dea69b1"
+    },
+    "message": "Add product: Portable Electric Nose and Ear Trimmer — USB Rechargeable & Waterproof",
+    "parents": [
+      {
+        "sha": "60c5ce8e30ea9552e903068a12d395f4c1c629cd",
+        "url": "https://api.github.com/repos/gonatural555-hue/ecommerce-headless/git/commits/60c5ce8e30ea9552e903068a12d395f4c1c629cd",
+        "html_url": "https://github.com/gonatural555-hue/ecommerce-headless/commit/60c5ce8e30ea9552e903068a12d395f4c1c629cd"
+      }
+    ],
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  }
+}
