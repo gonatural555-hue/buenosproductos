@@ -1,0 +1,24 @@
+{
+  "id": "",
+  "brand": "Good Ideas",
+  "targetCatalogFile": "Home",
+  "productObject": {
+    "id": "",
+    "title": "Product from 1005006438780849.html?spm=a2g0o.productlist.main.5.947bbph2bph2j3&algo_pvid=c1b4578d-766d-4dd2-bc84-6936537caadd&algo_exp_id=c1b4578d-766d-4dd2-bc84-6936537caadd-34&pdp_ext_f=%7B%22order%22%3A%221504%22%2C%22spu_best_type%22%3A%22price%22%2C%22eval%22%3A%221%22%2C%22fromPage%22%3A%22search%22%7D&pdp_npi=6%40dis%21EUR%2159.69%2144.25%21%21%21460.55%21341.43%21%402101dedf17795918451587714e892d%2112000037169887369%21sea%21ES%210%21ABX%211%210%21n_tag%3A-29910%3Bd%3Af83f58ba%3Bm03_new_user%3A-29895%3BpisId%3A5000000206809474&curPageLogUid=wyU1DRhTMUZB&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005006438780849%7C_p_origin_prod%3A",
+    "price": 0,
+    "category": "Home",
+    "description": "",
+    "shortDescription": "",
+    "longDescription": [],
+    "images": [],
+    "features": [],
+    "freeShipping": true,
+    "translations": {
+      "en": {},
+      "es": {},
+      "fr": {},
+      "it": {}
+    },
+    "variants": []
+  }
+}
