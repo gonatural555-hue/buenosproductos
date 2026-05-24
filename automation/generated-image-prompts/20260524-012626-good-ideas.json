@@ -1,0 +1,12 @@
+{
+  "id": "",
+  "brand": "Good Ideas",
+  "productCardPrompt": "luxury home decor product from Good Ideas, high-quality crafted with attention to detail and design. High resolution photo.",
+  "pdpMainPrompt": "Luxury home decor product from Good Ideas in premium photography. Highlight the craftsmanship and unique features of this item. High quality shot, natural lighting, clear focus on texture and details, multiple angles showcasing design elements, clean background.",
+  "pdpLifestylePrompt": "Luxury home decor product from Good Ideas. Stylish setup with different lifestyle use scenarios for home decorations. Showcasing variety of placements in various home settings such as living room, bedroom or bathroom. Multiple images needed to cover all aspects and angles.",
+  "pdpDetailPrompt": "High resolution close-up shots of Luxury home decor product from Good Ideas, focusing on intricate details, craftsmanship and design elements. Different angles are required for a comprehensive view. Include shadows and reflections if possible.",
+  "blogHeroPrompt": "Luxury home decor product from Good Ideas, high-quality photography with attention to detail and lifestyle use scenarios. Showcasing the item in different environments or setups.",
+  "blogSectionPrompt": "Luxury home decor product from Good Ideas, detailed shots showing design elements, craftsmanship, and various use cases for home decorations. Focus on texture, details, and quality materials used.",
+  "productImageFolder": "luxury-home-decor-goodideas",
+  "blogImageFolder": "luxury-home-decor-use-cases"
+}
