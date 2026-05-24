@@ -1,0 +1,12 @@
+{
+  "id": "",
+  "brand": "Good Ideas",
+  "productCardPrompt": "A premium product from Good Ideas, featuring modern and high-quality design. The product is clean and elegant with a focus on detail and craftsmanship.",
+  "pdpMainPrompt": "High-resolution image of the main view of the 'Product from 1005007426544805.html?spm=a2g0o.productlist.main.2.677dryp5ryp5ET' page on a premium ecommerce site. The product is placed in an upscale and elegant setting, with a sophisticated background that complements the design of the Good Ideas brand.",
+  "pdpLifestylePrompt": "High-resolution image showing the product being used or displayed in a luxurious lifestyle scenario, emphasizing comfort and elegance. Focus on showcasing how it enhances everyday living.",
+  "pdpDetailPrompt": "Close-up shots focusing on key details such as material textures, craftsmanship, and design elements of the 'Product from 1005007426544805.html?spm=a2g0o.productlist.main.2.677dryp5ryp5ET' page. The images should highlight any unique features or innovative aspects.",
+  "blogHeroPrompt": "High-resolution image that represents the brand and product in a modern, stylish context, ideal for blog hero placements. Focus on showcasing the elegant design and craftsmanship of Good Ideas products.",
+  "blogSectionPrompt": "A series of high-resolution images showcasing the product from different angles and in various settings to provide comprehensive coverage for fashion and lifestyle blogs.",
+  "productImageFolder": "GoodIdeasPDPImages",
+  "blogImageFolder": "GoodIdeasBlogImages"
+}
