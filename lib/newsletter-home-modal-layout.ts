@@ -137,6 +137,15 @@ export function elementOffsetTransform(
   return { transform: `translate(${offset.x}px, ${offset.y}px)` };
 }
 
+/** Offsets del director solo en viewport md+ (desktop). */
+export function elementOffsetTransformDesktop(
+  offset: ElementOffset,
+  isDesktop: boolean
+): { transform: string } | undefined {
+  if (!isDesktop) return undefined;
+  return elementOffsetTransform(offset);
+}
+
 /** Panel principal del modal (glass + glow). */
 export const GN_HOME_NEWSLETTER_PANEL_CLASS =
-  "w-full max-w-[480px] rounded-2xl border border-white/[0.08] bg-[rgba(32,36,40,0.35)] px-8 py-7 shadow-[0_0_48px_rgba(0,0,0,0.38),0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-md";
+  "w-full max-w-[420px] rounded-2xl border border-white/[0.08] bg-[rgba(32,36,40,0.35)] px-6 py-8 shadow-[0_0_48px_rgba(0,0,0,0.38),0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-md md:max-w-[480px] md:px-8 md:py-7";

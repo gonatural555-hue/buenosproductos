@@ -9,6 +9,7 @@ import {
   useId,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
@@ -29,10 +30,11 @@ import {
 } from "@/lib/newsletter-home-modal";
 import {
   GN_HOME_NEWSLETTER_PANEL_CLASS,
-  elementOffsetTransform,
+  elementOffsetTransformDesktop,
   isHomeNewsletterDirectorMode,
   loadHomeNewsletterBlockLayout,
   type HomeNewsletterBlockLayout,
+  type HomeNewsletterLayoutElementId,
 } from "@/lib/newsletter-home-modal-layout";
 import { isGoNaturalHomePath } from "@/lib/routing/brands";
 
@@ -42,6 +44,18 @@ const { width: MODAL_W, height: MODAL_H } = GN_HOME_NEWSLETTER_MODAL;
 
 const primaryCtaClass =
   "font-inter inline-flex h-[46px] w-full shrink-0 items-center justify-center rounded-none bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-6 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] transition duration-300 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-45";
+
+const MD_MEDIA_QUERY = "(min-width: 768px)";
+
+function subscribeMdViewport(onChange: () => void) {
+  const mq = window.matchMedia(MD_MEDIA_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getMdViewportSnapshot() {
+  return window.matchMedia(MD_MEDIA_QUERY).matches;
+}
 
 function GoNaturalHomeNewsletterModalInner() {
   const pathname = usePathname();
@@ -56,6 +70,11 @@ function GoNaturalHomeNewsletterModalInner() {
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   const isDirector = isHomeNewsletterDirectorMode(searchParams);
+  const isDesktopLayout = useSyncExternalStore(
+    subscribeMdViewport,
+    getMdViewportSnapshot,
+    () => false
+  );
 
   const [isVisible, setIsVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -233,41 +252,51 @@ function GoNaturalHomeNewsletterModalInner() {
     );
   }
 
-  const blockTransform = `translate(calc(-50% + ${blockLayout.block.x}px), calc(-50% + ${blockLayout.block.y}px))`;
+  const blockTransform = isDesktopLayout
+    ? `translate(calc(-50% + ${blockLayout.block.x}px), calc(-50% + ${blockLayout.block.y}px))`
+    : undefined;
+
+  const layoutOffset = (id: HomeNewsletterLayoutElementId) =>
+    elementOffsetTransformDesktop(blockLayout[id], isDesktopLayout);
 
   return (
     <>
       <div
-        className="fixed inset-0 z-[60] flex items-center justify-center overflow-hidden p-4"
+        className="fixed inset-0 z-[60] flex items-center justify-center overflow-hidden p-0 md:p-4"
         role="presentation"
       >
         {!isDirector ? (
           <button
             type="button"
-            className="absolute inset-0 bg-black/55"
+            className="absolute inset-0 hidden bg-black/55 md:block"
             onClick={handleDismiss}
             aria-label={t("homeNewsletterModal.close")}
           />
         ) : (
-          <div
-            className="absolute inset-0 bg-black/55"
-            aria-hidden
-          />
+          <div className="absolute inset-0 hidden bg-black/55 md:block" aria-hidden />
         )}
 
         <div
-          className="relative flex max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] items-center justify-center"
-          style={{
-            transform: `scale(min(1, calc((100vw - 2rem) / ${MODAL_W}), calc((100dvh - 2rem) / ${MODAL_H})))`,
-          }}
+          className="relative flex h-full w-full items-center justify-center md:h-auto md:w-auto md:max-h-[calc(100dvh-2rem)] md:max-w-[calc(100vw-2rem)]"
+          style={
+            isDesktopLayout
+              ? {
+                  transform: `scale(min(1, calc((100vw - 2rem) / ${MODAL_W}), calc((100dvh - 2rem) / ${MODAL_H})))`,
+                }
+              : undefined
+          }
         >
           <div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="relative isolate overflow-hidden bg-[#0B0F14] shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
-            style={{ width: MODAL_W, height: MODAL_H }}
+            className="relative isolate flex h-[100dvh] w-full flex-col overflow-hidden bg-[#0B0F14] md:block md:h-auto md:w-auto md:shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
+            style={
+              isDesktopLayout
+                ? { width: MODAL_W, height: MODAL_H }
+                : undefined
+            }
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -275,11 +304,12 @@ function GoNaturalHomeNewsletterModalInner() {
               alt=""
               width={MODAL_W}
               height={MODAL_H}
-              className="pointer-events-none absolute left-0 top-0 z-0 object-fill object-center"
+              className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center md:left-0 md:top-0 md:object-fill"
               style={{
-                width: MODAL_W,
-                height: MODAL_H,
                 opacity: GN_HOME_NEWSLETTER_BACKGROUND_OPACITY,
+                ...(isDesktopLayout
+                  ? { width: MODAL_W, height: MODAL_H }
+                  : undefined),
               }}
               decoding="async"
               fetchPriority="high"
@@ -289,11 +319,11 @@ function GoNaturalHomeNewsletterModalInner() {
               type="button"
               onClick={handleDismiss}
               disabled={isDirector}
-              className="absolute right-6 top-6 z-[3] flex items-center gap-2 rounded-sm px-1 py-1 font-inter text-[13px] font-medium text-white/90 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:cursor-default disabled:opacity-40"
+              className="absolute right-4 top-[max(0.75rem,env(safe-area-inset-top))] z-[3] flex items-center gap-2 rounded-sm p-2 font-inter text-[13px] font-medium text-white/90 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:cursor-default disabled:opacity-40 md:right-6 md:top-6 md:p-1"
               aria-label={t("homeNewsletterModal.closeWindow")}
             >
               <svg
-                className="h-4 w-4 shrink-0"
+                className="h-5 w-5 shrink-0 md:h-4 md:w-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -306,20 +336,30 @@ function GoNaturalHomeNewsletterModalInner() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-              <span>{t("homeNewsletterModal.closeWindow")}</span>
+              <span className="hidden md:inline">
+                {t("homeNewsletterModal.closeWindow")}
+              </span>
             </button>
 
-            <div className="relative z-[1] h-full w-full overflow-hidden">
+            <div className="relative z-[1] flex min-h-0 w-full flex-1 flex-col md:h-full md:overflow-hidden">
               <div
-                className="absolute left-1/2 top-1/2 z-[1] w-full max-w-[520px] px-6"
-                style={{ transform: blockTransform }}
+                className={
+                  isDesktopLayout
+                    ? "absolute left-1/2 top-1/2 z-[1] w-full max-w-[520px] px-6"
+                    : "flex min-h-0 flex-1 flex-col justify-center overflow-y-auto overscroll-contain px-5 pt-[calc(env(safe-area-inset-top,0px)+3.25rem)] pb-[max(2rem,env(safe-area-inset-bottom))]"
+                }
+                style={
+                  isDesktopLayout && blockTransform
+                    ? { transform: blockTransform }
+                    : undefined
+                }
               >
                 <div
-                  className={`${GN_HOME_NEWSLETTER_PANEL_CLASS} flex flex-col items-center text-center`}
+                  className={`${GN_HOME_NEWSLETTER_PANEL_CLASS} mx-auto my-auto flex w-full flex-col items-center gap-6 text-center md:gap-0`}
                 >
                   <div
-                    className="shrink-0"
-                    style={elementOffsetTransform(blockLayout.logo)}
+                    className="hidden shrink-0 md:block"
+                    style={layoutOffset("logo")}
                     data-director-element="logo"
                   >
                     <Image
@@ -348,16 +388,16 @@ function GoNaturalHomeNewsletterModalInner() {
                   ) : (
                     <>
                       <p
-                        className="font-inter shrink-0 text-[11px] font-medium uppercase tracking-[0.22em] text-[rgba(244,235,221,0.72)]"
-                        style={elementOffsetTransform(blockLayout.eyebrow)}
+                        className="font-inter shrink-0 text-[10px] font-medium uppercase tracking-[0.2em] text-[rgba(244,235,221,0.72)] md:text-[11px] md:tracking-[0.22em]"
+                        style={layoutOffset("eyebrow")}
                         data-director-element="eyebrow"
                       >
                         {t("homeNewsletterModal.eyebrow")}
                       </p>
                       <h2
                         id={titleId}
-                        className="font-display mt-1.5 max-w-[520px] shrink-0 text-balance text-[1.85rem] font-medium leading-[1.06] tracking-[-0.02em] text-[#F4EBDD]"
-                        style={elementOffsetTransform(blockLayout.headline)}
+                        className="font-display max-w-[520px] shrink-0 text-balance text-[1.4rem] font-medium leading-[1.08] tracking-[-0.02em] text-[#F4EBDD] md:mt-1.5 md:text-[1.85rem] md:leading-[1.06]"
+                        style={layoutOffset("headline")}
                         data-director-element="headline"
                       >
                         {t("homeNewsletterModal.headlineBefore")}
@@ -370,8 +410,8 @@ function GoNaturalHomeNewsletterModalInner() {
                         </span>
                       </h2>
                       <p
-                        className="font-inter mt-2 max-w-[440px] shrink-0 text-pretty text-[13px] leading-snug text-[rgba(244,235,221,0.78)]"
-                        style={elementOffsetTransform(blockLayout.subtitle)}
+                        className="font-inter max-w-[440px] shrink-0 text-pretty text-[12px] leading-snug text-[rgba(244,235,221,0.78)] md:mt-2 md:text-[13px]"
+                        style={layoutOffset("subtitle")}
                         data-director-element="subtitle"
                       >
                         {t("homeNewsletterModal.subtitle")}
@@ -379,8 +419,8 @@ function GoNaturalHomeNewsletterModalInner() {
 
                       <form
                         onSubmit={handleSubmit}
-                        className="mt-4 flex w-full shrink-0 flex-col gap-2 text-left"
-                        style={elementOffsetTransform(blockLayout.form)}
+                        className="flex w-full shrink-0 flex-col gap-3 text-left md:mt-4 md:gap-2"
+                        style={layoutOffset("form")}
                         data-director-element="form"
                       >
                         <div>
@@ -463,8 +503,8 @@ function GoNaturalHomeNewsletterModalInner() {
                       <button
                         type="button"
                         onClick={handleLogin}
-                        className="font-inter mt-2 shrink-0 text-sm text-[rgba(244,235,221,0.78)] transition hover:text-[#F4EBDD]"
-                        style={elementOffsetTransform(blockLayout.login)}
+                        className="font-inter shrink-0 text-sm text-[rgba(244,235,221,0.78)] transition hover:text-[#F4EBDD] md:mt-2"
+                        style={layoutOffset("login")}
                         data-director-element="login"
                       >
                         {t("homeNewsletterModal.alreadyMember")}{" "}
@@ -474,8 +514,8 @@ function GoNaturalHomeNewsletterModalInner() {
                       </button>
 
                       <p
-                        className="font-inter mt-2 max-w-[440px] shrink-0 text-[10px] leading-snug text-[rgba(244,235,221,0.5)]"
-                        style={elementOffsetTransform(blockLayout.legal)}
+                        className="font-inter max-w-[440px] shrink-0 text-[9px] leading-snug text-[rgba(244,235,221,0.5)] md:mt-2 md:text-[10px]"
+                        style={layoutOffset("legal")}
                         data-director-element="legal"
                       >
                         {t("homeNewsletterModal.legalFinePrint")}
@@ -487,8 +527,8 @@ function GoNaturalHomeNewsletterModalInner() {
                     type="button"
                     onClick={handleMinimize}
                     disabled={isDirector}
-                    className="font-inter mt-4 shrink-0 text-[11px] font-medium uppercase tracking-[0.14em] text-[rgba(244,235,221,0.45)] transition hover:text-[rgba(244,235,221,0.72)] disabled:cursor-default disabled:opacity-40"
-                    style={elementOffsetTransform(blockLayout.minimize)}
+                    className="font-inter shrink-0 text-[11px] font-medium uppercase tracking-[0.14em] text-[rgba(244,235,221,0.45)] transition hover:text-[rgba(244,235,221,0.72)] disabled:cursor-default disabled:opacity-40 md:mt-4"
+                    style={layoutOffset("minimize")}
                     data-director-element="minimize"
                   >
                     {t("registrationCTA.minimize")}
