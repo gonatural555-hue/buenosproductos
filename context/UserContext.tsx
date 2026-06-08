@@ -13,6 +13,10 @@ import type {
   User as SupabaseUser,
 } from "@supabase/supabase-js";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/browser";
+import {
+  countPaidOrders,
+  getWelcomeFreeShippingRemaining,
+} from "@/lib/shipping/welcome-free-shipping";
 
 export type UserProfile = {
   name: string;
@@ -124,6 +128,8 @@ type UserContextValue = UserState & {
   setDefaultAddress: (id: string) => Promise<void>;
   addOrder: (order: Order) => void;
   refreshOrders: () => Promise<void>;
+  welcomeFreeShippingRemaining: number;
+  hasWelcomeFreeShipping: boolean;
 };
 
 const LAST_ORDER_KEY = "gn-last-order-id";
@@ -453,6 +459,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
   const isLoggedIn = Boolean(sessionUser && user);
 
+  const welcomeFreeShippingRemaining = useMemo(
+    () =>
+      isLoggedIn
+        ? getWelcomeFreeShippingRemaining(countPaidOrders(orders))
+        : 0,
+    [isLoggedIn, orders]
+  );
+
+  const hasWelcomeFreeShipping = welcomeFreeShippingRemaining > 0;
+
   const value = useMemo<UserContextValue>(
     () => ({
       authLoading,
@@ -471,6 +487,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       setDefaultAddress,
       addOrder,
       refreshOrders,
+      welcomeFreeShippingRemaining,
+      hasWelcomeFreeShipping,
     }),
     [
       authLoading,
@@ -489,6 +507,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       setDefaultAddress,
       addOrder,
       refreshOrders,
+      welcomeFreeShippingRemaining,
+      hasWelcomeFreeShipping,
     ]
   );
 

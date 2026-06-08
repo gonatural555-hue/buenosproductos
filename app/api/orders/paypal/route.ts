@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder, markOrderAsPaid, type OrderItem } from "@/lib/orders";
+import {
+  getPaidOrderCountForUser,
+  getWelcomeFreeShippingRemaining,
+  getWelcomeFreeShippingStateForUser,
+} from "@/lib/shipping/welcome-free-shipping-server";
 
 type PayPalOrderPayload = {
   orderId: string;
@@ -81,6 +86,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const { data: existingOrder } = await supabase
+      .from("orders")
+      .select("id, shipping_waived, status")
+      .eq("id", orderId)
+      .maybeSingle();
+
+    if (existingOrder) {
+      const paidOrderCount = await getPaidOrderCountForUser(supabase, user.id);
+      const shippingWaived = Boolean(existingOrder.shipping_waived);
+      return NextResponse.json({
+        success: true,
+        orderId,
+        status: existingOrder.status ?? "paid",
+        alreadyExists: true,
+        welcomeFreeShippingApplied: shippingWaived,
+        welcomeFreeShippingRemainingAfter:
+          getWelcomeFreeShippingRemaining(paidOrderCount),
+      });
+    }
+
+    const welcomeState = await getWelcomeFreeShippingStateForUser(
+      supabase,
+      user.id
+    );
+    const welcomeFreeShippingApplied = welcomeState.eligible;
+
+    const enrichedShippingAddress = {
+      ...(ship ?? {}),
+      welcomeFreeShippingApplied,
+    };
+
     const safeEmail =
       typeof user.email === "string" && user.email.includes("@")
         ? user.email
@@ -93,9 +129,10 @@ export async function POST(request: NextRequest) {
       totalAmount,
       currency: currency || "USD",
       itemsCount: items.length,
+      welcomeFreeShippingApplied,
     });
 
-    const { error: orderErr } = await supabase.from("orders").insert({
+    const orderRow: Record<string, unknown> = {
       id: orderId,
       user_id: user.id,
       status: "paid",
@@ -103,8 +140,12 @@ export async function POST(request: NextRequest) {
       currency: currency || "USD",
       payment_method: "paypal",
       paypal_order_id: paypalOrderId ?? null,
-      shipping_json: shippingAddress as Record<string, unknown>,
-    });
+      shipping_json: enrichedShippingAddress,
+      shipping_waived: welcomeFreeShippingApplied,
+      shipping_amount: 0,
+    };
+
+    const { error: orderErr } = await supabase.from("orders").insert(orderRow);
 
     if (orderErr) {
       console.error("[PayPal Order API] orders insert", orderErr);
@@ -152,10 +193,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const paidOrderCountAfter = welcomeState.paidOrderCount + 1;
+
     return NextResponse.json({
       success: true,
       orderId,
       status: "paid",
+      welcomeFreeShippingApplied,
+      welcomeFreeShippingRemainingAfter:
+        getWelcomeFreeShippingRemaining(paidOrderCountAfter),
     });
   } catch (error) {
     console.error("[PayPal Order API] Error procesando orden PayPal:", error);

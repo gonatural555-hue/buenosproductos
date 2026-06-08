@@ -10,7 +10,8 @@
 1. **SQL Editor** → nueva query.
 2. Pegar el contenido de `supabase/migrations/001_init_schema.sql` y ejecutar (**Run**).
 3. Ejecutar también `supabase/migrations/002_newsletter_subscriptions.sql` para crear la tabla `newsletter_subscriptions` (altas del CTA flotante de newsletter) y su política RLS de **solo inserción** para `anon`/`authenticated` cuando `marketing_accepted = true`.
-4. Comprueba en **Table Editor** que existan `profiles`, `addresses`, `orders`, `order_items` y `newsletter_subscriptions`.
+4. Ejecutar `supabase/migrations/003_welcome_free_shipping.sql` para añadir `shipping_waived` y `shipping_amount` en `orders` (envío gratis welcome en los 3 primeros pedidos pagados).
+5. Comprueba en **Table Editor** que existan `profiles`, `addresses`, `orders`, `order_items` y `newsletter_subscriptions`.
 
 Las políticas **RLS** permiten a cada usuario leer/escribir solo sus filas. Los pedidos PayPal se insertan con el JWT del usuario en la ruta `/api/orders/paypal`.
 
@@ -37,3 +38,9 @@ El trigger `on_auth_user_created` crea una fila en `profiles` al registrarse un 
 2. `POST /api/orders/paypal` valida sesión, inserta en `orders` + `order_items`, luego ejecuta `lib/orders` (p. ej. Google Sheets).
 
 La base Supabase es la **fuente de verdad** del pedido; Sheets es secundario.
+
+## 6. Envío gratis welcome (3 primeros pedidos)
+
+- Elegibilidad: usuario autenticado con menos de **3** pedidos `status = 'paid'` en `orders`.
+- Se calcula en servidor en `POST /api/orders/paypal` y se persiste `shipping_waived = true` cuando aplica.
+- Requiere migración `003_welcome_free_shipping.sql`.

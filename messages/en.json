@@ -816,6 +816,27 @@
     "errorInvalidEmail": "Please enter a valid email address.",
     "errorMarketingRequired": "Please accept marketing emails to subscribe."
   },
+  "homeNewsletterModal": {
+    "eyebrow": "Sign up for our newsletter and",
+    "headlineBefore": "Get ",
+    "headlineFreeShipping": "free shipping",
+    "headlineMiddle": " on your ",
+    "headlineFirstOrders": "first 3 orders",
+    "subtitle": "Join for curated outdoor offers and product drops—plus free standard shipping on your first three orders when you shop with your account. Weekly emails, unsubscribe anytime.",
+    "cta": "Get free shipping",
+    "alreadyMember": "Already a member?",
+    "logIn": "Log in",
+    "close": "Close",
+    "closeWindow": "Close window",
+    "expand": "Expand newsletter",
+    "successMessage": "You're in. Check your inbox—and remember: free standard shipping on your first 3 orders when you sign in and shop.",
+    "legalFinePrint": "Free standard shipping applies to your first 3 paid orders with a signed-in account. Exclusions may apply by region or product. See terms for details."
+  },
+  "shipping": {
+    "welcomeFreeRemaining": "You have {count} order(s) left with free standard shipping",
+    "welcomeFreeApplied": "Free standard shipping applied (welcome offer)",
+    "welcomeFreeExhausted": "Welcome free shipping used on your first 3 orders"
+  },
   "cartPage": {
     "emptyTitle": "Your cart is empty",
     "emptyText": "Add products to start your purchase.",
@@ -2229,6 +2250,7 @@
     "subtotal": "Subtotal",
     "shipping": "Shipping",
     "shippingCalculated": "Calculated at checkout",
+    "shippingFree": "Free",
     "total": "Total",
     "quantity": "Quantity",
     "unitPrice": "each",

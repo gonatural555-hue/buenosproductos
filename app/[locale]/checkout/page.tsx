@@ -29,8 +29,10 @@ export default function CheckoutPage() {
     addresses,
     upsertAddress,
     addOrder,
+    refreshOrders,
     authLoading,
     isLoggedIn,
+    hasWelcomeFreeShipping,
   } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const beginCheckoutTracked = useRef(false);
@@ -134,6 +136,8 @@ export default function CheckoutPage() {
         setIsLoading(false);
         return;
       }
+
+      await refreshOrders();
     } catch (error) {
       console.error("[Checkout] Error llamando a /api/orders/paypal", error);
       setIsLoading(false);
@@ -615,8 +619,17 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between gap-4 border-t border-earth-brown/12 pt-2 text-xs text-muted-gray">
                 <span>{t("checkoutPage.shipping")}</span>
-                <span>{t("checkoutPage.shippingCalculated")}</span>
+                <span>
+                  {hasWelcomeFreeShipping
+                    ? t("checkoutPage.shippingFree")
+                    : t("checkoutPage.shippingCalculated")}
+                </span>
               </div>
+              {hasWelcomeFreeShipping ? (
+                <p className="text-xs text-accent-gold/90">
+                  {t("shipping.welcomeFreeApplied")}
+                </p>
+              ) : null}
             </div>
 
             <div className="mb-6 border-t border-earth-brown/15 pt-4">

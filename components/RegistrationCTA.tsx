@@ -6,13 +6,12 @@ import { usePathname } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
 import { useTranslations, useLocale } from "@/components/i18n/LocaleProvider";
-import { shouldShowNewsletterCta } from "@/lib/newsletter-cta";
+import { shouldShowRegistrationCta } from "@/lib/newsletter-cta";
+import { submitNewsletterSubscription } from "@/lib/newsletter-client";
 import { isGoodIdeasPath } from "@/lib/routing/brands";
 
 const SESSION_STORAGE_MINIMIZED = "gn-registration-cta-minimized";
 const SESSION_STORAGE_SUBSCRIBED = "gn-newsletter-cta-subscribed";
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
@@ -51,7 +50,7 @@ export default function RegistrationCTA() {
       return;
     }
 
-    if (!pathname || !shouldShowNewsletterCta(pathname)) {
+    if (!pathname || !shouldShowRegistrationCta(pathname)) {
       setIsVisible(false);
       return;
     }
@@ -97,7 +96,7 @@ export default function RegistrationCTA() {
             !isLoggedIn &&
             !authOpen &&
             pathname &&
-            shouldShowNewsletterCta(pathname)
+            shouldShowRegistrationCta(pathname)
           ) {
             if (sessionStorage.getItem(SESSION_STORAGE_SUBSCRIBED) === "true")
               return;
@@ -170,48 +169,23 @@ export default function RegistrationCTA() {
     e.preventDefault();
     if (!marketingAccepted || submitState === "loading") return;
 
-    const trimmed = email.trim();
-    if (!EMAIL_REGEX.test(trimmed)) {
-      setSubmitState("error");
-      setErrorCode("invalid_email");
-      return;
-    }
-
     setSubmitState("loading");
     setErrorCode(null);
 
-    try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: trimmed,
-          locale,
-          marketingAccepted: true,
-          source: "registration_cta",
-        }),
-      });
+    const result = await submitNewsletterSubscription({
+      email,
+      locale,
+      marketingAccepted: true,
+      source: "registration_cta",
+    });
 
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        code?: string;
-      };
-
-      if (res.ok && data.ok) {
-        setSubmitState("success");
-        return;
-      }
-
-      setSubmitState("error");
-      if (data.code === "duplicate") setErrorCode("duplicate");
-      else if (data.code === "invalid_email") setErrorCode("invalid_email");
-      else if (data.code === "marketing_required")
-        setErrorCode("marketing_required");
-      else setErrorCode("generic");
-    } catch {
-      setSubmitState("error");
-      setErrorCode("generic");
+    if (result.ok) {
+      setSubmitState("success");
+      return;
     }
+
+    setSubmitState("error");
+    setErrorCode(result.code);
   };
 
   if (sessionSubscribed) return null;
