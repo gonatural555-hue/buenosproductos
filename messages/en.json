@@ -441,7 +441,20 @@
     "searchResultsFor": "Results for \"{query}\"",
     "searchNoResults": "We couldn't find products matching that search.",
     "searchNoResultsHint": "Try different words or browse the full catalog.",
-    "searchViewAll": "View all products"
+    "searchViewAll": "View all products",
+    "catalogTitle": "Shop all",
+    "catalogDescription": "Functional outdoor gear to travel light and move freely.",
+    "readMore": "Read more",
+    "filtersLabel": "Filters",
+    "closeFilters": "Close",
+    "filterBrands": "Brands",
+    "filterPrice": "Price",
+    "filterSizes": "Sizes",
+    "filterColor": "Color",
+    "filterSale": "Sale",
+    "quickAdd": "Quick add",
+    "saveProduct": "Save product",
+    "freeShippingBadge": "Free shipping"
   },
   "categoriesPage": {
     "ctaTitle": "Continue exploring the collection.",

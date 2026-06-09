@@ -6,12 +6,15 @@ import {
   getProductsByCategorySlug,
 } from "@/lib/categories";
 import ProductCardSimple from "@/components/ProductCardSimple";
+import ProductsCatalogLayout from "@/components/products/ProductsCatalogLayout";
+import SortingBar from "@/components/products/SortingBar";
+import CategoryEditorialHero from "@/components/category/CategoryEditorialHero";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { buildMetadata, formatTemplate } from "@/lib/seo";
-import CategoryEditorialHero from "@/components/category/CategoryEditorialHero";
-import { pickPrimaryPostForCategory } from "@/lib/internal-links";
+import { sortProductsList } from "@/lib/products-page-segments";
+import { buildCatalogFilterCategories } from "@/lib/plp-filter-categories";
 import { resolveCategoryHeroKind } from "@/lib/category-hero-theme";
 
 type Props = {
@@ -19,7 +22,17 @@ type Props = {
     locale: Locale;
     slug: string;
   }>;
+  searchParams?: Promise<{ sort?: string }>;
 };
+
+const SORT_KEYS = ["featured", "price-asc", "price-desc", "name-asc"] as const;
+
+function parseSort(raw: string | undefined): (typeof SORT_KEYS)[number] {
+  if (raw && SORT_KEYS.includes(raw as (typeof SORT_KEYS)[number])) {
+    return raw as (typeof SORT_KEYS)[number];
+  }
+  return "featured";
+}
 
 const CATEGORY_HERO_IMAGES: Record<string, string> = {
   "mountain-snow": "/assets/images/categories/mountain-snow.webp",
@@ -207,21 +220,25 @@ export async function generateMetadata({ params }: Props) {
   });
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params, searchParams }: Props) {
   const { locale, slug } = await params;
+  const sp = searchParams != null ? await searchParams : {};
+  const sort = parseSort(typeof sp.sort === "string" ? sp.sort : undefined);
   const category = getCategoryBySlug(slug);
 
   if (!category) {
     notFound();
   }
 
-  const products = getProductsByCategorySlug(slug);
+  const products = sortProductsList(
+    getProductsByCategorySlug(slug),
+    sort === "featured" ? undefined : sort,
+    locale
+  );
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
-  const editorialIntro = category.description;
 
   const categoryLabel = t(`categories.names.${category.slug}`, category.name);
-  // H1 optimizado para SEO
   const seoH1 =
     categoryLabel.includes("para") || categoryLabel.includes("de")
       ? categoryLabel
@@ -250,11 +267,34 @@ export default async function CategoryPage({ params }: Props) {
       ? `${rawDescription.slice(0, 197).trimEnd()}…`
       : rawDescription;
 
-  const primaryStory = pickPrimaryPostForCategory(slug, messages.blog.posts);
-  const primaryStoryHref = primaryStory
-    ? `/${locale}/blog/${primaryStory.slug}`
-    : "";
-  const primaryStoryTitle = primaryStory?.post?.title || "";
+  const sortOptions = [
+    { value: "featured", label: t("productsPage.sortFeatured") },
+    { value: "price-asc", label: t("productsPage.sortPriceAsc") },
+    { value: "price-desc", label: t("productsPage.sortPriceDesc") },
+    { value: "name-asc", label: t("productsPage.sortNameAsc") },
+  ];
+
+  const cardLabels = {
+    viewProduct: t("common.viewProduct"),
+    addToCart: t("common.addToCart"),
+    noImage: t("common.noImage"),
+    quickAdd: t("productsPage.quickAdd"),
+    saveProduct: t("productsPage.saveProduct"),
+    freeShippingBadge: t("productsPage.freeShippingBadge"),
+  };
+
+  const filterCategories = buildCatalogFilterCategories(locale, t, {
+    sort: sort === "featured" ? undefined : sort,
+    basePath: "category",
+  });
+
+  const attributeLabels = {
+    brands: t("productsPage.filterBrands"),
+    price: t("productsPage.filterPrice"),
+    sizes: t("productsPage.filterSizes"),
+    color: t("productsPage.filterColor"),
+    sale: t("productsPage.filterSale"),
+  };
 
   return (
     <main className="bg-warm-sand text-dark-base">
@@ -268,59 +308,49 @@ export default async function CategoryPage({ params }: Props) {
         visualKind={visualKind}
       />
 
-      {/* Editorial intro */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
-          <p className="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl">
-            {editorialIntro}
-          </p>
-          {primaryStoryTitle && (
-            <p className="mt-6 text-sm text-text-muted max-w-2xl">
-              {t("categoriesPage.editorialIntro")}{" "}
-              <Link
-                href={primaryStoryHref}
-                className="text-text-primary hover:text-accent-gold transition-colors duration-200"
-              >
-                {primaryStoryTitle}
-              </Link>
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* Product grid (ancla hero CTA) */}
       <div
         id="category-products"
         className="scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)]"
       >
         {products.length > 0 ? (
-          <section className="pb-16 md:pb-24">
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-              <div className="grid gap-8 md:gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {products.map((product) => (
-                  <ProductCardSimple
-                    key={product.id}
-                    product={product}
-                    locale={locale}
-                    analyticsListId={slug}
-                    analyticsListName={`category:${slug}`}
-                    labels={{
-                      viewProduct: t("common.viewProduct"),
-                      addToCart: t("common.addToCart"),
-                      noImage: t("common.noImage"),
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
+          <ProductsCatalogLayout
+            showIntro={false}
+            title={seoH1}
+            description={category.description}
+            filtersLabel={t("productsPage.filtersLabel")}
+            closeFiltersLabel={t("productsPage.closeFilters")}
+            categories={filterCategories}
+            activeCategorySlug={slug}
+            attributeLabels={attributeLabels}
+            sortBar={
+              <SortingBar
+                locale={locale}
+                sort={sort}
+                label={t("productsPage.sortLabel")}
+                options={sortOptions}
+                action={`/${locale}/category/${slug}`}
+              />
+            }
+          >
+            {products.map((product) => (
+              <ProductCardSimple
+                key={product.id}
+                product={product}
+                locale={locale}
+                variant="plp"
+                analyticsListId={slug}
+                analyticsListName={`category:${slug}`}
+                labels={cardLabels}
+              />
+            ))}
+          </ProductsCatalogLayout>
         ) : (
           <section className="pb-16 md:pb-24">
-            <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
-              <p className="text-lg text-text-primary mb-3">
+            <div className="mx-auto max-w-5xl px-6 text-center sm:px-10 lg:px-16">
+              <p className="mb-3 text-lg text-text-primary">
                 {t("categoriesPage.emptyTitle")}
               </p>
-              <p className="text-sm text-text-muted mb-8">
+              <p className="mb-8 text-sm text-text-muted">
                 {t("categoriesPage.emptyText")}
               </p>
               <Link
@@ -333,23 +363,6 @@ export default async function CategoryPage({ params }: Props) {
           </section>
         )}
       </div>
-
-      {/* Final soft CTA */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
-          <h2 className="font-sans text-2xl md:text-3xl font-semibold text-text-primary">
-            {t("categoriesPage.ctaTitle")}
-          </h2>
-          <div className="mt-6">
-            <Link
-              href={`/${locale}/products`}
-              className="inline-flex items-center justify-center rounded-md bg-accent-gold px-6 py-3 text-sm font-medium text-dark-base"
-            >
-              {t("categoriesPage.ctaButton")}
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

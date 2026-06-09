@@ -441,7 +441,20 @@
     "searchResultsFor": "Resultados para «{query}»",
     "searchNoResults": "No encontramos productos con esa búsqueda.",
     "searchNoResultsHint": "Probá otras palabras o volvé al catálogo completo.",
-    "searchViewAll": "Ver todos los productos"
+    "searchViewAll": "Ver todos los productos",
+    "catalogTitle": "Todos los productos",
+    "catalogDescription": "Equipamiento outdoor funcional para viajar ligero y moverte libre.",
+    "readMore": "Leer más",
+    "filtersLabel": "Filtros",
+    "closeFilters": "Cerrar",
+    "filterBrands": "Marcas",
+    "filterPrice": "Precio",
+    "filterSizes": "Talles",
+    "filterColor": "Color",
+    "filterSale": "Ofertas",
+    "quickAdd": "Agregar rápido",
+    "saveProduct": "Guardar producto",
+    "freeShippingBadge": "Envío gratis"
   },
   "categoriesPage": {
     "ctaTitle": "Seguí explorando la colección.",

@@ -10,6 +10,11 @@ type SortingBarProps = {
   category?: string;
   options: SortOption[];
   label: string;
+  /** URL del formulario (p. ej. página de categoría) */
+  action?: string;
+  /** Muestra prefijo "Ordenar:" antes del valor activo */
+  showPrefix?: boolean;
+  className?: string;
 };
 
 /**
@@ -22,14 +27,20 @@ export default function SortingBar({
   category,
   options,
   label,
+  action,
+  showPrefix = true,
+  className = "",
 }: SortingBarProps) {
-  const action = `/${locale}/products`;
+  const formAction = action ?? `/${locale}/products`;
+  const activeLabel =
+    options.find((opt) => opt.value === (sort || "featured"))?.label ??
+    options[0]?.label;
 
   return (
     <form
-      action={action}
+      action={formAction}
       method="get"
-      className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end"
+      className={`flex items-center justify-end gap-2 font-inter ${className}`}
     >
       {q?.trim() ? <input type="hidden" name="q" value={q.trim()} /> : null}
       {category?.trim() ? (
@@ -38,19 +49,34 @@ export default function SortingBar({
       <label className="sr-only" htmlFor="products-sort">
         {label}
       </label>
-      <select
-        id="products-sort"
-        name="sort"
-        defaultValue={sort || "featured"}
-        onChange={(e) => e.currentTarget.form?.requestSubmit()}
-        className="w-full cursor-pointer rounded-sm border border-[rgba(46,74,54,0.2)] bg-[rgba(255,255,255,0.55)] px-4 py-2.5 text-xs text-[rgba(46,74,54,0.9)] shadow-[0_4px_16px_-8px_rgba(46,74,54,0.12)] outline-none backdrop-blur-sm transition duration-200 hover:border-[rgba(46,74,54,0.3)] focus:border-accent-gold/55 focus:ring-2 focus:ring-accent-gold/25 sm:max-w-[240px] sm:text-[0.7rem] sm:uppercase sm:tracking-[0.14em]"
-      >
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
+      {showPrefix ? (
+        <span className="hidden text-sm text-forest/70 sm:inline">{label}:</span>
+      ) : null}
+      <div className="relative inline-flex items-center">
+        {showPrefix ? (
+          <span className="text-sm text-forest/70 sm:hidden">{label}:</span>
+        ) : null}
+        <select
+          id="products-sort"
+          name="sort"
+          defaultValue={sort || "featured"}
+          onChange={(e) => e.currentTarget.form?.requestSubmit()}
+          className="max-w-[12rem] cursor-pointer appearance-none border-0 bg-transparent py-1 pl-1 pr-6 text-right text-sm text-dark-base outline-none sm:max-w-[14rem]"
+          aria-label={`${label}: ${activeLabel}`}
+        >
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        <span
+          className="pointer-events-none absolute right-0 text-forest/50"
+          aria-hidden
+        >
+          ▾
+        </span>
+      </div>
     </form>
   );
 }
