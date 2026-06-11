@@ -15,6 +15,7 @@ import {
 import { premiumPrimaryCtaClass } from "@/lib/ui/premium-cta-classes";
 import { sortProductsList } from "@/lib/products-page-segments";
 import { buildCatalogFilterCategories } from "@/lib/plp-filter-categories";
+import { buildProductsPageFilterChips } from "@/lib/plp-active-filters";
 
 export const dynamic = "force-dynamic";
 
@@ -146,10 +147,20 @@ export default async function ProductsPage({
     viewProduct: t("common.viewProduct"),
     addToCart: t("common.addToCart"),
     noImage: t("common.noImage"),
-    quickAdd: t("productsPage.quickAdd"),
-    saveProduct: t("productsPage.saveProduct"),
-    freeShippingBadge: t("productsPage.freeShippingBadge"),
   };
+
+  const categoryLabel = categorySlug
+    ? t(`categories.names.${categorySlug}`, categorySlug)
+    : undefined;
+
+  const activeFilterChips = buildProductsPageFilterChips({
+    locale,
+    categorySlug,
+    categoryQuery,
+    categoryLabel,
+    rawQuery,
+    sort,
+  });
 
   const filterCategories = buildCatalogFilterCategories(locale, t, {
     q: rawQuery.trim() || undefined,
@@ -165,7 +176,7 @@ export default async function ProductsPage({
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-[#F4EBDD] text-dark-base">
+    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-dark-base">
       <ProductsHero
         locale={locale}
         title={t("productsPage.heroEssentialTitle")}
@@ -197,6 +208,8 @@ export default async function ProductsPage({
       />
 
       <ProductsCatalogLayout
+        visualStyle="patagonia"
+        surface="white"
         showIntro={false}
         title={t("productsPage.catalogTitle")}
         description={t("productsPage.catalogDescription")}
@@ -205,6 +218,9 @@ export default async function ProductsPage({
         categories={filterCategories}
         activeCategorySlug={categorySlug}
         attributeLabels={attributeLabels}
+        activeFilterChips={activeFilterChips}
+        clearAllFiltersHref={`/${locale}/products`}
+        clearAllFiltersLabel={t("productsPage.clearAllFilters")}
         sortBar={
           <SortingBar
             locale={locale}
@@ -217,11 +233,11 @@ export default async function ProductsPage({
         }
       >
         {hasActiveSearch && displayProducts.length === 0 ? (
-          <div className="col-span-2 rounded-sm border border-forest/12 bg-soft-stone/50 px-6 py-14 text-center lg:col-span-3">
-            <p className="font-inter text-lg text-dark-base">
+          <div className="col-span-2 px-6 py-14 text-center lg:col-span-3">
+            <p className="font-inter text-lg text-black">
               {t("productsPage.searchNoResults", "")}
             </p>
-            <p className="mx-auto mt-3 max-w-md font-inter text-sm leading-relaxed text-forest/70">
+            <p className="mx-auto mt-3 max-w-md font-inter text-sm leading-relaxed text-[#666666]">
               {t("productsPage.searchNoResultsHint", "")}
             </p>
             <Link
@@ -237,7 +253,7 @@ export default async function ProductsPage({
               key={product.id}
               product={product}
               locale={locale}
-              variant="plp"
+              variant="patagonia"
               labels={cardLabels}
               analyticsListName="all_products"
             />

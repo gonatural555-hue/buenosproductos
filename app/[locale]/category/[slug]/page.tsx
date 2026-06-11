@@ -15,6 +15,7 @@ import { locales, type Locale } from "@/lib/i18n/config";
 import { buildMetadata, formatTemplate } from "@/lib/seo";
 import { sortProductsList } from "@/lib/products-page-segments";
 import { buildCatalogFilterCategories } from "@/lib/plp-filter-categories";
+import { buildCategoryPageFilterChips } from "@/lib/plp-active-filters";
 import { resolveCategoryHeroKind } from "@/lib/category-hero-theme";
 
 type Props = {
@@ -278,10 +279,14 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     viewProduct: t("common.viewProduct"),
     addToCart: t("common.addToCart"),
     noImage: t("common.noImage"),
-    quickAdd: t("productsPage.quickAdd"),
-    saveProduct: t("productsPage.saveProduct"),
-    freeShippingBadge: t("productsPage.freeShippingBadge"),
   };
+
+  const activeFilterChips = buildCategoryPageFilterChips({
+    locale,
+    slug,
+    categoryLabel: seoH1,
+    sort,
+  });
 
   const filterCategories = buildCatalogFilterCategories(locale, t, {
     sort: sort === "featured" ? undefined : sort,
@@ -297,7 +302,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   };
 
   return (
-    <main className="bg-warm-sand text-dark-base">
+    <main className="bg-white text-black">
       <CategoryEditorialHero
         locale={locale}
         slug={slug}
@@ -314,6 +319,8 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       >
         {products.length > 0 ? (
           <ProductsCatalogLayout
+            visualStyle="patagonia"
+            surface="white"
             showIntro={false}
             title={seoH1}
             description={category.description}
@@ -322,6 +329,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             categories={filterCategories}
             activeCategorySlug={slug}
             attributeLabels={attributeLabels}
+            activeFilterChips={activeFilterChips}
+            clearAllFiltersHref={`/${locale}/products`}
+            clearAllFiltersLabel={t("productsPage.clearAllFilters")}
             sortBar={
               <SortingBar
                 locale={locale}
@@ -337,7 +347,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                 key={product.id}
                 product={product}
                 locale={locale}
-                variant="plp"
+                variant="patagonia"
                 analyticsListId={slug}
                 analyticsListName={`category:${slug}`}
                 labels={cardLabels}

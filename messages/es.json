@@ -454,7 +454,10 @@
     "filterSale": "Ofertas",
     "quickAdd": "Agregar rápido",
     "saveProduct": "Guardar producto",
-    "freeShippingBadge": "Envío gratis"
+    "freeShippingBadge": "Envío gratis",
+    "clearAllFilters": "Limpiar todo",
+    "badgeNewColor": "Nuevo color",
+    "badgeSalePercent": "{pct}% OFF"
   },
   "categoriesPage": {
     "ctaTitle": "Seguí explorando la colección.",

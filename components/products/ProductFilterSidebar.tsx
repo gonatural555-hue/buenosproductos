@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { plpPatagoniaClasses } from "@/lib/ui/plp-patagonia";
+import type { CatalogVisualStyle } from "@/lib/plp-catalog-visual-style";
 
 export type FilterCategoryItem = {
   slug: string;
@@ -25,9 +27,32 @@ type ProductFilterSidebarProps = {
     sale: string;
   };
   className?: string;
+  visualStyle?: CatalogVisualStyle;
 };
 
-function FilterRow({
+function FilterRowPatagonia({
+  label,
+  defaultOpen = false,
+}: {
+  label: string;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details
+      className={`group border-t ${plpPatagoniaClasses.sidebarDivider} first:border-t-0`}
+      open={defaultOpen}
+    >
+      <summary className={plpPatagoniaClasses.filterSummary}>
+        <span className={`${plpPatagoniaClasses.filterChevron} transition-transform group-open:rotate-180`} aria-hidden>
+          ▾
+        </span>
+        <span>{label}</span>
+      </summary>
+    </details>
+  );
+}
+
+function FilterRowDefault({
   label,
   defaultOpen = false,
   children,
@@ -62,12 +87,70 @@ export default function ProductFilterSidebar({
   activeCategorySlug,
   attributeLabels,
   className = "",
+  visualStyle = "default",
 }: ProductFilterSidebarProps) {
+  const isPatagonia = visualStyle === "patagonia";
+
+  if (isPatagonia) {
+    return (
+      <nav aria-label={title} className={`font-inter ${className}`}>
+        <FilterRowPatagonia label={attributeLabels.brands} />
+        <FilterRowPatagonia label={attributeLabels.price} />
+        <FilterRowPatagonia label={attributeLabels.sizes} />
+        <FilterRowPatagonia label={attributeLabels.color} />
+        <FilterRowPatagonia label={attributeLabels.sale} />
+
+        <details
+          className={`group border-t ${plpPatagoniaClasses.sidebarDivider}`}
+          open
+        >
+          <summary className={plpPatagoniaClasses.filterSummary}>
+            <span className={`${plpPatagoniaClasses.filterChevron} transition-transform group-open:rotate-180`} aria-hidden>
+              ▾
+            </span>
+            <span>Category</span>
+          </summary>
+          <ul className="space-y-0 pb-2 pl-5">
+            {categories.map((cat) => (
+              <li key={cat.slug}>
+                <Link
+                  href={cat.href}
+                  className={
+                    activeCategorySlug === cat.slug
+                      ? "block py-1.5 text-sm font-semibold text-black"
+                      : "block py-1.5 text-sm text-black/80 hover:text-black"
+                  }
+                >
+                  {cat.label}
+                </Link>
+                {cat.children?.length ? (
+                  <ul className="mb-2 ml-2 space-y-0 border-l border-[#E5E5E5] pl-3">
+                    {cat.children.map((child) => (
+                      <li key={child.slug}>
+                        <Link
+                          href={child.href}
+                          className={
+                            activeCategorySlug === child.slug
+                              ? "block py-1 text-sm font-semibold text-black"
+                              : "block py-1 text-sm text-black/70 hover:text-black"
+                          }
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </details>
+      </nav>
+    );
+  }
+
   return (
-    <nav
-      aria-label={title}
-      className={`font-inter ${className}`}
-    >
+    <nav aria-label={title} className={`font-inter ${className}`}>
       <h2 className="mb-4 font-display text-lg text-dark-base">{title}</h2>
 
       <details className="group mb-2" open>
@@ -126,11 +209,11 @@ export default function ProductFilterSidebar({
       </details>
 
       <div className="border-t border-forest/10">
-        <FilterRow label={attributeLabels.brands} />
-        <FilterRow label={attributeLabels.price} />
-        <FilterRow label={attributeLabels.sizes} />
-        <FilterRow label={attributeLabels.color} />
-        <FilterRow label={attributeLabels.sale} />
+        <FilterRowDefault label={attributeLabels.brands} />
+        <FilterRowDefault label={attributeLabels.price} />
+        <FilterRowDefault label={attributeLabels.sizes} />
+        <FilterRowDefault label={attributeLabels.color} />
+        <FilterRowDefault label={attributeLabels.sale} />
       </div>
     </nav>
   );

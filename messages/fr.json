@@ -454,7 +454,10 @@
     "filterSale": "Promos",
     "quickAdd": "Ajout rapide",
     "saveProduct": "Enregistrer le produit",
-    "freeShippingBadge": "Livraison gratuite"
+    "freeShippingBadge": "Livraison gratuite",
+    "clearAllFilters": "Tout effacer",
+    "badgeNewColor": "Nouvelle couleur",
+    "badgeSalePercent": "-{pct} %"
   },
   "categoriesPage": {
     "ctaTitle": "Continuer l’exploration.",

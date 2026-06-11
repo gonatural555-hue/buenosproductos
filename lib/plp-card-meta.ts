@@ -72,3 +72,44 @@ export function getProductBadges(product: Product): string[] {
   if (product.freeShipping) badges.push("freeShipping");
   return badges;
 }
+
+export type PatagoniaCardBadge = {
+  id: string;
+  label: string;
+};
+
+export function getPatagoniaCardBadges(
+  product: Product,
+  labels: { newColor?: string; salePercentTemplate?: string }
+): PatagoniaCardBadge[] {
+  const badges: PatagoniaCardBadge[] = [];
+  const swatches = getProductColorSwatches(product);
+  if (swatches.length > 1 && labels.newColor) {
+    badges.push({ id: "new-color", label: labels.newColor });
+  }
+  const compareAt = (product as Product & { compareAtPrice?: number })
+    .compareAtPrice;
+  if (
+    typeof compareAt === "number" &&
+    compareAt > product.price &&
+    labels.salePercentTemplate
+  ) {
+    const pct = Math.round((1 - product.price / compareAt) * 100);
+    if (pct > 0) {
+      badges.push({
+        id: "sale",
+        label: labels.salePercentTemplate.replace("{pct}", String(pct)),
+      });
+    }
+  }
+  return badges;
+}
+
+export function getProductCompareAtPrice(product: Product): number | null {
+  const compareAt = (product as Product & { compareAtPrice?: number })
+    .compareAtPrice;
+  if (typeof compareAt === "number" && compareAt > product.price) {
+    return compareAt;
+  }
+  return null;
+}

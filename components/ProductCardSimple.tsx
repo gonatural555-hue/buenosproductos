@@ -13,7 +13,11 @@ import {
   getProductBrandLabel,
   getProductColorSwatches,
   getProductReviewAverage,
+  getPatagoniaCardBadges,
+  getProductCompareAtPrice,
 } from "@/lib/plp-card-meta";
+import { plpPatagoniaClasses } from "@/lib/ui/plp-patagonia";
+import { useTranslations } from "@/components/i18n/LocaleProvider";
 
 type Props = {
   product: Product;
@@ -25,13 +29,16 @@ type Props = {
     quickAdd?: string;
     saveProduct?: string;
     freeShippingBadge?: string;
+    newColor?: string;
+    /** Plantilla serializable, p. ej. "{pct}% OFF" */
+    salePercentTemplate?: string;
   };
   analyticsListId?: string;
   analyticsListName?: string;
   surface?: UISurface;
   editorial?: boolean;
-  /** Listado PLP: layout Huckberry (estructura, estilo Go Natural). */
-  variant?: "default" | "plp";
+  /** Listado PLP: layout Huckberry o Patagonia. */
+  variant?: "default" | "plp" | "patagonia";
 };
 
 function isValidImageSrc(src?: string | null) {
@@ -49,11 +56,13 @@ function ProductImage({
   src,
   title,
   cover,
+  containFill,
   sizes,
 }: {
   src: string;
   title: string;
   cover: boolean;
+  containFill?: boolean;
   sizes: string;
 }) {
   const isExternal = src.startsWith("http");
@@ -67,7 +76,9 @@ function ProductImage({
         className={
           cover
             ? "absolute inset-0 h-full w-full object-cover object-center"
-            : "block h-auto w-full object-contain object-center"
+            : containFill
+              ? "absolute inset-0 h-full w-full object-contain object-center p-4"
+              : "block h-auto w-full object-contain object-center"
         }
       />
     );
@@ -80,6 +91,20 @@ function ProductImage({
         alt={title}
         fill
         className="object-cover object-center"
+        placeholder="blur"
+        blurDataURL={PRODUCT_BLUR_DATA_URL}
+        sizes={sizes}
+      />
+    );
+  }
+
+  if (containFill) {
+    return (
+      <Image
+        src={src}
+        alt={title}
+        fill
+        className="object-contain object-center"
         placeholder="blur"
         blurDataURL={PRODUCT_BLUR_DATA_URL}
         sizes={sizes}
@@ -111,6 +136,7 @@ export default function ProductCardSimple({
   editorial = false,
   variant = "default",
 }: Props) {
+  const t = useTranslations();
   const localized = product.translations?.[locale];
   const title = localized?.title || product.title;
   const description =
@@ -123,6 +149,7 @@ export default function ProductCardSimple({
     [product.images]
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSwatch, setActiveSwatch] = useState(0);
   const activeImage = imageList[activeIndex] || imageList[0];
   const hasValidImage = Boolean(activeImage);
   const viewProductLabel = labels?.viewProduct || "View product";
@@ -157,6 +184,105 @@ export default function ProductCardSimple({
       itemListName: analyticsListName,
     });
   };
+
+  if (variant === "patagonia") {
+    const swatches = getProductColorSwatches(product);
+    const badges = getPatagoniaCardBadges(product, {
+      newColor: labels?.newColor ?? t("productsPage.badgeNewColor"),
+      salePercentTemplate:
+        labels?.salePercentTemplate ?? t("productsPage.badgeSalePercent"),
+    });
+    const compareAt = getProductCompareAtPrice(product);
+    const visibleSwatches = swatches.slice(0, 5);
+    const displayBadge = badges[0];
+
+    return (
+      <Link
+        href={`/${locale}/products/${product.id}`}
+        className="group block"
+        onClick={trackClick}
+      >
+        <article>
+          <div className={plpPatagoniaClasses.imageBox}>
+            {displayBadge ? (
+              <span className={plpPatagoniaClasses.badge}>{displayBadge.label}</span>
+            ) : null}
+            <div className={plpPatagoniaClasses.imageInner}>
+              {hasValidImage ? (
+                <ProductImage
+                  src={activeImage!}
+                  title={title}
+                  cover={false}
+                  containFill
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <span className="font-inter text-xs text-[#666666]">
+                  {noImageLabel}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {visibleSwatches.length > 0 ? (
+            <div
+              className="mt-2 flex flex-wrap items-center gap-1.5"
+              onClick={(e) => e.preventDefault()}
+            >
+              {visibleSwatches.map((swatch, index) => {
+                const isActive = index === activeSwatch;
+                return (
+                  <button
+                    key={`${product.id}-pg-swatch-${index}`}
+                    type="button"
+                    aria-label={swatch.label}
+                    aria-pressed={isActive}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setActiveSwatch(index);
+                      if (imageList[index]) setActiveIndex(index);
+                    }}
+                    className={`${plpPatagoniaClasses.swatch} ${
+                      isActive ? plpPatagoniaClasses.swatchActive : ""
+                    }`}
+                    style={{ backgroundColor: swatch.hex }}
+                  >
+                    {isActive ? (
+                      <span
+                        className="absolute inset-0 flex items-center justify-center text-[10px] text-white drop-shadow"
+                        aria-hidden
+                      >
+                        ✓
+                      </span>
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <h2 className={plpPatagoniaClasses.title}>{title}</h2>
+          <div className="mt-1 flex flex-wrap items-baseline gap-2">
+            {compareAt != null ? (
+              <>
+                <span className={plpPatagoniaClasses.priceSale}>
+                  {formatPrice(product.price)}
+                </span>
+                <span className={plpPatagoniaClasses.priceCompare}>
+                  {formatPrice(compareAt)}
+                </span>
+              </>
+            ) : (
+              <span className={plpPatagoniaClasses.price}>
+                {formatPrice(product.price)}
+              </span>
+            )}
+          </div>
+        </article>
+      </Link>
+    );
+  }
 
   if (variant === "plp") {
     const brand = getProductBrandLabel(product);

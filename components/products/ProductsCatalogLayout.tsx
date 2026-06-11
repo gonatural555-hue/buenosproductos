@@ -1,8 +1,14 @@
-import type { ReactNode } from "react";
+import ActiveFilterChips, {
+  type ActiveFilterChip,
+} from "@/components/products/ActiveFilterChips";
 import ProductFilterSidebar, {
   type FilterCategoryGroup,
 } from "@/components/products/ProductFilterSidebar";
 import ProductFilterTrigger from "@/components/products/ProductFilterTrigger";
+import { plpPatagoniaClasses } from "@/lib/ui/plp-patagonia";
+import type { CatalogVisualStyle } from "@/lib/plp-catalog-visual-style";
+
+export type { CatalogVisualStyle };
 
 type ProductsCatalogLayoutProps = {
   title: string;
@@ -20,11 +26,15 @@ type ProductsCatalogLayoutProps = {
     color: string;
     sale: string;
   };
-  sortBar: ReactNode;
-  children: ReactNode;
+  sortBar: React.ReactNode;
+  children: React.ReactNode;
   searchHint?: string | null;
-  /** Oculta S3 (título + descripción) cuando la página ya tiene hero arriba. */
   showIntro?: boolean;
+  surface?: "cream" | "white";
+  visualStyle?: CatalogVisualStyle;
+  activeFilterChips?: ActiveFilterChip[];
+  clearAllFiltersHref?: string;
+  clearAllFiltersLabel?: string;
 };
 
 export default function ProductsCatalogLayout({
@@ -41,9 +51,22 @@ export default function ProductsCatalogLayout({
   children,
   searchHint,
   showIntro = true,
+  surface = "cream",
+  visualStyle = "default",
+  activeFilterChips = [],
+  clearAllFiltersHref = "",
+  clearAllFiltersLabel = "",
 }: ProductsCatalogLayoutProps) {
+  const isPatagonia = visualStyle === "patagonia";
+  const surfaceBg = isPatagonia
+    ? "bg-white"
+    : surface === "white"
+      ? "bg-white"
+      : "bg-[#F4EBDD]";
+  const rootClass = isPatagonia ? plpPatagoniaClasses.page : `${surfaceBg} text-dark-base`;
+
   return (
-    <div className="bg-[#F4EBDD] text-dark-base">
+    <div className={rootClass}>
       {showIntro ? (
         <section className="mx-auto max-w-7xl px-4 pb-6 pt-10 md:px-6 md:pt-12 lg:px-16 lg:pt-14">
           {searchHint ? (
@@ -68,49 +91,93 @@ export default function ProductsCatalogLayout({
         </section>
       ) : null}
 
-      {/* S4 — controles */}
       <section
-        className={`mx-auto max-w-7xl px-4 md:px-6 lg:px-16 ${showIntro ? "" : "pt-8 md:pt-10 lg:pt-12"}`}
+        className={`mx-auto max-w-[1400px] px-4 md:px-6 lg:px-10 ${
+          showIntro ? "" : isPatagonia ? "pt-6 md:pt-8" : "pt-8 md:pt-10 lg:pt-12"
+        }`}
       >
-        <div className="lg:hidden">
-          <ProductFilterTrigger
-            label={filtersLabel}
-            closeLabel={closeFiltersLabel}
-            sidebarTitle={filtersLabel}
-            categories={categories}
-            activeCategorySlug={activeCategorySlug}
-            attributeLabels={attributeLabels}
-          />
-          <div className="mt-3 flex justify-end">{sortBar}</div>
-        </div>
-
-        <div className="hidden items-center justify-between gap-6 border-b border-forest/10 pb-4 lg:flex">
-          <span className="font-inter text-sm font-medium text-dark-base">
-            {filtersLabel}
-          </span>
-          <div className="shrink-0">{sortBar}</div>
-        </div>
+        {!isPatagonia ? (
+          <>
+            <div className="lg:hidden">
+              <ProductFilterTrigger
+                label={filtersLabel}
+                closeLabel={closeFiltersLabel}
+                sidebarTitle={filtersLabel}
+                categories={categories}
+                activeCategorySlug={activeCategorySlug}
+                attributeLabels={attributeLabels}
+                panelClassName={surfaceBg}
+              />
+              <div className="mt-3 flex justify-end">{sortBar}</div>
+            </div>
+            <div className="hidden items-center justify-between gap-6 border-b border-forest/10 pb-4 lg:flex">
+              <span className="font-inter text-sm font-medium text-dark-base">
+                {filtersLabel}
+              </span>
+              <div className="shrink-0">{sortBar}</div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="mb-4 space-y-3 lg:hidden">
+              <ProductFilterTrigger
+                label={filtersLabel}
+                closeLabel={closeFiltersLabel}
+                sidebarTitle={filtersLabel}
+                categories={categories}
+                activeCategorySlug={activeCategorySlug}
+                attributeLabels={attributeLabels}
+                panelClassName="bg-white"
+                visualStyle="patagonia"
+                activeFilterChips={activeFilterChips}
+                clearAllFiltersHref={clearAllFiltersHref}
+                clearAllFiltersLabel={clearAllFiltersLabel}
+              />
+              <div className="flex justify-end">{sortBar}</div>
+            </div>
+          </>
+        )}
       </section>
 
-      {/* S5 — sidebar + grid */}
       <section
         id="products-catalog"
-        className="scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-16 lg:py-10"
+        className="scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] mx-auto max-w-[1400px] px-4 pb-12 md:px-6 lg:px-10 lg:pb-16"
       >
-        <div className="flex gap-8 lg:gap-10">
-          <aside className="hidden w-[260px] shrink-0 lg:block">
-            <div className="sticky top-[calc(env(safe-area-inset-top,0px)+7rem)] max-h-[calc(100vh-env(safe-area-inset-top,0px)-8rem)] overflow-y-auto pr-2">
+        <div className={`flex ${isPatagonia ? "gap-10 lg:gap-12" : "gap-8 lg:gap-10"}`}>
+          <aside
+            className={`hidden shrink-0 lg:block ${isPatagonia ? "w-[240px]" : "w-[260px]"}`}
+          >
+            <div className="sticky top-[calc(env(safe-area-inset-top,0px)+1rem)] max-h-[calc(100vh-env(safe-area-inset-top,0px)-2rem)] overflow-y-auto">
+              {isPatagonia ? (
+                <ActiveFilterChips
+                  chips={activeFilterChips}
+                  clearAllHref={clearAllFiltersHref}
+                  clearAllLabel={clearAllFiltersLabel}
+                />
+              ) : null}
               <ProductFilterSidebar
                 title={filtersLabel}
                 categories={categories}
                 activeCategorySlug={activeCategorySlug}
                 attributeLabels={attributeLabels}
+                visualStyle={visualStyle}
               />
             </div>
           </aside>
 
           <div className="min-w-0 flex-1">
-            <div className="grid grid-cols-2 gap-x-3 gap-y-6 lg:grid-cols-3 lg:gap-6">
+            {isPatagonia ? (
+              <div className="mb-6 hidden items-center justify-end lg:flex">
+                {sortBar}
+              </div>
+            ) : null}
+            <div
+              className={
+                isPatagonia
+                  ? "grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10"
+                  : "grid grid-cols-2 gap-x-3 gap-y-6 lg:grid-cols-3 lg:gap-6"
+              }
+            >
               {children}
             </div>
           </div>

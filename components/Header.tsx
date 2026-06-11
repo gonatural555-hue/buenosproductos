@@ -7,8 +7,7 @@ import { useCart } from "@/context/CartContext";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
 import AuthModal from "@/components/AuthModal";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getAllCategories } from "@/lib/categories";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { goNaturalHomePath, isGoNaturalHomePath } from "@/lib/routing/brands";
@@ -190,7 +189,6 @@ export default function Header() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  /** PDP: header en flujo (no fixed) para que el contenido no quede bajo barra flotante. */
   const isPdp = useMemo(() => {
     const s = pathname.split("/").filter(Boolean);
     return (
@@ -205,29 +203,6 @@ export default function Header() {
   const headerInverse = isHome && !isPdp;
   const pillCls = isPdp ? HEADER_PILL_PDP : headerInverse ? HEADER_PILL_HOME : HEADER_PILL;
   const mobileDrawerCls = headerInverse ? MOBILE_DRAWER_HOME : MOBILE_DRAWER;
-
-  const [headerPortalRoot, setHeaderPortalRoot] = useState<HTMLElement | null>(null);
-
-  useLayoutEffect(() => {
-    if (typeof document === "undefined") return;
-    if (isPdp) {
-      const orphan = document.getElementById("gn-header-fixed-root");
-      if (orphan) orphan.remove();
-      setHeaderPortalRoot(null);
-      return;
-    }
-    const id = "gn-header-fixed-root";
-    let el = document.getElementById(id) as HTMLElement | null;
-    if (!el) {
-      el = document.createElement("div");
-      el.id = id;
-      document.body.insertAdjacentElement("afterbegin", el);
-    }
-    /** Contenedor mínimo del portal: sin altura fija ni overflow propio (scroll solo en el documento). */
-    el.className = "gn-header-portal pointer-events-none";
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- portal root sync
-    setHeaderPortalRoot(el);
-  }, [isPdp]);
 
   const { mainCategories, subCategoriesByParent } = useMemo(() => {
     const all = getAllCategories();
@@ -290,13 +265,12 @@ export default function Header() {
     </svg>
   );
 
-  const headerShellClass = isPdp
-    ? "pointer-events-auto relative z-50 w-full overflow-x-clip font-inter"
-    : "pointer-events-none !fixed inset-x-0 top-0 z-50 w-full overflow-x-clip font-inter";
+  const headerShellClass =
+    "pointer-events-auto relative z-50 w-full overflow-x-clip bg-white font-inter";
 
   const headerUi = (
     <header className={headerShellClass}>
-      <div className="mx-auto w-full max-w-[1440px] overflow-x-clip px-0 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] md:px-7 md:pt-[calc(2.75rem+env(safe-area-inset-top,0px))] lg:px-12 lg:pt-[calc(3rem+env(safe-area-inset-top,0px))]">
+      <div className="mx-auto w-full max-w-[1440px] overflow-x-clip bg-white px-0 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] md:px-7 md:pt-[calc(2.75rem+env(safe-area-inset-top,0px))] lg:px-12 lg:pt-[calc(3rem+env(safe-area-inset-top,0px))]">
         <div className={pillCls}>
           <div className={`${HEADER_TOOLBAR_ROW} relative z-0 hidden w-full md:flex md:min-h-[3.5rem]`}>
             <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(7.5rem+6px)] md:pr-[calc(7rem+8px)] lg:pr-[calc(7.75rem+10px)]">
@@ -650,6 +624,5 @@ export default function Header() {
     </header>
   );
 
-  if (isPdp) return headerUi;
-  return headerPortalRoot ? createPortal(headerUi, headerPortalRoot) : headerUi;
+  return headerUi;
 }

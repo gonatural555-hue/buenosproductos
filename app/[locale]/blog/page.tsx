@@ -17,6 +17,7 @@ import { getProducts } from "@/lib/products";
 
 const FEATURED_SLUG = "edge-of-water";
 const FALLBACK_IMAGE = "/assets/images/blog/blog-hero.webp";
+const BLOG_COVER_IMAGE = "/assets/images/blog/banner.png";
 const BLOG_POSTS_ANCHOR = "blog-posts";
 
 export async function generateMetadata({
@@ -38,7 +39,7 @@ export async function generateMetadata({
       fr: "/fr/blog",
       it: "/it/blog",
     },
-    ogImage: "/assets/images/blog/blog-hero.webp",
+    ogImage: BLOG_COVER_IMAGE,
   });
 }
 
@@ -117,6 +118,8 @@ export default async function BlogPage({
         exploreCtaLabel={t("blog.heroExploreArticles")}
         postsAnchorId={BLOG_POSTS_ANCHOR}
         sectionAriaLabel={blogHeroAriaLabel}
+        coverImageSrc={BLOG_COVER_IMAGE}
+        coverImageAlt={blogHeroAriaLabel}
       />
 
       <section className="border-b border-earth-brown/12 bg-soft-stone py-20 md:py-28 lg:py-32">

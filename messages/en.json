@@ -454,7 +454,10 @@
     "filterSale": "Sale",
     "quickAdd": "Quick add",
     "saveProduct": "Save product",
-    "freeShippingBadge": "Free shipping"
+    "freeShippingBadge": "Free shipping",
+    "clearAllFilters": "Clear all",
+    "badgeNewColor": "New Color",
+    "badgeSalePercent": "{pct}% OFF"
   },
   "categoriesPage": {
     "ctaTitle": "Continue exploring the collection.",

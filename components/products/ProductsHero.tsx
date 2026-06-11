@@ -15,7 +15,7 @@ import { splitHeroLineWithAccent } from "@/lib/ui/hero-title-accent";
 const easeOut = GN_EASE_PREMIUM;
 
 const PRODUCTS_CATEGORY_CTA_BASE =
-  "inline-flex min-h-[52px] w-full items-center justify-center rounded-full px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] shadow-[0_10px_32px_-10px_rgba(46,74,54,0.22)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_rgba(46,74,54,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]";
+  "inline-flex min-h-[52px] w-full items-center justify-center rounded-full px-5 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.14em] shadow-[0_10px_32px_-10px_rgba(46,74,54,0.22)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_rgba(46,74,54,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-[56px] sm:px-7 sm:text-[12px] md:text-[13px]";
 
 /** Igual que `HomeBrandHero`: título en 2 bloques editoriales. */
 function editorialHeadlineFromTitle(title: string): { line1: string; line2: string | null } {
@@ -40,7 +40,7 @@ export type ProductsHeroCategoryCta = {
 };
 
 const discoverCtaClass =
-  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-9 text-center font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_44px_rgba(46,74,54,0.14)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_16px_52px_rgba(46,74,54,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4EBDD] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-[13px]";
+  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[linear-gradient(135deg,#1F3527_0%,#2E4A36_50%,#3E654B_100%)] px-9 text-center font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_12px_44px_rgba(46,74,54,0.14)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_16px_52px_rgba(46,74,54,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-[13px]";
 
 type ProductsHeroProps = {
   locale: Locale;
@@ -98,7 +98,7 @@ export default function ProductsHero({
 
   return (
     <section
-      className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD]"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-[rgba(46,74,54,0.08)] bg-white"
       aria-label={title}
     >
       <div
