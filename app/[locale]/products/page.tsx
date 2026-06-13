@@ -148,7 +148,10 @@ export default async function ProductsPage({
   const cardLabels = {
     viewProduct: t("common.viewProduct"),
     addToCart: t("common.addToCart"),
+    addNow: t("common.addNow"),
     noImage: t("common.noImage"),
+    newColor: t("productsPage.badgeNewColor"),
+    salePercentTemplate: t("productsPage.badgeSalePercent"),
   };
 
   const categoryLabel = categorySlug
@@ -178,7 +181,10 @@ export default async function ProductsPage({
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-dark-base">
+    <main
+      data-hero-bleed
+      className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-dark-base"
+    >
       <ProductsHero
         locale={locale}
         title={t("productsPage.heroEssentialTitle")}

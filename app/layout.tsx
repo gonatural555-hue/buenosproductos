@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./header-rei.css";
 import { headers } from "next/headers";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";

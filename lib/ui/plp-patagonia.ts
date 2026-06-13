@@ -27,4 +27,8 @@ export const plpPatagoniaClasses = {
   price: "mt-1 font-inter text-sm text-black",
   priceSale: "font-inter text-sm font-medium text-[#CC0000]",
   priceCompare: "font-inter text-sm text-[#666666] line-through",
+  addNowWrap:
+    "absolute inset-x-3 bottom-3 z-[2] translate-y-1 opacity-100 transition-all duration-300 ease-out md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 motion-reduce:transition-none motion-reduce:md:opacity-100 motion-reduce:md:translate-y-0",
+  addNowBtn:
+    "w-full rounded-full border border-black bg-white px-4 py-2.5 font-inter text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/25 active:scale-[0.99]",
 } as const;

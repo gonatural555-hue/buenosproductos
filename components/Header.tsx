@@ -1,91 +1,21 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
 import AuthModal from "@/components/AuthModal";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { getAllCategories } from "@/lib/categories";
-import { locales, type Locale } from "@/lib/i18n/config";
-import { goNaturalHomePath, isGoNaturalHomePath } from "@/lib/routing/brands";
+import HeaderCategoryBar from "@/components/header/HeaderCategoryBar";
+import HeaderMainRow from "@/components/header/HeaderMainRow";
+import HeaderUtilityBar from "@/components/header/HeaderUtilityBar";
+import { getHeaderNavTabs } from "@/lib/header-nav-categories";
+import { goNaturalHomePath } from "@/lib/routing/brands";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
-import { usePathname, useSearchParams } from "next/navigation";
 
 const PREMIUM_EASE = [0.22, 1, 0.36, 1] as const;
-const PREMIUM_MS = 0.58;
-
-/** Orden editorial del menú móvil de categorías (coincide con categorías padre). */
-const MAIN_CATEGORY_ORDER = [
-  "fishing",
-  "water-sports",
-  "outdoor-adventure",
-  "active-sports",
-  "mountain-snow",
-] as const;
-
-const HEADER_TOOLBAR_ROW =
-  "relative flex w-full max-w-[1440px] items-center gap-2 py-1.5 md:gap-3 md:py-2";
-
-const HEADER_PILL =
-  "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[rgba(244,235,221,0.72)] md:px-4 md:py-0 md:shadow-[0_10px_40px_rgba(0,0,0,0.05)] md:backdrop-blur-[16px] md:supports-[backdrop-filter]:bg-[rgba(244,235,221,0.62)]";
-
-/** PDP: fondo cream opaco (#F4EBDD) en todos los breakpoints (sin translucidez ni blur). */
-const HEADER_PILL_PDP =
-  "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[#F4EBDD] md:px-4 md:py-0 md:shadow-[0_10px_40px_rgba(46,74,54,0.06)]";
-
-/** Home: barra blanca, enlaces bosque/negro (solo `/[locale]`, mismos hovers y brillo dorado). */
-const HEADER_PILL_HOME =
-  "pointer-events-auto relative w-full overflow-x-clip rounded-none border-0 border-b border-[rgba(46,74,54,0.08)] bg-[#FFFFFF] px-3 py-2.5 shadow-none sm:px-4 md:rounded-full md:border md:border-[rgba(46,74,54,0.10)] md:bg-[#FFFFFF] md:px-4 md:py-0 md:shadow-[0_12px_48px_-24px_rgba(46,74,54,0.12),0_8px_32px_-18px_rgba(0,0,0,0.06)]";
-
-const MOBILE_DRAWER_HOME =
-  "pointer-events-auto mt-2 overflow-x-clip rounded-[1.35rem] border border-[rgba(46,74,54,0.10)] bg-[#FFFFFF] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.08)] md:hidden";
-
-const LOCALE_FLOAT =
-  "rounded-full px-2 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36] md:text-[12px] md:tracking-[0.12em]";
-
-const ICON_GHOST =
-  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[rgba(46,74,54,0.65)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[rgba(46,74,54,0.06)] hover:text-[#2E4A36]";
-
-const MOBILE_DRAWER =
-  "pointer-events-auto mt-2 overflow-x-clip rounded-[1.35rem] border border-[rgba(46,74,54,0.08)] bg-[#F4EBDD] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.06)] md:hidden";
-
-const MOBILE_PRIMARY_LINK =
-  "font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.78)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36]";
-
-const logoEase = PREMIUM_EASE;
-
-function PremiumNavLink({
-  href,
-  children,
-  inverse = false,
-}: {
-  href: string;
-  children: React.ReactNode;
-  inverse?: boolean;
-}) {
-  const reduceMotion = useReducedMotion() ?? false;
-  return (
-    <motion.span
-      className="inline-flex will-change-transform"
-      whileHover={reduceMotion ? undefined : { y: -2 }}
-      transition={{ duration: PREMIUM_MS, ease: PREMIUM_EASE }}
-    >
-      <Link
-        href={href}
-        className={
-          inverse
-            ? "relative inline-block whitespace-nowrap rounded-full px-1.5 py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-[color,box-shadow,opacity] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] hover:shadow-[0_0_36px_rgba(217,164,65,0.16),0_10px_32px_-14px_rgba(46,74,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:text-[14px]"
-            : "relative inline-block whitespace-nowrap rounded-full px-1.5 py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-[color,box-shadow,opacity] duration-[580ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] hover:shadow-[0_0_36px_rgba(217,164,65,0.16),0_10px_32px_-14px_rgba(46,74,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgba(244,235,221,0.85)] md:text-[14px]"
-        }
-      >
-        {children}
-      </Link>
-    </motion.span>
-  );
-}
 
 function MegaSubLink({
   href,
@@ -100,529 +30,179 @@ function MegaSubLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="group relative flex items-center gap-3 py-1.5 font-inter text-[15px] font-normal leading-snug text-[rgba(46,74,54,0.62)] transition-[color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#2E4A36] md:text-[16px]"
+      className="block py-1 font-inter text-[14px] text-[rgba(48,76,61,0.72)] hover:text-[#304C3D]"
     >
-      <span
-        className="flex h-2 w-2 shrink-0 items-center justify-center"
-        aria-hidden
-      >
-        <span className="h-1.5 w-1.5 translate-x-[-4px] rounded-full bg-[#D9A441] opacity-0 shadow-[0_0_10px_rgba(217,164,65,0.45)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:opacity-100" />
-      </span>
-      <span>{label}</span>
+      {label}
     </Link>
   );
 }
 
-function BrandLogoLink({
-  locale,
-  alt,
-  imageClassName,
-  inverse = false,
+function HeaderMobileDrawer({
+  open,
+  onClose,
 }: {
-  locale: Locale;
-  alt: string;
-  imageClassName: string;
-  inverse?: boolean;
+  open: boolean;
+  onClose: () => void;
 }) {
-  const reduceMotion = useReducedMotion() ?? false;
+  const locale = useLocale();
+  const t = useTranslations();
+  const headerNavTabs = getHeaderNavTabs();
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+
+  if (!open) return null;
+
   return (
-    <motion.div
-      className="flex shrink-0 justify-center overflow-visible will-change-transform"
-      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+    <motion.nav
+      initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.85,
-        ease: logoEase,
-        delay: reduceMotion ? 0 : 0.06,
-      }}
-      whileHover={
-        reduceMotion
-          ? undefined
-          : {
-              scale: 1.04,
-              y: -2,
-              filter: "drop-shadow(0 0 22px rgba(217, 164, 65, 0.22)) drop-shadow(0 12px 28px rgba(46, 74, 54, 0.12))",
-              transition: { duration: 0.55, ease: logoEase },
-            }
-      }
-      whileTap={reduceMotion ? undefined : { scale: 0.98, transition: { duration: 0.15, ease: logoEase } }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.4, ease: PREMIUM_EASE }}
+      className="border-t border-[rgba(48,76,61,0.1)] bg-[#F4EBDD] p-4 md:hidden"
     >
-      <Link
-        href={goNaturalHomePath(locale)}
-        className={`relative block rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/40 focus-visible:ring-offset-2 ${
-          inverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[rgba(244,235,221,0.9)]"
-        }`}
-        aria-label={alt}
-      >
-        <Image
-          src="/assets/images/logo/LOGO-GONATURAL.png"
-          alt={alt}
-          width={640}
-          height={256}
-          priority
-          draggable={false}
-          className={`${imageClassName} drop-shadow-[0_6px_20px_rgba(46,74,54,0.08)]`}
-        />
-      </Link>
-    </motion.div>
+      <div className="flex flex-col gap-3">
+        <Link href={goNaturalHomePath(locale)} className="font-inter text-sm font-medium text-[#304C3D]" onClick={onClose}>
+          {t("header.nav.home")}
+        </Link>
+        <Link href={`/${locale}/products`} className="font-inter text-sm font-medium text-[#304C3D]" onClick={onClose}>
+          {t("header.shop")}
+        </Link>
+        <Link href={`/${locale}/blog`} className="font-inter text-sm font-medium text-[#304C3D]" onClick={onClose}>
+          {t("header.utility.expertAdvice")}
+        </Link>
+        <button
+          type="button"
+          className="flex w-full items-center justify-between py-1 text-left font-inter text-sm font-medium text-[#304C3D]"
+          onClick={() => setCategoriesOpen((o) => !o)}
+        >
+          {t("header.nav.categories")}
+          <span>{categoriesOpen ? "−" : "+"}</span>
+        </button>
+        {categoriesOpen ? (
+          <div className="space-y-4 border-l border-[rgba(48,76,61,0.12)] pl-3">
+            {headerNavTabs.map((tab) => (
+              <div key={tab.id}>
+                <Link
+                  href={`/${locale}/category/${tab.parentSlug}`}
+                  className="block font-inter text-base font-semibold text-[#304C3D]"
+                  onClick={onClose}
+                >
+                  {t(`header.tabs.${tab.labelKey}`, tab.labelKey)}
+                </Link>
+                <div className="mt-1 flex flex-col">
+                  {tab.items.map((item, si) => (
+                    <MegaSubLink
+                      key={`${tab.id}-${si}`}
+                      href={`/${locale}/category/${item.categorySlug}`}
+                      label={
+                        item.labelKey
+                          ? t(
+                              `header.tabs.subs.${item.labelKey}`,
+                              t(`categories.names.${item.categorySlug}`, item.categorySlug)
+                            )
+                          : t(`categories.names.${item.categorySlug}`, item.categorySlug)
+                      }
+                      onNavigate={onClose}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+            <Link
+              href={`/${locale}/products?deals=1`}
+              className="block font-inter text-base font-semibold text-[#C9622B]"
+              onClick={onClose}
+            >
+              {t("header.tabs.deals")}
+            </Link>
+          </div>
+        ) : null}
+      </div>
+    </motion.nav>
   );
 }
 
-function userInitials(name: string): string {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  const a = parts[0]?.[0] ?? "?";
-  const b = parts.length > 1 ? parts[parts.length - 1]?.[0] ?? "" : parts[0]?.[1] ?? "";
-  return (a + b).toUpperCase().slice(0, 2);
-}
-
-export default function Header() {
+function HeaderInner() {
   const { totalItems } = useCart();
   const { isLoggedIn, user } = useUser();
   const { authOpen, setAuthOpen, openAuthModal, initialTab } = useAuth();
-  const reduceMotion = useReducedMotion() ?? false;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
-  const [mobileLocaleOpen, setMobileLocaleOpen] = useState(false);
-  const mobileLocaleWrapRef = useRef<HTMLDivElement>(null);
   const locale = useLocale();
   const t = useTranslations();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isPdp = useMemo(() => {
-    const s = pathname.split("/").filter(Boolean);
-    return (
-      s.length >= 3 &&
-      s[1] === "products" &&
-      locales.includes(s[0] as Locale)
-    );
-  }, [pathname]);
+  return (
+    <>
+      <header className="gn-rei-header font-inter">
+        <HeaderUtilityBar locale={locale} />
 
-  const isHome = useMemo(() => isGoNaturalHomePath(pathname), [pathname]);
+        <div className="gn-rei-band">
+          <div className="gn-rei-header__max gn-rei-band__shell">
+            <HeaderMainRow
+              locale={locale}
+              totalItems={totalItems}
+              isLoggedIn={isLoggedIn}
+              userName={user?.name}
+              onSignIn={() => openAuthModal("login")}
+            />
 
-  const headerInverse = isHome && !isPdp;
-  const pillCls = isPdp ? HEADER_PILL_PDP : headerInverse ? HEADER_PILL_HOME : HEADER_PILL;
-  const mobileDrawerCls = headerInverse ? MOBILE_DRAWER_HOME : MOBILE_DRAWER;
-
-  const { mainCategories, subCategoriesByParent } = useMemo(() => {
-    const all = getAllCategories();
-    const mains = all.filter((cat) => !cat.parentSlug);
-    const orderRank = (slug: string) => {
-      const i = MAIN_CATEGORY_ORDER.indexOf(slug as (typeof MAIN_CATEGORY_ORDER)[number]);
-      return i === -1 ? 999 : i;
-    };
-    mains.sort((a, b) => orderRank(a.slug) - orderRank(b.slug));
-    const subsByParent: Record<string, typeof all> = {};
-    all.filter((cat) => cat.parentSlug).forEach((sub) => {
-      const key = sub.parentSlug || "";
-      if (!subsByParent[key]) {
-        subsByParent[key] = [];
-      }
-      subsByParent[key].push(sub);
-    });
-    return { mainCategories: mains, subCategoriesByParent: subsByParent };
-  }, []);
-
-  useEffect(() => {
-    if (!mobileLocaleOpen) return;
-    const close = (e: MouseEvent) => {
-      const el = mobileLocaleWrapRef.current;
-      if (el && !el.contains(e.target as Node)) setMobileLocaleOpen(false);
-    };
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, [mobileLocaleOpen]);
-
-  const buildLocaleHref = (nextLocale: Locale) => {
-    const segments = pathname.split("/").filter(Boolean);
-    if (segments.length === 0) return `/${nextLocale}`;
-    if (locales.includes(segments[0] as Locale)) {
-      segments[0] = nextLocale;
-    } else {
-      segments.unshift(nextLocale);
-    }
-    const query = searchParams.toString();
-    return `/${segments.join("/")}${query ? `?${query}` : ""}`;
-  };
-
-  const cartIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.75}
-      stroke="currentColor"
-      className="h-[1.35rem] w-[1.35rem]"
-      aria-hidden
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M2.5 3.5h3l2.2 10.4a2 2 0 0 0 2 1.6h7.1a2 2 0 0 0 2-1.6l1.7-8.4H6.1"
-      />
-      <circle cx="9" cy="20" r="1.25" />
-      <circle cx="18" cy="20" r="1.25" />
-    </svg>
-  );
-
-  const headerShellClass =
-    "pointer-events-auto relative z-50 w-full overflow-x-clip bg-white font-inter";
-
-  const headerUi = (
-    <header className={headerShellClass}>
-      <div className="mx-auto w-full max-w-[1440px] overflow-x-clip bg-white px-0 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] md:px-7 md:pt-[calc(2.75rem+env(safe-area-inset-top,0px))] lg:px-12 lg:pt-[calc(3rem+env(safe-area-inset-top,0px))]">
-        <div className={pillCls}>
-          <div className={`${HEADER_TOOLBAR_ROW} relative z-0 hidden w-full md:flex md:min-h-[3.5rem]`}>
-            <div className="flex min-h-0 min-w-0 flex-1 items-center pr-[calc(7.5rem+6px)] md:pr-[calc(7rem+8px)] lg:pr-[calc(7.75rem+10px)]">
-              <nav
-                className="flex shrink-0 items-center gap-0.5"
-                aria-label={t("header.localeNavAria")}
-              >
-                {locales.map((lang) => (
-                  <Link
-                    key={lang}
-                    href={buildLocaleHref(lang)}
-                    className={`${LOCALE_FLOAT} ${
-                      lang === locale ? "bg-[rgba(46,74,54,0.1)] text-[#2E4A36]" : ""
-                    }`}
-                  >
-                    {lang.toUpperCase()}
-                  </Link>
-                ))}
-              </nav>
-              <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end pr-1 md:pr-2">
-                <nav
-                  className="flex max-w-full shrink-0 items-center justify-end pl-2"
-                  aria-label={t("header.nav.outdoorKnowledge")}
-                >
-                  <PremiumNavLink href={`/${locale}/blog`} inverse={headerInverse}>
-                    {t("header.nav.outdoorKnowledge")}
-                  </PremiumNavLink>
-                </nav>
-              </div>
-            </div>
-
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[45] -translate-x-1/2 -translate-y-1/2">
-              <div className="pointer-events-auto drop-shadow-[0_8px_24px_rgba(46,74,54,0.08)]">
-                <BrandLogoLink
-                  locale={locale}
-                  alt={t("header.logoAlt")}
-                  inverse={headerInverse}
-                  imageClassName="h-[8.25rem] w-auto max-h-[9rem] max-w-[min(28vw,19rem)] object-contain object-center md:h-[8.5rem] md:max-h-[9rem] md:max-w-[21rem] lg:h-[9rem] lg:max-h-[9.5rem] lg:max-w-[22rem]"
-                />
-              </div>
-            </div>
-
-            <div className="flex min-h-0 min-w-0 flex-1 items-center justify-start gap-2 pl-[calc(8.5rem+6px)] md:gap-2 md:pl-[calc(9rem+8px)] lg:pl-[calc(9.75rem+10px)]">
-              <nav
-                className="flex min-w-0 shrink-0 items-center"
-                aria-label={t("header.nav.shopByCategories")}
-              >
-                <PremiumNavLink href={`/${locale}/products`} inverse={headerInverse}>
-                  {t("header.nav.shopByCategories")}
-                </PremiumNavLink>
-              </nav>
-
-              <div className="ml-auto flex shrink-0 items-center gap-1 lg:gap-2">
-                <Link
-                  href={`/${locale}/cart`}
-                  className={`${ICON_GHOST} relative`}
-                  aria-label={`Cart with ${totalItems} items`}
-                >
-                  {cartIcon}
-                  {totalItems > 0 && (
-                    <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-[#D9A441] px-0.5 font-inter text-[9px] font-semibold text-[#2E4A36]">
-                      {totalItems > 99 ? "99+" : totalItems}
-                    </span>
-                  )}
-                </Link>
-
-                {isLoggedIn && user ? (
-                  <Link
-                    href={`/${locale}/account`}
-                    className="flex max-w-[9.5rem] shrink-0 items-center gap-2 rounded-full border border-transparent py-1.5 pl-2.5 pr-1.5 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36]"
-                  >
-                    <span className="truncate">{user.name}</span>
-                    <span
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#2E4A36] to-[#1e3228] font-inter text-[10px] font-semibold uppercase tracking-wide text-[#F4EBDD] shadow-inner"
-                      aria-hidden
-                    >
-                      {userInitials(user.name)}
-                    </span>
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => openAuthModal("login")}
-                    className="shrink-0 rounded-full border border-transparent px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(46,74,54,0.08)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] lg:px-4"
-                  >
-                    {t("header.account")}
-                  </button>
-                )}
-              </div>
-            </div>
+            <HeaderCategoryBar locale={locale} />
           </div>
 
-          <div className={`${HEADER_TOOLBAR_ROW} flex w-full items-center justify-between gap-2 md:hidden`}>
-            <div className="flex min-w-0 shrink-0 items-center gap-1.5">
-              <div ref={mobileLocaleWrapRef} className="relative shrink-0">
-                <button
-                  type="button"
-                  className={`inline-flex min-h-[40px] items-center gap-1 rounded-full border border-[rgba(46,74,54,0.14)] bg-[rgba(46,74,54,0.04)] px-2.5 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2E4A36] transition-colors duration-300 hover:bg-[rgba(46,74,54,0.07)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 ${
-                    headerInverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#F4EBDD]"
-                  }`}
-                  aria-expanded={mobileLocaleOpen}
-                  aria-haspopup="listbox"
-                  aria-label={t("header.localeNavAria")}
-                  onClick={() => {
-                    setMobileLocaleOpen((o) => !o);
-                  }}
-                >
-                  {locale.toUpperCase()}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className={`h-3.5 w-3.5 text-[rgba(46,74,54,0.55)] transition-transform duration-300 ${mobileLocaleOpen ? "rotate-180" : ""}`}
-                    aria-hidden
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-                {mobileLocaleOpen ? (
-                  <ul
-                    role="listbox"
-                    className={
-                      headerInverse
-                        ? "absolute left-0 top-[calc(100%+6px)] z-40 min-w-[9.5rem] overflow-hidden rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#FFFFFF] py-1 shadow-[0_16px_40px_rgba(46,74,54,0.12)]"
-                        : "absolute left-0 top-[calc(100%+6px)] z-40 min-w-[9.5rem] overflow-hidden rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#F4EBDD] py-1 shadow-[0_16px_40px_rgba(46,74,54,0.12)]"
-                    }
-                  >
-                    {locales.map((lang) => (
-                      <li key={lang} role="presentation">
-                        <Link
-                          role="option"
-                          aria-selected={lang === locale}
-                          href={buildLocaleHref(lang)}
-                          className={`block px-3 py-2 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] transition-colors ${
-                            lang === locale
-                              ? "bg-[rgba(46,74,54,0.08)] text-[#2E4A36]"
-                              : "text-[rgba(46,74,54,0.72)] hover:bg-[rgba(46,74,54,0.05)] hover:text-[#2E4A36]"
-                          }`}
-                          onClick={() => setMobileLocaleOpen(false)}
-                        >
-                          {lang.toUpperCase()}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
-
-              <Link
-                href={goNaturalHomePath(locale)}
-                className={`inline-flex min-h-[40px] shrink-0 items-center rounded-full border border-transparent px-2 py-1.5 font-inter text-[11px] font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.78)] transition-colors duration-300 hover:border-[rgba(46,74,54,0.1)] hover:bg-[rgba(46,74,54,0.04)] hover:text-[#2E4A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/35 focus-visible:ring-offset-2 ${
-                  headerInverse ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-[#F4EBDD]"
-                }`}
-              >
-                {t("header.nav.home")}
-              </Link>
-            </div>
-
-            <div className="min-w-0 flex-1" aria-hidden="true" />
-
-            <div className="flex shrink-0 items-center gap-1">
-              <button
-                type="button"
-                className={ICON_GHOST}
-                onClick={() => {
-                  setMobileLocaleOpen(false);
-                  setMobileMenuOpen((o) => !o);
-                }}
-                aria-label="Toggle menu"
-                aria-expanded={mobileMenuOpen}
-              >
-                {mobileMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-5 w-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-5 w-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>
-                )}
-              </button>
-
-              <Link href={`/${locale}/cart`} className={`${ICON_GHOST} relative`} aria-label={`Cart with ${totalItems} items`}>
-                {cartIcon}
-                {totalItems > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-[#D9A441] px-0.5 font-inter text-[9px] font-semibold text-[#2E4A36]">
-                    {totalItems > 99 ? "99+" : totalItems}
-                  </span>
-                )}
-              </Link>
-
-              {isLoggedIn && user ? (
-                <Link
-                  href={`/${locale}/account`}
-                  className={`${ICON_GHOST} relative`}
-                  aria-label={t("header.account")}
-                >
-                  <span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#2E4A36] to-[#1e3228] font-inter text-[10px] font-semibold uppercase tracking-wide text-[#F4EBDD]"
-                    aria-hidden
-                  >
-                    {userInitials(user.name)}
-                  </span>
-                </Link>
+          <div className="gn-rei-header__max gn-rei-mobile">
+            <button
+              type="button"
+              className="flex h-10 w-10 items-center justify-center text-[#304C3D]"
+              aria-label="Menu"
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+            >
+              {mobileOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-6 w-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
               ) : (
-                <button
-                  type="button"
-                  className={ICON_GHOST}
-                  onClick={() => openAuthModal("login")}
-                  aria-label={t("header.account")}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.65} stroke="currentColor" className="h-5 w-5" aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                  </svg>
-                </button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-6 w-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
               )}
-            </div>
+            </button>
+            <Link href={goNaturalHomePath(locale)}>
+              <Image
+                src="/assets/images/logo/LOGO-GONATURAL.png"
+                alt={t("header.logoAlt")}
+                width={120}
+                height={48}
+                className="gn-rei-mobile__logo"
+              />
+            </Link>
+            <Link href={`/${locale}/cart`} className="relative flex h-10 w-10 items-center justify-center text-[#304C3D]" aria-label={t("header.nav.cart")}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.75} stroke="currentColor" className="h-6 w-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.5 3.5h3l2.2 10.4a2 2 0 0 0 2 1.6h7.1a2 2 0 0 0 2-1.6l1.7-8.4H6.1" />
+                <circle cx="9" cy="20" r="1.25" />
+                <circle cx="18" cy="20" r="1.25" />
+              </svg>
+              {totalItems > 0 ? (
+                <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#D9A441] px-0.5 text-[9px] font-bold text-[#304C3D]">
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              ) : null}
+            </Link>
           </div>
+
+          <AnimatePresence>
+            {mobileOpen ? <HeaderMobileDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} /> : null}
+          </AnimatePresence>
         </div>
-
-        {mobileMenuOpen ? (
-          <motion.nav
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: PREMIUM_EASE }}
-            className={mobileDrawerCls}
-          >
-            <div className="flex flex-col gap-4">
-              <Link
-                href={goNaturalHomePath(locale)}
-                className={MOBILE_PRIMARY_LINK}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("header.nav.home")}
-              </Link>
-              <Link
-                href={`/${locale}/blog`}
-                className={MOBILE_PRIMARY_LINK}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("header.nav.outdoorKnowledge")}
-              </Link>
-              <Link
-                href={`/${locale}/products`}
-                className={MOBILE_PRIMARY_LINK}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("header.nav.shopByCategories")}
-              </Link>
-
-              <div className="border-t border-[rgba(46,74,54,0.08)] pt-4">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between py-1 font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(46,74,54,0.82)] transition-opacity duration-500 hover:opacity-80"
-                  onClick={() => setMobileCategoriesOpen((open) => !open)}
-                  aria-expanded={mobileCategoriesOpen}
-                  aria-controls="mobile-categories-menu"
-                >
-                  <span>{t("header.nav.categories")}</span>
-                  <span className="font-inter text-[12px] font-medium tracking-[0.16em] text-[rgba(46,74,54,0.45)]">
-                    {mobileCategoriesOpen ? "−" : "+"}
-                  </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {mobileCategoriesOpen ? (
-                    <motion.div
-                      id="mobile-categories-menu"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.55, ease: PREMIUM_EASE }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-3 space-y-5 border-l border-[rgba(46,74,54,0.1)] pl-3">
-                        {mainCategories.map((category, colIdx) => (
-                          <motion.div
-                            key={category.slug}
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: colIdx * 0.05,
-                              duration: 0.5,
-                              ease: PREMIUM_EASE,
-                            }}
-                            className="space-y-2"
-                          >
-                            <Link
-                              href={`/${locale}/category/${category.slug}`}
-                              className="block font-inter text-[clamp(1.1rem,3.5vw,1.35rem)] font-semibold tracking-[-0.02em] text-[#2E4A36]"
-                              onClick={() => setMobileMenuOpen(false)}
-                            >
-                              {t(`categories.names.${category.slug}`, category.name)}
-                            </Link>
-                            <div className="flex flex-col gap-1">
-                              {(subCategoriesByParent[category.slug] || []).map((sub, si) => (
-                                <motion.div
-                                  key={sub.slug}
-                                  initial={{ opacity: 0, x: -4 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{
-                                    delay: 0.06 + colIdx * 0.04 + si * 0.03,
-                                    duration: 0.45,
-                                    ease: PREMIUM_EASE,
-                                  }}
-                                >
-                                  <MegaSubLink
-                                    href={`/${locale}/category/${sub.slug}`}
-                                    label={t(`categories.names.${sub.slug}`, sub.name)}
-                                    onNavigate={() => setMobileMenuOpen(false)}
-                                  />
-                                </motion.div>
-                              ))}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3 border-t border-[rgba(46,74,54,0.08)] pt-4">
-                {isLoggedIn && user ? (
-                  <Link
-                    href={`/${locale}/account`}
-                    className="font-inter text-[13px] font-medium text-[#2E4A36]"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t("header.greeting")}, {user.name}
-                  </Link>
-                ) : (
-                  <Link
-                    href={`/${locale}/auth?tab=login`}
-                    className="font-inter text-[13px] font-medium text-[#2E4A36]"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t("header.account")}
-                  </Link>
-                )}
-              </div>
-            </div>
-          </motion.nav>
-        ) : null}
-      </div>
+      </header>
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} initialTab={initialTab} />
-    </header>
+    </>
   );
+}
 
-  return headerUi;
+export default function Header() {
+  return (
+    <Suspense fallback={null}>
+      <HeaderInner />
+    </Suspense>
+  );
 }

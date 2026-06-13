@@ -14,8 +14,45 @@
     },
     "greeting": "Hello",
     "account": "Account",
+    "signIn": "Sign in",
+    "shop": "Shop",
+    "searchPlaceholder": "Search for great gear & clothing",
+    "searchSubmit": "Search",
     "localeNavAria": "Choose language",
-    "logoAlt": "Go Natural"
+    "logoAlt": "Go Natural",
+    "utility": {
+      "aria": "Secondary navigation",
+      "shopGn": "Shop Go Natural",
+      "outlet": "Outlet",
+      "tradeIn": "Trade-In",
+      "classes": "Classes & Events",
+      "expertAdvice": "Expert Advice",
+      "uncommonPath": "Uncommon Path",
+      "membership": "Membership"
+    },
+    "tabs": {
+      "campHike": "Camp & Hike",
+      "climb": "Climb",
+      "cycle": "Cycle",
+      "water": "Water",
+      "run": "Run",
+      "snow": "Snow",
+      "travel": "Travel",
+      "fishing": "Fishing",
+      "men": "Men",
+      "women": "Women",
+      "kids": "Kids",
+      "deals": "Deals",
+      "viewAll": "View all",
+      "allPrefix": "All",
+      "subs": {
+        "cycleEyewear": "Cycling eyewear",
+        "cycleApparel": "Cycling apparel",
+        "cycleEquipment": "Cycling equipment",
+        "runningWear": "Running wear",
+        "runningAccessories": "Running accessories"
+      }
+    }
   },
   "brandGateway": {
     "goNatural": {
@@ -192,6 +229,7 @@
   "common": {
     "viewProduct": "View product",
     "addToCart": "Add to cart",
+    "addNow": "Add now",
     "searchPlaceholder": "Search products",
     "searchLabel": "Search products",
     "readArticle": "Read article",
@@ -2155,7 +2193,10 @@
       "trekking": "Trekking",
       "camping-survival-gear": "Camping & Survival Gear",
       "outdoor-lighting": "Outdoor Lighting",
-      "cycling-running": "Cycling / Running"
+      "cycling-running": "Cycling / Running",
+      "men": "Men",
+      "women": "Women",
+      "kids": "Kids"
     }
   },
   "accountPage": {

@@ -27,6 +27,7 @@ type Props = {
     viewProduct?: string;
     noImage?: string;
     addToCart?: string;
+    addNow?: string;
     quickAdd?: string;
     saveProduct?: string;
     freeShippingBadge?: string;
@@ -163,6 +164,7 @@ export default function ProductCardSimple({
   const viewProductLabel = labels?.viewProduct || "View product";
   const noImageLabel = labels?.noImage || "No image";
   const addToCartLabel = labels?.addToCart || "Agregar al carrito";
+  const addNowLabel = labels?.addNow || "Agregar ahora";
   const quickAddLabel = labels?.quickAdd || addToCartLabel;
   const saveProductLabel = labels?.saveProduct || "Guardar producto";
   const freeShippingBadge =
@@ -209,6 +211,17 @@ export default function ProductCardSimple({
     const visibleSwatches = swatches.slice(0, 5);
     const displayBadge = badges[0];
 
+    const handlePatagoniaAddToCart = (event: MouseEvent) => {
+      event.preventDefault();
+      event.stopPropagation();
+      addItem({
+        id: product.id,
+        title,
+        price: product.price,
+        image: hasPatagoniaImage ? patagoniaImage! : undefined,
+      });
+    };
+
     return (
       <Link
         href={`/${locale}/products/${product.id}`}
@@ -234,6 +247,16 @@ export default function ProductCardSimple({
                   {noImageLabel}
                 </span>
               )}
+            </div>
+            <div className={plpPatagoniaClasses.addNowWrap}>
+              <button
+                type="button"
+                onClick={handlePatagoniaAddToCart}
+                className={plpPatagoniaClasses.addNowBtn}
+                aria-label={addNowLabel}
+              >
+                {addNowLabel}
+              </button>
             </div>
           </div>
 

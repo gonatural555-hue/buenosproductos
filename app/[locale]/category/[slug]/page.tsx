@@ -280,7 +280,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const cardLabels = {
     viewProduct: t("common.viewProduct"),
     addToCart: t("common.addToCart"),
+    addNow: t("common.addNow"),
     noImage: t("common.noImage"),
+    newColor: t("productsPage.badgeNewColor"),
+    salePercentTemplate: t("productsPage.badgeSalePercent"),
   };
 
   const activeFilterChips = buildCategoryPageFilterChips({
@@ -304,7 +307,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   };
 
   return (
-    <main className="bg-white text-black">
+    <main data-hero-bleed className="bg-white text-black">
       <CategoryEditorialHero
         locale={locale}
         slug={slug}

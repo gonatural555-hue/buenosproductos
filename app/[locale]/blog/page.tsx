@@ -109,7 +109,7 @@ export default async function BlogPage({
   });
 
   return (
-    <main className="bg-warm-sand text-dark-base">
+    <main data-hero-bleed className="bg-[#F4EBDD] text-dark-base">
       <BlogEditorialHero
         locale={locale}
         title={blogTitle}

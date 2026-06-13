@@ -9,7 +9,8 @@ import { getProducts } from "@/lib/products";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
-import { LUMINOUS_EDGE_LIGHT } from "@/lib/ui/luminous-edge";
+import { pickHomeEssentialProducts } from "@/lib/home-featured-products";
+import { getColorImageMapsForProducts } from "@/lib/plp-product-color-images";
 
 type HomePageMessages = {
   brandStatement: string;
@@ -48,6 +49,8 @@ export default async function GoNaturalHomePage({
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
   const products = getProducts();
+  const essentialProducts = pickHomeEssentialProducts(products);
+  const colorImageMaps = await getColorImageMapsForProducts(essentialProducts);
 
   const hp = (messages as { homePage?: HomePageMessages }).homePage;
   const h = hp ?? ({} as Partial<HomePageMessages>);
@@ -55,7 +58,10 @@ export default async function GoNaturalHomePage({
   const cardLabels = {
     viewProduct: t("common.viewProduct"),
     addToCart: t("common.addToCart"),
+    addNow: t("common.addNow"),
     noImage: t("common.noImage"),
+    newColor: t("productsPage.badgeNewColor"),
+    salePercentTemplate: t("productsPage.badgeSalePercent"),
   };
 
   const journalCtaHref = `/${locale}/blog`;
@@ -82,7 +88,8 @@ export default async function GoNaturalHomePage({
 
   return (
     <main
-      className={`relative flex min-h-screen flex-col overflow-x-hidden bg-[#FFFFFF] text-dark-base ${LUMINOUS_EDGE_LIGHT}`}
+      data-hero-bleed
+      className="relative flex min-h-screen flex-col overflow-x-hidden bg-[#F4EBDD] text-dark-base"
     >
       <div className="relative z-10 flex flex-1 flex-col">
         <HomeBrandHero
@@ -100,6 +107,7 @@ export default async function GoNaturalHomePage({
           locale={locale}
           title={h.essentialTitle ?? t("featured.title")}
           subtitle={h.essentialSubtitle ?? t("featured.subtitle")}
+          colorImageMaps={colorImageMaps}
           labels={cardLabels}
         />
 

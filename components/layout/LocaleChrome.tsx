@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import RegistrationCTA from "@/components/RegistrationCTA";
 import GoNaturalHomeNewsletterModal from "@/components/go-natural/GoNaturalHomeNewsletterModal";
 import { HomeNewsletterModalProvider, useHomeNewsletterModal } from "@/context/HomeNewsletterModalContext";
+import { GoNaturalHomeLayoutProvider } from "@/context/GoNaturalHomeLayoutContext";
 import {
   shouldShowGoNaturalFooter,
   shouldShowGoNaturalHeader,
@@ -24,8 +26,12 @@ function LocaleChromeInner({
 
   return (
     <>
-      {showGnHeader ? <Header /> : null}
-      {children}
+      <div className="relative">
+        {showGnHeader ? <Header /> : null}
+        <div>
+          {children}
+        </div>
+      </div>
       <CookieConsent />
       {showGnFooter ? <Footer /> : null}
       <GoNaturalHomeNewsletterModal />
@@ -41,7 +47,11 @@ export default function LocaleChrome({
 }) {
   return (
     <HomeNewsletterModalProvider>
-      <LocaleChromeInner>{children}</LocaleChromeInner>
+      <Suspense fallback={null}>
+        <GoNaturalHomeLayoutProvider>
+          <LocaleChromeInner>{children}</LocaleChromeInner>
+        </GoNaturalHomeLayoutProvider>
+      </Suspense>
     </HomeNewsletterModalProvider>
   );
 }

@@ -14,8 +14,45 @@
     },
     "greeting": "Ciao",
     "account": "Account",
+    "signIn": "Accedi",
+    "shop": "Shop",
+    "searchPlaceholder": "Cerca attrezzatura e abbigliamento",
+    "searchSubmit": "Cerca",
     "localeNavAria": "Scegli la lingua",
-    "logoAlt": "Go Natural"
+    "logoAlt": "Go Natural",
+    "utility": {
+      "aria": "Navigazione secondaria",
+      "shopGn": "Shop Go Natural",
+      "outlet": "Outlet",
+      "tradeIn": "Trade-In",
+      "classes": "Corsi ed eventi",
+      "expertAdvice": "Consigli degli esperti",
+      "uncommonPath": "Uncommon Path",
+      "membership": "Membership"
+    },
+    "tabs": {
+      "campHike": "Camp & Trekking",
+      "climb": "Arrampicata",
+      "cycle": "Ciclismo",
+      "water": "Acqua",
+      "run": "Running",
+      "snow": "Neve",
+      "travel": "Viaggio",
+      "fishing": "Pesca",
+      "men": "Uomo",
+      "women": "Donna",
+      "kids": "Bambini",
+      "deals": "Offerte",
+      "viewAll": "Vedi tutto",
+      "allPrefix": "Tutto in",
+      "subs": {
+        "cycleEyewear": "Occhiali da ciclismo",
+        "cycleApparel": "Abbigliamento ciclismo",
+        "cycleEquipment": "Attrezzatura ciclismo",
+        "runningWear": "Abbigliamento running",
+        "runningAccessories": "Accessori running"
+      }
+    }
   },
   "brandGateway": {
     "goNatural": {
@@ -192,6 +229,7 @@
   "common": {
     "viewProduct": "Vedi prodotto",
     "addToCart": "Aggiungi al carrello",
+    "addNow": "Aggiungi ora",
     "searchPlaceholder": "Cerca prodotti",
     "searchLabel": "Cerca prodotti",
     "readArticle": "Leggi articolo",
@@ -2155,7 +2193,10 @@
       "trekking": "Trekking",
       "camping-survival-gear": "Camping & Survival",
       "outdoor-lighting": "Illuminazione outdoor",
-      "cycling-running": "Ciclismo / Running"
+      "cycling-running": "Ciclismo / Running",
+      "men": "Uomo",
+      "women": "Donna",
+      "kids": "Bambini"
     }
   },
   "accountPage": {

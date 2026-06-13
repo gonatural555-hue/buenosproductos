@@ -34,6 +34,21 @@ export const CATEGORIES: Category[] = [
     name: "Active Sports",
     description: "Equipamiento para deportes activos y entrenamiento.",
   },
+  {
+    slug: "men",
+    name: "Men",
+    description: "Equipamiento outdoor para hombre.",
+  },
+  {
+    slug: "women",
+    name: "Women",
+    description: "Equipamiento outdoor para mujer.",
+  },
+  {
+    slug: "kids",
+    name: "Kids",
+    description: "Equipamiento outdoor para niños.",
+  },
   // ===== SUBCATEGORÍAS (HIJO) =====
   // Fishing subcategorías
   {
