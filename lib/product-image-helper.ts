@@ -1,5 +1,7 @@
 import { Product } from "@/lib/products";
 
+export { isExternalImage, isValidImageSrc, resolveImageSrc, DEFAULT_IMAGE_PLACEHOLDER } from "@/lib/image-src";
+
 export const PRODUCT_BLUR_DATA_URL =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMxMDEyMTQiIC8+PC9zdmc+";
 

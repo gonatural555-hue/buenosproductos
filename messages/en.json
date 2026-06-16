@@ -519,7 +519,8 @@
     "catalogTitle": "Shop all",
     "membershipPromo": {
       "title": "Benefits for new members",
-      "description": "Get 15% off selected products when you create your account and start your next adventure.",
+      "descriptionHighlight": "Get 15% off selected products",
+      "descriptionSuffix": " when you create your account and start your next adventure.",
       "descriptionSecondary": "Plus access to news, recommendations, and exclusive launches.",
       "cta": "Create account",
       "imageAlt": "15% off for new Go Natural members",

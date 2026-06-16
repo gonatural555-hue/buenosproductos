@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import SmartImage from "@/components/SmartImage";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import {
   formatCartPrice,
@@ -130,7 +130,7 @@ export default function AddedToCartModal({
         <div className="mt-5 flex gap-4">
           {item.image ? (
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-neutral-200/80">
-              <Image
+              <SmartImage
                 src={item.image}
                 alt={item.title}
                 fill

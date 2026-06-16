@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import ScrollReveal from "@/components/blog/ScrollReveal";
 import PremiumImageOverlay from "@/components/ui/PremiumImageOverlay";
 
@@ -20,7 +20,7 @@ export default function ImageSection({
     <section className="bg-warm-sand">
       <ScrollReveal className="w-full">
         <div className="relative min-h-[48vh] w-full md:min-h-[56vh] lg:min-h-[62vh]">
-          <Image
+          <SmartImage
             src={imageSrc}
             alt={imageAlt}
             fill

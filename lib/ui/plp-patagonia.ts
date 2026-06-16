@@ -9,6 +9,13 @@ export const PLP_PATAGONIA = {
   imageRadius: "0.5rem",
 } as const;
 
+/** Botón “Add to cart” en product cards — negro, uppercase, esquinas rectas. */
+export const productCardAddToCartBtnClass =
+  "w-full rounded-none border border-black bg-[#000000] px-4 py-3 font-inter text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.35)] transition-[background-color,color,border-color,box-shadow,transform] duration-200 hover:border-black hover:bg-white hover:text-[#000000] hover:shadow-[0_8px_22px_-10px_rgba(0,0,0,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441]/45 active:scale-[0.99] motion-reduce:transition-none";
+
+export const productCardAddToCartWrapClass =
+  "absolute inset-x-3 bottom-3 z-[2] translate-y-1 opacity-100 transition-all duration-300 ease-out md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 motion-reduce:transition-none motion-reduce:md:opacity-100 motion-reduce:md:translate-y-0";
+
 export const plpPatagoniaClasses = {
   page: "bg-white text-black",
   sidebarDivider: "border-[#E5E5E5]",
@@ -27,8 +34,6 @@ export const plpPatagoniaClasses = {
   price: "mt-1 font-inter text-sm text-black",
   priceSale: "font-inter text-sm font-medium text-[#CC0000]",
   priceCompare: "font-inter text-sm text-[#666666] line-through",
-  addNowWrap:
-    "absolute inset-x-3 bottom-3 z-[2] translate-y-1 opacity-100 transition-all duration-300 ease-out md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 motion-reduce:transition-none motion-reduce:md:opacity-100 motion-reduce:md:translate-y-0",
-  addNowBtn:
-    "w-full rounded-full border border-black bg-white px-4 py-2.5 font-inter text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/25 active:scale-[0.99]",
+  addNowWrap: productCardAddToCartWrapClass,
+  addNowBtn: productCardAddToCartBtnClass,
 } as const;

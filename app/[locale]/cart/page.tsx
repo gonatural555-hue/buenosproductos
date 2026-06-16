@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import { useEffect, useMemo, useRef } from "react";
 import CartSuggestedProductsRail from "@/components/cart/CartSuggestedProductsRail";
 import { useRouter } from "next/navigation";
@@ -213,11 +214,12 @@ export default function CartPage() {
                     <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
                       {item.image ? (
                         <div className="relative h-[104px] w-[104px] shrink-0 overflow-hidden rounded-xl bg-warm-sand ring-1 ring-earth-brown/15 sm:h-[120px] sm:w-[120px]">
-                          <Image
+                          <SmartImage
                             src={item.image}
                             alt={item.title}
                             fill
                             className="object-cover object-center"
+                            sizes="120px"
                           />
                         </div>
                       ) : (

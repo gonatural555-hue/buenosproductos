@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
+import SmartImage from "@/components/SmartImage";
 import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
 import { goodIdeasProductPath } from "@/lib/routing/brands";
 import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import { isValidImageSrc } from "@/lib/image-src";
 
 type Props = {
   locale: Locale;
@@ -30,7 +30,8 @@ export default function GoodIdeasBlogProductRail({
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => {
             const localized = localizeGoodIdeasProduct(product, locale);
-            const image = product.images.find((src) => src.startsWith("/")) ?? "";
+            const image =
+              product.images.find((src) => isValidImageSrc(src)) ?? "";
             return (
               <Link
                 key={product.id}
@@ -39,13 +40,11 @@ export default function GoodIdeasBlogProductRail({
               >
                 <div className="relative aspect-[4/5] bg-[#0B0F14]">
                   {image ? (
-                    <Image
+                    <SmartImage
                       src={image}
                       alt={localized.title}
                       fill
                       sizes="(max-width: 640px) 50vw, 33vw"
-                      placeholder="blur"
-                      blurDataURL={PRODUCT_BLUR_DATA_URL}
                       className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     />
                   ) : null}

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import SmartImage from "@/components/SmartImage";
 import type { UISurface } from "@/lib/ui-surface";
 
 type Props = {
@@ -29,14 +28,12 @@ export default function PdpImageStorySection({
     >
       <div className="absolute inset-0">
         <div className="relative h-full w-full min-h-[min(72vh,640px)]">
-          <Image
+          <SmartImage
             src={imageSrc}
             alt={imageAlt}
             fill
             className="object-cover object-center"
             sizes="100vw"
-            placeholder="blur"
-            blurDataURL={PRODUCT_BLUR_DATA_URL}
             loading="lazy"
           />
         </div>

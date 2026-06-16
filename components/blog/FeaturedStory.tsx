@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import Link from "next/link";
 import ScrollReveal from "@/components/blog/ScrollReveal";
 import PremiumImageOverlay from "@/components/ui/PremiumImageOverlay";
@@ -46,7 +46,7 @@ export default function FeaturedStory({
         <ScrollReveal delayMs={90} className="mt-10">
           <Link href={post.href} className="group block">
             <div className="relative aspect-[21/11] min-h-[220px] w-full overflow-hidden rounded-sm sm:aspect-[2/1] md:min-h-[320px]">
-              <Image
+              <SmartImage
                 src={post.image}
                 alt={post.title}
                 fill

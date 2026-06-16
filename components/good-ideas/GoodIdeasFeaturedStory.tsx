@@ -1,6 +1,5 @@
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import Link from "next/link";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
 
 export type GoodIdeasFeaturedStoryPost = {
   href: string;
@@ -37,13 +36,11 @@ export default function GoodIdeasFeaturedStory({
         </p>
         <Link href={post.href} className="group mt-10 block">
           <div className="relative aspect-[21/11] min-h-[220px] w-full overflow-hidden rounded-2xl border border-white/[0.08] sm:aspect-[2/1] md:min-h-[320px]">
-            <Image
+            <SmartImage
               src={post.image}
               alt={post.title}
               fill
               sizes="(max-width: 768px) 100vw, min(1200px, 100vw)"
-              placeholder="blur"
-              blurDataURL={PRODUCT_BLUR_DATA_URL}
               className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
               priority
             />

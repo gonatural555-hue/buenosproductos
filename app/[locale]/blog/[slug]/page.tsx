@@ -92,7 +92,10 @@ export default async function BlogPostPage({
     gearProducts.map(async (product) => {
       const images = await getProductImages(product.id);
       const image =
-        images.featured?.[0] || images.gallery?.[0] || product.images?.[0] || "";
+        images.featured ||
+        images.gallery[0] ||
+        product.images?.[0] ||
+        "";
       return {
         id: product.id,
         title: product.title,

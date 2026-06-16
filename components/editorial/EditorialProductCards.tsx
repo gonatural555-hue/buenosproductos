@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SmartImage from "@/components/SmartImage";
 
 type EditorialProduct = {
   id: string;
@@ -35,12 +36,13 @@ export default function EditorialProductCards({
               className="group flex flex-col gap-4 md:flex-row md:items-center"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:w-56">
-                <img
+                <SmartImage
                   src={product.image}
                   alt={product.title}
-                  className="h-full w-full object-cover object-center transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                  fill
                   loading="lazy"
-                  decoding="async"
+                  className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                  sizes="224px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-dark-base/10 via-dark-base/25 to-dark-base/60" />
               </div>

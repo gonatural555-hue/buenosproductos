@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import Link from "next/link";
 
 export type BlogCardSize = "xl" | "lg" | "md" | "sm";
@@ -57,7 +57,7 @@ export default function BlogCard({
         <div
           className={`relative w-full overflow-hidden rounded-sm ${s.aspect}`}
         >
-          <Image
+          <SmartImage
             src={image}
             alt={title}
             fill

@@ -67,11 +67,14 @@ export default function MembershipPromotionBanner({ locale }: Props) {
                   {t("productsPage.membershipPromo.title")}
                 </h2>
 
-                <p className="font-inter mt-5 max-w-xl text-base leading-relaxed text-[rgba(46,74,54,0.82)] md:mt-6 md:text-lg">
-                  {t("productsPage.membershipPromo.description")}
+                <p className="font-inter mt-5 max-w-xl text-base leading-relaxed text-[#171717] md:mt-6 md:text-lg">
+                  <span className="font-semibold text-gn-mustard">
+                    {t("productsPage.membershipPromo.descriptionHighlight")}
+                  </span>
+                  {t("productsPage.membershipPromo.descriptionSuffix")}
                 </p>
 
-                <p className="font-inter mt-3 max-w-xl text-sm leading-relaxed text-[rgba(46,74,54,0.62)] md:text-base">
+                <p className="font-inter mt-3 max-w-xl text-sm leading-relaxed text-[#171717] md:text-base">
                   {t("productsPage.membershipPromo.descriptionSecondary")}
                 </p>
 

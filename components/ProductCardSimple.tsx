@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, type MouseEvent } from "react";
+import SmartImage from "@/components/SmartImage";
 import { Product } from "@/lib/products";
 import { defaultLocale, type Locale } from "@/lib/i18n/config";
 import { useCart } from "@/context/CartContext";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import { isValidImageSrc } from "@/lib/image-src";
 import { trackSelectItem } from "@/lib/analytics/ga4";
 import type { UISurface } from "@/lib/ui-surface";
 import {
@@ -45,13 +45,6 @@ type Props = {
   variant?: "default" | "plp" | "patagonia";
 };
 
-function isValidImageSrc(src?: string | null) {
-  if (!src) return false;
-  if (src.startsWith("http")) return true;
-  if (src.startsWith("/")) return true;
-  return false;
-}
-
 function formatPrice(price: number) {
   return `$${price.toFixed(2)}`;
 }
@@ -69,62 +62,31 @@ function ProductImage({
   containFill?: boolean;
   sizes: string;
 }) {
-  const isExternal = src.startsWith("http");
-  if (isExternal) {
-    return (
-      <img
-        src={src}
-        alt={title}
-        loading="lazy"
-        decoding="async"
-        className={
-          cover
-            ? "absolute inset-0 h-full w-full object-cover object-center"
-            : containFill
-              ? "absolute inset-0 h-full w-full object-contain object-center p-4"
-              : "block h-auto w-full object-contain object-center"
-        }
-      />
-    );
-  }
+  const objectClass = cover
+    ? containFill
+      ? "object-contain object-center"
+      : "object-cover object-center"
+    : "object-contain object-center";
 
-  if (cover) {
+  if (cover || containFill) {
     return (
-      <Image
+      <SmartImage
         src={src}
         alt={title}
         fill
-        className="object-cover object-center"
-        placeholder="blur"
-        blurDataURL={PRODUCT_BLUR_DATA_URL}
-        sizes={sizes}
-      />
-    );
-  }
-
-  if (containFill) {
-    return (
-      <Image
-        src={src}
-        alt={title}
-        fill
-        className="object-contain object-center"
-        placeholder="blur"
-        blurDataURL={PRODUCT_BLUR_DATA_URL}
+        className={objectClass}
         sizes={sizes}
       />
     );
   }
 
   return (
-    <Image
+    <SmartImage
       src={src}
       alt={title}
       width={1200}
       height={900}
-      className="block h-auto w-full object-contain object-center"
-      placeholder="blur"
-      blurDataURL={PRODUCT_BLUR_DATA_URL}
+      className={`block h-auto w-full ${objectClass}`}
       sizes={sizes}
     />
   );
@@ -371,20 +333,12 @@ export default function ProductCardSimple({
               </svg>
             </button>
 
-            <button
-              type="button"
-              onClick={handleAddToCart}
-              className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-sm bg-[#F4EBDD]/95 font-inter text-lg leading-none text-dark-base lg:hidden"
-              aria-label={quickAddLabel}
-            >
-              +
-            </button>
-
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden lg:block">
+            <div className={`${plpPatagoniaClasses.addNowWrap} pointer-events-auto`}>
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="pointer-events-auto w-full translate-y-full bg-[#F4EBDD]/95 px-3 py-2.5 font-inter text-xs text-dark-base opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
+                className={plpPatagoniaClasses.addNowBtn}
+                aria-label={quickAddLabel}
               >
                 {quickAddLabel}
               </button>
@@ -541,15 +495,11 @@ export default function ProductCardSimple({
                     : "absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
               }
             />
-            <div className="absolute inset-x-0 bottom-4 flex items-center justify-center">
+            <div className={`${plpPatagoniaClasses.addNowWrap} pointer-events-auto`}>
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className={
-                  L
-                    ? "pointer-events-auto translate-y-2 rounded-full border border-earth-brown/25 bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-dark-base opacity-0 shadow-[0_8px_22px_-10px_rgba(17,23,19,0.15)] backdrop-blur-sm transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:border-accent-gold/55 hover:text-accent-gold active:scale-[0.98]"
-                    : "pointer-events-auto translate-y-2 rounded-full border border-white/28 bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/95 opacity-0 shadow-[0_8px_22px_-8px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:border-accent-gold/55 hover:text-accent-gold/95 active:scale-[0.98]"
-                }
+                className={plpPatagoniaClasses.addNowBtn}
                 aria-label={addToCartLabel}
               >
                 {addToCartLabel}

@@ -1,6 +1,7 @@
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import { getProducts, getProductById } from "@/lib/products";
 import { getProductImages } from "@/lib/product-images";
+import { DEFAULT_IMAGE_PLACEHOLDER } from "@/lib/image-src";
 import { getProductVariants } from "@/lib/product-variants";
 import type { Product } from "@/lib/products";
 import { getMessages } from "@/lib/i18n/messages";
@@ -14,7 +15,6 @@ import PdpImageStorySection from "@/components/pdp/PdpImageStorySection";
 import PdpSpecsAccordion from "@/components/pdp/PdpSpecsAccordion";
 import PdpRelatedProductsRail from "@/components/pdp/PdpRelatedProductsRail";
 import { REVIEWS_SEED, getReviewsByProductSlug } from "@/lib/reviews-data";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
 
 type Props = {
   params: Promise<{
@@ -131,7 +131,9 @@ export async function generateMetadata({ params }: Props) {
   const ogDescription = localized?.seo?.ogDescription || description;
   const images = await getProductImages(product.id);
   const ogImage =
-    images.featured?.[0] || images.gallery?.[0] || "/assets/images/blog/blog-hero.webp";
+    images.featured ||
+    images.gallery[0] ||
+    DEFAULT_IMAGE_PLACEHOLDER;
   const pathByLocale = locales.reduce(
     (acc, localeKey) => ({
       ...acc,
@@ -399,13 +401,11 @@ export default async function ProductPage({ params }: Props) {
                   key={img}
                   className="overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-50/50 ring-1 ring-neutral-200/50"
                 >
-                  <Image
+                  <SmartImage
                     src={img}
                     alt={`${localizedProduct.title} detalle ${index + 1}`}
                     width={1200}
                     height={900}
-                    placeholder="blur"
-                    blurDataURL={PRODUCT_BLUR_DATA_URL}
                     className="h-full w-full object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

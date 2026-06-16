@@ -1,3 +1,4 @@
+import SmartImage from "@/components/SmartImage";
 import PremiumImageOverlay from "@/components/ui/PremiumImageOverlay";
 
 type BlogPostHeroProps = {
@@ -14,10 +15,13 @@ export default function BlogPostHero({
   return (
     <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-end overflow-hidden">
       <div className="absolute inset-0">
-        <img
+        <SmartImage
           src={image}
           alt={title}
-          className="h-full w-full object-cover object-center"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
         />
       </div>
       <PremiumImageOverlay />

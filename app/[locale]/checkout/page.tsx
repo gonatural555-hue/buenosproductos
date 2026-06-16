@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -584,11 +585,12 @@ export default function CheckoutPage() {
                 >
                   <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-warm-sand ring-1 ring-earth-brown/15">
                     {item.image ? (
-                      <Image
+                      <SmartImage
                         src={item.image}
                         alt={item.title}
                         fill
                         className="object-cover object-center"
+                        sizes="64px"
                       />
                     ) : null}
                   </div>

@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import SmartImage from "@/components/SmartImage";
 
 type Props = {
   open: boolean;
@@ -110,15 +109,13 @@ export default function ProductImageLightbox({
                 className="relative flex h-full w-screen max-w-[100vw] flex-shrink-0 items-center justify-center px-3 sm:px-8"
               >
                 <div className="relative mx-auto h-[min(78vh,900px)] w-full max-w-5xl">
-                  <Image
+                  <SmartImage
                     src={src}
                     alt={`${title} — ${i + 1} / ${images.length}`}
                     fill
                     priority={i === index}
                     className="object-contain"
                     sizes="100vw"
-                    placeholder="blur"
-                    blurDataURL={PRODUCT_BLUR_DATA_URL}
                   />
                 </div>
               </div>

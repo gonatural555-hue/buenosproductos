@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
+import SmartImage from "@/components/SmartImage";
 import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
 import { goodIdeasProductPath } from "@/lib/routing/brands";
 import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import { isValidImageSrc } from "@/lib/image-src";
 
 type Props = {
   product: Product;
@@ -15,11 +15,6 @@ type Props = {
   viewProductLabel: string;
   noImageLabel: string;
 };
-
-function isValidImageSrc(src?: string | null) {
-  if (!src) return false;
-  return src.startsWith("http") || src.startsWith("/");
-}
 
 export default function GoodIdeasProductCard({
   product,
@@ -40,13 +35,11 @@ export default function GoodIdeasProductCard({
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-[#0B0F14]">
         {imageSrc ? (
-          <Image
+          <SmartImage
             src={imageSrc}
             alt={localized.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            placeholder="blur"
-            blurDataURL={PRODUCT_BLUR_DATA_URL}
             className="object-cover transition duration-500 group-hover:scale-[1.03]"
           />
         ) : (

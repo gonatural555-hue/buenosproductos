@@ -7,6 +7,15 @@ const IMG = {
   camping: "/assets/images/hero/products/camping.webp",
 } as const;
 
+/** Banners editoriales por categoría padre (páginas /category/[slug]). */
+const CATEGORY_BANNER = {
+  cycling: "/assets/images/categories/cycling/cycling-banner.webp",
+  climbing: "/assets/images/categories/climbing/climbing.webp",
+  running: "/assets/images/categories/running/running-banner.webp",
+  travel: "/assets/images/categories/camping/camping-banner.webp",
+  fishing: "/assets/images/categories/fishing/fishing-banner.webp",
+} as const;
+
 export type ProductsHeroCategoryCard = {
   id: string;
   slug: string;
@@ -84,16 +93,16 @@ export const PRODUCTS_HERO_CATEGORY_CARDS: ProductsHeroCategoryCard[] = [
   },
 ];
 
-/** Fondo hero por slug de categoría (mockup temporal). */
+/** Fondo hero por slug de categoría (páginas editoriales + subcategorías vía parentSlug). */
 export const CATEGORY_HERO_BACKGROUND_BY_SLUG: Record<string, string> = {
   "campamento-senderismo": IMG.camping,
-  escalada: IMG.snow,
-  ciclismo: IMG.camping,
+  escalada: CATEGORY_BANNER.climbing,
+  ciclismo: CATEGORY_BANNER.cycling,
   agua: IMG.surf,
-  running: IMG.snow,
+  running: CATEGORY_BANNER.running,
   nieve: IMG.snow,
-  viaje: IMG.camping,
-  fishing: IMG.fishing,
+  viaje: CATEGORY_BANNER.travel,
+  fishing: CATEGORY_BANNER.fishing,
   men: IMG.camping,
   women: IMG.camping,
   kids: IMG.camping,
@@ -101,7 +110,7 @@ export const CATEGORY_HERO_BACKGROUND_BY_SLUG: Record<string, string> = {
 };
 
 const KIND_FALLBACK: Record<CategoryHeroKind, string> = {
-  fishing: IMG.fishing,
+  fishing: CATEGORY_BANNER.fishing,
   "mountain-snow": IMG.snow,
   "water-sports": IMG.surf,
   "outdoor-adventure": IMG.camping,
@@ -110,10 +119,14 @@ const KIND_FALLBACK: Record<CategoryHeroKind, string> = {
 
 export function getCategoryHeroBackgroundImage(
   kind: CategoryHeroKind,
-  slug?: string
+  slug?: string,
+  parentSlug?: string
 ): string {
   if (slug && CATEGORY_HERO_BACKGROUND_BY_SLUG[slug]) {
     return CATEGORY_HERO_BACKGROUND_BY_SLUG[slug]!;
+  }
+  if (parentSlug && CATEGORY_HERO_BACKGROUND_BY_SLUG[parentSlug]) {
+    return CATEGORY_HERO_BACKGROUND_BY_SLUG[parentSlug]!;
   }
   return KIND_FALLBACK[kind];
 }

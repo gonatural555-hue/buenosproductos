@@ -308,7 +308,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         subtitle={heroSubtitle}
         ctaLabel={t("homePage.ctaProducts")}
         visualKind={visualKind}
-        backgroundImage={getCategoryHeroBackgroundImage(visualKind, slug)}
+        backgroundImage={getCategoryHeroBackgroundImage(
+          visualKind,
+          slug,
+          category.parentSlug
+        )}
       />
 
       <div

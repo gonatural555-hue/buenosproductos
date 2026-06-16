@@ -519,7 +519,8 @@
     "catalogTitle": "Todos los productos",
     "membershipPromo": {
       "title": "Beneficios para nuevos miembros",
-      "description": "Obtén un 15% de descuento en productos seleccionados al crear tu cuenta y comenzar tu próxima aventura.",
+      "descriptionHighlight": "Obtén un 15% de descuento en productos seleccionados",
+      "descriptionSuffix": " al crear tu cuenta y comenzar tu próxima aventura.",
       "descriptionSecondary": "Accede además a novedades, recomendaciones y lanzamientos exclusivos.",
       "cta": "Crear cuenta",
       "imageAlt": "15% de descuento para nuevos miembros Go Natural",

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import SmartImage from "@/components/SmartImage";
 import Link from "next/link";
 import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
@@ -197,7 +197,7 @@ export default function BlogEditorialHero({
                 variants={itemVariants}
                 className="relative mx-auto aspect-[7/4] w-full overflow-hidden lg:h-[720px] lg:w-[1260px]"
               >
-                <Image
+                <SmartImage
                   src={coverImageSrc!}
                   alt={coverImageAlt ?? sectionAriaLabel}
                   width={BLOG_COVER_WIDTH}

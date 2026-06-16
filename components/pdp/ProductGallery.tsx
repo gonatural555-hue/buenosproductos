@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import SmartImage from "@/components/SmartImage";
 import ProductImageLightbox from "@/components/pdp/ProductImageLightbox";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
 import type { UISurface } from "@/lib/ui-surface";
 
 type AspectMode = "square" | "cinematic";
@@ -159,14 +158,12 @@ export default function ProductGallery({
                     : "border-white/15 hover:border-white/40 hover:scale-[1.02] lg:border-white/18 lg:hover:border-white/45 lg:hover:shadow-[0_0_20px_-8px_rgba(255,255,255,0.12)]",
               ].join(" ")}
             >
-              <Image
+              <SmartImage
                 src={src}
                 alt=""
                 width={64}
                 height={64}
                 loading={i < 4 ? "eager" : "lazy"}
-                placeholder="blur"
-                blurDataURL={PRODUCT_BLUR_DATA_URL}
                 className="h-full w-full object-cover"
               />
             </button>
@@ -220,15 +217,13 @@ export default function ProductGallery({
                 key={`${currentSrc}-${safeIndex}-mobile`}
                 className="animate-fade-in relative z-[2] w-full lg:hidden"
               >
-                <Image
+                <SmartImage
                   src={currentSrc}
                   alt={`${title} — ${safeIndex + 1}`}
                   width={1400}
                   height={1400}
                   priority={safeIndex === 0}
                   loading={safeIndex === 0 ? "eager" : "lazy"}
-                  placeholder="blur"
-                  blurDataURL={PRODUCT_BLUR_DATA_URL}
                   sizes="100vw"
                   onError={() => setMainError(true)}
                   className="block h-auto w-full object-contain object-center"
@@ -239,14 +234,12 @@ export default function ProductGallery({
                 key={`${currentSrc}-${safeIndex}-desktop`}
                 className="animate-fade-in absolute inset-0 z-[2] hidden p-1.5 lg:block xl:p-2"
               >
-                <Image
+                <SmartImage
                   src={currentSrc}
                   alt={`${title} — ${safeIndex + 1}`}
                   fill
                   priority={safeIndex === 0}
                   loading={safeIndex === 0 ? "eager" : "lazy"}
-                  placeholder="blur"
-                  blurDataURL={PRODUCT_BLUR_DATA_URL}
                   sizes="min(960px, 58vw)"
                   onError={() => setMainError(true)}
                   className={`${imgObject} ${imgMotion}`}

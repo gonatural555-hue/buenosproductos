@@ -1,3 +1,5 @@
+import SmartImage from "@/components/SmartImage";
+
 type BlogPostContentProps = {
   intro?: string;
   sections?: {
@@ -53,12 +55,13 @@ export default function BlogPostContent({
               </div>
               {block.image && (
                 <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-white/10">
-                  <img
+                  <SmartImage
                     src={block.image}
                     alt={block.heading || "Journal image"}
+                    fill
                     loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 768px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-dark-base/20 via-dark-base/20 to-dark-base/45" />
                 </div>

@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import SmartImage from "@/components/SmartImage";
 import type { UISurface } from "@/lib/ui-surface";
 import ProductImageLightbox from "@/components/pdp/ProductImageLightbox";
 
@@ -62,14 +61,12 @@ export default function ProductGalleryGrid({
           >
             <span className="relative block h-full w-full p-3 sm:p-4 xl:p-5">
               <span className="relative block h-full w-full overflow-hidden rounded-md">
-                <Image
+                <SmartImage
                   src={src}
                   alt=""
                   fill
                   priority={index < 2}
                   loading={index < 4 ? "eager" : "lazy"}
-                  placeholder="blur"
-                  blurDataURL={PRODUCT_BLUR_DATA_URL}
                   sizes="(min-width: 1280px) 28vw, (min-width: 1024px) 32vw, 100vw"
                   className="object-contain object-center transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-[1.025] motion-reduce:transition-none"
                 />
