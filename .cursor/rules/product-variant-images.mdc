@@ -1,0 +1,75 @@
+---
+description: Convenciones de imágenes por variante de color en productos Go Natural / Good Ideas
+alwaysApply: true
+---
+
+# Imágenes por variante de color (productos)
+
+## Comportamiento PDP (ya en código — no cambiar)
+
+- Solo la variante **color** cambia la imagen en PDP y cards con swatches.
+- **Talla, tamaño, modelo, serie**, etc. **no** deben disparar cambio de imagen.
+- Lógica central: `lib/variant-image-utils.ts` → `resolveColorVariantActiveImages()`.
+- No reimplementar resolución de imágenes en componentes; usar utilidades existentes.
+
+## JSON de producto (`scripts/products/{id}.json`)
+
+Si el producto tiene variante `type: "color"` (sola o junto a talla/tamaño), **siempre** incluir:
+
+```json
+"variantImages": {
+  "color": {
+    "negro": {
+      "featured": [],
+      "gallery": [],
+      "lifestyle": [],
+      "extras": []
+    }
+  }
+}
+```
+
+- Una entrada por cada `value` en `variants[].options` (o en `variants.options` si es objeto único).
+- Los `value` deben coincidir exactamente entre `variants` y `variantImages.color` (ej. `arroz-blanco`, no `Arroz blanco`).
+- Fase 1 (screenshots): arrays vacíos o placeholders; **no inventar URLs**.
+- Fase 2 (links del usuario): pegar URLs locales (`/assets/...`) o externas (`https://...`) en `featured` / `gallery` del color correspondiente.
+- No usar mapa plano (`"negro": { ... }` en raíz); usar siempre `variantImages.color.{value}`.
+- Productos con variante **modelo** (`model-01`, etc.) mantienen su propio esquema; no mezclar con `color`.
+
+## Después de crear o editar JSON con color
+
+Ejecutar:
+
+```bash
+node scripts/sync-color-variant-images.mjs
+```
+
+Normaliza `variantImages.color` en todos los JSON que tengan variante color.
+
+## Archivos al cargar productos nuevos (Go Natural)
+
+1. `lib/products.ts` — entrada en `PRODUCTS[]`
+2. `scripts/products/{id}.json` — imágenes + `variantImages.color` si hay colores
+3. `lib/categories.ts` — `{id}: ["subcategory-slug"]` en `PRODUCT_CATEGORY_MAP`
+
+Good Ideas: `lib/good-ideas-products.ts` + `scripts/good-ideas-products/{id}.json`.
+
+## Imágenes en UI
+
+- Usar `SmartImage` (`components/SmartImage.tsx`) para locales y URLs externas.
+- Validación: `isValidImageSrc` / `isExternalImage` en `lib/image-src.ts`.
+
+## Swatches de color (PDP + product cards)
+
+- Resolver color visual con `resolveSwatchHex()` en `lib/color-swatch.ts` (usado por PDP y PLP).
+- **No** duplicar mapas de color en componentes; extender `lib/color-swatch.ts` si falta un tono.
+- Cada opción de color en `variants.options` debe tener `value` slug legible (ej. `arroz-blanco`, `gris-oscuro`).
+- Si la heurística no alcanza, agregar `swatchHex: "#RRGGBB"` en la opción (en `lib/products.ts` y/o `scripts/products/{id}.json`):
+
+```json
+{ "value": "arroz-blanco", "label": "Arroz blanco", "swatchHex": "#EDE6D6" }
+```
+
+- Compuestos comunes ya soportados: `gris-oscuro`, `gris-claro`, `verde-militar`, `azul-cielo`, `arroz-blanco`, `camuflado`, `burdeos`, `lavanda`.
+- Al cargar productos nuevos con colores no estándar: añadir entrada en `EXACT_SWATCH_HEX` o `swatchHex` explícito.
+- PDP: `ColorSwatchSelector` · Cards: `getProductColorSwatches()` en `lib/plp-card-meta.ts`.

@@ -16,10 +16,22 @@
     "label": "Color",
     "default": "black",
     "options": [
-      { "value": "blue", "label": "Azul" },
-      { "value": "black", "label": "Negro" },
-      { "value": "orange", "label": "Naranja" },
-      { "value": "yellow", "label": "Amarillo" }
+      {
+        "value": "blue",
+        "label": "Azul"
+      },
+      {
+        "value": "black",
+        "label": "Negro"
+      },
+      {
+        "value": "orange",
+        "label": "Naranja"
+      },
+      {
+        "value": "yellow",
+        "label": "Amarillo"
+      }
     ]
   },
   "variantImages": {
@@ -33,7 +45,9 @@
           "/assets/images/products/gn-fishing-eq-006/black/image.webp",
           "/assets/images/products/gn-fishing-eq-006/orange/image.webp",
           "/assets/images/products/gn-fishing-eq-006/yellow/image.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "black": {
         "featured": [
@@ -44,7 +58,9 @@
           "/assets/images/products/gn-fishing-eq-006/black/image.webp",
           "/assets/images/products/gn-fishing-eq-006/orange/image.webp",
           "/assets/images/products/gn-fishing-eq-006/yellow/image.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "orange": {
         "featured": [
@@ -55,7 +71,9 @@
           "/assets/images/products/gn-fishing-eq-006/black/image.webp",
           "/assets/images/products/gn-fishing-eq-006/orange/image.webp",
           "/assets/images/products/gn-fishing-eq-006/yellow/image.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "yellow": {
         "featured": [
@@ -66,7 +84,9 @@
           "/assets/images/products/gn-fishing-eq-006/black/image.webp",
           "/assets/images/products/gn-fishing-eq-006/orange/image.webp",
           "/assets/images/products/gn-fishing-eq-006/yellow/image.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       }
     }
   }

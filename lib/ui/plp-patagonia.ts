@@ -1,6 +1,6 @@
 /** Tokens visuales PLP estilo Patagonia (listado productos / categoría). */
 export const PLP_PATAGONIA = {
-  pageBg: "#FFFFFF",
+  pageBg: "#F0F0F0",
   imageBoxBg: "#F5F5F5",
   textPrimary: "#000000",
   textSecondary: "#666666",

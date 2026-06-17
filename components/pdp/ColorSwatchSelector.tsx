@@ -53,7 +53,11 @@ export default function ColorSwatchSelector({
             selections,
             variantMatrix
           );
-          const fill = swatchFillForOption(key, option.label);
+          const fill = swatchFillForOption(
+            key,
+            option.label,
+            typeof option.swatchHex === "string" ? option.swatchHex : undefined
+          );
 
           return (
             <button

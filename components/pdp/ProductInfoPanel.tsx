@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import AddToCartButton, {
   type AddToCartLinePayload,
@@ -9,6 +9,10 @@ import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCart
 import VariantSelector from "@/components/VariantSelector";
 import ColorSwatchSelector from "@/components/pdp/ColorSwatchSelector";
 import SizeSelector from "@/components/pdp/SizeSelector";
+import PdpQuantitySelector from "@/components/pdp/PdpQuantitySelector";
+import PdpAvailabilityCards, {
+  type AvailabilityCopy,
+} from "@/components/pdp/PdpAvailabilityCards";
 import TrustBadges from "@/components/pdp/TrustBadges";
 import type { PdpDesktopContent } from "@/components/ProductDetailClient";
 import { isValidCombination } from "@/lib/product-variant-matrix";
@@ -21,8 +25,9 @@ import type { UISurface } from "@/lib/ui-surface";
 type Props = {
   productId: string;
   surface: UISurface;
+  brandLabel?: string;
+  brandHref?: string;
   seoH1: string;
-  description: string;
   resolvedPrice: number;
   freeShipping?: boolean;
   freeShippingLabel?: string;
@@ -35,12 +40,14 @@ type Props = {
   otherVariantDefs: VariantDefinition[];
   selections: Record<string, string>;
   onSelectionsChange: (next: Record<string, string>) => void;
+  quantity: number;
+  onQuantityChange: (next: number) => void;
+  quantityLabel: string;
+  availabilityCopy: AvailabilityCopy;
   sizeGuideHref?: string;
   sizeGuideLabel: string;
   selectSizeLabel: string;
   ctaLabel: string;
-  trustMicrocopy: string;
-  /** Texto del enlace a reseñas (incluye número), ya traducido. */
   reviewsLinkLabel?: string;
   pdpDesktop: PdpDesktopContent;
   cartPayload: {
@@ -57,6 +64,9 @@ type Props = {
   };
   onAfterAdd?: (item: AddToCartLinePayload) => void;
   cartBrand?: "go-natural" | "good-ideas";
+  sticky?: boolean;
+  sizeConfirmed: boolean;
+  onSizeInteract: () => void;
 };
 
 function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) {
@@ -69,7 +79,7 @@ function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) 
         <svg
           key={i}
           viewBox="0 0 20 20"
-          className={`h-3.5 w-3.5 ${i < rounded ? "text-accent-gold" : empty}`}
+          className={`h-4 w-4 ${i < rounded ? "text-gn-mustard" : empty}`}
           fill="currentColor"
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.157c.969 0 1.371 1.24.588 1.81l-3.363 2.444a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.538 1.118l-3.364-2.444a1 1 0 00-1.175 0l-3.364 2.444c-.783.57-1.838-.197-1.538-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.03 9.382c-.783-.57-.38-1.81.588-1.81h4.157a1 1 0 00.95-.69l1.286-3.955z" />
@@ -82,8 +92,9 @@ function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) 
 export default function ProductInfoPanel({
   productId,
   surface,
+  brandLabel,
+  brandHref,
   seoH1,
-  description,
   resolvedPrice,
   freeShipping,
   freeShippingLabel,
@@ -96,24 +107,25 @@ export default function ProductInfoPanel({
   otherVariantDefs,
   selections,
   onSelectionsChange,
+  quantity,
+  onQuantityChange,
+  quantityLabel,
+  availabilityCopy,
   sizeGuideHref,
   sizeGuideLabel,
   selectSizeLabel,
   ctaLabel,
-  trustMicrocopy,
   reviewsLinkLabel,
   pdpDesktop,
   cartPayload,
   onAfterAdd,
   cartBrand = "go-natural",
+  sticky = true,
+  sizeConfirmed,
+  onSizeInteract,
 }: Props) {
   const L = surface === "light";
   const matrix = productVariants?.variantMatrix;
-  const [sizeConfirmed, setSizeConfirmed] = useState(() => !sizeDef);
-
-  useEffect(() => {
-    setSizeConfirmed(!sizeDef);
-  }, [productId, sizeDef]);
 
   const pick = useCallback(
     (type: string, value: string, label: string) => {
@@ -130,8 +142,8 @@ export default function ProductInfoPanel({
   const ctaDisabled = needsSizePick;
   const ctaText = needsSizePick ? selectSizeLabel : ctaLabel;
 
-  const pillCta =
-    "w-full rounded-full py-3.5 px-6 text-[0.95rem] font-semibold tracking-wide shadow-lg transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0";
+  const forestCta =
+    "w-full rounded-md py-3.5 px-6 text-[0.95rem] font-semibold tracking-wide transition-all duration-200 ease-out hover:-translate-y-px active:translate-y-0";
 
   const trustBadgeCopy = {
     shippingEurope: pdpDesktop.shippingEurope,
@@ -155,81 +167,52 @@ export default function ProductInfoPanel({
     ) : null;
 
   return (
-    <div className="flex w-full min-w-0 max-w-xl flex-col gap-6 max-lg:gap-5 lg:max-w-[23rem] lg:gap-7 lg:sticky lg:top-28 xl:max-w-[24rem] xl:gap-8 2xl:max-w-[25rem]">
-      <header className="space-y-4 max-lg:space-y-3 lg:space-y-4">
+    <div
+      className={[
+        "flex w-full min-w-0 flex-col gap-5 max-lg:gap-4 lg:max-w-none lg:gap-6",
+        sticky ? "lg:sticky lg:top-28 lg:self-start" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      {brandLabel && brandHref ? (
+        <Link
+          href={brandHref}
+          className={
+            L
+              ? "text-sm font-medium text-gn-forest underline-offset-2 hover:underline"
+              : "text-sm font-medium text-accent-moss underline-offset-2 hover:underline"
+          }
+        >
+          {brandLabel}
+        </Link>
+      ) : null}
+
+      <header className="space-y-3">
         <h1
           className={
             L
-              ? "font-sans text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-neutral-900 xl:text-[2rem]"
-              : "font-sans text-[1.7rem] font-semibold leading-[1.12] tracking-tight text-text-primary xl:text-[2rem]"
+              ? "font-sans text-[1.55rem] font-semibold leading-[1.15] tracking-tight text-neutral-900 xl:text-[1.75rem]"
+              : "font-sans text-[1.55rem] font-semibold leading-[1.15] tracking-tight text-text-primary xl:text-[1.75rem]"
           }
         >
           {seoH1}
         </h1>
 
-        <div
-          className={
-            L
-              ? "space-y-2 border-t border-neutral-200/90 pt-4 max-lg:border-t-0 max-lg:pt-1 lg:pt-5"
-              : "space-y-2 border-t border-white/[0.08] pt-4 max-lg:border-t-0 max-lg:pt-1 lg:pt-5"
-          }
-        >
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p
-              className={
-                L
-                  ? "text-[1.65rem] font-medium tabular-nums tracking-tight text-neutral-900"
-                  : "text-[1.65rem] font-medium tabular-nums tracking-tight text-text-primary"
-              }
-            >
-              ${resolvedPrice.toFixed(2)}
-            </p>
-            {freeShipping && freeShippingLabel ? (
-              <span
-                className={
-                  L
-                    ? "text-[10px] font-medium uppercase tracking-[0.16em] text-neutral-500"
-                    : "text-[10px] font-medium uppercase tracking-[0.16em] text-text-muted/85"
-                }
-              >
-                {freeShippingLabel}
-              </span>
-            ) : null}
-          </div>
-          {taxNote ? (
-            <p
-              className={
-                L ? "text-xs text-neutral-500" : "text-xs text-text-muted/80"
-              }
-            >
-              {taxNote}
-            </p>
-          ) : null}
-          <p
-            className={
-              L
-                ? "text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-600"
-                : "text-[11px] font-medium uppercase tracking-[0.18em] text-text-muted/90"
-            }
-          >
-            {trustMicrocopy}
-          </p>
-        </div>
-
         {showReviews ? (
           <div className="flex flex-wrap items-center gap-2 text-sm">
             <MiniStars rating={reviewsAverage} surface={surface} />
-            <span className={L ? "text-neutral-700" : "text-text-muted"}>
+            <span className={L ? "font-medium text-neutral-800" : "text-text-muted"}>
               {reviewsAverage.toFixed(1)}
             </span>
-            <span className={L ? "text-neutral-400" : "text-white/30"} aria-hidden>
+            <span className={L ? "text-neutral-300" : "text-white/30"} aria-hidden>
               ·
             </span>
             <Link
               href="#pdp-reviews"
               className={
                 L
-                  ? "text-neutral-600 underline-offset-2 hover:text-accent-gold hover:underline"
+                  ? "text-neutral-600 underline-offset-2 hover:text-gn-forest hover:underline"
                   : "text-text-muted underline-offset-2 hover:text-accent-gold hover:underline"
               }
             >
@@ -238,9 +221,37 @@ export default function ProductInfoPanel({
             </Link>
           </div>
         ) : null}
+
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-1">
+          <p
+            className={
+              L
+                ? "text-2xl font-semibold tabular-nums tracking-tight text-neutral-900"
+                : "text-2xl font-semibold tabular-nums tracking-tight text-text-primary"
+            }
+          >
+            ${resolvedPrice.toFixed(2)}
+          </p>
+          {freeShipping && freeShippingLabel ? (
+            <span
+              className={
+                L
+                  ? "text-[10px] font-semibold uppercase tracking-[0.14em] text-gn-forest"
+                  : "text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-moss"
+              }
+            >
+              {freeShippingLabel}
+            </span>
+          ) : null}
+        </div>
+        {taxNote ? (
+          <p className={L ? "text-xs text-neutral-500" : "text-xs text-text-muted/80"}>
+            {taxNote}
+          </p>
+        ) : null}
       </header>
 
-      <div className="flex flex-col gap-5 max-lg:gap-4 lg:gap-6">
+      <div className="flex flex-col gap-5 max-lg:gap-4 lg:gap-5">
         {colorDef ? (
           <ColorSwatchSelector
             variant={colorDef}
@@ -259,14 +270,24 @@ export default function ProductInfoPanel({
             sizeGuideHref={sizeGuideHref}
             sizeGuideLabel={sizeGuideLabel}
             surface={surface}
-            onInteract={() => setSizeConfirmed(true)}
+            appearance="rei"
+            onInteract={onSizeInteract}
             onSelect={(value, label) => pick(sizeDef.type, value, label)}
           />
         ) : null}
 
         {otherVariantsBlock}
 
-        <div className="space-y-4 max-lg:space-y-0">
+        <PdpQuantitySelector
+          value={quantity}
+          onChange={onQuantityChange}
+          label={quantityLabel}
+          surface={surface}
+        />
+
+        <PdpAvailabilityCards copy={availabilityCopy} surface={surface} />
+
+        <div className="space-y-4">
           <div className="max-lg:hidden">
             {cartBrand === "good-ideas" ? (
               <GoodIdeasAddToCartButton
@@ -277,7 +298,7 @@ export default function ProductInfoPanel({
                 variantSelections={cartPayload.variantSelections}
                 label={ctaText}
                 disabled={ctaDisabled}
-                className={pillCta}
+                className={forestCta}
                 onAfterAdd={onAfterAdd}
               />
             ) : (
@@ -290,35 +311,20 @@ export default function ProductInfoPanel({
                 label={ctaText}
                 disabled={ctaDisabled}
                 surface={surface}
-                className={pillCta}
+                variant="forest"
+                quantity={quantity}
+                className={forestCta}
                 onAfterAdd={onAfterAdd}
               />
             )}
           </div>
+
           <TrustBadges
             copy={trustBadgeCopy}
             surface={surface}
-            className="max-lg:border-t-0 max-lg:pt-0 lg:border-t lg:pt-6"
+            className="border-t-0 pt-0 lg:border-t lg:border-neutral-200/90 lg:pt-5"
           />
         </div>
-      </div>
-
-      <div
-        className={
-          L
-            ? "border-t border-neutral-200/90 pt-5 max-lg:pt-4 lg:pt-7"
-            : "border-t border-white/[0.08] pt-5 max-lg:pt-4 lg:pt-7"
-        }
-      >
-        <p
-          className={
-            L
-              ? "line-clamp-4 text-sm leading-relaxed text-neutral-600 max-lg:text-[13px] lg:line-clamp-3 lg:leading-[1.55]"
-              : "line-clamp-4 text-sm leading-relaxed text-text-muted max-lg:text-[13px] lg:line-clamp-3 lg:leading-[1.55]"
-          }
-        >
-          {description}
-        </p>
       </div>
     </div>
   );

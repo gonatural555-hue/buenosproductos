@@ -577,7 +577,19 @@
       "selectSize": "Select a size",
       "sizeGuide": "Size guide",
       "taxNote": "Final price; taxes included where applicable.",
-      "reviewSingular": "review"
+      "reviewSingular": "review",
+      "quantityLabel": "Quantity",
+      "pickupTitle": "Store pickup",
+      "pickupStatus": "Check availability",
+      "pickupDetail": "Select color and size to see nearby options.",
+      "shippingTitle": "Home delivery",
+      "shippingStatus": "Available",
+      "featuresSectionTitle": "Features",
+      "specsSectionTitle": "Technical specifications"
+    },
+    "brandPage": {
+      "productSingular": "product",
+      "productPlural": "products"
     },
     "crossSellTitle": "Continue exploring",
     "addToCart": "Add to cart",

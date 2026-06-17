@@ -1,0 +1,67 @@
+{
+  "id": "gn-cycling-018",
+  "images": {
+    "featured": [
+      "https://s.alicdn.com/@sc04/kf/H8f6b001d2cf346439c1875d263bc75452.jpg?avif=close&webp=close"
+    ],
+    "gallery": [
+      "https://s.alicdn.com/@sc04/kf/H8cddaa06b8934f37a9f295eb1b714953l.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H5d4810389a5a4e1dbf0783d900f9519aV.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hf5eed1b62b314576885430a9c6650926k.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/He9080d8b81a745d1ba7c2f4706d303bfD.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H797e364937304c0c975335540cd3a518V.jpg?avif=close&webp=close"
+    ],
+    "lifestyle": [],
+    "extras": []
+  },
+  "variants": [
+    {
+      "type": "color",
+      "label": "Color",
+      "default": "negro",
+      "options": [
+        {
+          "value": "negro",
+          "label": "Negro"
+        }
+      ]
+    },
+    {
+      "type": "size",
+      "label": "Talla",
+      "default": "m",
+      "options": [
+        {
+          "value": "s",
+          "label": "S"
+        },
+        {
+          "value": "m",
+          "label": "M"
+        },
+        {
+          "value": "l",
+          "label": "L"
+        },
+        {
+          "value": "xl",
+          "label": "XL"
+        },
+        {
+          "value": "2xl",
+          "label": "2XL"
+        }
+      ]
+    }
+  ],
+  "variantImages": {
+    "color": {
+      "negro": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  }
+}

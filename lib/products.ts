@@ -2,6 +2,8 @@ export type ProductVariantOption = {
   label: string;
   value?: string;
   priceModifier?: number;
+  /** Color del círculo swatch en PDP y cards (ej. "#EDE6D6"). */
+  swatchHex?: string;
 };
 
 export type ProductVariants = {
@@ -34,6 +36,8 @@ export type Product = {
   title: string;
   price: number;
   category: string;
+  /** Marca comercial (opcional). Si falta, se infiere del título o categoría. */
+  brand?: string;
   images: string[];
   description: string;
   shortDescription?: string;
@@ -2372,6 +2376,401 @@ const PRODUCTS: Product[] = [
           { value: "XXL", label: "XXL", priceModifier: 0 },
           { value: "3XL", label: "3XL", priceModifier: 0 },
           { value: "4XL", label: "4XL", priceModifier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    id: "gn-cycling-017",
+    title:
+      "ROCKBROS Gafas de Sol Inteligentes con Audio Bluetooth para Ciclismo",
+    price: 59.9,
+    category: "Cycling Equipment",
+    images: ["/assets/images/products/gn-cycling-017/image.webp"],
+    description:
+      "Gafas deportivas ROCKBROS con audio Bluetooth integrado para ciclismo y outdoor. Diseño envolvente aerodinámico, lentes oscuras y patillas con altavoces inalámbricos para música y llamadas en ruta.",
+    shortDescription:
+      "Gafas deportivas con audio Bluetooth integrado para ciclismo, outdoor y uso diario.",
+    longDescription: [
+      "Combina protección solar y audio inalámbrico en un solo equipo pensado para ciclistas que quieren mantenerse conectados sin cables ni auriculares adicionales.",
+      "El diseño envolvente tipo performance reduce el viento en ruta y mantiene una silueta limpia compatible con casco y uso urbano.",
+      "Las patillas integran altavoces Bluetooth para música, podcasts o llamadas manos libres mientras pedaleás o caminás.",
+      "Pensadas para escenas outdoor, deporte y ciclismo: un accesorio versátil para entrenamientos, commuting y salidas recreativas.",
+      "Disponibles en tres acabados de montura y lente para adaptarse a tu estilo y condiciones de luz.",
+      "Modelo de referencia 14130002/SP 251. Las imágenes del producto se cargarán en una fase posterior.",
+    ],
+    features: [
+      "Audio Bluetooth inalámbrico integrado en las patillas",
+      "Diseño envolvente aerodinámico para ciclismo y outdoor",
+      "Lentes oscuras para uso deportivo",
+      "Apto para escenas outdoor, deporte y ciclismo",
+      "Tres variantes de color: Negro, Blanco y Rojo",
+      "Modelo 14130002/SP 251",
+      "Recarga magnética en patilla (según versión del proveedor)",
+      "Marca ROCKBROS — proveedor verificado en plataforma B2B",
+    ],
+    translations: {
+      en: {
+        title:
+          "ROCKBROS Smart Bluetooth Audio Cycling Sunglasses",
+        description:
+          "ROCKBROS sports sunglasses with built-in Bluetooth audio for cycling and outdoor use. Aerodynamic wrap design, dark lenses, and temple speakers for music and calls on the go.",
+        shortDescription:
+          "Sports sunglasses with integrated Bluetooth audio for cycling, outdoor, and everyday use.",
+        longDescription: [
+          "Combines sun protection and wireless audio in one piece of gear for riders who want to stay connected without extra headphones or cables.",
+          "The performance wrap shape cuts wind on the bike and keeps a clean profile with helmets and casual wear.",
+          "Temple-integrated Bluetooth speakers handle music, podcasts, or hands-free calls while you ride or walk.",
+          "Built for outdoor, sports, and cycling scenes — versatile for training, commuting, and weekend rides.",
+          "Available in three frame and lens finishes to match your style and light conditions.",
+          "Reference model 14130002/SP 251. Product images will be added in a follow-up phase.",
+        ],
+        features: [
+          "Wireless Bluetooth audio built into the temples",
+          "Aerodynamic wrap design for cycling and outdoor use",
+          "Dark sport lenses",
+          "Suitable for outdoor, sports, and cycling",
+          "Three color options: Black, White, and Red",
+          "Model 14130002/SP 251",
+          "Magnetic charging on temple (supplier version dependent)",
+          "ROCKBROS brand — verified B2B supplier listing",
+        ],
+      },
+      fr: {
+        title:
+          "Lunettes de soleil intelligentes ROCKBROS avec audio Bluetooth pour cyclisme",
+        description:
+          "Lunettes sport ROCKBROS avec audio Bluetooth intégré pour le cyclisme et l'outdoor. Design enveloppant aérodynamique et branches avec haut-parleurs sans fil.",
+        shortDescription:
+          "Lunettes sport avec audio Bluetooth intégré pour cyclisme et outdoor.",
+        longDescription: [
+          "Allie protection solaire et audio sans fil pour les cyclistes qui veulent rester connectés sans écouteurs supplémentaires.",
+          "La forme enveloppante limite le vent en roulant et reste compatible casque et usage quotidien.",
+          "Les branches intègrent des haut-parleurs Bluetooth pour musique, podcasts ou appels mains libres.",
+          "Pensées pour l'outdoor, le sport et le vélo — entraînement, trajets et sorties loisir.",
+          "Trois finitions de monture et de verre disponibles.",
+          "Modèle de référence 14130002/SP 251. Images à ajouter ultérieurement.",
+        ],
+        features: [
+          "Audio Bluetooth sans fil intégré aux branches",
+          "Design enveloppant aérodynamique",
+          "Verres foncés sport",
+          "Usage outdoor, sport et cyclisme",
+          "Trois couleurs : Noir, Blanc et Rouge",
+          "Modèle 14130002/SP 251",
+          "Recharge magnétique sur branche (selon version)",
+          "Marque ROCKBROS",
+        ],
+      },
+      it: {
+        title:
+          "Occhiali da sole intelligenti ROCKBROS con audio Bluetooth per ciclismo",
+        description:
+          "Occhiali sportivi ROCKBROS con audio Bluetooth integrato per ciclismo e outdoor. Design avvolgente aerodinamico e aste con altoparlanti wireless.",
+        shortDescription:
+          "Occhiali sportivi con audio Bluetooth integrato per ciclismo e outdoor.",
+        longDescription: [
+          "Unisce protezione solare e audio wireless per chi vuole restare connesso senza cuffie aggiuntive.",
+          "La forma avvolgente riduce il vento in bici e mantiene un profilo pulito con casco e uso quotidiano.",
+          "Le aste integrano altoparlanti Bluetooth per musica, podcast o chiamate a mani libere.",
+          "Pensati per outdoor, sport e ciclismo — allenamento, commuting e uscite ricreative.",
+          "Tre finiture di montatura e lente disponibili.",
+          "Modello di riferimento 14130002/SP 251. Immagini da aggiungere in seguito.",
+        ],
+        features: [
+          "Audio Bluetooth wireless integrato nelle aste",
+          "Design avvolgente aerodinamico",
+          "Lenti scure sportive",
+          "Uso outdoor, sport e ciclismo",
+          "Tre colori: Nero, Bianco e Rosso",
+          "Modello 14130002/SP 251",
+          "Ricarica magnetica sull'asta (secondo versione)",
+          "Marca ROCKBROS",
+        ],
+      },
+    },
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [
+        { value: "negro", label: "Negro", priceModifier: 0 },
+        { value: "blanco", label: "Blanco", priceModifier: 0 },
+        { value: "rojo", label: "Rojo", priceModifier: 0 },
+      ],
+    },
+  },
+  {
+    id: "gn-ski-snow-007",
+    title: "Casco de Esquí ABS con Certificación UE — Ventilación Integrada",
+    price: 42.9,
+    category: "Ski & Snow Equipment",
+    images: ["/assets/images/products/gn-ski-snow-007/image.webp"],
+    description:
+      "Casco deportivo de esquí y snowboard con carcasa ABS de alto impacto, forro acolchado, clip para gafas y múltiples tomas de ventilación. Cumple normas de la UE según ficha del proveedor.",
+    shortDescription:
+      "Casco ABS para esquí y snowboard con ventilación, ajuste por talla y seis colores.",
+    longDescription: [
+      "Protección pensada para días largos en pista: carcasa ABS rígida y forro interior acolchado para absorber impactos con comodidad.",
+      "La ventilación integrada en parte superior y laterales ayuda a regular temperatura durante bajadas intensas y remontes.",
+      "Incluye clip trasero para sujetar la correa de gafas y almohadillas auriculares acolchadas para un ajuste estable.",
+      "Disponible en seis colores mate y tres rangos de talla (51–54, 55–58 y 59–61 cm) para encontrar el calce correcto.",
+      "Diseño limpio con acabado mate, pensado para esquí alpino, snowboard y uso recreativo en montaña.",
+      "Certificación UE indicada en listado del proveedor. Imágenes del producto se cargarán en fase posterior.",
+    ],
+    features: [
+      "Carcasa ABS de alto impacto",
+      "Cumple normas de la UE (según ficha del proveedor)",
+      "Ventilación integrada superior y lateral",
+      "Forro interior acolchado",
+      "Clip trasero para correa de gafas",
+      "Almohadillas auriculares acolchadas",
+      "Seis colores: Arroz blanco, Gris oscuro, Naranja, Gris claro, Burdeos y Lavanda",
+      "Tallas 51–54 cm, 55–58 cm y 59–61 cm",
+      "Origen Zhejiang, China (dato de proveedor)",
+    ],
+    translations: {
+      en: {
+        title: "ABS Ski Helmet with EU Certification — Integrated Ventilation",
+        description:
+          "Ski and snowboard helmet with high-impact ABS shell, padded liner, goggle clip, and multiple vents. EU standards compliance per supplier listing.",
+        shortDescription:
+          "ABS ski and snowboard helmet with ventilation, size ranges, and six color options.",
+        longDescription: [
+          "Built for long days on the mountain with a rigid ABS shell and padded inner liner for impact comfort.",
+          "Top and side vents help regulate temperature on hard runs and chairlift transitions.",
+          "Rear goggle strap clip and padded ear pads keep the fit stable under the helmet.",
+          "Six matte colorways and three size ranges (51–54, 55–58, and 59–61 cm) for a proper fit.",
+          "Clean matte finish for alpine skiing, snowboarding, and recreational mountain use.",
+          "EU certification noted on supplier listing. Product images to be added later.",
+        ],
+        features: [
+          "High-impact ABS shell",
+          "EU standards compliance (per supplier listing)",
+          "Integrated top and side ventilation",
+          "Padded inner liner",
+          "Rear goggle strap clip",
+          "Padded ear pads",
+          "Six colors: Off-white, Dark grey, Orange, Light grey, Burgundy, Lavender",
+          "Sizes 51–54 cm, 55–58 cm, and 59–61 cm",
+          "Origin Zhejiang, China (supplier data)",
+        ],
+      },
+      fr: {
+        title:
+          "Casque de ski ABS avec certification UE — Ventilation intégrée",
+        description:
+          "Casque ski et snowboard avec coque ABS, doublure rembourrée, clip pour masque et multiples évents. Conformité UE selon fiche fournisseur.",
+        shortDescription:
+          "Casque ABS pour ski et snowboard avec ventilation et six coloris.",
+        longDescription: [
+          "Protection pour les longues journées en montagne : coque ABS rigide et doublure rembourrée.",
+          "Ventilation supérieure et latérale pour réguler la température en piste.",
+          "Clip arrière pour sangle de masque et coussinets d'oreilles rembourrés.",
+          "Six coloris mats et trois tailles (51–54, 55–58 et 59–61 cm).",
+          "Finition mate pour ski alpin, snowboard et usage récréatif.",
+          "Certification UE indiquée par le fournisseur. Images à ajouter ultérieurement.",
+        ],
+        features: [
+          "Coque ABS haute résistance",
+          "Conformité UE (selon fiche fournisseur)",
+          "Ventilation intégrée",
+          "Doublure intérieure rembourrée",
+          "Clip pour sangle de masque",
+          "Coussinets d'oreilles rembourrés",
+          "Six couleurs disponibles",
+          "Tailles 51–54, 55–58 et 59–61 cm",
+          "Origine Zhejiang, Chine",
+        ],
+      },
+      it: {
+        title:
+          "Casco da sci ABS con certificazione UE — Ventilazione integrata",
+        description:
+          "Casco da sci e snowboard con guscio ABS, imbottitura, clip per maschera e prese d'aria multiple. Conformità UE secondo scheda fornitore.",
+        shortDescription:
+          "Casco ABS per sci e snowboard con ventilazione e sei colori.",
+        longDescription: [
+          "Protezione per lunghe giornate in montagna: guscio ABS rigido e fodera imbottita.",
+          "Ventilazione superiore e laterale per regolare la temperatura in pista.",
+          "Clip posteriore per cinghia maschera e imbottiture auricolari.",
+          "Sei colori opachi e tre taglie (51–54, 55–58 e 59–61 cm).",
+          "Finitura opaca per sci alpino, snowboard e uso ricreativo.",
+          "Certificazione UE indicata dal fornitore. Immagini da aggiungere in seguito.",
+        ],
+        features: [
+          "Guscio ABS ad alto impatto",
+          "Conformità UE (secondo fornitore)",
+          "Ventilazione integrata",
+          "Fodera interna imbottita",
+          "Clip per cinghia maschera",
+          "Imbottiture auricolari",
+          "Sei colori disponibili",
+          "Taglie 51–54, 55–58 e 59–61 cm",
+          "Origine Zhejiang, Cina",
+        ],
+      },
+    },
+    variants: [
+      {
+        type: "color",
+        label: "Color",
+        default: "arroz-blanco",
+        options: [
+          { value: "arroz-blanco", label: "Arroz blanco", priceModifier: 0 },
+          { value: "gris-oscuro", label: "Gris oscuro", priceModifier: 0 },
+          { value: "naranja", label: "Naranja", priceModifier: 0 },
+          { value: "gris-claro", label: "Gris claro", priceModifier: 0 },
+          { value: "burdeos", label: "Burdeos", priceModifier: 0 },
+          { value: "lavanda", label: "Lavanda", priceModifier: 0 },
+        ],
+      },
+      {
+        type: "size",
+        label: "Talla",
+        default: "55-58",
+        options: [
+          { value: "51-54", label: "51–54 cm", priceModifier: 0 },
+          { value: "55-58", label: "55–58 cm", priceModifier: 0 },
+          { value: "59-61", label: "59–61 cm", priceModifier: 0 },
+        ],
+      },
+    ],
+  },
+  {
+    id: "gn-cycling-018",
+    title:
+      "ROCKBROS Guantes de Motocicleta de Cuero PU Impermeables con Protección de Nudillos",
+    price: 49.9,
+    category: "Cycling Equipment",
+    images: ["/assets/images/products/gn-cycling-018/image.webp"],
+    description:
+      "Guantes ROCKBROS de cuero PU impermeables con protectores rígidos de nudillos, palma antideslizante y punta táctil. Diseño clásico unisex para motociclismo, ciclismo de ruta y outdoor.",
+    shortDescription:
+      "Guantes impermeables de cuero PU con protección de nudillos y compatibilidad táctil.",
+    longDescription: [
+      "Protección y agarre para rutas largas en moto o bici: cuero PU resistente con refuerzo rígido en los nudillos contra impactos.",
+      "La construcción impermeable ayuda a mantener las manos secas en jornadas lluviosas o con viento frío.",
+      "Palma texturizada antideslizante y correa de velcro ajustable en muñeca con branding ROCKBROS para un cierre seguro.",
+      "Punta táctil en dedo índice para usar pantalla del móvil o GPS sin quitarte los guantes.",
+      "Disponible en negro en tallas S a 2XL para hombre y mujer.",
+      "Pensados para motociclismo clásico, commuting en moto y uso outdoor exigente.",
+    ],
+    features: [
+      "Cuero PU de alta durabilidad",
+      "Protectores rígidos de nudillos",
+      "Construcción impermeable",
+      "Punta táctil compatible con pantallas",
+      "Palma reforzada antideslizante",
+      "Correa de velcro ajustable en muñeca",
+      "Diseño clásico unisex",
+      "Tallas S, M, L, XL y 2XL",
+      "Color Negro",
+      "Marca ROCKBROS",
+    ],
+    translations: {
+      en: {
+        title:
+          "ROCKBROS PU Leather Waterproof Motorcycle Gloves with Knuckle Protection",
+        description:
+          "ROCKBROS waterproof PU leather gloves with hard knuckle guards, anti-slip palm, and touchscreen fingertip. Classic unisex design for motorcycling, road cycling, and outdoor use.",
+        shortDescription:
+          "Waterproof PU leather gloves with knuckle protection and touchscreen compatibility.",
+        longDescription: [
+          "Impact-ready protection and grip for long rides: durable PU leather with rigid knuckle shields.",
+          "Waterproof construction helps keep hands dry in rain or cold wind.",
+          "Textured anti-slip palm and adjustable velcro wrist strap with ROCKBROS branding.",
+          "Touchscreen-compatible index fingertip for phone or GPS use without removing gloves.",
+          "Available in black from S to 2XL for men and women.",
+          "Built for classic motorcycling, commuting, and demanding outdoor use.",
+        ],
+        features: [
+          "Durable PU leather",
+          "Hard knuckle protectors",
+          "Waterproof construction",
+          "Touchscreen-compatible fingertip",
+          "Reinforced anti-slip palm",
+          "Adjustable velcro wrist strap",
+          "Classic unisex design",
+          "Sizes S, M, L, XL, and 2XL",
+          "Black colorway",
+          "ROCKBROS brand",
+        ],
+      },
+      fr: {
+        title:
+          "Gants moto ROCKBROS en cuir PU imperméables avec protection des jointures",
+        description:
+          "Gants ROCKBROS en cuir PU imperméable avec coques rigides, paume antidérapante et doigt tactile. Design classique unisexe.",
+        shortDescription:
+          "Gants imperméables en cuir PU avec protection des jointures et doigt tactile.",
+        longDescription: [
+          "Protection et grip pour longues sorties : cuir PU résistant avec coques rigides sur les jointures.",
+          "Construction imperméable pour garder les mains au sec sous la pluie.",
+          "Paume texturée antidérapante et sangle velcro réglable au poignet.",
+          "Doigt index compatible écran tactile pour téléphone ou GPS.",
+          "Disponible en noir, tailles S à 2XL.",
+          "Pensés pour moto classique, trajets quotidiens et outdoor exigeant.",
+        ],
+        features: [
+          "Cuir PU durable",
+          "Protections rigides des jointures",
+          "Construction imperméable",
+          "Doigt tactile",
+          "Paume antidérapante renforcée",
+          "Sangle velcro ajustable",
+          "Design classique unisexe",
+          "Tailles S à 2XL",
+          "Couleur noir",
+          "Marque ROCKBROS",
+        ],
+      },
+      it: {
+        title:
+          "Guanti moto ROCKBROS in pelle PU impermeabili con protezione nocche",
+        description:
+          "Guanti ROCKBROS in pelle PU impermeabile con protezioni rigide, palmo antiscivolo e dito touch. Design classico unisex.",
+        shortDescription:
+          "Guanti impermeabili in pelle PU con protezione nocche e touch screen.",
+        longDescription: [
+          "Protezione e grip per uscite lunghe: pelle PU resistente con scudi rigidi sulle nocche.",
+          "Costruzione impermeabile per mani asciutte sotto la pioggia.",
+          "Palmo texturizzato antiscivolo e fascia velcro regolabile al polso.",
+          "Dito indice touch per smartphone o GPS senza togliere i guanti.",
+          "Disponibile in nero, taglie S–2XL.",
+          "Pensati per moto classica, commuting e outdoor impegnativo.",
+        ],
+        features: [
+          "Pelle PU durevole",
+          "Protezioni rigide per le nocche",
+          "Costruzione impermeabile",
+          "Dito touch screen",
+          "Palmo antiscivolo rinforzato",
+          "Fascia velcro regolabile",
+          "Design classico unisex",
+          "Taglie S, M, L, XL e 2XL",
+          "Colore nero",
+          "Marca ROCKBROS",
+        ],
+      },
+    },
+    variants: [
+      {
+        type: "color",
+        label: "Color",
+        default: "negro",
+        options: [{ value: "negro", label: "Negro", priceModifier: 0 }],
+      },
+      {
+        type: "size",
+        label: "Talla",
+        default: "m",
+        options: [
+          { value: "s", label: "S", priceModifier: 0 },
+          { value: "m", label: "M", priceModifier: 0 },
+          { value: "l", label: "L", priceModifier: 0 },
+          { value: "xl", label: "XL", priceModifier: 0 },
+          { value: "2xl", label: "2XL", priceModifier: 0 },
         ],
       },
     ],

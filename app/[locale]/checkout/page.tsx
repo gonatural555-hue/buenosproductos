@@ -238,7 +238,7 @@ export default function CheckoutPage() {
     return (
       <main
         data-route="checkout"
-        className="mx-auto max-w-xl bg-warm-sand px-4 py-20 text-center md:py-28"
+        className="mx-auto max-w-xl bg-gn-page-bg px-4 py-20 text-center md:py-28"
       >
         <p className="text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90 mb-4">
           Checkout

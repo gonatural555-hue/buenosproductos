@@ -34,7 +34,7 @@ type CartState = {
 };
 
 type CartAction =
-  | { type: "ADD_ITEM"; payload: Omit<CartItem, "quantity"> }
+  | { type: "ADD_ITEM"; payload: Omit<CartItem, "quantity"> & { quantity?: number } }
   | { type: "REMOVE_ITEM"; payload: { id: string } }
   | { type: "INCREASE_QTY"; payload: { id: string } }
   | { type: "DECREASE_QTY"; payload: { id: string } }
@@ -48,15 +48,17 @@ const initialState: CartState = {
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case "ADD_ITEM": {
+      const qty = Math.max(1, action.payload.quantity ?? 1);
+      const { quantity: _q, ...line } = action.payload;
       const existing = state.items.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id === line.id
       );
 
       if (existing) {
         return {
           items: state.items.map((item) =>
-            item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
+            item.id === line.id
+              ? { ...item, quantity: item.quantity + qty }
               : item
           ),
         };
@@ -65,7 +67,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       return {
         items: [
           ...state.items,
-          { ...action.payload, quantity: 1 },
+          { ...line, quantity: qty },
         ],
       };
     }
@@ -112,7 +114,7 @@ type CartContextValue = {
   items: CartItem[];
   totalItems: number;
   subtotal: number;
-  addItem: (item: Omit<CartItem, "quantity">) => void;
+  addItem: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void;
   removeItem: (id: string) => void;
   increaseQty: (id: string) => void;
   decreaseQty: (id: string) => void;
@@ -164,11 +166,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       totalItems,
       subtotal,
       addItem: (item) => {
+        const qty = Math.max(1, item.quantity ?? 1);
         dispatch({ type: "ADD_ITEM", payload: item });
         trackAddToCart([
           cartLineToGa4Item(
             { id: item.id, title: item.title, price: item.price },
-            1
+            qty
           ),
         ]);
       },

@@ -1,8 +1,7 @@
 {
   "id": "gn-ski-snow-006",
   "images": {
-    "featured": [
-    ],
+    "featured": [],
     "gallery": [],
     "lifestyle": [],
     "extras": [
@@ -10,25 +9,39 @@
     ]
   },
   "variantImages": {
-    "21-areas-negro": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-006/9-areas-negro/featured.webp"
-      ]
-    },
-    "9-areas-negro": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-006/9-areas-negro/featured.webp"
-      ]
-    },
-    "21-areas-azul": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-006/9-areas-azul/featured.webp"
-      ]
-    },
-    "9-areas-azul": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-006/9-areas-azul/featured.webp"
-      ]
+    "color": {
+      "21-areas-negro": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-006/9-areas-negro/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "9-areas-negro": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-006/9-areas-negro/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "21-areas-azul": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-006/9-areas-azul/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "9-areas-azul": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-006/9-areas-azul/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }

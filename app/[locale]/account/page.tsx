@@ -109,7 +109,7 @@ export default function AccountPage() {
 
   if (authLoading) {
     return (
-      <main className="flex min-h-[100dvh] items-center justify-center bg-warm-sand px-6 pb-16 pt-24 sm:px-10 lg:px-16">
+      <main className="flex min-h-[100dvh] items-center justify-center bg-gn-page-bg px-6 pb-16 pt-24 sm:px-10 lg:px-16">
         <p className="text-sm text-muted-gray">{t("checkoutPage.loadingAuth")}</p>
       </main>
     );

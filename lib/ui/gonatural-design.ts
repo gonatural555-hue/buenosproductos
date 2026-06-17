@@ -33,6 +33,8 @@ export const GN_COLORS = {
   burntOrange: "#C9622B",
   mustard: "#D9A441",
   cream: "#F4EBDD",
+  pageBg: "#f0f0f0",
+  pdpBg: "#f0f0f0",
   navy: "#2A2E4B",
 } as const;
 

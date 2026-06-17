@@ -7,33 +7,40 @@
     "extras": []
   },
   "variantImages": {
-    "6L": {
-      "featured": [
-        "/assets/images/products/gn-camping-survival-001/featured6L.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-camping-survival-001/gallery1.webp",
-        "/assets/images/products/gn-camping-survival-001/featured.webp"
-      ]
-    },
-    "13.5L": {
-      "featured": [
-        "/assets/images/products/gn-camping-survival-001/featured13.5L.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-camping-survival-001/gallery1.webp",
-        "/assets/images/products/gn-camping-survival-001/featured.webp"
-      ]
-    },
-    "22L": {
-      "featured": [
-        "/assets/images/products/gn-camping-survival-001/featured22L.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-camping-survival-001/gallery1.webp",
-        "/assets/images/products/gn-camping-survival-001/featured.webp"
-      ]
+    "color": {
+      "6L": {
+        "featured": [
+          "/assets/images/products/gn-camping-survival-001/featured6L.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-camping-survival-001/gallery1.webp",
+          "/assets/images/products/gn-camping-survival-001/featured.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "13.5L": {
+        "featured": [
+          "/assets/images/products/gn-camping-survival-001/featured13.5L.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-camping-survival-001/gallery1.webp",
+          "/assets/images/products/gn-camping-survival-001/featured.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "22L": {
+        "featured": [
+          "/assets/images/products/gn-camping-survival-001/featured22L.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-camping-survival-001/gallery1.webp",
+          "/assets/images/products/gn-camping-survival-001/featured.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }
-

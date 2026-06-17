@@ -1,28 +1,6 @@
 import type { Product, ProductVariants } from "@/lib/products";
+import { resolveSwatchHex } from "@/lib/color-swatch";
 import { REVIEWS_SEED } from "@/lib/reviews-data";
-
-const COLOR_HEX: Record<string, string> = {
-  black: "#1a1a1a",
-  negro: "#1a1a1a",
-  white: "#f5f5f0",
-  blanco: "#f5f5f0",
-  navy: "#2A2E4B",
-  azul: "#3d5a80",
-  blue: "#3d5a80",
-  red: "#6E1F28",
-  rojo: "#6E1F28",
-  green: "#2E4A36",
-  verde: "#2E4A36",
-  brown: "#6b4f3a",
-  marron: "#6b4f3a",
-  gray: "#8a8a8a",
-  grey: "#8a8a8a",
-  gris: "#8a8a8a",
-  gold: "#D9A441",
-  orange: "#C9622B",
-  beige: "#d4c4a8",
-  cream: "#F4EBDD",
-};
 
 function normalizeVariants(
   variants?: ProductVariants | ProductVariants[]
@@ -59,11 +37,12 @@ export function getProductColorSwatches(product: Product): ProductColorSwatch[] 
 
   return colorVariant.options.slice(0, 6).map((opt) => {
     const value = opt.value ?? opt.label;
-    const key = value.toLowerCase().trim();
+    const explicitHex =
+      typeof opt.swatchHex === "string" ? opt.swatchHex : null;
     return {
       label: opt.label,
       value,
-      hex: COLOR_HEX[key] ?? "#8a8a8a",
+      hex: resolveSwatchHex(value, opt.label, explicitHex),
     };
   });
 }

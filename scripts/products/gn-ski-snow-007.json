@@ -1,0 +1,121 @@
+{
+  "id": "gn-ski-snow-007",
+  "images": {
+    "featured": [
+      "https://s.alicdn.com/@sc04/kf/H25aba21141104154927298f9914faafdV.jpg?avif=close&webp=close"
+    ],
+    "gallery": [
+      "https://s.alicdn.com/@sc04/kf/H4880b2172d124f178e09a498a74a17ce2.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H14ee9a531de0414c9654d4b58da46681C.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H14ee9a531de0414c9654d4b58da46681C.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H469b08f3a7df45e9950571fb37d81cbfy.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H7ef06a6959f949b391bed51bc97d9cbaG.jpg?avif=close&webp=close"
+    ],
+    "lifestyle": [],
+    "extras": []
+  },
+  "variants": [
+    {
+      "type": "color",
+      "label": "Color",
+      "default": "arroz-blanco",
+      "options": [
+        {
+          "value": "arroz-blanco",
+          "label": "Arroz blanco"
+        },
+        {
+          "value": "gris-oscuro",
+          "label": "Gris oscuro"
+        },
+        {
+          "value": "naranja",
+          "label": "Naranja"
+        },
+        {
+          "value": "gris-claro",
+          "label": "Gris claro"
+        },
+        {
+          "value": "burdeos",
+          "label": "Burdeos"
+        },
+        {
+          "value": "lavanda",
+          "label": "Lavanda"
+        }
+      ]
+    },
+    {
+      "type": "size",
+      "label": "Talla",
+      "default": "55-58",
+      "options": [
+        {
+          "value": "51-54",
+          "label": "51–54 cm"
+        },
+        {
+          "value": "55-58",
+          "label": "55–58 cm"
+        },
+        {
+          "value": "59-61",
+          "label": "59–61 cm"
+        }
+      ]
+    }
+  ],
+  "variantImages": {
+    "color": {
+      "arroz-blanco": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/H25aba21141104154927298f9914faafdV.jpg?avif=close&webp=close"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-oscuro": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/H14b343dcdac741e08b7f25d65968b19ah.jpg"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "naranja": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/H45e303caf73d43979d7101bb436c93d2p.jpg"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-claro": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/Ha1065a97882c4319a440f8d4f86582c9l.jpg"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "burdeos": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/H4d53de7c3eee49d1b40dbea811a3cf28f.jpg"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "lavanda": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/Hb968c904e2254ec3888a99c593749e41r.jpg"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  }
+}

@@ -577,7 +577,19 @@
       "selectSize": "Seleccionar un talle",
       "sizeGuide": "Guía de talles",
       "taxNote": "Precio final; impuestos incluidos donde corresponda.",
-      "reviewSingular": "reseña"
+      "reviewSingular": "reseña",
+      "quantityLabel": "Cantidad",
+      "pickupTitle": "Retiro en tienda",
+      "pickupStatus": "Consultar disponibilidad",
+      "pickupDetail": "Seleccioná color y talle para ver opciones cercanas.",
+      "shippingTitle": "Envío a domicilio",
+      "shippingStatus": "Disponible",
+      "featuresSectionTitle": "Características",
+      "specsSectionTitle": "Especificaciones técnicas"
+    },
+    "brandPage": {
+      "productSingular": "producto",
+      "productPlural": "productos"
     },
     "crossSellTitle": "Seguí explorando",
     "addToCart": "Agregar al carrito",

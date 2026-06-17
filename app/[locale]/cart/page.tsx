@@ -121,7 +121,7 @@ export default function CartPage() {
   return (
     <main
       data-route="cart"
-      className="mx-auto max-w-7xl bg-warm-sand px-4 pb-16 pt-28 sm:px-6 md:pb-20 md:pt-32 lg:px-8"
+      className="mx-auto max-w-7xl bg-gn-page-bg px-4 pb-16 pt-28 sm:px-6 md:pb-20 md:pt-32 lg:px-8"
     >
       <header className="mb-10 md:mb-12 max-w-2xl">
         <p className="text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90 mb-3">

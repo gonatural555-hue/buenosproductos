@@ -11,75 +11,112 @@
     "label": "Color",
     "default": "navy",
     "options": [
-      { "value": "navy", "label": "Navy" },
-      { "value": "azul", "label": "Azul" },
-      { "value": "verde-oscuro", "label": "Verde oscuro" },
-      { "value": "camuflado", "label": "Camuflado" },
-      { "value": "gris-oscuro", "label": "Gris oscuro" },
-      { "value": "khaki", "label": "Khaki" }
+      {
+        "value": "navy",
+        "label": "Navy"
+      },
+      {
+        "value": "azul",
+        "label": "Azul"
+      },
+      {
+        "value": "verde-oscuro",
+        "label": "Verde oscuro"
+      },
+      {
+        "value": "camuflado",
+        "label": "Camuflado"
+      },
+      {
+        "value": "gris-oscuro",
+        "label": "Gris oscuro"
+      },
+      {
+        "value": "khaki",
+        "label": "Khaki"
+      }
     ]
   },
   "variantImages": {
-    "navy": {"featured": [
-      "/assets/images/products/gn-outdoor-008/navy/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  },
-    "azul": {"featured": [
-      "/assets/images/products/gn-outdoor-008/azul/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  },
-    "verde-oscuro": {"featured": [
-      "/assets/images/products/gn-outdoor-008/verde-oscuro/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  },
-    "camuflado": {"featured": [
-      "/assets/images/products/gn-outdoor-008/camuflado/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  },
-    "gris-oscuro": {"featured": [
-      "/assets/images/products/gn-outdoor-008/gris-oscuro/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  },
-    "khaki": {"featured": [
-        "/assets/images/products/gn-outdoor-008/khaki/image.webp"
-    ],
-    "gallery": [
-      "/assets/images/products/gn-outdoor-008/gallery.webp",
-      "/assets/images/products/gn-outdoor-008/gallery1.webp",
-      "/assets/images/products/gn-outdoor-008/gallery2.webp",
-      "/assets/images/products/gn-outdoor-008/gallery3.webp"
-    ]
-  }
+    "color": {
+      "navy": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/navy/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "azul": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/azul/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "verde-oscuro": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/verde-oscuro/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "camuflado": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/camuflado/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-oscuro": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/gris-oscuro/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "khaki": {
+        "featured": [
+          "/assets/images/products/gn-outdoor-008/khaki/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-outdoor-008/gallery.webp",
+          "/assets/images/products/gn-outdoor-008/gallery1.webp",
+          "/assets/images/products/gn-outdoor-008/gallery2.webp",
+          "/assets/images/products/gn-outdoor-008/gallery3.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
   }
 }
-

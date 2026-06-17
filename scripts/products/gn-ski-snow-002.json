@@ -5,68 +5,79 @@
     "gallery": [],
     "lifestyle": [],
     "extras": []
-  }
-,
+  },
   "variantImages": {
-    "negro": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
-      ]
-    },
-    "sapphire": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"  
-      ]
-    },
-    "verde-militar": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
-      ]
-    },
-    "rojo": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
-      ]
-    },
-    "caqui": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-002/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
-        "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
-        "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
-      ]
+    "color": {
+      "negro": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "sapphire": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "verde-militar": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "rojo": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "caqui": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-002/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-002/sapphire/image.webp",
+          "/assets/images/products/gn-ski-snow-002/verde-militar/image.webp",
+          "/assets/images/products/gn-ski-snow-002/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-002/caqui/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }

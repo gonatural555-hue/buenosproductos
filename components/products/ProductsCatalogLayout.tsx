@@ -58,12 +58,10 @@ export default function ProductsCatalogLayout({
   clearAllFiltersLabel = "",
 }: ProductsCatalogLayoutProps) {
   const isPatagonia = visualStyle === "patagonia";
-  const surfaceBg = isPatagonia
-    ? "bg-white"
-    : surface === "white"
-      ? "bg-white"
-      : "bg-[#F4EBDD]";
-  const rootClass = isPatagonia ? plpPatagoniaClasses.page : `${surfaceBg} text-dark-base`;
+  const surfaceBg = "bg-gn-page-bg";
+  const rootClass = isPatagonia
+    ? plpPatagoniaClasses.page
+    : `${surfaceBg} text-dark-base`;
 
   return (
     <div className={rootClass}>

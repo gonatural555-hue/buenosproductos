@@ -8,6 +8,8 @@ export interface VariantOption {
   label: string;
   value?: string;
   priceModifier?: number;
+  /** Color visual del swatch (PDP + cards). Ej: "#EDE6D6" */
+  swatchHex?: string;
   [key: string]: any; // Permite propiedades adicionales (rodType, length, etc.)
 }
 

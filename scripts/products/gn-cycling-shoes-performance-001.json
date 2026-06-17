@@ -21,7 +21,9 @@
         ],
         "gallery": [
           "/assets/images/products/gn-cycling-shoes-performance-001/gn-cycling-shoes-performance-gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "red": {
         "featured": [
@@ -29,7 +31,9 @@
         ],
         "gallery": [
           "/assets/images/products/gn-cycling-shoes-performance-001/gn-cycling-shoes-performance-gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "white": {
         "featured": [
@@ -37,9 +41,10 @@
         ],
         "gallery": [
           "/assets/images/products/gn-cycling-shoes-performance-001/gn-cycling-shoes-performance-gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       }
     }
   }
 }
-

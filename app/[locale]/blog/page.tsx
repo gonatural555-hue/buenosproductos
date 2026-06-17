@@ -108,7 +108,7 @@ export default async function BlogPage({
   });
 
   return (
-    <main data-hero-bleed className="bg-[#F4EBDD] text-dark-base">
+    <main data-hero-bleed className="bg-gn-page-bg text-dark-base">
       <BlogEditorialHero
         locale={locale}
         title={blogTitle}
@@ -149,7 +149,7 @@ export default async function BlogPage({
 
       {quotes[1] ? <QuoteBlock text={quotes[1]} /> : null}
 
-      <section className="border-y border-earth-brown/12 bg-warm-sand py-16 md:py-24">
+      <section className="border-y border-earth-brown/12 bg-gn-page-bg py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6 sm:px-10 lg:px-12">
           <ScrollReveal>
             <p className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-accent-gold">

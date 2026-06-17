@@ -1,45 +1,61 @@
 {
   "id": "gn-water-004",
   "images": {
-    "featured": [
-      
-    ],
-    "gallery": [
-
-    ],
+    "featured": [],
+    "gallery": [],
     "lifestyle": [],
     "extras": []
   },
   "variantImages": {
-    "gris": {
-      "featured": [
-        "/assets/images/products/gn-water-004/gris/featured.webp"
-      ]
-    },
-    "azul": {
-      "featured": [
-        "/assets/images/products/gn-water-004/azul/featured.webp"
-      ]
-    },
-    "turquesa": {
-      "featured": [
-        "/assets/images/products/gn-water-004/turquesa/featured.webp"
-      ]
-    },
-    "blanco": {
-      "featured": [
-        "/assets/images/products/gn-water-004/blanco/featured.webp"
-      ]
-    },
-    "rosa": {
-      "featured": [
-        "/assets/images/products/gn-water-004/rosa/featured.webp"
-      ]
-    },
-    "negro": {
-      "featured": [
-        "/assets/images/products/gn-water-004/negro/featured.webp"
-      ]
+    "color": {
+      "gris": {
+        "featured": [
+          "/assets/images/products/gn-water-004/gris/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "azul": {
+        "featured": [
+          "/assets/images/products/gn-water-004/azul/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "turquesa": {
+        "featured": [
+          "/assets/images/products/gn-water-004/turquesa/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blanco": {
+        "featured": [
+          "/assets/images/products/gn-water-004/blanco/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "rosa": {
+        "featured": [
+          "/assets/images/products/gn-water-004/rosa/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro": {
+        "featured": [
+          "/assets/images/products/gn-water-004/negro/featured.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }

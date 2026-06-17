@@ -93,7 +93,7 @@ export default async function GoNaturalHomePage({
       data-hero-bleed
       className="relative flex min-h-screen flex-col overflow-x-hidden text-dark-base"
     >
-      <div className="bg-white">
+      <div className="bg-gn-page-bg">
         <Suspense fallback={null}>
           <ProductsHero locale={locale} />
         </Suspense>
@@ -103,7 +103,7 @@ export default async function GoNaturalHomePage({
         </Suspense>
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col bg-[#F4EBDD]">
+      <div className="relative z-10 flex flex-1 flex-col bg-gn-page-bg">
         <FeaturedProducts
           products={products}
           locale={locale}

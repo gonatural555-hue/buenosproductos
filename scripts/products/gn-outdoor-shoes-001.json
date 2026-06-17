@@ -21,7 +21,9 @@
         ],
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-001/gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "gold": {
         "featured": [
@@ -29,7 +31,9 @@
         ],
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-001/gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "grey": {
         "featured": [
@@ -37,9 +41,10 @@
         ],
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-001/gallery.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       }
     }
   }
 }
-

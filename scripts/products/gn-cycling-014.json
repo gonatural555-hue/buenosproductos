@@ -7,50 +7,59 @@
     "extras": []
   },
   "variantImages": {
-    "rojo": {
-      "featured": [
-        "/assets/images/products/gn-cycling-014/rojo/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-014/rojo/image.webp",
-        "/assets/images/products/gn-cycling-014/negro/image.webp",
-        "/assets/images/products/gn-cycling-014/azul/image.webp",
-        "/assets/images/products/gn-cycling-014/celeste/image.webp"
-      ]
-    },
-    "negro": {
-      "featured": [
-        "/assets/images/products/gn-cycling-014/negro/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-014/rojo/image.webp",
-        "/assets/images/products/gn-cycling-014/negro/image.webp",
-        "/assets/images/products/gn-cycling-014/azul/image.webp",
-        "/assets/images/products/gn-cycling-014/celeste/image.webp"
-      ]
-    },
-    "azul": {
-      "featured": [
-        "/assets/images/products/gn-cycling-014/azul/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-014/rojo/image.webp",
-        "/assets/images/products/gn-cycling-014/negro/image.webp",
-        "/assets/images/products/gn-cycling-014/azul/image.webp",
-        "/assets/images/products/gn-cycling-014/celeste/image.webp"
-      ]
-    },
-    "celeste": {
-      "featured": [
-        "/assets/images/products/gn-cycling-014/celeste/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-014/rojo/image.webp",
-        "/assets/images/products/gn-cycling-014/negro/image.webp",
-        "/assets/images/products/gn-cycling-014/azul/image.webp",
-        "/assets/images/products/gn-cycling-014/celeste/image.webp"
-      ]
+    "color": {
+      "rojo": {
+        "featured": [
+          "/assets/images/products/gn-cycling-014/rojo/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-014/rojo/image.webp",
+          "/assets/images/products/gn-cycling-014/negro/image.webp",
+          "/assets/images/products/gn-cycling-014/azul/image.webp",
+          "/assets/images/products/gn-cycling-014/celeste/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro": {
+        "featured": [
+          "/assets/images/products/gn-cycling-014/negro/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-014/rojo/image.webp",
+          "/assets/images/products/gn-cycling-014/negro/image.webp",
+          "/assets/images/products/gn-cycling-014/azul/image.webp",
+          "/assets/images/products/gn-cycling-014/celeste/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "azul": {
+        "featured": [
+          "/assets/images/products/gn-cycling-014/azul/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-014/rojo/image.webp",
+          "/assets/images/products/gn-cycling-014/negro/image.webp",
+          "/assets/images/products/gn-cycling-014/azul/image.webp",
+          "/assets/images/products/gn-cycling-014/celeste/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "celeste": {
+        "featured": [
+          "/assets/images/products/gn-cycling-014/celeste/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-014/rojo/image.webp",
+          "/assets/images/products/gn-cycling-014/negro/image.webp",
+          "/assets/images/products/gn-cycling-014/azul/image.webp",
+          "/assets/images/products/gn-cycling-014/celeste/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }
-

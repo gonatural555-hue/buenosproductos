@@ -10,11 +10,16 @@ import { locales, type Locale } from "@/lib/i18n/config";
 import { buildMetadata, formatTemplate } from "@/lib/seo";
 import ProductDetailClient from "@/components/ProductDetailClient";
 import ProductReviews from "@/components/ProductReviews";
-import PdpBenefitsSection from "@/components/pdp/PdpBenefitsSection";
+import PdpFeaturesSpecsSection, {
+  parseFeatureSpecRows,
+} from "@/components/pdp/PdpFeaturesSpecsSection";
 import PdpImageStorySection from "@/components/pdp/PdpImageStorySection";
-import PdpSpecsAccordion from "@/components/pdp/PdpSpecsAccordion";
 import PdpRelatedProductsRail from "@/components/pdp/PdpRelatedProductsRail";
 import { REVIEWS_SEED, getReviewsByProductSlug } from "@/lib/reviews-data";
+import {
+  getBrandPageHref,
+  resolveProductBrand,
+} from "@/lib/pdp-brand";
 
 type Props = {
   params: Promise<{
@@ -162,7 +167,7 @@ export default async function ProductPage({ params }: Props) {
 
   if (!product) {
     return (
-      <main className="mx-auto max-w-6xl bg-[#F4EBDD] px-4 py-20 text-neutral-900">
+      <main className="mx-auto max-w-6xl bg-gn-page-bg px-4 py-20 text-neutral-900">
         <h1 className="font-sans text-2xl font-semibold">Producto no encontrado</h1>
       </main>
     );
@@ -243,6 +248,7 @@ export default async function ProductPage({ params }: Props) {
     localizedProduct.features && localizedProduct.features.length > 0
       ? localizedProduct.features
       : benefits;
+
   const pdpDesktop = {
     benefitsTitle: t("productPage.pdpDesktop.benefitsTitle"),
     specsToggle: t("productPage.pdpDesktop.specsToggle"),
@@ -265,29 +271,6 @@ export default async function ProductPage({ params }: Props) {
     idealForLine: idealFor.join(" · "),
   };
 
-  const detailLines = [
-    useCase,
-    whyBetter,
-    `${t("productPage.pdpDesktop.idealForLabel")} ${idealFor.join(" · ")}`,
-    ...(localizedProduct.longDescription ?? []),
-  ].filter((line) => line && line.trim().length > 0);
-
-  const accordionItems: { id: string; title: string; lines: string[] }[] = [];
-  if (specSource.length > 0) {
-    accordionItems.push({
-      id: "specs",
-      title: t("productPage.pdpDesktop.specsAccordionTitle"),
-      lines: specSource.slice(0, 12),
-    });
-  }
-  if (detailLines.length > 0) {
-    accordionItems.push({
-      id: "details",
-      title: t("productPage.pdpDesktop.detailsAccordionTitle"),
-      lines: detailLines,
-    });
-  }
-
   const reviewsLinkLabel =
     reviews.length > 0
       ? `${reviews.length} ${
@@ -298,9 +281,22 @@ export default async function ProductPage({ params }: Props) {
       : undefined;
 
   const isCyclingTraining001 = product.id === "gn-cycling-training-001";
+  const brandLabel = resolveProductBrand(localizedProduct);
+  const brandHref = getBrandPageHref(locale, brandLabel);
+  const availabilityCopy = {
+    pickupTitle: t("productPage.pdpDesktop.pickupTitle"),
+    pickupStatus: t("productPage.pdpDesktop.pickupStatus"),
+    pickupDetail: t("productPage.pdpDesktop.pickupDetail"),
+    shippingTitle: t("productPage.pdpDesktop.shippingTitle"),
+    shippingStatus: product.freeShipping
+      ? t("productPage.freeShipping")
+      : t("productPage.pdpDesktop.shippingStatus"),
+    shippingDetail: pdpDesktop.shippingEurope,
+  };
+  const featureSpecRows = parseFeatureSpecRows(specSource.slice(0, 10));
 
   return (
-      <main className="overflow-x-hidden bg-[#F4EBDD] text-neutral-900">
+      <main className="overflow-x-hidden bg-gn-page-bg text-neutral-900">
       <div
         className={
           isCyclingTraining001
@@ -325,6 +321,10 @@ export default async function ProductPage({ params }: Props) {
           selectSizeLabel={t("productPage.pdpDesktop.selectSize")}
           sizeGuideLabel={t("productPage.pdpDesktop.sizeGuide")}
           sizeGuideHref={`/${locale}/contact`}
+          quantityLabel={t("productPage.pdpDesktop.quantityLabel")}
+          availabilityCopy={availabilityCopy}
+          brandLabel={brandLabel}
+          brandHref={brandHref}
           mobileStickyTrustLines={[
             t("productPage.pdpDesktop.mobileStickyLine1"),
             t("productPage.pdpDesktop.mobileStickyLine2"),
@@ -359,6 +359,14 @@ export default async function ProductPage({ params }: Props) {
         </div>
       )}
 
+      <PdpFeaturesSpecsSection
+        featuresTitle={t("productPage.pdpDesktop.featuresSectionTitle")}
+        specsTitle={t("productPage.pdpDesktop.specsSectionTitle")}
+        features={benefits}
+        specRows={featureSpecRows}
+        surface="light"
+      />
+
       <ProductReviews
         productSlug={productSlug}
         reviews={REVIEWS_SEED}
@@ -371,14 +379,6 @@ export default async function ProductPage({ params }: Props) {
         />
       )}
 
-      {pdpDesktop.benefits.length > 0 ? (
-        <PdpBenefitsSection
-          title={t("productPage.pdpDesktop.benefitsSectionHeading")}
-          bullets={pdpDesktop.benefits}
-          surface="light"
-        />
-      ) : null}
-
       {productImages.lifestyle.length > 0 ? (
         <PdpImageStorySection
           imageSrc={productImages.lifestyle[0]}
@@ -386,10 +386,6 @@ export default async function ProductPage({ params }: Props) {
           overlayText={t("homePage.imageStoryTitle")}
           surface="light"
         />
-      ) : null}
-
-      {accordionItems.length > 0 ? (
-        <PdpSpecsAccordion items={accordionItems} surface="light" />
       ) : null}
 
       {productImages.extras.length > 0 ? (

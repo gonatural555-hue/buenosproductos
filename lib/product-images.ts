@@ -1,5 +1,11 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
+import {
+  parsePdpGalleryLayout,
+  type PdpGalleryLayout,
+} from "@/lib/pdp-gallery-framing";
+
+export type { PdpGalleryLayout };
 
 export interface ProductImages {
   featured: string | null;
@@ -7,6 +13,7 @@ export interface ProductImages {
   lifestyle: string[];
   extras: string[];
   variantImages?: VariantImagesMap | VariantImagesValueMap;
+  pdpGalleryLayout?: PdpGalleryLayout | null;
 }
 
 export interface VariantImageSet {
@@ -28,6 +35,7 @@ interface ProductJson {
     extras: string[];
   };
   variantImages?: VariantImagesMap | VariantImagesValueMap;
+  pdpGalleryLayout?: unknown;
 }
 
 /**
@@ -45,6 +53,7 @@ export async function getProductImages(
     lifestyle: [],
     extras: [],
     variantImages: undefined,
+    pdpGalleryLayout: null,
   };
 
   try {
@@ -72,6 +81,10 @@ export async function getProductImages(
       console.warn(
         `⚠️  Producto ${productId}: El 'id' en el JSON (${productData.id}) no coincide con el productId`
       );
+    }
+
+    if (productData.pdpGalleryLayout != null) {
+      result.pdpGalleryLayout = parsePdpGalleryLayout(productData.pdpGalleryLayout);
     }
 
     // Extraer imágenes desde el JSON

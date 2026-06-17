@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import AddedToCartModal, {
   type AddedToCartLineSnapshot,
 } from "@/components/AddedToCartModal";
@@ -8,22 +9,21 @@ import AddToCartButton, {
   type AddToCartLinePayload,
 } from "@/components/AddToCartButton";
 import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
-import ProductGallery from "@/components/pdp/ProductGallery";
+import ProductGalleryRei from "@/components/pdp/ProductGalleryRei";
+import PdpGalleryFramingPanel from "@/components/pdp/PdpGalleryFramingPanel";
 import ProductInfoPanel from "@/components/pdp/ProductInfoPanel";
-import VariantSelector from "@/components/VariantSelector";
+import type { AvailabilityCopy } from "@/components/pdp/PdpAvailabilityCards";
 import { splitVariantDefinitions } from "@/lib/pdp-variant-utils";
-import type {
-  ProductImages,
-  VariantImagesMap,
-  VariantImagesValueMap,
-  VariantImageSet,
-} from "@/lib/product-images";
-import type {
-  ProductVariants,
-  VariantDefinition,
-} from "@/lib/product-variants";
+import { resolveColorVariantActiveImages } from "@/lib/variant-image-utils";
+import type { ProductImages } from "@/lib/product-images";
+import {
+  isPdpGalleryFramingDirectorMode,
+  loadPdpGalleryFramingDraft,
+  normalizePdpGalleryLayout,
+  type PdpGalleryLayout,
+} from "@/lib/pdp-gallery-framing";
+import type { ProductVariants, VariantDefinition } from "@/lib/product-variants";
 import { trackViewItem } from "@/lib/analytics/ga4";
-import { PDP_HERO_WIDE_PRODUCT_IDS } from "@/lib/pdp-star-products";
 import type { UISurface } from "@/lib/ui-surface";
 
 type ProductSummary = {
@@ -69,7 +69,10 @@ type Props = {
   selectSizeLabel: string;
   sizeGuideLabel: string;
   sizeGuideHref?: string;
-  /** Textos bajo CTA móvil (confianza) */
+  quantityLabel?: string;
+  availabilityCopy?: AvailabilityCopy;
+  brandLabel?: string;
+  brandHref?: string;
   mobileStickyTrustLines: [string, string, string];
   cartBrand?: "go-natural" | "good-ideas";
   cartPath?: string;
@@ -98,6 +101,52 @@ function getDefaultSelections(variants: VariantDefinition[]) {
   return selections;
 }
 
+function buildInfoPanelProps(
+  common: {
+    productId: string;
+    surface: UISurface;
+    brandLabel?: string;
+    brandHref?: string;
+    seoH1: string;
+    resolvedPrice: number;
+    freeShipping?: boolean;
+    freeShippingLabel?: string;
+    taxNote?: string | null;
+    reviewsAverage: number;
+    reviewsCount: number;
+    reviewsLinkLabel?: string;
+    productVariants: ProductVariants | null;
+    colorDef?: VariantDefinition;
+    sizeDef?: VariantDefinition;
+    otherVariantDefs: VariantDefinition[];
+    selections: Record<string, string>;
+    onSelectionsChange: (next: Record<string, string>) => void;
+    quantity: number;
+    onQuantityChange: (next: number) => void;
+    quantityLabel: string;
+    availabilityCopy: AvailabilityCopy;
+    sizeGuideHref?: string;
+    sizeGuideLabel: string;
+    selectSizeLabel: string;
+    ctaLabel: string;
+    pdpDesktop: PdpDesktopContent;
+    cartPayload: {
+      id: string;
+      title: string;
+      price: number;
+      image?: string;
+      variantSelections?: AddToCartLinePayload["variantSelections"];
+    };
+    onAfterAdd: (item: AddToCartLinePayload) => void;
+    cartBrand: "go-natural" | "good-ideas";
+    sizeConfirmed: boolean;
+    onSizeInteract: () => void;
+  },
+  sticky: boolean
+) {
+  return { ...common, sticky };
+}
+
 export default function ProductDetailClient({
   product,
   seoH1,
@@ -115,15 +164,40 @@ export default function ProductDetailClient({
   selectSizeLabel,
   sizeGuideLabel,
   sizeGuideHref,
+  quantityLabel = "Quantity",
+  availabilityCopy = {
+    pickupTitle: "Store pickup",
+    pickupStatus: "Check availability",
+    shippingTitle: "Shipping",
+    shippingStatus: "Available",
+  },
+  brandLabel,
+  brandHref,
   mobileStickyTrustLines,
   cartBrand = "go-natural",
   cartPath,
 }: Props) {
   const L = surface === "light";
-  /** Gafas / horizontales: ver `lib/pdp-star-products.ts`. Pantalón ski: solo móvil legacy. */
-  const useWideHeroGallery = PDP_HERO_WIDE_PRODUCT_IDS.has(product.id);
-  /** Evita que la columna de galería estire la fila y deje hueco enorme sobre el vídeo (solo este PDP). */
-  const tightGalleryToVideo = product.id === "gn-cycling-training-001";
+  const searchParams = useSearchParams();
+  const isFramingDirector = isPdpGalleryFramingDirectorMode(
+    searchParams,
+    product.id
+  );
+  const [galleryLayout, setGalleryLayout] = useState<PdpGalleryLayout>(() =>
+    normalizePdpGalleryLayout(productImages.pdpGalleryLayout)
+  );
+  const [framingImageIndex, setFramingImageIndex] = useState(0);
+
+  useEffect(() => {
+    const fromJson = normalizePdpGalleryLayout(productImages.pdpGalleryLayout);
+    if (isFramingDirector) {
+      const draft = loadPdpGalleryFramingDraft(product.id);
+      setGalleryLayout(draft ? normalizePdpGalleryLayout(draft) : fromJson);
+    } else {
+      setGalleryLayout(fromJson);
+    }
+  }, [isFramingDirector, product.id, productImages.pdpGalleryLayout]);
+
   const baseFeatured =
     productImages.featured || product.images[0] || "";
   const baseGallery =
@@ -139,7 +213,7 @@ export default function ProductDetailClient({
   const [selections, setSelections] = useState<Record<string, string>>(
     initialSelections
   );
-
+  const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState<AddedToCartLineSnapshot | null>(
     null
   );
@@ -155,7 +229,8 @@ export default function ProductDetailClient({
 
   useEffect(() => {
     setSelections(initialSelections);
-  }, [initialSelections]);
+    setQuantity(1);
+  }, [initialSelections, product.id]);
 
   useEffect(() => {
     trackViewItem({
@@ -173,65 +248,12 @@ export default function ProductDetailClient({
       gallery: baseGallery,
     };
 
-    if (!productImages.variantImages || Object.keys(selections).length === 0) {
-      return defaultImages;
-    }
-
-    let variant: VariantImageSet | string[] | undefined;
-
-    if (productVariants) {
-      for (const variantDef of productVariants.variants) {
-        const selectedValue = selections[variantDef.type];
-        if (!selectedValue) continue;
-
-        const typedMap = (productImages.variantImages as VariantImagesMap)[
-          variantDef.type
-        ];
-        if (typedMap && typedMap[selectedValue]) {
-          variant = typedMap[selectedValue];
-          break;
-        }
-      }
-    }
-
-    if (!variant) {
-      const flatMap = productImages.variantImages as VariantImagesValueMap;
-      const selectedValues = Object.values(selections);
-      for (const value of selectedValues) {
-        if (flatMap[value]) {
-          variant = flatMap[value];
-          break;
-        }
-      }
-    }
-
-    if (!variant) {
-      return defaultImages;
-    }
-
-    if (Array.isArray(variant)) {
-      return {
-        featured: variant[0] ?? defaultImages.featured,
-        gallery: variant.length ? variant : defaultImages.gallery,
-      };
-    }
-
-    const featArr = variant.featured;
-    const galArr = variant.gallery;
-    const featuredUrls = Array.isArray(featArr)
-      ? featArr.filter((u): u is string => Boolean(u))
-      : [];
-    const galleryUrls = Array.isArray(galArr)
-      ? galArr.filter((u): u is string => Boolean(u))
-      : [];
-
-    const fallbackThumbs =
-      featuredUrls.length > 0 ? featuredUrls : defaultImages.gallery;
-
-    return {
-      featured: featuredUrls[0] ?? defaultImages.featured,
-      gallery: galleryUrls.length > 0 ? galleryUrls : fallbackThumbs,
-    };
+    return resolveColorVariantActiveImages(
+      productImages,
+      productVariants,
+      selections,
+      defaultImages
+    );
   }, [
     baseFeatured,
     baseGallery,
@@ -284,10 +306,6 @@ export default function ProductDetailClient({
 
   const cartImage = activeImages.featured || product.images[0];
 
-  const desktopDescription =
-    product.shortDescription?.trim() || product.description;
-
-  /** Solo fotos de producto en la galería principal; lifestyle / extras van abajo en la página. */
   const pdpGalleryImages = useMemo(() => {
     const list: string[] = [];
     const push = (url: string) => {
@@ -305,126 +323,103 @@ export default function ProductDetailClient({
       [productVariants]
     );
 
-  const galleryAspect = useWideHeroGallery ? "cinematic" : "square";
+  const needsSizePick = Boolean(sizeDef);
+  const [sizeConfirmed, setSizeConfirmed] = useState(!sizeDef);
+  useEffect(() => {
+    setSizeConfirmed(!sizeDef);
+  }, [product.id, sizeDef]);
+
+  const ctaDisabled = needsSizePick && !sizeConfirmed;
+  const mobileCtaText = ctaDisabled ? selectSizeLabel : ctaLabel;
+
+  const panelCommon = {
+    productId: product.id,
+    surface,
+    brandLabel,
+    brandHref,
+    seoH1,
+    resolvedPrice,
+    freeShipping: product.freeShipping,
+    freeShippingLabel,
+    taxNote,
+    reviewsAverage,
+    reviewsCount,
+    reviewsLinkLabel,
+    productVariants,
+    colorDef,
+    sizeDef,
+    otherVariantDefs,
+    selections,
+    onSelectionsChange: setSelections,
+    quantity,
+    onQuantityChange: setQuantity,
+    quantityLabel,
+    availabilityCopy,
+    sizeGuideHref,
+    sizeGuideLabel,
+    selectSizeLabel,
+    ctaLabel,
+    pdpDesktop,
+    cartPayload: {
+      id: product.id,
+      title: product.title,
+      price: resolvedPrice,
+      image: cartImage,
+      variantSelections,
+    },
+    onAfterAdd: handleAfterAddToCart,
+    cartBrand,
+    sizeConfirmed,
+    onSizeInteract: () => setSizeConfirmed(true),
+  };
+
+  const gallery = (
+    <ProductGalleryRei
+      images={pdpGalleryImages}
+      title={product.title}
+      noImageLabel={noImageLabel}
+      surface={surface}
+      galleryLayout={galleryLayout}
+      debugHighlightIndex={isFramingDirector ? framingImageIndex : null}
+    />
+  );
 
   return (
     <>
-      {/* Mobile: galería + mismo panel editorial que desktop */}
-      <section className="mx-auto grid max-w-full gap-5 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-0 max-lg:-mx-1 max-lg:gap-6 sm:max-lg:-mx-0 lg:hidden">
-        <div className="min-w-0 w-[calc(100%+2rem)] max-lg:-mx-4 sm:max-lg:w-full sm:max-lg:mx-0">
-          <ProductGallery
-            images={pdpGalleryImages}
-            title={product.title}
-            noImageLabel={noImageLabel}
-            surface={surface}
-            aspectMode={galleryAspect}
-          />
-        </div>
-        <ProductInfoPanel
-          productId={product.id}
-          surface={surface}
-          seoH1={seoH1}
-          description={desktopDescription}
-          resolvedPrice={resolvedPrice}
-          freeShipping={product.freeShipping}
-          freeShippingLabel={freeShippingLabel}
-          taxNote={taxNote}
-          reviewsAverage={reviewsAverage}
-          reviewsCount={reviewsCount}
-          reviewsLinkLabel={reviewsLinkLabel}
-          productVariants={productVariants}
-          colorDef={colorDef}
-          sizeDef={sizeDef}
-          otherVariantDefs={otherVariantDefs}
-          selections={selections}
-          onSelectionsChange={setSelections}
-          sizeGuideHref={sizeGuideHref}
-          sizeGuideLabel={sizeGuideLabel}
-          selectSizeLabel={selectSizeLabel}
-          ctaLabel={ctaLabel}
-          trustMicrocopy={pdpDesktop.trustMicrocopy}
-          pdpDesktop={pdpDesktop}
-          cartPayload={{
-            id: product.id,
-            title: product.title,
-            price: resolvedPrice,
-            image: cartImage,
-            variantSelections,
-          }}
-          onAfterAdd={handleAfterAddToCart}
-          cartBrand={cartBrand}
-        />
+      {/* Mobile: imágenes primero, panel de compra debajo */}
+      <section className="mx-auto grid max-w-full gap-6 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-0 lg:hidden">
+        <div className="min-w-0">{gallery}</div>
+        <ProductInfoPanel {...buildInfoPanelProps(panelCommon, false)} />
       </section>
 
-      {/* Desktop: galería estirada en columna 1 + menos hueco horizontal entre columnas */}
-      <section
-        className={[
-          "hidden max-w-full items-start gap-y-10 lg:grid lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] lg:gap-x-7 lg:gap-y-10 xl:grid-cols-[minmax(0,1.38fr)_minmax(0,0.62fr)] xl:gap-x-9 2xl:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] 2xl:gap-x-10",
-          tightGalleryToVideo ? "lg:content-start" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        <div
-          className={[
-            "min-w-0 w-full justify-self-stretch lg:w-full",
-            tightGalleryToVideo ? "lg:self-start" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          <ProductGallery
-            images={pdpGalleryImages}
-            title={product.title}
-            noImageLabel={noImageLabel}
-            surface={surface}
-            aspectMode={galleryAspect}
-          />
-        </div>
+      {/*
+        Desktop REI: 68/32 — panel sticky dentro de la fila del grid.
+        El sticky termina al final de esta sección (antes de Features).
+      */}
+      <section className="hidden lg:grid lg:grid-cols-[minmax(0,1.68fr)_minmax(280px,0.32fr)] lg:items-start lg:gap-x-10 xl:gap-x-12">
+        <div className="min-w-0">{gallery}</div>
         <div className="min-w-0">
-          <ProductInfoPanel
-            productId={product.id}
-            surface={surface}
-            seoH1={seoH1}
-            description={desktopDescription}
-            resolvedPrice={resolvedPrice}
-            freeShipping={product.freeShipping}
-            freeShippingLabel={freeShippingLabel}
-            taxNote={taxNote}
-            reviewsAverage={reviewsAverage}
-            reviewsCount={reviewsCount}
-            reviewsLinkLabel={reviewsLinkLabel}
-            productVariants={productVariants}
-            colorDef={colorDef}
-            sizeDef={sizeDef}
-            otherVariantDefs={otherVariantDefs}
-            selections={selections}
-            onSelectionsChange={setSelections}
-            sizeGuideHref={sizeGuideHref}
-            sizeGuideLabel={sizeGuideLabel}
-            selectSizeLabel={selectSizeLabel}
-            ctaLabel={ctaLabel}
-            trustMicrocopy={pdpDesktop.trustMicrocopy}
-            pdpDesktop={pdpDesktop}
-            cartPayload={{
-              id: product.id,
-              title: product.title,
-              price: resolvedPrice,
-              image: cartImage,
-              variantSelections,
-            }}
-            onAfterAdd={handleAfterAddToCart}
-            cartBrand={cartBrand}
-          />
+          <ProductInfoPanel {...buildInfoPanelProps(panelCommon, true)} />
         </div>
       </section>
 
-      {/* Mobile: Sticky CTA con microcopy */}
+      {isFramingDirector ? (
+        <PdpGalleryFramingPanel
+          productId={product.id}
+          imageCount={pdpGalleryImages.length}
+          layout={galleryLayout}
+          onChange={setGalleryLayout}
+          selectedIndex={framingImageIndex}
+          onSelectIndex={setFramingImageIndex}
+        />
+      ) : null}
+
+      {/* Sticky CTA móvil */}
       <div
         className={
           L
-            ? "fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-neutral-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] pt-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
-            : "fixed bottom-0 left-0 right-0 z-50 bg-dark-base/98 backdrop-blur-md border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] pt-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+            ? "fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+            : "fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-dark-base/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
         }
       >
         <div className="mx-auto max-w-full">
@@ -447,8 +442,9 @@ export default function ProductDetailClient({
               price={resolvedPrice}
               image={cartImage}
               variantSelections={variantSelections}
-              label={ctaLabel}
-              className="mt-0 w-full rounded-full py-3.5 text-base transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              label={mobileCtaText}
+              disabled={ctaDisabled}
+              className="mt-0 w-full rounded-md py-3.5 text-base"
               onAfterAdd={handleAfterAddToCart}
             />
           ) : (
@@ -458,8 +454,11 @@ export default function ProductDetailClient({
               price={resolvedPrice}
               image={cartImage}
               variantSelections={variantSelections}
-              label={ctaLabel}
-              className="mt-0 w-full rounded-full py-3.5 text-base transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              label={mobileCtaText}
+              disabled={ctaDisabled}
+              variant="forest"
+              quantity={quantity}
+              className="mt-0 w-full rounded-md py-3.5 text-base"
               surface={surface}
               onAfterAdd={handleAfterAddToCart}
             />
@@ -468,22 +467,16 @@ export default function ProductDetailClient({
           <div
             className={
               L
-                ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] text-neutral-500 leading-tight"
-                : "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] text-text-muted/70 leading-tight"
+                ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-neutral-500"
+                : "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-text-muted/70"
             }
           >
             <span>{mobileStickyTrustLines[0]}</span>
-            <span
-              aria-hidden
-              className={L ? "text-neutral-300" : "text-white/25"}
-            >
+            <span aria-hidden className={L ? "text-neutral-300" : "text-white/25"}>
               ·
             </span>
             <span>{mobileStickyTrustLines[1]}</span>
-            <span
-              aria-hidden
-              className={L ? "text-neutral-300" : "text-white/25"}
-            >
+            <span aria-hidden className={L ? "text-neutral-300" : "text-white/25"}>
               ·
             </span>
             <span>{mobileStickyTrustLines[2]}</span>

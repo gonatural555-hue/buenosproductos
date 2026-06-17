@@ -19,7 +19,7 @@ export default function LegalPage({
   closing,
 }: LegalPageProps) {
   return (
-    <main className="bg-warm-sand">
+    <main className="bg-gn-page-bg">
       <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-16 md:py-20 space-y-12">
         <header className="space-y-5">
           <h1 className="font-sans text-3xl md:text-4xl font-semibold text-text-primary">

@@ -13,65 +13,103 @@
     ]
   },
   "variantImages": {
-    "10l-yellow": {
-      "featured": [
-        "/assets/images/products/gn-water-006/10l-yellow/image.webp"
-      ]
-    },
-    "10l-black": {
-      "featured": [
-        "/assets/images/products/gn-water-006/10l-black/image.webp"
-      ]
-    },
-    "20l-yellow": {
-      "featured": [
-        "/assets/images/products/gn-water-006/20l-yellow/image.webp"
-      ]
-    },
-    "20l-black": {
-      "featured": [
-        "/assets/images/products/gn-water-006/20l-black/image.webp"
-      ]
-    },
-    "30l-yellow": {
-      "featured": [
-        "/assets/images/products/gn-water-006/30l-yellow/image.webp"
-      ]
-    },
-    "30l-black": {
-      "featured": [
-        "/assets/images/products/gn-water-006/30l-black/image.webp"
-      ]
-    },
-    "30l-green": {
-      "featured": [
-        "/assets/images/products/gn-water-006/30l-green/image.webp"
-      ]
-    },
-    "30l-coffee": {
-      "featured": [
-        "/assets/images/products/gn-water-006/30l-coffee/image.webp"
-      ]
-    },
-    "40l-yellow": {
-      "featured": [
-        "/assets/images/products/gn-water-006/40l-yellow/image.webp"
-      ]
-    },
-    "40l-black": {
-      "featured": [
-        "/assets/images/products/gn-water-006/40l-black/image.webp"
-      ]
-    },
-    "40l-green": {
-      "featured": [
-        "/assets/images/products/gn-water-006/40l-green/image.webp"
-      ]
-    },
-    "40l-coffee": {
-      "featured": [
-        "/assets/images/products/gn-water-006/40l-coffee/image.webp"
-      ]
+    "color": {
+      "10l-yellow": {
+        "featured": [
+          "/assets/images/products/gn-water-006/10l-yellow/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "10l-black": {
+        "featured": [
+          "/assets/images/products/gn-water-006/10l-black/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "20l-yellow": {
+        "featured": [
+          "/assets/images/products/gn-water-006/20l-yellow/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "20l-black": {
+        "featured": [
+          "/assets/images/products/gn-water-006/20l-black/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "30l-yellow": {
+        "featured": [
+          "/assets/images/products/gn-water-006/30l-yellow/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "30l-black": {
+        "featured": [
+          "/assets/images/products/gn-water-006/30l-black/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "30l-green": {
+        "featured": [
+          "/assets/images/products/gn-water-006/30l-green/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "30l-coffee": {
+        "featured": [
+          "/assets/images/products/gn-water-006/30l-coffee/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "40l-yellow": {
+        "featured": [
+          "/assets/images/products/gn-water-006/40l-yellow/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "40l-black": {
+        "featured": [
+          "/assets/images/products/gn-water-006/40l-black/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "40l-green": {
+        "featured": [
+          "/assets/images/products/gn-water-006/40l-green/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "40l-coffee": {
+        "featured": [
+          "/assets/images/products/gn-water-006/40l-coffee/image.webp"
+        ],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }

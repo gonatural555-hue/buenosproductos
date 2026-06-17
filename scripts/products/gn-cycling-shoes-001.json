@@ -7,24 +7,29 @@
     "extras": []
   },
   "variantImages": {
-    "road-white": {
-      "featured": [
-        "/assets/images/products/gn-cycling-shoes-001/cycling-road-white.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-shoes-001/cycling-shoes.webp",
-        "/assets/images/products/gn-cycling-shoes-001/cycling-shoes-2.webp"
-      ]
-    },
-    "mtb-white": {
-      "featured": [
-        "/assets/images/products/gn-cycling-shoes-001/cycling-MTB-white.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-cycling-shoes-001/cycling-shoes.webp",
-        "/assets/images/products/gn-cycling-shoes-001/cycling-shoes-2.webp"
-      ]
+    "color": {
+      "road-white": {
+        "featured": [
+          "/assets/images/products/gn-cycling-shoes-001/cycling-road-white.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-shoes-001/cycling-shoes.webp",
+          "/assets/images/products/gn-cycling-shoes-001/cycling-shoes-2.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "mtb-white": {
+        "featured": [
+          "/assets/images/products/gn-cycling-shoes-001/cycling-MTB-white.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-cycling-shoes-001/cycling-shoes.webp",
+          "/assets/images/products/gn-cycling-shoes-001/cycling-shoes-2.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }
-

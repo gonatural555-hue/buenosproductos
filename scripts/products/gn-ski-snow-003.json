@@ -7,103 +7,119 @@
     "extras": []
   },
   "variantImages": {
-    "negro": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "blanco": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "marron": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "naranja": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "amarillo": {
-      "featured": [
+    "color": {
+      "negro": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blanco": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "marron": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "naranja": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "amarillo": {
+        "featured": [
           "/assets/images/products/gn-ski-snow-003/amarillo/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "rojo": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
-    },
-    "verde": {
-      "featured": [
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ],
-      "gallery": [
-        "/assets/images/products/gn-ski-snow-003/negro/image.webp",
-        "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
-        "/assets/images/products/gn-ski-snow-003/marron/image.webp",
-        "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
-        "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
-        "/assets/images/products/gn-ski-snow-003/verde/image.webp"
-      ]
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "rojo": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "verde": {
+        "featured": [
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "gallery": [
+          "/assets/images/products/gn-ski-snow-003/negro/image.webp",
+          "/assets/images/products/gn-ski-snow-003/blanco/image.webp",
+          "/assets/images/products/gn-ski-snow-003/marron/image.webp",
+          "/assets/images/products/gn-ski-snow-003/naranja/image.webp",
+          "/assets/images/products/gn-ski-snow-003/amarillo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/rojo/image.webp",
+          "/assets/images/products/gn-ski-snow-003/verde/image.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
     }
   }
 }

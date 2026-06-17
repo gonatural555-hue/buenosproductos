@@ -185,6 +185,7 @@ const PRODUCT_CATEGORY_MAP: Record<string, string[]> = {
   "gn-ski-snow-006": ["ski-snowboard"], // Chaqueta Calefactable USB – 21 Zonas de Calor
   "gn-ski-snow-jacket-001": ["ski-snowboard"], // Alpine Shell Jacket — Quiet Winter Layer
   "gn-ski-snow-pants-001": ["ski-snowboard"], // Alpine Snow Pants — Quiet Winter Protection
+  "gn-ski-snow-007": ["ski-snowboard"], // ABS Ski Helmet with EU Certification
   // Ciclismo & Running (subcategoría unificada)
   "gn-cycling-010": ["cycling-running"], // Gafas de Ciclismo KAPVOE UV400 – Lente Polarizada Deportiva (Unisex)
   "gn-cycling-011": ["cycling-running"], // Gafas de Ciclismo KAPVOE Fotocromáticas UV400 – Lente Adaptativa (Unisex)
@@ -198,6 +199,8 @@ const PRODUCT_CATEGORY_MAP: Record<string, string[]> = {
   "gn-cycling-eq-003": ["cycling-running"], // ThinkRider cámara TPU 28 g 700C Presta — válvula 45/65/85 mm
   "gn-cycling-clothes-001": ["cycling-running"], // Thermal Cycling Jacket – All-Season Performance Layer
   "gn-cycling-clothes-002": ["cycling-running"], // Thermal Cycling Jacket – Long-Ride Weather Layer
+  "gn-cycling-017": ["cycling-running"], // ROCKBROS Smart Bluetooth Audio Cycling Sunglasses
+  "gn-cycling-018": ["cycling-running"], // ROCKBROS PU Leather Waterproof Motorcycle Gloves
   // Water Sports - Diving & Swimming Equipment
   "gn-water-001": ["diving-swimming-equipment"], // Máscara de Snorkel Full Face con Soporte para Cámara
   "gn-water-002": ["diving-swimming-equipment"], // Calcetines de Agua de Neopreno 3 mm

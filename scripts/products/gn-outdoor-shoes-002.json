@@ -22,7 +22,9 @@
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-002/gallery1.webp",
           "/assets/images/products/gn-outdoor-shoes-002/gallery2.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "light-brown": {
         "featured": [
@@ -31,7 +33,9 @@
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-002/gallery1.webp",
           "/assets/images/products/gn-outdoor-shoes-002/gallery2.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "grey": {
         "featured": [
@@ -40,7 +44,9 @@
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-002/gallery1.webp",
           "/assets/images/products/gn-outdoor-shoes-002/gallery2.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       },
       "green": {
         "featured": [
@@ -49,9 +55,10 @@
         "gallery": [
           "/assets/images/products/gn-outdoor-shoes-002/gallery1.webp",
           "/assets/images/products/gn-outdoor-shoes-002/gallery2.webp"
-        ]
+        ],
+        "lifestyle": [],
+        "extras": []
       }
     }
   }
 }
-

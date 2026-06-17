@@ -170,7 +170,7 @@ export default async function ProductsPage({
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-white text-dark-base">
+    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-gn-page-bg text-dark-base">
       <ProductsCatalogLayout
         visualStyle="patagonia"
         surface="white"
