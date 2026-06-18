@@ -41,12 +41,12 @@ export default function MembershipPromotionBanner({ locale }: Props) {
   return (
     <>
       <section
-        className="w-full px-[18px] pb-10 pt-2 md:px-8 md:pb-14 md:pt-4 lg:px-12"
+        className="w-full bg-white px-[18px] pb-10 pt-2 md:px-8 md:pb-14 md:pt-4 lg:px-12"
         aria-labelledby="membership-promo-heading"
       >
         <ScrollReveal>
           <div
-            className="gn-membership-promo-block overflow-hidden rounded-[24px] bg-[#F5F0E6] p-8 md:p-16"
+            className="gn-membership-promo-block overflow-hidden rounded-[24px] bg-white p-8 md:p-16"
             style={membershipPromoBlockStyle(layout)}
           >
             <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[45fr_55fr] md:gap-12 lg:gap-16">

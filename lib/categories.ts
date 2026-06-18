@@ -212,7 +212,6 @@ const PRODUCT_CATEGORY_MAP: Record<string, string[]> = {
   "gn-cycling-clothes-001": ["cycling-running"], // Thermal Cycling Jacket – All-Season Performance Layer
   "gn-cycling-clothes-002": ["cycling-running"], // Thermal Cycling Jacket – Long-Ride Weather Layer
   "gn-cycling-017": ["cycling-running"], // ROCKBROS Smart Bluetooth Audio Cycling Sunglasses
-  "gn-cycling-018": ["cycling-running"], // ROCKBROS PU Leather Waterproof Motorcycle Gloves
   "gn-cycling-019": ["cycling-running"], // ROCKBROS Luz LED Delantera RHL 400 — 2000mAh USB-C
   // Water Sports - Diving & Swimming Equipment
   "gn-water-001": ["diving-swimming-equipment"], // Máscara de Snorkel Full Face con Soporte para Cámara

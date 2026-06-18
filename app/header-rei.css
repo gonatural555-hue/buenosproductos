@@ -13,6 +13,7 @@
   --gn-rei-border: rgba(23, 23, 23, 0.14);
   --gn-rei-category-border-bottom: #6e1f28;
   --gn-rei-deals: #171717;
+  --gn-rei-mustard: #d9a441;
   --gn-rei-dropdown-width: 480px;
 }
 
@@ -197,7 +198,8 @@
 
 .gn-rei-main__shop {
   position: relative;
-  color: var(--gn-rei-link);
+  margin-left: -120px;
+  color: var(--gn-rei-mustard);
   font-family: var(--font-tan-nimbus), Georgia, "Times New Roman", serif;
   font-size: 1em;
   font-weight: 700;
@@ -205,6 +207,11 @@
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
+  transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gn-rei-main__shop:hover {
+  color: var(--gn-rei-ink);
 }
 
 .gn-rei-main__shop::after,
@@ -227,6 +234,10 @@
 .gn-rei-main__shop:hover::after,
 .gn-rei-categories__tab:not(.gn-rei-categories__tab--open):hover::after {
   transform: scaleX(1);
+}
+
+.gn-rei-categories__tab:not(.gn-rei-categories__tab--open):hover::after {
+  background: var(--gn-rei-mustard);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -386,6 +397,7 @@
   min-width: 0;
   justify-content: center;
   overflow: visible;
+  margin-left: -120px;
 }
 
 .gn-rei-categories__row {

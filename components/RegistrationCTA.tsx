@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
@@ -12,6 +12,17 @@ import { isGoodIdeasPath } from "@/lib/routing/brands";
 
 const SESSION_STORAGE_MINIMIZED = "gn-registration-cta-minimized";
 const SESSION_STORAGE_SUBSCRIBED = "gn-newsletter-cta-subscribed";
+const MD_MEDIA_QUERY = "(min-width: 768px)";
+
+function subscribeMdViewport(onChange: () => void) {
+  const mq = window.matchMedia(MD_MEDIA_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getMdViewportSnapshot() {
+  return window.matchMedia(MD_MEDIA_QUERY).matches;
+}
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
@@ -33,11 +44,21 @@ export default function RegistrationCTA() {
   const [marketingAccepted, setMarketingAccepted] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [errorCode, setErrorCode] = useState<string | null>(null);
+  const isDesktop = useSyncExternalStore(
+    subscribeMdViewport,
+    getMdViewportSnapshot,
+    () => false
+  );
 
   const privacyHref = `/${locale}/privacy-policy`;
 
   const syncVisibility = useCallback(() => {
     if (typeof window === "undefined") return;
+
+    if (!isDesktop) {
+      setIsVisible(false);
+      return;
+    }
 
     if (isLoggedIn || authOpen) {
       setIsVisible(false);
@@ -59,7 +80,7 @@ export default function RegistrationCTA() {
       sessionStorage.getItem(SESSION_STORAGE_MINIMIZED) === "true";
     setIsMinimized(minimized);
     setIsVisible(true);
-  }, [authOpen, isLoggedIn, pathname]);
+  }, [authOpen, isDesktop, isLoggedIn, pathname]);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -93,6 +114,7 @@ export default function RegistrationCTA() {
         queueMicrotask(() => {
           setIsInputFocusedElsewhere(false);
           if (
+            isDesktop &&
             !isLoggedIn &&
             !authOpen &&
             pathname &&
@@ -141,7 +163,7 @@ export default function RegistrationCTA() {
       window.visualViewport?.removeEventListener("resize", handleResize);
       window.removeEventListener("resize", handleResize);
     };
-  }, [authOpen, isLoggedIn, pathname]);
+  }, [authOpen, isDesktop, isLoggedIn, pathname]);
 
   const handleMinimize = () => {
     setIsMinimized(true);
@@ -188,6 +210,7 @@ export default function RegistrationCTA() {
     setErrorCode(result.code);
   };
 
+  if (!isDesktop) return null;
   if (sessionSubscribed) return null;
   if (!isVisible || isInputFocusedElsewhere) return null;
 
