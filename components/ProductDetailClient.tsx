@@ -9,7 +9,9 @@ import AddToCartButton, {
   type AddToCartLinePayload,
 } from "@/components/AddToCartButton";
 import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
-import ProductGalleryRei from "@/components/pdp/ProductGalleryRei";
+import ProductGalleryRei, {
+  PDP_GALLERY_WIDTH_PX,
+} from "@/components/pdp/ProductGalleryRei";
 import PdpGalleryFramingPanel from "@/components/pdp/PdpGalleryFramingPanel";
 import ProductInfoPanel from "@/components/pdp/ProductInfoPanel";
 import type { AvailabilityCopy } from "@/components/pdp/PdpAvailabilityCards";
@@ -20,6 +22,7 @@ import {
   isPdpGalleryFramingDirectorMode,
   loadPdpGalleryFramingDraft,
   normalizePdpGalleryLayout,
+  resolvePdpGalleryColumns,
   type PdpGalleryLayout,
 } from "@/lib/pdp-gallery-framing";
 import type { ProductVariants, VariantDefinition } from "@/lib/product-variants";
@@ -377,6 +380,8 @@ export default function ProductDetailClient({
     onSizeInteract: () => setSizeConfirmed(true),
   };
 
+  const galleryColumns = resolvePdpGalleryColumns(galleryLayout, 2);
+
   const gallery = (
     <ProductGalleryRei
       images={pdpGalleryImages}
@@ -384,6 +389,8 @@ export default function ProductDetailClient({
       noImageLabel={noImageLabel}
       surface={surface}
       galleryLayout={galleryLayout}
+      columns={galleryColumns}
+      galleryWidthPx={gi ? null : PDP_GALLERY_WIDTH_PX}
       debugHighlightIndex={isFramingDirector ? framingImageIndex : null}
     />
   );

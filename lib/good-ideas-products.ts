@@ -416,6 +416,80 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     },
   },
   {
+    id: "gi-tech-004",
+    slug: "13-piece-type-c-phone-port-cleaning-kit",
+    title: "13-Piece Type-C Port & Speaker Cleaning Kit for Phones",
+    price: 4.15,
+    category: "Tech",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-004/image.webp`],
+    description:
+      "Complete 13-piece cleaning kit for phone charging ports, speakers, and earbuds — includes Type-C dust plug, precision brushes, and mini gap cleaners for deep, safe maintenance.",
+    shortDescription:
+      "13-piece phone cleaning kit with Type-C dust plug, PP brushes, and nylon mini brushes for ports, speakers, and earbuds.",
+    longDescription: [
+      "Keep charging ports, speakers, and earbuds clear of lint and dust without damaging delicate surfaces. This 13-piece kit bundles the tools most people need for routine phone and accessory maintenance.",
+      "The Type-C aluminum dust plug helps block debris when the port is not in use, while soft PP cleaning brushes reach into crevices around earbuds, keyboards, and small devices.",
+      "Ten mini nylon gap brushes (6 × 0.5 cm) penetrate tight holes for efficient deep cleaning — ideal for speaker grilles, nozzle openings, and hard-to-reach seams.",
+      "Lightweight, compact, and easy to carry — a practical everyday toolkit for iPhone, Samsung, Xiaomi, and other smartphones with Type-C charging.",
+      "Free standard shipping on this listing. Estimated delivery between June 27 and August 1.",
+    ],
+    features: [
+      "13-piece kit — Type-C port configuration",
+      "Type-C anti-dust plug — aluminum alloy, black",
+      "Compatible with Apple-series and Type-C smartphones",
+      "PP cleaning brushes — lightweight, eco-friendly material",
+      "Brush size 65 × 15 mm; bristle length 15 mm; thickness 3–6 mm",
+      "White and black brush colors included",
+      "Suitable for earbuds, phones, keyboards, humidifiers, and more",
+      "10 × mini nylon gap brushes — 6 × 0.5 cm, white",
+      "Deep cleaning for cracks, ports, and speaker holes without surface damage",
+      "Smart portable design — easy to store and carry",
+      "Free shipping — estimated delivery Jun 27 – Aug 1",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "kit",
+      label: "Kit",
+      default: "13-pcs-type-c",
+      options: [
+        {
+          value: "13-pcs-type-c",
+          label: "13 Pcs (Type-C Port)",
+        },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "Kit de limpieza 13 piezas — Puerto Type-C, altavoz y auriculares",
+        description:
+          "Kit completo de 13 piezas para limpiar puertos de carga, altavoces y auriculares — incluye tapón antipolvo Type-C, cepillos de precisión y mini limpiadores de grietas para un mantenimiento profundo y seguro.",
+        shortDescription:
+          "Kit de limpieza de 13 piezas con tapón antipolvo Type-C, cepillos PP y mini cepillos de nailon para puertos, altavoces y auriculares.",
+        longDescription: [
+          "Mantén puertos de carga, altavoces y auriculares libres de pelusa y polvo sin dañar superficies delicadas. Este kit de 13 piezas reúne las herramientas más útiles para el cuidado rutinario del móvil y accesorios.",
+          "El tapón antipolvo de aluminio Type-C ayuda a bloquear residuos cuando el puerto no está en uso, mientras los cepillos PP limpian grietas en auriculares, teclados y dispositivos pequeños.",
+          "Diez mini cepillos de nailon (6 × 0,5 cm) penetran en orificios estrechos para una limpieza profunda eficiente — ideal para rejillas de altavoz, boquillas y uniones difíciles.",
+          "Ligero, compacto y fácil de transportar — herramienta práctica para iPhone, Samsung, Xiaomi y otros smartphones con carga Type-C.",
+          "Envío estándar gratis en este producto. Entrega estimada entre el 27 de junio y el 1 de agosto.",
+        ],
+        features: [
+          "Kit de 13 piezas — configuración puerto Type-C",
+          "Tapón antipolvo Type-C — aleación de aluminio, negro",
+          "Compatible con teléfonos serie Apple y smartphones Type-C",
+          "Cepillos de limpieza PP — material ligero y respetuoso con el medio ambiente",
+          "Tamaño cepillo 65 × 15 mm; longitud del cabello 15 mm; espesor 3–6 mm",
+          "Colores de cepillo blanco y negro incluidos",
+          "Apto para auriculares, móviles, teclados, humidificadores y más",
+          "10 × mini cepillos de grietas nailon — 6 × 0,5 cm, blanco",
+          "Limpieza profunda de grietas, puertos y altavoces sin dañar la superficie",
+          "Diseño portátil inteligente — fácil de guardar y llevar",
+          "Envío gratis — entrega estimada 27 jun – 1 ago",
+        ],
+      },
+    },
+  },
+  {
     id: "gi-hogar-001",
     slug: "portable-8l-mini-refrigerator-car-home",
     title: "Portable 8L Mini Refrigerator for Car and Home",
@@ -756,9 +830,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     price: 6.92,
     category: "Hogar",
     images: [
-      ...getGoodIdeasProductImagePaths("gi-hogar-004", 5),
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-004/white.webp`,
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-004/black.webp`,
+      "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close",
     ],
     description:
       "180ML mini ultrasonic humidifier and electric aroma diffuser by Searide. USB-powered, touch controls, RGB atmosphere light, aromatherapy mist, and auto shut-off when water runs low — for home, bedroom, desk, or car cup holder.",

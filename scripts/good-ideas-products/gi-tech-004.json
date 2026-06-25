@@ -1,0 +1,15 @@
+{
+  "id": "gi-tech-004",
+  "brand": "Good Products",
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-tech-004/image.webp"
+    ],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": []
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  }
+}

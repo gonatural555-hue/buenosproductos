@@ -11,6 +11,8 @@ export type PdpImageFraming = {
 };
 
 export type PdpGalleryLayout = {
+  /** 1 = hero + rejilla; 2 = todas las imágenes en dos columnas. */
+  columns?: 1 | 2;
   defaults?: PdpImageFramingPatch;
   byIndex?: Record<string, PdpImageFramingPatch>;
 };
@@ -49,6 +51,9 @@ export function parsePdpGalleryLayout(raw: unknown): PdpGalleryLayout | null {
   if (!raw || typeof raw !== "object") return null;
   const o = raw as Record<string, unknown>;
   const layout: PdpGalleryLayout = {};
+  if (o.columns === 1 || o.columns === 2) {
+    layout.columns = o.columns;
+  }
   if (o.defaults != null) layout.defaults = parsePatch(o.defaults);
   if (o.byIndex && typeof o.byIndex === "object") {
     layout.byIndex = {};
@@ -142,11 +147,19 @@ export function clearPdpGalleryFramingDraft(productId: string): void {
   }
 }
 
+export function resolvePdpGalleryColumns(
+  layout: PdpGalleryLayout | null | undefined,
+  fallback: 1 | 2 = 1
+): 1 | 2 {
+  return layout?.columns === 2 ? 2 : layout?.columns === 1 ? 1 : fallback;
+}
+
 export function normalizePdpGalleryLayout(
   layout: PdpGalleryLayout | null | undefined
 ): PdpGalleryLayout {
   const parsed = parsePdpGalleryLayout(layout);
   return {
+    columns: parsed?.columns,
     defaults: parsed?.defaults ?? {},
     byIndex: parsed?.byIndex ?? {},
   };

@@ -1,0 +1,16 @@
+---
+description: Nuevos productos en catálogo — solo traducciones ES y EN
+globs: lib/products.ts,lib/good-ideas-products.ts,scripts/products/**/*.json,scripts/good-ideas-products/**/*.json
+alwaysApply: true
+---
+
+# Productos — idiomas ES + EN únicamente
+
+Al **añadir o cargar productos** en Go Natural (`lib/products.ts`, `scripts/products/`) o Good Products (`lib/good-ideas-products.ts`, `scripts/good-ideas-products/`):
+
+1. **Inglés** en campos raíz del producto (`title`, `description`, `shortDescription`, `longDescription`, `features`).
+2. **Español** solo en `translations.es` con las mismas claves de copy.
+3. **No incluir** bloques `translations.fr` ni `translations.it` salvo que el usuario lo pida explícitamente.
+4. Los locales FR/IT del sitio harán fallback al inglés vía `localizeProduct` / `localizeGoodIdeasProduct`.
+
+No traducir automáticamente a francés o italiano al dar de alta productos nuevos.

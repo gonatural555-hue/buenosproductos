@@ -6,12 +6,14 @@ import type {
   VariantImagesMap,
   VariantImagesValueMap,
 } from "@/lib/product-images";
+import { parsePdpGalleryLayout } from "@/lib/pdp-gallery-framing";
 
 export type { ProductImages, VariantImageSet, VariantImagesMap, VariantImagesValueMap };
 
 interface GoodIdeasProductJson {
   id: string;
   brand?: string;
+  pdpGalleryLayout?: unknown;
   images: {
     featured: string[];
     gallery: string[];
@@ -83,6 +85,10 @@ export async function getGoodIdeasProductImages(
       productData.images.variantImages ?? productData.variantImages;
     if (variantImages && typeof variantImages === "object") {
       result.variantImages = variantImages;
+    }
+
+    if (productData.pdpGalleryLayout != null) {
+      result.pdpGalleryLayout = parsePdpGalleryLayout(productData.pdpGalleryLayout);
     }
 
     const totalImages =

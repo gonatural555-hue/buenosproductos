@@ -3,24 +3,28 @@
   "brand": "Searide",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-hogar-004/image.webp"
+      "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-hogar-004/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-hogar-004/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-hogar-004/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-hogar-004/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-hogar-004/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
+      "/assets/images/good-ideas-products/gi-hogar-004/image.webp"
     ],
     "lifestyle": [],
     "extras": [],
     "variantImages": {
       "white": [
-        "/assets/images/good-ideas-products/gi-hogar-004/white.webp"
+        "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close",
+        "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
+        "/assets/images/good-ideas-products/gi-hogar-004/image.webp"
       ],
       "black": [
-        "/assets/images/good-ideas-products/gi-hogar-004/black.webp"
+        "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
+        "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close",
+        "/assets/images/good-ideas-products/gi-hogar-004/image.webp"
       ]
     }
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
   }
 }
