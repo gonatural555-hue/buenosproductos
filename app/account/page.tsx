@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import AuthModal from "@/components/AuthModal";
 import { useUser } from "@/context/UserContext";
+import { formatCartPrice } from "@/lib/cart-formatting";
 import { defaultLocale } from "@/lib/i18n/config";
 import AccountAddresses from "@/components/AccountAddresses";
 
@@ -15,14 +16,7 @@ export default function AccountPage() {
   const [activeSection, setActiveSection] = useState<SectionKey>("account");
   const [authOpen, setAuthOpen] = useState(false);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
+  const formatPrice = (price: number) => formatCartPrice(defaultLocale, price);
   const userOrders = orders;
 
   const content = useMemo(() => {

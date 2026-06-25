@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import AuthModal from "@/components/AuthModal";
 import { useUser } from "@/context/UserContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import AccountAddresses from "@/components/AccountAddresses";
 
@@ -23,15 +24,8 @@ export default function AccountPage() {
   const t = useTranslations();
   const [activeSection, setActiveSection] = useState<SectionKey>("account");
   const [authOpen, setAuthOpen] = useState(false);
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat(locale === "es" ? "es-AR" : locale === "fr" ? "fr-FR" : locale === "it" ? "it-IT" : "en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
+  const { formatMoney } = useCurrency();
+  const formatPrice = (price: number) => formatMoney(price);
 
   const userOrders = orders;
 

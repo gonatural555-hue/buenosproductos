@@ -7,6 +7,8 @@ import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import { useCurrency } from "@/context/CurrencyContext";
+import CurrencyDisclaimer from "@/components/currency/CurrencyDisclaimer";
 import { useUser, type Address, type Order } from "@/context/UserContext";
 import PayPalButton from "@/components/PayPalButton";
 import { isSupabaseConfigured } from "@/lib/supabase/browser";
@@ -33,8 +35,8 @@ export default function CheckoutPage() {
     refreshOrders,
     authLoading,
     isLoggedIn,
-    hasWelcomeFreeShipping,
   } = useUser();
+  const { formatMoney } = useCurrency();
   const [isLoading, setIsLoading] = useState(false);
   const beginCheckoutTracked = useRef(false);
 
@@ -65,23 +67,7 @@ export default function CheckoutPage() {
     isDefault: true,
   });
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat(
-      locale === "es"
-        ? "es-AR"
-        : locale === "fr"
-          ? "fr-FR"
-          : locale === "it"
-            ? "it-IT"
-            : "en-US",
-      {
-        style: "currency",
-        currency: "USD",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }
-    ).format(price);
-  };
+  const formatPrice = (price: number) => formatMoney(price);
 
   const handlePayPalSuccess = async (details: { id?: string }) => {
     if (items.length === 0 || !defaultAddress) return;
@@ -621,17 +607,12 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between gap-4 border-t border-earth-brown/12 pt-2 text-xs text-muted-gray">
                 <span>{t("checkoutPage.shipping")}</span>
-                <span>
-                  {hasWelcomeFreeShipping
-                    ? t("checkoutPage.shippingFree")
-                    : t("checkoutPage.shippingCalculated")}
-                </span>
+                <span>{t("checkoutPage.shippingFree")}</span>
               </div>
-              {hasWelcomeFreeShipping ? (
-                <p className="text-xs text-accent-gold/90">
-                  {t("shipping.welcomeFreeApplied")}
-                </p>
-              ) : null}
+              <p className="text-xs text-accent-gold/90">
+                {t("cartPage.freeShippingAlways")}
+              </p>
+              <CurrencyDisclaimer className="text-[0.7rem] leading-relaxed text-muted-gray" />
             </div>
 
             <div className="mb-6 border-t border-earth-brown/15 pt-4">

@@ -1,21 +1,18 @@
 import type { Locale } from "@/lib/i18n/config";
+import {
+  DEFAULT_DISPLAY_CURRENCY,
+  EXCHANGE_RATES_FROM_USD,
+} from "@/lib/currency/config";
+import { formatDisplayMoney } from "@/lib/currency/format";
 
+/** @deprecated Preferí `useCurrency().formatMoney` en componentes cliente. */
 export function formatCartPrice(locale: Locale, price: number): string {
-  const intlLocale =
-    locale === "es"
-      ? "es-AR"
-      : locale === "fr"
-        ? "fr-FR"
-        : locale === "it"
-          ? "it-IT"
-          : "en-US";
-
-  return new Intl.NumberFormat(intlLocale, {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
+  return formatDisplayMoney(
+    price,
+    DEFAULT_DISPLAY_CURRENCY,
+    EXCHANGE_RATES_FROM_USD,
+    locale
+  );
 }
 
 type VariantSelection = {

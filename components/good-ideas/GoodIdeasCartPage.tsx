@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import CurrencyDisclaimer from "@/components/currency/CurrencyDisclaimer";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import {
   goodIdeasCheckoutPath,
@@ -13,12 +15,8 @@ export default function GoodIdeasCartPage() {
   const locale = useLocale();
   const t = useTranslations();
   const { items, subtotal, increaseQty, decreaseQty, removeItem } = useGoodIdeasCart();
-
-  const formatPrice = (n: number) =>
-    new Intl.NumberFormat(locale === "es" ? "es-AR" : locale, {
-      style: "currency",
-      currency: "USD",
-    }).format(n);
+  const { formatMoney } = useCurrency();
+  const formatPrice = (n: number) => formatMoney(n);
 
   return (
     <main className={`min-h-[100dvh] bg-[#0B0F14] px-6 pb-16 text-[#E8ECF1] sm:px-10 ${GI_HERO_TOP_PAD}`}>
@@ -92,6 +90,7 @@ export default function GoodIdeasCartPage() {
             <p className="mt-4 font-inter text-[14px] text-[rgba(232,236,241,0.5)]">
               {t("goodIdeas.cart.comingSoonCheckout")}
             </p>
+            <CurrencyDisclaimer className="mt-3 font-inter text-[12px] leading-relaxed text-[rgba(232,236,241,0.45)]" />
             <Link
               href={goodIdeasCheckoutPath(locale)}
               className="mt-6 inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[#3B82F6] px-8 font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#2563EB] sm:w-auto"

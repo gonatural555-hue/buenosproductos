@@ -1,2 +1,2 @@
-/** Umbral de subtotal (USD) para envío estándar gratis cuando no aplica welcome offer. */
-export const FREE_SHIPPING_THRESHOLD_USD = 100;
+/** Envío estándar gratis en todos los pedidos (sin umbral de subtotal). */
+export const STANDARD_SHIPPING_ALWAYS_FREE = true;

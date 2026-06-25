@@ -52,6 +52,8 @@ const CATEGORY_HERO_IMAGES: Record<string, string> = {
   "ski-snowboard":
     "/assets/images/categories/mountain-snow.webp",
   "diving-swimming-equipment": "/assets/images/hero/scuba-diving.webp",
+  "motorcyclist-accessories":
+    "/assets/images/categories/motorcyclist/motorcyclist-banner.webp",
 };
 
 

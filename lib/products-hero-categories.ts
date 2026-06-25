@@ -14,6 +14,8 @@ const CATEGORY_BANNER = {
   running: "/assets/images/categories/running/running-banner.webp",
   travel: "/assets/images/categories/camping/camping-banner.webp",
   fishing: "/assets/images/categories/fishing/fishing-banner.webp",
+  motorcyclist:
+    "/assets/images/categories/motorcyclist/motorcyclist-banner.webp",
 } as const;
 
 export type ProductsHeroCategoryCard = {
@@ -102,6 +104,7 @@ export const CATEGORY_HERO_BACKGROUND_BY_SLUG: Record<string, string> = {
   running: CATEGORY_BANNER.running,
   nieve: IMG.snow,
   viaje: CATEGORY_BANNER.travel,
+  "motorcyclist-accessories": CATEGORY_BANNER.motorcyclist,
   fishing: CATEGORY_BANNER.fishing,
   men: IMG.camping,
   women: IMG.camping,

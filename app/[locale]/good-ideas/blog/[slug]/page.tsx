@@ -17,6 +17,7 @@ import {
   BRAND_SEGMENTS,
   goodIdeasBlogPath,
 } from "@/lib/routing/brands";
+import { getGoodIdeasBrandName } from "@/lib/good-ideas-brand";
 import { GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
 
 export async function generateStaticParams() {
@@ -37,13 +38,15 @@ export async function generateMetadata({
   const posts = getGoodIdeasBlogPosts(messages);
   const post = posts[slug];
 
+  const brandName = getGoodIdeasBrandName(locale);
+
   if (!post) {
-    return { title: "Post not found | Good Ideas" };
+    return { title: `Post not found | ${brandName}` };
   }
 
   const seo = messages.seo?.goodIdeas?.blogPost;
   const title = formatTemplate(
-    seo?.titleTemplate ?? "{title} | Good Ideas Blog",
+    seo?.titleTemplate ?? `{title} | ${brandName} Blog`,
     { title: post.title }
   );
   const description = formatTemplate(

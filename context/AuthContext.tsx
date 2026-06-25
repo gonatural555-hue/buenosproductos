@@ -19,6 +19,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const openAuthModal = useCallback((tab: "login" | "register" = "login") => {
     setInitialTab(tab);
     setAuthOpen(true);
+    if (
+      typeof document !== "undefined" &&
+      document.activeElement instanceof HTMLElement
+    ) {
+      document.activeElement.blur();
+    }
   }, []);
 
   return (

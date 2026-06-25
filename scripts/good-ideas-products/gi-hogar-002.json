@@ -1,6 +1,6 @@
 {
   "id": "gi-hogar-002",
-  "brand": "Good Ideas",
+  "brand": "Good Products",
   "images": {
     "featured": [
       "/assets/images/good-ideas-products/gi-hogar-002/image.webp"
@@ -24,12 +24,12 @@
     }
   },
   "imagePrompts": {
-    "productCard": "A high-quality product card for Good Ideas portable travel kettle 450ML featuring a premium close-up of the item, with Good Ideas logo in the corner.",
-    "pdpMain": "Product main page for Good Ideas portable travel kettle 450ML showcasing an eye-catching high-resolution image of the product from multiple angles, including front and side views. Include Good Ideas brand name and possibly a tagline.",
-    "pdpLifestyle": "Product lifestyle page for Good Ideas portable travel kettle 450ML featuring images that highlight how the product can be used in different settings or with other products, emphasizing convenience and versatility. Focus on people interacting with the item.",
-    "pdpDetail": "Product detail page for Good Ideas portable travel kettle 450ML presenting a detailed view of the product's features and benefits, including close-ups of key parts and possibly some assembly or usage instructions. Use plain language to describe functionalities.",
-    "blogHero": "Blog hero page for Good Ideas portable travel kettle 450ML featuring a large image that showcases the product in an engaging way, such as multiple angles of the product with good lighting and background. Include short description of the product features.",
-    "blogSection": "Blog section for Good Ideas portable travel kettle 450ML featuring a collection of images that demonstrate different uses or settings of the product, using clear descriptions to highlight each image's purpose.",
+    "productCard": "A high-quality product card for Good Products portable travel kettle 450ML featuring a premium close-up of the item, with Good Products logo in the corner.",
+    "pdpMain": "Product main page for Good Products portable travel kettle 450ML showcasing an eye-catching high-resolution image of the product from multiple angles, including front and side views. Include Good Products brand name and possibly a tagline.",
+    "pdpLifestyle": "Product lifestyle page for Good Products portable travel kettle 450ML featuring images that highlight how the product can be used in different settings or with other products, emphasizing convenience and versatility. Focus on people interacting with the item.",
+    "pdpDetail": "Product detail page for Good Products portable travel kettle 450ML presenting a detailed view of the product's features and benefits, including close-ups of key parts and possibly some assembly or usage instructions. Use plain language to describe functionalities.",
+    "blogHero": "Blog hero page for Good Products portable travel kettle 450ML featuring a large image that showcases the product in an engaging way, such as multiple angles of the product with good lighting and background. Include short description of the product features.",
+    "blogSection": "Blog section for Good Products portable travel kettle 450ML featuring a collection of images that demonstrate different uses or settings of the product, using clear descriptions to highlight each image's purpose.",
     "productImageFolder": "good-ideas-products/gi-hogar-002",
     "blogImageFolder": "good-ideas-blog/product-from-1005006438780849"
   }

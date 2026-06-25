@@ -7,6 +7,7 @@ import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
 import { goodIdeasProductPath } from "@/lib/routing/brands";
 import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
+import { useCurrency } from "@/context/CurrencyContext";
 import { isValidImageSrc } from "@/lib/image-src";
 
 type Props = {
@@ -23,6 +24,7 @@ export default function GoodIdeasProductCard({
   noImageLabel,
 }: Props) {
   const localized = localizeGoodIdeasProduct(product, locale);
+  const { formatMoney } = useCurrency();
   const imageSrc = useMemo(
     () => product.images.find((src) => isValidImageSrc(src)),
     [product.images]
@@ -61,7 +63,7 @@ export default function GoodIdeasProductCard({
           </p>
         ) : null}
         <p className="font-inter text-[15px] font-semibold text-white">
-          ${localized.price.toFixed(2)}
+          {formatMoney(localized.price)}
         </p>
         <span className="inline-flex font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.55)] transition group-hover:text-[#3B82F6]">
           {viewProductLabel} →

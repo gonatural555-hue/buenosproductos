@@ -163,6 +163,13 @@ export const CATEGORIES: Category[] = [
     description: "Equipamiento para ciclismo y running.",
     parentSlug: "active-sports",
   },
+  // Travel subcategorías
+  {
+    slug: "motorcyclist-accessories",
+    name: "Motorcyclist Accessories",
+    description: "Cascos, equipamiento y accesorios para motociclistas en ruta.",
+    parentSlug: "viaje",
+  },
 ];
 
 // Mapeo de productos existentes a categorías por slug
@@ -213,6 +220,7 @@ const PRODUCT_CATEGORY_MAP: Record<string, string[]> = {
   "gn-cycling-clothes-002": ["cycling-running"], // Thermal Cycling Jacket – Long-Ride Weather Layer
   "gn-cycling-017": ["cycling-running"], // ROCKBROS Smart Bluetooth Audio Cycling Sunglasses
   "gn-cycling-019": ["cycling-running"], // ROCKBROS Luz LED Delantera RHL 400 — 2000mAh USB-C
+  "gn-cycling-020": ["motorcyclist-accessories"], // ORZ Casco integral retro moto — ranura Bluetooth DOT
   // Water Sports - Diving & Swimming Equipment
   "gn-water-001": ["diving-swimming-equipment"], // Máscara de Snorkel Full Face con Soporte para Cámara
   "gn-water-002": ["diving-swimming-equipment"], // Calcetines de Agua de Neopreno 3 mm
@@ -313,11 +321,25 @@ export function getProductsByCategorySlug(slug: string): Product[] {
 
   const catalogSlug = EDITORIAL_CATEGORY_PRODUCT_SOURCE[slug] ?? slug;
   const category = getCategoryBySlug(catalogSlug);
+  const editorialCategory = getCategoryBySlug(slug);
 
   // Si es categoría principal, incluir productos de sus subcategorías
-  const slugsToMatch = category && !category.parentSlug
-    ? [catalogSlug, ...getSubcategories(catalogSlug).map((sub) => sub.slug)]
-    : [catalogSlug];
+  let slugsToMatch =
+    category && !category.parentSlug
+      ? [catalogSlug, ...getSubcategories(catalogSlug).map((sub) => sub.slug)]
+      : [catalogSlug];
+
+  // Categorías editoriales (p. ej. viaje) pueden tener subcategorías propias además del catálogo mapeado
+  if (
+    editorialCategory &&
+    !editorialCategory.parentSlug &&
+    slug !== catalogSlug
+  ) {
+    slugsToMatch = [
+      ...slugsToMatch,
+      ...getSubcategories(slug).map((sub) => sub.slug),
+    ];
+  }
   
   return allProducts.filter((product) => {
     const categorySlugs = PRODUCT_CATEGORY_MAP[product.id] || [];

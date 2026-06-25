@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import type { Locale } from "@/lib/i18n/config";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const FALLBACK_IMG = "/assets/images/hero/hero.webp";
 
@@ -25,16 +25,13 @@ type Props = {
   strip: HeroProductPayload[];
 };
 
-function formatUsd(n: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  }).format(n);
-}
-
-function StripCard({ p }: { p: HeroProductPayload }) {
+function StripCard({
+  p,
+  formatPrice,
+}: {
+  p: HeroProductPayload;
+  formatPrice: (n: number) => string;
+}) {
   const [src, setSrc] = useState(p.image || FALLBACK_IMG);
 
   return (
@@ -57,7 +54,7 @@ function StripCard({ p }: { p: HeroProductPayload }) {
           {p.title}
         </p>
         <p className="mt-1 font-sans text-[0.65rem] tabular-nums text-accent-gold/95">
-          {formatUsd(p.price)}
+          {formatPrice(p.price)}
         </p>
       </div>
     </Link>
@@ -73,6 +70,7 @@ export default function HomeHeroProductsSlide({
   main,
   strip,
 }: Props) {
+  const { formatMoney } = useCurrency();
   const [mainSrc, setMainSrc] = useState(main.image || FALLBACK_IMG);
 
   return (
@@ -103,7 +101,7 @@ export default function HomeHeroProductsSlide({
 
         <div className="mt-5 flex items-baseline gap-3">
           <span className="font-sans text-xl font-semibold tabular-nums text-white sm:text-2xl">
-            {formatUsd(main.price)}
+            {formatMoney(main.price)}
           </span>
           <span className="font-sans text-xs text-white/45 line-clamp-1">{main.title}</span>
         </div>
@@ -122,7 +120,7 @@ export default function HomeHeroProductsSlide({
             </p>
             <div className="-mx-1 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:gap-3 [&::-webkit-scrollbar]:hidden">
               {strip.map((p) => (
-                <StripCard key={p.id} p={p} />
+                <StripCard key={p.id} p={p} formatPrice={formatMoney} />
               ))}
             </div>
           </div>

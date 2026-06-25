@@ -7,6 +7,10 @@ import {
   isValidCombination,
 } from "@/lib/product-variant-matrix";
 import type { UISurface } from "@/lib/ui-surface";
+import {
+  getPdpBuyBoxTheme,
+  type PdpBrandTheme,
+} from "@/lib/ui/pdp-theme";
 
 type VariantSelectorProps = {
   variants: ProductVariants;
@@ -15,6 +19,7 @@ type VariantSelectorProps = {
   /** Refined styling for desktop PDP; mobile should use default. */
   appearance?: "default" | "premium";
   surface?: UISurface;
+  pdpBrand?: PdpBrandTheme;
 };
 
 /**
@@ -30,6 +35,7 @@ export default function VariantSelector({
   onChange,
   appearance = "default",
   surface = "dark",
+  pdpBrand = "go-natural",
 }: VariantSelectorProps) {
   const { variants: variantDefinitions, variantMatrix } = variants;
 
@@ -95,16 +101,23 @@ export default function VariantSelector({
 
   const isPremium = appearance === "premium";
   const light = surface === "light";
+  const theme = getPdpBuyBoxTheme(pdpBrand, surface);
 
-  const headingTitle = light
-    ? isPremium
-      ? "text-sm font-semibold tracking-wide text-neutral-900"
-      : "text-base font-semibold text-neutral-900"
-    : isPremium
-      ? "text-sm font-semibold tracking-wide text-text-primary"
-      : "text-base font-semibold text-text-primary";
+  const headingTitle = isPremium
+    ? theme.variantLabelHeading
+    : light
+      ? "text-base font-semibold text-neutral-900"
+      : pdpBrand === "good-ideas"
+        ? "text-base font-semibold text-[#E8ECF1]"
+        : "text-base font-semibold text-text-primary";
 
-  const headingMuted = light ? "text-sm text-neutral-600" : "text-sm text-text-muted";
+  const headingMuted = isPremium
+    ? theme.variantLabelMuted
+    : light
+      ? "text-sm text-neutral-600"
+      : pdpBrand === "good-ideas"
+        ? "text-sm text-[rgba(232,236,241,0.72)]"
+        : "text-sm text-text-muted";
 
   return (
     <div className={isPremium ? "space-y-5" : "space-y-6"}>
@@ -152,35 +165,37 @@ export default function VariantSelector({
                 );
 
                 const baseFocus = [
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2",
-                  light
-                    ? "focus-visible:ring-offset-white"
-                    : "focus-visible:ring-offset-dark-base",
+                  "focus:outline-none focus-visible:ring-2",
+                  isPremium ? theme.variantFocusRing : light
+                    ? "focus-visible:ring-accent-gold focus-visible:ring-offset-white"
+                    : pdpBrand === "good-ideas"
+                      ? "focus-visible:ring-[#3B82F6] focus-visible:ring-offset-[#0B0F14]"
+                      : "focus-visible:ring-accent-gold focus-visible:ring-offset-dark-base",
                 ].join(" ");
 
                 const premiumClasses = !isValid
-                  ? light
-                    ? "opacity-40 cursor-not-allowed border-neutral-200 bg-neutral-100 text-neutral-500"
-                    : "opacity-40 cursor-not-allowed border-white/10 bg-dark-surface/30 text-text-muted"
+                  ? theme.variantDisabled
                   : isActive
-                  ? light
-                    ? "border-accent-gold/90 bg-white text-neutral-900 ring-1 ring-accent-gold shadow-[0_0_0_1px_rgba(212,175,55,0.25)]"
-                    : "border-accent-gold/85 bg-dark-surface text-text-primary ring-1 ring-accent-gold shadow-[0_0_0_1px_rgba(212,175,55,0.22)]"
-                  : light
-                  ? "border-neutral-200 bg-neutral-50 text-neutral-900 hover:border-accent-gold/50 hover:shadow-[0_0_14px_rgba(200,155,60,0.08)]"
-                  : "border-white/12 bg-dark-surface/50 text-text-primary hover:border-accent-gold/40 hover:shadow-[0_0_14px_rgba(200,155,60,0.07)]";
+                    ? theme.variantSelected
+                    : theme.variantDefault;
 
                 const defaultClasses = !isValid
                   ? light
                     ? "opacity-40 cursor-not-allowed border-neutral-200 bg-neutral-100 text-neutral-500"
-                    : "opacity-40 cursor-not-allowed border-white/10 bg-dark-surface/40 text-text-muted"
+                    : pdpBrand === "good-ideas"
+                      ? theme.variantDisabled
+                      : "opacity-40 cursor-not-allowed border-white/10 bg-dark-surface/40 text-text-muted"
                   : isActive
-                  ? light
-                    ? "border-accent-gold bg-white text-neutral-900 ring-1 ring-accent-gold/60"
-                    : "border-accent-gold bg-dark-surface text-text-primary ring-1 ring-accent-gold/50"
-                  : light
-                  ? "border-neutral-200 bg-white text-neutral-900 hover:border-neutral-400"
-                  : "border-white/15 bg-dark-surface/60 text-text-primary hover:border-white/30";
+                    ? light
+                      ? "border-accent-gold bg-white text-neutral-900 ring-1 ring-accent-gold/60"
+                      : pdpBrand === "good-ideas"
+                        ? theme.variantSelected
+                        : "border-accent-gold bg-dark-surface text-text-primary ring-1 ring-accent-gold/50"
+                    : light
+                      ? "border-neutral-200 bg-white text-neutral-900 hover:border-neutral-400"
+                      : pdpBrand === "good-ideas"
+                        ? theme.variantDefault
+                        : "border-white/15 bg-dark-surface/60 text-text-primary hover:border-white/30";
 
                 return (
                   <button

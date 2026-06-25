@@ -57,7 +57,7 @@ export default function GoodIdeasFooter() {
         <div className="grid gap-10 md:grid-cols-3 md:gap-12">
           <div>
             <p className="font-display text-[1.5rem] tracking-[-0.02em] text-white">
-              Good Ideas
+              {t("goodIdeas.brandName")}
             </p>
             <p className="mt-3 max-w-xs font-inter text-[14px] leading-relaxed text-[rgba(232,236,241,0.55)]">
               {t("goodIdeas.footer.tagline")}
@@ -102,7 +102,7 @@ export default function GoodIdeasFooter() {
         </div>
 
         <p className="mt-12 border-t border-white/[0.08] pt-6 text-center font-inter text-[12px] text-[rgba(232,236,241,0.4)]">
-          © {year} Good Ideas. {t("goodIdeas.footer.rights")}
+          © {year} {t("goodIdeas.brandName")}. {t("goodIdeas.footer.rights")}
         </p>
       </div>
     </footer>

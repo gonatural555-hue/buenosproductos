@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
-import { locales, type Locale } from "@/lib/i18n/config";
+import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
   HEADER_UTILITY_LINKS,
   isUtilityLinkActive,
   resolveUtilityHref,
 } from "@/lib/header-utility-links";
+import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
 
 type Props = {
   locale: Locale;
@@ -50,20 +51,23 @@ export default function HeaderUtilityBar({ locale }: Props) {
               );
             })}
           </nav>
-          <nav
-            className="gn-rei-utility__locales"
-            aria-label={t("header.localeNavAria")}
-          >
-            {locales.map((lang) => (
-              <Link
-                key={lang}
-                href={buildLocaleHref(lang)}
-                className={`gn-rei-utility__locale${lang === locale ? " gn-rei-utility__locale--active" : ""}`}
-              >
-                {lang.toUpperCase()}
-              </Link>
-            ))}
-          </nav>
+          <div className="gn-rei-utility__controls">
+            <HeaderCurrencySwitcher variant="utility" />
+            <nav
+              className="gn-rei-utility__locales"
+              aria-label={t("header.localeNavAria")}
+            >
+              {headerLocales.map((lang) => (
+                <Link
+                  key={lang}
+                  href={buildLocaleHref(lang)}
+                  className={`gn-rei-utility__locale${lang === locale ? " gn-rei-utility__locale--active" : ""}`}
+                >
+                  {lang.toUpperCase()}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
     </div>

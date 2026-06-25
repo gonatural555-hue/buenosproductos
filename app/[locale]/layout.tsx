@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { getMessages } from "@/lib/i18n/messages";
 import { locales, type Locale } from "@/lib/i18n/config";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import SmoothScroll from "@/components/SmoothScroll";
 import LocaleChrome from "@/components/layout/LocaleChrome";
 
@@ -22,8 +23,10 @@ export default async function LocaleLayout({
 
   return (
     <LocaleProvider locale={locale as Locale} messages={messages}>
-      <SmoothScroll />
-      <LocaleChrome>{children}</LocaleChrome>
+      <CurrencyProvider>
+        <SmoothScroll />
+        <LocaleChrome>{children}</LocaleChrome>
+      </CurrencyProvider>
     </LocaleProvider>
   );
 }

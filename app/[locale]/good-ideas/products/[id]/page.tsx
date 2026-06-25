@@ -17,6 +17,7 @@ import {
   goodIdeasCartPath,
   goodIdeasProductsPath,
 } from "@/lib/routing/brands";
+import { getGoodIdeasBrandName } from "@/lib/good-ideas-brand";
 import { GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
 import ProductDetailClient from "@/components/ProductDetailClient";
 import PdpBenefitsSection from "@/components/pdp/PdpBenefitsSection";
@@ -40,8 +41,10 @@ export async function generateMetadata({ params }: Props) {
   const { locale, id } = await params;
   const product = getGoodIdeasProductById(id);
 
+  const brandName = getGoodIdeasBrandName(locale);
+
   if (!product) {
-    return { title: "Producto no encontrado | Good Ideas" };
+    return { title: `Producto no encontrado | ${brandName}` };
   }
 
   const localized = localizeGoodIdeasProduct(product, locale);
@@ -51,9 +54,9 @@ export async function generateMetadata({ params }: Props) {
   return buildMetadata({
     locale,
     title:
-      formatTemplate(seo?.titleTemplate ?? "{title} | Good Ideas", {
+      formatTemplate(seo?.titleTemplate ?? `{title} | ${brandName}`, {
         title: localized.title,
-      }) ?? `${localized.title} | Good Ideas`,
+      }) ?? `${localized.title} | ${brandName}`,
     description:
       localized.shortDescription ??
       localized.description ??
@@ -133,7 +136,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         </Link>
 
         <ProductDetailClient
-          product={localizedProduct}
+          product={{ ...localizedProduct, freeShipping: true }}
           seoH1={localizedProduct.title}
           productImages={productImages}
           productVariants={productVariants}

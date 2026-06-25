@@ -89,7 +89,10 @@ export const HEADER_NAV_TABS: HeaderNavTab[] = [
     id: "travel",
     labelKey: "travel",
     parentSlug: "viaje",
-    items: [{ categorySlug: "camping-survival-gear" }],
+    items: [
+      { categorySlug: "camping-survival-gear" },
+      { categorySlug: "motorcyclist-accessories" },
+    ],
   },
   {
     id: "fishing",

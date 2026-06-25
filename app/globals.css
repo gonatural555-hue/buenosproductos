@@ -719,6 +719,43 @@ main[data-route="order-success"] .bg-gray-50 {
       scale(calc(var(--gn-promo-scale, 1) * 1.05));
   }
 
+  /* —— Auth modal / login tabs (subrayado mustard) —— */
+  .gn-auth-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--gn-mustard);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gn-auth-tab[aria-selected="true"]::after,
+  .gn-auth-tab:hover::after {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gn-auth-tab::after {
+      transition: none;
+    }
+  }
+
+  /* —— Auth form: neutralizar autofill azul del navegador —— */
+  .gn-auth-form input:-webkit-autofill,
+  .gn-auth-form input:-webkit-autofill:hover,
+  .gn-auth-form input:-webkit-autofill:focus,
+  .gn-auth-form input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: #171717;
+    caret-color: #171717;
+    transition: background-color 9999s ease-out 0s;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .gn-membership-promo-image-wrap {
       transition: none;

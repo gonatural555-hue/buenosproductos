@@ -1,0 +1,26 @@
+{
+  "id": "gi-hogar-004",
+  "brand": "Searide",
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-hogar-004/image.webp"
+    ],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-hogar-004/gallery-1.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/gallery-2.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/gallery-3.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/gallery-4.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/gallery-5.webp"
+    ],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "white": [
+        "/assets/images/good-ideas-products/gi-hogar-004/white.webp"
+      ],
+      "black": [
+        "/assets/images/good-ideas-products/gi-hogar-004/black.webp"
+      ]
+    }
+  }
+}

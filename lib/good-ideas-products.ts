@@ -25,7 +25,7 @@ export type GoodIdeasProductCategory =
 
 
 
-/** Base de assets Good Ideas (separado de `public/assets/images/products/`). */
+/** Base de assets Good Products (separado de `public/assets/images/products/`). */
 
 export const GOOD_IDEAS_IMAGE_BASE = "/assets/images/good-ideas-products";
 
@@ -543,7 +543,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "The 450ML capacity is practical for tea, coffee, instant meals, and warm water for small daily routines without filling a full kitchen counter.",
       "Use it at home, in a dorm, at the office, or in a hotel room when you want hot water on your schedule.",
       "Choose the plug format that matches your region so the same compact design works across everyday and travel setups.",
-      "Built for Good Ideas home essentials: simple controls, honest sizing, and a form factor that earns a permanent spot in a bag or shelf.",
+      "Built for Good Products home essentials: simple controls, honest sizing, and a form factor that earns a permanent spot in a bag or shelf.",
     ],
     features: [
       "Compact 450ML travel kettle",
@@ -576,7 +576,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "La capacidad de 450ML encaja en té, café, comidas instantáneas y agua caliente para rutinas diarias sin ocupar toda la encimera.",
           "Úsalo en casa, residencia, oficina o habitación de hotel cuando quieras agua caliente a tu ritmo.",
           "Elige el formato de enchufe según tu región para el mismo diseño compacto en viaje y día a día.",
-          "Esencial de hogar Good Ideas: controles simples, tamaño honesto y formato que merece quedarse en el bolso o la estantería.",
+          "Esencial de hogar Buenos Productos: controles simples, tamaño honesto y formato que merece quedarse en el bolso o la estantería.",
         ],
         features: [
           "Hervidor de viaje compacto 450ML",
@@ -644,7 +644,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "Brushed stainless steel delivers a clean, durable look with a light gray finish, black handle, and a simple base with an illuminated power switch for quick, confident use.",
       "Brew tea, prepare Turkish or Greek coffee, or heat water for moka-style routines and instant meals—one honest appliance for multiple morning and evening habits.",
       "220V–240V operation suits European and compatible regions; choose EU, UK, or AU plug options so the same compact design works at home or when you travel with the right adapter setup.",
-      "Built for Good Ideas home essentials: practical capacity, straightforward controls, and a footprint that earns a permanent spot beside the coffee setup or on a work desk.",
+      "Built for Good Products home essentials: practical capacity, straightforward controls, and a footprint that earns a permanent spot beside the coffee setup or on a work desk.",
     ],
     features: [
       "800ML capacity (~6 cups)",
@@ -680,7 +680,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Acero inoxidable cepillado con acabado gris claro, mango negro y base sencilla con interruptor iluminado para un uso rápido y claro.",
           "Prepara té, café turco o griego, o calienta agua para rutinas tipo moka y comidas instantáneas en un solo electrodoméstico versátil.",
           "Operación 220V–240V; elige enchufe EU, UK o AU según tu región para el mismo diseño compacto en casa o viaje.",
-          "Esencial de hogar Good Ideas: capacidad práctica, controles directos y un formato que merece quedarse junto al café o en el escritorio.",
+          "Esencial de hogar Buenos Productos: capacidad práctica, controles directos y un formato que merece quedarse junto al café o en el escritorio.",
         ],
         features: [
           "Capacidad de 800 ml (~6 tazas)",
@@ -705,7 +705,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Acier inoxydable brossé, finition gris clair, poignée noire et base simple avec interrupteur lumineux pour une utilisation rapide.",
           "Préparez thé, café turc ou grec, ou chauffez l'eau pour routines moka et plats instantanés.",
           "Fonctionnement 220V–240V ; choisissez prise EU, UK ou AU selon votre région.",
-          "Essentiel maison Good Ideas : capacité pratique, commandes directes, format compact.",
+          "Essentiel maison Good Products : capacité pratique, commandes directes, format compact.",
         ],
         features: [
           "Capacité 800 ml (~6 tasses)",
@@ -730,7 +730,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Acciaio inox spazzolato, finitura grigio chiaro, manico nero e base con interruttore illuminato per un uso rapido.",
           "Prepara tè, caffè turco o greco, o scalda l'acqua per routine moka e pasti instant.",
           "Funzionamento 220V–240V; scegli spina EU, UK o AU in base alla regione.",
-          "Essenziale casa Good Ideas: capacità pratica, comandi semplici, ingombro ridotto.",
+          "Essenziale casa Good Products: capacità pratica, comandi semplici, ingombro ridotto.",
         ],
         features: [
           "Capacità 800 ml (~6 tazze)",
@@ -742,6 +742,95 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Opzioni spina EU, UK e AU",
           "Interruttore illuminato sulla base",
           "Ideale per casa, ufficio e routine quotidiane",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-hogar-004",
+    slug: "searide-180ml-mini-usb-humidifier-aroma-diffuser",
+    brand: "Searide",
+    title:
+      "Searide 180ML Mini USB Air Humidifier & Aroma Diffuser — H09 Pro",
+    price: 6.92,
+    category: "Hogar",
+    images: [
+      ...getGoodIdeasProductImagePaths("gi-hogar-004", 5),
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-004/white.webp`,
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-004/black.webp`,
+    ],
+    description:
+      "180ML mini ultrasonic humidifier and electric aroma diffuser by Searide. USB-powered, touch controls, RGB atmosphere light, aromatherapy mist, and auto shut-off when water runs low — for home, bedroom, desk, or car cup holder.",
+    shortDescription:
+      "Compact 180ML USB humidifier and aroma diffuser with touch control, RGB light, and quiet ultrasonic mist for home, bedroom, or car.",
+    longDescription: [
+      "A small column-style humidifier that adds comfortable moisture and optional essential-oil aromatherapy without taking over your nightstand, desk, or car console.",
+      "The 180ML tank supports steady ultrasonic mist output with touch-button operation, a single mist stream, and an RGB light ring that doubles as a soft atmosphere lamp.",
+      "Rated for spaces around 11–20 m², it runs at under 36 dB on USB 5V / 2W power — practical for bedrooms, home offices, and travel setups.",
+      "Built-in water-shortage protection helps prevent dry running; CE certified per supplier listing. Model H09 Pro, classic column form factor.",
+      "Free standard shipping on this listing. Estimated delivery between June 27 and August 1.",
+    ],
+    features: [
+      "Brand Searide — model H09 Pro",
+      "180ML capacity, ultrasonic cool mist",
+      "Humidification rate ~30 ml/h",
+      "Aromatherapy function with essential oils",
+      "Touch-button operation",
+      "RGB atmosphere light ring",
+      "USB 5V powered (2W)",
+      "Covers approx. 11–20 m²",
+      "Noise level under 36 dB",
+      "Auto shut-off when water is low",
+      "CE certified (supplier listing)",
+      "Classic column mini design",
+      "For home, bedroom, desk, and car",
+      "Available in White and Black",
+      "Free shipping — estimated delivery Jun 27 – Aug 1",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "white",
+      options: [
+        { value: "white", label: "White", swatchHex: "#F0F0F0" },
+        { value: "black", label: "Black", swatchHex: "#1C1C1C" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "Searide Mini humidificador de aire 180ML USB — Difusor de aroma H09 Pro",
+        description:
+          "Mini humidificador ultrasónico de 180ML y difusor de aroma eléctrico Searide. Alimentación USB, control táctil, luz RGB ambiental, niebla de aromaterapia y apagado automático sin agua — para hogar, dormitorio, escritorio o portavasos del auto.",
+        shortDescription:
+          "Humidificador USB compacto de 180ML con control táctil, luz RGB y niebla ultrasónica silenciosa para hogar, dormitorio o auto.",
+        longDescription: [
+          "Humidificador mini de perfil columnar que aporta humedad confortable y aromaterapia opcional sin ocupar la mesita de noche, el escritorio o la consola del auto.",
+          "Tanque de 180ML con niebla ultrasónica continua, operación táctil, una salida de niebla y anillo de luz RGB que funciona como lámpara ambiental suave.",
+          "Pensado para espacios de aprox. 11–20 m²; funciona a menos de 36 dB con alimentación USB 5V / 2W — práctico para dormitorios, home office y viajes.",
+          "Protección contra apagado por falta de agua; certificación CE según ficha del proveedor. Modelo H09 Pro, forma columnar clásica.",
+          "Envío estándar gratis en este producto. Entrega estimada entre el 27 de junio y el 1 de agosto.",
+        ],
+        features: [
+          "Marca Searide — modelo H09 Pro",
+          "Capacidad 180ML, niebla fría ultrasónica",
+          "Tasa de humidificación ~30 ml/h",
+          "Función de aromaterapia con aceites esenciales",
+          "Operación con botones táctiles",
+          "Luz ambiental RGB",
+          "Alimentación USB 5V (2W)",
+          "Cobertura aprox. 11–20 m²",
+          "Nivel de ruido inferior a 36 dB",
+          "Apagado automático sin agua",
+          "Certificación CE (según proveedor)",
+          "Diseño mini columnar clásico",
+          "Para hogar, dormitorio, escritorio y auto",
+          "Disponible en Blanco y Negro",
+          "Envío gratis — entrega estimada 27 jun – 1 ago",
+          "Origen China (dato de proveedor)",
         ],
       },
     },

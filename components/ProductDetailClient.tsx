@@ -24,6 +24,8 @@ import {
 } from "@/lib/pdp-gallery-framing";
 import type { ProductVariants, VariantDefinition } from "@/lib/product-variants";
 import { trackViewItem } from "@/lib/analytics/ga4";
+import { useCurrency } from "@/context/CurrencyContext";
+import { resolvePdpBrandTheme } from "@/lib/ui/pdp-theme";
 import type { UISurface } from "@/lib/ui-surface";
 
 type ProductSummary = {
@@ -178,6 +180,8 @@ export default function ProductDetailClient({
   cartPath,
 }: Props) {
   const L = surface === "light";
+  const gi = resolvePdpBrandTheme(cartBrand) === "good-ideas";
+  const { formatMoney } = useCurrency();
   const searchParams = useSearchParams();
   const isFramingDirector = isPdpGalleryFramingDirectorMode(
     searchParams,
@@ -417,21 +421,25 @@ export default function ProductDetailClient({
       {/* Sticky CTA móvil */}
       <div
         className={
-          L
-            ? "fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
-            : "fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-dark-base/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+          gi
+            ? "fixed bottom-0 left-0 right-0 z-50 border-t border-white/[0.08] bg-[#0B0F14]/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.45)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+            : L
+              ? "fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+              : "fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-dark-base/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
         }
       >
         <div className="mx-auto max-w-full">
           <div className="mb-2 text-center">
             <p
               className={
-                L
-                  ? "text-2xl font-bold text-neutral-900"
-                  : "text-2xl font-bold text-text-primary"
+                gi
+                  ? "text-2xl font-bold tabular-nums text-[#E8ECF1]"
+                  : L
+                    ? "text-2xl font-bold text-neutral-900"
+                    : "text-2xl font-bold text-text-primary"
               }
             >
-              ${resolvedPrice.toFixed(2)}
+              {formatMoney(resolvedPrice)}
             </p>
           </div>
 
@@ -466,17 +474,25 @@ export default function ProductDetailClient({
 
           <div
             className={
-              L
-                ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-neutral-500"
-                : "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-text-muted/70"
+              gi
+                ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-[rgba(232,236,241,0.5)]"
+                : L
+                  ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-neutral-500"
+                  : "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-text-muted/70"
             }
           >
             <span>{mobileStickyTrustLines[0]}</span>
-            <span aria-hidden className={L ? "text-neutral-300" : "text-white/25"}>
+            <span
+              aria-hidden
+              className={gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
+            >
               ·
             </span>
             <span>{mobileStickyTrustLines[1]}</span>
-            <span aria-hidden className={L ? "text-neutral-300" : "text-white/25"}>
+            <span
+              aria-hidden
+              className={gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
+            >
               ·
             </span>
             <span>{mobileStickyTrustLines[2]}</span>

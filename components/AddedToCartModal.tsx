@@ -4,11 +4,10 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import SmartImage from "@/components/SmartImage";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import { useCurrency } from "@/context/CurrencyContext";
 import {
-  formatCartPrice,
   formatCartVariantSummary,
 } from "@/lib/cart-formatting";
-import type { Locale } from "@/lib/i18n/config";
 
 export type AddedToCartLineSnapshot = {
   title: string;
@@ -32,16 +31,15 @@ type Props = {
 
 function buildSummaryLine(
   item: AddedToCartLineSnapshot,
-  locale: Locale,
-  t: (key: string, fallback?: string | unknown) => string
+  t: (key: string, fallback?: string | unknown) => string,
+  formatPrice: (amount: number) => string
 ): string {
   const variantPart = formatCartVariantSummary(
     item.variantSelections,
     undefined,
     t
   );
-  const pricePart = `${t("addedToCartModal.priceLabel")}: ${formatCartPrice(
-    locale,
+  const pricePart = `${t("addedToCartModal.priceLabel")}: ${formatPrice(
     item.price
   )}`;
   return variantPart ? `${variantPart} · ${pricePart}` : pricePart;
@@ -56,6 +54,7 @@ export default function AddedToCartModal({
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations();
+  const { formatMoney } = useCurrency();
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,7 +76,7 @@ export default function AddedToCartModal({
 
   if (!open || !item) return null;
 
-  const summaryLine = buildSummaryLine(item, locale, t);
+  const summaryLine = buildSummaryLine(item, t, formatMoney);
 
   const goToCart = () => {
     onClose();

@@ -19,6 +19,12 @@
     "searchPlaceholder": "Cerca attrezzatura e abbigliamento",
     "searchSubmit": "Cerca",
     "localeNavAria": "Scegli la lingua",
+    "currencyNavAria": "Scegli valuta",
+    "currencies": {
+      "ARS": "Peso argentino",
+      "BRL": "Real brasiliano",
+      "USD": "Dollaro USA"
+    },
     "logoAlt": "Go Natural",
     "utility": {
       "aria": "Navigazione secondaria",
@@ -61,13 +67,14 @@
       "cta": "Vai a Go Natural"
     },
     "goodIdeas": {
-      "title": "Good Ideas",
+      "title": "Good Products",
       "tagline": "Prodotti smart per casa, tech e vita quotidiana.",
-      "cta": "Vai a Good Ideas"
+      "cta": "Vai a Good Products"
     },
     "localeAria": "Scegli lingua"
   },
   "goodIdeas": {
+    "brandName": "Good Products",
     "nav": {
       "home": "Home",
       "products": "Prodotti",
@@ -81,7 +88,7 @@
       "subtitle": "Prodotti utili per casa, tech, lifestyle e vita di tutti i giorni.",
       "cta": "Esplora i prodotti",
       "comingSoon": "Stiamo curando il catalogo. Presto troverai gadget per la casa, elettronica e essenziali quotidiani.",
-      "sectionAria": "Good Ideas — home"
+      "sectionAria": "Good Products — home"
     },
     "products": {
       "heroTitle": "Essenziali\nquotidiani",
@@ -90,7 +97,7 @@
       "heroDiscover": "Scopri il catalogo",
       "scrollHint": "Scorri per esplorare",
       "comingSoonTitle": "In arrivo",
-      "comingSoonBody": "Stiamo preparando il catalogo Good Ideas. Presto prodotti per casa, tech e lifestyle.",
+      "comingSoonBody": "Stiamo preparando il catalogo Good Products. Presto prodotti per casa, tech e lifestyle.",
       "categories": {
         "home": "Casa",
         "tech": "Tech",
@@ -104,9 +111,9 @@
       "heroSubtitle": "Guide, trend e prodotti utili per casa, tecnologia e vita quotidiana.",
       "exploreCta": "Esplora gli articoli",
       "scrollHint": "Scorri per esplorare",
-      "sectionAria": "Blog Good Ideas",
+      "sectionAria": "Blog Good Products",
       "comingSoonTitle": "In arrivo",
-      "comingSoonBody": "Il journal Good Ideas è in preparazione. Articoli su casa, tech e lifestyle in arrivo.",
+      "comingSoonBody": "Il journal Good Products è in preparazione. Articoli su casa, tech e lifestyle in arrivo.",
       "featuredLabel": "Storia in evidenza",
       "articlesLabel": "Ultimi articoli",
       "backToBlog": "Torna al blog",
@@ -116,7 +123,7 @@
           "title": "Essenziali smart home per la vita quotidiana",
           "excerpt": "Piccoli upgrade per casa e tech che rendono le routine più semplici e piacevoli.",
           "subtitle": "Scelte pratiche per casa, scrivania e viaggio.",
-          "intro": "Good Ideas propone prodotti utili che entrano nella vita reale—senza ingombro. Upgrade che meritano un posto fisso su uno scaffale, in una borsa o sulla scrivania.",
+          "intro": "Good Products propone prodotti utili che entrano nella vita reale—senza ingombro. Upgrade che meritano un posto fisso su uno scaffale, in una borsa o sulla scrivania.",
           "heroImage": "/assets/images/good-ideas-blog/smart-home-essentials-2026-hero.webp",
           "relatedProductIds": ["gi-hogar-002", "gi-lifestyle-001"],
           "sections": [
@@ -137,13 +144,13 @@
               "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-2.webp"
             }
           ],
-          "closing": "Esplora il catalogo Good Ideas: casa, tech, lifestyle e idee regalo per l’uso quotidiano."
+          "closing": "Esplora il catalogo Good Products: casa, tech, lifestyle e idee regalo per l’uso quotidiano."
         },
         "product-from-1005006438780849": {
           "title": "Bollitore da viaggio portatile 450ML per casa e spostamenti",
-          "excerpt": "Una scelta compatta Good Ideas per tè, caffè e acqua calda alla scrivania, in dormitorio o in viaggio.",
+          "excerpt": "Una scelta compatta Good Products per tè, caffè e acqua calda alla scrivania, in dormitorio o in viaggio.",
           "subtitle": "Essenziali per la casa che si adattano alle routine reali.",
-          "intro": "Good Ideas seleziona prodotti utili per la casa, non oggetti superflui. Questo bollitore compatto da 450ML è pensato per l’acqua calda senza occupare tutto il piano cucina.",
+          "intro": "Good Products seleziona prodotti utili per la casa, non oggetti superflui. Questo bollitore compatto da 450ML è pensato per l’acqua calda senza occupare tutto il piano cucina.",
           "heroImage": "/assets/images/good-ideas-blog/product-from-1005006438780849-hero.webp",
           "relatedProductIds": ["gi-hogar-002"],
           "sections": [
@@ -156,21 +163,21 @@
               "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-1.webp"
             },
             {
-              "heading": "Pensato per l’uso quotidiano Good Ideas",
+              "heading": "Pensato per l’uso quotidiano Good Products",
               "paragraphs": [
                 "Scegli il formato spina in base alla tua regione per lo stesso design compatto a casa e in viaggio.",
-                "Consulta la scheda prodotto per dimensioni, opzioni spina e galleria, e abbinalo ad altre selezioni casa e lifestyle del catalogo Good Ideas."
+                "Consulta la scheda prodotto per dimensioni, opzioni spina e galleria, e abbinalo ad altre selezioni casa e lifestyle del catalogo Good Products."
               ],
               "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-2.webp"
             }
           ],
-          "closing": "Scopri il bollitore da viaggio portatile 450ML nel catalogo casa Good Ideas e crea un setup adatto a come vivi."
+          "closing": "Scopri il bollitore da viaggio portatile 450ML nel catalogo casa Good Products e crea un setup adatto a come vivi."
         },
         "product-from-supplier-link": {
           "title": "Scelte premium per la casa che elevano gli spazi",
           "excerpt": "Scopri un prodotto per la casa premium pensato per la vita moderna: linee pulite, materiali di qualità e stile adatto a stanze reali.",
           "subtitle": "Stile casa contemporaneo con finitura premium.",
-          "intro": "Good Ideas seleziona prodotti per la casa scelti per qualità e uso quotidiano. Questa scelta premium punta su design curato e materiali che si integrano negli interni moderni, senza creare disordine visivo.",
+          "intro": "Good Products seleziona prodotti per la casa scelti per qualità e uso quotidiano. Questa scelta premium punta su design curato e materiali che si integrano negli interni moderni, senza creare disordine visivo.",
           "heroImage": "/assets/images/good-ideas-blog/product-from-supplier-link/hero.webp",
           "sections": [
             {
@@ -190,13 +197,13 @@
               "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-2.webp"
             }
           ],
-          "closing": "Esplora il catalogo casa Good Ideas: scelte premium che bilanciano qualità, accessibilità e utilità quotidiana."
+          "closing": "Esplora il catalogo casa Good Products: scelte premium che bilanciano qualità, accessibilità e utilità quotidiana."
         }
       }
     },
     "cart": {
       "title": "Il tuo carrello",
-      "empty": "Il carrello Good Ideas è vuoto.",
+      "empty": "Il carrello Good Products è vuoto.",
       "emptyCta": "Esplora i prodotti",
       "comingSoonCheckout": "Il checkout sarà disponibile con il lancio del catalogo.",
       "subtotal": "Subtotale",
@@ -205,12 +212,12 @@
     "checkout": {
       "title": "Checkout",
       "comingSoonTitle": "In arrivo",
-      "comingSoonBody": "Il checkout Good Ideas si aprirà con il lancio del catalogo.",
+      "comingSoonBody": "Il checkout Good Products si aprirà con il lancio del catalogo.",
       "backToCart": "Torna al carrello"
     },
     "product": {
       "comingSoonTitle": "Prodotto non disponibile",
-      "comingSoonBody": "Questo prodotto farà parte del catalogo Good Ideas a breve.",
+      "comingSoonBody": "Questo prodotto farà parte del catalogo Good Products a breve.",
       "backToProducts": "Torna ai prodotti"
     },
     "footer": {
@@ -245,6 +252,9 @@
     "continueShopping": "Continua gli acquisti",
     "priceLabel": "Prezzo"
   },
+  "currency": {
+    "checkoutDisclaimer": "I prezzi in {currency} sono indicativi. Il pagamento viene elaborato in USD."
+  },
   "authForm": {
     "confirmEmailTitle": "Controlla la tua email",
     "confirmEmailDescription": "Abbiamo inviato un link di conferma a {email}. Apri il messaggio e tocca il link per attivare l’account (controlla anche lo spam).",
@@ -256,27 +266,27 @@
   },
   "seo": {
     "gateway": {
-      "title": "Go Natural & Good Ideas | Scegli il negozio",
-      "description": "Go Natural per l’outdoor o Good Ideas per casa, tech e prodotti smart."
+      "title": "Go Natural & Good Products | Scegli il negozio",
+      "description": "Go Natural per l’outdoor o Good Products per casa, tech e prodotti smart."
     },
     "goodIdeas": {
-      "title": "Good Ideas | Prodotti smart",
+      "title": "Good Products | Prodotti smart",
       "description": "Gadget utili, tech per la casa e prodotti virali. In arrivo.",
       "products": {
-        "title": "Prodotti | Good Ideas",
-        "description": "Catalogo Good Ideas: casa, tech e lifestyle. In arrivo."
+        "title": "Prodotti | Good Products",
+        "description": "Catalogo Good Products: casa, tech e lifestyle. In arrivo."
       },
       "blog": {
-        "title": "Blog | Good Ideas",
+        "title": "Blog | Good Products",
         "description": "Idee, guide e trend per casa, tech e lifestyle."
       },
       "blogPost": {
-        "titleTemplate": "{title} | Blog Good Ideas",
+        "titleTemplate": "{title} | Blog Good Products",
         "descriptionTemplate": "{excerpt}"
       },
       "cart": {
-        "title": "Carrello | Good Ideas",
-        "description": "Il tuo carrello Good Ideas."
+        "title": "Carrello | Good Products",
+        "description": "Il tuo carrello Good Products."
       }
     },
     "home": {
@@ -960,6 +970,7 @@
     "checkout": "Continua al checkout",
     "continueShopping": "← Continua a comprare",
     "freeShippingLabel": "Spedizione standard gratuita",
+    "freeShippingAlways": "Spedizione standard gratuita su tutti gli ordini.",
     "freeShippingAway": "Mancano {amount} alla spedizione standard gratuita",
     "freeShippingUnlocked": "Hai sbloccato la spedizione standard gratuita",
     "freeShippingThresholdHint": "Ordini da {amount} in su: spedizione gratuita",
@@ -2244,6 +2255,7 @@
       "camping-survival-gear": "Camping & Survival",
       "outdoor-lighting": "Illuminazione outdoor",
       "cycling-running": "Ciclismo / Running",
+      "motorcyclist-accessories": "Accessori motociclisti",
       "men": "Uomo",
       "women": "Donna",
       "kids": "Bambini",

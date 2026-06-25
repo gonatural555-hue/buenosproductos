@@ -5,6 +5,10 @@ import type { VariantDefinition } from "@/lib/product-variants";
 import type { VariantMatrix } from "@/lib/product-variants";
 import { isOptionValid } from "@/lib/product-variant-matrix";
 import type { UISurface } from "@/lib/ui-surface";
+import {
+  getPdpBuyBoxTheme,
+  type PdpBrandTheme,
+} from "@/lib/ui/pdp-theme";
 
 type Props = {
   variant: VariantDefinition;
@@ -15,6 +19,7 @@ type Props = {
   sizeGuideHref?: string;
   sizeGuideLabel: string;
   surface?: UISurface;
+  pdpBrand?: PdpBrandTheme;
   /** `rei` = botones rectangulares estilo retail. */
   appearance?: "pill" | "rei";
 };
@@ -28,31 +33,28 @@ export default function SizeSelector({
   sizeGuideHref,
   sizeGuideLabel,
   surface = "dark",
+  pdpBrand = "go-natural",
   appearance = "pill",
 }: Props) {
   const L = surface === "light";
+  const gi = pdpBrand === "good-ideas";
   const rei = appearance === "rei";
+  const theme = getPdpBuyBoxTheme(pdpBrand, surface);
   const current = selections[variant.type];
 
   return (
     <section className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3
-          className={
-            L
-              ? "text-xs font-semibold uppercase tracking-[0.14em] text-neutral-600"
-              : "text-xs font-semibold uppercase tracking-[0.14em] text-text-muted"
-          }
-        >
-          {variant.label}
-        </h3>
+        <h3 className={theme.colorLabel}>{variant.label}</h3>
         {sizeGuideHref ? (
           <Link
             href={sizeGuideHref}
             className={
-              L
-                ? "text-xs font-medium text-neutral-700 underline-offset-4 hover:text-accent-gold hover:underline"
-                : "text-xs font-medium text-text-muted underline-offset-4 hover:text-accent-gold hover:underline"
+              gi
+                ? "text-xs font-medium text-[rgba(232,236,241,0.72)] underline-offset-4 hover:text-[#60A5FA] hover:underline"
+                : L
+                  ? "text-xs font-medium text-neutral-700 underline-offset-4 hover:text-accent-gold hover:underline"
+                  : "text-xs font-medium text-text-muted underline-offset-4 hover:text-accent-gold hover:underline"
             }
           >
             {sizeGuideLabel}
@@ -74,6 +76,22 @@ export default function SizeSelector({
             ? "min-h-[2.75rem] rounded-md px-2 py-2.5 text-sm"
             : "min-w-[2.75rem] rounded-full border px-3.5 py-2 text-sm";
 
+          const focusRing = gi
+            ? "focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-[#0B0F14]"
+            : L
+              ? "focus-visible:ring-gn-forest/50 focus-visible:ring-offset-white"
+              : "focus-visible:ring-gn-forest/50 focus-visible:ring-offset-dark-base";
+
+          const stateClass = !valid
+            ? theme.variantDisabled
+            : active
+              ? rei && L && !gi
+                ? "border-gn-forest bg-gn-forest text-[#F4EBDD] shadow-sm"
+                : theme.variantSelected
+              : rei && L && !gi
+                ? "border-neutral-300 bg-white text-neutral-900 hover:border-neutral-500"
+                : theme.variantDefault;
+
           return (
             <button
               key={key}
@@ -87,25 +105,9 @@ export default function SizeSelector({
               className={[
                 shapeClass,
                 "font-medium transition-all duration-200 ease-out border",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-gn-forest/50 focus-visible:ring-offset-2",
-                L ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-dark-base",
-                !valid
-                  ? L
-                    ? "cursor-not-allowed border-neutral-200 bg-neutral-100 text-neutral-400"
-                    : "cursor-not-allowed border-white/10 bg-dark-surface/30 text-text-muted"
-                  : active
-                  ? rei
-                    ? L
-                      ? "border-gn-forest bg-gn-forest text-[#F4EBDD] shadow-sm"
-                      : "border-accent-gold bg-dark-surface text-text-primary ring-1 ring-accent-gold/50"
-                    : L
-                    ? "border-accent-gold bg-white text-neutral-900 shadow-[0_0_0_1px_rgba(212,175,55,0.25)]"
-                    : "border-accent-gold bg-dark-surface text-text-primary ring-1 ring-accent-gold/50"
-                  : L
-                  ? rei
-                    ? "border-neutral-300 bg-white text-neutral-900 hover:border-neutral-500"
-                    : "border-neutral-200 bg-neutral-50 text-neutral-900 hover:border-neutral-400"
-                  : "border-white/15 bg-dark-surface/55 text-text-primary hover:border-white/35",
+                "focus:outline-none focus-visible:ring-2",
+                focusRing,
+                stateClass,
               ].join(" ")}
             >
               {option.label}

@@ -4,7 +4,6 @@ import { createOrder, markOrderAsPaid, type OrderItem } from "@/lib/orders";
 import {
   getPaidOrderCountForUser,
   getWelcomeFreeShippingRemaining,
-  getWelcomeFreeShippingStateForUser,
 } from "@/lib/shipping/welcome-free-shipping-server";
 
 type PayPalOrderPayload = {
@@ -106,15 +105,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const welcomeState = await getWelcomeFreeShippingStateForUser(
-      supabase,
-      user.id
-    );
-    const welcomeFreeShippingApplied = welcomeState.eligible;
+    const welcomeFreeShippingApplied = true;
 
     const enrichedShippingAddress = {
       ...(ship ?? {}),
       welcomeFreeShippingApplied,
+      standardShippingAlwaysFree: true,
     };
 
     const safeEmail =
@@ -141,7 +137,7 @@ export async function POST(request: NextRequest) {
       payment_method: "paypal",
       paypal_order_id: paypalOrderId ?? null,
       shipping_json: enrichedShippingAddress,
-      shipping_waived: welcomeFreeShippingApplied,
+      shipping_waived: true,
       shipping_amount: 0,
     };
 
@@ -193,15 +189,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const paidOrderCountAfter = welcomeState.paidOrderCount + 1;
-
     return NextResponse.json({
       success: true,
       orderId,
       status: "paid",
-      welcomeFreeShippingApplied,
-      welcomeFreeShippingRemainingAfter:
-        getWelcomeFreeShippingRemaining(paidOrderCountAfter),
+      welcomeFreeShippingApplied: true,
+      welcomeFreeShippingRemainingAfter: 0,
     });
   } catch (error) {
     console.error("[PayPal Order API] Error procesando orden PayPal:", error);

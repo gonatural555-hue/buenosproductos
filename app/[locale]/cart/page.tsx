@@ -7,26 +7,18 @@ import { useEffect, useMemo, useRef } from "react";
 import CartSuggestedProductsRail from "@/components/cart/CartSuggestedProductsRail";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
-import { useUser } from "@/context/UserContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import CurrencyDisclaimer from "@/components/currency/CurrencyDisclaimer";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
-import { FREE_SHIPPING_THRESHOLD_USD } from "@/lib/shipping/constants";
 import {
   cartLineToGa4Item,
   trackViewCart,
 } from "@/lib/analytics/ga4";
-import {
-  formatCartPrice,
-  formatCartVariantSummary,
-} from "@/lib/cart-formatting";
-
-function interpolate(template: string, vars: Record<string, string>) {
-  return template.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`);
-}
+import { formatCartVariantSummary } from "@/lib/cart-formatting";
 
 export default function CartPage() {
   const { items, subtotal, increaseQty, decreaseQty, removeItem } = useCart();
-  const { hasWelcomeFreeShipping, welcomeFreeShippingRemaining, isLoggedIn } =
-    useUser();
+  const { formatMoney } = useCurrency();
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations();
@@ -44,31 +36,9 @@ export default function CartPage() {
     );
   }, [items, subtotal]);
 
-  const formatPrice = (price: number) => formatCartPrice(locale, price);
-
-  const thresholdLabel = formatPrice(FREE_SHIPPING_THRESHOLD_USD);
+  const formatPrice = (price: number) => formatMoney(price);
 
   const cartItemIds = useMemo(() => items.map((item) => item.id), [items]);
-
-  const { shippingPct, shippingRemaining, shippingUnlocked } = useMemo(() => {
-    if (hasWelcomeFreeShipping) {
-      return {
-        shippingPct: 100,
-        shippingRemaining: 0,
-        shippingUnlocked: true,
-      };
-    }
-    const pct = Math.min(
-      100,
-      Math.round((subtotal / FREE_SHIPPING_THRESHOLD_USD) * 1000) / 10
-    );
-    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD_USD - subtotal);
-    return {
-      shippingPct: pct,
-      shippingRemaining: remaining,
-      shippingUnlocked: subtotal >= FREE_SHIPPING_THRESHOLD_USD,
-    };
-  }, [subtotal, hasWelcomeFreeShipping]);
 
   const handleCheckout = () => {
     router.push(`/${locale}/checkout`);
@@ -142,62 +112,12 @@ export default function CartPage() {
             className="rounded-2xl border border-earth-brown/18 bg-soft-stone p-5 shadow-[0_10px_36px_-18px_rgba(17,23,19,0.12)] md:p-6"
             aria-label={t("cartPage.freeShippingLabel")}
           >
-            {hasWelcomeFreeShipping ? (
-              <>
-                <h2 className="text-sm font-semibold text-dark-base">
-                  {t("cartPage.freeShippingLabel")}
-                </h2>
-                <p className="mt-2 text-sm font-medium text-accent-gold/95">
-                  {interpolate(t("shipping.welcomeFreeRemaining"), {
-                    count: String(welcomeFreeShippingRemaining),
-                  })}
-                </p>
-                <p className="mt-2 text-xs text-muted-gray">
-                  {t("shipping.welcomeFreeApplied")}
-                </p>
-              </>
-            ) : (
-              <>
-                <div className="flex flex-wrap items-end justify-between gap-3 mb-4">
-                  <div>
-                    <h2 className="text-sm font-semibold text-dark-base">
-                      {t("cartPage.freeShippingLabel")}
-                    </h2>
-                    <p className="mt-1 text-xs text-muted-gray">
-                      {isLoggedIn && welcomeFreeShippingRemaining === 0
-                        ? t("shipping.welcomeFreeExhausted")
-                        : interpolate(t("cartPage.freeShippingThresholdHint"), {
-                            amount: thresholdLabel,
-                          })}
-                    </p>
-                  </div>
-                  {!shippingUnlocked && (
-                    <span className="text-xs font-medium tabular-nums text-accent-gold">
-                      {interpolate(t("cartPage.freeShippingAway"), {
-                        amount: formatPrice(shippingRemaining),
-                      })}
-                    </span>
-                  )}
-                </div>
-                <div
-                  className="h-2 overflow-hidden rounded-full bg-earth-brown/15"
-                  role="progressbar"
-                  aria-valuenow={Math.round(shippingPct)}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                >
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-accent-moss to-accent-gold transition-[width] duration-700 ease-out motion-reduce:transition-none"
-                    style={{ width: `${shippingPct}%` }}
-                  />
-                </div>
-                {shippingUnlocked && (
-                  <p className="mt-3 text-sm text-accent-gold/95 font-medium">
-                    {t("cartPage.freeShippingUnlocked")}
-                  </p>
-                )}
-              </>
-            )}
+            <h2 className="text-sm font-semibold text-dark-base">
+              {t("cartPage.freeShippingLabel")}
+            </h2>
+            <p className="mt-2 text-sm font-medium text-accent-gold/95">
+              {t("cartPage.freeShippingAlways")}
+            </p>
           </section>
 
           {/* Line items */}
@@ -353,6 +273,7 @@ export default function CartPage() {
               <p className="border-t border-earth-brown/15 pt-4 text-xs leading-relaxed text-muted-gray">
                 {t("cartPage.summaryNote")}
               </p>
+              <CurrencyDisclaimer className="text-[11px] leading-relaxed text-muted-gray" />
             </div>
 
             <div className="border-t border-earth-brown/15 pt-2">

@@ -12,6 +12,7 @@ import {
   goodIdeasProductsPath,
 } from "@/lib/routing/brands";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
 
 export default function GoodIdeasHeader() {
   const locale = useLocale();
@@ -45,10 +46,10 @@ export default function GoodIdeasHeader() {
           href={goodIdeasHomePath(locale)}
           className="font-display text-[1.35rem] tracking-[-0.02em] text-[#E8ECF1] transition-opacity hover:opacity-90"
         >
-          Good Ideas
+          {t("goodIdeas.brandName")}
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Good Ideas">
+        <nav className="hidden items-center gap-6 md:flex" aria-label={t("goodIdeas.brandName")}>
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -67,6 +68,7 @@ export default function GoodIdeasHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <HeaderCurrencySwitcher variant="good-ideas" />
           <div className="flex items-center gap-0.5 rounded-full border border-white/10 px-1 py-0.5">
             {locales.map((lang) => (
               <Link

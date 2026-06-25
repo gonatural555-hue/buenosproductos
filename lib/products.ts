@@ -2775,6 +2775,186 @@ const PRODUCTS: Product[] = [
     },
   },
   {
+    id: "gn-cycling-020",
+    brand: "ORZ",
+    title:
+      "ORZ Casco Integral Retro para Moto — Ranura Bluetooth, Certificación DOT",
+    price: 138.41,
+    category: "Motorcyclist Accessories",
+    images: ["/assets/images/products/gn-cycling-020/image.webp"],
+    freeShipping: true,
+    shortDescription:
+      "Casco integral retro estilo scorpion en ABS, ranura para auricular Bluetooth, visera oscura y envío gratis.",
+    description:
+      "Casco integral ORZ de estilo retro para moto, hombre y mujer. Carcasa ABS, mentonera tipo scorpion, ranura reservada para auricular Bluetooth, certificación DOT y cinco tallas. Precio de lista $200.000 ARS con envío estándar gratis.",
+    longDescription: [
+      "Casco integral de perfil retro pensado para uso urbano y rutas en moto, con estética clásica y detalle de mentonera tipo scorpion que refuerza la protección frontal.",
+      "Carcasa exterior en ABS de alto impacto según ficha del proveedor, con acabado gris plata mate y visera oscura integrada.",
+      "Incluye ranura reservada para instalar auricular Bluetooth, ideal para navegación o comunicación en ruta sin modificar la estructura del casco.",
+      "Forro interior acolchado y sistema de cierre con correa ajustable para un calce estable en M, L, XL, XXL y XXXL.",
+      "Certificación DOT indicada en listado del proveedor. Peso aproximado 1,35 kg. Uso unisex.",
+      "Envío estándar gratis en todos los pedidos.",
+    ],
+    features: [
+      "Marca ORZ — casco integral retro para moto",
+      "Carcasa ABS de alto impacto",
+      "Estilo scorpion con mentonera reforzada",
+      "Ranura reservada para auricular Bluetooth",
+      "Certificación DOT (según ficha del proveedor)",
+      "Visera oscura integrada",
+      "Peso aprox. 1,35 kg — uso unisex",
+      "Tallas M, L, XL, XXL y XXXL",
+      "Seis colores disponibles",
+      "Envío gratis",
+      "Origen China (dato de proveedor)",
+    ],
+    translations: {
+      en: {
+        title:
+          "ORZ Retro Full-Face Motorcycle Helmet — Bluetooth Slot, DOT Certified",
+        shortDescription:
+          "Retro scorpion-style ABS full-face helmet with Bluetooth headset slot, dark visor, and free shipping.",
+        description:
+          "ORZ retro full-face motorcycle helmet for men and women. ABS shell, scorpion chin design, reserved Bluetooth earpiece slot, DOT certification, and five sizes. List price $200,000 ARS with free standard shipping.",
+        longDescription: [
+          "Retro-profile full-face helmet for urban and road riding, with classic styling and a scorpion-style chin piece for added front coverage.",
+          "High-impact ABS outer shell per supplier listing, matte silver-grey finish, and integrated dark visor.",
+          "Reserved slot for Bluetooth headset installation — navigation or comms on the road without altering helmet structure.",
+          "Padded inner liner and adjustable strap closure for a stable fit in M through XXXL.",
+          "DOT certification noted on supplier listing. Approx. weight 1.35 kg. Unisex use.",
+          "Free standard shipping on every order.",
+        ],
+        features: [
+          "ORZ brand — retro full-face motorcycle helmet",
+          "High-impact ABS shell",
+          "Scorpion-style reinforced chin",
+          "Reserved Bluetooth headset slot",
+          "DOT certified (per supplier listing)",
+          "Integrated dark visor",
+          "Approx. 1.35 kg — unisex",
+          "Sizes M, L, XL, XXL, and XXXL",
+          "Six color options",
+          "Free shipping",
+          "Origin China (supplier data)",
+        ],
+      },
+      es: {
+        title:
+          "ORZ Casco Integral Retro para Moto — Ranura Bluetooth, Certificación DOT",
+        shortDescription:
+          "Casco integral retro estilo scorpion en ABS, ranura para auricular Bluetooth, visera oscura y envío gratis.",
+        description:
+          "Casco integral ORZ de estilo retro para moto, hombre y mujer. Carcasa ABS, mentonera tipo scorpion, ranura reservada para auricular Bluetooth, certificación DOT y cinco tallas. Precio de lista $200.000 ARS con envío estándar gratis.",
+        longDescription: [
+          "Casco integral de perfil retro pensado para uso urbano y rutas en moto, con estética clásica y detalle de mentonera tipo scorpion que refuerza la protección frontal.",
+          "Carcasa exterior en ABS de alto impacto según ficha del proveedor, con acabado gris plata mate y visera oscura integrada.",
+          "Incluye ranura reservada para instalar auricular Bluetooth, ideal para navegación o comunicación en ruta sin modificar la estructura del casco.",
+          "Forro interior acolchado y sistema de cierre con correa ajustable para un calce estable en M, L, XL, XXL y XXXL.",
+          "Certificación DOT indicada en listado del proveedor. Peso aproximado 1,35 kg. Uso unisex.",
+          "Envío estándar gratis en todos los pedidos.",
+        ],
+        features: [
+          "Marca ORZ — casco integral retro para moto",
+          "Carcasa ABS de alto impacto",
+          "Estilo scorpion con mentonera reforzada",
+          "Ranura reservada para auricular Bluetooth",
+          "Certificación DOT (según ficha del proveedor)",
+          "Visera oscura integrada",
+          "Peso aprox. 1,35 kg — uso unisex",
+          "Tallas M, L, XL, XXL y XXXL",
+          "Seis colores disponibles",
+          "Envío gratis",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+      fr: {
+        title:
+          "Casque intégral retro ORZ moto — Emplacement Bluetooth, certification DOT",
+        shortDescription:
+          "Casque intégral retro style scorpion en ABS, emplacement intercom Bluetooth, visière sombre et livraison gratuite.",
+        description:
+          "Casque intégral retro ORZ pour moto, homme et femme. Coque ABS, mentonnière scorpion, emplacement Bluetooth, certification DOT et cinq tailles. Prix liste 200 000 ARS avec livraison standard gratuite.",
+        longDescription: [
+          "Casque intégral au profil retro pour usage urbain et route, avec esthétique classique et mentonnière type scorpion.",
+          "Coque ABS haute résistance, finition gris argent mat et visière sombre intégrée.",
+          "Emplacement réservé pour intercom Bluetooth — navigation ou communication en route.",
+          "Doublure rembourrée et sangle ajustable. Tailles M à XXXL.",
+          "Certification DOT selon fiche fournisseur. Poids env. 1,35 kg. Unisexe.",
+          "Livraison standard gratuite sur toutes les commandes.",
+        ],
+        features: [
+          "Marque ORZ — casque intégral retro moto",
+          "Coque ABS haute résistance",
+          "Style scorpion",
+          "Emplacement intercom Bluetooth",
+          "Certification DOT (selon fournisseur)",
+          "Visière sombre intégrée",
+          "Env. 1,35 kg — unisexe",
+          "Tailles M, L, XL, XXL, XXXL",
+          "Six coloris",
+          "Livraison gratuite",
+          "Origine Chine",
+        ],
+      },
+      it: {
+        title:
+          "Casco integrale retro ORZ moto — Slot Bluetooth, certificazione DOT",
+        shortDescription:
+          "Casco integrale retro stile scorpion in ABS, slot auricolare Bluetooth, visiera scura e spedizione gratuita.",
+        description:
+          "Casco integrale retro ORZ per moto, uomo e donna. Guscio ABS, mentoniera scorpion, slot Bluetooth, certificazione DOT e cinque taglie. Prezzo di listino $200.000 ARS con spedizione standard gratuita.",
+        longDescription: [
+          "Casco integrale dal profilo retro per uso urbano e viaggi in moto, con estetica classica e mentoniera tipo scorpion.",
+          "Guscio esterno ABS ad alto impatto, finitura grigio argento opaco e visiera scura integrata.",
+          "Slot riservato per auricolare Bluetooth — navigazione o comunicazione in strada.",
+          "Fodera imbottita e cinturino regolabile. Taglie da M a XXXL.",
+          "Certificazione DOT secondo scheda fornitore. Peso ca. 1,35 kg. Unisex.",
+          "Spedizione standard gratuita su tutti gli ordini.",
+        ],
+        features: [
+          "Marca ORZ — casco integrale retro moto",
+          "Guscio ABS ad alto impatto",
+          "Stile scorpion",
+          "Slot auricolare Bluetooth",
+          "Certificazione DOT (secondo fornitore)",
+          "Visiera scura integrata",
+          "Ca. 1,35 kg — unisex",
+          "Taglie M, L, XL, XXL, XXXL",
+          "Sei colori",
+          "Spedizione gratuita",
+          "Origine Cina",
+        ],
+      },
+    },
+    variants: [
+      {
+        type: "color",
+        label: "Color",
+        default: "gris-plata",
+        options: [
+          { value: "gris-plata", label: "Gris plata", priceModifier: 0 },
+          { value: "negro", label: "Negro", priceModifier: 0 },
+          { value: "blanco", label: "Blanco", priceModifier: 0 },
+          { value: "rojo", label: "Rojo", priceModifier: 0 },
+          { value: "azul", label: "Azul", priceModifier: 0 },
+          { value: "amarillo", label: "Amarillo", priceModifier: 0 },
+        ],
+      },
+      {
+        type: "size",
+        label: "Talla",
+        default: "l",
+        options: [
+          { value: "m", label: "M", priceModifier: 0 },
+          { value: "l", label: "L", priceModifier: 0 },
+          { value: "xl", label: "XL", priceModifier: 0 },
+          { value: "xxl", label: "XXL", priceModifier: 0 },
+          { value: "xxxl", label: "XXXL", priceModifier: 0 },
+        ],
+      },
+    ],
+  },
+  {
     id: "gn-ski-snow-jacket-001",
     slug: "gn-ski-snow-jacket-001",
     title: "Alpine Shell Jacket — Quiet Winter Layer",

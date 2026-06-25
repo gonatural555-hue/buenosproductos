@@ -1,16 +1,14 @@
 {
   "id": "gi-hogar-003",
-  "brand": "Good Ideas",
+  "brand": "Good Products",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-hogar-003/image.webp"
+      "https://s.alicdn.com/@sc04/kf/H519bdd42baf34a44933907aabee948b6R.png?avif=close&webp=close"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-hogar-003/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-hogar-003/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-hogar-003/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-hogar-003/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-hogar-003/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H744bb6a17e9741f99c06e022a40a0d09z.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H7f87fd24fe6b44a0b19341810aa4ce9cO.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H35dc7a6b2e4b425d9237dabd55b9bf4ez.png?avif=close&webp=close"
     ],
     "lifestyle": [],
     "extras": [],
@@ -27,12 +25,12 @@
     }
   },
   "imagePrompts": {
-    "productCard": "Good Ideas 800ml stainless steel electric kettle, light gray, premium product card, 4:5 ratio, clean white background, subtle Good Ideas branding",
-    "pdpMain": "800ml portable electric kettle stainless steel brushed finish, black handle, circular base with red power indicator, front and side angles, Good Ideas home tech aesthetic",
+    "productCard": "Good Products 800ml stainless steel electric kettle, light gray, premium product card, 4:5 ratio, clean white background, subtle Good Products branding",
+    "pdpMain": "800ml portable electric kettle stainless steel brushed finish, black handle, circular base with red power indicator, front and side angles, Good Products home tech aesthetic",
     "pdpLifestyle": "Electric kettle on modern kitchen counter, morning tea and coffee routine, compact portable home appliance, warm natural light",
     "pdpDetail": "Close-up stainless steel interior, base power switch, 220V label, capacity markings, premium detail shots",
-    "blogHero": "Hero lifestyle shot of compact 800ml kettle in stylish home kitchen setting, Good Ideas editorial tone",
-    "blogSection": "Multiple use cases: tea, Turkish coffee, office desk, travel — Good Ideas home essentials",
+    "blogHero": "Hero lifestyle shot of compact 800ml kettle in stylish home kitchen setting, Good Products editorial tone",
+    "blogSection": "Multiple use cases: tea, Turkish coffee, office desk, travel — Good Products home essentials",
     "productImageFolder": "good-ideas-products/gi-hogar-003",
     "blogImageFolder": "good-ideas-blog/gi-hogar-003"
   }

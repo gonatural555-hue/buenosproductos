@@ -6,7 +6,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import RegistrationCTA from "@/components/RegistrationCTA";
+import AuthModal from "@/components/AuthModal";
 import GoNaturalHomeNewsletterModal from "@/components/go-natural/GoNaturalHomeNewsletterModal";
+import { useAuth } from "@/context/AuthContext";
 import { HomeNewsletterModalProvider, useHomeNewsletterModal } from "@/context/HomeNewsletterModalContext";
 import { GoNaturalHomeLayoutProvider } from "@/context/GoNaturalHomeLayoutContext";
 import {
@@ -21,7 +23,9 @@ function LocaleChromeInner({
 }) {
   const pathname = usePathname() ?? "";
   const { suppressHeader } = useHomeNewsletterModal();
-  const showGnHeader = shouldShowGoNaturalHeader(pathname) && !suppressHeader;
+  const { authOpen, setAuthOpen, initialTab } = useAuth();
+  const showGnHeader =
+    shouldShowGoNaturalHeader(pathname) && !suppressHeader && !authOpen;
   const showGnFooter = shouldShowGoNaturalFooter(pathname);
 
   return (
@@ -35,6 +39,11 @@ function LocaleChromeInner({
       <CookieConsent />
       {showGnFooter ? <Footer /> : null}
       <GoNaturalHomeNewsletterModal />
+      <AuthModal
+        open={authOpen}
+        onClose={() => setAuthOpen(false)}
+        initialTab={initialTab}
+      />
       <RegistrationCTA />
     </>
   );

@@ -4,6 +4,10 @@ import type { VariantDefinition, VariantMatrix } from "@/lib/product-variants";
 import { isOptionValid } from "@/lib/product-variant-matrix";
 import { swatchFillForOption } from "@/lib/pdp-variant-utils";
 import type { UISurface } from "@/lib/ui-surface";
+import {
+  getPdpBuyBoxTheme,
+  type PdpBrandTheme,
+} from "@/lib/ui/pdp-theme";
 
 type Props = {
   variant: VariantDefinition;
@@ -11,6 +15,7 @@ type Props = {
   onSelect: (value: string, label: string) => void;
   variantMatrix?: VariantMatrix;
   surface?: UISurface;
+  pdpBrand?: PdpBrandTheme;
 };
 
 export default function ColorSwatchSelector({
@@ -19,24 +24,17 @@ export default function ColorSwatchSelector({
   onSelect,
   variantMatrix,
   surface = "dark",
+  pdpBrand = "go-natural",
 }: Props) {
-  const L = surface === "light";
+  const theme = getPdpBuyBoxTheme(pdpBrand, surface);
   const current = selections[variant.type];
 
   return (
     <section className="space-y-3">
       <div className="flex items-center gap-2">
-        <h3
-          className={
-            L
-              ? "text-xs font-semibold uppercase tracking-[0.14em] text-neutral-600"
-              : "text-xs font-semibold uppercase tracking-[0.14em] text-text-muted"
-          }
-        >
-          {variant.label}
-        </h3>
+        <h3 className={theme.colorLabel}>{variant.label}</h3>
         {current ? (
-          <span className={L ? "text-sm text-neutral-800" : "text-sm text-text-primary"}>
+          <span className={theme.colorValue}>
             {variant.options.find(
               (o) => (o.value || o.label) === current
             )?.label || current}
@@ -69,14 +67,10 @@ export default function ColorSwatchSelector({
               aria-pressed={active}
               className={[
                 "relative h-9 w-9 rounded-full border-2 transition-all duration-200 ease-out",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2",
-                L ? "focus-visible:ring-offset-white" : "focus-visible:ring-offset-dark-base",
+                "focus:outline-none focus-visible:ring-2",
+                theme.colorSwatchFocus,
                 !valid ? "cursor-not-allowed opacity-35" : "hover:scale-105",
-                active
-                  ? "border-accent-gold shadow-[0_0_0_1px_rgba(212,175,55,0.35)]"
-                  : L
-                  ? "border-neutral-300 hover:border-neutral-500"
-                  : "border-white/25 hover:border-white/45",
+                active ? theme.colorSwatchActive : theme.colorSwatchIdle,
               ].join(" ")}
             >
               <span

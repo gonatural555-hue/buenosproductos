@@ -288,9 +288,7 @@ export default async function ProductPage({ params }: Props) {
     pickupStatus: t("productPage.pdpDesktop.pickupStatus"),
     pickupDetail: t("productPage.pdpDesktop.pickupDetail"),
     shippingTitle: t("productPage.pdpDesktop.shippingTitle"),
-    shippingStatus: product.freeShipping
-      ? t("productPage.freeShipping")
-      : t("productPage.pdpDesktop.shippingStatus"),
+    shippingStatus: t("productPage.freeShipping"),
     shippingDetail: pdpDesktop.shippingEurope,
   };
   const featureSpecRows = parseFeatureSpecRows(specSource.slice(0, 10));
@@ -305,7 +303,7 @@ export default async function ProductPage({ params }: Props) {
         }
       >
         <ProductDetailClient
-          product={localizedProduct}
+          product={{ ...localizedProduct, freeShipping: true }}
           seoH1={seoH1}
           productImages={productImages}
           productVariants={productVariants}

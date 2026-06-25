@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import { useCurrency } from "@/context/CurrencyContext";
 import { useUser, type Order } from "@/context/UserContext";
 import OrderSuccessEngagementBlock from "@/components/order-success/OrderSuccessEngagementBlock";
 
@@ -16,6 +17,7 @@ export default function OrderSuccessPage() {
   const locale = useLocale();
   const t = useTranslations();
   const { orders, lastOrderId } = useUser();
+  const { formatMoney } = useCurrency();
   const [order, setOrder] = useState<Order | null>(null);
 
   const previewOrder = useMemo(() => {
@@ -52,14 +54,7 @@ export default function OrderSuccessPage() {
     });
   }, [order?.date, dateLocale]);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat(dateLocale, {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
+  const formatPrice = (price: number) => formatMoney(price);
 
   let flowSteps: FlowStep[] = [];
   if (order) {

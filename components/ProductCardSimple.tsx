@@ -6,6 +6,7 @@ import SmartImage from "@/components/SmartImage";
 import { Product } from "@/lib/products";
 import { defaultLocale, type Locale } from "@/lib/i18n/config";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { isValidImageSrc } from "@/lib/image-src";
 import { trackSelectItem } from "@/lib/analytics/ga4";
 import type { UISurface } from "@/lib/ui-surface";
@@ -44,10 +45,6 @@ type Props = {
   /** Listado PLP: layout Huckberry o Patagonia. */
   variant?: "default" | "plp" | "patagonia";
 };
-
-function formatPrice(price: number) {
-  return `$${price.toFixed(2)}`;
-}
 
 function ProductImage({
   src,
@@ -132,6 +129,8 @@ export default function ProductCardSimple({
   const freeShippingBadge =
     labels?.freeShippingBadge || "Envío gratis";
   const { addItem } = useCart();
+  const { formatMoney } = useCurrency();
+  const formatPrice = (price: number) => formatMoney(price);
 
   const handleAddToCart = (event: MouseEvent) => {
     event.preventDefault();
@@ -285,7 +284,7 @@ export default function ProductCardSimple({
     const brand = getProductBrandLabel(product);
     const rating = getProductReviewAverage(product);
     const swatches = getProductColorSwatches(product);
-    const badges = product.freeShipping ? [freeShippingBadge] : [];
+    const badges = [freeShippingBadge];
     const extraSwatches =
       swatches.length > 4 ? swatches.length - 4 : 0;
     const visibleSwatches = swatches.slice(0, 4);

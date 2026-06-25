@@ -14,6 +14,8 @@ import PdpAvailabilityCards, {
   type AvailabilityCopy,
 } from "@/components/pdp/PdpAvailabilityCards";
 import TrustBadges from "@/components/pdp/TrustBadges";
+import CurrencyDisclaimer from "@/components/currency/CurrencyDisclaimer";
+import { useCurrency } from "@/context/CurrencyContext";
 import type { PdpDesktopContent } from "@/components/ProductDetailClient";
 import { isValidCombination } from "@/lib/product-variant-matrix";
 import type {
@@ -21,6 +23,11 @@ import type {
   VariantDefinition,
 } from "@/lib/product-variants";
 import type { UISurface } from "@/lib/ui-surface";
+import {
+  getPdpBuyBoxTheme,
+  resolvePdpBrandTheme,
+  type PdpBrandTheme,
+} from "@/lib/ui/pdp-theme";
 
 type Props = {
   productId: string;
@@ -69,9 +76,19 @@ type Props = {
   onSizeInteract: () => void;
 };
 
-function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) {
+function MiniStars({
+  rating,
+  surface,
+  pdpBrand,
+}: {
+  rating: number;
+  surface: UISurface;
+  pdpBrand: PdpBrandTheme;
+}) {
   const L = surface === "light";
+  const gi = pdpBrand === "good-ideas";
   const rounded = Math.round(rating);
+  const filled = gi ? "text-[#FBBF24]" : "text-gn-mustard";
   const empty = L ? "text-neutral-300" : "text-white/25";
   return (
     <span className="flex items-center gap-0.5" aria-hidden>
@@ -79,7 +96,7 @@ function MiniStars({ rating, surface }: { rating: number; surface: UISurface }) 
         <svg
           key={i}
           viewBox="0 0 20 20"
-          className={`h-4 w-4 ${i < rounded ? "text-gn-mustard" : empty}`}
+          className={`h-4 w-4 ${i < rounded ? filled : empty}`}
           fill="currentColor"
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.157c.969 0 1.371 1.24.588 1.81l-3.363 2.444a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.538 1.118l-3.364-2.444a1 1 0 00-1.175 0l-3.364 2.444c-.783.57-1.838-.197-1.538-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.03 9.382c-.783-.57-.38-1.81.588-1.81h4.157a1 1 0 00.95-.69l1.286-3.955z" />
@@ -124,7 +141,9 @@ export default function ProductInfoPanel({
   sizeConfirmed,
   onSizeInteract,
 }: Props) {
-  const L = surface === "light";
+  const pdpBrand = resolvePdpBrandTheme(cartBrand);
+  const theme = getPdpBuyBoxTheme(pdpBrand, surface);
+  const { formatMoney } = useCurrency();
   const matrix = productVariants?.variantMatrix;
 
   const pick = useCallback(
@@ -163,6 +182,7 @@ export default function ProductInfoPanel({
         onChange={onSelectionsChange}
         appearance="premium"
         surface={surface}
+        pdpBrand={pdpBrand}
       />
     ) : null;
 
@@ -176,46 +196,28 @@ export default function ProductInfoPanel({
         .join(" ")}
     >
       {brandLabel && brandHref ? (
-        <Link
-          href={brandHref}
-          className={
-            L
-              ? "text-sm font-medium text-gn-forest underline-offset-2 hover:underline"
-              : "text-sm font-medium text-accent-moss underline-offset-2 hover:underline"
-          }
-        >
+        <Link href={brandHref} className={theme.brandLink}>
           {brandLabel}
         </Link>
       ) : null}
 
       <header className="space-y-3">
-        <h1
-          className={
-            L
-              ? "font-sans text-[1.55rem] font-semibold leading-[1.15] tracking-tight text-neutral-900 xl:text-[1.75rem]"
-              : "font-sans text-[1.55rem] font-semibold leading-[1.15] tracking-tight text-text-primary xl:text-[1.75rem]"
-          }
-        >
-          {seoH1}
-        </h1>
+        <h1 className={theme.title}>{seoH1}</h1>
 
         {showReviews ? (
           <div className="flex flex-wrap items-center gap-2 text-sm">
-            <MiniStars rating={reviewsAverage} surface={surface} />
-            <span className={L ? "font-medium text-neutral-800" : "text-text-muted"}>
+            <MiniStars
+              rating={reviewsAverage}
+              surface={surface}
+              pdpBrand={pdpBrand}
+            />
+            <span className={theme.reviewsScore}>
               {reviewsAverage.toFixed(1)}
             </span>
-            <span className={L ? "text-neutral-300" : "text-white/30"} aria-hidden>
+            <span className={theme.reviewsDot} aria-hidden>
               ·
             </span>
-            <Link
-              href="#pdp-reviews"
-              className={
-                L
-                  ? "text-neutral-600 underline-offset-2 hover:text-gn-forest hover:underline"
-                  : "text-text-muted underline-offset-2 hover:text-accent-gold hover:underline"
-              }
-            >
+            <Link href="#pdp-reviews" className={theme.reviewsLink}>
               {reviewsLinkLabel ||
                 `${reviewsCount} ${reviewsCount === 1 ? "reseña" : "reseñas"}`}
             </Link>
@@ -223,32 +225,13 @@ export default function ProductInfoPanel({
         ) : null}
 
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-1">
-          <p
-            className={
-              L
-                ? "text-2xl font-semibold tabular-nums tracking-tight text-neutral-900"
-                : "text-2xl font-semibold tabular-nums tracking-tight text-text-primary"
-            }
-          >
-            ${resolvedPrice.toFixed(2)}
-          </p>
+          <p className={theme.price}>{formatMoney(resolvedPrice)}</p>
           {freeShipping && freeShippingLabel ? (
-            <span
-              className={
-                L
-                  ? "text-[10px] font-semibold uppercase tracking-[0.14em] text-gn-forest"
-                  : "text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-moss"
-              }
-            >
-              {freeShippingLabel}
-            </span>
+            <span className={theme.freeShipping}>{freeShippingLabel}</span>
           ) : null}
         </div>
-        {taxNote ? (
-          <p className={L ? "text-xs text-neutral-500" : "text-xs text-text-muted/80"}>
-            {taxNote}
-          </p>
-        ) : null}
+        {taxNote ? <p className={theme.taxNote}>{taxNote}</p> : null}
+        <CurrencyDisclaimer className={theme.currencyDisclaimer} />
       </header>
 
       <div className="flex flex-col gap-5 max-lg:gap-4 lg:gap-5">
@@ -258,6 +241,7 @@ export default function ProductInfoPanel({
             selections={selections}
             variantMatrix={matrix}
             surface={surface}
+            pdpBrand={pdpBrand}
             onSelect={(value, label) => pick(colorDef.type, value, label)}
           />
         ) : null}
@@ -271,6 +255,7 @@ export default function ProductInfoPanel({
             sizeGuideLabel={sizeGuideLabel}
             surface={surface}
             appearance="rei"
+            pdpBrand={pdpBrand}
             onInteract={onSizeInteract}
             onSelect={(value, label) => pick(sizeDef.type, value, label)}
           />
@@ -283,9 +268,14 @@ export default function ProductInfoPanel({
           onChange={onQuantityChange}
           label={quantityLabel}
           surface={surface}
+          pdpBrand={pdpBrand}
         />
 
-        <PdpAvailabilityCards copy={availabilityCopy} surface={surface} />
+        <PdpAvailabilityCards
+          copy={availabilityCopy}
+          surface={surface}
+          pdpBrand={pdpBrand}
+        />
 
         <div className="space-y-4">
           <div className="max-lg:hidden">
@@ -322,7 +312,11 @@ export default function ProductInfoPanel({
           <TrustBadges
             copy={trustBadgeCopy}
             surface={surface}
-            className="border-t-0 pt-0 lg:border-t lg:border-neutral-200/90 lg:pt-5"
+            className={
+              pdpBrand === "good-ideas"
+                ? "border-t-0 pt-0 lg:border-t lg:border-white/[0.08] lg:pt-5"
+                : "border-t-0 pt-0 lg:border-t lg:border-neutral-200/90 lg:pt-5"
+            }
           />
         </div>
       </div>

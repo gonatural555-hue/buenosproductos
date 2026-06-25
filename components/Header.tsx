@@ -7,7 +7,6 @@ import { Suspense, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { useUser } from "@/context/UserContext";
 import { useAuth } from "@/context/AuthContext";
-import AuthModal from "@/components/AuthModal";
 import HeaderCategoryBar from "@/components/header/HeaderCategoryBar";
 import HeaderMainRow from "@/components/header/HeaderMainRow";
 import HeaderUtilityBar from "@/components/header/HeaderUtilityBar";
@@ -124,7 +123,7 @@ function HeaderMobileDrawer({
 function HeaderInner() {
   const { totalItems } = useCart();
   const { isLoggedIn, user } = useUser();
-  const { authOpen, setAuthOpen, openAuthModal, initialTab } = useAuth();
+  const { openAuthModal } = useAuth();
   const locale = useLocale();
   const t = useTranslations();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -193,8 +192,6 @@ function HeaderInner() {
           </AnimatePresence>
         </div>
       </header>
-
-      <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} initialTab={initialTab} />
     </>
   );
 }

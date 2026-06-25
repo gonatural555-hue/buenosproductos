@@ -4,6 +4,7 @@ import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
 import { buildMetadata } from "@/lib/seo";
 import { BRAND_SEGMENTS, goodIdeasCartPath } from "@/lib/routing/brands";
+import { getGoodIdeasBrandName } from "@/lib/good-ideas-brand";
 import { GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
 
 export async function generateMetadata({
@@ -17,7 +18,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     locale,
-    title: `${t("goodIdeas.checkout.title")} | Good Ideas`,
+    title: `${t("goodIdeas.checkout.title")} | ${getGoodIdeasBrandName(locale)}`,
     description: t("goodIdeas.checkout.comingSoonBody"),
     pathByLocale: {
       en: `/en/${BRAND_SEGMENTS.goodIdeas}/checkout`,

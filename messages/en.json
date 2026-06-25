@@ -19,6 +19,12 @@
     "searchPlaceholder": "Search for great gear & clothing",
     "searchSubmit": "Search",
     "localeNavAria": "Choose language",
+    "currencyNavAria": "Choose currency",
+    "currencies": {
+      "ARS": "Argentine peso",
+      "BRL": "Brazilian real",
+      "USD": "US dollar"
+    },
     "logoAlt": "Go Natural",
     "utility": {
       "aria": "Secondary navigation",
@@ -61,13 +67,14 @@
       "cta": "Shop Go Natural"
     },
     "goodIdeas": {
-      "title": "Good Ideas",
+      "title": "Good Products",
       "tagline": "Smart, useful products for home, tech and everyday life.",
-      "cta": "Shop Good Ideas"
+      "cta": "Shop Good Products"
     },
     "localeAria": "Choose language"
   },
   "goodIdeas": {
+    "brandName": "Good Products",
     "nav": {
       "home": "Home",
       "products": "Products",
@@ -77,11 +84,11 @@
     },
     "hero": {
       "eyebrow": "Home & Tech",
-      "title": "Smart\nProducts are Good Ideas.",
+      "title": "Good Products\nfor everyday life.",
       "subtitle": "Useful products for home, tech, lifestyle and everyday life.",
       "cta": "Explore Products",
       "comingSoon": "Our catalog is being curated. Check back soon for smart home gadgets, electronics and everyday essentials.",
-      "sectionAria": "Good Ideas — home"
+      "sectionAria": "Good Products — home"
     },
     "products": {
       "heroTitle": "Everyday\nEssentials",
@@ -90,7 +97,7 @@
       "heroDiscover": "Discover catalog",
       "scrollHint": "Scroll to explore",
       "comingSoonTitle": "Coming soon",
-      "comingSoonBody": "We are preparing the Good Ideas catalog. Home, tech and lifestyle products will be available soon.",
+      "comingSoonBody": "We are preparing the Good Products catalog. Home, tech and lifestyle products will be available soon.",
       "categories": {
         "home": "Home",
         "tech": "Tech",
@@ -104,9 +111,9 @@
       "heroSubtitle": "Guides, trends and useful picks for home, technology and daily life.",
       "exploreCta": "Explore articles",
       "scrollHint": "Scroll to explore",
-      "sectionAria": "Good Ideas Blog",
+      "sectionAria": "Good Products Blog",
       "comingSoonTitle": "Coming soon",
-      "comingSoonBody": "The Good Ideas journal is on the way. Articles about home, tech and lifestyle will land here soon.",
+      "comingSoonBody": "The Good Products journal is on the way. Articles about home, tech and lifestyle will land here soon.",
       "featuredLabel": "Featured story",
       "articlesLabel": "Latest articles",
       "backToBlog": "Back to blog",
@@ -116,7 +123,7 @@
           "title": "Smart home essentials for everyday calm",
           "excerpt": "Small upgrades for home and tech that make daily routines simpler, quieter, and more enjoyable.",
           "subtitle": "Practical picks for home, desk, and travel.",
-          "intro": "Good Ideas is about useful products that fit real life—not clutter. These are the kinds of upgrades that earn a permanent spot on a shelf, in a bag, or on a desk.",
+          "intro": "Good Products is about useful products that fit real life—not clutter. These are the kinds of upgrades that earn a permanent spot on a shelf, in a bag, or on a desk.",
           "heroImage": "/assets/images/good-ideas-blog/smart-home-essentials-2026-hero.webp",
           "relatedProductIds": ["gi-hogar-002", "gi-lifestyle-001"],
           "sections": [
@@ -137,13 +144,13 @@
               "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-2.webp"
             }
           ],
-          "closing": "Explore the Good Ideas catalog for home, tech, lifestyle, and gift-ready picks built for everyday use."
+          "closing": "Explore the Good Products catalog for home, tech, lifestyle, and gift-ready picks built for everyday use."
         },
         "product-from-1005006438780849": {
           "title": "Portable travel kettle 450ML for home and on the go",
-          "excerpt": "A compact Good Ideas home pick for tea, coffee, and quick hot water at your desk, in a dorm, or while traveling.",
+          "excerpt": "A compact Good Products home pick for tea, coffee, and quick hot water at your desk, in a dorm, or while traveling.",
           "subtitle": "Home essentials that fit real routines.",
-          "intro": "Good Ideas curates useful home products—not clutter. This compact 450ML travel kettle is built for the moments when you want hot water without filling the kitchen counter.",
+          "intro": "Good Products curates useful home products—not clutter. This compact 450ML travel kettle is built for the moments when you want hot water without filling the kitchen counter.",
           "heroImage": "/assets/images/good-ideas-blog/product-from-1005006438780849-hero.webp",
           "relatedProductIds": ["gi-hogar-002"],
           "sections": [
@@ -156,21 +163,21 @@
               "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-1.webp"
             },
             {
-              "heading": "Built for everyday Good Ideas home use",
+              "heading": "Built for everyday Good Products home use",
               "paragraphs": [
                 "Choose the plug format that matches your region so the same compact design works at home and on travel days.",
-                "Explore the full product page for sizing, plug options, and gallery details—then pair it with other home and lifestyle picks from the Good Ideas catalog."
+                "Explore the full product page for sizing, plug options, and gallery details—then pair it with other home and lifestyle picks from the Good Products catalog."
               ],
               "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-2.webp"
             }
           ],
-          "closing": "See the Portable Travel Kettle 450ML in the Good Ideas home catalog and build a setup that fits how you actually live."
+          "closing": "See the Portable Travel Kettle 450ML in the Good Products home catalog and build a setup that fits how you actually live."
         },
         "product-from-supplier-link": {
           "title": "Premium home picks that elevate everyday spaces",
           "excerpt": "Discover a premium home product curated for modern living—clean lines, quality materials, and style that fits real rooms.",
           "subtitle": "Contemporary home style with a premium feel.",
-          "intro": "Good Ideas brings home products chosen for quality and everyday use. This premium pick is selected for thoughtful design and materials that feel at home in modern interiors—not showroom clutter.",
+          "intro": "Good Products brings home products chosen for quality and everyday use. This premium pick is selected for thoughtful design and materials that feel at home in modern interiors—not showroom clutter.",
           "heroImage": "/assets/images/good-ideas-blog/product-from-supplier-link/hero.webp",
           "sections": [
             {
@@ -190,13 +197,13 @@
               "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-2.webp"
             }
           ],
-          "closing": "Explore the Good Ideas home catalog for premium picks that balance quality, accessibility, and everyday usefulness."
+          "closing": "Explore the Good Products home catalog for premium picks that balance quality, accessibility, and everyday usefulness."
         }
       }
     },
     "cart": {
       "title": "Your cart",
-      "empty": "Your Good Ideas cart is empty.",
+      "empty": "Your Good Products cart is empty.",
       "emptyCta": "Explore products",
       "comingSoonCheckout": "Checkout will be available when we launch the catalog.",
       "subtotal": "Subtotal",
@@ -205,12 +212,12 @@
     "checkout": {
       "title": "Checkout",
       "comingSoonTitle": "Coming soon",
-      "comingSoonBody": "Good Ideas checkout will open with the catalog launch.",
+      "comingSoonBody": "Good Products checkout will open with the catalog launch.",
       "backToCart": "Back to cart"
     },
     "product": {
       "comingSoonTitle": "Product unavailable",
-      "comingSoonBody": "This product will be part of the Good Ideas catalog soon.",
+      "comingSoonBody": "This product will be part of the Good Products catalog soon.",
       "backToProducts": "Back to products"
     },
     "footer": {
@@ -245,6 +252,9 @@
     "continueShopping": "Continue shopping",
     "priceLabel": "Price"
   },
+  "currency": {
+    "checkoutDisclaimer": "Prices in {currency} are indicative. Payment is processed in USD."
+  },
   "authForm": {
     "confirmEmailTitle": "Check your email",
     "confirmEmailDescription": "We sent a confirmation link to {email}. Open the message and tap the link to activate your account (check spam too).",
@@ -256,27 +266,27 @@
   },
   "seo": {
     "gateway": {
-      "title": "Go Natural & Good Ideas | Choose Your Store",
-      "description": "Select Go Natural for outdoor gear or Good Ideas for smart home and lifestyle products."
+      "title": "Go Natural & Good Products | Choose Your Store",
+      "description": "Select Go Natural for outdoor gear or Good Products for smart home and lifestyle products."
     },
     "goodIdeas": {
-      "title": "Good Ideas | Smart Products for Everyday Life",
+      "title": "Good Products | Smart Products for Everyday Life",
       "description": "Useful gadgets, home tech and viral products for modern living. Coming soon.",
       "products": {
-        "title": "Products | Good Ideas",
-        "description": "Good Ideas catalog: home, tech and lifestyle. Coming soon."
+        "title": "Products | Good Products",
+        "description": "Good Products catalog: home, tech and lifestyle. Coming soon."
       },
       "blog": {
-        "title": "Blog | Good Ideas",
+        "title": "Blog | Good Products",
         "description": "Ideas, guides and trends for home, tech and lifestyle."
       },
       "blogPost": {
-        "titleTemplate": "{title} | Good Ideas Blog",
+        "titleTemplate": "{title} | Good Products Blog",
         "descriptionTemplate": "{excerpt}"
       },
       "cart": {
-        "title": "Cart | Good Ideas",
-        "description": "Your Good Ideas cart."
+        "title": "Cart | Good Products",
+        "description": "Your Good Products cart."
       }
     },
     "home": {
@@ -972,6 +982,7 @@
     "checkout": "Continue to checkout",
     "continueShopping": "← Continue shopping",
     "freeShippingLabel": "Free standard shipping",
+    "freeShippingAlways": "Free standard shipping on every order.",
     "freeShippingAway": "{amount} away from free standard shipping",
     "freeShippingUnlocked": "You've unlocked free standard shipping",
     "freeShippingThresholdHint": "Orders {amount}+ ship free",
@@ -2256,6 +2267,7 @@
       "camping-survival-gear": "Camping & Survival Gear",
       "outdoor-lighting": "Outdoor Lighting",
       "cycling-running": "Cycling / Running",
+      "motorcyclist-accessories": "Motorcyclist Accessories",
       "men": "Men",
       "women": "Women",
       "kids": "Kids",

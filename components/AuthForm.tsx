@@ -60,6 +60,43 @@ function EyeSlashIcon({ className }: { className?: string }) {
   );
 }
 
+const inputClass =
+  "w-full rounded-xl border border-[rgba(46,74,54,0.18)] bg-white/95 px-3 py-3 font-inter text-sm text-[#171717] placeholder:text-[#666666]/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] focus:border-[rgba(110,31,40,0.45)] focus:outline-none focus:ring-2 focus:ring-[rgba(217,164,65,0.28)] sm:px-4";
+
+const labelClass =
+  "font-inter text-xs font-semibold uppercase tracking-[0.12em] text-[rgba(46,74,54,0.72)]";
+
+const toggleButtonClass =
+  "absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#666666] transition hover:bg-[rgba(46,74,54,0.06)] hover:text-[#171717] focus:outline-none focus-visible:ring-2 focus-visible:ring-gn-mustard/40";
+
+function AuthTabButton({
+  tab,
+  activeTab,
+  onSelect,
+  children,
+}: {
+  tab: Tab;
+  activeTab: Tab;
+  onSelect: (tab: Tab) => void;
+  children: React.ReactNode;
+}) {
+  const isActive = activeTab === tab;
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={isActive}
+      onClick={() => onSelect(tab)}
+      className={[
+        "gn-auth-tab relative pb-3 pt-1 font-inter text-sm font-medium transition-colors duration-200",
+        isActive ? "text-[#171717]" : "text-[#666666] hover:text-[#171717]",
+      ].join(" ")}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function AuthForm({
   initialTab = "login",
   onSuccess,
@@ -104,6 +141,15 @@ export default function AuthForm({
     }
     return "Creá tu cuenta para acelerar futuras compras";
   }, [activeTab]);
+
+  const handleTabSelect = (tab: Tab) => {
+    setActiveTab(tab);
+    if (tab === "login") {
+      setAwaitingEmailConfirmation(false);
+      setConfirmPassword("");
+      setShowPassword(false);
+    }
+  };
 
   const handleInputFocus = (inputRef: React.RefObject<HTMLInputElement | null>) => {
     if (inputRef.current && isPage) {
@@ -171,44 +217,25 @@ export default function AuthForm({
     }
   };
 
-  const passwordFieldClass =
-    "w-full rounded-xl border border-white/10 bg-dark-surface/70 py-3 pl-3 pr-11 sm:pl-4 text-sm text-text-primary placeholder:text-text-muted/70 focus:border-accent-gold/60 focus:outline-none";
-  const toggleButtonClass =
-    "absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-text-muted transition hover:bg-white/10 hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50";
+  const passwordFieldClass = `${inputClass} pl-3 pr-11 sm:pl-4`;
 
   return (
-    <div className="w-full">
-      <div className="flex items-center gap-2 rounded-full bg-dark-surface/60 p-1">
-        {(["login", "register"] as Tab[]).map((tab) => {
-          const isActive = activeTab === tab;
-          return (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => {
-                setActiveTab(tab);
-                if (tab === "login") {
-                  setAwaitingEmailConfirmation(false);
-                  setConfirmPassword("");
-                  setShowPassword(false);
-                }
-              }}
-              className={[
-                "flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ease-out",
-                isActive
-                  ? "bg-dark-base text-text-primary shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
-                  : "text-text-muted hover:text-text-primary",
-              ].join(" ")}
-              aria-pressed={isActive}
-            >
-              {tab === "login" ? "Iniciar sesión" : "Crear cuenta"}
-            </button>
-          );
-        })}
-      </div>
+    <div className="gn-auth-form w-full">
+      <nav
+        className="flex gap-8 border-b border-[rgba(46,74,54,0.12)]"
+        role="tablist"
+        aria-label="Autenticación"
+      >
+        <AuthTabButton tab="login" activeTab={activeTab} onSelect={handleTabSelect}>
+          Iniciar sesión
+        </AuthTabButton>
+        <AuthTabButton tab="register" activeTab={activeTab} onSelect={handleTabSelect}>
+          Crear cuenta
+        </AuthTabButton>
+      </nav>
 
       <div className="mt-6 space-y-2">
-        <h2 className="text-2xl font-semibold text-text-primary">
+        <h2 className="section-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-[1.12] tracking-tight text-gn-burgundy">
           {awaitingEmailConfirmation && activeTab === "register"
             ? t("authForm.confirmEmailTitle", "Check your email")
             : activeTab === "login"
@@ -216,25 +243,27 @@ export default function AuthForm({
               : "Creá tu cuenta"}
         </h2>
         {!(awaitingEmailConfirmation && activeTab === "register") ? (
-          <p className="text-sm text-text-muted">{subtitle}</p>
+          <p className="font-inter text-sm leading-relaxed text-[#666666]">
+            {subtitle}
+          </p>
         ) : null}
       </div>
 
       {error ? (
-        <p className="mt-4 text-sm text-red-400/95" role="alert">
+        <p className="mt-4 font-inter text-sm text-gn-burgundy" role="alert">
           {error}
         </p>
       ) : null}
 
       {awaitingEmailConfirmation && activeTab === "register" ? (
         <div
-          className="mt-6 rounded-2xl border border-accent-gold/25 bg-dark-surface/85 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.35)] sm:p-6"
+          className="mt-6 rounded-2xl border border-[rgba(46,74,54,0.12)] bg-white/80 p-5 sm:p-6"
           role="status"
           aria-live="polite"
         >
           <div className="flex gap-4">
             <div
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-dark-base/80 text-accent-gold"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#F4EBDD] text-gn-burgundy"
               aria-hidden
             >
               <svg
@@ -242,7 +271,7 @@ export default function AuthForm({
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.75"
+                strokeWidth={1.75}
                 className="h-6 w-6"
               >
                 <path
@@ -253,7 +282,7 @@ export default function AuthForm({
               </svg>
             </div>
             <div className="min-w-0 flex-1 space-y-3">
-              <p className="text-sm leading-relaxed text-text-primary/95">
+              <p className="font-inter text-sm leading-relaxed text-[#171717]">
                 {t("authForm.confirmEmailDescription", "").replace(
                   "{email}",
                   pendingEmail
@@ -265,7 +294,7 @@ export default function AuthForm({
                   setActiveTab("login");
                   setAwaitingEmailConfirmation(false);
                 }}
-                className="text-sm font-semibold text-accent-gold underline-offset-4 transition-colors hover:text-accent-gold/90 hover:underline"
+                className="font-inter text-sm font-semibold text-gn-burgundy underline-offset-4 transition-colors hover:text-[#5c1a22] hover:underline"
               >
                 {t("authForm.goToLogin", "Go to sign in")}
               </button>
@@ -276,16 +305,14 @@ export default function AuthForm({
         <form className="mt-6 space-y-4" onSubmit={(e) => void handleSubmit(e)}>
           {activeTab === "register" && (
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
-                Nombre
-              </label>
+              <label className={labelClass}>Nombre</label>
               <input
                 ref={nameInputRef}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 onFocus={() => handleInputFocus(nameInputRef)}
                 type="text"
-                className="w-full rounded-xl border border-white/10 bg-dark-surface/70 px-3 sm:px-4 py-3 text-sm text-text-primary placeholder:text-text-muted/70 focus:border-accent-gold/60 focus:outline-none"
+                className={inputClass}
                 placeholder="Tu nombre"
                 required
               />
@@ -293,25 +320,21 @@ export default function AuthForm({
           )}
 
           <div className="space-y-2">
-            <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
-              Email
-            </label>
+            <label className={labelClass}>Email</label>
             <input
               ref={emailInputRef}
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               onFocus={() => handleInputFocus(emailInputRef)}
               type="email"
-              className="w-full rounded-xl border border-white/10 bg-dark-surface/70 px-3 sm:px-4 py-3 text-sm text-text-primary placeholder:text-text-muted/70 focus:border-accent-gold/60 focus:outline-none"
+              className={inputClass}
               placeholder="tuemail@email.com"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
-              Contraseña
-            </label>
+            <label className={labelClass}>Contraseña</label>
             <div className="relative">
               <input
                 ref={passwordInputRef}
@@ -349,7 +372,7 @@ export default function AuthForm({
 
           {activeTab === "register" && (
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={labelClass}>
                 {t("authForm.confirmPassword", "Confirm password")}
               </label>
               <div className="relative">
@@ -389,7 +412,7 @@ export default function AuthForm({
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-xl bg-text-primary px-4 py-3 text-sm font-semibold text-dark-base transition-colors duration-200 ease-out hover:bg-white disabled:opacity-60"
+            className="w-full rounded-xl bg-gn-burgundy px-4 py-3 font-inter text-sm font-semibold text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition duration-200 hover:bg-[#5c1a22] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting
               ? "…"
