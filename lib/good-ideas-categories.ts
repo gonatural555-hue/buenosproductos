@@ -1,6 +1,5 @@
 /**
  * Jerarquía de categorías Good Products (padre → hijo → nieto).
- * El filtro principal del hero sigue usando `category` en el producto (Tech, Hogar, …).
  */
 
 export interface GoodIdeasCategory {
@@ -15,7 +14,6 @@ export const GOOD_IDEAS_CATEGORIES: GoodIdeasCategory[] = [
   { slug: "home", name: "Hogar", description: "Hogar, cocina y confort." },
   { slug: "lifestyle", name: "Lifestyle", description: "Estilo de vida y uso diario." },
   { slug: "gifts", name: "Regalos", description: "Ideas para regalar." },
-  // Tech → Celulares
   {
     slug: "celulares",
     name: "Celulares",
@@ -29,12 +27,13 @@ export const GOOD_IDEAS_CATEGORIES: GoodIdeasCategory[] = [
       "Kits y herramientas para limpiar puertos, altavoces y auriculares.",
     parentSlug: "celulares",
   },
+  {
+    slug: "cocina",
+    name: "Cocina",
+    description: "Electrodomésticos y utensilios para cocina.",
+    parentSlug: "home",
+  },
 ];
-
-/** Producto → slug de categoría hoja (nieto o hijo). */
-export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
-  "gi-tech-004": "herramientas-limpieza-celulares",
-};
 
 export function getGoodIdeasCategoryBySlug(
   slug: string
@@ -52,11 +51,4 @@ export function getGoodIdeasCategoryPath(leafSlug: string): GoodIdeasCategory[] 
       : undefined;
   }
   return path;
-}
-
-export function getGoodIdeasProductCategoryPath(
-  productId: string
-): GoodIdeasCategory[] {
-  const leaf = GOOD_IDEAS_PRODUCT_CATEGORY_MAP[productId];
-  return leaf ? getGoodIdeasCategoryPath(leaf) : [];
 }

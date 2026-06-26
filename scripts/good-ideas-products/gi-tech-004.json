@@ -5,7 +5,12 @@
     "featured": [
       "/assets/images/good-ideas-products/gi-tech-004/image.webp"
     ],
-    "gallery": [],
+    "gallery": [
+      "https://s.alicdn.com/@sc04/kf/Hceaead8d88b24994a10f794cd5e9cf4cn.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H0172babd0327443aa5013d2a650d6a8eZ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hbb38716d8a6148e0856b11f40c56a8d7V.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H1a3d4b7732214338888a9877af207124q.jpg?avif=close&webp=close"
+    ],
     "lifestyle": [],
     "extras": []
   },

@@ -10,3 +10,13 @@ export function convertFromUsd(
   const rate = rates[currency] ?? 1;
   return amountUsd * rate;
 }
+
+export function convertToUsd(
+  amountDisplay: number,
+  currency: DisplayCurrency,
+  rates: ExchangeRatesFromUsd
+): number {
+  const rate = rates[currency] ?? 1;
+  if (rate <= 0) return amountDisplay;
+  return amountDisplay / rate;
+}

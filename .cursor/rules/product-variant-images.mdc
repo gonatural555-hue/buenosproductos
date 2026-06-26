@@ -54,6 +54,30 @@ Normaliza `variantImages.color` en todos los JSON que tengan variante color.
 
 Good Ideas: `lib/good-ideas-products.ts` + `scripts/good-ideas-products/{id}.json`.
 
+## Product cards Good Products (obligatorio)
+
+- **Fuente de verdad de la imagen de card:** `images.featured[0]` en `scripts/good-ideas-products/{id}.json`.
+- **No usar** `product.images` de `lib/good-ideas-products.ts` para cards; ese array es fallback PDP/SEO, no PLP.
+- **Siempre** renderizar cards PLP con el componente servidor `GoodIdeasProductCard`.
+- Imagen vía `resolveGoodIdeasProductCardImage(productId)` en `lib/good-ideas-product-images.ts` (solo JSON `featured`; sin fallback al catálogo).
+- Si falta `featured` en el JSON, la card muestra placeholder — corregir el JSON, no el código.
+
+## Envío y entrega Good Products (obligatorio)
+
+- **No escribir fechas fijas** en `longDescription` / `features` al cargar productos.
+- **No copiar** fechas de capturas AliExpress.
+- Las fechas se calculan en runtime vía `applyGoodIdeasDeliveryCopy()` (`lib/good-ideas-delivery.ts`), invocado desde `localizeGoodIdeasProduct()`.
+- Fórmula: **inicio = hoy + 30 días**, **fin = hoy + 40 días** (~10 días de margen).
+- Solo productos con `freeShipping: true` reciben líneas de entrega automáticas (EN en raíz, ES vía `translations.es` al localizar).
+- Ejemplo (pedido 26 jun): entrega entre **26 jul** y **5 ago**.
+
+## PLP Good Products (`/good-ideas/products`)
+
+- Layout: `GoodIdeasCatalogLayout` + sidebar + drawer móvil.
+- Filtros URL: `?category=`, `?q=`, `?sort=`, `?priceMin=`, `?priceMax=` (precios en **USD**, igual que `product.price`).
+- Helpers: `lib/good-ideas-plp-filters.ts`, `lib/good-ideas-plp-price.ts`, `lib/good-ideas-plp-categories.ts`.
+- Chips activos: `buildGoodIdeasFilterChips()` — incluye categoría, precio y búsqueda.
+
 ## Imágenes en UI
 
 - Usar `SmartImage` (`components/SmartImage.tsx`) para locales y URLs externas.

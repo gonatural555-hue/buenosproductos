@@ -1,0 +1,46 @@
+{
+  "id": "gi-hogar-005",
+  "brand": "HAOYUNMA",
+  "images": {
+    "featured": [
+      "https://s.alicdn.com/@sc04/kf/H622e2c02935041218d8d84d2e7449793B.png?avif=close&webp=close"
+    ],
+    "gallery": [
+      "https://s.alicdn.com/@sc04/kf/H29ff0f5d9a81483f834bce1da581a216k.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hec17e77593a74337b63afb6b11e047c0l.png?avif=close&webp=close"
+    ],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "violet": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/Hdef529b1ef9045129fce5aa5fb18f231K.jpg?avif=close&webp=close"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/H29ff0f5d9a81483f834bce1da581a216k.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hec17e77593a74337b63afb6b11e047c0l.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H622e2c02935041218d8d84d2e7449793B.png?avif=close&webp=close"
+    ],  
+          "lifestyle": [],
+          "extras": []
+        },
+        "white": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/H9446722eed61463cb43fb56d4f1a5cebR.png?avif=close&webp=close"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/H29ff0f5d9a81483f834bce1da581a216k.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hec17e77593a74337b63afb6b11e047c0l.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H622e2c02935041218d8d84d2e7449793B.png?avif=close&webp=close"
+    ],  
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  }
+}

@@ -98,11 +98,79 @@
       "scrollHint": "Scroll to explore",
       "comingSoonTitle": "Coming soon",
       "comingSoonBody": "We are preparing the Good Products catalog. Home, tech and lifestyle products will be available soon.",
+      "filtersLabel": "Filters",
+      "closeFilters": "Close",
+      "categorySectionLabel": "Category",
+      "filterBrands": "Brand",
+      "filterPrice": "Price",
+      "filterSizes": "Size",
+      "filterColor": "Color",
+      "filterSale": "Sale",
+      "sortLabel": "Sort",
+      "sortFeatured": "Featured",
+      "sortPriceAsc": "Price · low to high",
+      "sortPriceDesc": "Price · high to low",
+      "sortNameAsc": "Name A → Z",
+      "searchLabel": "Search products",
+      "searchPlaceholder": "Search by name, category…",
+      "searchResultsFor": "Results for \"{query}\"",
+      "searchNoResults": "We couldn't find products matching that search.",
+      "searchNoResultsHint": "Try different words or browse the full catalog.",
+      "searchViewAll": "View all products",
+      "clearAllFilters": "Clear all",
+      "filterNoResults": "No products match these filters.",
+      "filterNoResultsHint": "Try adjusting category or price range, or browse the full catalog.",
+      "priceMinLabel": "Min",
+      "priceMaxLabel": "Max",
+      "priceApplyLabel": "Apply",
+      "priceChipRange": "{min} – {max}",
+      "priceChipFrom": "From {min}",
+      "priceChipUpTo": "Up to {max}",
+      "pricePresets": {
+        "under-15": "Under $15",
+        "15-50": "$15 – $50",
+        "50-100": "$50 – $100",
+        "over-100": "Over $100"
+      },
+      "carouselPrevAria": "Previous slide",
+      "carouselNextAria": "Next slide",
+      "carouselDotAria": "Go to slide {n}",
       "categories": {
         "home": "Home",
         "tech": "Tech",
         "lifestyle": "Lifestyle",
-        "gifts": "Gifts"
+        "gifts": "Gifts",
+        "names": {
+          "tech": "Tech",
+          "home": "Home",
+          "lifestyle": "Lifestyle",
+          "gifts": "Gifts",
+          "celulares": "Phones",
+          "herramientas-limpieza-celulares": "Phone Cleaning Tools",
+          "cocina": "Kitchen"
+        }
+      },
+      "carousel": {
+        "tech": {
+          "title": "Smart\nTech",
+          "subtitle": "Gadgets and accessories for everyday digital life.",
+          "accentWord": "Smart"
+        },
+        "home": {
+          "title": "Home\nEssentials",
+          "subtitle": "Comfort, kitchen and practical picks for your space.",
+          "accentWord": "Home"
+        },
+        "lifestyle": {
+          "title": "Daily\nLifestyle",
+          "subtitle": "Useful gear for work, travel and everyday routines.",
+          "accentWord": "Daily"
+        },
+        "gifts": {
+          "title": "Gift\nIdeas",
+          "subtitle": "Thoughtful picks for home, tech and daily life.",
+          "accentWord": "Gift"
+        }
       }
     },
     "blog": {

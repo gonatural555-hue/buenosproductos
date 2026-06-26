@@ -1,10 +1,10 @@
 import Link from "next/link";
 import SmartImage from "@/components/SmartImage";
 import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
+import { resolveGoodIdeasProductCardImage } from "@/lib/good-ideas-product-images";
 import { goodIdeasProductPath } from "@/lib/routing/brands";
 import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
-import { isValidImageSrc } from "@/lib/image-src";
 
 type Props = {
   locale: Locale;
@@ -30,8 +30,7 @@ export default function GoodIdeasBlogProductRail({
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => {
             const localized = localizeGoodIdeasProduct(product, locale);
-            const image =
-              product.images.find((src) => isValidImageSrc(src)) ?? "";
+            const image = resolveGoodIdeasProductCardImage(product.id);
             return (
               <Link
                 key={product.id}

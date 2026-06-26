@@ -12,29 +12,16 @@
     ],
     "lifestyle": [],
     "extras": [],
-    "variantImages": {
-      "eu": [
-        "/assets/images/good-ideas-products/gi-hogar-003/eu.webp"
+"variantImages": {
+      "white": [
+        "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
       ],
-      "uk": [
-        "/assets/images/good-ideas-products/gi-hogar-003/uk.webp"
-      ],
-      "au": [
-        "/assets/images/good-ideas-products/gi-hogar-003/au.webp"
+      "black": [
+        "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close"
       ]
     }
-  },
-  "imagePrompts": {
-    "productCard": "Good Products 800ml stainless steel electric kettle, light gray, premium product card, 4:5 ratio, clean white background, subtle Good Products branding",
-    "pdpMain": "800ml portable electric kettle stainless steel brushed finish, black handle, circular base with red power indicator, front and side angles, Good Products home tech aesthetic",
-    "pdpLifestyle": "Electric kettle on modern kitchen counter, morning tea and coffee routine, compact portable home appliance, warm natural light",
-    "pdpDetail": "Close-up stainless steel interior, base power switch, 220V label, capacity markings, premium detail shots",
-    "blogHero": "Hero lifestyle shot of compact 800ml kettle in stylish home kitchen setting, Good Products editorial tone",
-    "blogSection": "Multiple use cases: tea, Turkish coffee, office desk, travel — Good Products home essentials",
-    "productImageFolder": "good-ideas-products/gi-hogar-003",
-    "blogImageFolder": "good-ideas-blog/gi-hogar-003"
   },
   "pdpGalleryLayout": {
     "columns": 2
   }
-}
+}   

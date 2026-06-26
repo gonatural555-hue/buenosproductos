@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/i18n/config";
 
 import type { Product } from "@/lib/products";
 import type { ProductVariants } from "@/lib/product-variants";
+import { applyGoodIdeasDeliveryCopy } from "@/lib/good-ideas-delivery";
 
 
 
@@ -431,7 +432,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "The Type-C aluminum dust plug helps block debris when the port is not in use, while soft PP cleaning brushes reach into crevices around earbuds, keyboards, and small devices.",
       "Ten mini nylon gap brushes (6 × 0.5 cm) penetrate tight holes for efficient deep cleaning — ideal for speaker grilles, nozzle openings, and hard-to-reach seams.",
       "Lightweight, compact, and easy to carry — a practical everyday toolkit for iPhone, Samsung, Xiaomi, and other smartphones with Type-C charging.",
-      "Free standard shipping on this listing. Estimated delivery between June 27 and August 1.",
     ],
     features: [
       "13-piece kit — Type-C port configuration",
@@ -444,7 +444,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "10 × mini nylon gap brushes — 6 × 0.5 cm, white",
       "Deep cleaning for cracks, ports, and speaker holes without surface damage",
       "Smart portable design — easy to store and carry",
-      "Free shipping — estimated delivery Jun 27 – Aug 1",
     ],
     freeShipping: true,
     variants: {
@@ -471,7 +470,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "El tapón antipolvo de aluminio Type-C ayuda a bloquear residuos cuando el puerto no está en uso, mientras los cepillos PP limpian grietas en auriculares, teclados y dispositivos pequeños.",
           "Diez mini cepillos de nailon (6 × 0,5 cm) penetran en orificios estrechos para una limpieza profunda eficiente — ideal para rejillas de altavoz, boquillas y uniones difíciles.",
           "Ligero, compacto y fácil de transportar — herramienta práctica para iPhone, Samsung, Xiaomi y otros smartphones con carga Type-C.",
-          "Envío estándar gratis en este producto. Entrega estimada entre el 27 de junio y el 1 de agosto.",
         ],
         features: [
           "Kit de 13 piezas — configuración puerto Type-C",
@@ -484,7 +482,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "10 × mini cepillos de grietas nailon — 6 × 0,5 cm, blanco",
           "Limpieza profunda de grietas, puertos y altavoces sin dañar la superficie",
           "Diseño portátil inteligente — fácil de guardar y llevar",
-          "Envío gratis — entrega estimada 27 jun – 1 ago",
         ],
       },
     },
@@ -841,7 +838,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "The 180ML tank supports steady ultrasonic mist output with touch-button operation, a single mist stream, and an RGB light ring that doubles as a soft atmosphere lamp.",
       "Rated for spaces around 11–20 m², it runs at under 36 dB on USB 5V / 2W power — practical for bedrooms, home offices, and travel setups.",
       "Built-in water-shortage protection helps prevent dry running; CE certified per supplier listing. Model H09 Pro, classic column form factor.",
-      "Free standard shipping on this listing. Estimated delivery between June 27 and August 1.",
     ],
     features: [
       "Brand Searide — model H09 Pro",
@@ -858,7 +854,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "Classic column mini design",
       "For home, bedroom, desk, and car",
       "Available in White and Black",
-      "Free shipping — estimated delivery Jun 27 – Aug 1",
       "Origin China (supplier data)",
     ],
     freeShipping: true,
@@ -884,7 +879,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Tanque de 180ML con niebla ultrasónica continua, operación táctil, una salida de niebla y anillo de luz RGB que funciona como lámpara ambiental suave.",
           "Pensado para espacios de aprox. 11–20 m²; funciona a menos de 36 dB con alimentación USB 5V / 2W — práctico para dormitorios, home office y viajes.",
           "Protección contra apagado por falta de agua; certificación CE según ficha del proveedor. Modelo H09 Pro, forma columnar clásica.",
-          "Envío estándar gratis en este producto. Entrega estimada entre el 27 de junio y el 1 de agosto.",
         ],
         features: [
           "Marca Searide — modelo H09 Pro",
@@ -901,7 +895,160 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Diseño mini columnar clásico",
           "Para hogar, dormitorio, escritorio y auto",
           "Disponible en Blanco y Negro",
-          "Envío gratis — entrega estimada 27 jun – 1 ago",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-hogar-005",
+    slug: "haoyunma-cordless-rechargeable-electric-egg-beater-whisk",
+    brand: "HAOYUNMA",
+    title:
+      "HAOYUNMA Cordless Rechargeable Electric Egg Beater & Hand Whisk",
+    price: 17.3,
+    category: "Hogar",
+    images: [
+      "/assets/images/good-ideas-products/gi-hogar-005/image.webp",
+    ],
+    description:
+      "Wireless portable electric egg beater and hand whisk by HAOYUNMA. Rechargeable battery, 3-speed push-button control, high-resistance ABS whisk head, multifunctional for eggs, cream, baking, and cakes — CE certified.",
+    shortDescription:
+      "Cordless rechargeable hand whisk with 3 speeds, LED ring, and portable design for eggs, cream, and baking.",
+    longDescription: [
+      "Whip eggs, cream, and cake batter without tangled cords on the counter. This compact cordless whisk keeps prep simple for everyday baking and quick kitchen tasks.",
+      "Three speed settings with push-button control let you match rhythm to the ingredient — slow for gentle mixing, faster for stiff peaks and smooth batters.",
+      "The high-resistance ABS whisk head is built for regular home use; the pistol-grip body stays lightweight and easy to handle in bowls and glasses.",
+      "Model Electric Eggbeater & Whisk by HAOYUNMA. CE certified per supplier listing; no substances of very high concern listed.",
+    ],
+    features: [
+      "Brand HAOYUNMA — model Electric Eggbeater & Whisk",
+      "Cordless rechargeable electric hand whisk",
+      "3 speed settings with push-button control",
+      "High-resistance ABS whisk head material",
+      "Multifunctional — includes whisk attachment",
+      "Portable pistol-grip design",
+      "LED light ring on power button",
+      "For eggs, cream, baking, and cakes",
+      "CE certified (supplier listing)",
+      "No substances of very high concern",
+      "Available in White and Violet",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "violet",
+      options: [
+        { value: "violet", label: "Violet", swatchHex: "#9B8CF8" },
+        { value: "white", label: "White", swatchHex: "#F0F0F0" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "HAOYUNMA Batidor de huevos eléctrico recargable inalámbrico — Electric Eggbeater & Whisk",
+        description:
+          "Batidor de huevos eléctrico portátil e inalámbrico HAOYUNMA. Batería recargable, control con botón pulsador de 3 velocidades, cabezal batidor en ABS de alta resistencia, multifuncional para huevos, crema, repostería y pasteles — certificación CE.",
+        shortDescription:
+          "Batidor de mano recargable sin cable con 3 velocidades, anillo LED y diseño portátil para huevos, crema y repostería.",
+        longDescription: [
+          "Batí huevos, crema y masas sin cables en el mostrador. Este batidor compacto e inalámbrico simplifica la preparación diaria y las tareas rápidas de cocina.",
+          "Tres velocidades con botón pulsador para adaptar el ritmo al ingrediente — lento para mezclas suaves, más rápido para picos firmes y batidos uniformes.",
+          "Cabezal batidor en ABS de alta resistencia pensado para uso doméstico; cuerpo ergonómico liviano y fácil de manejar en bowls y vasos.",
+          "Modelo Electric Eggbeater & Whisk de HAOYUNMA. Certificación CE según ficha del proveedor; sin productos químicos de alta preocupación.",
+        ],
+        features: [
+          "Marca HAOYUNMA — modelo Electric Eggbeater & Whisk",
+          "Batidor eléctrico de mano recargable e inalámbrico",
+          "3 configuraciones de velocidad con botón pulsador",
+          "Material de cuchilla: ABS de alta resistencia",
+          "Multifuncional — con batidor incluido",
+          "Estilo portátil con agarre ergonómico",
+          "Anillo de luz LED en botón de encendido",
+          "Para huevos, crema, repostería y pasteles",
+          "Certificación CE (según proveedor)",
+          "Producto químico de alta preocupación: ninguno",
+          "Disponible en Blanco y Violeta",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-hogar-006",
+    slug: "zuumaa-mf101-usb-rechargeable-mini-milk-frother-3-speed",
+    brand: "ZuuMaa",
+    title:
+      "ZuuMaa MF101 USB Rechargeable Mini Milk Frother — 3-Speed Handheld Coffee & Egg Whisk",
+    price: 8.3,
+    category: "Hogar",
+    images: [],
+    description:
+      "Compact USB-rechargeable mini milk frother and handheld mixer by ZuuMaa. Three speed settings, 11,000 RPM, under 750W — for coffee foam, lattes, eggs, and light kitchen mixing. Portable electric design, 220–240V.",
+    shortDescription:
+      "USB rechargeable 3-speed mini frother with whisk attachment for coffee foam, milk, and eggs — portable handheld design.",
+    longDescription: [
+      "Froth milk for lattes and cappuccinos, blend coffee drinks, or whisk eggs without bulky countertop gear. This mini handheld frother keeps everyday kitchen prep quick and tidy.",
+      "Three speed settings with push-button control let you adjust intensity — gentle for milk foam, faster for eggs and light batters.",
+      "Rechargeable via USB with cordless operation when charged; rated under 750W with rotation up to 11,000 RPM for efficient mixing in cups and small bowls.",
+      "Model MF101 by ZuuMaa. Capacity under 0.5 L per supplier listing; no substances of very high concern listed. Voltage 220–240V.",
+    ],
+    features: [
+      "Brand ZuuMaa — model MF101",
+      "USB rechargeable mini milk frother & hand whisk",
+      "3 speed settings with push-button control",
+      "Rotation rate up to 11,000 RPM",
+      "Power under 750W",
+      "Rechargeable / electric — works in both modes",
+      "Portable handheld design",
+      "For milk foam, coffee, eggs, and light mixing",
+      "Capacity under 0.5 L (supplier listing)",
+      "Voltage 220–240V",
+      "No substances of very high concern",
+      "Available in Black and White",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "black",
+      options: [
+        { value: "black", label: "Black", swatchHex: "#1C1C1C" },
+        { value: "white", label: "White", swatchHex: "#F0F0F0" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "ZuuMaa MF101 Mini espumador de leche USB recargable — Batidor de café 3 velocidades",
+        description:
+          "Mini espumador de leche y mezclador de mano compacto ZuuMaa con carga USB. Tres velocidades, 11.000 RPM, menos de 750W — para espuma de café, lattes, huevos y mezclas ligeras. Diseño eléctrico portátil, 220–240V.",
+        shortDescription:
+          "Mini espumador recargable USB de 3 velocidades con batidor para espuma de leche, café y huevos — diseño portátil de mano.",
+        longDescription: [
+          "Espumá leche para lattes y cappuccinos, mezclá bebidas de café o batí huevos sin electrodomésticos voluminosos. Este mini espumador de mano agiliza la preparación diaria en la cocina.",
+          "Tres velocidades con botón pulsador para ajustar la intensidad — suave para espuma de leche, más rápido para huevos y batidos ligeros.",
+          "Recargable por USB con funcionamiento inalámbrico cuando está cargado; menos de 750W con rotación de hasta 11.000 RPM para mezclar eficientemente en tazas y bowls pequeños.",
+          "Modelo MF101 de ZuuMaa. Capacidad inferior a 0,5 L según ficha del proveedor; sin productos químicos de alta preocupación. Voltaje 220–240V.",
+        ],
+        features: [
+          "Marca ZuuMaa — modelo MF101",
+          "Mini espumador de leche USB recargable y batidor de mano",
+          "3 configuraciones de velocidad con botón pulsador",
+          "Tasa de rotación hasta 11.000 RPM",
+          "Potencia inferior a 750W",
+          "Recargable/eléctrico — funciona en ambos modos",
+          "Estilo portátil de mano",
+          "Para espuma de leche, café, huevos y mezclas ligeras",
+          "Capacidad inferior a 0,5 L (según proveedor)",
+          "Voltaje 220–240V",
+          "Producto químico de alta preocupación: ninguno",
+          "Disponible en Negro y Blanco",
           "Origen China (dato de proveedor)",
         ],
       },
@@ -1544,7 +1691,7 @@ export function localizeGoodIdeasProduct(product: Product, locale: Locale): Prod
 
   const localized = product.translations?.[locale];
 
-  return {
+  const merged: Product = {
 
     ...product,
 
@@ -1559,6 +1706,8 @@ export function localizeGoodIdeasProduct(product: Product, locale: Locale): Prod
     features: localized?.features ?? product.features,
 
   };
+
+  return applyGoodIdeasDeliveryCopy(merged, locale);
 
 }
 

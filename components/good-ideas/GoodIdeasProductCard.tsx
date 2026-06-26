@@ -1,74 +1,37 @@
-"use client";
-
-import Link from "next/link";
-import { useMemo } from "react";
-import SmartImage from "@/components/SmartImage";
+import GoodIdeasProductCardClient from "@/components/good-ideas/GoodIdeasProductCardClient";
+import { resolveGoodIdeasProductCardImage } from "@/lib/good-ideas-product-images";
 import type { Product } from "@/lib/products";
 import type { Locale } from "@/lib/i18n/config";
-import { goodIdeasProductPath } from "@/lib/routing/brands";
-import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
-import { useCurrency } from "@/context/CurrencyContext";
-import { isValidImageSrc } from "@/lib/image-src";
 
 type Props = {
   product: Product;
   locale: Locale;
   viewProductLabel: string;
   noImageLabel: string;
+  addNowLabel: string;
 };
 
+/**
+ * Product card Good Products (server).
+ * La imagen siempre proviene de `images.featured[0]` en el JSON del producto.
+ */
 export default function GoodIdeasProductCard({
   product,
   locale,
   viewProductLabel,
   noImageLabel,
+  addNowLabel,
 }: Props) {
-  const localized = localizeGoodIdeasProduct(product, locale);
-  const { formatMoney } = useCurrency();
-  const imageSrc = useMemo(
-    () => product.images.find((src) => isValidImageSrc(src)),
-    [product.images]
-  );
+  const cardImage = resolveGoodIdeasProductCardImage(product.id);
 
   return (
-    <Link
-      href={goodIdeasProductPath(locale, product.id)}
-      className="group block overflow-hidden rounded-2xl border border-white/[0.08] bg-[#151B24] transition duration-300 hover:-translate-y-0.5 hover:border-[#3B82F6]/35 hover:shadow-[0_20px_48px_rgba(0,0,0,0.35)]"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#0B0F14]">
-        {imageSrc ? (
-          <SmartImage
-            src={imageSrc}
-            alt={localized.title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center font-inter text-[13px] text-[rgba(232,236,241,0.45)]">
-            {noImageLabel}
-          </div>
-        )}
-      </div>
-      <div className="space-y-2 p-5">
-        <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3B82F6]">
-          {product.category}
-        </p>
-        <h2 className="font-display text-[1.15rem] leading-snug tracking-[-0.02em] text-[#E8ECF1]">
-          {localized.title}
-        </h2>
-        {localized.shortDescription ? (
-          <p className="line-clamp-2 font-inter text-[14px] leading-relaxed text-[rgba(232,236,241,0.65)]">
-            {localized.shortDescription}
-          </p>
-        ) : null}
-        <p className="font-inter text-[15px] font-semibold text-white">
-          {formatMoney(localized.price)}
-        </p>
-        <span className="inline-flex font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.55)] transition group-hover:text-[#3B82F6]">
-          {viewProductLabel} →
-        </span>
-      </div>
-    </Link>
+    <GoodIdeasProductCardClient
+      product={product}
+      locale={locale}
+      viewProductLabel={viewProductLabel}
+      noImageLabel={noImageLabel}
+      addNowLabel={addNowLabel}
+      cardImage={cardImage}
+    />
   );
 }
