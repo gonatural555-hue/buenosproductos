@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, statSync } from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import type {
@@ -28,7 +28,10 @@ interface GoodIdeasProductJson {
 
 const GI_PRODUCTS_JSON_DIR = join(process.cwd(), "scripts", "good-ideas-products");
 
-const featuredImageCache = new Map<string, string | null>();
+const featuredImageCache = new Map<
+  string,
+  { mtimeMs: number; featured: string | null }
+>();
 
 function parseGoodIdeasProductJson(
   productId: string,
@@ -64,16 +67,20 @@ function pickFeaturedUrl(productData: GoodIdeasProductJson): string | null {
  * Imagen `featured` del JSON — fuente de verdad para product cards Good Products.
  */
 export function getGoodIdeasProductFeaturedImage(productId: string): string | null {
-  if (featuredImageCache.has(productId)) {
-    return featuredImageCache.get(productId) ?? null;
-  }
+  const jsonPath = join(GI_PRODUCTS_JSON_DIR, `${productId}.json`);
 
   let featured: string | null = null;
   try {
-    const jsonPath = join(GI_PRODUCTS_JSON_DIR, `${productId}.json`);
+    const mtimeMs = statSync(jsonPath).mtimeMs;
+    const cached = featuredImageCache.get(productId);
+    if (cached && cached.mtimeMs === mtimeMs) {
+      return cached.featured;
+    }
+
     const fileContent = readFileSync(jsonPath, "utf-8");
     const productData = parseGoodIdeasProductJson(productId, fileContent);
     featured = productData ? pickFeaturedUrl(productData) : null;
+    featuredImageCache.set(productId, { mtimeMs, featured });
   } catch (error: unknown) {
     const err = error as NodeJS.ErrnoException;
     if (err.code !== "ENOENT") {
@@ -81,9 +88,9 @@ export function getGoodIdeasProductFeaturedImage(productId: string): string | nu
         `⚠️  Good Ideas ${productId}: error leyendo JSON - ${err.message}`
       );
     }
+    featuredImageCache.set(productId, { mtimeMs: -1, featured: null });
   }
 
-  featuredImageCache.set(productId, featured);
   return featured;
 }
 

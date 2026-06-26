@@ -26,6 +26,8 @@ export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
   "gi-hogar-004": "home",
   "gi-hogar-005": "cocina",
   "gi-hogar-006": "cocina",
+  "gi-hogar-007": "cocina",
+  "gi-hogar-008": "cocina",
   "gi-lifestyle-001": "lifestyle",
   "gi-lifestyle-002": "lifestyle",
   "gi-lifestyle-003": "lifestyle",

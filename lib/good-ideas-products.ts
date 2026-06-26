@@ -986,7 +986,9 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "ZuuMaa MF101 USB Rechargeable Mini Milk Frother — 3-Speed Handheld Coffee & Egg Whisk",
     price: 8.3,
     category: "Hogar",
-    images: [],
+    images: [
+      "/assets/images/good-ideas-products/gi-hogar-006/image.webp",
+    ],
     description:
       "Compact USB-rechargeable mini milk frother and handheld mixer by ZuuMaa. Three speed settings, 11,000 RPM, under 750W — for coffee foam, lattes, eggs, and light kitchen mixing. Portable electric design, 220–240V.",
     shortDescription:
@@ -1049,6 +1051,146 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Voltaje 220–240V",
           "Producto químico de alta preocupación: ninguno",
           "Disponible en Negro y Blanco",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-hogar-007",
+    slug: "sokany-sk-999-2-5l-high-power-multifunction-blender",
+    brand: "Sokany",
+    title:
+      "Sokany SK-999 2.5L High-Power Multifunction Blender — Ice Crusher & Kitchen Machine",
+    price: 186.85,
+    category: "Hogar",
+    images: [
+      "/assets/images/good-ideas-products/gi-hogar-007/image.webp",
+    ],
+    description:
+      "Sokany SK-999 multifunction kitchen blender with 2.5L capacity and high-power motor for smoothies, ice crushing, soups, and daily food prep. CE and UK CA certified; 120V operation per supplier listing.",
+    shortDescription:
+      "2.5L high-power multifunction blender for smoothies, ice, soups, and everyday kitchen prep — model SK-999.",
+    longDescription: [
+      "Blend smoothies, crush ice, and prep soups or sauces in one countertop machine built for busy kitchens. The 2.5L pitcher handles family-sized batches without constant refills.",
+      "High-power motor rated above 1501W (supplier lists up to 6000W peak marketing spec) drives stainless blades through frozen fruit, ice, and tougher ingredients.",
+      "Multifunction design covers blending, ice crushing, and general food processing — a practical all-in-one alternative to separate small appliances.",
+      "Model SK-999 by Sokany. CE and UK CA (Queen's Order) certified per listing; no substances of very high concern. Origin China. 120V.",
+    ],
+    features: [
+      "Brand Sokany — model SK-999",
+      "2.5L capacity (>2.1 L per supplier tier)",
+      "High-power motor — over 1501W",
+      "Multifunction blender, ice crusher & kitchen machine",
+      "For smoothies, soups, sauces, and ice crushing",
+      "CE certified (supplier listing)",
+      "UK CA / Queen's Order certified (supplier listing)",
+      "Voltage 120V",
+      "No substances of very high concern",
+      "Single model — silver/black finish",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    translations: {
+      es: {
+        title:
+          "Sokany SK-999 Licuadora multifuncional 2,5L alta potencia — Trituradora de hielo",
+        description:
+          "Licuadora multifuncional de cocina Sokany SK-999 con capacidad de 2,5L y motor de alta potencia para batidos, hielo, sopas y preparación diaria. Certificación CE y UK CA; operación 120V según ficha del proveedor.",
+        shortDescription:
+          "Licuadora multifuncional 2,5L de alta potencia para batidos, hielo, sopas y uso diario en cocina — modelo SK-999.",
+        longDescription: [
+          "Prepará batidos, triturá hielo y hacé sopas o salsas en una sola máquina de mostrador pensada para cocinas activas. El jarro de 2,5L permite porciones familiares sin rellenar constantemente.",
+          "Motor de alta potencia superior a 1501W (la ficha del proveedor indica hasta 6000W en especificación comercial) con cuchillas de acero para fruta congelada, hielo e ingredientes más densos.",
+          "Diseño multifuncional para licuar, triturar hielo y procesar alimentos — una alternativa práctica a varios electrodomésticos pequeños.",
+          "Modelo SK-999 de Sokany. Certificación CE y UK CA (orden de la reina) según listado; sin productos químicos de alta preocupación. Origen China. 120V.",
+        ],
+        features: [
+          "Marca Sokany — modelo SK-999",
+          "Capacidad 2,5 L (>2,1 L según ficha)",
+          "Motor de alta potencia — superior a 1501W",
+          "Licuadora multifuncional, trituradora de hielo y máquina de cocina",
+          "Para batidos, sopas, salsas y trituración de hielo",
+          "Certificación CE (según proveedor)",
+          "Certificación UK CA / orden de la reina (según proveedor)",
+          "Voltaje 120V",
+          "Producto químico de alta preocupación: ninguno",
+          "Un solo modelo — acabado plateado/negro",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-hogar-008",
+    slug: "biolomix-bhb1200-4-in-1-1200w-immersion-hand-blender",
+    brand: "BioloMix",
+    title:
+      "BioloMix BHB1200 4-in-1 Immersion Hand Blender — 1200W, 6 Speeds & Turbo",
+    price: 176.47,
+    category: "Hogar",
+    images: [
+      "/assets/images/good-ideas-products/gi-hogar-008/image.webp",
+    ],
+    description:
+      "BioloMix 4-in-1 immersion hand blender with 1200W motor, 6 speeds and turbo. Includes 500 ml food chopper, 600 ml mixing beaker, whisk attachment, and 304 stainless blades — for baby food, purées, smoothies, sauces, and soups.",
+    shortDescription:
+      "1200W 4-in-1 stick blender with 6 speeds, 500 ml chopper, 600 ml beaker, and whisk — model BHB1200 in black.",
+    longDescription: [
+      "Blend, chop, whisk, and puree from one handheld base built for everyday family cooking. The 4-in-1 set covers smoothies, sauces, soups, baby food, and quick prep without crowding the counter.",
+      "A 1200W motor with 6 adjustable speeds and instant turbo handles soft purées through thicker mixes. Two sharp 304 stainless steel blades cut ingredients quickly and quietly.",
+      "Accessories included: 600 ml mixing beaker, 500 ml chopper bowl, whisk attachment, and power cord. Detachable shaft rinses easily — dishwasher-safe top rack; do not immerse the motor in water.",
+      "Continuous run limits: whisk attachment up to 1 minute, blender shaft up to 30 seconds, chopper up to 20 seconds. Allow at least 10 minutes rest between every 3 operating cycles.",
+      "Model BHB1200 by BioloMix. Stainless steel and BPA-free plastic construction. Black finish. 220–240V, 50/60 Hz, 1200W max (EU/UK plug per listing). Package includes hand blender, chopper bowl, beaker, whisk, and user manual.",
+    ],
+    features: [
+      "Brand BioloMix — model BHB1200 stainless immersion hand blender",
+      "4-in-1 set: immersion blender, 500 ml chopper, 600 ml beaker, whisk",
+      "1200W high-performance motor",
+      "6 adjustable speeds with turbo button",
+      "304 stainless steel dual blades",
+      "For baby food, purées, smoothies, sauces, and soups",
+      "Stainless steel and BPA-free plastic",
+      "Detachable shaft — easy rinse; motor not dishwasher-safe",
+      "Whisk: max 1 min continuous / blender shaft: max 30 sec / chopper: max 20 sec",
+      "10-minute rest required between every 3 cycles",
+      "220–240V, 50/60 Hz — EU/UK plug (supplier listing)",
+      "Black color — single 4-in-1 configuration",
+      "Includes user manual in box",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    translations: {
+      es: {
+        title:
+          "BioloMix BHB1200 Batidora de mano de inmersión 4 en 1 — 1200W, 6 velocidades y turbo",
+        description:
+          "Batidora de mano de inmersión BioloMix 4 en 1 con motor de 1200W, 6 velocidades y turbo. Incluye picadora de 500 ml, vaso mezclador de 600 ml, batidor de huevos y cuchillas de acero inoxidable 304 — para comida infantil, purés, batidos, salsas y sopas.",
+        shortDescription:
+          "Batidora de palos 1200W 4 en 1 con 6 velocidades, picadora 500 ml, vaso 600 ml y batidor — modelo BHB1200 en negro.",
+        longDescription: [
+          "Licúa, pica, bate y tritura desde una sola base de mano pensada para la cocina familiar diaria. El set 4 en 1 cubre batidos, salsas, sopas, comida para bebés y preparación rápida sin ocupar el mostrador.",
+          "Motor de 1200W con 6 velocidades ajustables y turbo instantáneo para purés suaves y mezclas más densas. Dos cuchillas afiladas de acero inoxidable 304 cortan los alimentos de forma rápida y silenciosa.",
+          "Accesorios incluidos: vaso mezclador de 600 ml, cuenco picador de 500 ml, accesorio batidor y cable de alimentación. Eje desmontable fácil de enjuagar — apto para rejilla superior del lavavajillas; no sumerja el motor en agua.",
+          "Límites de uso continuo: batidor hasta 1 minuto, licuadora hasta 30 segundos, picador hasta 20 segundos. Descanso mínimo de 10 minutos entre cada 3 ciclos de operación.",
+          "Modelo BHB1200 de BioloMix. Acero inoxidable y plástico sin BPA. Acabado negro. 220–240V, 50/60 Hz, 1200W máx. (enchufe UE/Reino Unido según listado). Incluye licuadora de mano, cuenco picador, vaso, batidor y manual de uso.",
+        ],
+        features: [
+          "Marca BioloMix — modelo BHB1200 batidora de inmersión de acero inoxidable",
+          "Set 4 en 1: licuadora de mano, picadora 500 ml, vaso 600 ml, batidor",
+          "Motor de alto rendimiento 1200W",
+          "6 velocidades ajustables con botón turbo",
+          "Doble cuchilla de acero inoxidable 304",
+          "Para comida infantil, purés, batidos, salsas y sopas",
+          "Acero inoxidable y plástico sin BPA",
+          "Eje desmontable — fácil de limpiar; motor no apto para lavavajillas",
+          "Batidor: máx. 1 min continuo / licuadora: máx. 30 seg / picador: máx. 20 seg",
+          "Descanso de 10 min entre cada 3 ciclos",
+          "220–240V, 50/60 Hz — enchufe UE/Reino Unido (según proveedor)",
+          "Color negro — configuración única 4 en 1",
+          "Incluye manual de uso en la caja",
           "Origen China (dato de proveedor)",
         ],
       },

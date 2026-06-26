@@ -22,6 +22,8 @@ import { GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
 import ProductDetailClient from "@/components/ProductDetailClient";
 import PdpBenefitsSection from "@/components/pdp/PdpBenefitsSection";
 import PdpSpecsAccordion from "@/components/pdp/PdpSpecsAccordion";
+import PdpGoodIdeasProductManual from "@/components/good-ideas/PdpGoodIdeasProductManual";
+import { getGoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 
 type Props = {
   params: Promise<{ locale: Locale; id: string }>;
@@ -86,6 +88,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
   const t = createTranslator(messages);
   const productImages = await getGoodIdeasProductImages(product.id);
   const productVariants = resolveGoodIdeasProductVariants(localizedProduct);
+  const productManual = getGoodIdeasProductManual(product.id);
 
   const pdpDesktop = {
     benefitsTitle: t("productPage.pdpDesktop.benefitsTitle"),
@@ -168,6 +171,17 @@ export default async function GoodIdeasProductPage({ params }: Props) {
 
       {accordionItems.length > 0 ? (
         <PdpSpecsAccordion items={accordionItems} surface="dark" />
+      ) : null}
+
+      {productManual ? (
+        <PdpGoodIdeasProductManual
+          manual={productManual}
+          title={t("goodIdeas.product.manualTitle")}
+          description={t("goodIdeas.product.manualDescription")}
+          downloadLabel={t("goodIdeas.product.manualDownload")}
+          openLabel={t("goodIdeas.product.manualOpen")}
+          surface="dark"
+        />
       ) : null}
     </main>
   );

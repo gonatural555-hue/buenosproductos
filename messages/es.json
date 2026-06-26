@@ -286,7 +286,11 @@
     "product": {
       "comingSoonTitle": "Producto no disponible",
       "comingSoonBody": "Este producto formará parte del catálogo Buenos Productos próximamente.",
-      "backToProducts": "Volver a productos"
+      "backToProducts": "Volver a productos",
+      "manualTitle": "Manual de uso",
+      "manualDescription": "Consultá la guía oficial abajo o descargá el PDF para tenerla sin conexión.",
+      "manualDownload": "Descargar PDF",
+      "manualOpen": "Abrir en nueva pestaña"
     },
     "footer": {
       "tagline": "Productos inteligentes para hogar, tecnología y vida diaria.",

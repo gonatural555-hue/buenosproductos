@@ -286,7 +286,11 @@
     "product": {
       "comingSoonTitle": "Product unavailable",
       "comingSoonBody": "This product will be part of the Good Products catalog soon.",
-      "backToProducts": "Back to products"
+      "backToProducts": "Back to products",
+      "manualTitle": "User manual",
+      "manualDescription": "Read the official usage guide below or download the PDF for offline reference.",
+      "manualDownload": "Download PDF",
+      "manualOpen": "Open in new tab"
     },
     "footer": {
       "tagline": "Smart products for home, technology and everyday life.",

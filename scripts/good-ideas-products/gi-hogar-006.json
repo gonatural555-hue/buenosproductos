@@ -3,9 +3,10 @@
   "brand": "ZuuMaa",
   "images": {
     "featured": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_710611-CBT111714592071_052026-F.webp"
+      "/assets/images/good-ideas-products/gi-hogar-006/image.webp"
     ],
     "gallery": [
+      "/assets/images/good-ideas-products/gi-hogar-006/image.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_737979-CBT110865182298_052026-F.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_913922-CBT110865033198_052026-F.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_724107-CBT111828794453_052026-F.webp",
@@ -20,32 +21,34 @@
       "color": {
         "black": {
           "featured": [
-            "https://http2.mlstatic.com/D_NQ_NP_2X_710611-CBT111714592071_052026-F.webp"
+            "/assets/images/good-ideas-products/gi-hogar-006/image.webp"
           ],
           "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-006/image.webp",
             "https://http2.mlstatic.com/D_NQ_NP_2X_737979-CBT110865182298_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_913922-CBT110865033198_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_724107-CBT111828794453_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_697312-CBT111829477651_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_901320-CBT111828794447_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_660032-CBT111829447445_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_953104-CBT111830098235_052026-F.webp"
+            "https://http2.mlstatic.com/D_NQ_NP_2X_913922-CBT110865033198_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_724107-CBT111828794453_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_697312-CBT111829477651_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_901320-CBT111828794447_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_660032-CBT111829447445_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_953104-CBT111830098235_052026-F.webp"
           ],
           "lifestyle": [],
           "extras": []
         },
         "white": {
           "featured": [
-            "https://http2.mlstatic.com/D_NQ_NP_2X_781108-MLA112166183258_062026-F.webp"
+            "/assets/images/good-ideas-products/gi-hogar-006/white.webp"
           ],
           "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-006/white.webp",
             "https://http2.mlstatic.com/D_NQ_NP_2X_737979-CBT110865182298_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_913922-CBT110865033198_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_724107-CBT111828794453_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_697312-CBT111829477651_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_901320-CBT111828794447_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_660032-CBT111829447445_052026-F.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_953104-CBT111830098235_052026-F.webp"
+            "https://http2.mlstatic.com/D_NQ_NP_2X_913922-CBT110865033198_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_724107-CBT111828794453_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_697312-CBT111829477651_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_901320-CBT111828794447_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_660032-CBT111829447445_052026-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_953104-CBT111830098235_052026-F.webp"
           ],
           "lifestyle": [],
           "extras": []

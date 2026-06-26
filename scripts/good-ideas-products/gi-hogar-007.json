@@ -1,0 +1,26 @@
+{
+  "id": "gi-hogar-007",
+  "brand": "Sokany",
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L.png"
+    ],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS.webp",
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS-1.webp",
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS-2.webp",
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS-3.webp",
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS-4.webp",
+      "/assets/images/good-ideas-products/gi-hogar-007/Licuadora-6000W-2.5L-GOODPRODUCTS-5.webp"
+    ],
+    "lifestyle": [],
+    "extras": []
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  },
+  "manual": {
+    "url": "/assets/documents/good-ideas-products/gi-hogar-007/user-manual.pdf",
+    "filename": "Sokany-SK-999-user-manual.pdf"
+  }
+}
