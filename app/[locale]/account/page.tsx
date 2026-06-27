@@ -7,6 +7,10 @@ import { useUser } from "@/context/UserContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import AccountAddresses from "@/components/AccountAddresses";
+import {
+  GN_CART_ACCOUNT_TOP_PAD,
+  GN_CART_ACCOUNT_TOP_PAD_COMPACT,
+} from "@/lib/ui/gonatural-design";
 
 type Order = {
   id: string;
@@ -103,7 +107,7 @@ export default function AccountPage() {
 
   if (authLoading) {
     return (
-      <main className="flex min-h-[100dvh] items-center justify-center bg-gn-page-bg px-6 pb-16 pt-24 sm:px-10 lg:px-16">
+      <main className={`flex min-h-[100dvh] items-center justify-center bg-gn-page-bg px-6 pb-16 sm:px-10 lg:px-16 ${GN_CART_ACCOUNT_TOP_PAD_COMPACT}`}>
         <p className="text-sm text-muted-gray">{t("checkoutPage.loadingAuth")}</p>
       </main>
     );
@@ -111,7 +115,7 @@ export default function AccountPage() {
 
   if (!isLoggedIn) {
     return (
-      <main className="min-h-[100dvh] bg-dark-base px-6 pb-16 pt-24 sm:px-10 lg:px-16">
+      <main className={`min-h-[100dvh] bg-dark-base px-6 pb-16 sm:px-10 lg:px-16 ${GN_CART_ACCOUNT_TOP_PAD_COMPACT}`}>
         <div className="mx-auto max-w-xl">
           <div className="rounded-3xl border border-white/10 bg-dark-surface/40 p-8 text-center">
             <h1 className="font-sans text-2xl font-semibold text-text-primary">
@@ -135,7 +139,7 @@ export default function AccountPage() {
   }
 
   return (
-      <main className="min-h-[100dvh] bg-gn-page-bg px-6 pb-16 pt-28 sm:px-10 md:pt-32 lg:px-16">
+      <main className={`min-h-[100dvh] bg-gn-page-bg px-6 pb-16 sm:px-10 lg:px-16 ${GN_CART_ACCOUNT_TOP_PAD}`}>
       <div className="mx-auto max-w-6xl">
         <header className="mb-10 max-w-2xl md:mb-12">
           <p className="mb-3 text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90">

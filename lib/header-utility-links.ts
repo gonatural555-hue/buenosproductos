@@ -1,14 +1,7 @@
 import type { Locale } from "@/lib/i18n/config";
 import { goNaturalHomePath } from "@/lib/routing/brands";
 
-export type HeaderUtilityLinkId =
-  | "shopGn"
-  | "outlet"
-  | "tradeIn"
-  | "classes"
-  | "expertAdvice"
-  | "uncommonPath"
-  | "membership";
+export type HeaderUtilityLinkId = "shopGn" | "outlet" | "expertAdvice";
 
 export type HeaderUtilityLink = {
   id: HeaderUtilityLinkId;
@@ -27,15 +20,11 @@ export const HEADER_UTILITY_LINKS: HeaderUtilityLink[] = [
     isPrimary: true,
   },
   { id: "outlet", labelKey: "outlet", href: "#" },
-  { id: "tradeIn", labelKey: "tradeIn", href: "#" },
-  { id: "classes", labelKey: "classes", href: "#" },
   {
     id: "expertAdvice",
     labelKey: "expertAdvice",
     href: (locale) => `/${locale}/blog`,
   },
-  { id: "uncommonPath", labelKey: "uncommonPath", href: "#" },
-  { id: "membership", labelKey: "membership", href: "#" },
 ];
 
 export function resolveUtilityHref(

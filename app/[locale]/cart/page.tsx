@@ -16,6 +16,10 @@ import {
   trackViewCart,
 } from "@/lib/analytics/ga4";
 import { formatCartVariantSummary } from "@/lib/cart-formatting";
+import {
+  GN_CART_ACCOUNT_STICKY_TOP,
+  GN_CART_ACCOUNT_TOP_PAD,
+} from "@/lib/ui/gonatural-design";
 
 export default function CartPage() {
   const { items, subtotal, increaseQty, decreaseQty, removeItem } = useCart();
@@ -56,7 +60,7 @@ export default function CartPage() {
     return (
       <main
         data-route="cart"
-        className="relative w-full overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24"
+        className={`relative w-full overflow-hidden pb-16 md:pb-24 ${GN_CART_ACCOUNT_TOP_PAD}`}
       >
         <div className="absolute inset-0">
           <Image
@@ -92,7 +96,7 @@ export default function CartPage() {
   return (
     <main
       data-route="cart"
-      className="mx-auto max-w-7xl bg-gn-page-bg px-4 pb-16 pt-28 sm:px-6 md:pb-20 md:pt-32 lg:px-8"
+      className={`mx-auto max-w-7xl bg-gn-page-bg px-4 pb-16 sm:px-6 md:pb-20 lg:px-8 ${GN_CART_ACCOUNT_TOP_PAD}`}
     >
       <header className="mb-10 md:mb-12 max-w-2xl">
         <p className="text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90 mb-3">
@@ -258,7 +262,7 @@ export default function CartPage() {
         </div>
 
         {/* Summary */}
-        <aside className="lg:sticky lg:top-28 space-y-6">
+        <aside className={`${GN_CART_ACCOUNT_STICKY_TOP} lg:sticky space-y-6`}>
           <div className="rounded-2xl border border-earth-brown/18 bg-soft-stone p-6 shadow-[0_20px_56px_-28px_rgba(17,23,19,0.18)] md:p-8">
             <h2 className="mb-6 text-lg font-semibold text-dark-base">
               {t("cartPage.summaryTitle")}

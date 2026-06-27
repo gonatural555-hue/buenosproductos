@@ -33,8 +33,7 @@
       "tradeIn": "Trade-In",
       "classes": "Classes & Events",
       "expertAdvice": "Expert Advice",
-      "uncommonPath": "Uncommon Path",
-      "membership": "Membership"
+      "freeShippingPromo": "FREE SHIPPING ON YOUR FIRST 3 ORDERS"
     },
     "tabs": {
       "campHike": "Camp & Hike",
@@ -413,10 +412,10 @@
     "categoriesTitle": "Browse with intention",
     "categoriesSubtitle": "Fishing, mountain & snow, outdoor adventure, and water sports — large touch targets, same calm decisions.",
     "categoryCards": [
-      { "label": "Fishing", "path": "/products?category=fishing", "imageKey": "active-sports" },
-      { "label": "Mountain & snow", "path": "/products?category=mountain-snow", "imageKey": "water-sports" },
+      { "label": "Fishing", "path": "/products?category=fishing", "imageKey": "fishing" },
+      { "label": "Mountain & snow", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
       { "label": "Outdoor & adventure", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Water sports", "path": "/products?category=water-sports", "imageKey": "mountain-snow" }
+      { "label": "Water sports", "path": "/products?category=water-sports", "imageKey": "water-sports" }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Field notes in the same voice as the shop floor.",
@@ -1030,6 +1029,9 @@
     "close": "Close",
     "closeWindow": "Close window",
     "expand": "Expand newsletter",
+    "successTitle": "Thanks for joining our community",
+    "successSubtitle": "Check your inbox—you now have free shipping on your first 3 orders.",
+    "successLabel": "Ready to get moving?",
     "successMessage": "You're in. Check your inbox—and remember: free standard shipping on your first 3 orders when you sign in and shop.",
     "legalFinePrint": "Free standard shipping applies to your first 3 paid orders with a signed-in account. Exclusions may apply by region or product. See terms for details."
   },

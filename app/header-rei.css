@@ -65,9 +65,9 @@
 }
 
 .gn-rei-utility__row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   min-height: 32px;
   padding-block: 8px;
@@ -78,6 +78,42 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 20px;
+  grid-column: 1;
+  justify-self: start;
+}
+
+.gn-rei-utility__promo {
+  grid-column: 2;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--gn-rei-utility-text);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.gn-rei-utility__promo:hover {
+  color: var(--gn-rei-utility-text-selected);
+}
+
+.gn-rei-utility__promo:focus {
+  outline: none;
+}
+
+.gn-rei-utility__promo:focus-visible {
+  outline: 2px solid rgba(217, 164, 65, 0.55);
+  outline-offset: 2px;
 }
 
 .gn-rei-utility__link {
@@ -115,6 +151,8 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  grid-column: 3;
+  justify-self: end;
 }
 
 .gn-rei-utility__currencies {
@@ -252,7 +290,7 @@
 .gn-rei-main__shop {
   position: relative;
   margin-left: -120px;
-  color: var(--gn-rei-mustard);
+  color: var(--gn-rei-ink);
   font-family: var(--font-tan-nimbus), Georgia, "Times New Roman", serif;
   font-size: 1em;
   font-weight: 700;
@@ -287,6 +325,10 @@
 .gn-rei-main__shop:hover::after,
 .gn-rei-categories__tab:not(.gn-rei-categories__tab--open):hover::after {
   transform: scaleX(1);
+}
+
+.gn-rei-main__shop:hover::after {
+  background: var(--gn-rei-mustard);
 }
 
 .gn-rei-categories__tab:not(.gn-rei-categories__tab--open):hover::after {

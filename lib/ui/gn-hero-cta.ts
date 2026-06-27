@@ -19,6 +19,14 @@ export const GN_HERO_CTA_HOME: GnHeroCtaColors = {
   fg: "#FFFFFF",
 };
 
+/** Product card “Agregar ahora” — blanco + mustard, invertido en hover. */
+export const GN_MUSTARD = "#D9A441";
+
+export const GN_HERO_CTA_MUSTARD_INVERSE: GnHeroCtaColors = {
+  bg: "#FFFFFF",
+  fg: GN_MUSTARD,
+};
+
 /** Discover / explore — verde bosque sólido (sin gradiente). */
 export const GN_HERO_CTA_FOREST: GnHeroCtaColors = {
   bg: "#2E4A36",
@@ -73,3 +81,8 @@ export function gnHeroCtaStyle(
     "--gn-cta-hover-bg": options?.hoverBg ?? GN_HERO_CTA_HOVER_BG,
   } as CSSProperties;
 }
+
+export const gnHeroCtaMustardInverseStyle = gnHeroCtaStyle(
+  GN_HERO_CTA_MUSTARD_INVERSE,
+  { hoverBg: GN_MUSTARD }
+);

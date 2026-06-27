@@ -36,7 +36,7 @@ import {
   type HomeNewsletterBlockLayout,
   type HomeNewsletterLayoutElementId,
 } from "@/lib/newsletter-home-modal-layout";
-import { isGoNaturalHomePath } from "@/lib/routing/brands";
+import { isGoNaturalHomePath, shouldShowGoNaturalHeader } from "@/lib/routing/brands";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
@@ -64,7 +64,7 @@ function GoNaturalHomeNewsletterModalInner() {
   const t = useTranslations();
   const { isLoggedIn } = useUser();
   const { authOpen, openAuthModal } = useAuth();
-  const { setSuppressHeader } = useHomeNewsletterModal();
+  const { setSuppressHeader, openSignal } = useHomeNewsletterModal();
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
@@ -78,6 +78,7 @@ function GoNaturalHomeNewsletterModalInner() {
 
   const [isVisible, setIsVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [forceOpened, setForceOpened] = useState(false);
   const [email, setEmail] = useState("");
   const [marketingAccepted, setMarketingAccepted] = useState(false);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -87,16 +88,23 @@ function GoNaturalHomeNewsletterModalInner() {
   );
 
   const privacyHref = `/${locale}/privacy-policy`;
-  const isHomeGn = pathname ? isGoNaturalHomePath(pathname) : false;
-  const isExpandedOpen = isHomeGn && isVisible && !isMinimized;
+  const isGnSite = pathname ? shouldShowGoNaturalHeader(pathname) : false;
+  const isExpandedOpen = isGnSite && isVisible && !isMinimized;
 
   const syncVisibility = useCallback(() => {
     if (typeof window === "undefined" || !pathname) return;
 
-    if (!isGoNaturalHomePath(pathname)) {
-      setIsVisible(false);
+    if (!isGnSite) {
+      if (!forceOpened) setIsVisible(false);
       return;
     }
+
+    if (!isGoNaturalHomePath(pathname)) {
+      if (!forceOpened) setIsVisible(false);
+      return;
+    }
+
+    setForceOpened(false);
 
     if (isDirector) {
       setIsMinimized(false);
@@ -123,13 +131,25 @@ function GoNaturalHomeNewsletterModalInner() {
       sessionStorage.getItem(GN_HOME_NEWSLETTER_MINIMIZED) === "true";
     setIsMinimized(minimized);
     setIsVisible(true);
-  }, [authOpen, isDirector, isLoggedIn, pathname]);
+  }, [authOpen, forceOpened, isDirector, isGnSite, isLoggedIn, pathname]);
 
   useEffect(() => {
     queueMicrotask(() => {
       syncVisibility();
     });
   }, [syncVisibility]);
+
+  useEffect(() => {
+    if (openSignal === 0 || !pathname || !isGnSite) return;
+
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem(GN_HOME_NEWSLETTER_DISMISSED);
+      sessionStorage.removeItem(GN_HOME_NEWSLETTER_MINIMIZED);
+    }
+    setForceOpened(true);
+    setIsMinimized(false);
+    setIsVisible(true);
+  }, [openSignal, pathname, isGnSite]);
 
   useEffect(() => {
     setBlockLayout(loadHomeNewsletterBlockLayout());
@@ -144,6 +164,7 @@ function GoNaturalHomeNewsletterModalInner() {
 
   const handleDismiss = useCallback(() => {
     if (isDirector) return;
+    setForceOpened(false);
     setIsVisible(false);
     if (typeof window !== "undefined") {
       sessionStorage.setItem(GN_HOME_NEWSLETTER_DISMISSED, "true");
@@ -224,7 +245,7 @@ function GoNaturalHomeNewsletterModalInner() {
     openAuthModal("login");
   };
 
-  if (!isHomeGn || !isVisible) return null;
+  if (!isGnSite || !isVisible) return null;
 
   const errorMessage =
     errorCode === "duplicate"
@@ -355,7 +376,11 @@ function GoNaturalHomeNewsletterModalInner() {
                 }
               >
                 <div
-                  className={`${GN_HOME_NEWSLETTER_PANEL_CLASS} mx-auto my-auto flex w-full flex-col items-center gap-6 text-center md:gap-0`}
+                  className={`${GN_HOME_NEWSLETTER_PANEL_CLASS} mx-auto my-auto flex w-full flex-col items-center text-center ${
+                    submitState === "success"
+                      ? "gap-2 md:gap-2"
+                      : "gap-6 md:gap-0"
+                  }`}
                 >
                   <div
                     className="hidden shrink-0 md:block"
@@ -367,20 +392,30 @@ function GoNaturalHomeNewsletterModalInner() {
                       alt={t("header.logoAlt")}
                       width={240}
                       height={96}
-                      className="h-auto w-[min(100%,200px)] object-contain drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)]"
+                      className={`h-auto object-contain drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)] ${
+                        submitState === "success"
+                          ? "w-[min(100%,140px)]"
+                          : "w-[min(100%,200px)]"
+                      }`}
                       priority
                     />
                   </div>
 
                   {submitState === "success" ? (
-                    <div className="flex w-full flex-col items-center gap-4">
-                      <p className="font-inter text-[15px] leading-relaxed text-[rgba(244,235,221,0.92)]">
-                        {t("homeNewsletterModal.successMessage")}
+                    <div className="flex w-full flex-col items-center gap-2 text-center md:gap-2.5">
+                      <h2 className="font-display text-balance text-[1.35rem] font-medium leading-[1.1] tracking-[-0.02em] text-[#F4EBDD] md:text-[1.55rem]">
+                        {t("homeNewsletterModal.successTitle")}
+                      </h2>
+                      <p className="font-inter max-w-[400px] text-[13px] leading-snug text-[#D9A441]">
+                        {t("homeNewsletterModal.successSubtitle")}
+                      </p>
+                      <p className="font-inter text-[12px] font-semibold tracking-[0.06em] text-[#C9622B]">
+                        {t("homeNewsletterModal.successLabel")}
                       </p>
                       <button
                         type="button"
                         onClick={handleHideAfterSuccess}
-                        className={primaryCtaClass}
+                        className={`${primaryCtaClass} mt-1`}
                       >
                         {t("registrationCTA.hideAfterSuccess")}
                       </button>

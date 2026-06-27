@@ -33,8 +33,7 @@
       "tradeIn": "Reprise",
       "classes": "Cours et événements",
       "expertAdvice": "Conseils d'experts",
-      "uncommonPath": "Uncommon Path",
-      "membership": "Adhésion"
+      "freeShippingPromo": "LIVRAISON GRATUITE SUR VOS 3 PREMIÈRES COMMANDES"
     },
     "tabs": {
       "campHike": "Camp & Randonnée",
@@ -338,10 +337,10 @@
     "categoriesTitle": "Naviguer avec intention",
     "categoriesSubtitle": "Pêche, montagne et neige, outdoor et sports nautiques — grandes zones cliquables, mêmes choix posés.",
     "categoryCards": [
-      { "label": "Pêche", "path": "/products?category=fishing", "imageKey": "active-sports" },
-      { "label": "Montagne et neige", "path": "/products?category=mountain-snow", "imageKey": "water-sports" },
+      { "label": "Pêche", "path": "/products?category=fishing", "imageKey": "fishing" },
+      { "label": "Montagne et neige", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
       { "label": "Outdoor et aventure", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Sports nautiques", "path": "/products?category=water-sports", "imageKey": "mountain-snow" }
+      { "label": "Sports nautiques", "path": "/products?category=water-sports", "imageKey": "water-sports" }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Récits de terrain — la même voix que dans la boutique.",
@@ -943,6 +942,9 @@
     "close": "Fermer",
     "closeWindow": "Fermer la fenêtre",
     "expand": "Développer la newsletter",
+    "successTitle": "Merci de rejoindre notre communauté",
+    "successSubtitle": "Consultez votre boîte mail—vous bénéficiez déjà de la livraison gratuite sur vos 3 premières commandes.",
+    "successLabel": "Prêt à bouger ?",
     "successMessage": "C'est noté. Surveillez votre boîte mail—livraison standard gratuite sur vos 3 premières commandes en vous connectant et en achetant.",
     "legalFinePrint": "La livraison standard gratuite s'applique à vos 3 premières commandes payées avec un compte connecté. Des exclusions peuvent s'appliquer selon la région ou le produit. Voir les conditions."
   },

@@ -146,6 +146,7 @@ export default async function GoNaturalHomePage({
           ctaLabel={h.communityCta ?? t("blog.journal.communityCta")}
           href={`/${locale}/contact`}
           ctaClassName={homePrimaryCtaClass}
+          openNewsletterModal
         />
       </div>
     </main>

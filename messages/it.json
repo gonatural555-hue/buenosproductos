@@ -33,8 +33,7 @@
       "tradeIn": "Trade-In",
       "classes": "Corsi ed eventi",
       "expertAdvice": "Consigli degli esperti",
-      "uncommonPath": "Uncommon Path",
-      "membership": "Membership"
+      "freeShippingPromo": "SPEDIZIONE GRATUITA SUI TUOI PRIMI 3 ORDINI"
     },
     "tabs": {
       "campHike": "Camp & Trekking",
@@ -338,10 +337,10 @@
     "categoriesTitle": "Naviga con intenzione",
     "categoriesSubtitle": "Pesca, montagna e neve, outdoor e sport acquatici — aree ampie, stesse scelte calme.",
     "categoryCards": [
-      { "label": "Pesca", "path": "/products?category=fishing", "imageKey": "active-sports" },
-      { "label": "Montagna e neve", "path": "/products?category=mountain-snow", "imageKey": "water-sports" },
+      { "label": "Pesca", "path": "/products?category=fishing", "imageKey": "fishing" },
+      { "label": "Montagna e neve", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
       { "label": "Outdoor e avventura", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Sport acquatici", "path": "/products?category=water-sports", "imageKey": "mountain-snow" }
+      { "label": "Sport acquatici", "path": "/products?category=water-sports", "imageKey": "water-sports" }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Note dal campo — la stessa voce del negozio.",
@@ -943,6 +942,9 @@
     "close": "Chiudi",
     "closeWindow": "Chiudi finestra",
     "expand": "Espandi newsletter",
+    "successTitle": "Grazie per esserti unito alla nostra community",
+    "successSubtitle": "Controlla la posta in arrivo—hai già la spedizione gratuita sui tuoi primi 3 ordini.",
+    "successLabel": "Pronto a muoverti?",
     "successMessage": "Fatto. Controlla la posta—spedizione standard gratuita sui tuoi primi 3 ordini accedendo e acquistando.",
     "legalFinePrint": "La spedizione standard gratuita si applica ai tuoi primi 3 ordini pagati con account attivo. Possono applicarsi esclusioni per regione o prodotto. Vedi i termini."
   },

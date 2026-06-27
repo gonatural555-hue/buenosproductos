@@ -2,8 +2,7 @@
 import type { CSSProperties } from "react";
 import {
   GN_HERO_CTA_CLASS_COMPACT,
-  GN_HERO_CTA_HOME,
-  gnHeroCtaStyle,
+  gnHeroCtaMustardInverseStyle,
 } from "@/lib/ui/gn-hero-cta";
 
 export const PLP_PATAGONIA = {
@@ -16,12 +15,11 @@ export const PLP_PATAGONIA = {
   imageRadius: "0.5rem",
 } as const;
 
-/** Botón “Agregar ahora” — negro + hover crema/dorado (mismo sistema que banners). */
+/** Botón “Agregar ahora” — blanco + mustard, hover invertido (mismo raised block). */
 export const productCardAddToCartBtnClass = `${GN_HERO_CTA_CLASS_COMPACT} w-full !min-h-[48px] whitespace-normal`;
 
-export const productCardAddToCartBtnStyle: CSSProperties = gnHeroCtaStyle(
-  GN_HERO_CTA_HOME
-);
+export const productCardAddToCartBtnStyle: CSSProperties =
+  gnHeroCtaMustardInverseStyle;
 
 export const productCardAddToCartWrapClass =
   "absolute inset-x-3 bottom-3 z-[2] translate-y-1 opacity-100 transition-all duration-300 ease-out md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 motion-reduce:transition-none motion-reduce:md:opacity-100 motion-reduce:md:translate-y-0";

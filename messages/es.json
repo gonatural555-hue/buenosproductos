@@ -33,8 +33,7 @@
       "tradeIn": "Trade-In",
       "classes": "Clases y eventos",
       "expertAdvice": "Consejo experto",
-      "uncommonPath": "Uncommon Path",
-      "membership": "Membresía"
+      "freeShippingPromo": "ENVÍO GRATIS EN TUS PRIMEROS 3 PEDIDOS"
     },
     "tabs": {
       "campHike": "Campamento y senderismo",
@@ -413,10 +412,10 @@
     "categoriesTitle": "Navegá por intención",
     "categoriesSubtitle": "Pesca, montaña y nieve, outdoor y deportes acuáticos — grandes áreas táctiles, mismas decisiones tranquilas.",
     "categoryCards": [
-      { "label": "Pesca", "path": "/products?category=fishing", "imageKey": "active-sports" },
-      { "label": "Montaña y nieve", "path": "/products?category=mountain-snow", "imageKey": "water-sports" },
+      { "label": "Pesca", "path": "/products?category=fishing", "imageKey": "fishing" },
+      { "label": "Montaña y nieve", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
       { "label": "Outdoor y aventura", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Deportes acuáticos", "path": "/products?category=water-sports", "imageKey": "mountain-snow" }
+      { "label": "Deportes acuáticos", "path": "/products?category=water-sports", "imageKey": "water-sports" }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Historias desde el terreno — el mismo silencio que en la tienda.",
@@ -1030,6 +1029,9 @@
     "close": "Cerrar",
     "closeWindow": "Cerrar ventana",
     "expand": "Expandir boletín",
+    "successTitle": "Gracias por unirte a nuestra comunidad",
+    "successSubtitle": "Revisá tu bandeja de entrada, ya contás con envío gratis en tus primeros 3 pedidos.",
+    "successLabel": "¿Listo para empezar a moverte?",
     "successMessage": "Listo. Revisá tu bandeja—recordá que tenés envío estándar gratis en tus 3 primeros pedidos al iniciar sesión y comprar.",
     "legalFinePrint": "El envío estándar gratis aplica a tus 3 primeros pedidos pagados con cuenta iniciada. Pueden aplicar exclusiones por región o producto. Consultá los términos."
   },

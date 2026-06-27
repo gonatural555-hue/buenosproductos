@@ -3,7 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/config";
-import { HOME_CATEGORY_IMAGE } from "@/lib/home-category-visuals";
+import {
+  HOME_CATEGORY_IMAGE,
+  HOME_CATEGORY_IMAGE_OBJECT_POSITION,
+} from "@/lib/home-category-visuals";
 import ScrollReveal from "@/components/blog/ScrollReveal";
 import { LUMINOUS_EDGE_LIGHT } from "@/lib/ui/luminous-edge";
 
@@ -55,6 +58,8 @@ export default function CategoryGrid({
             const src =
               HOME_CATEGORY_IMAGE[imageLookupKey] ??
               "/assets/images/hero/trekking.webp";
+            const objectPosition =
+              HOME_CATEGORY_IMAGE_OBJECT_POSITION[imageLookupKey] ?? "center";
             return (
               <ScrollReveal key={`${card.label}-${i}`} delayMs={i * 70}>
                 <Link
@@ -66,7 +71,8 @@ export default function CategoryGrid({
                     alt=""
                     fill
                     sizes="(max-width:640px)100vw,25vw"
-                    className="object-cover object-center transition duration-[900ms] ease-out group-hover:scale-[1.06]"
+                    className="object-cover transition duration-[900ms] ease-out group-hover:scale-[1.06]"
+                    style={{ objectPosition }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/40 to-transparent opacity-90 transition duration-500 group-hover:from-dark-base/90" />
                   <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">

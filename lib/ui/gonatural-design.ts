@@ -13,6 +13,20 @@ export const GN_HERO_TOP_PAD =
 /** Páginas sin hero full-bleed: el header ocupa flujo normal. */
 export const GN_FLOAT_HEADER_CLEARANCE = "pt-0";
 
+/**
+ * Cart + account: 100px menos de aire entre header y contenido
+ * (antes pt-28 / md:pt-32).
+ */
+export const GN_CART_ACCOUNT_TOP_PAD =
+  "pt-[calc(7rem-100px)] md:pt-[calc(8rem-100px)]";
+
+/** Cart + account — variantes con pt-24 previo. */
+export const GN_CART_ACCOUNT_TOP_PAD_COMPACT =
+  "pt-[max(0px,calc(6rem-100px))]";
+
+/** Sticky sidebar cart — alineado al nuevo offset superior. */
+export const GN_CART_ACCOUNT_STICKY_TOP = "lg:top-[calc(7rem-100px)]";
+
 /** Shell del header Go Natural. */
 export const GN_HEADER_SHELL_CLASS = "font-inter";
 

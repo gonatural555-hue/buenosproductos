@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
+import { useHomeNewsletterModal } from "@/context/HomeNewsletterModalContext";
 import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
   HEADER_UTILITY_LINKS,
@@ -17,6 +18,7 @@ type Props = {
 
 export default function HeaderUtilityBar({ locale }: Props) {
   const t = useTranslations();
+  const { openModal } = useHomeNewsletterModal();
   const pathname = usePathname() ?? "";
   const searchParams = useSearchParams();
 
@@ -51,6 +53,13 @@ export default function HeaderUtilityBar({ locale }: Props) {
               );
             })}
           </nav>
+          <button
+            type="button"
+            onClick={openModal}
+            className="gn-rei-utility__promo"
+          >
+            {t("header.utility.freeShippingPromo")}
+          </button>
           <div className="gn-rei-utility__controls">
             <HeaderCurrencySwitcher variant="utility" />
             <nav
