@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useUser, type Address } from "@/context/UserContext";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
+import { AR_PROVINCES } from "@/lib/addresses/ar-provinces";
 
 type FormState = Omit<Address, "id" | "isDefault"> & { isDefault: boolean };
 
@@ -13,6 +14,7 @@ const emptyForm: FormState = {
   addressLine2: "",
   city: "",
   postalCode: "",
+  state: "",
   country: "",
   isDefault: false,
 };
@@ -45,6 +47,7 @@ export default function AccountAddresses() {
       addressLine2: address.addressLine2 || "",
       city: address.city,
       postalCode: address.postalCode,
+      state: address.state || "",
       country: address.country,
       isDefault: address.isDefault,
     });
@@ -71,6 +74,7 @@ export default function AccountAddresses() {
         addressLine2: form.addressLine2?.trim() || "",
         city: form.city.trim(),
         postalCode: form.postalCode.trim(),
+        state: form.state.trim(),
         country: form.country.trim(),
       };
 
@@ -80,6 +84,7 @@ export default function AccountAddresses() {
         !trimmed.addressLine1 ||
         !trimmed.city ||
         !trimmed.postalCode ||
+        !trimmed.state ||
         !trimmed.country
       ) {
         return;
@@ -144,7 +149,7 @@ export default function AccountAddresses() {
                 <p>{address.addressLine1}</p>
                 {address.addressLine2 && <p>{address.addressLine2}</p>}
                 <p>
-                  {address.city} · {address.postalCode}
+                  {address.city}, {address.state} · {address.postalCode}
                 </p>
                 <p>{address.country}</p>
               </div>
@@ -247,22 +252,7 @@ export default function AccountAddresses() {
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
-                {t("accountAddresses.form.city")}
-              </label>
-              <input
-                value={form.city}
-                onChange={(event) =>
-                  setForm((prev) => ({ ...prev, city: event.target.value }))
-                }
-                type="text"
-                required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
-                placeholder={t("accountAddresses.form.cityPlaceholder")}
-              />
-            </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
                 {t("accountAddresses.form.postalCode")}
@@ -276,6 +266,44 @@ export default function AccountAddresses() {
                 required
                 className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
                 placeholder={t("accountAddresses.form.postalCodePlaceholder")}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+                {t("accountAddresses.form.state")}
+              </label>
+              <select
+                value={form.state}
+                onChange={(event) =>
+                  setForm((prev) => ({ ...prev, state: event.target.value }))
+                }
+                required
+                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+              >
+                <option value="">{t("accountAddresses.form.statePlaceholder")}</option>
+                {AR_PROVINCES.map((province) => (
+                  <option key={province} value={province}>
+                    {province}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2">
+              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+                {t("accountAddresses.form.city")}
+              </label>
+              <input
+                value={form.city}
+                onChange={(event) =>
+                  setForm((prev) => ({ ...prev, city: event.target.value }))
+                }
+                type="text"
+                required
+                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                placeholder={t("accountAddresses.form.cityPlaceholder")}
               />
             </div>
             <div className="space-y-2">

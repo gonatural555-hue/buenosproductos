@@ -77,11 +77,28 @@ export function resolveBrandFromPath(pathname: string): BrandId | null {
   return "go-natural";
 }
 
-/** Go Natural chrome (global header) hidden on gateway and Good Ideas routes. */
+export function isGoNaturalCheckoutPath(pathname: string): boolean {
+  const segments = pathname.split("/").filter(Boolean);
+  return (
+    segments.length >= 2 &&
+    locales.includes(segments[0] as Locale) &&
+    segments[1] === "checkout"
+  );
+}
+
+/** Go Natural chrome (global header) hidden on gateway, Good Ideas, and checkout. */
 export function shouldShowGoNaturalHeader(pathname: string): boolean {
-  return !isBrandGatewayPath(pathname) && !isGoodIdeasPath(pathname);
+  return (
+    !isBrandGatewayPath(pathname) &&
+    !isGoodIdeasPath(pathname) &&
+    !isGoNaturalCheckoutPath(pathname)
+  );
 }
 
 export function shouldShowGoNaturalFooter(pathname: string): boolean {
-  return !isBrandGatewayPath(pathname) && !isGoodIdeasPath(pathname);
+  return (
+    !isBrandGatewayPath(pathname) &&
+    !isGoodIdeasPath(pathname) &&
+    !isGoNaturalCheckoutPath(pathname)
+  );
 }

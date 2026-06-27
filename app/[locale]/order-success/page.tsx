@@ -8,6 +8,7 @@ import { useUser, type Order } from "@/context/UserContext";
 import OrderSuccessEngagementBlock from "@/components/order-success/OrderSuccessEngagementBlock";
 import UsdChargeNotice from "@/components/currency/UsdChargeNotice";
 import { buildContactHref } from "@/lib/checkout/contact-link";
+import { readGuestOrderSnapshot } from "@/lib/checkout/guest-order";
 
 function interpolate(template: string, vars: Record<string, string>) {
   return template.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`);
@@ -23,18 +24,28 @@ export default function OrderSuccessPage() {
   const [order, setOrder] = useState<Order | null>(null);
 
   const previewOrder = useMemo(() => {
-    if (!orders || orders.length === 0) return null;
-    return lastOrderId
-      ? orders.find((entry) => entry.id === lastOrderId) ?? null
-      : orders[0];
+    if (orders && orders.length > 0) {
+      return lastOrderId
+        ? orders.find((entry) => entry.id === lastOrderId) ?? null
+        : orders[0];
+    }
+    const guest = readGuestOrderSnapshot();
+    if (guest && (!lastOrderId || guest.id === lastOrderId)) return guest;
+    return null;
   }, [orders, lastOrderId]);
 
   useEffect(() => {
-    if (!orders || orders.length === 0) return;
-    const found = lastOrderId
-      ? orders.find((entry) => entry.id === lastOrderId)
-      : orders[0];
-    if (found) setOrder(found);
+    if (orders && orders.length > 0) {
+      const found = lastOrderId
+        ? orders.find((entry) => entry.id === lastOrderId)
+        : orders[0];
+      if (found) setOrder(found);
+      return;
+    }
+    const guest = readGuestOrderSnapshot();
+    if (guest && (!lastOrderId || guest.id === lastOrderId)) {
+      setOrder(guest);
+    }
   }, [orders, lastOrderId]);
 
   const dateLocale =
@@ -226,7 +237,8 @@ export default function OrderSuccessPage() {
                     : ""}
                 </p>
                 <p>
-                  {order.address.city}, {order.address.postalCode}
+                  {order.address.city}, {order.address.state}{" "}
+                  {order.address.postalCode}
                 </p>
                 <p>{order.address.country}</p>
                 <p className="pt-3 text-dark-base">{order.address.phone}</p>

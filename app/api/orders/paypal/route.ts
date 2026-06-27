@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import {
+  createSupabaseServiceClient,
+  isSupabaseServiceConfigured,
+} from "@/lib/supabase/admin";
 import { createOrder, markOrderAsPaid, type OrderItem } from "@/lib/orders";
 import { verifyPayPalCapture } from "@/lib/paypal/verify-capture";
 import {
@@ -14,13 +18,17 @@ type PayPalOrderPayload = {
   totalAmount: number;
   currency?: string;
   paypalOrderId?: string;
-  /** Snapshot de dirección (JSON alineado con Address en cliente) */
   shippingAddress?: Record<string, unknown>;
+  billingAddress?: Record<string, unknown> | null;
 };
 
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
 /**
- * Orden de operaciones: 1) Supabase (fuente de verdad) 2) lib/orders (Sheets / eventos).
- * Requiere sesión Supabase válida (cookie).
+ * Orden: 1) Supabase 2) lib/orders (Sheets).
+ * Usuario logueado: JWT + RLS. Guest: service role + guest_email.
  */
 export async function POST(request: NextRequest) {
   try {
@@ -28,13 +36,6 @@ export async function POST(request: NextRequest) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-
-    if (!user) {
-      return NextResponse.json(
-        { success: false, error: "Unauthorized" },
-        { status: 401 }
-      );
-    }
 
     const body = (await request.json()) as Partial<PayPalOrderPayload>;
 
@@ -45,7 +46,32 @@ export async function POST(request: NextRequest) {
       currency,
       paypalOrderId,
       shippingAddress,
+      billingAddress,
+      email: bodyEmail,
     } = body;
+
+    const isGuest = !user;
+
+    if (isGuest) {
+      if (!isSupabaseServiceConfigured()) {
+        return NextResponse.json(
+          {
+            success: false,
+            error:
+              "Checkout guest no configurado (falta SUPABASE_SERVICE_ROLE_KEY).",
+          },
+          { status: 503 }
+        );
+      }
+      const guestEmail =
+        typeof bodyEmail === "string" ? bodyEmail.trim() : "";
+      if (!isValidEmail(guestEmail)) {
+        return NextResponse.json(
+          { success: false, error: "Email válido requerido para compra guest." },
+          { status: 400 }
+        );
+      }
+    }
 
     if (!orderId || !items || !Array.isArray(items) || !items.length) {
       console.error("[PayPal Order API] Payload inválido", { body });
@@ -60,15 +86,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (typeof totalAmount !== "number" || Number.isNaN(totalAmount)) {
-      console.error("[PayPal Order API] totalAmount inválido", {
-        orderId,
-        totalAmount,
-      });
       return NextResponse.json(
-        {
-          success: false,
-          error: "totalAmount debe ser un número.",
-        },
+        { success: false, error: "totalAmount debe ser un número." },
         { status: 400 }
       );
     }
@@ -78,25 +97,21 @@ export async function POST(request: NextRequest) {
       ship && typeof ship.fullName === "string" ? ship.fullName.trim() : "";
     if (!fullName) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "shippingAddress es obligatorio.",
-        },
+        { success: false, error: "shippingAddress es obligatorio." },
         { status: 400 }
       );
     }
 
     if (!paypalOrderId?.trim()) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "paypalOrderId es obligatorio.",
-        },
+        { success: false, error: "paypalOrderId es obligatorio." },
         { status: 400 }
       );
     }
 
-    const { data: existingPaypalOrder } = await supabase
+    const db = isGuest ? createSupabaseServiceClient() : supabase;
+
+    const { data: existingPaypalOrder } = await db
       .from("orders")
       .select("id, status")
       .eq("paypal_order_id", paypalOrderId)
@@ -129,23 +144,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { data: existingOrder } = await supabase
+    const { data: existingOrder } = await db
       .from("orders")
       .select("id, shipping_waived, status")
       .eq("id", orderId)
       .maybeSingle();
 
     if (existingOrder) {
-      const paidOrderCount = await getPaidOrderCountForUser(supabase, user.id);
-      const shippingWaived = Boolean(existingOrder.shipping_waived);
+      if (!isGuest && user) {
+        const paidOrderCount = await getPaidOrderCountForUser(supabase, user.id);
+        const shippingWaived = Boolean(existingOrder.shipping_waived);
+        return NextResponse.json({
+          success: true,
+          orderId,
+          status: existingOrder.status ?? "paid",
+          alreadyExists: true,
+          welcomeFreeShippingApplied: shippingWaived,
+          welcomeFreeShippingRemainingAfter:
+            getWelcomeFreeShippingRemaining(paidOrderCount),
+        });
+      }
       return NextResponse.json({
         success: true,
         orderId,
         status: existingOrder.status ?? "paid",
         alreadyExists: true,
-        welcomeFreeShippingApplied: shippingWaived,
-        welcomeFreeShippingRemainingAfter:
-          getWelcomeFreeShippingRemaining(paidOrderCount),
       });
     }
 
@@ -153,28 +176,21 @@ export async function POST(request: NextRequest) {
 
     const enrichedShippingAddress = {
       ...(ship ?? {}),
+      billingAddress: billingAddress ?? null,
       welcomeFreeShippingApplied,
       standardShippingAlwaysFree: true,
     };
 
-    const safeEmail =
-      typeof user.email === "string" && user.email.includes("@")
+    const safeEmail = isGuest
+      ? (bodyEmail as string).trim()
+      : typeof user?.email === "string" && user.email.includes("@")
         ? user.email
         : "";
 
-    console.log("[PayPal Order API] Persistiendo en Supabase + eventos", {
-      orderId,
-      paypalOrderId,
-      userId: user.id,
-      totalAmount,
-      currency: currency || "USD",
-      itemsCount: items.length,
-      welcomeFreeShippingApplied,
-    });
-
     const orderRow: Record<string, unknown> = {
       id: orderId,
-      user_id: user.id,
+      user_id: isGuest ? null : user!.id,
+      guest_email: isGuest ? safeEmail : null,
       status: "paid",
       subtotal: totalAmount,
       currency: currency || "USD",
@@ -185,7 +201,7 @@ export async function POST(request: NextRequest) {
       shipping_amount: 0,
     };
 
-    const { error: orderErr } = await supabase.from("orders").insert(orderRow);
+    const { error: orderErr } = await db.from("orders").insert(orderRow);
 
     if (orderErr) {
       console.error("[PayPal Order API] orders insert", orderErr);
@@ -203,13 +219,11 @@ export async function POST(request: NextRequest) {
       quantity: it.quantity,
     }));
 
-    const { error: itemsErr } = await supabase
-      .from("order_items")
-      .insert(itemRows);
+    const { error: itemsErr } = await db.from("order_items").insert(itemRows);
 
     if (itemsErr) {
       console.error("[PayPal Order API] order_items insert", itemsErr);
-      await supabase.from("orders").delete().eq("id", orderId);
+      await db.from("orders").delete().eq("id", orderId);
       return NextResponse.json(
         { success: false, error: "No se pudieron guardar las líneas del pedido." },
         { status: 500 }
@@ -238,7 +252,13 @@ export async function POST(request: NextRequest) {
       orderId,
       status: "paid",
       welcomeFreeShippingApplied: true,
-      welcomeFreeShippingRemainingAfter: 0,
+      welcomeFreeShippingRemainingAfter: isGuest
+        ? 0
+        : user
+          ? getWelcomeFreeShippingRemaining(
+              await getPaidOrderCountForUser(supabase, user.id)
+            )
+          : 0,
     });
   } catch (error) {
     console.error("[PayPal Order API] Error procesando orden PayPal:", error);

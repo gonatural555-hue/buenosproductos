@@ -31,6 +31,7 @@ export type Address = {
   addressLine2?: string;
   city: string;
   postalCode: string;
+  state: string;
   country: string;
   isDefault: boolean;
 };
@@ -59,6 +60,7 @@ type DbAddressRow = {
   address_line2: string | null;
   city: string;
   postal_code: string;
+  state: string | null;
   country: string;
   is_default: boolean;
 };
@@ -72,6 +74,7 @@ function rowToAddress(row: DbAddressRow): Address {
     addressLine2: row.address_line2 || undefined,
     city: row.city,
     postalCode: row.postal_code,
+    state: row.state || "",
     country: row.country,
     isDefault: row.is_default,
   };
@@ -89,6 +92,7 @@ function addressToRow(
     address_line2: addr.addressLine2 || null,
     city: addr.city,
     postal_code: addr.postalCode,
+    state: addr.state || null,
     country: addr.country,
     is_default: addr.isDefault,
   };
@@ -220,6 +224,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         addressLine1: "",
         city: "",
         postalCode: "",
+        state: "",
         country: "",
         isDefault: true,
       };
