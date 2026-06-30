@@ -10,6 +10,7 @@ import {
   productsPath,
 } from "@/lib/routing/paths";
 import OrderSuccessEngagementBlock from "@/components/order-success/OrderSuccessEngagementBlock";
+import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName";
 import UsdChargeNotice from "@/components/currency/UsdChargeNotice";
 import { buildContactHref } from "@/lib/checkout/contact-link";
 import { readGuestOrderSnapshot } from "@/lib/checkout/guest-order";
@@ -120,7 +121,7 @@ export default function OrderSuccessPage() {
           </svg>
         </div>
         <p className="mb-4 text-[0.65rem] uppercase tracking-[0.28em] text-accent-gold/90">
-          Go Natural
+          <GoodProductsBrandName locale={locale} />
         </p>
         <h1 className="font-sans mb-4 text-3xl font-semibold leading-tight tracking-tight text-dark-base md:text-[2.15rem]">
           {t("orderSuccessPage.headline")}

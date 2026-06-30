@@ -5,6 +5,8 @@
  * NO rompe el flujo de compra si el email falla.
  */
 
+import { SITE_OPERATOR } from "@/lib/legal/operator";
+
 type OrderItem = {
   id: string;
   title: string;
@@ -19,6 +21,14 @@ type SendOrderCreatedEmailParams = {
   currency: string;
   items: OrderItem[];
 };
+
+function brevoSender() {
+  return {
+    email:
+      process.env.BREVO_SENDER_EMAIL?.trim() || SITE_OPERATOR.email,
+    name: process.env.BREVO_SENDER_NAME?.trim() || SITE_OPERATOR.tradeName,
+  };
+}
 
 /**
  * Formatea el monto con la moneda
@@ -132,9 +142,9 @@ function generateOrderCreatedEmailHTML(params: SendOrderCreatedEmailParams): str
               
               <!-- Footer -->
               <p style="margin: 24px 0 0 0; color: #6b7280; font-size: 14px; line-height: 1.5;">
-                Si tienes alguna pregunta, puedes contactarnos en 
-                <a href="mailto:orders@gonatural.com" style="color: #C89B3C; text-decoration: none;">
-                  orders@gonatural.com
+                Si tenés alguna pregunta, podés escribirnos a 
+                <a href="mailto:${SITE_OPERATOR.email}" style="color: #3B82F6; text-decoration: none;">
+                  ${SITE_OPERATOR.email}
                 </a>
               </p>
             </td>
@@ -179,16 +189,13 @@ export async function sendOrderCreatedEmail(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: {
-          email: "orders@gonatural.com",
-          name: "Go Natural",
-        },
+        sender: brevoSender(),
         to: [
           {
             email: params.email,
           },
         ],
-        subject: "Pedido recibido – Go Natural",
+        subject: `Pedido recibido – ${SITE_OPERATOR.tradeName}`,
         htmlContent: htmlContent,
       }),
     });
