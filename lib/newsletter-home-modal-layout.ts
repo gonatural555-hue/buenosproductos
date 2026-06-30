@@ -146,6 +146,6 @@ export function elementOffsetTransformDesktop(
   return elementOffsetTransform(offset);
 }
 
-/** Panel principal del modal (glass + glow). */
+/** Panel principal del modal (mismo diseño que RegistrationCTA). */
 export const GN_HOME_NEWSLETTER_PANEL_CLASS =
-  "w-full max-w-[420px] rounded-2xl border border-white/[0.08] bg-[rgba(32,36,40,0.35)] px-6 py-8 shadow-[0_0_48px_rgba(0,0,0,0.38),0_0_0_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-md md:max-w-[480px] md:px-8 md:py-7";
+  "w-full max-w-[420px] rounded-2xl border border-white/[0.08] bg-[#121921] px-6 py-8 shadow-[0_18px_48px_-20px_rgba(0,0,0,0.6),0_6px_20px_rgba(0,0,0,0.28)] md:max-w-[480px] md:px-8 md:py-7";

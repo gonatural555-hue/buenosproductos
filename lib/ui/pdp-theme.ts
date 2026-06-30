@@ -1,4 +1,5 @@
 import type { UISurface } from "@/lib/ui-surface";
+import { giType } from "@/lib/ui/gi-typography";
 
 export type PdpBrandTheme = "go-natural" | "good-ideas";
 
@@ -18,25 +19,18 @@ export function getPdpBuyBoxTheme(
 
   if (gi) {
     return {
-      brandLink:
-        "text-sm font-medium text-[#60A5FA] underline-offset-2 hover:underline",
-      title:
-        "font-sans text-[1.55rem] font-semibold leading-[1.15] tracking-tight text-[#E8ECF1] xl:text-[1.75rem]",
+      brandLink: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)] underline-offset-2 hover:text-[#60A5FA] hover:underline`,
+      title: `font-body text-[clamp(1.75rem,2.8vw,2.375rem)] font-bold leading-[1.22] tracking-[var(--gi-tracking-tight)] text-[var(--gi-text-on-dark)]`,
       reviewsRating: "text-text-muted",
-      reviewsScore: "text-[rgba(232,236,241,0.72)]",
+      reviewsScore: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,
       reviewsDot: "text-white/20",
-      reviewsLink:
-        "text-[rgba(232,236,241,0.72)] underline-offset-2 hover:text-[#60A5FA] hover:underline",
-      price:
-        "text-2xl font-semibold tabular-nums tracking-tight text-[#E8ECF1]",
-      freeShipping:
-        "text-[10px] font-semibold uppercase tracking-[0.14em] text-[#4ADE80]",
-      taxNote: "text-xs text-[rgba(232,236,241,0.5)]",
-      currencyDisclaimer:
-        "text-[11px] leading-relaxed text-[rgba(232,236,241,0.5)]",
-      variantLabelHeading:
-        "text-sm font-semibold tracking-wide text-[rgba(232,236,241,0.72)]",
-      variantLabelMuted: "text-sm text-[#E8ECF1]",
+      reviewsLink: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)] underline-offset-2 hover:text-[#60A5FA] hover:underline`,
+      price: `font-body text-[clamp(1.5rem,2.2vw,1.875rem)] font-bold tabular-nums tracking-[var(--gi-tracking-tight)] text-[var(--gi-text-on-dark)]`,
+      freeShipping: `${giType.badge} text-[#4ADE80]`,
+      taxNote: `${giType.productMeta} text-[var(--gi-text-muted-on-dark)]`,
+      currencyDisclaimer: `${giType.productMeta} text-[var(--gi-text-muted-on-dark)]`,
+      variantLabelHeading: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,
+      variantLabelMuted: `${giType.input} text-[var(--gi-text-on-dark)]`,
       variantSelected:
         "border-[#3B82F6] bg-[#151B24] text-[#E8ECF1] ring-1 ring-[#3B82F6] shadow-[0_0_0_1px_rgba(59,130,246,0.25)]",
       variantDefault:
@@ -45,27 +39,25 @@ export function getPdpBuyBoxTheme(
         "opacity-35 cursor-not-allowed border-white/10 bg-[#151B24]/40 text-[rgba(232,236,241,0.4)]",
       variantFocusRing:
         "focus-visible:ring-[#3B82F6] focus-visible:ring-offset-[#0B0F14]",
-      colorLabel:
-        "text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.72)]",
-      colorValue: "text-sm text-[#E8ECF1]",
+      colorLabel: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,
+      colorValue: `${giType.input} text-[var(--gi-text-on-dark)]`,
       colorSwatchActive:
         "border-[#3B82F6] shadow-[0_0_0_1px_rgba(59,130,246,0.35)]",
       colorSwatchIdle: "border-white/25 hover:border-white/45",
       colorSwatchFocus:
         "focus-visible:ring-[#3B82F6] focus-visible:ring-offset-[#0B0F14]",
-      qtyLabel:
-        "text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.72)]",
+      qtyLabel: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,
       qtyContainer:
-        "inline-flex items-center overflow-hidden rounded-md border border-white/[0.12] bg-[#151B24]",
+        "inline-flex items-center overflow-hidden rounded-xl border border-white/[0.12] bg-[#151B24]",
       qtyBtn:
-        "flex h-10 w-10 items-center justify-center text-lg font-medium text-[#E8ECF1] transition-colors hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 disabled:cursor-not-allowed disabled:opacity-40",
+        "flex h-12 w-12 items-center justify-center text-xl font-medium text-[var(--gi-text-on-dark)] transition-colors hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 disabled:cursor-not-allowed disabled:opacity-40",
       qtyValue:
-        "min-w-[2.75rem] px-2 text-center text-sm font-semibold tabular-nums text-[#E8ECF1]",
+        `min-w-[3rem] px-3 text-center ${giType.input} text-lg font-semibold tabular-nums text-[var(--gi-text-on-dark)]`,
       availCard:
         "rounded-md border border-white/[0.08] bg-[#151B24] px-4 py-3.5",
-      availTitle: "text-sm font-semibold text-[#E8ECF1]",
-      availStatus: "mt-1 text-sm font-medium text-[#4ADE80]",
-      availDetail: "mt-0.5 text-xs leading-snug text-[rgba(232,236,241,0.5)]",
+      availTitle: `${giType.filterHeading} text-[var(--gi-text-on-dark)]`,
+      availStatus: `${giType.badge} text-[#4ADE80]`,
+      availDetail: `${giType.productMeta} text-[var(--gi-text-muted-on-dark)]`,
     };
   }
 

@@ -16,23 +16,23 @@ export type GoodIdeasFilterCategoryNode = {
 
 /** Slug de categoría hoja o padre asignado a un producto GI. */
 export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
-  "gi-tech-001": "tech",
-  "gi-tech-002": "tech",
-  "gi-tech-003": "tech",
+  "gi-tech-001": "robots-ia",
+  "gi-tech-002": "accesorios-para-auto",
+  "gi-tech-003": "accesorios-para-auto",
   "gi-tech-004": "herramientas-limpieza-celulares",
   "gi-hogar-001": "home",
-  "gi-hogar-002": "home",
-  "gi-hogar-003": "home",
+  "gi-hogar-002": "hervidores-electricos",
+  "gi-hogar-003": "hervidores-electricos",
   "gi-hogar-004": "home",
   "gi-hogar-005": "cocina",
   "gi-hogar-006": "cocina",
   "gi-hogar-007": "cocina",
   "gi-hogar-008": "cocina",
-  "gi-lifestyle-001": "lifestyle",
-  "gi-lifestyle-002": "lifestyle",
-  "gi-lifestyle-003": "lifestyle",
-  "gi-lifestyle-004": "lifestyle",
-  "gi-regalos-001": "gifts",
+  "gi-lifestyle-001": "auriculares",
+  "gi-lifestyle-002": "auriculares",
+  "gi-lifestyle-003": "cuidado-personal",
+  "gi-lifestyle-004": "cuidado-personal",
+  "gi-regalos-001": "robots-ia",
 };
 
 /** `product.category` en catálogo → slug raíz GI. */
@@ -40,11 +40,9 @@ export const GI_PRODUCT_CATEGORY_TO_ROOT_SLUG: Record<string, string> = {
   Tech: "tech",
   Hogar: "home",
   Lifestyle: "lifestyle",
-  Regalos: "gifts",
   tech: "tech",
   home: "home",
   lifestyle: "lifestyle",
-  gifts: "gifts",
 };
 
 export function getGoodIdeasProductLeafCategorySlug(
@@ -84,6 +82,7 @@ function buildCategoryNode(
       category: category.slug,
       q: preserve.q,
       sort: preserve.sort,
+      brand: preserve.brand,
       priceMin: preserve.priceMin,
       priceMax: preserve.priceMax,
     }),

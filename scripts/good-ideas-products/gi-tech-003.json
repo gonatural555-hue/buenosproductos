@@ -1,18 +1,55 @@
 {
   "id": "gi-tech-003",
-  "brand": "Good Products",
+  "brand": "XMSJ",
+  "variants": {
+    "type": "model",
+    "options": [
+      { "value": "32l-34qt" },
+      { "value": "42l-44qt" }
+    ]
+  },
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-003/image.webp"
+      "https://s.alicdn.com/@sc04/kf/Hf32da695761f4ddcac18d2b83a6cf533K.jpg?avif=close&webp=close"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-tech-003/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-tech-003/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-tech-003/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-tech-003/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-tech-003/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H4d2588e14251457fb8304c8d488e196fu.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H1b9278282c2c48cf90f28fa99effc63aJ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hac29e3ddc4b94de0995e089f885afe2cZ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H7089ee1a51184e1f9b41059fd436b7c5L.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H5744478c76294ec7b1338bbc73bed5bd8.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
-    "extras": []
+    "extras": [],
+    "variantImages": {
+      "32l-34qt": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/Hf32da695761f4ddcac18d2b83a6cf533K.jpg?avif=close&webp=close"
+        ],
+        "gallery": [
+          "https://s.alicdn.com/@sc04/kf/H4d2588e14251457fb8304c8d488e196fu.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H1b9278282c2c48cf90f28fa99effc63aJ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hac29e3ddc4b94de0995e089f885afe2cZ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H7089ee1a51184e1f9b41059fd436b7c5L.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H5744478c76294ec7b1338bbc73bed5bd8.jpg?avif=close&webp=close"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "42l-44qt": {
+        "featured": [
+          "https://s.alicdn.com/@sc04/kf/Hf32da695761f4ddcac18d2b83a6cf533K.jpg?avif=close&webp=close"
+        ],
+        "gallery": [
+          "https://s.alicdn.com/@sc04/kf/H4d2588e14251457fb8304c8d488e196fu.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H1b9278282c2c48cf90f28fa99effc63aJ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hac29e3ddc4b94de0995e089f885afe2cZ.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H7089ee1a51184e1f9b41059fd436b7c5L.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H5744478c76294ec7b1338bbc73bed5bd8.jpg?avif=close&webp=close"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
   }
 }

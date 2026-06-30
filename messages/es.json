@@ -79,7 +79,25 @@
       "products": "Productos",
       "blog": "Blog",
       "cart": "Carrito",
+      "account": "Mi cuenta",
+      "accountMenuAria": "Menú de cuenta",
+      "helloUser": "Hola, {name}",
       "allBrands": "Todas las marcas"
+    },
+    "auth": {
+      "back": "Volver",
+      "tablistAria": "Iniciar sesión o crear cuenta",
+      "loginTab": "Iniciar sesión",
+      "registerTab": "Crear cuenta",
+      "loginTitle": "Bienvenido de nuevo",
+      "registerTitle": "Creá tu cuenta",
+      "loginSubtitle": "Accedé a tu cuenta para ver pedidos y guardar tus datos",
+      "registerSubtitle": "Creá tu cuenta para acelerar futuras compras",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "emailLabel": "Email",
+      "emailPlaceholder": "tuemail@email.com",
+      "passwordLabel": "Contraseña"
     },
     "hero": {
       "eyebrow": "Hogar & Tech",
@@ -138,15 +156,18 @@
         "home": "Hogar",
         "tech": "Tech",
         "lifestyle": "Lifestyle",
-        "gifts": "Regalos",
         "names": {
           "tech": "Tech",
           "home": "Hogar",
           "lifestyle": "Lifestyle",
-          "gifts": "Regalos",
           "celulares": "Celulares",
+          "robots-ia": "Robots IA",
+          "auriculares": "Auriculares",
           "herramientas-limpieza-celulares": "Herramientas de Limpieza Para Celulares",
-          "cocina": "Cocina"
+          "cocina": "Cocina",
+          "accesorios-para-auto": "Accesorios para Auto",
+          "hervidores-electricos": "Hervidores eléctricos",
+          "cuidado-personal": "Cuidado personal"
         }
       },
       "carousel": {
@@ -164,11 +185,6 @@
           "title": "Lifestyle\nDiario",
           "subtitle": "Productos útiles para trabajo, viaje y rutinas cotidianas.",
           "accentWord": "Diario"
-        },
-        "gifts": {
-          "title": "Ideas\nRegalo",
-          "subtitle": "Selecciones para hogar, tech y vida diaria.",
-          "accentWord": "Regalo"
         }
       }
     },
@@ -184,97 +200,23 @@
       "featuredLabel": "Historia destacada",
       "articlesLabel": "Últimos artículos",
       "backToBlog": "Volver al blog",
-      "featuredSlug": "smart-home-essentials-2026",
-      "posts": {
-        "smart-home-essentials-2026": {
-          "title": "Esenciales smart home para el día a día",
-          "excerpt": "Pequeñas mejoras de hogar y tech que simplifican rutinas diarias con calma y utilidad real.",
-          "subtitle": "Selecciones prácticas para hogar, escritorio y viaje.",
-          "intro": "Buenos Productos apuesta por productos útiles que encajan en la vida real, sin llenar espacios. Son mejoras que merecen quedarse en una estantería, un bolso o un escritorio.",
-          "heroImage": "/assets/images/good-ideas-blog/smart-home-essentials-2026-hero.webp",
-          "relatedProductIds": ["gi-hogar-002", "gi-lifestyle-001"],
-          "sections": [
-            {
-              "heading": "Empieza por las rutinas que repites",
-              "paragraphs": [
-                "La mejor tech del hogar no es el gadget más ruidoso del feed. Es lo que quita fricción a algo que ya haces: preparar té, cargar dispositivos u ordenar un rincón de casa.",
-                "Un hervidor de viaje compacto, auriculares inalámbricos o una mini nevera para bebidas y skincare pueden cambiar cómo se siente un espacio sin reformar."
-              ],
-              "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-1.webp"
-            },
-            {
-              "heading": "Tecnología que no estorba",
-              "paragraphs": [
-                "Elige productos con controles claros, tamaño honesto y un diseño que te guste ver cuando no los usas. Formatos portátiles viajan bien entre cocina, oficina y fin de semana.",
-                "Cuando algo hace bien una sola función, es más fácil recomendarlo—y más fácil convivir con ello."
-              ],
-              "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-2.webp"
-            }
-          ],
-          "closing": "Explora el catálogo Buenos Productos: hogar, tech, lifestyle y regalos pensados para el uso diario."
-        },
-        "product-from-1005006438780849": {
-          "title": "Hervidor de viaje portátil 450ML para hogar y desplazamientos",
-          "excerpt": "Una selección compacta de Buenos Productos para té, café y agua caliente en el escritorio, la residencia o de viaje.",
-          "subtitle": "Esenciales de hogar que encajan en rutinas reales.",
-          "intro": "Buenos Productos selecciona productos útiles para el hogar, no objetos de relleno. Este hervidor compacto de 450ML está pensado para cuando quieres agua caliente sin ocupar toda la encimera.",
-          "heroImage": "/assets/images/good-ideas-blog/product-from-1005006438780849-hero.webp",
-          "relatedProductIds": ["gi-hogar-002"],
-          "sections": [
-            {
-              "heading": "Por qué un hervidor compacto merece sitio en tu bolso",
-              "paragraphs": [
-                "Las mejores mejoras del hogar quitan fricción a rutinas que ya repites. Un hervidor pequeño cubre té, café, comidas instantáneas y agua caliente sin dominar una estantería o maleta.",
-                "Con 450ML, el tamaño es honesto para una o dos tazas: ideal en escritorio, mesita, residencia u hotel cuando no hay cocina completa."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-1.webp"
-            },
-            {
-              "heading": "Pensado para el uso diario en Buenos Productos",
-              "paragraphs": [
-                "Elige el formato de enchufe según tu región para el mismo diseño compacto en casa y en viaje.",
-                "Consulta la ficha del producto para medidas, opciones de enchufe y galería, y combínalo con otras selecciones de hogar y lifestyle del catálogo Buenos Productos."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-2.webp"
-            }
-          ],
-          "closing": "Descubre el hervidor de viaje portátil 450ML en el catálogo de hogar Buenos Productos y monta un setup acorde a cómo vives."
-        },
-        "product-from-supplier-link": {
-          "title": "Selecciones premium de hogar que elevan tus espacios",
-          "excerpt": "Descubre un producto de hogar premium pensado para la vida moderna: líneas limpias, materiales de calidad y estilo que encaja en espacios reales.",
-          "subtitle": "Estilo hogareño contemporáneo con acabado premium.",
-          "intro": "Buenos Productos reúne productos de hogar elegidos por calidad y uso diario. Esta selección premium apuesta por diseño cuidado y materiales que encajan en interiores modernos, sin convertirse en ruido visual.",
-          "heroImage": "/assets/images/good-ideas-blog/product-from-supplier-link/hero.webp",
-          "sections": [
-            {
-              "heading": "Diseño que complementa cómo vives",
-              "paragraphs": [
-                "La estética moderna y limpia mejora el espacio y encaja con un estilo de vida contemporáneo. La simplicidad elegante y los acabados cuidados funcionan en ambientes minimalistas y en estancias más cargadas.",
-                "Es una pieza que destaca por lo correcto: presencia calmada, materiales honestos y una silueta que no compite con el resto de la habitación."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-1.webp"
-            },
-            {
-              "heading": "Versátil para un refresh o un cambio mayor",
-              "paragraphs": [
-                "Tanto si actualizas un rincón como si replanteas una estancia completa, esta pieza se adapta a distintos gustos y ambientes.",
-                "Varias direcciones de estilo permiten ubicarla en escritorio, salón o dormitorio sin que resulte fuera de lugar."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-2.webp"
-            }
-          ],
-          "closing": "Explora el catálogo de hogar Buenos Productos: selecciones premium que equilibran calidad, accesibilidad y utilidad diaria."
-        }
-      }
+      "viewProductCta": "Ver producto"
     },
     "cart": {
       "title": "Tu carrito",
+      "back": "Volver",
+      "oneItem": "1 producto",
+      "itemCount": "{count} productos",
       "empty": "Tu carrito Buenos Productos está vacío.",
       "emptyCta": "Explorar productos",
-      "comingSoonCheckout": "El checkout estará disponible cuando lancemos el catálogo.",
       "subtotal": "Subtotal",
-      "checkout": "Ir al checkout"
+      "summaryTitle": "Resumen del carrito",
+      "shippingStandard": "Envío estándar",
+      "shippingFree": "Gratis",
+      "estimatedTotal": "Total estimado",
+      "checkout": "Ir al checkout",
+      "paymentMethodsTitle": "Medios de pago aceptados",
+      "comingSoonCheckout": "El checkout estará disponible cuando lancemos el catálogo."
     },
     "checkout": {
       "title": "Checkout",
@@ -291,6 +233,88 @@
       "manualDownload": "Descargar PDF",
       "manualOpen": "Abrir en nueva pestaña"
     },
+    "pdp": {
+      "accordions": {
+        "productDetails": "Detalles del producto",
+        "shippingReturns": "Envíos y devoluciones",
+        "helpFaqs": "Ayuda y preguntas frecuentes"
+      },
+      "details": {
+        "descriptionHeading": "Descripción",
+        "featuresHeading": "Características y beneficios",
+        "materialsHeading": "Materiales y especificaciones",
+        "idealForHeading": "Ideal para",
+        "technicalHeading": "Información técnica"
+      },
+      "shipping": {
+        "sections": [
+          {
+            "title": "Envíos rápidos",
+            "body": "Procesamos cada pedido con prontitud. En este producto el envío estándar es gratuito. Entrega estimada entre {start} y {end}."
+          },
+          {
+            "title": "Seguimiento del pedido",
+            "body": "Recibirás un correo con el número de seguimiento en cuanto tu pedido salga del depósito. Podrás consultar el estado en tiempo real con el transportista."
+          },
+          {
+            "title": "Plazos estimados",
+            "body": "Los plazos varían según tu ubicación y el operador logístico. Las fechas mostradas en la ficha son orientativas y se confirman al despachar el paquete."
+          },
+          {
+            "title": "Arrepentimiento y reclamos",
+            "body": "Arrepentimiento sin causa: 10 días corridos desde la entrega (Ley 24.240). Reclamos por defecto, daño o error: hasta 15 días con evidencia. Consultá nuestra Política de Devoluciones."
+          },
+          {
+            "title": "Garantía",
+            "body": "Todos los productos cuentan con garantía del fabricante. Si detectás un defecto de fábrica, escribinos y te ayudamos con el reemplazo o la reparación según corresponda."
+          }
+        ]
+      },
+      "faqs": [
+        {
+          "question": "¿Cuánto tarda el envío?",
+          "answer": "El envío estándar gratuito suele demorar entre {start} y {end} según tu ubicación. Te avisamos por correo cuando el paquete esté en camino."
+        },
+        {
+          "question": "¿Tiene garantía?",
+          "answer": "Sí. Todos nuestros productos incluyen garantía del fabricante. Contactanos si necesitás asistencia postventa."
+        },
+        {
+          "question": "¿Cómo puedo devolver el producto?",
+          "answer": "Arrepentimiento: 10 días desde la entrega vía Botón de Arrepentimiento. Reclamo por defecto o error: hasta 15 días escribiendo a go.natural.555@gmail.com con fotos y número de pedido."
+        },
+        {
+          "question": "¿Cómo realizo el seguimiento?",
+          "answer": "Cuando despachemos tu pedido recibirás un email con el enlace de seguimiento del transportista."
+        },
+        {
+          "question": "¿Puedo pagar en cuotas?",
+          "answer": "En el checkout podés pagar con PayPal, que en muchos países ofrece opciones de financiación según tu cuenta y región."
+        }
+      ],
+      "phase3": {
+        "videosTitle": "Videos del producto",
+        "videosSubtitle": "Mirá el producto en acción antes de comprar.",
+        "playVideo": "Reproducir video",
+        "reviewsTitle": "Reseñas de clientes",
+        "reviewsSubtitle": "Opiniones reales de quienes ya lo compraron.",
+        "reviewsCountLabel": "reseñas",
+        "verifiedPurchase": "Compra verificada",
+        "reviewsEmptyTitle": "Aún no hay reseñas",
+        "reviewsEmptyBody": "Sé el primero en compartir tu experiencia con este producto.",
+        "crossSellTitle": "También te puede interesar",
+        "crossSellSubtitle": "Productos relacionados seleccionados para vos."
+      },
+      "phase4": {
+        "navProduct": "Producto",
+        "navDetails": "Detalles",
+        "navVideos": "Videos",
+        "navReviews": "Reseñas",
+        "navCrossSell": "Relacionados",
+        "buyNow": "Comprar ahora",
+        "stickyCartLabel": "Compra rápida"
+      }
+    },
     "footer": {
       "tagline": "Productos inteligentes para hogar, tecnología y vida diaria.",
       "shopHeading": "Tienda",
@@ -301,6 +325,10 @@
       "privacy": "Privacidad",
       "cookies": "Cookies",
       "terms": "Términos",
+      "returns": "Devoluciones",
+      "shipping": "Envíos",
+      "regret": "Arrepentimiento",
+      "disclaimer": "Descargo",
       "rights": "Todos los derechos reservados."
     }
   },
@@ -322,6 +350,13 @@
     "goToCart": "Ir al carrito",
     "continueShopping": "Seguir comprando",
     "priceLabel": "Precio"
+  },
+  "addedToCartDrawer": {
+    "title": "Agregado al carrito",
+    "successHint": "Producto agregado correctamente",
+    "goToCart": "Ir al carrito ({count})",
+    "continueShopping": "Seguir comprando",
+    "closeAria": "Cerrar panel del carrito"
   },
   "currency": {
     "checkoutDisclaimer": "Precios en {currency} son referenciales. El pago se procesa en USD.",
@@ -412,10 +447,26 @@
     "categoriesTitle": "Navegá por intención",
     "categoriesSubtitle": "Pesca, montaña y nieve, outdoor y deportes acuáticos — grandes áreas táctiles, mismas decisiones tranquilas.",
     "categoryCards": [
-      { "label": "Pesca", "path": "/products?category=fishing", "imageKey": "fishing" },
-      { "label": "Montaña y nieve", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
-      { "label": "Outdoor y aventura", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Deportes acuáticos", "path": "/products?category=water-sports", "imageKey": "water-sports" }
+      {
+        "label": "Pesca",
+        "path": "/products?category=fishing",
+        "imageKey": "fishing"
+      },
+      {
+        "label": "Montaña y nieve",
+        "path": "/products?category=mountain-snow",
+        "imageKey": "mountain-snow"
+      },
+      {
+        "label": "Outdoor y aventura",
+        "path": "/products?category=outdoor",
+        "imageKey": "outdoor-adventure"
+      },
+      {
+        "label": "Deportes acuáticos",
+        "path": "/products?category=water-sports",
+        "imageKey": "water-sports"
+      }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Historias desde el terreno — el mismo silencio que en la tienda.",
@@ -652,11 +703,11 @@
       "secureAndWarranty": "Pagos cifrados y compra protegida con PayPal.",
       "shippingHeading": "Envíos estimados",
       "shippingEurope": "Europa: 10–21 días hábiles",
-      "shippingLatam": "LATAM: 12–25 días hábiles (según destino)",
+      "shippingLatam": "LATAM: 15 a 28 días hábiles",
       "shippingEuropeTraining001": "Europa: 3–8 días hábiles",
-      "returns": "Devoluciones sencillas durante 15 días después de la entrega.",
+      "returns": "Arrepentimiento 10 días · Reclamos hasta 15 días",
       "mobileStickyLine1": "Envíos internacionales",
-      "mobileStickyLine2": "Devolución a 15 días",
+      "mobileStickyLine2": "Arrepentimiento 10 días",
       "mobileStickyLine3": "Compra segura",
       "selectSize": "Seleccionar un talle",
       "sizeGuide": "Guía de talles",
@@ -686,244 +737,394 @@
     "reviewsEmptyText": "Este producto aún no tiene reseñas publicadas"
   },
   "legal": {
+    "common": {
+      "eyebrow": "Información legal",
+      "updatedAt": "Última actualización: junio de 2026"
+    },
+    "nav": {
+      "ariaLabel": "Páginas legales",
+      "terms": "Términos",
+      "returns": "Devoluciones",
+      "shipping": "Envíos",
+      "regret": "Arrepentimiento",
+      "privacy": "Privacidad",
+      "cookies": "Cookies",
+      "disclaimer": "Descargo"
+    },
+    "regretForm": {
+      "sectionTitle": "Formulario de arrepentimiento",
+      "intro": "Completá el formulario para revocar tu compra dentro de los 10 días corridos desde la entrega. No necesitás registrarte en el sitio.",
+      "fullName": "Nombre y apellido",
+      "email": "Correo electrónico",
+      "orderNumber": "Número de pedido",
+      "product": "Producto",
+      "notes": "Comentarios (opcional)",
+      "submit": "Enviar solicitud de arrepentimiento",
+      "submitting": "Enviando…",
+      "finePrint": "Registramos tu solicitud de forma segura. Recibirás un correo con el código de trámite y te responderemos dentro de las 24 horas.",
+      "successTitle": "Solicitud registrada",
+      "successBody": "Tu arrepentimiento fue registrado correctamente. También enviamos un correo de confirmación. Guardá este código:",
+      "successFinePrint": "Te contactaremos dentro de las 24 horas con los pasos para completar la revocación.",
+      "errors": {
+        "invalid": "Revisá los datos del formulario e intentá de nuevo.",
+        "server": "No pudimos registrar la solicitud. Intentá más tarde o escribinos a go.natural.555@gmail.com.",
+        "rate_limit": "Recibimos muchas solicitudes desde este correo. Esperá un momento e intentá de nuevo."
+      }
+    },
     "privacy": {
-      "metaTitle": "Política de Privacidad | Go Natural",
-      "metaDescription": "Cómo tratamos los datos personales y protegemos tu privacidad en el sitio.",
+      "metaTitle": "Política de Privacidad | Buenos Productos",
+      "metaDescription": "Cómo tratamos tus datos personales en Buenos Productos.",
       "title": "Política de Privacidad",
-      "intro": "Cuidamos la privacidad con la misma atención con la que diseñamos cada experiencia. Esta política explica qué recopilamos, por qué y cómo lo protegemos.",
-      "updatedAt": "Última actualización: enero de 2026",
+      "intro": "Buenos Productos, operado por Francisco Inza, respeta tu privacidad. Esta política explica qué datos recopilamos, para qué los usamos y cuáles son tus derechos.",
+      "updatedAt": "Última actualización: junio de 2026",
       "sections": [
         {
-          "title": "Qué recopilamos",
+          "title": "Responsable del tratamiento",
           "paragraphs": [
-            "Información que nos brindás, como nombre, email, datos de envío y pedidos.",
-            "Mensajes que nos enviás, incluidas consultas o soporte.",
-            "Datos técnicos básicos como dispositivo, navegador y páginas visitadas para mantener el sitio estable."
+            "El responsable es Francisco Inza (CUIT 20-40635753-9), operador de la marca Buenos Productos.",
+            "Contacto: go.natural.555@gmail.com"
           ]
         },
         {
-          "title": "Cómo usamos la información",
-          "paragraphs": [
-            "Para procesar pedidos, entregas y soporte.",
-            "Para mejorar la experiencia y mantener la seguridad.",
-            "Para cumplir obligaciones legales y contables cuando corresponda."
+          "title": "Qué datos recopilamos",
+          "bullets": [
+            "Datos de cuenta y pedido: nombre, correo, dirección de envío, teléfono si lo proporcionás.",
+            "Datos de pago: procesados por PayPal; no almacenamos números completos de tarjeta.",
+            "Comunicaciones: mensajes de soporte, solicitudes de arrepentimiento o reclamos.",
+            "Datos técnicos: dispositivo, navegador, páginas visitadas y cookies (ver Política de Cookies)."
           ]
         },
         {
-          "title": "Bases legales",
-          "paragraphs": [
-            "Procesamos datos por consentimiento, necesidad contractual, intereses legítimos u obligaciones legales.",
-            "Podés retirar tu consentimiento cuando se aplique."
+          "title": "Para qué usamos tus datos",
+          "bullets": [
+            "Procesar pedidos, pagos, envíos y postventa.",
+            "Gestionar devoluciones, arrepentimiento y reclamos.",
+            "Enviar confirmaciones, tracking y comunicaciones operativas.",
+            "Newsletter y marketing solo con tu consentimiento explícito.",
+            "Seguridad, prevención de fraude y cumplimiento legal."
           ]
         },
         {
-          "title": "Compartir con proveedores",
+          "title": "Encargados y transferencias",
           "paragraphs": [
-            "Solo compartimos lo necesario con pagos, logística y plataformas que sostienen el servicio.",
-            "No vendemos datos personales."
-          ]
-        },
-        {
-          "title": "Transferencias internacionales",
-          "paragraphs": [
-            "Si los datos se procesan fuera de tu país, usamos salvaguardas para mantener un nivel de protección equivalente."
+            "Compartimos datos solo con proveedores necesarios para operar el servicio."
+          ],
+          "bullets": [
+            "PayPal — procesamiento de pagos.",
+            "Supabase — autenticación, pedidos y datos de cuenta.",
+            "Brevo — email transaccional y newsletter (con consentimiento).",
+            "Proveedores de hosting, analítica y logística internacional."
           ]
         },
         {
           "title": "Conservación y seguridad",
           "paragraphs": [
-            "Guardamos la información el tiempo necesario para los fines descriptos o lo que exija la ley.",
-            "Aplicamos medidas razonables para evitar pérdidas, accesos no autorizados o usos indebidos."
+            "Conservamos los datos el tiempo necesario para la relación comercial, reclamos y obligaciones fiscales/contables.",
+            "Aplicamos medidas razonables de seguridad; ningún sistema es 100 % infalible."
           ]
         },
         {
           "title": "Tus derechos",
           "paragraphs": [
-            "Podés solicitar acceso, corrección, eliminación, portabilidad o limitación de tus datos.",
-            "También podés oponerte a ciertos usos o retirar tu consentimiento."
-          ]
-        },
-        {
-          "title": "Contacto",
-          "paragraphs": [
-            "Si tenés preguntas sobre esta política o tus datos, escribinos a [tu-email-de-contacto]."
+            "Podés solicitar acceso, rectificación, actualización o supresión de tus datos escribiendo a go.natural.555@gmail.com.",
+            "También podés oponerte a usos basados en consentimiento y retirarlo cuando corresponda."
           ]
         }
       ],
-      "closing": "Revisamos esta política de forma periódica para mantenerla clara y actualizada."
+      "closing": "Podemos actualizar esta política; la versión vigente estará siempre publicada en esta página."
     },
     "cookies": {
-      "metaTitle": "Política de Cookies | Go Natural",
-      "metaDescription": "Cómo usamos cookies para que el sitio funcione bien y sea más claro de usar.",
+      "metaTitle": "Política de Cookies | Buenos Productos",
+      "metaDescription": "Uso de cookies en Buenos Productos.",
       "title": "Política de Cookies",
-      "intro": "Las cookies ayudan a que el sitio funcione de forma fluida y recuerde preferencias simples. Las usamos con criterio y sin exceso.",
-      "updatedAt": "Última actualización: enero de 2026",
+      "intro": "Usamos cookies y tecnologías similares para que el sitio funcione, recuerde preferencias y mejore la experiencia.",
+      "updatedAt": "Última actualización: junio de 2026",
       "sections": [
         {
           "title": "Qué son las cookies",
           "paragraphs": [
-            "Son pequeños archivos de texto que se guardan en tu dispositivo para que los sitios funcionen mejor y recuerden preferencias."
+            "Son archivos pequeños que se guardan en tu dispositivo cuando visitás el sitio."
           ]
         },
         {
-          "title": "Cómo las usamos",
-          "paragraphs": [
-            "Para mantener el sitio seguro y estable.",
-            "Para recordar ajustes básicos, como el idioma.",
-            "Para entender qué páginas son más útiles y poder mejorarlas."
+          "title": "Tipos que utilizamos",
+          "bullets": [
+            "Esenciales: sesión, carrito, seguridad y checkout.",
+            "Preferencias: idioma y configuraciones básicas.",
+            "Analítica: rendimiento agregado del sitio (si está activa)."
           ]
         },
         {
-          "title": "Tipos de cookies",
+          "title": "Cómo gestionarlas",
           "paragraphs": [
-            "Cookies esenciales para funcionamiento y seguridad.",
-            "Cookies de preferencia para recordar configuraciones como el idioma.",
-            "Cookies de analítica para comprender el rendimiento de forma agregada."
-          ]
-        },
-        {
-          "title": "Gestión de cookies",
-          "paragraphs": [
-            "Podés gestionar cookies desde la configuración de tu navegador, incluyendo bloquearlas o eliminarlas.",
-            "Desactivar cookies puede afectar algunas funciones del sitio."
-          ]
-        },
-        {
-          "title": "Actualizaciones",
-          "paragraphs": [
-            "Podemos actualizar esta política si cambian nuestros servicios."
-          ]
-        },
-        {
-          "title": "Contacto",
-          "paragraphs": [
-            "Para consultas sobre cookies, escribinos a [tu-email-de-contacto]."
+            "Podés bloquear o eliminar cookies desde tu navegador. Algunas funciones pueden dejar de estar disponibles.",
+            "Consultas: go.natural.555@gmail.com"
           ]
         }
       ],
-      "closing": "Buscamos transparencia y simplicidad en el uso de cookies."
+      "closing": "Actualizaremos esta política si cambian las herramientas que utilizamos."
     },
     "terms": {
-      "metaTitle": "Términos y Condiciones | Go Natural",
-      "metaDescription": "Condiciones de uso del sitio y de compra en Go Natural.",
+      "metaTitle": "Términos y Condiciones | Buenos Productos",
+      "metaDescription": "Condiciones de compra en Buenos Productos — intermediación comercial con envío internacional a Argentina.",
       "title": "Términos y Condiciones",
-      "intro": "Estos términos explican cómo funciona el sitio y qué podés esperar al comprar. Están escritos para ser claros y razonables.",
-      "updatedAt": "Última actualización: enero de 2026",
+      "intro": "Estos términos regulan el uso de Buenos Productos y las compras realizadas en el sitio. Al comprar, aceptás estas condiciones y la legislación aplicable en Argentina.",
+      "updatedAt": "Última actualización: junio de 2026",
       "sections": [
         {
-          "title": "Uso del sitio",
+          "title": "Identificación del vendedor",
           "paragraphs": [
-            "Al usar este sitio, aceptás hacerlo de forma respetuosa y legal.",
-            "Podemos actualizar el sitio o pausar funciones para cuidar calidad y seguridad."
+            "Buenos Productos es operado por Francisco Inza, CUIT 20-40635753-9, con domicilio en Uruguay 61, Río Cuarto, Córdoba, Argentina.",
+            "Contacto: go.natural.555@gmail.com"
           ]
         },
         {
-          "title": "Pedidos y disponibilidad",
+          "title": "Naturaleza del servicio",
           "paragraphs": [
-            "Un pedido es una solicitud de compra; se confirma cuando es procesado.",
-            "La disponibilidad puede cambiar y podemos limitar cantidades."
+            "Actuamos como intermediario comercial: seleccionamos productos, gestionamos tu pedido y coordinamos el envío a través de proveedores y operadores logísticos internacionales.",
+            "El contrato de compra se celebra entre vos y Francisco Inza. La logística puede realizarse mediante terceros sin alterar tus derechos frente al operador del sitio."
+          ]
+        },
+        {
+          "title": "Productos e información",
+          "bullets": [
+            "Los productos pueden ser importados y surtidos por proveedores internacionales.",
+            "Imágenes, medidas y colores son orientativos; puede haber variaciones menores de embalaje o tono.",
+            "Las certificaciones mencionadas en fichas provienen del fabricante o proveedor.",
+            "Las marcas citadas son de sus titulares; se usan solo con fines descriptivos."
           ]
         },
         {
           "title": "Precios y pago",
-          "paragraphs": [
-            "Los precios se muestran con claridad y pueden cambiar antes de confirmar el pedido.",
-            "Los pagos se procesan a través de proveedores confiables y seguros."
+          "bullets": [
+            "Los precios se muestran en USD salvo indicación contraria.",
+            "El cobro se procesa mediante PayPal u otros medios habilitados en checkout.",
+            "Un pedido se confirma al completarse el pago y recibir la confirmación por correo."
           ]
         },
         {
-          "title": "Envíos y devoluciones",
+          "title": "Envíos",
           "paragraphs": [
-            "Los tiempos de entrega son estimados y pueden variar por factores externos.",
-            "Si un producto llega dañado o incorrecto, contactanos para resolverlo."
+            "Los plazos de entrega son estimados (habitualmente entre 13 y 37 días desde la compra, según ubicación y logística).",
+            "Pueden existir demoras por aduana, feriados o fuerza mayor. Consultá la Política de Envíos."
           ]
         },
         {
-          "title": "Uso del producto",
+          "title": "Devoluciones y arrepentimiento",
           "paragraphs": [
-            "Usá los productos según su propósito y cuidados indicados.",
-            "Las actividades outdoor tienen riesgos inherentes; elegí equipo acorde a tu experiencia y condiciones."
+            "Aplican dos vías distintas según el motivo. Consultá la Política de Devoluciones y el Botón de Arrepentimiento."
+          ],
+          "bullets": [
+            "Arrepentimiento (sin causa): 10 días corridos desde la entrega — derecho irrenunciable en Argentina.",
+            "Reclamo por defecto, daño, error o no entrega: hasta 15 días desde la entrega, con motivo fundado y evidencia.",
+            "Después de esos plazos solo aplican garantías legales de conformidad cuando corresponda."
           ]
         },
         {
-          "title": "Propiedad intelectual",
+          "title": "Uso del sitio",
           "paragraphs": [
-            "El contenido del sitio pertenece a Go Natural o a sus socios y no puede reutilizarse sin permiso."
+            "Debés usar el sitio de forma lícita. Podemos suspender funciones por mantenimiento, seguridad o fraude."
           ]
         },
         {
           "title": "Limitación de responsabilidad",
           "paragraphs": [
-            "No somos responsables por daños indirectos o consecuentes derivados del uso del sitio o productos.",
-            "Nada de estos términos limita derechos que la ley no permite excluir."
+            "No respondemos por daños indirectos o lucro cesante en la medida permitida por ley.",
+            "Nada de estos términos limita derechos irrenunciables del consumidor en Argentina."
           ]
         },
         {
-          "title": "Cambios y contacto",
+          "title": "Ley aplicable",
           "paragraphs": [
-            "Podemos actualizar estos términos; la versión vigente estará publicada aquí.",
-            "Consultas a [tu-email-de-contacto]."
+            "Estos términos se rigen por las leyes de la República Argentina. Ante controversias, las partes procurarán una solución amistosa antes de acciones formales."
           ]
         }
       ],
-      "closing": "Nuestro objetivo es una experiencia clara y tranquila, desde el primer clic hasta la entrega."
+      "closing": "Podemos modificar estos términos; la versión publicada al momento de tu compra prevalece salvo cambios exigidos por ley."
     },
-    "disclaimer": {
-      "metaTitle": "Descargo de Responsabilidad | Go Natural",
-      "metaDescription": "Información relevante sobre uso del sitio, actividades outdoor y límites de responsabilidad.",
-      "title": "Descargo de Responsabilidad",
-      "intro": "Compartimos contenido y productos para una exploración consciente. Este descargo aclara los límites de nuestra responsabilidad.",
-      "updatedAt": "Última actualización: enero de 2026",
+    "returns": {
+      "metaTitle": "Política de Devoluciones | Buenos Productos",
+      "metaDescription": "Devoluciones, arrepentimiento y reembolsos en Buenos Productos.",
+      "title": "Política de Devoluciones y Reembolsos",
+      "intro": "Separamos el arrepentimiento legal del reclamo por problemas con el producto. Así cumplimos la ley argentina y gestionamos cada caso de forma clara.",
+      "updatedAt": "Última actualización: junio de 2026",
       "sections": [
         {
-          "title": "Información general",
+          "title": "Vía 1 — Arrepentimiento (Ley 24.240)",
           "paragraphs": [
-            "El contenido del sitio es informativo y no reemplaza asesoramiento profesional.",
-            "Buscamos precisión, pero no garantizamos que toda la información esté completa o actualizada en todo momento."
+            "Si te arrepentís de la compra sin que haya un defecto, tenés 10 días corridos desde que recibís el producto para revocar la aceptación, sin necesidad de justificar.",
+            "Usá el Botón de Arrepentimiento o escribinos a go.natural.555@gmail.com indicando número de pedido."
+          ],
+          "bullets": [
+            "El producto debe estar sin uso, completo y en embalaje original.",
+            "Te indicaremos cómo poner el bien a disposición para devolución en Argentina.",
+            "Los gastos de devolución por arrepentimiento corren por cuenta del vendedor conforme la ley argentina.",
+            "Reembolsamos el importe abonado dentro de los 10 días posteriores a recibir y verificar el producto, por el mismo medio de pago (PayPal)."
           ]
         },
         {
-          "title": "Riesgos en actividades outdoor",
+          "title": "Vía 2 — Reclamo por problema (defecto, daño, error, no conforme)",
           "paragraphs": [
-            "Las actividades al aire libre implican riesgos propios del clima, el terreno y el esfuerzo físico.",
-            "Cada persona es responsable de evaluar condiciones y elegir actividades acordes a su experiencia."
+            "Si el producto llegó defectuoso, dañado, incorrecto o no coincide con lo ofrecido, contactanos dentro de los 15 días desde la entrega."
+          ],
+          "bullets": [
+            "Enviá fotos del producto, embalaje y etiqueta de envío.",
+            "Evaluaremos reemplazo, reenvío o reembolso total según el caso.",
+            "En estos supuestos los costos de devolución corren por nuestra cuenta cuando corresponda.",
+            "No incluye cambio de opinión después del plazo de arrepentimiento."
           ]
         },
         {
-          "title": "Uso de productos",
+          "title": "No entrega",
           "paragraphs": [
-            "Los productos deben usarse según su propósito y mantenimiento indicado.",
-            "El uso incorrecto o la modificación pueden causar daño o lesiones."
+            "Si el paquete no llegó dentro del plazo estimado publicado, escribinos con tu número de pedido. Gestionaremos la investigación logística y, si confirma la no entrega, el reembolso integral."
           ]
         },
         {
-          "title": "Enlaces externos",
-          "paragraphs": [
-            "Podemos enlazar a sitios de terceros por conveniencia. No controlamos su contenido ni sus prácticas."
+          "title": "Exclusiones",
+          "bullets": [
+            "Productos personalizados o hechos a medida.",
+            "Artículos de higiene sellados que fueron abiertos.",
+            "Productos dañados por mal uso o modificados por el cliente.",
+            "Solicitudes fuera de los plazos indicados, salvo garantía legal de conformidad."
           ]
         },
         {
-          "title": "Limitación de responsabilidad",
-          "paragraphs": [
-            "En la medida permitida por ley, Go Natural no es responsable por pérdidas derivadas del uso del sitio, su contenido o sus productos.",
-            "Nada de este texto limita derechos que la ley no permite excluir."
-          ]
-        },
-        {
-          "title": "Normas locales",
-          "paragraphs": [
-            "Algunas actividades requieren permisos o medidas de seguridad según tu ubicación.",
-            "Es tu responsabilidad cumplir con normativas locales."
-          ]
-        },
-        {
-          "title": "Contacto",
-          "paragraphs": [
-            "Para consultas sobre este descargo, escribinos a [tu-email-de-contacto]."
+          "title": "Cómo iniciar un trámite",
+          "bullets": [
+            "Arrepentimiento: Botón de Arrepentimiento en el sitio.",
+            "Reclamos: go.natural.555@gmail.com con asunto «Reclamo pedido [número]».",
+            "Respondemos en un plazo razonable (habitualmente 48 h hábiles)."
           ]
         }
       ],
-      "closing": "Respetá el entorno, movete con cuidado y elegí con responsabilidad."
+      "closing": "Ante cualquier duda, contactanos antes de iniciar un contracargo en PayPal; podemos resolverlo más rápido."
+    },
+    "shipping": {
+      "metaTitle": "Política de Envíos | Buenos Productos",
+      "metaDescription": "Envíos internacionales a Argentina — plazos, seguimiento y aduana.",
+      "title": "Política de Envíos",
+      "intro": "Los productos se despachan desde proveedores internacionales hacia Argentina. Los plazos son estimados y pueden variar por logística y aduana.",
+      "updatedAt": "Última actualización: junio de 2026",
+      "sections": [
+        {
+          "title": "Cobertura",
+          "paragraphs": [
+            "Enviamos a direcciones dentro de la República Argentina. Verificá que tu código postal y datos sean correctos al checkout."
+          ]
+        },
+        {
+          "title": "Plazos estimados",
+          "paragraphs": [
+            "La ventana habitual de entrega es de 13 a 37 días desde la confirmación del pedido, según tu ubicación y el operador logístico.",
+            "Las fechas en la ficha del producto se calculan dinámicamente y son orientativas, no garantía de día exacto."
+          ]
+        },
+        {
+          "title": "Costo de envío",
+          "paragraphs": [
+            "Muchos productos incluyen envío estándar gratuito, indicado en la ficha. Si no aplica, el costo se muestra antes de pagar."
+          ]
+        },
+        {
+          "title": "Procesamiento y seguimiento",
+          "bullets": [
+            "Procesamos el pedido en cuanto se confirma el pago.",
+            "Recibirás un correo con número de seguimiento cuando el paquete sea despachado.",
+            "El tracking puede demorar en actualizarse en tramos internacionales."
+          ]
+        },
+        {
+          "title": "Aduana e importación",
+          "paragraphs": [
+            "Los envíos internacionales pueden estar sujetos a inspección aduanera. Demoras, retenciones o solicitudes de documentación pueden extender el plazo.",
+            "Cooperá con Correo Argentino o el transportista si te contactan. Costos o trámites aduaneros extraordinarios, cuando correspondan por normativa, pueden ser responsabilidad del destinatario."
+          ]
+        },
+        {
+          "title": "Dirección incorrecta o rechazo",
+          "paragraphs": [
+            "Si el paquete retorna por datos incorrectos o rechazo en destino, podemos coordinar un reenvío con costo adicional o reembolso parcial según el caso."
+          ]
+        }
+      ],
+      "closing": "Para consultas sobre tu envío: go.natural.555@gmail.com con tu número de pedido."
+    },
+    "regret": {
+      "metaTitle": "Botón de Arrepentimiento | Buenos Productos",
+      "metaDescription": "Ejercé tu derecho de arrepentimiento en compras a distancia — Ley 24.240 Argentina.",
+      "title": "Botón de Arrepentimiento",
+      "intro": "Conforme la Ley 24.240 de Defensa del Consumidor y la Resolución 424/2020, podés revocar tu compra dentro de los 10 días corridos desde que recibís el producto, sin necesidad de justificación.",
+      "updatedAt": "Última actualización: junio de 2026",
+      "sections": [
+        {
+          "title": "Condiciones",
+          "bullets": [
+            "Plazo: 10 días corridos desde la entrega del bien.",
+            "El producto debe estar sin uso, completo y en su embalaje original.",
+            "No se requiere registrarte en el sitio para usar este formulario.",
+            "Te enviaremos un código de identificación del trámite dentro de las 24 horas."
+          ]
+        },
+        {
+          "title": "Qué ocurre después",
+          "paragraphs": [
+            "Te indicaremos cómo devolver el producto a una dirección en Argentina.",
+            "Una vez verificado el estado del artículo, reembolsaremos el importe abonado por PayPal dentro de los plazos legales."
+          ]
+        },
+        {
+          "title": "Contacto alternativo",
+          "paragraphs": [
+            "También podés escribir a go.natural.555@gmail.com con el asunto «Arrepentimiento» y tu número de pedido."
+          ]
+        }
+      ],
+      "closing": "Este derecho es irrenunciable y no aplica a productos exceptuados por ley (personalizados, higiene abierta, etc.)."
+    },
+    "disclaimer": {
+      "metaTitle": "Descargo de Responsabilidad | Buenos Productos",
+      "metaDescription": "Limitaciones de responsabilidad e información del sitio Buenos Productos.",
+      "title": "Descargo de Responsabilidad",
+      "intro": "Este descargo complementa nuestros Términos y aclara los límites de la información publicada en Buenos Productos.",
+      "updatedAt": "Última actualización: junio de 2026",
+      "sections": [
+        {
+          "title": "Información del sitio",
+          "paragraphs": [
+            "El contenido es informativo y comercial. No sustituye asesoramiento profesional, técnico o de seguridad específico para tu caso."
+          ]
+        },
+        {
+          "title": "Productos importados",
+          "bullets": [
+            "Origen internacional; plazos y disponibilidad pueden cambiar.",
+            "Imágenes y especificaciones son orientativas.",
+            "Certificaciones (CE, FCC, etc.) dependen del fabricante y del lote.",
+            "No somos representantes oficiales de marcas de terceros salvo indicación expresa."
+          ]
+        },
+        {
+          "title": "Uso seguro",
+          "paragraphs": [
+            "Usá cada producto según su manual y precauciones eléctricas, térmicas o de batería. No nos responsabilizamos por uso indebido."
+          ]
+        },
+        {
+          "title": "Reseñas y contenido de terceros",
+          "paragraphs": [
+            "Algunas reseñas pueden provenir de marketplaces internacionales con fines informativos. Enlaces externos no implican respaldo."
+          ]
+        },
+        {
+          "title": "Limitación",
+          "paragraphs": [
+            "En la medida permitida por ley, Buenos Productos no es responsable por daños indirectos derivados del uso del sitio o productos.",
+            "Tus derechos como consumidor en Argentina permanecen intactos."
+          ]
+        }
+      ],
+      "closing": "Consultas: go.natural.555@gmail.com"
     }
   },
   "footer": {
@@ -1231,1009 +1432,6 @@
     "fieldGear": {
       "title": "Equipo usado en campo",
       "caption": "Elegido para un uso calmo y confiable en condiciones reales."
-    },
-    "posts": {
-      "edge-of-water": {
-        "title": "En el borde del agua",
-        "excerpt": "Sobre ritmo, respiración y la calma del agua abierta.",
-        "subtitle": "Una práctica lenta de respiración, equilibrio y horizonte claro.",
-        "intro": "El agua cambia la forma en la que nos movemos. Pide decisiones calmas, respiración constante y una atención más quieta al presente.",
-        "sections": [
-          {
-            "heading": "Un ritmo más lento",
-            "paragraphs": [
-              "La superficie nunca está quieta. Nos recuerda viajar livianos, llevar solo lo que importa y volver con menos de lo que trajimos.",
-              "El equipo acá debería ser simple: materiales silenciosos, detalles sutiles y una confianza que se siente sin pensarlo."
-            ],
-            "image": "/assets/images/products/gn-water-001/blue/featured.webp"
-          },
-          {
-            "heading": "Donde el silencio encuentra el movimiento",
-            "paragraphs": [
-              "Hay una claridad que solo el agua trae. Afila los sentidos y calma la mente.",
-              "En ese espacio, el movimiento se vuelve una forma de escucha: una conversación silenciosa con el horizonte."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery1.webp"
-          }
-        ],
-        "closing": "Algunos viajes se definen por la quietud. Otros por la forma en la que aprendés a moverte dentro de ella."
-      },
-      "winter-lines": {
-        "title": "Líneas en la luz de invierno",
-        "excerpt": "Capas suaves y siluetas claras para días fríos y tranquilos.",
-        "subtitle": "Capas suaves, siluetas firmes y la calma del aire frío.",
-        "intro": "El invierno reduce el paisaje a lo esencial. La luz es más nítida, el aire más silencioso y el movimiento se vuelve deliberado.",
-        "sections": [
-          {
-            "heading": "Claridad en el frío",
-            "paragraphs": [
-              "La temporada exige preparación, pero no exceso. Cada capa debería ser intencional, cada pieza elegida por función y calma.",
-              "Cuando el clima es honesto, necesitás equipo igual de honesto: protector sin ruido."
-            ],
-            "image": "/assets/images/products/gn-ski-snow-002/negro/featured.webp"
-          },
-          {
-            "heading": "La quietud de la altura",
-            "paragraphs": [
-              "La nieve absorbe el sonido. El mundo se aquieta y el viaje se vuelve más interno.",
-              "En esas condiciones, la simplicidad no es un estilo. Es una necesidad."
-            ],
-            "image": "/assets/images/products/gn-ski-snow-001/model-1/image.webp"
-          }
-        ],
-        "closing": "En invierno, la línea entre comodidad y claridad es fina. Elegí el camino que se sienta limpio y calmo."
-      },
-      "calm-motion": {
-        "title": "Movimiento calmo, kilómetros largos",
-        "excerpt": "Por qué el ritmo importa más que la velocidad en la ruta.",
-        "subtitle": "Por qué el paso constante dura más que el arranque rápido.",
-        "intro": "El ciclismo es ritmo. Una cadencia estable te lleva más lejos que la intensidad.",
-        "sections": [
-          {
-            "heading": "Cadencia antes que velocidad",
-            "paragraphs": [
-              "Hay algo claro en la constancia. La ruta premia a quienes saben sostener el ritmo incluso cuando cambia el terreno.",
-              "El equipo debería sostener ese ritmo: liviano, confiable y fácil de olvidar."
-            ],
-            "image": "/assets/images/products/gn-cycling-016/featured03.webp"
-          },
-          {
-            "heading": "El horizonte largo",
-            "paragraphs": [
-              "Cada kilómetro suma a la historia. Cuanto más silencioso el viaje, más se recuerda.",
-              "Los mejores trayectos son los que podés repetir, una y otra vez, sin desgaste."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured04.webp"
-          }
-        ],
-        "closing": "Movete con un ritmo calmo. Dejá que el horizonte venga hacia vos."
-      },
-      "quiet-morning-at-camp": {
-        "title": "Una mañana quieta en el campamento",
-        "excerpt": "La ventana silenciosa antes de que el día comience, cuando el campamento queda en pausa.",
-        "subtitle": "El momento antes de que el día comience",
-        "intro": "Hay un breve instante en el campamento en el que todo se detiene. Todavía no hay viento ni pasos. Solo el sonido suave de la tela moviéndose mientras la carpa respira con el aire de la mañana. En esa quietud, el día empieza sin pedir nada.",
-        "sections": [
-          {
-            "heading": "La pausa antes del movimiento",
-            "paragraphs": [
-              "Antes de que la luz cruce la loma, el campamento queda suspendido. El suelo está fresco y apenas húmedo, guardando la memoria de la noche. Se escucha el cierre de un cierre, el leve acomodarse de una colchoneta, el roce de una campera al ponerse. Son sonidos mínimos, pero viajan lejos en el aire temprano, como si el paisaje hubiera bajado el volumen para hacerles lugar.",
-              "En esa calma, el cuerpo se acomoda sin instrucciones. Se percibe la diferencia de temperatura entre la sombra y el primer sol. Se ve cómo la luz se posa en la tierra y se mueve despacio, casi imperceptible. No hay urgencia. El día todavía no empezó y, por unos minutos, vos tampoco."
-            ],
-            "image": "/assets/images/hero/storysection.webp"
-          },
-          {
-            "heading": "Menos ruido, más claridad",
-            "paragraphs": [
-              "Sin notificaciones ni horarios, la atención cambia sola. Se nota la textura de la lona, la fina capa de rocío sobre una piedra, el humo del primer fuego subiendo a un cielo aún pálido. Son detalles que no piden acción. Solo piden presencia, y eso alcanza.",
-              "La claridad que aparece no es la de una lista resuelta. Es una claridad suave, la que llega cuando dejás que la mañana ocurra por sí misma. La mente se aquieta porque no tiene nada que defender ni perseguir. No se trata de controlar el día, solo de encontrarlo."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery.webp"
-          },
-          {
-            "heading": "Por qué las mañanas al aire libre se sienten distintas",
-            "paragraphs": [
-              "En el campamento, las mañanas no corren. No hay presión por optimizarlas. El café se toma más lento. Los pensamientos llegan sin esfuerzo. El ritmo se vuelve natural porque lo marcan la luz y la temperatura, no el reloj. Seguir esas señales hace que uno se sienta menos fragmentado.",
-              "Por eso las primeras horas al aire libre tienen otro peso. No se trata de productividad. Se trata de alineación. Estás donde estás, haciendo solo lo que el momento pide. Las acciones simples se sienten completas. El día no necesita ser llenado todavía. Solo necesita empezar."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured01.webp"
-          },
-          {
-            "heading": "Lo que queda",
-            "paragraphs": [
-              "Más tarde quizás no recuerdes la lista de equipo. Tal vez olvides la marca del mate o el color de la carpa. Pero recordás la calma. Recordás ese silencio antes del movimiento, ese pequeño tramo de tiempo en el que todo estaba en equilibrio.",
-              "Esa calma es lo que te hace volver. No se trata de buscar una vista más grande o un sendero más largo. Se trata de volver a un ritmo que se siente honesto. La mañana se vuelve un pequeño ritual, una forma de recordar que el silencio no está vacío, está lleno de lo esencial."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured02.webp"
-          },
-          {
-            "heading": "Equipo usado",
-            "paragraphs": [
-              "Un sistema de descanso compacto que abriga sin sentirse pesado. Acompaña la noche y deja una transición lenta hacia la mañana, sin romper la quietud.",
-              "Un hornillo minimal para una sola taza de café. Hace su trabajo en silencio y convierte unos minutos en un ritual, no en una rutina."
-            ]
-          }
-        ],
-        "closing": "Los momentos que quedan rara vez son los ruidosos. Son las pausas quietas, los pequeños tramos de tiempo en los que nada se exige y todo está presente. Una mañana en el campamento no es una performance. Es un regreso a un ritmo más lento, a una forma de moverse que se parece menos a hacer y más a estar."
-      },
-      "salir-sin-complicarse": {
-        "title": "Salir a la naturaleza no tiene que ser complicado",
-        "excerpt": "Actividades simples, salidas reales y un ritmo que se adapta a la vida.",
-        "subtitle": "Salir sin complicarse",
-        "intro": "Hay una idea bastante instalada de que para salir a la naturaleza hay que saber mucho, tener buen estado físico o contar con equipo específico. Y la verdad es que no siempre es así. Muchas salidas empiezan con algo mucho más simple: ganas de estar afuera y un poco de tiempo.",
-        "sections": [
-          {
-            "heading": "No hace falta planear una expedición",
-            "paragraphs": [
-              "No hace falta planear una expedición ni irse lejos. A veces alcanza con un sendero corto, una noche de camping o una mañana cerca del agua.",
-              "No todas las salidas tienen que ser una aventura. No todo el mundo busca superarse cada vez que sale.",
-              "Hay días en los que solo querés caminar sin pensar demasiado, armar una carpa sin apuro o sentarte a pescar aunque no piquen. Eso también es salir a la naturaleza.",
-              "Caminar por un sendero marcado, snorkelear cerca de la costa o pasar una noche en un camping equipado no te hace menos outdoor. Te hace realista."
-            ],
-            "image": "/assets/images/hero/storysection.webp"
-          },
-          {
-            "heading": "Actividades simples, disfrute real",
-            "paragraphs": [
-              "Las actividades más simples suelen ser las que más se repiten, justamente porque no exigen demasiado.",
-              "Caminatas cortas en montaña o bosque.",
-              "Camping de fin de semana.",
-              "Pesca recreativa en ríos, lagos o costa.",
-              "Snorkel en playas tranquilas.",
-              "Paseos en kayak o paddle en aguas calmas.",
-              "No requieren entrenamiento especial ni grandes decisiones. Se adaptan a la vida normal, no al revés."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery.webp"
-          },
-          {
-            "heading": "Menos presión, más constancia",
-            "paragraphs": [
-              "Cuando salir no se siente pesado, salís más seguido. Y cuando salís más seguido, aprendés sin darte cuenta.",
-              "Aprendés a leer el clima, a elegir mejor qué llevar, a organizarte con menos cosas. Todo eso llega solo, sin forzarlo.",
-              "La naturaleza no pide que seas experto. Solo que estés presente."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured01.webp"
-          },
-          {
-            "heading": "Empezar simple también es empezar bien",
-            "paragraphs": [
-              "Salir sin complicarse no es una etapa menor ni algo que haya que superar. Para mucha gente, es la forma más honesta de disfrutar el aire libre.",
-              "Y está bien que así sea."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured02.webp"
-          },
-          {
-            "heading": "Equipo usado",
-            "paragraphs": [
-              "Una carpa simple de armado rápido, pensada para una noche tranquila.",
-              "Un equipo básico de snorkel para playas calmas y salidas cortas."
-            ]
-          }
-        ],
-        "closing": "Salir a la naturaleza no tiene que ser complicado para sentirse verdadero. A veces lo más simple es lo que permite volver, una y otra vez, sin presión y con ganas."
-      },
-      "trekking-facil-espana": {
-        "title": "España es uno de los países más fáciles para empezar a caminar",
-        "excerpt": "Senderos accesibles, distancias razonables y ritmo tranquilo para empezar.",
-        "subtitle": "Trekking fácil",
-        "intro": "España es uno de los países más fáciles para empezar a caminar al aire libre. Hay senderos bien marcados, distancias razonables y opciones para todos los ritmos. No hace falta irse a la alta montaña ni tener experiencia previa. Estos son algunos de los trails más accesibles para caminar tranquilo y disfrutar.",
-        "sections": [
-          {
-            "heading": "Trekking fácil",
-            "paragraphs": [
-              "Caminito del Rey (Málaga). Hoy está perfectamente acondicionado. Impone por las vistas, no por la dificultad.",
-              "Ruta de los Cahorros (Granada). Corta, entretenida y muy bien señalizada. Ideal para un día sin apuro.",
-              "Camino de Ronda (Costa Brava). Tramos costeros sencillos, con paradas naturales para descansar o meterse al agua.",
-              "Bosque de Irati – senderos principales (Navarra). Caminatas suaves, suelo estable y señalización clara."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image.webp"
-          },
-          {
-            "heading": "Opciones para caminar sin exigencia",
-            "paragraphs": [
-              "Ruta del Río Borosa (Jaén). Larga pero fácil. Se puede hacer por tramos.",
-              "Parque Natural de la Albufera (Valencia). Planos, accesibles y perfectos para caminar sin exigencia física.",
-              "Valle del Jerte – rutas cortas. Especialmente recomendables fuera de temporada alta.",
-              "Parque Natural del Delta del Ebro. Senderos planos, ideales para caminar tranquilo."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image1.webp"
-          },
-          {
-            "heading": "Caminar con calma",
-            "paragraphs": [
-              "Montserrat – caminos bajos. Evitar las rutas técnicas y quedarse en los senderos principales.",
-              "Parque Nacional de Ordesa – accesos iniciales. Los primeros tramos son amplios y bien mantenidos.",
-              "Por qué funcionan. Porque no exigen ritmo, ni técnica, ni planificación compleja. Caminás, mirás alrededor y seguís."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image2.webp"
-          }
-        ],
-        "closing": "Empezar por rutas simples no es elegir menos. Es elegir bien. El movimiento se vuelve natural, y el día se siente liviano. Eso es lo que hace que quieras salir otra vez."
-      },
-      "trekking-facil-francia": {
-        "title": "Francia es uno de los países más fáciles para caminar",
-        "excerpt": "Senderos cuidados y distancias razonables para un día tranquilo.",
-        "subtitle": "Trekking fácil",
-        "intro": "Francia tiene una red de senderos enorme y muy bien cuidada. Muchos están pensados para caminantes comunes, no para montañistas. Acá no hace falta ir rápido ni lejos para pasarla bien.",
-        "sections": [
-          {
-            "heading": "Trekking fácil",
-            "paragraphs": [
-              "Gorges du Verdon, senderos bajos. Caminos amplios, vistas abiertas y desniveles suaves.",
-              "Camino costero de Normandía. Tramos planos, bien señalizados y fáciles de abandonar si te cansás.",
-              "Senderos del Lago Annecy. Perfectos para caminar sin pendiente fuerte.",
-              "Parque Natural de los Vosgos. Rutas cortas, bosque cerrado y señalización clara."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image.webp"
-          },
-          {
-            "heading": "Rutas para caminar sin exigencia",
-            "paragraphs": [
-              "Camino de Stevenson, primeros tramos. Historia, naturaleza y distancias razonables.",
-              "Camargue, senderos naturales. Terreno plano y accesible todo el año.",
-              "Senderos del Mont Saint‑Michel, zonas secas. Ideal para caminar sin exigencia física.",
-              "Parc National des Calanques, rutas principales. Elegir los accesos más cortos y marcados."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image1.webp"
-          },
-          {
-            "heading": "Caminar con calma",
-            "paragraphs": [
-              "Valle del Loira, caminos rurales. Caminatas suaves entre pueblos.",
-              "Senderos del Jura. Menos concurridos y muy accesibles.",
-              "Lo mejor. Podés caminar sin sentir que estás haciendo deporte. Es movimiento natural."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image2.webp"
-          }
-        ],
-        "closing": "Lo simple funciona porque te deja estar. Caminás, mirás alrededor y seguís. Eso alcanza."
-      },
-      "trekking-facil-italia": {
-        "title": "Los caminos de los antiguos romanos",
-        "excerpt": "Italia combina paisaje y rutas pensadas para caminar sin complicarse.",
-        "subtitle": "Trekking fácil",
-        "intro": "Italia combina paisajes increíbles con rutas pensadas para caminar sin complicarse. Muchos senderos conectan pueblos, lagos y costas, lo que los hace ideales para principiantes.",
-        "sections": [
-          {
-            "heading": "Trekking fácil",
-            "paragraphs": [
-              "Cinque Terre, senderos principales. Elegir los tramos cortos y bien mantenidos.",
-              "Lago di Como, caminos costeros. Planos, accesibles y muy agradables.",
-              "Val di Funes, rutas bajas. Paisaje abierto y caminatas simples.",
-              "Parque Nacional del Gargano. Senderos costeros fáciles."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image.webp"
-          },
-          {
-            "heading": "Rutas con paisaje y calma",
-            "paragraphs": [
-              "Dolomitas, caminos de valle. Evitar altura y quedarse en rutas bajas.",
-              "Camino de los Dioses (Amalfi, tramos cortos). Impresiona más por las vistas que por la dificultad.",
-              "Lago di Garda, senderos señalizados. Muchos recorridos planos o con desnivel leve.",
-              "Toscana rural, caminos entre pueblos. Caminatas sin exigencia física."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image1.webp"
-          },
-          {
-            "heading": "Para caminar sin exigencia",
-            "paragraphs": [
-              "Parque Nacional de Abruzzo, rutas familiares. Pensadas para caminantes comunes.",
-              "Senderos costeros de Cerdeña. Accesibles y bien marcados.",
-              "Por qué Italia funciona tan bien. Porque caminar forma parte de la cultura. Los senderos acompañan, no desafían."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image2.webp"
-          }
-        ],
-        "closing": "El trekking fácil no es un paso previo a nada. Para mucha gente, es exactamente lo que busca: caminar, mirar y volver sin estar agotado. Eso también es naturaleza."
-      },
-      "atreverse-un-poco-mas": {
-        "title": "Para aquellos que se atreven a dar un poco más",
-        "excerpt": "El trekking de varios días suena complejo, pero se vuelve simple con ritmo y orden.",
-        "subtitle": "Trekking de varios días",
-        "intro": "El trekking de varios días suele sonar más complicado de lo que es. En realidad, muchas rutas están pensadas para personas normales: gente que camina, se cansa, descansa y sigue.",
-        "sections": [
-          {
-            "heading": "No es caminar más fuerte, es caminar más ordenado",
-            "paragraphs": [
-              "No hace falta correr, ni llegar primero, ni demostrar nada.",
-              "El objetivo es sostener un ritmo que puedas repetir cada día, sin gastar todo el primer día."
-            ],
-            "image": "/assets/images/blog/trekking/image5.webp"
-          },
-          {
-            "heading": "La diferencia está en la cabeza",
-            "paragraphs": [
-              "La diferencia principal con una caminata de un día no está en las piernas, sino en la cabeza.",
-              "Ritmo más lento.",
-              "Paradas más frecuentes.",
-              "Días más parejos.",
-              "El error común es salir el primer día como si fuera corto. Ahí es donde aparece el cansancio temprano."
-            ],
-            "image": "/assets/images/blog/trekking/image6.webp"
-          },
-          {
-            "heading": "Elegir rutas pensadas para varios días",
-            "paragraphs": [
-              "Para empezar, conviene buscar:",
-              "Senderos bien señalizados.",
-              "Etapas claras.",
-              "Accesos fáciles.",
-              "Opciones para acortar si hace falta.",
-              "No todo trekking largo es técnico. Muchos están hechos para avanzar sin apuro y dormir bien."
-            ],
-            "image": "/assets/images/blog/trekking/image10.webp"
-          },
-          {
-            "heading": "Qué llevar (sin sobrecargar)",
-            "paragraphs": [
-              "En trekking de varios días, cada cosa se siente.",
-              "Conviene priorizar:",
-              "Ropa que se pueda repetir.",
-              "Abrigo real, no de más.",
-              "Comida simple.",
-              "Agua bien calculada.",
-              "Lo que no usás el primer día, probablemente no lo uses después."
-            ]
-          },
-          {
-            "heading": "Dormir bien es parte del plan",
-            "paragraphs": [
-              "Caminar cansado se puede. Dormir mal, no tanto.",
-              "Asegurar:",
-              "Aislante decente.",
-              "Bolsa acorde al clima.",
-              "Lugar protegido.",
-              "Dormir bien hace que el día siguiente empiece distinto."
-            ]
-          }
-        ],
-        "closing": "El objetivo no es terminar rápido. El trekking de varios días funciona cuando se acepta algo simple: cada día es un día. No se adelanta, no se compensa. Se camina, se llega, se descansa. Y eso está bien."
-      },
-      "camping-varios-dias-errores": {
-        "title": "Camping de varios días: errores comunes y cómo evitarlos",
-        "excerpt": "Dormir varias noches pide orden, no más equipo.",
-        "subtitle": "Trekking de varios días",
-        "intro": "Dormir una noche en camping es fácil. Dormir varias seguidas ya pide un poco más de orden. No más equipo, sino mejores decisiones.",
-        "sections": [
-          {
-            "heading": "Error 1: llevar de más “por las dudas”",
-            "paragraphs": [
-              "Es el clásico. Ropa extra, utensilios que no se usan, cosas que ocupan espacio.",
-              "Cómo evitarlo:",
-              "Pensar por días.",
-              "Elegir prendas que sirvan para más de una cosa.",
-              "Aceptar repetir.",
-              "Menos peso, menos cansancio."
-            ],
-            "image": "/assets/images/blog/trekking/image1.webp"
-          },
-          {
-            "heading": "Errores 2 y 3: comida sin orden y desorden constante",
-            "paragraphs": [
-              "Improvisar funciona una noche. Después se vuelve incómodo.",
-              "Cómo evitarlo:",
-              "Separar comidas por jornada.",
-              "Priorizar alimentos simples.",
-              "No planear platos elaborados.",
-              "Comer bien no es comer complicado.",
-              "",
-              "Cuando todo está mezclado, todo cansa más.",
-              "Cómo evitarlo:",
-              "Usar bolsas separadas.",
-              "Mantener siempre el mismo lugar para cada cosa.",
-              "Ordenar un poco cada mañana.",
-              "Cinco minutos de orden ahorran muchos después."
-            ],
-            "image": "/assets/images/blog/trekking/image3.webp"
-          },
-          {
-            "heading": "Errores 4 y 5: no respetar el cuerpo y querer aprovechar todo",
-            "paragraphs": [
-              "En salidas largas, el cansancio se acumula.",
-              "Cómo evitarlo:",
-              "Parar antes de estar agotado.",
-              "Dormir lo necesario.",
-              "Comer aunque no tengas hambre.",
-              "Escuchar el cuerpo no es aflojar, es durar.",
-              "",
-              "El exceso de planes termina pesando.",
-              "Cómo evitarlo:",
-              "Dejar espacios libres.",
-              "Aceptar días tranquilos.",
-              "No llenar cada hora.",
-              "En camping de varios días, el descanso también cuenta."
-            ],
-            "image": "/assets/images/blog/trekking/image11.webp"
-          }
-        ],
-        "closing": "Más días no significan más exigencia. Tanto en trekking largo como en camping de varios días, la clave es la misma: sostener el ritmo. No es hacerlo más difícil. Es hacerlo posible. Y cuando eso se logra, el disfrute aparece solo."
-      },
-      "ski-snowboard-centros-sin-limite": {
-        "title": "Ski y snowboard en centros: disfrutar sin ir al límite",
-        "excerpt": "El centro ordena la experiencia y permite disfrutar sin buscar lo extremo.",
-        "subtitle": "Ski y snowboard en centros",
-        "intro": "Para mucha gente, el ski y el snowboard empiezan y terminan en un centro de ski. Y no hay nada de malo en eso. Pistas marcadas, remontes, refugios y servicios: todo está pensado para que el día fluya sin sobresaltos. No hace falta buscar lo extremo para pasarla bien.",
-        "sections": [
-          {
-            "heading": "El centro ordena la experiencia",
-            "paragraphs": [
-              "Un centro de ski quita muchas variables de encima:",
-              "Sabés dónde estás.",
-              "Sabés por dónde bajar.",
-              "Sabés dónde parar.",
-              "Eso permite concentrarte en lo importante: deslizarte, descansar y seguir.",
-              "Para quien no busca riesgo, esa estructura suma mucho."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image1.webp"
-          },
-          {
-            "heading": "Elegir pistas que acompañen",
-            "paragraphs": [
-              "No todas las pistas son para todos los días.",
-              "Pistas verdes y azules para calentar.",
-              "Rojas solo si hay energía.",
-              "Evitar bajar cansado solo “para probar”.",
-              "Elegir bien también es parte del disfrute.",
-              "",
-              "El cansancio aparece antes de lo que parece. El frío, la altura y el esfuerzo constante pasan factura.",
-              "Parar antes de agotarte.",
-              "Comer algo aunque no tengas hambre.",
-              "Tomar agua, incluso con frío.",
-              "Un día largo no es un día eterno."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image3.webp"
-          },
-          {
-            "heading": "Equipo cómodo y ritmo propio",
-            "paragraphs": [
-              "En centros de ski, la comodidad manda.",
-              "Botas bien ajustadas, no apretadas.",
-              "Ropa que abriga sin exagerar.",
-              "Gafas que no molesten.",
-              "Si algo incomoda, se nota más con el paso de las horas.",
-              "",
-              "Snowboard y ski no son una competencia.",
-              "No hace falta saltar más alto, bajar más rápido o probar pistas que no tenés ganas.",
-              "Cada bajada cuenta igual. Disfrutar una pista sencilla diez veces puede ser mejor que sufrir una complicada una sola vez.",
-              "",
-              "Saber cuándo cortar también es parte del plan: cuando las piernas no responden, cuando la concentración baja, cuando el frío empieza a molestar.",
-              "Ir un poco más allá, no ir más lejos. Día a día, bajada a bajada.",
-              "Sin demostrar nada. Sin ir al límite.",
-              "Y eso, para muchos, es exactamente lo que buscan."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image11.webp"
-          }
-        ],
-        "closing": "Las experiencias son individuales. Lo importante es que el día se sienta propio, no impuesto."
-      },
-      "primeros-centros-ski-europa": {
-        "title": "Primeros centros de ski recomendados en Europa (para empezar tranquilo).",
-        "excerpt": "Centros con pistas fáciles, buena señalización y ritmo calmo para empezar sin presión.",
-        "subtitle": "Ski y snowboard en centros",
-        "intro": "Elegir bien el primer centro de ski hace una diferencia enorme. No todos están pensados para quien recién empieza o para quien quiere esquiar sin exigirse. Un buen centro para empezar no es el más grande ni el más famoso. Es el que ordena el día, ofrece pistas fáciles y no te empuja a ir más rápido de lo que querés.",
-        "sections": [
-          {
-            "heading": "España: empezar sin apuro",
-            "paragraphs": [
-              "Baqueira Beret — Sitio oficial: https://www.baqueira.es",
-              "Amplia, bien señalizada y con muchas pistas progresivas. Podés empezar suave y quedarte ahí todo el día sin aburrirte.",
-              "Formigal — Sitio oficial: https://www.formigal-panticosa.com",
-              "Muy buen equilibrio entre pistas fáciles y servicios. Ideal para esquiar sin apuro y con buen descanso entre bajadas.",
-              "Sierra Nevada — Sitio oficial: https://sierranevada.es",
-              "Accesible, soleada y con pistas largas pero amables. Buena opción para combinar ski y descanso."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/españa.webp"
-          },
-          {
-            "heading": "Francia: estaciones tranquilas y bien conectadas",
-            "paragraphs": [
-              "Les Gets — Sitio oficial: https://www.lesgets.com",
-              "Centro tranquilo, familiar y muy bien pensado para principiantes. Todo está cerca y bien conectado.",
-              "La Plagne — Sitio oficial: https://www.la-plagne.com",
-              "Muchas pistas anchas y largas, ideales para ganar confianza sin presión.",
-              "Les Arcs — Sitio oficial: https://www.lesarcs.com",
-              "Eligiendo las zonas bajas permite esquiar cómodo sin meterse en áreas exigentes."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/francia.webp"
-          },
-          {
-            "heading": "Italia: ritmo relajado y pistas progresivas",
-            "paragraphs": [
-              "Val di Fassa — Sitio oficial: https://www.fassa.com",
-              "Entorno tranquilo, pistas progresivas y ritmo relajado. Muy buena para aprender sin estrés.",
-              "Livigno — Sitio oficial: https://www.livigno.eu",
-              "Altura constante, pistas largas y fáciles. Todo invita a esquiar sin apuro.",
-              "Cortina d'Ampezzo — Sitio oficial: https://www.cortina.dolomiti.org",
-              "Eligiendo bien la zona, es accesible incluso para quienes empiezan."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/italia.webp"
-          },
-          {
-            "heading": "Austria: orden y señalización clara",
-            "paragraphs": [
-              "Saalbach — Sitio oficial: https://www.saalbach.com",
-              "Muy ordenado, señalización clara y pistas bien mantenidas.",
-              "Zell am See — Sitio oficial: https://www.zellamsee-kaprun.com",
-              "Perfecto para combinar ski suave y descanso. Ideal para días largos sin exigencia.",
-              "Mayrhofen — Sitio oficial: https://www.mayrhofen.at",
-              "Eligiendo las pistas iniciales, permite progresar con calma."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/austria.webp"
-          }
-        ],
-        "closing": "Qué mirar al elegir tu primer centro: cantidad de pistas verdes y azules, buena señalización, servicios cerca y accesos simples. Eso pesa más que la fama del lugar. Empezar bien es querer volver. Un buen primer centro no te deja agotado ni frustrado: te deja con ganas de otro día más. Y cuando eso pasa, el ski y el snowboard dejan de ser un desafío y pasan a ser parte del plan."
-      },
-      "camping-fin-de-semana-basico": {
-        "title": "No me digas que te olvidaste el...",
-        "excerpt": "Lo básico para un fin de semana cómodo sin llevar de más.",
-        "subtitle": "Camping de fin de semana",
-        "intro": "Un camping de fin de semana no necesita una lista infinita de cosas. De hecho, cuanto más corto es el plan, más sentido tiene llevar solo lo necesario. La idea no es mudarse por dos días, sino estar cómodo sin complicarse.",
-        "sections": [
-          {
-            "heading": "Lo básico para dormir bien",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-outdoor-001\">Carpa fácil de armar</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-008\">Aislante o colchoneta</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-007\">Bolsa de dormir acorde al clima</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-003\">Linterna o frontal</a>",
-              "No hace falta que sea lo último del mercado. Hace falta que funcione."
-            ],
-            "image": "/assets/images/blog/banner01.webp"
-          },
-          {
-            "heading": "Ropa pensada, no de más",
-            "paragraphs": [
-              "Para dos días, la clave es elegir bien, no llevar mucho.",
-              "Una muda extra.",
-              "Abrigo aunque sea verano.",
-              "Zapatillas cómodas.",
-              "Algo para la lluvia.",
-              "La ropa que no usás termina ocupando espacio."
-            ],
-            "image": "/assets/images/blog/blog-hero.webp"
-          },
-          {
-            "heading": "Comida simple y fácil de manejar",
-            "paragraphs": [
-              "Un fin de semana no es para cocinar de más.",
-              "Comidas que se preparen rápido.",
-              "Snacks.",
-              "Agua suficiente.",
-              "Algo caliente para la mañana.",
-              "Menos cocina, más tiempo afuera."
-            ]
-          },
-          {
-            "heading": "Detalles que suman",
-            "paragraphs": [
-              "No son imprescindibles, pero hacen la experiencia más cómoda.",
-              "Protector solar.",
-              "Repelente.",
-              "Bolsas para residuos.",
-              "Navaja o multiuso.",
-              "Nada raro, nada técnico."
-            ]
-          },
-          {
-            "heading": "Idea clave",
-            "paragraphs": [
-              "Si dudás si llevar algo, probablemente no haga falta."
-            ]
-          }
-        ],
-        "closing": "Un fin de semana bien armado no necesita más. Lo básico alcanza si funciona, y eso es lo que deja la salida liviana."
-      },
-      "camping-fin-de-semana-relax": {
-        "title": "Time to relax, that’s it.",
-        "excerpt": "Un fin de semana corto funciona mejor cuando no hay agenda.",
-        "subtitle": "Camping de fin de semana",
-        "intro": "Un camping de fin de semana no necesita agenda. Justamente funciona porque no hay horarios estrictos. Aun así, siempre terminan apareciendo cosas para hacer.",
-        "sections": [
-          {
-            "heading": "Caminar sin destino",
-            "paragraphs": [
-              "La mayoría de los campings tienen senderos alrededor.",
-              "No hace falta recorrer kilómetros. A veces caminar veinte minutos ya cambia el aire."
-            ]
-          },
-          {
-            "heading": "Leer, mirar, no hacer nada",
-            "paragraphs": [
-              "Puede sonar poco ambicioso, pero no lo es.",
-              "Leer un rato, sentarse a mirar el paisaje o simplemente quedarse quieto suele ser lo que más se extraña después."
-            ]
-          },
-          {
-            "heading": "Actividades simples",
-            "paragraphs": [
-              "Pescar aunque no piquen.",
-              "Meter los pies en el agua.",
-              "Jugar a las cartas.",
-              "Cocinar sin apuro.",
-              "No es llenar el tiempo. Es usarlo distinto."
-            ]
-          },
-          {
-            "heading": "La noche como plan",
-            "paragraphs": [
-              "Cuando baja el ruido, el camping cambia.",
-              "Una charla larga, algo caliente para tomar o mirar el cielo suelen ser suficientes."
-            ]
-          },
-          {
-            "heading": "Productos relacionados",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-outdoor-001\">Carpa fácil de armar</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-007\">Bolsa de dormir</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-003\">Linterna o frontal</a>",
-              "<a href=\"/{{locale}}/products/gn-camping-survival-002\">Hornillo portátil</a>"
-            ]
-          }
-        ],
-        "closing": "Lo bueno del camping corto es que no hay presión por aprovechar. Todo suma."
-      },
-      "no-mires-para-arriba": {
-        "title": "No mires para arriba",
-        "excerpt": "Una pausa nocturna que no necesita nada más que mirar.",
-        "subtitle": "Camping de fin de semana",
-        "intro": "Una de las mejores cosas de acampar es algo que no se planea: mirar el cielo de noche. No hace falta saber astronomía ni tener telescopio.",
-        "sections": [
-          {
-            "heading": "Por qué se ven más estrellas",
-            "paragraphs": [
-              "Lejos de las ciudades hay menos luz artificial. Eso hace que aparezcan estrellas que normalmente no vemos.",
-              "Después de unos minutos, los ojos se acostumbran y el cielo cambia."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup1.webp"
-          },
-          {
-            "heading": "La Vía Láctea",
-            "paragraphs": [
-              "Si el cielo está despejado, muchas veces se ve como una mancha clara que cruza el cielo.",
-              "No es una nube. Es nuestra galaxia vista desde adentro."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup2.webp"
-          },
-          {
-            "heading": "Estrellas que no son estrellas",
-            "paragraphs": [
-              "Algunos puntos se mueven lento. No parpadean.",
-              "Suelen ser satélites o estaciones espaciales pasando."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup3.webp"
-          },
-          {
-            "heading": "Constelaciones fáciles de reconocer",
-            "paragraphs": [
-              "La Osa Mayor.",
-              "Orión (en invierno).",
-              "La Cruz del Sur (según ubicación).",
-              "No hace falta identificarlas todas. Con reconocer una ya alcanza."
-            ]
-          },
-          {
-            "heading": "Un dato simple pero real",
-            "paragraphs": [
-              "La luz que ves salió de esas estrellas hace cientos o miles de años.",
-              "Pensarlo no cambia nada, pero acompaña."
-            ]
-          },
-          {
-            "heading": "Mirar es suficiente",
-            "paragraphs": [
-              "Mirar el cielo en camping no es aprender.",
-              "Es frenar un poco y mirar hacia arriba."
-            ]
-          }
-        ],
-        "closing": "El cielo no pide nada. Solo un rato de silencio y una mirada."
-      },
-      "apps-camping-fin-de-semana": {
-        "title": "Aplicaciones de celular útiles para acampar (las que realmente sirven)",
-        "excerpt": "Usar el celular con criterio también puede mejorar un fin de semana.",
-        "subtitle": "Camping de fin de semana",
-        "intro": "Salir a acampar no es irse a vivir al pasado. El celular puede ser una buena herramienta si se usa con criterio: lo sacás cuando hace falta y después vuelve al bolsillo. Estas son algunas aplicaciones que realmente suman en un camping de fin de semana.",
-        "sections": [
-          {
-            "heading": "Para ver estrellas y constelaciones",
-            "paragraphs": [
-              "Star Walk 2",
-              "https://starwalk.space/",
-              "Es de las más simples de usar. Apuntás el celular al cielo y te muestra qué estrellas, planetas o constelaciones estás mirando.",
-              "No necesitás saber nada de astronomía. Funciona bien incluso sin señal, siempre que tengas el GPS activo.",
-              "Ideal para:",
-              "No adivinar lo que estás viendo.",
-              "Entender un poco más el cielo sin complicarte.",
-              "Compartir el momento con otros."
-            ],
-            "image": "/assets/images/blog/appcamping/starwalk2.webp"
-          },
-          {
-            "heading": "Para mapas y senderos sin conexión",
-            "paragraphs": [
-              "Maps.me",
-              "https://maps.me/",
-              "Antes de salir, descargás el mapa de la zona y listo. Funciona offline y suele mostrar senderos, caminos rurales y accesos a campings que no aparecen en otros mapas.",
-              "Sirve para:",
-              "Ubicar senderos cercanos.",
-              "Volver al camping sin perderte.",
-              "Moverte tranquilo sin depender de señal.",
-              "No es para improvisar aventuras, es para no preocuparte."
-            ],
-            "image": "/assets/images/blog/appcamping/maps.webp"
-          },
-          {
-            "heading": "Para el clima (mirada rápida, sin obsesión)",
-            "paragraphs": [
-              "Windy",
-              "https://www.windy.com/",
-              "Aunque está pensada para cosas más técnicas, usada de forma simple es muy útil.",
-              "Con solo mirarla sabés:",
-              "Si viene viento.",
-              "Si refresca a la noche.",
-              "Si hay lluvias cerca.",
-              "Una mirada antes de armar la carpa puede ahorrarte molestias."
-            ],
-            "image": "/assets/images/blog/appcamping/windy.webp"
-          },
-          {
-            "heading": "Para luz de noche sin molestar",
-            "paragraphs": [
-              "Torch (linterna con luz roja)",
-              "https://play.google.com/store/apps/details?id=com.devuni.flashlight",
-              "Hay versiones similares en iOS.",
-              "La luz roja es clave en camping. No encandila, no molesta y no te deja ciego cuando salís de la carpa de noche.",
-              "Sirve para:",
-              "Ir al baño.",
-              "Buscar algo sin despertar a todos.",
-              "Moverte tranquilo.",
-              "Simple, pero muy útil."
-            ]
-          },
-          {
-            "heading": "Para identificar plantas y entorno",
-            "paragraphs": [
-              "Seek by iNaturalist",
-              "https://www.inaturalist.org/pages/seek_app",
-              "Apuntás la cámara a una planta, flor o árbol y te dice qué es. No reemplaza el conocimiento real, pero despierta curiosidad.",
-              "Funciona bien para:",
-              "Caminatas tranquilas.",
-              "Camping con chicos.",
-              "Aprender sin esfuerzo."
-            ],
-            "image": "/assets/images/blog/appcamping/seek.webp"
-          },
-          {
-            "heading": "El celular como apoyo, no como protagonista",
-            "paragraphs": [
-              "Estas apps no están pensadas para pasar horas mirando la pantalla. Están para usarse un momento y volver a guardar el teléfono.",
-              "Mirás una constelación. Chequeás el clima. Ubicás un sendero.",
-              "Después, seguís con lo importante: estar ahí."
-            ]
-          }
-        ],
-        "closing": "Usar el celular con criterio no te aleja de la experiencia. Te ayuda a sostenerla."
-      },
-      "pesca-recreativa-apps-equipo": {
-        "title": "Pesca recreativa: apps útiles y equipo simple para empezar",
-        "excerpt": "Pescar tranquilo es más tiempo afuera que técnica.",
-        "subtitle": "Pesca recreativa",
-        "intro": "La pesca recreativa no es una competencia ni una ciencia exacta. Muchas veces se trata de estar cerca del agua, tirar la línea y ver qué pasa. Si pica, mejor. Si no, igual estuviste afuera. Con poco equipo y algunas herramientas simples, alcanza.",
-        "sections": [
-          {
-            "heading": "Apps que realmente sirven para pescar tranquilo",
-            "paragraphs": [
-              "No reemplazan la experiencia, pero ayudan a ubicarse y entender un poco mejor el entorno.",
-              "Para ver zonas de pesca y experiencias reales.",
-              "Fishbrain.",
-              "https://fishbrain.com/",
-              "Es una app donde otros pescadores comparten capturas, lugares y momentos. No es garantía de nada, pero da una idea de:",
-              "Qué especies hay en la zona.",
-              "En qué época se mueve la gente.",
-              "Dónde suele pescarse desde costa o río.",
-              "Ideal para no llegar totalmente a ciegas."
-            ],
-            "image": "/assets/images/blog/fishing/fishing2.webp"
-          },
-          {
-            "heading": "Para el clima y el viento",
-            "paragraphs": [
-              "Windy.",
-              "https://www.windy.com/",
-              "En pesca, el viento importa más de lo que parece. Con Windy podés ver si conviene ir a la mañana, esperar o directamente cambiar de plan.",
-              "Una mirada rápida alcanza:",
-              "Dirección del viento.",
-              "Intensidad.",
-              "Cambios durante el día."
-            ]
-          },
-          {
-            "heading": "Para mapas offline y accesos",
-            "paragraphs": [
-              "Maps.me.",
-              "https://maps.me/",
-              "Muchos buenos lugares de pesca no están señalizados. Con mapas offline podés:",
-              "Encontrar accesos al agua.",
-              "Volver sin perderte.",
-              "Ubicar caminos rurales.",
-              "Funciona bien incluso sin señal."
-            ]
-          },
-          {
-            "heading": "Equipo simple para pesca recreativa",
-            "paragraphs": [
-              "No hace falta invertir mucho ni saber de marcas. Para empezar, y para muchos para siempre, esto alcanza.",
-              "Lo básico de verdad:",
-              "Caña simple (telescópica o de una pieza).",
-              "Reel básico.",
-              "Línea armada o nylon.",
-              "Anzuelos comunes.",
-              "Plomadas simples.",
-              "Nada sofisticado. Nada técnico."
-            ],
-            "image": "/assets/images/blog/fishing/fishing1%20(1).webp"
-          },
-          {
-            "heading": "Cosas que muchos olvidan",
-            "paragraphs": [
-              "Gorra o sombrero.",
-              "Protector solar.",
-              "Agua.",
-              "Algo para sentarte.",
-              "Bolsa para residuos.",
-              "Pescar cómodo cambia mucho la experiencia."
-            ]
-          },
-          {
-            "heading": "Dónde funciona mejor la pesca recreativa",
-            "paragraphs": [
-              "Ríos tranquilos.",
-              "Lagos.",
-              "Embalses.",
-              "Costa de mar en zonas calmadas.",
-              "No hace falta ir lejos ni buscar lugares extremos. Cuanto más accesible, más ganas dan de volver."
-            ]
-          },
-          {
-            "heading": "La pesca como excusa",
-            "paragraphs": [
-              "En la pesca recreativa, el resultado no siempre importa. Importa el tiempo afuera, el silencio, la espera.",
-              "Tirar la línea es solo la excusa. Si pica, buenísimo. Si no, igual valió la pena."
-            ]
-          },
-          {
-            "heading": "Productos relacionados",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-fishing-001\">Caña telescópica básica</a>",
-              "<a href=\"/{{locale}}/products/gn-fishing-eq-007\">Reel giratorio</a>",
-              "<a href=\"/{{locale}}/products/gn-fishing-eq-006\">Alicates de pesca</a>"
-            ]
-          }
-        ],
-        "closing": "La pesca recreativa no necesita más. Un lugar tranquilo, un equipo simple y tiempo afuera son suficientes."
-      },
-      "snorkel-diving-familia-europa": {
-        "title": "Snorkel y diving en familia: lugares tranquilos para empezar en Europa",
-        "excerpt": "Agua clara, entradas fáciles y ritmo tranquilo para empezar en familia.",
-        "subtitle": "Snorkel y diving en familia",
-        "intro": "El snorkel es una de esas actividades que no piden mucho. Un poco de agua clara, equipo básico y ganas de flotar mirando para abajo. No hace falta experiencia previa ni entrenamiento. Por eso funciona tan bien en familia. Cada uno va a su ritmo, sin presión.",
-        "sections": [
-          {
-            "heading": "España",
-            "paragraphs": [
-              "España tiene costas muy distintas entre sí, pero varias zonas son ideales para snorkel tranquilo.",
-              "Costa Brava (Cataluña). Calas pequeñas, agua clara y fondo rocoso. Entrás caminando desde la playa y ya hay cosas para ver.",
-              "Menorca. Probablemente uno de los mejores lugares para snorkel familiar. Playas cerradas, poco oleaje y visibilidad constante.",
-              "Islas Canarias (zonas protegidas). En playas tranquilas, sin viento fuerte, se ve mucha vida marina cerca de la orilla.",
-              "Por qué funciona en España. Accesos fáciles, servicios cerca y muchas playas pensadas para familias."
-            ],
-            "image": "/assets/images/blog/snorkeling/image.webp"
-          },
-          {
-            "heading": "Francia",
-            "paragraphs": [
-              "Francia no suele ser lo primero que se piensa para snorkel, pero tiene zonas muy bien cuidadas.",
-              "Costa Azul. Aguas claras y calas protegidas. Ideal fuera de temporada alta.",
-              "Calanques (Marsella). Entradas desde la costa, fondo rocoso y buena visibilidad en días calmos.",
-              "Córcega. Playas amplias y agua transparente. Muy buena opción para ir con chicos.",
-              "Lo mejor de Francia. Zonas protegidas, menos masificación en ciertos momentos y entornos naturales bien conservados."
-            ],
-            "image": "/assets/images/blog/snorkeling/image1.webp"
-          },
-          {
-            "heading": "Italia",
-            "paragraphs": [
-              "Italia combina algo clave para el snorkel en familia: buen acceso, agua clara y cultura de playa tranquila.",
-              "Cerdeña. Una de las mejores opciones del Mediterráneo. Playas poco profundas y fondos visibles desde la orilla.",
-              "Sicilia (zonas menos urbanas). Muy buen snorkel en calas tranquilas, especialmente lejos de las ciudades grandes.",
-              "Cinque Terre (zonas específicas). Tramos cortos y protegidos donde se puede entrar desde la costa.",
-              "Por qué Italia funciona tan bien. El ritmo es relajado y nadie espera que hagas más de lo que tenés ganas."
-            ],
-            "image": "/assets/images/blog/snorkeling/image2.webp"
-          },
-          {
-            "heading": "Equipo básico para snorkel en familia",
-            "paragraphs": [
-              "No hace falta mucho, pero sí lo justo.",
-              "Máscara que ajuste bien.",
-              "Tubo simple.",
-              "Aletas cortas (opcional).",
-              "Protector solar.",
-              "Remera UV si el sol es fuerte.",
-              "Nada técnico, nada complicado."
-            ],
-            "image": "/assets/images/blog/snorkeling/image3.webp"
-          },
-          {
-            "heading": "Reglas simples que ayudan",
-            "paragraphs": [
-              "Elegir días sin viento.",
-              "Evitar zonas con corrientes.",
-              "No tocar fauna ni fondo.",
-              "Entrar y salir siempre por zonas claras.",
-              "El objetivo no es explorar más, sino sentirse cómodo."
-            ],
-            "image": "/assets/images/blog/snorkeling/image4.webp"
-          },
-          {
-            "heading": "El snorkel como plan",
-            "paragraphs": [
-              "En familia, el snorkel no es una actividad para lograr algo. Es una excusa para estar en el agua, mirar, flotar y compartir el momento.",
-              "Diez minutos ya alcanzan. Después, se vuelve a la playa.",
-              "Y eso también cuenta."
-            ],
-            "image": "/assets/images/blog/snorkeling/image5.webp"
-          }
-        ],
-        "closing": "El snorkel en familia no pide más que calma, agua clara y tiempo compartido. Lo importante es estar ahí."
-      },
-      "snorkel-familia-equipo-errores": {
-        "title": "Snorkel en familia: equipo simple y errores comunes a evitar",
-        "excerpt": "Con equipo básico y algunas decisiones simples, la experiencia cambia.",
-        "subtitle": "Snorkel y diving en familia",
-        "intro": "El snorkel es fácil, pero eso no significa que dé lo mismo cómo hacerlo. Con un equipo básico bien elegido y evitando algunos errores comunes, la experiencia cambia mucho. No se trata de hacerlo perfecto. Se trata de hacerlo cómodo.",
-        "sections": [
-          {
-            "heading": "Equipo simple que realmente alcanza",
-            "paragraphs": [
-              "No hace falta comprar kits caros ni equipo técnico. Para snorkel tranquilo, esto es suficiente.",
-              "Máscara. Lo más importante. Tiene que ajustar bien a la cara. No importa la marca, importa que no entre agua.",
-              "Un truco simple: probala sin la tira, apoyándola en la cara. Si se queda sola, va bien.",
-              "Tubo sencillo. Cuanto más simple, mejor. Los tubos con muchas válvulas suelen ser más incómodos para principiantes.",
-              "Un tubo recto, clásico, alcanza.",
-              "Aletas cortas, opcional. Ayudan a moverte con menos esfuerzo, pero también cansan si no estás acostumbrado.",
-              "Para familia, mejor cortas y blandas.",
-              "Remera UV o camiseta. Protege del sol y del roce. Especialmente útil para chicos o sesiones largas."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery.webp"
-          },
-          {
-            "heading": "Errores comunes que conviene evitar",
-            "paragraphs": [
-              "Elegir cualquier día porque hay sol. El sol no es lo más importante. El viento y el oleaje pesan mucho más. Un día nublado pero calmo es mejor que uno soleado con viento.",
-              "Alejarse demasiado de la costa. En snorkel familiar, la regla es simple: si no tocás el fondo de pie, no hace falta seguir. La mayor parte de lo interesante suele estar cerca.",
-              "Querer ver demasiado. A veces se entra al agua esperando un documental. Eso genera frustración.",
-              "En snorkel tranquilo, mirar un rato ya es suficiente. Si hay algo, buenísimo. Si no, también.",
-              "Usar equipo incómodo porque ya está comprado. Si la máscara molesta o entra agua, no se disfruta. Es mejor cambiarla o no usarla ese día.",
-              "No tomarse descansos. Flotar cansa más de lo que parece. Salir, sentarse, tomar agua y volver entra dentro del plan."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery1.webp"
-          },
-          {
-            "heading": "Un consejo simple que casi nadie dice",
-            "paragraphs": [
-              "El snorkel no se trata de nadar mucho. Se trata de flotar tranquilo.",
-              "Moverse despacio, respirar con calma y mirar sin apuro. Eso solo ya cambia todo.",
-              "Menos equipo, menos problemas. Cuanto más simple es el equipo, menos cosas pueden salir mal.",
-              "Y cuando algo no sale perfecto, no pasa nada.",
-              "El snorkel en familia no es una actividad para hacer bien. Es una excusa para estar en el agua juntos.",
-              "Y con eso, alcanza."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery2.webp"
-          }
-        ],
-        "closing": "Con equipo simple y decisiones claras, el snorkel se vuelve cómodo. Eso es lo que hace que todos quieran volver al agua."
-      }
     }
   },
   "blogSections": {
@@ -2491,7 +1689,8 @@
     "billingDifferent": "Usar una dirección de facturación distinta",
     "guestEmailRequired": "Ingresá tu email para continuar.",
     "mobileSummaryToggle": "Resumen del pedido",
-    "legalReturns": "Política de reembolso",
+    "legalReturns": "Política de devoluciones",
+    "legalRegret": "Botón de arrepentimiento",
     "legalPrivacy": "Política de privacidad",
     "legalTerms": "Términos del servicio",
     "total": "Total",
@@ -2585,4 +1784,3 @@
     }
   }
 }
-

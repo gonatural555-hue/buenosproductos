@@ -8,10 +8,16 @@ const OG_LOCALES: Record<Locale, string> = {
   it: "it_IT",
 };
 
-export const LEGAL_SLUGS: Record<
-  "privacy" | "cookies" | "terms" | "disclaimer",
-  Record<Locale, string>
-> = {
+export type LegalSlugKey =
+  | "privacy"
+  | "cookies"
+  | "terms"
+  | "disclaimer"
+  | "returns"
+  | "shipping"
+  | "regret";
+
+export const LEGAL_SLUGS: Record<LegalSlugKey, Record<Locale, string>> = {
   privacy: {
     en: "privacy-policy",
     es: "politica-de-privacidad",
@@ -36,7 +42,31 @@ export const LEGAL_SLUGS: Record<
     fr: "avis-de-non-responsabilite",
     it: "esclusione-di-responsabilita",
   },
+  returns: {
+    en: "returns",
+    es: "returns",
+    fr: "returns",
+    it: "returns",
+  },
+  shipping: {
+    en: "shipping",
+    es: "envios",
+    fr: "shipping",
+    it: "shipping",
+  },
+  regret: {
+    en: "right-of-withdrawal",
+    es: "boton-de-arrepentimiento",
+    fr: "right-of-withdrawal",
+    it: "right-of-withdrawal",
+  },
 };
+
+export function legalPathByLocale(key: LegalSlugKey): Record<Locale, string> {
+  return Object.fromEntries(
+    locales.map((locale) => [locale, `/${locale}/${LEGAL_SLUGS[key][locale]}`])
+  ) as Record<Locale, string>;
+}
 
 export function getSiteUrl() {
   const envUrl = process.env.NEXT_PUBLIC_BASE_URL;

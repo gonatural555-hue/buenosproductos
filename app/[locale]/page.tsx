@@ -1,8 +1,9 @@
-import BrandGateway from "@/components/gateway/BrandGateway";
+import GoodIdeasHomePage from "@/components/good-ideas/GoodIdeasHomePage";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
 import { buildMetadata } from "@/lib/seo";
+import { buildPathByLocale, homePath } from "@/lib/routing/paths";
 
 export async function generateMetadata({
   params,
@@ -11,22 +12,17 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
-  const seo = messages.seo?.gateway;
+  const seo = messages.seo?.goodIdeas;
 
   return buildMetadata({
     locale,
     title: seo?.title,
     description: seo?.description,
-    pathByLocale: {
-      en: "/en",
-      es: "/es",
-      fr: "/fr",
-      it: "/it",
-    },
+    pathByLocale: buildPathByLocale(homePath),
   });
 }
 
-export default async function BrandGatewayPage({
+export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
@@ -36,21 +32,14 @@ export default async function BrandGatewayPage({
   const t = createTranslator(messages);
 
   return (
-    <BrandGateway
+    <GoodIdeasHomePage
       locale={locale}
-      copy={{
-        goNatural: {
-          title: t("brandGateway.goNatural.title"),
-          tagline: t("brandGateway.goNatural.tagline"),
-          cta: t("brandGateway.goNatural.cta"),
-        },
-        goodIdeas: {
-          title: t("brandGateway.goodIdeas.title"),
-          tagline: t("brandGateway.goodIdeas.tagline"),
-          cta: t("brandGateway.goodIdeas.cta"),
-        },
-        localeAria: t("brandGateway.localeAria"),
-      }}
+      title={t("goodIdeas.hero.title")}
+      subtitle={t("goodIdeas.hero.subtitle")}
+      eyebrow={t("goodIdeas.hero.eyebrow")}
+      cta={t("goodIdeas.hero.cta")}
+      comingSoon={t("goodIdeas.hero.comingSoon")}
+      sectionAriaLabel={t("goodIdeas.hero.sectionAria")}
     />
   );
 }

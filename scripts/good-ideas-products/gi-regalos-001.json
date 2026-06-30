@@ -6,24 +6,26 @@
       "/assets/images/good-ideas-products/gi-regalos-001/image.webp"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-regalos-001/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-regalos-001/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-regalos-001/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-regalos-001/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-regalos-001/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H5f673c5ee484456a9ab53893ed461b9cL.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hed5144f6ac7f42d69784ce2dc4e6b66eU.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H9aa595cff60c4755a0d303443c433a97p.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
     "extras": [],
     "variantImages": {
-      "normal": [
-        "/assets/images/good-ideas-products/gi-regalos-001/normal.webp"
-      ],
-      "housekeeping-claw": [
-        "/assets/images/good-ideas-products/gi-regalos-001/housekeeping-claw.webp"
-      ],
-      "watergun": [
-        "/assets/images/good-ideas-products/gi-regalos-001/watergun.webp"
-      ]
+      "color": {
+        "blanco": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/H5f673c5ee484456a9ab53893ed461b9cL.jpg?avif=close&webp=close"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/Hed5144f6ac7f42d69784ce2dc4e6b66eU.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H9aa595cff60c4755a0d303443c433a97p.jpg?avif=close&webp=close"
+          ],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
     }
   }
 }

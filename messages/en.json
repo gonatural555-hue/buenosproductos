@@ -79,7 +79,25 @@
       "products": "Products",
       "blog": "Blog",
       "cart": "Cart",
+      "account": "My account",
+      "accountMenuAria": "Account menu",
+      "helloUser": "Hi, {name}",
       "allBrands": "All brands"
+    },
+    "auth": {
+      "back": "Back",
+      "tablistAria": "Sign in or create account",
+      "loginTab": "Log in",
+      "registerTab": "Create account",
+      "loginTitle": "Welcome back",
+      "registerTitle": "Create your account",
+      "loginSubtitle": "Sign in to view orders and save your details",
+      "registerSubtitle": "Create an account to speed up future purchases",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@email.com",
+      "passwordLabel": "Password"
     },
     "hero": {
       "eyebrow": "Home & Tech",
@@ -138,15 +156,18 @@
         "home": "Home",
         "tech": "Tech",
         "lifestyle": "Lifestyle",
-        "gifts": "Gifts",
         "names": {
           "tech": "Tech",
           "home": "Home",
           "lifestyle": "Lifestyle",
-          "gifts": "Gifts",
           "celulares": "Phones",
+          "robots-ia": "AI Robots",
+          "auriculares": "Headphones",
           "herramientas-limpieza-celulares": "Phone Cleaning Tools",
-          "cocina": "Kitchen"
+          "cocina": "Kitchen",
+          "accesorios-para-auto": "Car Accessories",
+          "hervidores-electricos": "Electric Kettles",
+          "cuidado-personal": "Personal Care"
         }
       },
       "carousel": {
@@ -164,11 +185,6 @@
           "title": "Daily\nLifestyle",
           "subtitle": "Useful gear for work, travel and everyday routines.",
           "accentWord": "Daily"
-        },
-        "gifts": {
-          "title": "Gift\nIdeas",
-          "subtitle": "Thoughtful picks for home, tech and daily life.",
-          "accentWord": "Gift"
         }
       }
     },
@@ -184,97 +200,23 @@
       "featuredLabel": "Featured story",
       "articlesLabel": "Latest articles",
       "backToBlog": "Back to blog",
-      "featuredSlug": "smart-home-essentials-2026",
-      "posts": {
-        "smart-home-essentials-2026": {
-          "title": "Smart home essentials for everyday calm",
-          "excerpt": "Small upgrades for home and tech that make daily routines simpler, quieter, and more enjoyable.",
-          "subtitle": "Practical picks for home, desk, and travel.",
-          "intro": "Good Products is about useful products that fit real life—not clutter. These are the kinds of upgrades that earn a permanent spot on a shelf, in a bag, or on a desk.",
-          "heroImage": "/assets/images/good-ideas-blog/smart-home-essentials-2026-hero.webp",
-          "relatedProductIds": ["gi-hogar-002", "gi-lifestyle-001"],
-          "sections": [
-            {
-              "heading": "Start with the routines you repeat",
-              "paragraphs": [
-                "The best home tech is not the loudest gadget on a feed. It is the item that removes friction from something you already do every day—making tea, charging devices, or keeping a corner of the home organized.",
-                "A compact travel kettle, a pair of wireless earbuds, or a small fridge for drinks and skincare can change how a room feels without a full remodel."
-              ],
-              "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-1.webp"
-            },
-            {
-              "heading": "Tech that stays out of the way",
-              "paragraphs": [
-                "Choose gear with clear controls, honest sizing, and a design you are happy to see when it is not in use. Minimal interfaces and portable formats travel well between kitchen, office, and weekend plans.",
-                "When a product does one job well, it is easier to recommend—and easier to live with."
-              ],
-              "image": "/assets/images/good-ideas-blog/smart-home-essentials-2026-section-2.webp"
-            }
-          ],
-          "closing": "Explore the Good Products catalog for home, tech, lifestyle, and gift-ready picks built for everyday use."
-        },
-        "product-from-1005006438780849": {
-          "title": "Portable travel kettle 450ML for home and on the go",
-          "excerpt": "A compact Good Products home pick for tea, coffee, and quick hot water at your desk, in a dorm, or while traveling.",
-          "subtitle": "Home essentials that fit real routines.",
-          "intro": "Good Products curates useful home products—not clutter. This compact 450ML travel kettle is built for the moments when you want hot water without filling the kitchen counter.",
-          "heroImage": "/assets/images/good-ideas-blog/product-from-1005006438780849-hero.webp",
-          "relatedProductIds": ["gi-hogar-002"],
-          "sections": [
-            {
-              "heading": "Why a compact kettle earns a spot in your bag",
-              "paragraphs": [
-                "The best home upgrades remove friction from routines you already repeat. A small kettle handles tea, coffee, instant meals, and warm water without taking over a shelf or suitcase.",
-                "At 450ML, the size stays honest for one or two cups—ideal for a desk, nightstand, dorm, or hotel room where a full kitchen is not part of the plan."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-1.webp"
-            },
-            {
-              "heading": "Built for everyday Good Products home use",
-              "paragraphs": [
-                "Choose the plug format that matches your region so the same compact design works at home and on travel days.",
-                "Explore the full product page for sizing, plug options, and gallery details—then pair it with other home and lifestyle picks from the Good Products catalog."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-1005006438780849-section-2.webp"
-            }
-          ],
-          "closing": "See the Portable Travel Kettle 450ML in the Good Products home catalog and build a setup that fits how you actually live."
-        },
-        "product-from-supplier-link": {
-          "title": "Premium home picks that elevate everyday spaces",
-          "excerpt": "Discover a premium home product curated for modern living—clean lines, quality materials, and style that fits real rooms.",
-          "subtitle": "Contemporary home style with a premium feel.",
-          "intro": "Good Products brings home products chosen for quality and everyday use. This premium pick is selected for thoughtful design and materials that feel at home in modern interiors—not showroom clutter.",
-          "heroImage": "/assets/images/good-ideas-blog/product-from-supplier-link/hero.webp",
-          "sections": [
-            {
-              "heading": "Design that complements how you live",
-              "paragraphs": [
-                "The sleek, modern look enhances your space while matching a contemporary lifestyle. Elegant simplicity and careful finishing work in minimalist setups and richer rooms alike.",
-                "It is the kind of piece you notice for the right reasons: calm presence, honest materials, and a profile that does not fight the rest of the room."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-1.webp"
-            },
-            {
-              "heading": "Versatile enough for a refresh or a new direction",
-              "paragraphs": [
-                "Whether you are updating one corner or planning a fuller room change, this home pick adapts to different tastes and interior moods.",
-                "Multiple style directions mean it can sit naturally in a desk nook, living area, or bedroom shelf without feeling out of place."
-              ],
-              "image": "/assets/images/good-ideas-blog/product-from-supplier-link/section-2.webp"
-            }
-          ],
-          "closing": "Explore the Good Products home catalog for premium picks that balance quality, accessibility, and everyday usefulness."
-        }
-      }
+      "viewProductCta": "View product"
     },
     "cart": {
       "title": "Your cart",
+      "back": "Back",
+      "oneItem": "1 item",
+      "itemCount": "{count} items",
       "empty": "Your Good Products cart is empty.",
       "emptyCta": "Explore products",
-      "comingSoonCheckout": "Checkout will be available when we launch the catalog.",
       "subtotal": "Subtotal",
-      "checkout": "Go to checkout"
+      "summaryTitle": "Cart summary",
+      "shippingStandard": "Standard shipping",
+      "shippingFree": "Free",
+      "estimatedTotal": "Estimated total",
+      "checkout": "Checkout",
+      "paymentMethodsTitle": "Accepted payment methods",
+      "comingSoonCheckout": "Checkout will be available when we launch the catalog."
     },
     "checkout": {
       "title": "Checkout",
@@ -291,6 +233,88 @@
       "manualDownload": "Download PDF",
       "manualOpen": "Open in new tab"
     },
+    "pdp": {
+      "accordions": {
+        "productDetails": "Product details",
+        "shippingReturns": "Shipping & returns",
+        "helpFaqs": "Help & FAQs"
+      },
+      "details": {
+        "descriptionHeading": "Description",
+        "featuresHeading": "Features & benefits",
+        "materialsHeading": "Materials & specifications",
+        "idealForHeading": "Ideal for",
+        "technicalHeading": "Technical information"
+      },
+      "shipping": {
+        "sections": [
+          {
+            "title": "Fast shipping",
+            "body": "We process every order promptly. Standard shipping is free on this product. Estimated delivery between {start} and {end}."
+          },
+          {
+            "title": "Order tracking",
+            "body": "You will receive an email with a tracking number as soon as your order leaves the warehouse. Check status in real time with the carrier."
+          },
+          {
+            "title": "Estimated timelines",
+            "body": "Delivery times vary by location and carrier. Dates shown on the product page are estimates and are confirmed when your package ships."
+          },
+          {
+            "title": "Withdrawal and claims",
+            "body": "Withdrawal without cause: 10 calendar days from delivery (Law 24.240). Claims for defect, damage, or error: up to 15 days with evidence. See our Returns Policy."
+          },
+          {
+            "title": "Warranty",
+            "body": "All products include manufacturer warranty. If you notice a factory defect, contact us and we will help with a replacement or repair as applicable."
+          }
+        ]
+      },
+      "faqs": [
+        {
+          "question": "How long does shipping take?",
+          "answer": "Free standard shipping typically takes between {start} and {end} depending on your location. We email you when your package is on its way."
+        },
+        {
+          "question": "Is there a warranty?",
+          "answer": "Yes. All our products include manufacturer warranty. Contact us if you need post-purchase support."
+        },
+        {
+          "question": "How can I return the product?",
+          "answer": "Withdrawal: 10 days from delivery via the Withdrawal button. Claims for defect or error: up to 15 days by emailing go.natural.555@gmail.com with photos and order number."
+        },
+        {
+          "question": "How do I track my order?",
+          "answer": "When we ship your order you will receive an email with a tracking link from the carrier."
+        },
+        {
+          "question": "Can I pay in installments?",
+          "answer": "At checkout you can pay with PayPal, which in many regions offers financing options depending on your account and country."
+        }
+      ],
+      "phase3": {
+        "videosTitle": "Product videos",
+        "videosSubtitle": "See the product in action before you buy.",
+        "playVideo": "Play video",
+        "reviewsTitle": "Customer reviews",
+        "reviewsSubtitle": "Real feedback from verified buyers.",
+        "reviewsCountLabel": "reviews",
+        "verifiedPurchase": "Verified purchase",
+        "reviewsEmptyTitle": "No reviews yet",
+        "reviewsEmptyBody": "Be the first to share your experience with this product.",
+        "crossSellTitle": "You may also like",
+        "crossSellSubtitle": "Related picks curated for you."
+      },
+      "phase4": {
+        "navProduct": "Product",
+        "navDetails": "Details",
+        "navVideos": "Videos",
+        "navReviews": "Reviews",
+        "navCrossSell": "Related",
+        "buyNow": "Buy now",
+        "stickyCartLabel": "Quick purchase"
+      }
+    },
     "footer": {
       "tagline": "Smart products for home, technology and everyday life.",
       "shopHeading": "Shop",
@@ -301,6 +325,10 @@
       "privacy": "Privacy",
       "cookies": "Cookies",
       "terms": "Terms",
+      "returns": "Returns",
+      "shipping": "Shipping",
+      "regret": "Withdrawal",
+      "disclaimer": "Disclaimer",
       "rights": "All rights reserved."
     }
   },
@@ -322,6 +350,13 @@
     "goToCart": "Go to cart",
     "continueShopping": "Continue shopping",
     "priceLabel": "Price"
+  },
+  "addedToCartDrawer": {
+    "title": "Added to cart",
+    "successHint": "Product added successfully",
+    "goToCart": "Go to cart ({count})",
+    "continueShopping": "Continue shopping",
+    "closeAria": "Close cart drawer"
   },
   "currency": {
     "checkoutDisclaimer": "Prices in {currency} are indicative. Payment is processed in USD.",
@@ -412,10 +447,26 @@
     "categoriesTitle": "Browse with intention",
     "categoriesSubtitle": "Fishing, mountain & snow, outdoor adventure, and water sports — large touch targets, same calm decisions.",
     "categoryCards": [
-      { "label": "Fishing", "path": "/products?category=fishing", "imageKey": "fishing" },
-      { "label": "Mountain & snow", "path": "/products?category=mountain-snow", "imageKey": "mountain-snow" },
-      { "label": "Outdoor & adventure", "path": "/products?category=outdoor", "imageKey": "outdoor-adventure" },
-      { "label": "Water sports", "path": "/products?category=water-sports", "imageKey": "water-sports" }
+      {
+        "label": "Fishing",
+        "path": "/products?category=fishing",
+        "imageKey": "fishing"
+      },
+      {
+        "label": "Mountain & snow",
+        "path": "/products?category=mountain-snow",
+        "imageKey": "mountain-snow"
+      },
+      {
+        "label": "Outdoor & adventure",
+        "path": "/products?category=outdoor",
+        "imageKey": "outdoor-adventure"
+      },
+      {
+        "label": "Water sports",
+        "path": "/products?category=water-sports",
+        "imageKey": "water-sports"
+      }
     ],
     "journalTitle": "Journal",
     "journalIntro": "Field notes in the same voice as the shop floor.",
@@ -652,11 +703,11 @@
       "secureAndWarranty": "Encrypted payments and PayPal-backed buyer protection.",
       "shippingHeading": "Estimated delivery",
       "shippingEurope": "Europe: 10–21 business days",
-      "shippingLatam": "LATAM: 12–25 business days (varies by destination)",
+      "shippingLatam": "LATAM: 15–28 business days",
       "shippingEuropeTraining001": "Europe: 3–8 business days",
-      "returns": "Easy 15-day returns after delivery.",
+      "returns": "10-day withdrawal · Claims up to 15 days",
       "mobileStickyLine1": "International shipping",
-      "mobileStickyLine2": "15-day returns",
+      "mobileStickyLine2": "10-day withdrawal",
       "mobileStickyLine3": "Secure purchase",
       "selectSize": "Select a size",
       "sizeGuide": "Size guide",
@@ -686,244 +737,394 @@
     "reviewsEmptyText": "This product does not have published reviews yet"
   },
   "legal": {
+    "common": {
+      "eyebrow": "Legal information",
+      "updatedAt": "Last updated: June 2026"
+    },
+    "nav": {
+      "ariaLabel": "Legal pages",
+      "terms": "Terms",
+      "returns": "Returns",
+      "shipping": "Shipping",
+      "regret": "Withdrawal",
+      "privacy": "Privacy",
+      "cookies": "Cookies",
+      "disclaimer": "Disclaimer"
+    },
+    "regretForm": {
+      "sectionTitle": "Withdrawal request form",
+      "intro": "Complete this form to revoke your purchase within 10 calendar days of delivery. No site registration required.",
+      "fullName": "Full name",
+      "email": "Email",
+      "orderNumber": "Order number",
+      "product": "Product",
+      "notes": "Notes (optional)",
+      "submit": "Submit withdrawal request",
+      "submitting": "Sending…",
+      "finePrint": "We store your request securely. You will receive a confirmation email with your case ID within 24 hours.",
+      "successTitle": "Request registered",
+      "successBody": "Your withdrawal was recorded successfully. We also sent a confirmation email. Save this case ID:",
+      "successFinePrint": "We will contact you within 24 hours with next steps to complete the revocation.",
+      "errors": {
+        "invalid": "Please check the form fields and try again.",
+        "server": "We could not register your request. Try again later or email go.natural.555@gmail.com.",
+        "rate_limit": "Too many requests from this email. Please wait and try again."
+      }
+    },
     "privacy": {
-      "metaTitle": "Privacy Policy | Go Natural",
-      "metaDescription": "How we handle personal data and protect your privacy across our website and services.",
+      "metaTitle": "Privacy Policy | Buenos Productos",
+      "metaDescription": "How Buenos Productos handles your personal data.",
       "title": "Privacy Policy",
-      "intro": "We care about privacy as much as we care about quiet, reliable experiences. This policy explains what we collect, why we collect it, and how we protect it.",
-      "updatedAt": "Last updated: January 2026",
+      "intro": "Buenos Productos, operated by Francisco Inza, respects your privacy. This policy explains what we collect, why, and your rights.",
+      "updatedAt": "Last updated: June 2026",
       "sections": [
         {
-          "title": "What we collect",
+          "title": "Data controller",
           "paragraphs": [
-            "Information you provide, such as name, email, shipping details, and order information.",
-            "Communications you send to us, including support requests and feedback.",
-            "Basic technical data like device type, browser, and pages visited, used to keep the site reliable."
+            "Controller: Francisco Inza (CUIT 20-40635753-9), operator of Buenos Productos.",
+            "Contact: go.natural.555@gmail.com"
           ]
         },
         {
-          "title": "How we use information",
-          "paragraphs": [
-            "To process orders, deliver products, and provide customer support.",
-            "To improve the site experience and keep it secure.",
-            "To meet legal and accounting obligations when required."
+          "title": "Data we collect",
+          "bullets": [
+            "Account and order data: name, email, shipping address, phone if provided.",
+            "Payment data: processed by PayPal; we do not store full card numbers.",
+            "Communications: support, withdrawal requests, and claims.",
+            "Technical data: device, browser, pages visited, and cookies (see Cookie Policy)."
           ]
         },
         {
-          "title": "Lawful bases",
-          "paragraphs": [
-            "We process data based on consent, contractual necessity, legitimate interests, and legal obligations.",
-            "You can withdraw consent at any time for activities that rely on it."
+          "title": "How we use data",
+          "bullets": [
+            "Process orders, payments, shipping, and after-sales support.",
+            "Handle returns, withdrawal, and claims.",
+            "Send confirmations, tracking, and operational emails.",
+            "Newsletter and marketing only with explicit consent.",
+            "Security, fraud prevention, and legal compliance."
           ]
         },
         {
-          "title": "Sharing with trusted partners",
+          "title": "Processors and transfers",
           "paragraphs": [
-            "We share only what is necessary with payment providers, logistics partners, and service platforms that support our operations.",
-            "We do not sell personal data."
-          ]
-        },
-        {
-          "title": "International transfers",
-          "paragraphs": [
-            "If data is processed outside your country, we use safeguards designed to protect it to a comparable standard."
+            "We share data only with providers required to operate the service."
+          ],
+          "bullets": [
+            "PayPal — payment processing.",
+            "Supabase — authentication, orders, and account data.",
+            "Brevo — transactional email and newsletter (with consent).",
+            "Hosting, analytics, and international logistics providers."
           ]
         },
         {
           "title": "Retention and security",
           "paragraphs": [
-            "We keep data only as long as needed for the purposes described or required by law.",
-            "We use reasonable security measures to protect information from loss, misuse, or unauthorized access."
+            "We retain data as needed for the commercial relationship, claims, and tax/accounting obligations.",
+            "We apply reasonable security measures; no system is 100% infallible."
           ]
         },
         {
           "title": "Your rights",
           "paragraphs": [
-            "You may request access, correction, deletion, portability, or restriction of your personal data.",
-            "You may also object to certain uses or withdraw consent where applicable."
-          ]
-        },
-        {
-          "title": "Contact",
-          "paragraphs": [
-            "If you have questions about this policy or your data, contact us at go.natural.555@gmail.com."
+            "You may request access, correction, update, or deletion by emailing go.natural.555@gmail.com.",
+            "You may object to consent-based uses and withdraw consent where applicable."
           ]
         }
       ],
-      "closing": "We review this policy as our services evolve, always with the goal of keeping things clear and respectful."
+      "closing": "We may update this policy; the current version will always be published here."
     },
     "cookies": {
-      "metaTitle": "Cookie Policy | Go Natural",
-      "metaDescription": "An overview of how we use cookies to keep the site reliable and improve your experience.",
+      "metaTitle": "Cookie Policy | Buenos Productos",
+      "metaDescription": "Cookie use on Buenos Productos.",
       "title": "Cookie Policy",
-      "intro": "Cookies help the site work smoothly and remember simple preferences. We keep their use minimal and focused on experience.",
-      "updatedAt": "Last updated: January 2026",
+      "intro": "We use cookies and similar technologies for site functionality, preferences, and experience improvements.",
+      "updatedAt": "Last updated: June 2026",
       "sections": [
         {
           "title": "What cookies are",
           "paragraphs": [
-            "Cookies are small text files stored on your device that help websites function properly and remember preferences."
+            "Small files stored on your device when you visit the site."
           ]
         },
         {
-          "title": "How we use cookies",
-          "paragraphs": [
-            "To keep the site secure and functioning as expected.",
-            "To remember basic settings, such as language selection.",
-            "To understand which pages are most useful so we can improve them."
-          ]
-        },
-        {
-          "title": "Types of cookies we use",
-          "paragraphs": [
-            "Essential cookies for site functionality and security.",
-            "Preference cookies that remember settings like language.",
-            "Analytics cookies that help us understand site performance in an aggregated way."
+          "title": "Types we use",
+          "bullets": [
+            "Essential: session, cart, security, and checkout.",
+            "Preferences: language and basic settings.",
+            "Analytics: aggregated site performance (if enabled)."
           ]
         },
         {
           "title": "Managing cookies",
           "paragraphs": [
-            "You can control cookies through your browser settings, including blocking or deleting them.",
-            "Please note that disabling cookies may affect how some parts of the site function."
-          ]
-        },
-        {
-          "title": "Updates",
-          "paragraphs": [
-            "We may update this policy when our services change. We will keep the tone clear and the details current."
-          ]
-        },
-        {
-          "title": "Contact",
-          "paragraphs": [
-            "For questions about cookies, contact us at go.natural.555@gmail.com."
+            "You can block or delete cookies in your browser. Some features may become unavailable.",
+            "Questions: go.natural.555@gmail.com"
           ]
         }
       ],
-      "closing": "We aim for simplicity and transparency in how we use cookies."
+      "closing": "We will update this policy if our tools change."
     },
     "terms": {
-      "metaTitle": "Terms & Conditions | Go Natural",
-      "metaDescription": "The terms that apply to using our website and purchasing from Go Natural.",
+      "metaTitle": "Terms & Conditions | Buenos Productos",
+      "metaDescription": "Purchase terms for Buenos Productos — commercial intermediary with international shipping to Argentina.",
       "title": "Terms & Conditions",
-      "intro": "These terms explain how the site works and what you can expect when shopping with us. They are written to be clear and fair.",
-      "updatedAt": "Last updated: January 2026",
+      "intro": "These terms govern use of Buenos Productos and purchases on the site. By buying, you accept these conditions and applicable law in Argentina.",
+      "updatedAt": "Last updated: June 2026",
       "sections": [
         {
-          "title": "Using the site",
+          "title": "Seller identification",
           "paragraphs": [
-            "By using this site, you agree to use it in a respectful and lawful way.",
-            "We may update the site or suspend features to keep quality and safety high."
+            "Buenos Productos is operated by Francisco Inza, CUIT 20-40635753-9, address Uruguay 61, Río Cuarto, Córdoba, Argentina.",
+            "Contact: go.natural.555@gmail.com"
           ]
         },
         {
-          "title": "Orders and availability",
+          "title": "Nature of service",
           "paragraphs": [
-            "Submitting an order is a request to purchase; we confirm acceptance when the order is processed.",
-            "Availability can change, and we may limit quantities to keep service fair."
+            "We act as a commercial intermediary: we select products, manage your order, and coordinate shipping through international suppliers and logistics operators.",
+            "The purchase contract is between you and Francisco Inza. Fulfillment may use third parties without reducing your rights against the site operator."
+          ]
+        },
+        {
+          "title": "Products and information",
+          "bullets": [
+            "Products may be imported and supplied by international providers.",
+            "Images, dimensions, and colors are indicative; minor packaging or shade variations may occur.",
+            "Certifications listed come from the manufacturer or supplier.",
+            "Third-party brands belong to their owners; used descriptively only."
           ]
         },
         {
           "title": "Pricing and payment",
-          "paragraphs": [
-            "Prices are shown clearly and may change without notice, except for confirmed orders.",
-            "Payments are handled through trusted providers using secure methods."
+          "bullets": [
+            "Prices are shown in USD unless stated otherwise.",
+            "Payment is processed via PayPal or other methods enabled at checkout.",
+            "An order is confirmed when payment completes and you receive email confirmation."
           ]
         },
         {
-          "title": "Shipping and returns",
+          "title": "Shipping",
           "paragraphs": [
-            "Delivery times are estimates and can vary due to factors outside our control.",
-            "If something arrives damaged or incorrect, contact us so we can make it right."
+            "Delivery times are estimates (typically 13–37 days from purchase, depending on location and logistics).",
+            "Customs, holidays, or force majeure may cause delays. See Shipping Policy."
           ]
         },
         {
-          "title": "Product use",
+          "title": "Returns and withdrawal",
           "paragraphs": [
-            "Use products as intended and follow care instructions provided with the item.",
-            "Outdoor activities carry inherent risks; choose gear appropriate to your experience and conditions."
+            "Two separate tracks apply by reason. See Returns Policy and Right of Withdrawal."
+          ],
+          "bullets": [
+            "Withdrawal (no cause): 10 calendar days from delivery — non-waivable right in Argentina.",
+            "Claims for defect, damage, error, or non-delivery: up to 15 days from delivery with evidence.",
+            "After those windows, only legal conformity warranties may apply."
           ]
         },
         {
-          "title": "Intellectual property",
+          "title": "Site use",
           "paragraphs": [
-            "All content on this site belongs to Go Natural or its partners and may not be reused without permission."
-          ]
-        },
-        {
-          "title": "Limitations of liability",
-          "paragraphs": [
-            "We are not liable for indirect or consequential losses related to the use of the site or products.",
-            "Nothing in these terms limits rights that cannot be excluded by law."
-          ]
-        },
-        {
-          "title": "Changes and contact",
-          "paragraphs": [
-            "We may update these terms as the business evolves. The latest version will always be available here.",
-            "Questions can be sent to go.natural.555@gmail.com."
-          ]
-        }
-      ],
-      "closing": "Our goal is a clear, calm experience—from browsing to delivery."
-    },
-    "disclaimer": {
-      "metaTitle": "Disclaimer | Go Natural",
-      "metaDescription": "Important information about outdoor activities, product use, and the limits of our liability.",
-      "title": "Disclaimer",
-      "intro": "We share guidance and products intended for calm, capable exploration. This disclaimer clarifies the limits of our responsibility.",
-      "updatedAt": "Last updated: January 2026",
-      "sections": [
-        {
-          "title": "General information",
-          "paragraphs": [
-            "Content on this site is provided for general guidance and does not replace professional advice.",
-            "We aim for accuracy, but we do not guarantee that all information is complete or current at all times."
-          ]
-        },
-        {
-          "title": "Outdoor activity risk",
-          "paragraphs": [
-            "Outdoor activities involve inherent risks such as weather, terrain, and physical effort.",
-            "You are responsible for assessing conditions and choosing activities that match your skills."
-          ]
-        },
-        {
-          "title": "Product use",
-          "paragraphs": [
-            "Products should be used as intended and maintained according to instructions.",
-            "Improper use, modification, or neglect can lead to damage or injury."
-          ]
-        },
-        {
-          "title": "External links",
-          "paragraphs": [
-            "We may link to third‑party sites for convenience. We do not control their content or practices."
+            "Use the site lawfully. We may suspend features for maintenance, security, or fraud."
           ]
         },
         {
           "title": "Limitation of liability",
           "paragraphs": [
-            "To the extent permitted by law, Go Natural is not liable for losses arising from the use of this site, its content, or its products.",
-            "Nothing here limits rights that cannot be excluded under applicable law."
+            "We are not liable for indirect or consequential damages to the extent permitted by law.",
+            "Nothing here limits non-waivable consumer rights in Argentina."
           ]
         },
         {
-          "title": "Local regulations",
+          "title": "Governing law",
           "paragraphs": [
-            "Some activities may require permits or specific safety measures depending on your location.",
-            "You are responsible for complying with local rules and regulations."
-          ]
-        },
-        {
-          "title": "Contact",
-          "paragraphs": [
-            "For questions about this disclaimer, contact us at go.natural.555@gmail.com."
+            "These terms are governed by the laws of Argentina. Disputes should first be resolved amicably."
           ]
         }
       ],
-      "closing": "Respect the environment, move with care, and make choices that keep you safe."
+      "closing": "We may update these terms; the version published at purchase applies unless law requires otherwise."
+    },
+    "returns": {
+      "metaTitle": "Returns Policy | Buenos Productos",
+      "metaDescription": "Returns, withdrawal, and refunds at Buenos Productos.",
+      "title": "Returns & Refunds Policy",
+      "intro": "We separate legal withdrawal from product-issue claims. This keeps Argentine compliance clear and manageable.",
+      "updatedAt": "Last updated: June 2026",
+      "sections": [
+        {
+          "title": "Track 1 — Withdrawal (Law 24.240)",
+          "paragraphs": [
+            "If you change your mind without a product defect, you have 10 calendar days from receipt to revoke acceptance without justification.",
+            "Use the Withdrawal button or email go.natural.555@gmail.com with your order number."
+          ],
+          "bullets": [
+            "Product must be unused, complete, and in original packaging.",
+            "We will instruct how to make the item available for return in Argentina.",
+            "Return shipping for withdrawal is borne by the seller under Argentine law.",
+            "We refund the amount paid within 10 days after receiving and verifying the product via the same payment method (PayPal)."
+          ]
+        },
+        {
+          "title": "Track 2 — Product issue (defect, damage, error, not as described)",
+          "paragraphs": [
+            "If the product arrived defective, damaged, incorrect, or not as described, contact us within 15 days of delivery."
+          ],
+          "bullets": [
+            "Send photos of the product, packaging, and shipping label.",
+            "We will offer replacement, reshipment, or full refund as appropriate.",
+            "Return costs are on us when applicable.",
+            "Does not include change of mind after the withdrawal window."
+          ]
+        },
+        {
+          "title": "Non-delivery",
+          "paragraphs": [
+            "If the package did not arrive within the published estimate, contact us with your order number. We will investigate and refund in full if non-delivery is confirmed."
+          ]
+        },
+        {
+          "title": "Exclusions",
+          "bullets": [
+            "Custom or made-to-order products.",
+            "Sealed hygiene items that were opened.",
+            "Products damaged by misuse or modified by the customer.",
+            "Requests outside stated windows, except legal conformity warranty."
+          ]
+        },
+        {
+          "title": "How to start",
+          "bullets": [
+            "Withdrawal: Withdrawal button on site.",
+            "Claims: go.natural.555@gmail.com with subject «Claim order [number]».",
+            "We respond within a reasonable time (typically 48 business hours)."
+          ]
+        }
+      ],
+      "closing": "Contact us before opening a PayPal chargeback; we can often resolve faster."
+    },
+    "shipping": {
+      "metaTitle": "Shipping Policy | Buenos Productos",
+      "metaDescription": "International shipping to Argentina — timelines, tracking, and customs.",
+      "title": "Shipping Policy",
+      "intro": "Products ship from international suppliers to Argentina. Timelines are estimates and may vary due to logistics and customs.",
+      "updatedAt": "Last updated: June 2026",
+      "sections": [
+        {
+          "title": "Coverage",
+          "paragraphs": [
+            "We ship to addresses within Argentina. Verify postal code and details at checkout."
+          ]
+        },
+        {
+          "title": "Estimated timelines",
+          "paragraphs": [
+            "Typical delivery window is 13–37 days from order confirmation, depending on location and carrier.",
+            "Dates on product pages are calculated dynamically and are indicative, not a guaranteed exact day."
+          ]
+        },
+        {
+          "title": "Shipping cost",
+          "paragraphs": [
+            "Many products include free standard shipping as shown on the listing. Otherwise cost is displayed before payment."
+          ]
+        },
+        {
+          "title": "Processing and tracking",
+          "bullets": [
+            "We process orders once payment is confirmed.",
+            "You will receive tracking by email when the package ships.",
+            "Tracking may update slowly during international legs."
+          ]
+        },
+        {
+          "title": "Customs and import",
+          "paragraphs": [
+            "International shipments may be subject to customs inspection. Delays, holds, or documentation requests may extend delivery.",
+            "Cooperate with Correo Argentino or the carrier if contacted. Extraordinary customs costs, when required by regulation, may be the recipient's responsibility."
+          ]
+        },
+        {
+          "title": "Wrong address or refusal",
+          "paragraphs": [
+            "If a package returns due to incorrect data or refusal at destination, we may arrange reshipment at extra cost or partial refund depending on the case."
+          ]
+        }
+      ],
+      "closing": "Shipping questions: go.natural.555@gmail.com with your order number."
+    },
+    "regret": {
+      "metaTitle": "Right of Withdrawal | Buenos Productos",
+      "metaDescription": "Exercise your right of withdrawal on distance sales — Argentina Law 24.240.",
+      "title": "Right of Withdrawal",
+      "intro": "Under Argentine Consumer Defense Law 24.240 and Resolution 424/2020, you may revoke your purchase within 10 calendar days of receiving the product, without justification.",
+      "updatedAt": "Last updated: June 2026",
+      "sections": [
+        {
+          "title": "Conditions",
+          "bullets": [
+            "Window: 10 calendar days from product delivery.",
+            "Product must be unused, complete, and in original packaging.",
+            "No site registration required to use this form.",
+            "We will send a case identification code within 24 hours."
+          ]
+        },
+        {
+          "title": "What happens next",
+          "paragraphs": [
+            "We will instruct how to return the product to an address in Argentina.",
+            "Once the item is verified, we refund the PayPal payment within legal timeframes."
+          ]
+        },
+        {
+          "title": "Alternative contact",
+          "paragraphs": [
+            "You may also email go.natural.555@gmail.com with subject «Withdrawal» and your order number."
+          ]
+        }
+      ],
+      "closing": "This right is non-waivable and does not apply to legally excluded products (custom items, opened hygiene goods, etc.)."
+    },
+    "disclaimer": {
+      "metaTitle": "Disclaimer | Buenos Productos",
+      "metaDescription": "Liability limits and site information for Buenos Productos.",
+      "title": "Disclaimer",
+      "intro": "This disclaimer complements our Terms and clarifies limits of information published on Buenos Productos.",
+      "updatedAt": "Last updated: June 2026",
+      "sections": [
+        {
+          "title": "Site information",
+          "paragraphs": [
+            "Content is informational and commercial. It does not replace professional, technical, or safety advice for your specific case."
+          ]
+        },
+        {
+          "title": "Imported products",
+          "bullets": [
+            "International origin; timelines and availability may change.",
+            "Images and specs are indicative.",
+            "Certifications (CE, FCC, etc.) depend on manufacturer and batch.",
+            "We are not official representatives of third-party brands unless explicitly stated."
+          ]
+        },
+        {
+          "title": "Safe use",
+          "paragraphs": [
+            "Use each product per its manual and electrical, thermal, or battery precautions. We are not liable for misuse."
+          ]
+        },
+        {
+          "title": "Reviews and third-party content",
+          "paragraphs": [
+            "Some reviews may come from international marketplaces for reference. External links do not imply endorsement."
+          ]
+        },
+        {
+          "title": "Limitation",
+          "paragraphs": [
+            "To the extent permitted by law, Buenos Productos is not liable for indirect damages from site or product use.",
+            "Your consumer rights in Argentina remain intact."
+          ]
+        }
+      ],
+      "closing": "Questions: go.natural.555@gmail.com"
     }
   },
   "footer": {
@@ -1231,1009 +1432,6 @@
     "fieldGear": {
       "title": "Field Gear Used",
       "caption": "Selected for calm, reliable use in real conditions."
-    },
-    "posts": {
-      "edge-of-water": {
-        "title": "At the edge of water",
-        "excerpt": "On rhythm, breath, and the calm of open water.",
-        "subtitle": "A slow practice of breath, balance, and clear horizons.",
-        "intro": "Water changes the way we move. It asks for calm decisions, steady breath, and a quieter attention to the present.",
-        "sections": [
-          {
-            "heading": "A slower rhythm",
-            "paragraphs": [
-              "The surface never stays still. It reminds us to travel light, to take only what matters, and to return with less than we brought.",
-              "Gear here should be simple — quiet materials, subtle details, and trust you can feel without thinking about it."
-            ],
-            "image": "/assets/images/categories/water-sports.webp"
-          },
-          {
-            "heading": "Where silence meets movement",
-            "paragraphs": [
-              "There is a clarity that only water brings. It sharpens the senses and softens the mind.",
-              "In that space, movement becomes a form of listening — a quiet conversation with the horizon."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery1.webp"
-          }
-        ],
-        "closing": "Some journeys are defined by stillness. Others by the way you learn to move within it."
-      },
-      "winter-lines": {
-        "title": "Lines in winter light",
-        "excerpt": "Soft layers and clear silhouettes for cold, quiet days.",
-        "subtitle": "Soft layers, strong silhouettes, and the calm of cold air.",
-        "intro": "Winter strips the landscape to its essentials. Light is sharper, air is quieter, and movement becomes deliberate.",
-        "sections": [
-          {
-            "heading": "Clarity in the cold",
-            "paragraphs": [
-              "The season demands preparation, but not excess. Every layer should be intentional, every piece chosen for function and calm.",
-              "When the weather is honest, you need gear that is honest too — protective without noise."
-            ],
-            "image": "/assets/images/blog/winter.webp"
-          },
-          {
-            "heading": "The quiet of altitude",
-            "paragraphs": [
-              "Snow absorbs sound. The world becomes still, and the journey feels more internal.",
-              "In those conditions, simplicity is not a style. It's a necessity."
-            ],
-            "image": "/assets/images/products/gn-ski-snow-001/model-1/image.webp"
-          }
-        ],
-        "closing": "In winter, the line between comfort and clarity is thin. Choose the path that feels clean and calm."
-      },
-      "calm-motion": {
-        "title": "Calm motion, long miles",
-        "excerpt": "Why pace matters more than speed on the road.",
-        "subtitle": "Why the steady pace outlasts the fast start.",
-        "intro": "Cycling is rhythm. A steady cadence carries you farther than intensity ever could.",
-        "sections": [
-          {
-            "heading": "Cadence over speed",
-            "paragraphs": [
-              "There is grace in consistency. The road rewards those who know how to keep the pace even when the terrain shifts.",
-              "Equipment should support that rhythm — light, dependable, and easy to forget."
-            ],
-            "image": "/assets/images/categories/cycling.webp"
-          },
-          {
-            "heading": "The long horizon",
-            "paragraphs": [
-              "Every mile adds to the story. The quieter the ride, the more you remember.",
-              "The best journeys are the ones you can repeat — again and again, without strain."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured04.webp"
-          }
-        ],
-        "closing": "Move with a calm rhythm. Let the horizon come to you."
-      },
-      "quiet-morning-at-camp": {
-        "title": "A Quiet Morning at Camp",
-        "excerpt": "The still window before the day begins, when camp feels suspended.",
-        "subtitle": "The moment before the day begins",
-        "intro": "There is a short window at camp when everything pauses. No wind yet. No footsteps. Just the soft sound of fabric moving as the tent breathes with the morning air. In that stillness, the day begins without asking anything from you.",
-        "sections": [
-          {
-            "heading": "The pause before motion",
-            "paragraphs": [
-              "Before the first light clears the ridge, the campsite feels held in suspension. The ground is cool and slightly damp underfoot, carrying the memory of night. You hear the subtle click of a zipper, the slow settling of a sleeping pad, the whisper of a jacket being pulled on. These are small sounds, but they travel far in the early air, as if the landscape has turned down its volume to make room for them.",
-              "In that quiet, your body adjusts without being told. You notice the temperature shift between shade and the first sliver of sun. You notice the way the light pools on the earth, then moves, almost imperceptibly, as the morning turns. Nothing is urgent. The day has not started, and for a few minutes, you are not required to start it either."
-            ],
-            "image": "/assets/images/hero/storysection.webp"
-          },
-          {
-            "heading": "Less noise, more clarity",
-            "paragraphs": [
-              "Without notifications or schedules, attention shifts naturally. You see the texture of the tent fabric, the thin layer of dew on a rock, the way smoke from the first fire curls into a sky that is still pale. These details do not ask for action. They ask only for presence, and that is enough.",
-              "Clarity here is not the clean sharpness of a list completed. It is a softer clarity, the kind that comes when you let the morning arrive on its own. The mind quiets because it has nothing to defend or chase. You are not trying to manage the day, only to meet it."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery.webp"
-          },
-          {
-            "heading": "Why mornings outdoors feel different",
-            "paragraphs": [
-              "At camp, mornings are not rushed. There is no pressure to optimize them. Coffee tastes slower. Thoughts arrive unforced. The pace feels natural, because it is set by light and temperature, not by a clock. You follow the cues of the environment, and in doing so, you feel less fragmented.",
-              "This is why early hours outdoors carry a different weight. They are not about productivity. They are about alignment. You are where you are, doing only what the moment requires. The simplest actions feel complete. The day does not need to be filled yet. It only needs to begin."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured01.webp"
-          },
-          {
-            "heading": "What stays with you",
-            "paragraphs": [
-              "Later, you might not remember the exact gear list. You might forget the brand of the mug or the color of the tent. But you remember how calm you felt. You remember the quiet before movement, the brief stretch of time when the world felt balanced and still.",
-              "That calm becomes the reason you return. It is not about chasing a bigger view or a longer trail. It is about re‑entering a pace that feels honest. The morning becomes a small ritual, a way of reminding yourself that silence is not empty, but full of what matters."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured02.webp"
-          },
-          {
-            "heading": "Gear used",
-            "paragraphs": [
-              "A compact sleeping system that stays warm without feeling heavy. It creates a quiet night and a slow transition into morning, without breaking the stillness.",
-              "A minimal camp stove for a single cup of coffee. It does its work quietly, turning a few minutes into a ritual rather than a routine."
-            ]
-          }
-        ],
-        "closing": "The moments that stay with us are rarely the loud ones. They are the quiet pauses, the small stretches of time when nothing is required and everything is present. A morning at camp is not a performance. It is a return to a slower tempo, a way of moving that feels less like doing and more like being."
-      },
-      "salir-sin-complicarse": {
-        "title": "Salir a la naturaleza no tiene que ser complicado",
-        "excerpt": "Actividades simples, salidas reales y un ritmo que se adapta a la vida.",
-        "subtitle": "Salir sin complicarse",
-        "intro": "Hay una idea bastante instalada de que para salir a la naturaleza hay que saber mucho, tener buen estado físico o contar con equipo específico. Y la verdad es que no siempre es así. Muchas salidas empiezan con algo mucho más simple: ganas de estar afuera y un poco de tiempo.",
-        "sections": [
-          {
-            "heading": "No hace falta planear una expedición",
-            "paragraphs": [
-              "No hace falta planear una expedición ni irse lejos. A veces alcanza con un sendero corto, una noche de camping o una mañana cerca del agua.",
-              "No todas las salidas tienen que ser una aventura. No todo el mundo busca superarse cada vez que sale.",
-              "Hay días en los que solo querés caminar sin pensar demasiado, armar una carpa sin apuro o sentarte a pescar aunque no piquen. Eso también es salir a la naturaleza.",
-              "Caminar por un sendero marcado, snorkelear cerca de la costa o pasar una noche en un camping equipado no te hace menos outdoor. Te hace realista."
-            ],
-            "image": "/assets/images/hero/storysection.webp"
-          },
-          {
-            "heading": "Actividades simples, disfrute real",
-            "paragraphs": [
-              "Las actividades más simples suelen ser las que más se repiten, justamente porque no exigen demasiado.",
-              "Caminatas cortas en montaña o bosque.",
-              "Camping de fin de semana.",
-              "Pesca recreativa en ríos, lagos o costa.",
-              "Snorkel en playas tranquilas.",
-              "Paseos en kayak o paddle en aguas calmas.",
-              "No requieren entrenamiento especial ni grandes decisiones. Se adaptan a la vida normal, no al revés."
-            ],
-            "image": "/assets/images/products/gn-outdoor-009/gallery.webp"
-          },
-          {
-            "heading": "Menos presión, más constancia",
-            "paragraphs": [
-              "Cuando salir no se siente pesado, salís más seguido. Y cuando salís más seguido, aprendés sin darte cuenta.",
-              "Aprendés a leer el clima, a elegir mejor qué llevar, a organizarte con menos cosas. Todo eso llega solo, sin forzarlo.",
-              "La naturaleza no pide que seas experto. Solo que estés presente."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured01.webp"
-          },
-          {
-            "heading": "Empezar simple también es empezar bien",
-            "paragraphs": [
-              "Salir sin complicarse no es una etapa menor ni algo que haya que superar. Para mucha gente, es la forma más honesta de disfrutar el aire libre.",
-              "Y está bien que así sea."
-            ],
-            "image": "/assets/images/products/gn-outdoor-002/featured02.webp"
-          },
-          {
-            "heading": "Equipo usado",
-            "paragraphs": [
-              "Una carpa simple de armado rápido, pensada para una noche tranquila.",
-              "Un equipo básico de snorkel para playas calmas y salidas cortas."
-            ]
-          }
-        ],
-        "closing": "Salir a la naturaleza no tiene que ser complicado para sentirse verdadero. A veces lo más simple es lo que permite volver, una y otra vez, sin presión y con ganas."
-      },
-      "trekking-facil-espana": {
-        "title": "Top 10 trails fáciles para trekking en España",
-        "excerpt": "Senderos accesibles, distancias razonables y ritmo tranquilo para empezar.",
-        "subtitle": "Trekking fácil",
-        "intro": "España es uno de los países más fáciles para empezar a caminar al aire libre. Hay senderos bien marcados, distancias razonables y opciones para todos los ritmos. No hace falta irse a la alta montaña ni tener experiencia previa. Estos son algunos de los trails más accesibles para caminar tranquilo y disfrutar.",
-        "sections": [
-          {
-            "heading": "Trekking fácil",
-            "paragraphs": [
-              "Caminito del Rey (Málaga). Hoy está perfectamente acondicionado. Impone por las vistas, no por la dificultad.",
-              "Ruta de los Cahorros (Granada). Corta, entretenida y muy bien señalizada. Ideal para un día sin apuro.",
-              "Camino de Ronda (Costa Brava). Tramos costeros sencillos, con paradas naturales para descansar o meterse al agua.",
-              "Bosque de Irati – senderos principales (Navarra). Caminatas suaves, suelo estable y señalización clara."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image.webp"
-          },
-          {
-            "heading": "Opciones para caminar sin exigencia",
-            "paragraphs": [
-              "Ruta del Río Borosa (Jaén). Larga pero fácil. Se puede hacer por tramos.",
-              "Parque Natural de la Albufera (Valencia). Planos, accesibles y perfectos para caminar sin exigencia física.",
-              "Valle del Jerte – rutas cortas. Especialmente recomendables fuera de temporada alta.",
-              "Parque Natural del Delta del Ebro. Senderos planos, ideales para caminar tranquilo."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image1.webp"
-          },
-          {
-            "heading": "Caminar con calma",
-            "paragraphs": [
-              "Montserrat – caminos bajos. Evitar las rutas técnicas y quedarse en los senderos principales.",
-              "Parque Nacional de Ordesa – accesos iniciales. Los primeros tramos son amplios y bien mantenidos.",
-              "Por qué funcionan. Porque no exigen ritmo, ni técnica, ni planificación compleja. Caminás, mirás alrededor y seguís."
-            ],
-            "image": "/assets/images/blog/easytrailspain/image2.webp"
-          }
-        ],
-        "closing": "Empezar por rutas simples no es elegir menos. Es elegir bien. El movimiento se vuelve natural, y el día se siente liviano. Eso es lo que hace que quieras salir otra vez."
-      },
-      "trekking-facil-francia": {
-        "title": "France is one of the easiest places to start walking outdoors and is not beacuse of the wine...",
-        "excerpt": "Well-kept trails and calm distances for a quiet day on foot.",
-        "subtitle": "Easy trekking",
-        "intro": "France has a vast, well‑maintained trail network. Many routes are designed for regular walkers, not mountaineers. Here, you do not need to go fast or far to have a good day outside.",
-        "sections": [
-          {
-            "heading": "Easy trails to start with",
-            "paragraphs": [
-              "Gorges du Verdon, lower trails. Wide paths, open views, gentle elevation.",
-              "Normandy coastal path. Flat sections, clear signage, easy exit points if you get tired.",
-              "Lake Annecy trails. Ideal for walking without steep slopes.",
-              "Vosges Regional Park. Short routes, dense forest, clear wayfinding."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image.webp"
-          },
-          {
-            "heading": "Quiet routes with space to slow down",
-            "paragraphs": [
-              "Stevenson Trail, first sections. History, nature, and reasonable distances.",
-              "Camargue nature trails. Flat ground and accessible all year.",
-              "Mont Saint‑Michel trails, dry zones. Easy walking without physical demand.",
-              "Parc National des Calanques, main routes. Choose the shorter marked access points."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image1.webp"
-          },
-          {
-            "heading": "Walking without pressure",
-            "paragraphs": [
-              "Loire Valley rural paths. Gentle walks between villages.",
-              "Jura trails. Less crowded and very accessible.",
-              "The best part: you can walk without feeling like you are doing a sport. It is natural movement."
-            ],
-            "image": "/assets/images/blog/easytrailfrance/image2.webp"
-          }
-        ],
-        "closing": "The day feels lighter when the trail is simple. You walk, look around, and keep going. That is enough."
-      },
-      "trekking-facil-italia": {
-        "title": "The paths of the ancient Romans",
-        "excerpt": "Italy combines gentle routes with landscapes made for walking slowly.",
-        "subtitle": "Easy trekking",
-        "intro": "Italy brings together remarkable landscapes with routes designed for uncomplicated walking. Many trails link villages, lakes, and coasts, which makes them ideal for beginners.",
-        "sections": [
-          {
-            "heading": "Easy trekking",
-            "paragraphs": [
-              "Cinque Terre, main trails. Choose the shorter, well‑maintained sections.",
-              "Lake Como, lakeside paths. Flat, accessible, and quietly beautiful.",
-              "Val di Funes, lower routes. Open landscape and simple walks.",
-              "Gargano National Park. Easy coastal paths."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image.webp"
-          },
-          {
-            "heading": "Routes with landscape and calm",
-            "paragraphs": [
-              "Dolomites, valley paths. Avoid elevation and stay on lower routes.",
-              "Path of the Gods (Amalfi, shorter sections). It impresses more by the views than the difficulty.",
-              "Lake Garda, marked trails. Many are flat or with gentle elevation.",
-              "Rural Tuscany, paths between towns. Walks without physical demand."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image1.webp"
-          },
-          {
-            "heading": "Walking without pressure",
-            "paragraphs": [
-              "Abruzzo National Park, family routes. Built for everyday walkers.",
-              "Sardinia coastal trails. Accessible and clearly marked.",
-              "Why Italy works so well. Because walking is part of the culture. The trails accompany rather than challenge."
-            ],
-            "image": "/assets/images/blog/easytrailitaly/image2.webp"
-          }
-        ],
-        "closing": "Easy trekking is not a step toward anything else. For many people, it is exactly what they want: walk, look, and return without feeling drained. That is nature too."
-      },
-      "atreverse-un-poco-mas": {
-        "title": "For those who dare to go a little further",
-        "excerpt": "Multi‑day trekking sounds complex, but it becomes simple with rhythm and order.",
-        "subtitle": "Multi‑day trekking",
-        "intro": "Multi‑day trekking often sounds harder than it is. In reality, many routes are designed for ordinary people: people who walk, get tired, rest, and keep going.",
-        "sections": [
-          {
-            "heading": "It is not walking harder, it is walking with more order",
-            "paragraphs": [
-              "You do not need to run, arrive first, or prove anything.",
-              "The goal is to keep a pace you can repeat each day, without spending everything on day one."
-            ],
-            "image": "/assets/images/blog/trekking/image5.webp"
-          },
-          {
-            "heading": "The difference is in the mind",
-            "paragraphs": [
-              "The main difference from a day hike is not in the legs, but in the mind.",
-              "Slower rhythm.",
-              "More frequent stops.",
-              "More even days.",
-              "The common mistake is to leave on day one as if it were a short hike. That is when early fatigue appears."
-            ],
-            "image": "/assets/images/blog/trekking/image6.webp"
-          },
-          {
-            "heading": "Choose routes built for multiple days",
-            "paragraphs": [
-              "To begin, look for:",
-              "Well‑marked trails.",
-              "Clear stages.",
-              "Easy access.",
-              "Options to shorten if needed.",
-              "Not every long trek is technical. Many are made to move without rush and sleep well."
-            ],
-            "image": "/assets/images/blog/trekking/image10.webp"
-          },
-          {
-            "heading": "What to bring (without overloading)",
-            "paragraphs": [
-              "On multi‑day trekking, every item is felt.",
-              "It helps to prioritize:",
-              "Clothes you can repeat.",
-              "Real warmth, not extra.",
-              "Simple food.",
-              "Water measured well.",
-              "What you do not use on the first day, you probably will not use later."
-            ]
-          },
-          {
-            "heading": "Sleeping well is part of the plan",
-            "paragraphs": [
-              "Walking tired is possible. Sleeping badly, not so much.",
-              "Make sure of:",
-              "Decent sleeping pad.",
-              "Bag suited to the climate.",
-              "Sheltered spot.",
-              "Sleeping well makes the next day start differently."
-            ]
-          }
-        ],
-        "closing": "The goal is not to finish fast. Multi‑day trekking works when you accept something simple: each day is a day. You do not rush ahead or make up for it. You walk, arrive, rest. And that is fine."
-      },
-      "camping-varios-dias-errores": {
-        "title": "Multi‑day camping: common mistakes and how to avoid them",
-        "excerpt": "Multiple nights ask for order, not more gear.",
-        "subtitle": "Multi‑day trekking",
-        "intro": "Sleeping one night while camping is easy. Sleeping several in a row asks for a bit more order. Not more gear, but better decisions.",
-        "sections": [
-          {
-            "heading": "Mistake 1: bringing too much “just in case”",
-            "paragraphs": [
-              "The classic. Extra clothes, utensils you never use, things that take space.",
-              "How to avoid it:",
-              "Think by days.",
-              "Choose pieces that serve more than one purpose.",
-              "Accept repeating.",
-              "Less weight, less fatigue."
-            ],
-            "image": "/assets/images/blog/trekking/image1.webp"
-          },
-          {
-            "heading": "Mistakes 2 and 3: food without a plan, constant disorder",
-            "paragraphs": [
-              "Improvising works for one night. After that it becomes uncomfortable.",
-              "How to avoid it:",
-              "Separate meals by day.",
-              "Prioritize simple foods.",
-              "Do not plan elaborate dishes.",
-              "Eating well is not eating complicated.",
-              "",
-              "When everything is mixed, everything feels heavier.",
-              "How to avoid it:",
-              "Use separate bags.",
-              "Keep the same place for each item.",
-              "Tidy a bit every morning.",
-              "Five minutes of order save many later."
-            ],
-            "image": "/assets/images/blog/trekking/image3.webp"
-          },
-          {
-            "heading": "Mistakes 4 and 5: ignoring the body, trying to do it all",
-            "paragraphs": [
-              "On longer outings, fatigue accumulates.",
-              "How to avoid it:",
-              "Stop before you are exhausted.",
-              "Sleep enough.",
-              "Eat even if you are not hungry.",
-              "Listening to the body is not slowing down, it is lasting.",
-              "",
-              "Too many plans end up weighing you down.",
-              "How to avoid it:",
-              "Leave open spaces.",
-              "Accept quieter days.",
-              "Do not fill every hour.",
-              "On multi‑day camping, rest counts too."
-            ],
-            "image": "/assets/images/blog/trekking/image11.webp"
-          }
-        ],
-        "closing": "More days do not mean more strain. In long trekking and in multi‑day camping, the key is the same: sustain the rhythm. It is not about making it harder. It is about making it possible. When that happens, enjoyment arrives on its own."
-      },
-      "ski-snowboard-centros-sin-limite": {
-        "title": "Ski and snowboard at resorts: enjoy without going to the limit",
-        "excerpt": "Resorts bring order to the day and let you enjoy without chasing extremes.",
-        "subtitle": "Ski and snowboard at resorts",
-        "intro": "For many people, ski and snowboard start and end at a resort. And there is nothing wrong with that. Marked runs, lifts, shelters, and services are designed so the day flows without surprises. You do not need to look for the extreme to have a good time.",
-        "sections": [
-          {
-            "heading": "The resort organizes the experience",
-            "paragraphs": [
-              "A resort removes many variables:",
-              "You know where you are.",
-              "You know where to go down.",
-              "You know where to stop.",
-              "That allows you to focus on what matters: sliding, resting, and going again.",
-              "For those who are not seeking risk, that structure adds a lot."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image1.webp"
-          },
-          {
-            "heading": "Choose runs that fit the day",
-            "paragraphs": [
-              "Not every run is for every day.",
-              "Green and blue runs to warm up.",
-              "Reds only if you have energy.",
-              "Avoid going down tired just “to try.”",
-              "Choosing well is part of the enjoyment.",
-              "",
-              "Fatigue arrives sooner than it seems. Cold, altitude, and constant effort take their toll.",
-              "Stop before you are exhausted.",
-              "Eat something even if you are not hungry.",
-              "Drink water, even in the cold.",
-              "A long day is not an endless day."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image3.webp"
-          },
-          {
-            "heading": "Comfortable gear and your own rhythm",
-            "paragraphs": [
-              "At resorts, comfort is what matters.",
-              "Boots that fit well, not too tight.",
-              "Layers that keep you warm without excess.",
-              "Goggles that do not bother you.",
-              "If something is uncomfortable, it gets worse as the hours pass.",
-              "",
-              "Snowboard and ski are not a competition.",
-              "You do not need to jump higher, go faster, or try runs you do not want.",
-              "Every run counts the same. Riding an easy run ten times can be better than suffering a hard one once.",
-              "",
-              "Knowing when to stop is part of the plan: when legs do not respond, when focus drops, when the cold starts to bite.",
-              "Go a bit further, not farther. Day by day, run by run.",
-              "No need to prove anything. No need to go to the limit.",
-              "For many people, that is exactly what they are looking for."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/image11.webp"
-          }
-        ],
-        "closing": "Experiences are personal. What matters is that the day feels like yours, not imposed."
-      },
-      "primeros-centros-ski-europa": {
-        "title": "Recommended first ski resorts in Europe (for a calm start).",
-        "excerpt": "Resorts with easy runs, clear signage, and a calm pace to begin without pressure.",
-        "subtitle": "Ski and snowboard at resorts",
-        "intro": "Choosing your first ski resort makes a huge difference. Not all resorts are designed for beginners or for people who want to ski without pushing themselves. A good first resort is not the biggest or most famous. It is the one that structures the day, offers easy runs, and does not push you to go faster than you want.",
-        "sections": [
-          {
-            "heading": "Spain: easy starts",
-            "paragraphs": [
-              "Baqueira Beret — Official site: https://www.baqueira.es",
-              "Wide, well signposted, and with many progressive runs. You can start gently and stay there all day without getting bored.",
-              "Formigal — Official site: https://www.formigal-panticosa.com",
-              "A great balance of easy runs and services. Ideal for unhurried skiing and good breaks between runs.",
-              "Sierra Nevada — Official site: https://sierranevada.es",
-              "Accessible, sunny, and with long but friendly runs. A good option to combine ski and rest."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/españa.webp"
-          },
-          {
-            "heading": "France: quiet, well connected resorts",
-            "paragraphs": [
-              "Les Gets — Official site: https://www.lesgets.com",
-              "Calm, family-friendly, and very beginner-oriented. Everything is close and well connected.",
-              "La Plagne — Official site: https://www.la-plagne.com",
-              "Lots of wide, long runs, ideal for building confidence without pressure.",
-              "Les Arcs — Official site: https://www.lesarcs.com",
-              "Choosing lower areas lets you ski comfortably without entering demanding zones."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/francia.webp"
-          },
-          {
-            "heading": "Italy: relaxed rhythm and progressive pistes",
-            "paragraphs": [
-              "Val di Fassa — Official site: https://www.fassa.com",
-              "Quiet setting, progressive runs, and a relaxed pace. Great for learning without stress.",
-              "Livigno — Official site: https://www.livigno.eu",
-              "Consistent altitude, long and easy runs. Everything invites you to ski without hurry.",
-              "Cortina d'Ampezzo — Official site: https://www.cortina.dolomiti.org",
-              "Choose the right area and it is accessible even for beginners."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/italia.webp"
-          },
-          {
-            "heading": "Austria: order and clear signage",
-            "paragraphs": [
-              "Saalbach — Official site: https://www.saalbach.com",
-              "Well organized, clear signage, and well-maintained runs.",
-              "Zell am See — Official site: https://www.zellamsee-kaprun.com",
-              "Perfect for combining gentle skiing and rest. Ideal for long days without pressure.",
-              "Mayrhofen — Official site: https://www.mayrhofen.at",
-              "Choosing beginner runs lets you progress calmly."
-            ],
-            "image": "/assets/images/blog/ski&snowboard/resort-europa/austria.webp"
-          }
-        ],
-        "closing": "What to look for in your first resort: plenty of green and blue runs, clear signage, services nearby, and simple access. That matters more than fame. Starting well means wanting to come back. A good first resort should not leave you exhausted or frustrated. It should leave you wanting another day. And when that happens, ski and snowboard stop being a challenge and become part of the plan."
-      },
-      "camping-fin-de-semana-basico": {
-        "title": "Do not tell me you forgot the...",
-        "excerpt": "The essentials for a comfortable weekend without carrying too much.",
-        "subtitle": "Weekend camping",
-        "intro": "A weekend camp does not need an endless list of items. In fact, the shorter the plan, the more sense it makes to bring only what is necessary. The goal is not to move house for two days, but to be comfortable without overthinking.",
-        "sections": [
-          {
-            "heading": "The basics for sleeping well",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-outdoor-001\">Easy‑to‑pitch tent</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-008\">Sleeping pad or mat</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-007\">Sleeping bag suited to the weather</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-003\">Flashlight or headlamp</a>",
-              "It does not need to be the newest model. It needs to work."
-            ],
-            "image": "/assets/images/blog/banner01.webp"
-          },
-          {
-            "heading": "Clothes chosen well, not too many",
-            "paragraphs": [
-              "For two days, the key is to choose well, not to bring more.",
-              "One extra change.",
-              "A layer even in summer.",
-              "Comfortable shoes.",
-              "Something for rain.",
-              "Unused clothes end up taking space."
-            ],
-            "image": "/assets/images/blog/blog-hero.webp"
-          },
-          {
-            "heading": "Simple food that is easy to handle",
-            "paragraphs": [
-              "A weekend is not for cooking too much.",
-              "Meals that come together quickly.",
-              "Snacks.",
-              "Enough water.",
-              "Something warm in the morning.",
-              "Less cooking, more time outside."
-            ]
-          },
-          {
-            "heading": "Details that help",
-            "paragraphs": [
-              "They are not essential, but they make the experience more comfortable.",
-              "Sunscreen.",
-              "Repellent.",
-              "Trash bags.",
-              "Pocket knife or multitool.",
-              "Nothing rare, nothing technical."
-            ]
-          },
-          {
-            "heading": "Key idea",
-            "paragraphs": [
-              "If you are unsure about bringing something, you probably do not need it."
-            ]
-          }
-        ],
-        "closing": "A good weekend does not need much. The basics are enough when they work, and that is what lets the trip feel light."
-      },
-      "camping-fin-de-semana-relax": {
-        "title": "Time to relax, that’s it.",
-        "excerpt": "A short weekend works best without a schedule.",
-        "subtitle": "Weekend camping",
-        "intro": "A weekend camp does not need an agenda. It works precisely because there are no strict schedules. Even so, things always end up appearing to do.",
-        "sections": [
-          {
-            "heading": "Walking without a destination",
-            "paragraphs": [
-              "Most campgrounds have trails around them.",
-              "You do not need to cover miles. Sometimes a twenty‑minute walk already changes the air."
-            ]
-          },
-          {
-            "heading": "Read, look, do nothing",
-            "paragraphs": [
-              "It can sound unambitious, but it is not.",
-              "Reading for a while, sitting to look at the landscape, or simply staying still is often what you miss later."
-            ]
-          },
-          {
-            "heading": "Simple activities",
-            "paragraphs": [
-              "Fish even if nothing bites.",
-              "Put your feet in the water.",
-              "Play cards.",
-              "Cook without hurry.",
-              "It is not about filling time. It is about using it differently."
-            ]
-          },
-          {
-            "heading": "Night as the plan",
-            "paragraphs": [
-              "When the noise drops, the campground changes.",
-              "A long conversation, something warm to drink, or looking at the sky is usually enough."
-            ]
-          },
-          {
-            "heading": "Related products",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-outdoor-001\">Easy‑to‑pitch tent</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-007\">Sleeping bag</a>",
-              "<a href=\"/{{locale}}/products/gn-outdoor-003\">Flashlight or headlamp</a>",
-              "<a href=\"/{{locale}}/products/gn-camping-survival-002\">Portable stove</a>"
-            ]
-          }
-        ],
-        "closing": "The best part of a short camp is the lack of pressure to make the most of it. Everything adds up."
-      },
-      "no-mires-para-arriba": {
-        "title": "Do not look up",
-        "excerpt": "A quiet night pause that needs nothing but a sky.",
-        "subtitle": "Weekend camping",
-        "intro": "One of the best parts of camping is something you do not plan: looking at the night sky. You do not need astronomy or a telescope.",
-        "sections": [
-          {
-            "heading": "Why you see more stars",
-            "paragraphs": [
-              "Far from cities there is less artificial light. That is why stars appear that we usually do not see.",
-              "After a few minutes, your eyes adjust and the sky changes."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup1.webp"
-          },
-          {
-            "heading": "The Milky Way",
-            "paragraphs": [
-              "If the sky is clear, you can often see a light band crossing the sky.",
-              "It is not a cloud. It is our galaxy seen from the inside."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup2.webp"
-          },
-          {
-            "heading": "Stars that are not stars",
-            "paragraphs": [
-              "Some points move slowly. They do not flicker.",
-              "They are usually satellites or space stations passing by."
-            ],
-            "image": "/assets/images/blog/dontlookup/dontlookup3.webp"
-          },
-          {
-            "heading": "Easy constellations to recognize",
-            "paragraphs": [
-              "The Big Dipper.",
-              "Orion, in winter.",
-              "The Southern Cross, depending on location.",
-              "You do not need to identify them all. One is enough."
-            ]
-          },
-          {
-            "heading": "A simple but real fact",
-            "paragraphs": [
-              "The light you see left those stars hundreds or thousands of years ago.",
-              "Thinking about it changes nothing, but it keeps you company."
-            ]
-          },
-          {
-            "heading": "Looking is enough",
-            "paragraphs": [
-              "Watching the sky while camping is not about learning.",
-              "It is about slowing down and looking up."
-            ]
-          }
-        ],
-        "closing": "The sky asks for nothing. Just a little silence and a look upward."
-      },
-      "apps-camping-fin-de-semana": {
-        "title": "Useful camping apps that actually help",
-        "excerpt": "A phone can be a quiet tool when it stays in its place.",
-        "subtitle": "Weekend camping",
-        "intro": "Camping is not about living in the past. A phone can be useful when it is used with intention: you take it out when needed, then it goes back to your pocket. These are a few apps that genuinely help on a weekend camp.",
-        "sections": [
-          {
-            "heading": "To see stars and constellations",
-            "paragraphs": [
-              "Star Walk 2",
-              "https://starwalk.space/",
-              "It is one of the simplest to use. Point your phone at the sky and it shows which stars, planets, or constellations you are looking at.",
-              "You do not need any astronomy knowledge. It works well even without signal, as long as GPS is on.",
-              "Good for:",
-              "Not guessing what you are seeing.",
-              "Understanding the sky without overthinking.",
-              "Sharing the moment with others."
-            ],
-            "image": "/assets/images/blog/appcamping/starwalk2.webp"
-          },
-          {
-            "heading": "Offline maps and trails",
-            "paragraphs": [
-              "Maps.me",
-              "https://maps.me/",
-              "Download the area map before you leave. It works offline and often shows trails, rural roads, and campsite access that other maps miss.",
-              "Useful for:",
-              "Finding nearby trails.",
-              "Getting back to camp without getting lost.",
-              "Moving calmly without depending on signal.",
-              "It is not for improvising adventures. It is for staying calm."
-            ],
-            "image": "/assets/images/blog/appcamping/maps.webp"
-          },
-          {
-            "heading": "Weather at a glance",
-            "paragraphs": [
-              "Windy",
-              "https://www.windy.com/",
-              "It is built for more technical use, but it is very useful when kept simple.",
-              "A quick look tells you:",
-              "If wind is coming.",
-              "If the night will cool down.",
-              "If rain is nearby.",
-              "Checking before pitching the tent can save you trouble."
-            ],
-            "image": "/assets/images/blog/appcamping/windy.webp"
-          },
-          {
-            "heading": "Night light without glare",
-            "paragraphs": [
-              "Torch (red‑light flashlight)",
-              "https://play.google.com/store/apps/details?id=com.devuni.flashlight",
-              "There are similar versions on iOS.",
-              "Red light matters in camp. It does not blind, does not disturb, and keeps your night vision.",
-              "Useful for:",
-              "Going to the bathroom.",
-              "Finding something without waking others.",
-              "Moving quietly.",
-              "Simple, but very useful."
-            ]
-          },
-          {
-            "heading": "Identify plants and surroundings",
-            "paragraphs": [
-              "Seek by iNaturalist",
-              "https://www.inaturalist.org/pages/seek_app",
-              "Point the camera at a plant, flower, or tree and it tells you what it is. It does not replace real knowledge, but it sparks curiosity.",
-              "Works well for:",
-              "Quiet walks.",
-              "Camping with kids.",
-              "Learning without effort."
-            ],
-            "image": "/assets/images/blog/appcamping/seek.webp"
-          },
-          {
-            "heading": "The phone as support, not the main event",
-            "paragraphs": [
-              "These apps are not for spending hours on a screen. They are for a short use, then the phone goes away.",
-              "You check a constellation. You glance at the weather. You find a trail.",
-              "Then you go back to what matters: being there."
-            ]
-          }
-        ],
-        "closing": "Used with intention, the phone does not pull you away from the experience. It helps you keep it simple."
-      },
-      "pesca-recreativa-apps-equipo": {
-        "title": "Recreational fishing: useful apps and simple gear to start",
-        "excerpt": "More time by the water, less pressure to get it right.",
-        "subtitle": "Recreational fishing",
-        "intro": "Recreational fishing is not a competition and not an exact science. Often it is just being near the water, casting a line, and seeing what happens. If something bites, great. If not, you were still outside. A small kit and a few simple tools are enough.",
-        "sections": [
-          {
-            "heading": "Apps that actually help when fishing calmly",
-            "paragraphs": [
-              "They do not replace experience, but they help you orient yourself and understand the environment.",
-              "For fishing spots and real experiences.",
-              "Fishbrain.",
-              "https://fishbrain.com/",
-              "It is an app where other anglers share catches, places, and moments. It does not guarantee anything, but it gives an idea of:",
-              "Which species show up in the area.",
-              "When people tend to go.",
-              "Where people usually fish from shore or river.",
-              "Useful for not arriving completely blind."
-            ],
-            "image": "/assets/images/blog/fishing/fishing2.webp"
-          },
-          {
-            "heading": "Weather and wind",
-            "paragraphs": [
-              "Windy.",
-              "https://www.windy.com/",
-              "In fishing, wind matters more than it seems. With Windy you can see whether it is better to go in the morning, wait, or change plans.",
-              "A quick look is enough:",
-              "Wind direction.",
-              "Intensity.",
-              "Changes through the day."
-            ]
-          },
-          {
-            "heading": "Offline maps and access points",
-            "paragraphs": [
-              "Maps.me.",
-              "https://maps.me/",
-              "Many good fishing spots are not signposted. With offline maps you can:",
-              "Find access to the water.",
-              "Get back without getting lost.",
-              "Locate rural roads.",
-              "It works well even without signal."
-            ]
-          },
-          {
-            "heading": "Simple gear for recreational fishing",
-            "paragraphs": [
-              "You do not need to invest much or know brands. To start, and for many people for good, this is enough.",
-              "The true basics:",
-              "A simple rod, telescopic or one‑piece.",
-              "A basic reel.",
-              "Pre‑rigged line or nylon.",
-              "Standard hooks.",
-              "Simple sinkers.",
-              "Nothing sophisticated. Nothing technical."
-            ],
-            "image": "/assets/images/blog/fishing/fishing1%20(1).webp"
-          },
-          {
-            "heading": "Things people often forget",
-            "paragraphs": [
-              "Cap or hat.",
-              "Sunscreen.",
-              "Water.",
-              "Something to sit on.",
-              "Trash bag.",
-              "Fishing comfortably changes the experience."
-            ]
-          },
-          {
-            "heading": "Where recreational fishing works best",
-            "paragraphs": [
-              "Calm rivers.",
-              "Lakes.",
-              "Reservoirs.",
-              "Sea coast in quiet areas.",
-              "You do not need to go far or find extreme places. The more accessible, the easier it is to return."
-            ]
-          },
-          {
-            "heading": "Fishing as an excuse",
-            "paragraphs": [
-              "In recreational fishing, the result is not always what matters. What matters is the time outside, the silence, the wait.",
-              "Casting the line is only the excuse. If something bites, great. If not, it was still worth it."
-            ]
-          },
-          {
-            "heading": "Related products",
-            "paragraphs": [
-              "<a href=\"/{{locale}}/products/gn-fishing-001\">Basic telescopic rod</a>",
-              "<a href=\"/{{locale}}/products/gn-fishing-eq-007\">Spinning reel</a>",
-              "<a href=\"/{{locale}}/products/gn-fishing-eq-006\">Fishing pliers</a>"
-            ]
-          }
-        ],
-        "closing": "Recreational fishing does not need more. A quiet place, simple gear, and time outside are enough."
-      },
-      "snorkel-diving-familia-europa": {
-        "title": "Family snorkel and diving: calm places to start in Europe",
-        "excerpt": "Clear water, easy access, and a relaxed pace for families.",
-        "subtitle": "Family snorkel and diving",
-        "intro": "Snorkeling is one of those activities that does not ask for much. A bit of clear water, basic gear, and the will to float and look down. No prior experience or training is needed. That is why it works so well for families. Everyone goes at their own pace, without pressure.",
-        "sections": [
-          {
-            "heading": "Spain",
-            "paragraphs": [
-              "Spain has very different coastlines, but several areas are ideal for calm snorkeling.",
-              "Costa Brava, Catalonia. Small coves, clear water, and rocky bottoms. You can walk in from the beach and there is already plenty to see.",
-              "Menorca. Probably one of the best places for family snorkeling. Sheltered beaches, low swell, and steady visibility.",
-              "Canary Islands, protected zones. On calm beaches without strong wind, marine life appears close to shore.",
-              "Why Spain works. Easy access, nearby services, and many family‑friendly beaches."
-            ],
-            "image": "/assets/images/blog/snorkeling/image.webp"
-          },
-          {
-            "heading": "France",
-            "paragraphs": [
-              "France is not the first place people think of for snorkeling, but it has well‑kept areas.",
-              "Côte d’Azur. Clear water and protected coves, best outside peak season.",
-              "Calanques, Marseille. Shore entries, rocky bottoms, and good visibility on calm days.",
-              "Corsica. Wide beaches and transparent water. A strong option for families.",
-              "The best of France. Protected zones, less crowding at certain times, and well‑preserved natural settings."
-            ],
-            "image": "/assets/images/blog/snorkeling/image1.webp"
-          },
-          {
-            "heading": "Italy",
-            "paragraphs": [
-              "Italy combines something key for family snorkeling: easy access, clear water, and a calm beach culture.",
-              "Sardinia. One of the best options in the Mediterranean. Shallow beaches and visible bottoms from shore.",
-              "Sicily, less urban areas. Very good snorkeling in quiet coves, especially away from large cities.",
-              "Cinque Terre, specific zones. Short, protected stretches where you can enter from the coast.",
-              "Why Italy works so well. The pace is relaxed and no one expects you to do more than you want."
-            ],
-            "image": "/assets/images/blog/snorkeling/image2.webp"
-          },
-          {
-            "heading": "Basic gear for family snorkeling",
-            "paragraphs": [
-              "You do not need much, but you do need the right basics.",
-              "A mask that fits well.",
-              "A simple snorkel.",
-              "Short fins, optional.",
-              "Sunscreen.",
-              "A UV shirt if the sun is strong.",
-              "Nothing technical, nothing complicated."
-            ],
-            "image": "/assets/images/blog/snorkeling/image3.webp"
-          },
-          {
-            "heading": "Simple rules that help",
-            "paragraphs": [
-              "Choose days without wind.",
-              "Avoid areas with currents.",
-              "Do not touch wildlife or the seabed.",
-              "Enter and exit through clear zones.",
-              "The goal is not to explore more, but to feel comfortable."
-            ],
-            "image": "/assets/images/blog/snorkeling/image4.webp"
-          },
-          {
-            "heading": "Snorkeling as a plan",
-            "paragraphs": [
-              "With family, snorkeling is not about achieving something. It is an excuse to be in the water, float, and share the moment.",
-              "Ten minutes is enough. Then you go back to the beach.",
-              "And that counts too."
-            ],
-            "image": "/assets/images/blog/snorkeling/image5.webp"
-          }
-        ],
-        "closing": "Family snorkeling asks for little more than calm water and shared time. That is enough."
-      },
-      "snorkel-familia-equipo-errores": {
-        "title": "Family snorkeling: simple gear and common mistakes to avoid",
-        "excerpt": "With basic gear and a few simple choices, everything feels easier.",
-        "subtitle": "Family snorkel and diving",
-        "intro": "Snorkeling is easy, but that does not mean it is all the same. With simple gear chosen well and a few common mistakes avoided, the experience changes a lot. It is not about doing it perfectly. It is about doing it comfortably.",
-        "sections": [
-          {
-            "heading": "Simple gear that is enough",
-            "paragraphs": [
-              "You do not need expensive kits or technical gear. For calm snorkeling, this is enough.",
-              "Mask. The most important piece. It has to fit the face well. Brand does not matter. Leaks do.",
-              "A simple trick: try it without the strap. If it stays in place, it fits.",
-              "A basic snorkel. The simpler the better. Tubes with many valves are often more uncomfortable for beginners.",
-              "A straight, classic snorkel is enough.",
-              "Short fins, optional. They help you move with less effort, but can be tiring if you are not used to them.",
-              "For families, short and soft fins are better.",
-              "A UV shirt or tee. It protects from sun and chafing, especially for kids or longer sessions."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery.webp"
-          },
-          {
-            "heading": "Common mistakes worth avoiding",
-            "paragraphs": [
-              "Choosing any day just because it is sunny. Sun is not the most important thing. Wind and swell matter more. A cloudy but calm day is better than a sunny day with wind.",
-              "Going too far from shore. For family snorkeling, the rule is simple: if you cannot stand, you do not need to go further. Most of what is interesting is close.",
-              "Expecting too much. Sometimes people enter the water expecting a documentary. That creates frustration.",
-              "In calm snorkeling, a short look is enough. If there is something, great. If not, that is fine too.",
-              "Using uncomfortable gear because it is already bought. If the mask hurts or leaks, it is not enjoyable. Better to change it or skip it that day.",
-              "Skipping breaks. Floating is more tiring than it seems. Get out, sit, drink water, and go back in when it feels right."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery1.webp"
-          },
-          {
-            "heading": "A simple tip almost no one says",
-            "paragraphs": [
-              "Snorkeling is not about swimming a lot. It is about floating calmly.",
-              "Move slowly, breathe evenly, and look without hurry. That alone changes everything.",
-              "Less gear, fewer problems. The simpler the gear, the fewer things can go wrong.",
-              "And when something is not perfect, it is fine.",
-              "Family snorkeling is not an activity you have to do well. It is an excuse to be in the water together.",
-              "And that is enough."
-            ],
-            "image": "/assets/images/products/gn-water-007/gallery/gallery2.webp"
-          }
-        ],
-        "closing": "With simple gear and clear choices, snorkeling feels comfortable. That is what makes everyone want to go back in."
-      }
     }
   },
   "blogSections": {
@@ -2491,7 +1689,8 @@
     "billingDifferent": "Use a different billing address",
     "guestEmailRequired": "Enter your email to continue.",
     "mobileSummaryToggle": "Order summary",
-    "legalReturns": "Refund policy",
+    "legalReturns": "Returns policy",
+    "legalRegret": "Right of withdrawal",
     "legalPrivacy": "Privacy policy",
     "legalTerms": "Terms of service",
     "total": "Total",
@@ -2585,4 +1784,3 @@
     }
   }
 }
-

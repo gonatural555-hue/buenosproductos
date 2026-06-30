@@ -1,55 +1,43 @@
-import Link from "next/link";
-import { getProducts, type Product } from "@/lib/products";
-import SortingBar from "@/components/products/SortingBar";
-import ProductsCatalogLayout from "@/components/products/ProductsCatalogLayout";
-import ProductCardSimple from "@/components/ProductCardSimple";
+import GoodIdeasCatalogEmptyState from "@/components/good-ideas/GoodIdeasCatalogEmptyState";
+import GoodIdeasComingSoonBlock from "@/components/good-ideas/GoodIdeasComingSoonBlock";
+import GoodIdeasProductCard from "@/components/good-ideas/GoodIdeasProductCard";
+import GoodIdeasCatalogLayout from "@/components/good-ideas/GoodIdeasCatalogLayout";
+import GoodIdeasProductsCarouselHeader, {
+  type GoodIdeasCarouselSlide,
+} from "@/components/good-ideas/GoodIdeasProductsCarouselHeader";
+import GoodIdeasSortingBar from "@/components/good-ideas/GoodIdeasSortingBar";
+import { getGoodIdeasProducts } from "@/lib/good-ideas-products";
+import { buildGoodIdeasFilterCategoryTree } from "@/lib/good-ideas-plp-categories";
+import { buildGoodIdeasFilterBrandOptions } from "@/lib/good-ideas-plp-brands";
+import {
+  buildGoodIdeasFilterChips,
+  filterGoodIdeasProducts,
+  hasActiveGoodIdeasCatalogFilters,
+  normalizeText,
+  parseGoodIdeasPriceFilter,
+  resolveGoodIdeasBrandParam,
+  resolveGoodIdeasCategoryParam,
+} from "@/lib/good-ideas-plp-filters";
+import { GOOD_IDEAS_PRICE_PRESETS } from "@/lib/good-ideas-plp-price";
+import {
+  buildGoodIdeasPreserveParams,
+  buildGoodIdeasProductsListHref,
+} from "@/lib/good-ideas-plp-segments";
+import { sortProductsList } from "@/lib/products-page-segments";
+import { GI_CATALOG_SECTION_ID } from "@/lib/ui/goodideas-design";
+import type { GiProductsCategoryTone } from "@/lib/ui/goodideas-design";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
 import { buildMetadata } from "@/lib/seo";
+import { buildPathByLocale, productsPath } from "@/lib/routing/paths";
+import { formatDisplayMoney } from "@/lib/currency/format";
 import {
-  getProductsByCategorySlug,
-  resolveProductsCategoryParam,
-} from "@/lib/categories";
-import { premiumPrimaryCtaClass } from "@/lib/ui/premium-cta-classes";
-import { sortProductsList } from "@/lib/products-page-segments";
-import { buildCatalogFilterCategories } from "@/lib/plp-filter-categories";
-import { buildProductsPageFilterChips } from "@/lib/plp-active-filters";
-import { getColorImageMapsForProducts } from "@/lib/plp-product-color-images";
+  DEFAULT_DISPLAY_CURRENCY,
+  EXCHANGE_RATES_FROM_USD,
+} from "@/lib/currency/config";
 
 export const dynamic = "force-dynamic";
-
-function normalizeText(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-}
-
-function productMatchesQuery(
-  product: Product,
-  locale: Locale,
-  query: string,
-  norm: typeof normalizeText
-): boolean {
-  if (!query) return true;
-  const loc = product.translations?.[locale];
-  const chunks: string[] = [
-    product.id,
-    product.slug ?? "",
-    product.title,
-    loc?.title ?? "",
-    product.category,
-    product.description,
-    loc?.description ?? "",
-    product.shortDescription ?? "",
-    loc?.shortDescription ?? "",
-    ...(product.features ?? []),
-    ...(loc?.features ?? []),
-  ];
-  const haystack = norm(chunks.filter(Boolean).join(" "));
-  return haystack.includes(query);
-}
 
 const SORT_KEYS = ["featured", "price-asc", "price-desc", "name-asc"] as const;
 
@@ -60,6 +48,38 @@ function parseSort(raw: string | undefined): (typeof SORT_KEYS)[number] {
   return "featured";
 }
 
+const CAROUSEL_CATEGORY_CONFIG: Array<{
+  id: string;
+  tone: GiProductsCategoryTone;
+}> = [
+  { id: "tech", tone: "accent" },
+  { id: "home", tone: "mist" },
+  { id: "lifestyle", tone: "slate" },
+];
+
+function formatPresetLabelServer(
+  preset: (typeof GOOD_IDEAS_PRICE_PRESETS)[number],
+  locale: Locale
+): string {
+  const fmt = (usd: number) =>
+    formatDisplayMoney(
+      usd,
+      DEFAULT_DISPLAY_CURRENCY,
+      EXCHANGE_RATES_FROM_USD,
+      locale
+    );
+  if (preset.min == null && preset.max != null) {
+    return `< ${fmt(preset.max)}`;
+  }
+  if (preset.min != null && preset.max == null) {
+    return `> ${fmt(preset.min)}`;
+  }
+  if (preset.min != null && preset.max != null) {
+    return `${fmt(preset.min)} – ${fmt(preset.max)}`;
+  }
+  return "";
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -67,23 +87,17 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
-  const seo = messages.seo?.products;
+  const seo = messages.seo?.goodIdeas?.products;
 
   return buildMetadata({
     locale,
     title: seo?.title,
     description: seo?.description,
-    pathByLocale: {
-      en: "/en/products",
-      es: "/es/products",
-      fr: "/fr/products",
-      it: "/it/products",
-    },
-    ogImage: "/assets/images/hero/productsbanner.webp",
+    pathByLocale: buildPathByLocale(productsPath),
   });
 }
 
-export default async function ProductsPage({
+export default async function GoodIdeasProductsPage({
   params,
   searchParams,
 }: {
@@ -92,139 +106,212 @@ export default async function ProductsPage({
     q?: string;
     sort?: string;
     category?: string;
+    brand?: string;
+    priceMin?: string;
+    priceMax?: string;
   }>;
 }) {
   const { locale } = await params;
+  const sp = searchParams != null ? await searchParams : {};
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
-  const sp = searchParams != null ? await searchParams : {};
 
   const rawQuery = typeof sp.q === "string" ? sp.q : "";
   const query = normalizeText(rawQuery.trim());
   const sort = parseSort(typeof sp.sort === "string" ? sp.sort : undefined);
-
   const categoryQuery =
     typeof sp.category === "string" ? sp.category.trim() : "";
-  const categorySlug = resolveProductsCategoryParam(
+  const categorySlug = resolveGoodIdeasCategoryParam(
     categoryQuery || undefined
   );
+  const brandQuery = typeof sp.brand === "string" ? sp.brand.trim() : "";
 
-  const allProducts = getProducts();
-  const scoped = categorySlug
-    ? getProductsByCategorySlug(categorySlug)
-    : allProducts;
-  const filteredBySearch = query
-    ? scoped.filter((product) =>
-        productMatchesQuery(product, locale, query, normalizeText)
-      )
-    : scoped;
+  const allProducts = getGoodIdeasProducts();
+  const brandSlug = resolveGoodIdeasBrandParam(brandQuery || undefined, allProducts);
+  const priceFilter = parseGoodIdeasPriceFilter(sp.priceMin, sp.priceMax);
+
+  const filtered = filterGoodIdeasProducts(allProducts, {
+    locale,
+    query: rawQuery.trim() ? query : undefined,
+    categorySlug,
+    brandSlug,
+    priceFilter,
+  });
   const displayProducts = sortProductsList(
-    filteredBySearch,
+    filtered,
     sort === "featured" ? undefined : sort,
     locale
   );
-  const colorImageMaps = await getColorImageMapsForProducts(displayProducts);
 
-  const hasActiveSearch = rawQuery.trim().length > 0;
-
-  const sortOptions = [
-    { value: "featured", label: t("productsPage.sortFeatured") },
-    { value: "price-asc", label: t("productsPage.sortPriceAsc") },
-    { value: "price-desc", label: t("productsPage.sortPriceDesc") },
-    { value: "name-asc", label: t("productsPage.sortNameAsc") },
-  ];
-
-  const cardLabels = {
-    viewProduct: t("common.viewProduct"),
-    addToCart: t("common.addToCart"),
-    addNow: t("common.addNow"),
-    noImage: t("common.noImage"),
-    newColor: t("productsPage.badgeNewColor"),
-    salePercentTemplate: t("productsPage.badgeSalePercent"),
-  };
-
-  const categoryLabel = categorySlug
-    ? t(`categories.names.${categorySlug}`, categorySlug)
-    : undefined;
-
-  const activeFilterChips = buildProductsPageFilterChips({
-    locale,
-    categorySlug,
-    categoryQuery,
-    categoryLabel,
-    rawQuery,
+  const catalogAction = productsPath(locale);
+  const preserve = buildGoodIdeasPreserveParams({
+    q: rawQuery,
     sort,
+    category: categorySlug,
+    brand: brandSlug,
+    priceMin: priceFilter.min,
+    priceMax: priceFilter.max,
   });
 
-  const filterCategories = buildCatalogFilterCategories(locale, t, {
-    q: rawQuery.trim() || undefined,
-    sort: sort === "featured" ? undefined : sort,
+  const filterCategories = buildGoodIdeasFilterCategoryTree(locale, t, preserve);
+  const filterBrands = buildGoodIdeasFilterBrandOptions(
+    locale,
+    allProducts,
+    preserve
+  );
+
+  const activeFilterChips = buildGoodIdeasFilterChips({
+    locale,
+    products: allProducts,
+    categorySlug,
+    brandSlug,
+    rawQuery,
+    sort,
+    priceFilter,
+    t,
+  });
+
+  const hasActiveFilters = hasActiveGoodIdeasCatalogFilters({
+    rawQuery,
+    categorySlug,
+    brandSlug,
+    priceFilter,
   });
 
   const attributeLabels = {
-    brands: t("productsPage.filterBrands"),
-    price: t("productsPage.filterPrice"),
-    sizes: t("productsPage.filterSizes"),
-    color: t("productsPage.filterColor"),
-    sale: t("productsPage.filterSale"),
+    brands: t("goodIdeas.products.filterBrands"),
+    price: t("goodIdeas.products.filterPrice"),
+  };
+
+  const pricePresetLabels = Object.fromEntries(
+    GOOD_IDEAS_PRICE_PRESETS.map((preset) => [
+      preset.id,
+      formatPresetLabelServer(preset, locale),
+    ])
+  );
+
+  const sortOptions = [
+    { value: "featured", label: t("goodIdeas.products.sortFeatured") },
+    { value: "price-asc", label: t("goodIdeas.products.sortPriceAsc") },
+    { value: "price-desc", label: t("goodIdeas.products.sortPriceDesc") },
+    { value: "name-asc", label: t("goodIdeas.products.sortNameAsc") },
+  ];
+
+  const carouselSlides: GoodIdeasCarouselSlide[] = CAROUSEL_CATEGORY_CONFIG.map(
+    (cfg) => ({
+      id: cfg.id,
+      categoryLabel: t(`goodIdeas.products.categories.${cfg.id}`),
+      title: t(`goodIdeas.products.carousel.${cfg.id}.title`),
+      subtitle: t(`goodIdeas.products.carousel.${cfg.id}.subtitle`),
+      accentWord: t(`goodIdeas.products.carousel.${cfg.id}.accentWord`, ""),
+      tone: cfg.tone,
+    })
+  );
+
+  const searchHint =
+    rawQuery.trim() && displayProducts.length > 0
+      ? t("goodIdeas.products.searchResultsFor", "").replace(
+          "{query}",
+          rawQuery.trim()
+        )
+      : null;
+
+  const sidebarProps = {
+    locale,
+    categories: filterCategories,
+    brands: filterBrands,
+    activeCategorySlug: categorySlug,
+    activeBrandSlug: brandSlug,
+    activePriceFilter: priceFilter,
+    preserve: {
+      q: rawQuery.trim() || undefined,
+      sort: sort === "featured" ? undefined : sort,
+      category: categorySlug,
+      brand: brandSlug,
+    },
+    attributeLabels,
+    categorySectionLabel: t("goodIdeas.products.categorySectionLabel"),
+    priceMinLabel: t("goodIdeas.products.priceMinLabel"),
+    priceMaxLabel: t("goodIdeas.products.priceMaxLabel"),
+    priceApplyLabel: t("goodIdeas.products.priceApplyLabel"),
+    pricePresetLabels,
   };
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-x-hidden bg-gn-page-bg text-dark-base">
-      <ProductsCatalogLayout
-        visualStyle="patagonia"
-        surface="white"
-        showIntro={false}
-        title={t("productsPage.catalogTitle")}
-        description={t("productsPage.catalogDescription")}
-        filtersLabel={t("productsPage.filtersLabel")}
-        closeFiltersLabel={t("productsPage.closeFilters")}
-        categories={filterCategories}
-        activeCategorySlug={categorySlug}
-        attributeLabels={attributeLabels}
-        activeFilterChips={activeFilterChips}
-        clearAllFiltersHref={`/${locale}/products`}
-        clearAllFiltersLabel={t("productsPage.clearAllFilters")}
-        sortBar={
-          <SortingBar
-            locale={locale}
-            q={rawQuery.trim() || undefined}
-            sort={sort}
-            category={categorySlug ? categoryQuery || undefined : undefined}
-            label={t("productsPage.sortLabel")}
-            options={sortOptions}
-          />
-        }
-      >
-        {hasActiveSearch && displayProducts.length === 0 ? (
-          <div className="col-span-2 px-6 py-14 text-center lg:col-span-3">
-            <p className="font-inter text-lg text-black">
-              {t("productsPage.searchNoResults", "")}
-            </p>
-            <p className="mx-auto mt-3 max-w-md font-inter text-sm leading-relaxed text-[#666666]">
-              {t("productsPage.searchNoResultsHint", "")}
-            </p>
-            <Link
-              href={`/${locale}/products`}
-              className={`${premiumPrimaryCtaClass} mt-10`}
-            >
-              {t("productsPage.searchViewAll", "")}
-            </Link>
-          </div>
-        ) : (
-          displayProducts.map((product) => (
-            <ProductCardSimple
-              key={product.id}
-              product={product}
-              locale={locale}
-              variant="patagonia"
-              labels={cardLabels}
-              colorImages={colorImageMaps[product.id]}
-              analyticsListName="all_products"
+    <main>
+      <GoodIdeasProductsCarouselHeader
+        slides={carouselSlides}
+        prevAria={t("goodIdeas.products.carouselPrevAria")}
+        nextAria={t("goodIdeas.products.carouselNextAria")}
+      />
+
+      {allProducts.length > 0 ? (
+        <GoodIdeasCatalogLayout
+          catalogAction={catalogAction}
+          filtersLabel={t("goodIdeas.products.filtersLabel")}
+          closeFiltersLabel={t("goodIdeas.products.closeFilters")}
+          searchLabel={t("goodIdeas.products.searchLabel")}
+          searchPlaceholder={t("goodIdeas.products.searchPlaceholder")}
+          rawQuery={rawQuery}
+          sort={sort}
+          activeCategorySlug={categorySlug}
+          activeBrandSlug={brandSlug}
+          priceMin={priceFilter.min ?? undefined}
+          priceMax={priceFilter.max ?? undefined}
+          activeFilterChips={activeFilterChips}
+          clearAllFiltersHref={buildGoodIdeasProductsListHref(locale)}
+          clearAllFiltersLabel={t("goodIdeas.products.clearAllFilters")}
+          searchHint={searchHint}
+          sidebarProps={sidebarProps}
+          sortBar={
+            <GoodIdeasSortingBar
+              action={catalogAction}
+              q={rawQuery.trim() || undefined}
+              sort={sort}
+              category={categorySlug ?? undefined}
+              brand={brandSlug ?? undefined}
+              priceMin={priceFilter.min ?? undefined}
+              priceMax={priceFilter.max ?? undefined}
+              label={t("goodIdeas.products.sortLabel")}
+              options={sortOptions}
             />
-          ))
-        )}
-      </ProductsCatalogLayout>
+          }
+        >
+          {displayProducts.length === 0 && hasActiveFilters ? (
+            <GoodIdeasCatalogEmptyState
+              title={
+                rawQuery.trim()
+                  ? t("goodIdeas.products.searchNoResults")
+                  : t("goodIdeas.products.filterNoResults")
+              }
+              hint={
+                rawQuery.trim()
+                  ? t("goodIdeas.products.searchNoResultsHint")
+                  : t("goodIdeas.products.filterNoResultsHint")
+              }
+              clearHref={buildGoodIdeasProductsListHref(locale)}
+              clearLabel={t("goodIdeas.products.searchViewAll")}
+            />
+          ) : (
+            displayProducts.map((product) => (
+              <GoodIdeasProductCard
+                key={product.id}
+                product={product}
+                locale={locale}
+                viewProductLabel={t("common.viewProduct")}
+                noImageLabel={t("common.noImage")}
+                addNowLabel={t("common.addNow")}
+              />
+            ))
+          )}
+        </GoodIdeasCatalogLayout>
+      ) : (
+        <GoodIdeasComingSoonBlock
+          id={GI_CATALOG_SECTION_ID}
+          title={t("goodIdeas.products.comingSoonTitle")}
+          body={t("goodIdeas.products.comingSoonBody")}
+        />
+      )}
     </main>
   );
 }

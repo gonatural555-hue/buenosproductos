@@ -1,11 +1,14 @@
 "use client";
 
+import { giPlpClasses } from "@/lib/ui/good-ideas-plp";
+
 type SortOption = { value: string; label: string };
 
 type Props = {
   q?: string;
   sort: string;
   category?: string;
+  brand?: string;
   priceMin?: number;
   priceMax?: number;
   options: SortOption[];
@@ -18,6 +21,7 @@ export default function GoodIdeasSortingBar({
   q,
   sort,
   category,
+  brand,
   priceMin,
   priceMax,
   options,
@@ -39,6 +43,9 @@ export default function GoodIdeasSortingBar({
       {category?.trim() ? (
         <input type="hidden" name="category" value={category.trim()} />
       ) : null}
+      {brand?.trim() ? (
+        <input type="hidden" name="brand" value={brand.trim()} />
+      ) : null}
       {priceMin != null && Number.isFinite(priceMin) ? (
         <input type="hidden" name="priceMin" value={String(priceMin)} />
       ) : null}
@@ -48,11 +55,11 @@ export default function GoodIdeasSortingBar({
       <label className="sr-only" htmlFor="gi-products-sort">
         {label}
       </label>
-      <span className="hidden text-sm text-[rgba(232,236,241,0.55)] sm:inline">
+      <span className={`hidden ${giPlpClasses.sortLabel} sm:inline`}>
         {label}:
       </span>
       <div className="relative inline-flex items-center">
-        <span className="text-sm text-[rgba(232,236,241,0.55)] sm:hidden">
+        <span className={`${giPlpClasses.sortLabel} sm:hidden`}>
           {label}:
         </span>
         <select
@@ -60,19 +67,16 @@ export default function GoodIdeasSortingBar({
           name="sort"
           defaultValue={sort || "featured"}
           onChange={(e) => e.currentTarget.form?.requestSubmit()}
-          className="max-w-[12rem] cursor-pointer appearance-none border-0 bg-transparent py-1 pl-1 pr-6 text-right text-sm text-[#E8ECF1] outline-none sm:max-w-[14rem]"
+          className={giPlpClasses.sortSelect}
           aria-label={`${label}: ${activeLabel}`}
         >
           {options.map((opt) => (
-            <option key={opt.value} value={opt.value} className="bg-[#151B24]">
+            <option key={opt.value} value={opt.value} className="bg-white">
               {opt.label}
             </option>
           ))}
         </select>
-        <span
-          className="pointer-events-none absolute right-0 text-[rgba(232,236,241,0.45)]"
-          aria-hidden
-        >
+        <span className={giPlpClasses.sortChevron} aria-hidden>
           ▾
         </span>
       </div>

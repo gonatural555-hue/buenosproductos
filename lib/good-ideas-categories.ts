@@ -13,11 +13,22 @@ export const GOOD_IDEAS_CATEGORIES: GoodIdeasCategory[] = [
   { slug: "tech", name: "Tech", description: "Tecnología, gadgets y accesorios." },
   { slug: "home", name: "Hogar", description: "Hogar, cocina y confort." },
   { slug: "lifestyle", name: "Lifestyle", description: "Estilo de vida y uso diario." },
-  { slug: "gifts", name: "Regalos", description: "Ideas para regalar." },
   {
     slug: "celulares",
     name: "Celulares",
     description: "Accesorios y cuidado para smartphones.",
+    parentSlug: "tech",
+  },
+  {
+    slug: "robots-ia",
+    name: "Robots IA",
+    description: "Robots interactivos con inteligencia artificial para niños y hogar.",
+    parentSlug: "tech",
+  },
+  {
+    slug: "auriculares",
+    name: "Auriculares",
+    description: "Auriculares inalámbricos, deportivos y de uso diario.",
     parentSlug: "tech",
   },
   {
@@ -31,6 +42,24 @@ export const GOOD_IDEAS_CATEGORIES: GoodIdeasCategory[] = [
     slug: "cocina",
     name: "Cocina",
     description: "Electrodomésticos y utensilios para cocina.",
+    parentSlug: "home",
+  },
+  {
+    slug: "accesorios-para-auto",
+    name: "Accesorios para Auto",
+    description: "Soportes, organizadores y accesorios para el vehículo.",
+    parentSlug: "lifestyle",
+  },
+  {
+    slug: "hervidores-electricos",
+    name: "Hervidores eléctricos",
+    description: "Hervidores y teteras eléctricas para hogar, oficina y viaje.",
+    parentSlug: "home",
+  },
+  {
+    slug: "cuidado-personal",
+    name: "Cuidado personal",
+    description: "Grooming, recortadores y accesorios de cuidado personal.",
     parentSlug: "home",
   },
 ];

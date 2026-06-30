@@ -6,13 +6,45 @@
       "/assets/images/good-ideas-products/gi-lifestyle-002/image.webp"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-002/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H6bc44bd3a17f4ac9ad42c06e137bf19aI.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hba1c486637854ef2ad628a420729fd92M.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Ha47dfbb127bc4220aec9f012bb294c59w.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H00559b6978484ea2ad1303e9109f7ea11.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H614c7b58524a45ddbc66d34acec07866j.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
-    "extras": []
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "blanco": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/Hff426409db034e25b5c4e6697c88798b3.jpg"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/H6bc44bd3a17f4ac9ad42c06e137bf19aI.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hba1c486637854ef2ad628a420729fd92M.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Ha47dfbb127bc4220aec9f012bb294c59w.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H00559b6978484ea2ad1303e9109f7ea11.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H614c7b58524a45ddbc66d34acec07866j.jpg?avif=close&webp=close"
+          ],
+          "lifestyle": [],
+          "extras": []
+        },
+        "negro": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/Hbab70b16086142589f9f05c7ee6d4fc7l.jpg"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/H6bc44bd3a17f4ac9ad42c06e137bf19aI.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hba1c486637854ef2ad628a420729fd92M.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Ha47dfbb127bc4220aec9f012bb294c59w.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H00559b6978484ea2ad1303e9109f7ea11.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H614c7b58524a45ddbc66d34acec07866j.jpg?avif=close&webp=close"
+          ],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
   }
 }

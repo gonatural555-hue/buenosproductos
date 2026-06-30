@@ -12,7 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PRODUCTS_DIR = path.join(__dirname, "products");
+const GI_PRODUCTS_DIR = path.join(__dirname, "good-ideas-products");
 
 function emptyImageSet() {
   return {
@@ -59,6 +59,14 @@ function getColorVariant(json) {
   return arr.find((v) => v && v.type === "color");
 }
 
+function getModelVariant(json) {
+  const variants = json.variants;
+  const arr = Array.isArray(variants) ? variants : variants ? [variants] : [];
+  return arr.find(
+    (v) => v && (v.type === "model" || v.type === "capacity")
+  );
+}
+
 function isNonColorFlatKey(key) {
   return (
     key.startsWith("model-") ||
@@ -70,8 +78,12 @@ function isNonColorFlatKey(key) {
 }
 
 function migrateJson(json) {
+  if (getModelVariant(json)) {
+    return { changed: false, id: json.id };
+  }
+
   const colorVariant = getColorVariant(json);
-  const vi = json.variantImages;
+  const vi = json.images?.variantImages ?? json.variantImages;
   const colorValuesFromVariant =
     colorVariant?.options?.map((o) => o.value).filter(Boolean) ?? [];
 
@@ -121,22 +133,33 @@ function migrateJson(json) {
     return { changed: false, id: json.id };
   }
 
-  json.variantImages = nextVariantImages;
+  if (json.images) {
+    json.images.variantImages = nextVariantImages;
+  } else {
+    json.variantImages = nextVariantImages;
+  }
   return { changed: true, id: json.id };
 }
 
-const files = fs.readdirSync(PRODUCTS_DIR).filter((f) => f.endsWith(".json"));
-const updated = [];
+function processDirectory(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
+  const updated = [];
 
-for (const file of files) {
-  const filePath = path.join(PRODUCTS_DIR, file);
-  const json = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  const result = migrateJson(json);
-  if (result.changed) {
-    fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, "utf8");
-    updated.push(result.id);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const json = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const result = migrateJson(json);
+    if (result.changed) {
+      fs.writeFileSync(filePath, `${JSON.stringify(json, null, 2)}\n`, "utf8");
+      updated.push(result.id);
+    }
   }
+
+  return updated;
 }
+
+const updated = processDirectory(GI_PRODUCTS_DIR);
 
 console.log(`Updated ${updated.length} product JSON files:`);
 updated.forEach((id) => console.log(`  - ${id}`));

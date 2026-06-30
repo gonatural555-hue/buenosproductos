@@ -62,7 +62,7 @@ export default function GoodIdeasBlogHero({
     },
   };
 
-  const exploreHref = `/${locale}/good-ideas/blog#${postsAnchorId}`;
+  const exploreHref = `/${locale}/blog#${postsAnchorId}`;
 
   return (
     <section

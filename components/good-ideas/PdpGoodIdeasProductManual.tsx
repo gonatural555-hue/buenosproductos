@@ -1,5 +1,6 @@
 import type { GoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 import type { UISurface } from "@/lib/ui-surface";
+import { GI_PDP_INNER } from "@/lib/ui/gi-pdp-layout";
 
 type Props = {
   manual: GoodIdeasProductManual;
@@ -35,7 +36,7 @@ export default function PdpGoodIdeasProductManual({
 
   return (
     <section className="py-16 md:py-20" aria-labelledby="gi-pdp-manual-heading">
-      <div className="mx-auto max-w-5xl px-6 sm:px-10 lg:px-16">
+      <div className={GI_PDP_INNER}>
         <div className={`overflow-hidden rounded-2xl ${shell}`}>
           <div
             className={`space-y-2 border-b px-5 py-5 sm:px-6 sm:py-6 ${

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import ProductImageLightbox from "@/components/pdp/ProductImageLightbox";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import { PRODUCT_BLUR_DATA_URL } from "@/lib/image-src";
 import type { UISurface } from "@/lib/ui-surface";
 
 type Props = {

@@ -3,14 +3,13 @@
   "brand": "Good Products",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-lifestyle-004/image.webp"
+      "https://s.alicdn.com/@sc04/kf/H2b968e155f45416b9817a950519d9edag.jpg"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-lifestyle-004/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-004/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-004/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-004/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-lifestyle-004/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/H2fd220f95c404bb1b6a82e50b28ed4acu.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hc7c28a011dd144c8bdf635c064232fc10.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H74b6c1395aba4289a8ba344581ae2816p.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H22916f2365d14b21be2df5f443584442T.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
     "extras": []

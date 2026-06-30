@@ -4,8 +4,19 @@ import { useMemo, useState } from "react";
 import { useUser, type Address } from "@/context/UserContext";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 import { AR_PROVINCES } from "@/lib/addresses/ar-provinces";
+import {
+  giAccountCard,
+  giAccountGhostBtn,
+  giAccountInput,
+  giAccountLabel,
+  giAccountPrimaryBtn,
+} from "@/lib/ui/gi-account";
 
 type FormState = Omit<Address, "id" | "isDefault"> & { isDefault: boolean };
+
+type Props = {
+  surface?: "gi" | "gn";
+};
 
 const emptyForm: FormState = {
   fullName: "",
@@ -19,9 +30,61 @@ const emptyForm: FormState = {
   isDefault: false,
 };
 
-export default function AccountAddresses() {
+export default function AccountAddresses({ surface = "gi" }: Props) {
   const { addresses, upsertAddress, setDefaultAddress, removeAddress } = useUser();
   const t = useTranslations();
+  const isGi = surface === "gi";
+
+  const s = isGi
+    ? {
+        title: "font-body text-lg font-semibold text-[#E8ECF1]",
+        addBtn:
+          "rounded-full border border-[#3B82F6]/40 bg-[#3B82F6]/10 px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.14em] text-[#3B82F6] transition hover:bg-[#3B82F6]/20",
+        card: giAccountCard + " p-5",
+        empty: giAccountCard,
+        emptyText: "font-body text-sm text-[rgba(232,236,241,0.65)]",
+        name: "font-body text-sm font-semibold text-[#E8ECF1]",
+        meta: "font-body text-xs text-[rgba(232,236,241,0.55)]",
+        badge:
+          "rounded-full border border-[#3B82F6]/35 bg-[#3B82F6]/10 px-3 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-[#3B82F6]",
+        body: "font-body text-sm text-[rgba(232,236,241,0.65)] space-y-1",
+        action:
+          "font-body text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.72)] transition hover:text-[#3B82F6]",
+        form: giAccountCard + " space-y-4",
+        label: giAccountLabel,
+        input: giAccountInput,
+        save: giAccountPrimaryBtn,
+        cancel: giAccountGhostBtn,
+        checkbox:
+          "h-4 w-4 rounded border border-white/20 bg-[#0B0F14] text-[#3B82F6] focus:ring-[#3B82F6]/40",
+        checkLabel: "font-body text-sm text-[rgba(232,236,241,0.65)]",
+      }
+    : {
+        title: "text-lg font-semibold text-text-primary",
+        addBtn:
+          "rounded-xl border border-earth-brown/18 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-text-primary transition-colors duration-200 ease-out hover:border-accent-gold/60 hover:text-accent-gold/90",
+        card: "rounded-2xl border border-earth-brown/15 bg-soft-stone p-5",
+        empty: "rounded-2xl border border-earth-brown/15 bg-soft-stone p-6",
+        emptyText: "text-sm text-text-muted",
+        name: "text-sm font-semibold text-text-primary",
+        meta: "text-xs text-text-muted",
+        badge:
+          "rounded-full border border-accent-gold/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-gold",
+        body: "text-sm text-text-muted space-y-1",
+        action:
+          "text-xs font-semibold uppercase tracking-[0.18em] text-text-primary hover:text-accent-gold/90 transition-colors duration-200",
+        form: "rounded-2xl border border-earth-brown/15 bg-soft-stone p-6 space-y-4",
+        label: "text-xs font-semibold uppercase tracking-[0.12em] text-text-muted",
+        input:
+          "w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none",
+        save:
+          "rounded-xl bg-text-primary px-5 py-3 text-sm font-semibold text-dark-base transition-colors duration-200 ease-out hover:bg-white",
+        cancel:
+          "rounded-xl border border-earth-brown/20 px-5 py-3 text-sm font-semibold text-muted-gray transition-colors duration-200 ease-out hover:text-dark-base",
+        checkbox:
+          "h-4 w-4 rounded border border-earth-brown/30 bg-white text-accent-gold focus:ring-accent-gold/60",
+        checkLabel: "text-sm text-text-muted",
+      };
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>(emptyForm);
@@ -107,19 +170,19 @@ export default function AccountAddresses() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-text-primary">{t("accountAddresses.title")}</h2>
+        <h2 className={s.title}>{t("accountAddresses.title")}</h2>
         <button
           type="button"
           onClick={startNew}
-          className="rounded-xl border border-earth-brown/18 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-text-primary transition-colors duration-200 ease-out hover:border-accent-gold/60 hover:text-accent-gold/90"
+          className={s.addBtn}
         >
           {t("accountAddresses.addNew")}
         </button>
       </div>
 
       {!hasAddresses && !isEditing && (
-        <div className="rounded-2xl border border-earth-brown/15 bg-soft-stone p-6">
-          <p className="text-sm text-text-muted">
+        <div className={s.empty}>
+          <p className={s.emptyText}>
             {t("accountAddresses.noAddresses")}
           </p>
         </div>
@@ -130,22 +193,22 @@ export default function AccountAddresses() {
           {sortedAddresses.map((address) => (
             <div
               key={address.id}
-              className="rounded-2xl border border-earth-brown/15 bg-soft-stone p-5"
+              className={s.card}
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-sm font-semibold text-text-primary">
+                  <p className={s.name}>
                     {address.fullName}
                   </p>
-                  <p className="text-xs text-text-muted">{address.phone}</p>
+                  <p className={s.meta}>{address.phone}</p>
                 </div>
                 {address.isDefault && (
-                  <span className="rounded-full border border-accent-gold/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-gold">
+                  <span className={s.badge}>
                     {t("accountAddresses.defaultBadge")}
                   </span>
                 )}
               </div>
-              <div className="mt-3 text-sm text-text-muted space-y-1">
+              <div className={`mt-3 ${s.body}`}>
                 <p>{address.addressLine1}</p>
                 {address.addressLine2 && <p>{address.addressLine2}</p>}
                 <p>
@@ -157,14 +220,14 @@ export default function AccountAddresses() {
                 <button
                   type="button"
                   onClick={() => startEdit(address)}
-                  className="text-xs font-semibold uppercase tracking-[0.18em] text-text-primary hover:text-accent-gold/90 transition-colors duration-200"
+                  className={s.action}
                 >
                   {t("accountAddresses.edit")}
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDelete(address.id)}
-                  className="text-xs font-semibold uppercase tracking-[0.18em] text-text-muted hover:text-text-primary transition-colors duration-200"
+                  className={s.action}
                 >
                   {t("accountAddresses.delete")}
                 </button>
@@ -172,7 +235,7 @@ export default function AccountAddresses() {
                   <button
                     type="button"
                     onClick={() => handleDefault(address.id)}
-                    className="text-xs font-semibold uppercase tracking-[0.18em] text-text-muted hover:text-accent-gold/90 transition-colors duration-200"
+                    className={s.action}
                   >
                     {t("accountAddresses.setAsDefault")}
                   </button>
@@ -185,12 +248,12 @@ export default function AccountAddresses() {
 
       {isEditing && (
         <form
-          className="rounded-2xl border border-earth-brown/15 bg-soft-stone p-6 space-y-4"
+          className={s.form}
           onSubmit={handleSubmit}
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.fullName")}
               </label>
               <input
@@ -200,12 +263,12 @@ export default function AccountAddresses() {
                 }
                 type="text"
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
                 placeholder={t("accountAddresses.form.fullNamePlaceholder")}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.phone")}
               </label>
               <input
@@ -215,14 +278,14 @@ export default function AccountAddresses() {
                 }
                 type="tel"
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
                 placeholder={t("accountAddresses.form.phonePlaceholder")}
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+            <label className={s.label}>
               {t("accountAddresses.form.address")}
             </label>
             <input
@@ -232,13 +295,13 @@ export default function AccountAddresses() {
               }
               type="text"
               required
-              className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+              className={s.input}
               placeholder={t("accountAddresses.form.addressPlaceholder")}
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+            <label className={s.label}>
               {t("accountAddresses.form.addressLine2")}
             </label>
             <input
@@ -247,14 +310,14 @@ export default function AccountAddresses() {
                 setForm((prev) => ({ ...prev, addressLine2: event.target.value }))
               }
               type="text"
-              className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+              className={s.input}
               placeholder={t("accountAddresses.form.addressLine2Placeholder")}
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.postalCode")}
               </label>
               <input
@@ -264,12 +327,12 @@ export default function AccountAddresses() {
                 }
                 type="text"
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
                 placeholder={t("accountAddresses.form.postalCodePlaceholder")}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.state")}
               </label>
               <select
@@ -278,7 +341,7 @@ export default function AccountAddresses() {
                   setForm((prev) => ({ ...prev, state: event.target.value }))
                 }
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
               >
                 <option value="">{t("accountAddresses.form.statePlaceholder")}</option>
                 {AR_PROVINCES.map((province) => (
@@ -292,7 +355,7 @@ export default function AccountAddresses() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.city")}
               </label>
               <input
@@ -302,12 +365,12 @@ export default function AccountAddresses() {
                 }
                 type="text"
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
                 placeholder={t("accountAddresses.form.cityPlaceholder")}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-[0.12em] text-text-muted">
+              <label className={s.label}>
                 {t("accountAddresses.form.country")}
               </label>
               <input
@@ -317,20 +380,20 @@ export default function AccountAddresses() {
                 }
                 type="text"
                 required
-                className="w-full rounded-xl border border-earth-brown/20 bg-white px-4 py-3 text-sm text-text-primary focus:border-accent-gold/60 focus:outline-none"
+                className={s.input}
                 placeholder={t("accountAddresses.form.countryPlaceholder")}
               />
             </div>
           </div>
 
-          <label className="flex items-center gap-3 text-sm text-text-muted">
+          <label className={`flex items-center gap-3 ${s.checkLabel}`}>
             <input
               type="checkbox"
               checked={form.isDefault}
               onChange={(event) =>
                 setForm((prev) => ({ ...prev, isDefault: event.target.checked }))
               }
-              className="h-4 w-4 rounded border border-earth-brown/30 bg-white text-accent-gold focus:ring-accent-gold/60"
+              className={s.checkbox}
             />
             {t("accountAddresses.form.setAsDefault")}
           </label>
@@ -338,7 +401,7 @@ export default function AccountAddresses() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               type="submit"
-              className="rounded-xl bg-text-primary px-5 py-3 text-sm font-semibold text-dark-base transition-colors duration-200 ease-out hover:bg-white"
+              className={s.save}
             >
               {t("accountAddresses.form.save")}
             </button>
@@ -349,7 +412,7 @@ export default function AccountAddresses() {
                 setEditingId(null);
                 setForm(emptyForm);
               }}
-              className="rounded-xl border border-earth-brown/20 px-5 py-3 text-sm font-semibold text-muted-gray transition-colors duration-200 ease-out hover:text-dark-base"
+              className={s.cancel}
             >
               {t("accountAddresses.form.cancel")}
             </button>

@@ -15,18 +15,48 @@
     "lifestyle": [],
     "extras": [],
     "variantImages": {
-      "blue": [
-        "/assets/images/good-ideas-products/gi-hogar-001/blue.webp"
-      ],
-      "gold": [
-        "/assets/images/good-ideas-products/gi-hogar-001/gold.webp"
-      ],
-      "white": [
-        "/assets/images/good-ideas-products/gi-hogar-001/white.webp"
-      ],
-      "pink": [
-        "/assets/images/good-ideas-products/gi-hogar-001/pink.webp"
-      ]
+      "color": {
+        "blue": {
+          "featured": [
+            "/assets/images/good-ideas-products/gi-hogar-001/blue.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-001/blue.webp"
+          ],
+          "lifestyle": [],
+          "extras": []
+        },
+        "gold": {
+          "featured": [
+            "/assets/images/good-ideas-products/gi-hogar-001/gold.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-001/gold.webp"
+          ],
+          "lifestyle": [],
+          "extras": []
+        },
+        "white": {
+          "featured": [
+            "/assets/images/good-ideas-products/gi-hogar-001/white.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-001/white.webp"
+          ],
+          "lifestyle": [],
+          "extras": []
+        },
+        "pink": {
+          "featured": [
+            "/assets/images/good-ideas-products/gi-hogar-001/pink.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-hogar-001/pink.webp"
+          ],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
     }
   }
 }

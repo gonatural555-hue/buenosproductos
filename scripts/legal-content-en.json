@@ -1,0 +1,387 @@
+{
+  "common": {
+    "eyebrow": "Legal information",
+    "updatedAt": "Last updated: June 2026"
+  },
+  "nav": {
+    "ariaLabel": "Legal pages",
+    "terms": "Terms",
+    "returns": "Returns",
+    "shipping": "Shipping",
+    "regret": "Withdrawal",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "disclaimer": "Disclaimer"
+  },
+  "regretForm": {
+    "sectionTitle": "Withdrawal request form",
+    "intro": "Complete this form to revoke your purchase within 10 calendar days of delivery. No site registration required.",
+    "fullName": "Full name",
+    "email": "Email",
+    "orderNumber": "Order number",
+    "product": "Product",
+    "notes": "Notes (optional)",
+    "submit": "Submit withdrawal request",
+    "finePrint": "Submitting opens your email client with order details. We will reply with a case ID within 24 hours.",
+    "mailSubject": "Withdrawal",
+    "mailCode": "Case ID",
+    "successTitle": "Request prepared",
+    "successBody": "If your email client opened, send the message to confirm. Save this reference code:",
+    "successFinePrint": "We will contact you at the email provided within 24 hours with official confirmation."
+  },
+  "privacy": {
+    "metaTitle": "Privacy Policy | Buenos Productos",
+    "metaDescription": "How Buenos Productos handles your personal data.",
+    "title": "Privacy Policy",
+    "intro": "Buenos Productos, operated by Francisco Inza, respects your privacy. This policy explains what we collect, why, and your rights.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Data controller",
+        "paragraphs": [
+          "Controller: Francisco Inza (CUIT 20-40635753-9), operator of Buenos Productos.",
+          "Contact: go.natural.555@gmail.com"
+        ]
+      },
+      {
+        "title": "Data we collect",
+        "bullets": [
+          "Account and order data: name, email, shipping address, phone if provided.",
+          "Payment data: processed by PayPal; we do not store full card numbers.",
+          "Communications: support, withdrawal requests, and claims.",
+          "Technical data: device, browser, pages visited, and cookies (see Cookie Policy)."
+        ]
+      },
+      {
+        "title": "How we use data",
+        "bullets": [
+          "Process orders, payments, shipping, and after-sales support.",
+          "Handle returns, withdrawal, and claims.",
+          "Send confirmations, tracking, and operational emails.",
+          "Newsletter and marketing only with explicit consent.",
+          "Security, fraud prevention, and legal compliance."
+        ]
+      },
+      {
+        "title": "Processors and transfers",
+        "paragraphs": [
+          "We share data only with providers required to operate the service."
+        ],
+        "bullets": [
+          "PayPal — payment processing.",
+          "Supabase — authentication, orders, and account data.",
+          "Brevo — transactional email and newsletter (with consent).",
+          "Hosting, analytics, and international logistics providers."
+        ]
+      },
+      {
+        "title": "Retention and security",
+        "paragraphs": [
+          "We retain data as needed for the commercial relationship, claims, and tax/accounting obligations.",
+          "We apply reasonable security measures; no system is 100% infallible."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "You may request access, correction, update, or deletion by emailing go.natural.555@gmail.com.",
+          "You may object to consent-based uses and withdraw consent where applicable."
+        ]
+      }
+    ],
+    "closing": "We may update this policy; the current version will always be published here."
+  },
+  "cookies": {
+    "metaTitle": "Cookie Policy | Buenos Productos",
+    "metaDescription": "Cookie use on Buenos Productos.",
+    "title": "Cookie Policy",
+    "intro": "We use cookies and similar technologies for site functionality, preferences, and experience improvements.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "What cookies are",
+        "paragraphs": [
+          "Small files stored on your device when you visit the site."
+        ]
+      },
+      {
+        "title": "Types we use",
+        "bullets": [
+          "Essential: session, cart, security, and checkout.",
+          "Preferences: language and basic settings.",
+          "Analytics: aggregated site performance (if enabled)."
+        ]
+      },
+      {
+        "title": "Managing cookies",
+        "paragraphs": [
+          "You can block or delete cookies in your browser. Some features may become unavailable.",
+          "Questions: go.natural.555@gmail.com"
+        ]
+      }
+    ],
+    "closing": "We will update this policy if our tools change."
+  },
+  "terms": {
+    "metaTitle": "Terms & Conditions | Buenos Productos",
+    "metaDescription": "Purchase terms for Buenos Productos — commercial intermediary with international shipping to Argentina.",
+    "title": "Terms & Conditions",
+    "intro": "These terms govern use of Buenos Productos and purchases on the site. By buying, you accept these conditions and applicable law in Argentina.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Seller identification",
+        "paragraphs": [
+          "Buenos Productos is operated by Francisco Inza, CUIT 20-40635753-9, address Uruguay 61, Río Cuarto, Córdoba, Argentina.",
+          "Contact: go.natural.555@gmail.com"
+        ]
+      },
+      {
+        "title": "Nature of service",
+        "paragraphs": [
+          "We act as a commercial intermediary: we select products, manage your order, and coordinate shipping through international suppliers and logistics operators.",
+          "The purchase contract is between you and Francisco Inza. Fulfillment may use third parties without reducing your rights against the site operator."
+        ]
+      },
+      {
+        "title": "Products and information",
+        "bullets": [
+          "Products may be imported and supplied by international providers.",
+          "Images, dimensions, and colors are indicative; minor packaging or shade variations may occur.",
+          "Certifications listed come from the manufacturer or supplier.",
+          "Third-party brands belong to their owners; used descriptively only."
+        ]
+      },
+      {
+        "title": "Pricing and payment",
+        "bullets": [
+          "Prices are shown in USD unless stated otherwise.",
+          "Payment is processed via PayPal or other methods enabled at checkout.",
+          "An order is confirmed when payment completes and you receive email confirmation."
+        ]
+      },
+      {
+        "title": "Shipping",
+        "paragraphs": [
+          "Delivery times are estimates (typically 13–37 days from purchase, depending on location and logistics).",
+          "Customs, holidays, or force majeure may cause delays. See Shipping Policy."
+        ]
+      },
+      {
+        "title": "Returns and withdrawal",
+        "paragraphs": [
+          "Two separate tracks apply by reason. See Returns Policy and Right of Withdrawal."
+        ],
+        "bullets": [
+          "Withdrawal (no cause): 10 calendar days from delivery — non-waivable right in Argentina.",
+          "Claims for defect, damage, error, or non-delivery: up to 15 days from delivery with evidence.",
+          "After those windows, only legal conformity warranties may apply."
+        ]
+      },
+      {
+        "title": "Site use",
+        "paragraphs": [
+          "Use the site lawfully. We may suspend features for maintenance, security, or fraud."
+        ]
+      },
+      {
+        "title": "Limitation of liability",
+        "paragraphs": [
+          "We are not liable for indirect or consequential damages to the extent permitted by law.",
+          "Nothing here limits non-waivable consumer rights in Argentina."
+        ]
+      },
+      {
+        "title": "Governing law",
+        "paragraphs": [
+          "These terms are governed by the laws of Argentina. Disputes should first be resolved amicably."
+        ]
+      }
+    ],
+    "closing": "We may update these terms; the version published at purchase applies unless law requires otherwise."
+  },
+  "returns": {
+    "metaTitle": "Returns Policy | Buenos Productos",
+    "metaDescription": "Returns, withdrawal, and refunds at Buenos Productos.",
+    "title": "Returns & Refunds Policy",
+    "intro": "We separate legal withdrawal from product-issue claims. This keeps Argentine compliance clear and manageable.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Track 1 — Withdrawal (Law 24.240)",
+        "paragraphs": [
+          "If you change your mind without a product defect, you have 10 calendar days from receipt to revoke acceptance without justification.",
+          "Use the Withdrawal button or email go.natural.555@gmail.com with your order number."
+        ],
+        "bullets": [
+          "Product must be unused, complete, and in original packaging.",
+          "We will instruct how to make the item available for return in Argentina.",
+          "Return shipping for withdrawal is borne by the seller under Argentine law.",
+          "We refund the amount paid within 10 days after receiving and verifying the product via the same payment method (PayPal)."
+        ]
+      },
+      {
+        "title": "Track 2 — Product issue (defect, damage, error, not as described)",
+        "paragraphs": [
+          "If the product arrived defective, damaged, incorrect, or not as described, contact us within 15 days of delivery."
+        ],
+        "bullets": [
+          "Send photos of the product, packaging, and shipping label.",
+          "We will offer replacement, reshipment, or full refund as appropriate.",
+          "Return costs are on us when applicable.",
+          "Does not include change of mind after the withdrawal window."
+        ]
+      },
+      {
+        "title": "Non-delivery",
+        "paragraphs": [
+          "If the package did not arrive within the published estimate, contact us with your order number. We will investigate and refund in full if non-delivery is confirmed."
+        ]
+      },
+      {
+        "title": "Exclusions",
+        "bullets": [
+          "Custom or made-to-order products.",
+          "Sealed hygiene items that were opened.",
+          "Products damaged by misuse or modified by the customer.",
+          "Requests outside stated windows, except legal conformity warranty."
+        ]
+      },
+      {
+        "title": "How to start",
+        "bullets": [
+          "Withdrawal: Withdrawal button on site.",
+          "Claims: go.natural.555@gmail.com with subject «Claim order [number]».",
+          "We respond within a reasonable time (typically 48 business hours)."
+        ]
+      }
+    ],
+    "closing": "Contact us before opening a PayPal chargeback; we can often resolve faster."
+  },
+  "shipping": {
+    "metaTitle": "Shipping Policy | Buenos Productos",
+    "metaDescription": "International shipping to Argentina — timelines, tracking, and customs.",
+    "title": "Shipping Policy",
+    "intro": "Products ship from international suppliers to Argentina. Timelines are estimates and may vary due to logistics and customs.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Coverage",
+        "paragraphs": [
+          "We ship to addresses within Argentina. Verify postal code and details at checkout."
+        ]
+      },
+      {
+        "title": "Estimated timelines",
+        "paragraphs": [
+          "Typical delivery window is 13–37 days from order confirmation, depending on location and carrier.",
+          "Dates on product pages are calculated dynamically and are indicative, not a guaranteed exact day."
+        ]
+      },
+      {
+        "title": "Shipping cost",
+        "paragraphs": [
+          "Many products include free standard shipping as shown on the listing. Otherwise cost is displayed before payment."
+        ]
+      },
+      {
+        "title": "Processing and tracking",
+        "bullets": [
+          "We process orders once payment is confirmed.",
+          "You will receive tracking by email when the package ships.",
+          "Tracking may update slowly during international legs."
+        ]
+      },
+      {
+        "title": "Customs and import",
+        "paragraphs": [
+          "International shipments may be subject to customs inspection. Delays, holds, or documentation requests may extend delivery.",
+          "Cooperate with Correo Argentino or the carrier if contacted. Extraordinary customs costs, when required by regulation, may be the recipient's responsibility."
+        ]
+      },
+      {
+        "title": "Wrong address or refusal",
+        "paragraphs": [
+          "If a package returns due to incorrect data or refusal at destination, we may arrange reshipment at extra cost or partial refund depending on the case."
+        ]
+      }
+    ],
+    "closing": "Shipping questions: go.natural.555@gmail.com with your order number."
+  },
+  "regret": {
+    "metaTitle": "Right of Withdrawal | Buenos Productos",
+    "metaDescription": "Exercise your right of withdrawal on distance sales — Argentina Law 24.240.",
+    "title": "Right of Withdrawal",
+    "intro": "Under Argentine Consumer Defense Law 24.240 and Resolution 424/2020, you may revoke your purchase within 10 calendar days of receiving the product, without justification.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Conditions",
+        "bullets": [
+          "Window: 10 calendar days from product delivery.",
+          "Product must be unused, complete, and in original packaging.",
+          "No site registration required to use this form.",
+          "We will send a case identification code within 24 hours."
+        ]
+      },
+      {
+        "title": "What happens next",
+        "paragraphs": [
+          "We will instruct how to return the product to an address in Argentina.",
+          "Once the item is verified, we refund the PayPal payment within legal timeframes."
+        ]
+      },
+      {
+        "title": "Alternative contact",
+        "paragraphs": [
+          "You may also email go.natural.555@gmail.com with subject «Withdrawal» and your order number."
+        ]
+      }
+    ],
+    "closing": "This right is non-waivable and does not apply to legally excluded products (custom items, opened hygiene goods, etc.)."
+  },
+  "disclaimer": {
+    "metaTitle": "Disclaimer | Buenos Productos",
+    "metaDescription": "Liability limits and site information for Buenos Productos.",
+    "title": "Disclaimer",
+    "intro": "This disclaimer complements our Terms and clarifies limits of information published on Buenos Productos.",
+    "updatedAt": "Last updated: June 2026",
+    "sections": [
+      {
+        "title": "Site information",
+        "paragraphs": [
+          "Content is informational and commercial. It does not replace professional, technical, or safety advice for your specific case."
+        ]
+      },
+      {
+        "title": "Imported products",
+        "bullets": [
+          "International origin; timelines and availability may change.",
+          "Images and specs are indicative.",
+          "Certifications (CE, FCC, etc.) depend on manufacturer and batch.",
+          "We are not official representatives of third-party brands unless explicitly stated."
+        ]
+      },
+      {
+        "title": "Safe use",
+        "paragraphs": [
+          "Use each product per its manual and electrical, thermal, or battery precautions. We are not liable for misuse."
+        ]
+      },
+      {
+        "title": "Reviews and third-party content",
+        "paragraphs": [
+          "Some reviews may come from international marketplaces for reference. External links do not imply endorsement."
+        ]
+      },
+      {
+        "title": "Limitation",
+        "paragraphs": [
+          "To the extent permitted by law, Buenos Productos is not liable for indirect damages from site or product use.",
+          "Your consumer rights in Argentina remain intact."
+        ]
+      }
+    ],
+    "closing": "Questions: go.natural.555@gmail.com"
+  }
+}

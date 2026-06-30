@@ -3,9 +3,9 @@
 import Link from "next/link";
 import type { MouseEvent } from "react";
 import SmartImage from "@/components/SmartImage";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 import type { Locale } from "@/lib/i18n/config";
-import { goodIdeasProductPath } from "@/lib/routing/brands";
+import { productPath } from "@/lib/routing/paths";
 import { localizeGoodIdeasProduct } from "@/lib/good-ideas-products";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -31,13 +31,13 @@ export default function GoodIdeasProductCardClient({
 }: GoodIdeasProductCardClientProps) {
   const localized = localizeGoodIdeasProduct(product, locale);
   const { formatMoney } = useCurrency();
-  const { addItem } = useGoodIdeasCart();
+  const { addItemAndOpenDrawer } = useGoodIdeasCart();
   const imageSrc = isValidImageSrc(cardImage) ? cardImage : null;
 
   const handleAddNow = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    addItem({
+    addItemAndOpenDrawer({
       id: product.id,
       title: localized.title,
       price: localized.price,
@@ -47,10 +47,10 @@ export default function GoodIdeasProductCardClient({
 
   return (
     <Link
-      href={goodIdeasProductPath(locale, product.id)}
-      className="group block overflow-hidden rounded-2xl border border-white/[0.08] bg-[#151B24] transition duration-300 hover:-translate-y-0.5 hover:border-[#3B82F6]/35 hover:shadow-[0_20px_48px_rgba(0,0,0,0.35)]"
+      href={productPath(locale, product.id)}
+      className={giPlpClasses.card}
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#0B0F14]">
+      <div className={giPlpClasses.cardImageBg}>
         {imageSrc ? (
           <SmartImage
             src={imageSrc}
@@ -60,7 +60,7 @@ export default function GoodIdeasProductCardClient({
             className="object-cover transition duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="flex h-full items-center justify-center font-inter text-[13px] text-[rgba(232,236,241,0.45)]">
+          <div className={giPlpClasses.cardNoImage}>
             {noImageLabel}
           </div>
         )}
@@ -78,21 +78,16 @@ export default function GoodIdeasProductCardClient({
         ) : null}
       </div>
       <div className="space-y-2 p-5">
-        <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.18em] text-[#3B82F6]">
+        <p className={giPlpClasses.cardCategory}>
           {product.category}
         </p>
-        <h2 className="font-display text-[1.15rem] leading-snug tracking-[-0.02em] text-[#E8ECF1]">
+        <h2 className={giPlpClasses.cardTitle}>
           {localized.title}
         </h2>
-        {localized.shortDescription ? (
-          <p className="line-clamp-2 font-inter text-[14px] leading-relaxed text-[rgba(232,236,241,0.65)]">
-            {localized.shortDescription}
-          </p>
-        ) : null}
-        <p className="font-inter text-[15px] font-semibold text-white">
+        <p className={giPlpClasses.cardPrice}>
           {formatMoney(localized.price)}
         </p>
-        <span className="inline-flex font-inter text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgba(232,236,241,0.55)] transition group-hover:text-[#3B82F6]">
+        <span className={giPlpClasses.cardCta}>
           {viewProductLabel} →
         </span>
       </div>

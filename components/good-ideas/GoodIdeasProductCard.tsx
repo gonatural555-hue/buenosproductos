@@ -1,6 +1,6 @@
 import GoodIdeasProductCardClient from "@/components/good-ideas/GoodIdeasProductCardClient";
 import { resolveGoodIdeasProductCardImage } from "@/lib/good-ideas-product-images";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {

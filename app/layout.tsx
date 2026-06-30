@@ -3,7 +3,6 @@ import "./header-rei.css";
 import { headers } from "next/headers";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { CartProvider } from "@/context/CartContext";
 import { UserProvider } from "@/context/UserContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { defaultLocale } from "@/lib/i18n/config";
@@ -22,6 +21,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export default async function RootLayout({
@@ -33,13 +33,13 @@ export default async function RootLayout({
   const locale = requestHeaders.get("x-locale") || defaultLocale;
 
   return (
-    <html lang={locale} className={`${tanNimbus.variable} ${inter.variable}`}>
+    <html lang={locale} className={`gi-brand ${tanNimbus.variable} ${inter.variable}`}>
       <body>
         <GoogleAnalytics />
         <MicrosoftClarity />
         <UserProvider>
           <AuthProvider>
-            <CartProvider>{children}</CartProvider>
+            {children}
           </AuthProvider>
         </UserProvider>
       </body>

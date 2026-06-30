@@ -3,25 +3,16 @@
   "brand": "Good Products",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-hogar-002/image.webp"
+      "https://s.alicdn.com/@sc04/kf/Hf0420404913d4a3ba117ba6e0a74d596I.jpg?avif=close&webp=close"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-hogar-002/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-hogar-002/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-hogar-002/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-hogar-002/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-hogar-002/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/Hffbfb20c2c414f3297a65cea11ca1bbeB.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H341e1269750b422ba725775aab402a0cv.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/He3098aee0f194f97b81f6746de4b7a76o.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H85e974f6d95e45519d3be92a69f29581z.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
-    "extras": [],
-    "variantImages": {
-      "us": [
-        "/assets/images/good-ideas-products/gi-hogar-002/us.webp"
-      ],
-      "eu": [
-        "/assets/images/good-ideas-products/gi-hogar-002/eu.webp"
-      ]
-    }
+    "extras": []
   },
   "imagePrompts": {
     "productCard": "A high-quality product card for Good Products portable travel kettle 450ML featuring a premium close-up of the item, with Good Products logo in the corner.",

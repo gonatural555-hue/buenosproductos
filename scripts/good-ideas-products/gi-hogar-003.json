@@ -3,25 +3,15 @@
   "brand": "Good Products",
   "images": {
     "featured": [
-      "https://s.alicdn.com/@sc04/kf/H519bdd42baf34a44933907aabee948b6R.png?avif=close&webp=close"
+      "https://s.alicdn.com/@sc04/kf/H8bcc78e7b88a44f5ad2a6d34c263ba50W.jpg?avif=close&webp=close"
     ],
     "gallery": [
-      "https://s.alicdn.com/@sc04/kf/H744bb6a17e9741f99c06e022a40a0d09z.jpg?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H7f87fd24fe6b44a0b19341810aa4ce9cO.png?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H35dc7a6b2e4b425d9237dabd55b9bf4ez.png?avif=close&webp=close"
+      "https://s.alicdn.com/@sc04/kf/H82f7867f49a64aec81a4f4efc473fd2dD.png?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H69b8b061778b4c6ab6234fb5e665e5eeu.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H3bc6d02ba73e4b4eacfc9087af24c01aP.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/He3ca0e8a817a45659fddd5171de1e2a3B.jpg?avif=close&webp=close"
     ],
     "lifestyle": [],
-    "extras": [],
-"variantImages": {
-      "white": [
-        "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
-      ],
-      "black": [
-        "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close"
-      ]
-    }
-  },
-  "pdpGalleryLayout": {
-    "columns": 2
+    "extras": []
   }
-}   
+}

@@ -4,34 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import { getOrderSuccessBlogCards } from "@/lib/good-ideas-blog-order-success";
 import { INSTAGRAM_URL, TIKTOK_URL } from "@/lib/social-links";
 import HorizontalSwipeHint from "@/components/HorizontalSwipeHint";
-
-/** Mismos slugs destacados que en `app/[locale]/page.tsx` (posts reales en messages.blog.posts). */
-const ORDER_SUCCESS_BLOG_SLUGS = [
-  "camping-fin-de-semana-basico",
-  "no-mires-para-arriba",
-  "atreverse-un-poco-mas",
-] as const;
-
-function isLikelyPath(value: string) {
-  return Boolean(value && value.startsWith("/"));
-}
 
 export default function OrderSuccessEngagementBlock() {
   const locale = useLocale();
   const t = useTranslations();
 
-  const blogCards = useMemo(() => {
-    return ORDER_SUCCESS_BLOG_SLUGS.map((slug) => {
-      const title = t(`blog.posts.${slug}.title`);
-      const excerpt = t(`blog.posts.${slug}.excerpt`);
-      const imgKey = `blog.posts.${slug}.sections.0.image`;
-      const rawImage = t(imgKey);
-      const image = isLikelyPath(rawImage) ? rawImage : "/assets/images/blog/blog-hero.webp";
-      return { slug, title, excerpt, image };
-    });
-  }, [t, locale]);
+  const blogCards = useMemo(
+    () => getOrderSuccessBlogCards(locale),
+    [locale]
+  );
 
   const showSocial = Boolean(INSTAGRAM_URL || TIKTOK_URL);
 
@@ -96,7 +80,7 @@ export default function OrderSuccessEngagementBlock() {
             {blogCards.map((post) => (
               <Link
                 key={post.slug}
-                href={`/${locale}/blog/${post.slug}`}
+                href={post.href}
                 className="group w-[min(85vw,280px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-earth-brown/15 bg-soft-stone text-left transition duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_-12px_rgba(17,23,19,0.15)] motion-reduce:hover:scale-100 motion-reduce:hover:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 sm:w-72"
               >
                 <div className="relative aspect-[16/10] w-full bg-warm-sand">

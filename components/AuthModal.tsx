@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import AuthForm from "@/components/AuthForm";
-import AuthExperienceShell from "@/components/auth/AuthExperienceShell";
+import GiAuthExperienceShell from "@/components/auth/GiAuthExperienceShell";
 
 type Props = {
   open: boolean;
@@ -28,8 +28,8 @@ export default function AuthModal({ open, onClose, initialTab = "login" }: Props
   if (!open) return null;
 
   return (
-    <AuthExperienceShell mode="modal" onClose={onClose} showClose>
+    <GiAuthExperienceShell mode="modal" onClose={onClose} showClose>
       <AuthForm initialTab={initialTab} onSuccess={onClose} isPage={false} />
-    </AuthExperienceShell>
+    </GiAuthExperienceShell>
   );
 }

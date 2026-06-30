@@ -15,6 +15,28 @@ export const GI_COLORS = {
 export const GI_HERO_TOP_PAD =
   "pt-[calc(env(safe-area-inset-top,0px)+5.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+6.5rem)]";
 
+/** Altura efectiva del header fijo (alineado con galería sticky PDP). */
+export const GI_PDP_HEADER_HEIGHT = "4.75rem";
+
+/** Aire entre el borde inferior del header y el contenido del PDP. */
+export const GI_PDP_HEADER_GAP_PX = 90;
+
+/** PDP — clearance del header + 90px de separación visual. */
+export const GI_PDP_TOP_PAD =
+  "pt-[calc(env(safe-area-inset-top,0px)+4.75rem+90px)]";
+
+/** PLP carousel — clearance del header fijo, sin aire extra de hero full-screen. */
+export const GI_PLP_CAROUSEL_TOP_PAD =
+  "pt-[calc(env(safe-area-inset-top,0px)+4.25rem)] md:pt-[calc(env(safe-area-inset-top,0px)+4.5rem)]";
+
+/** Fondo editorial heroes: glow azul + grilla cuadrada 56px (sin hex interactivo). */
+export const GI_HERO_GRID_OVERLAY = {
+  radial:
+    "bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.22),transparent_60%)]",
+  grid:
+    "opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:56px_56px]",
+} as const;
+
 export const GI_CATALOG_SECTION_ID = "gi-products-catalog";
 export const GI_BLOG_POSTS_ANCHOR = "gi-blog-posts";
 
@@ -30,7 +52,7 @@ export type GiProductsCategoryTone = keyof typeof GI_PRODUCTS_CATEGORY_TONES;
 
 /** CTA principal de heroes editoriales (home, blog). */
 export const GI_HERO_PRIMARY_CTA_CLASS =
-  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[#E8ECF1] px-9 text-center font-inter text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0B0F14] shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-[13px]";
+  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[#E8ECF1] px-9 text-center font-body text-sm font-semibold text-[#0B0F14] shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-base";
 
 /** Título multilínea con acentos (misma lógica que blog). */
 export function parseGoodIdeasEditorialTitle(title: string): {

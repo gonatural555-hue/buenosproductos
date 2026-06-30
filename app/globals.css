@@ -64,6 +64,23 @@
   --gn-radius-panel: 32px;
 
   --gn-ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Escala tipográfica compartida (GI + fallback Tailwind) */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --gi-leading-heading: 1.25;
+  --gi-leading-snug: 1.375;
+  --gi-leading-normal: 1.5;
+  --gi-leading-relaxed: 1.625;
+  --gi-tracking-tight: -0.02em;
 }
 
 @theme inline {
@@ -141,6 +158,72 @@ body {
   -webkit-overflow-scrolling: touch;
   /* Reducir velocidad del scroll para efecto más pesado */
   scroll-padding-top: 0;
+}
+
+/* Mono-marca Good Products — fondo oscuro, sin viñeta crema GN */
+html.gi-brand {
+  --gn-page-bg: #0b0f14;
+  --bg-primary: #0b0f14;
+  --background: #0b0f14;
+
+  /* Tipografía */
+  --font-display: var(--font-tan-nimbus), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+
+  --gi-text-product-title: clamp(1.375rem, 2.5vw, 1.625rem);
+
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --gi-leading-heading: 1.25;
+  --gi-leading-snug: 1.375;
+  --gi-leading-normal: 1.5;
+  --gi-leading-relaxed: 1.625;
+
+  --gi-tracking-tight: -0.02em;
+  --gi-tracking-normal: 0;
+
+  --gi-text-on-dark: #e8ecf1;
+  --gi-text-secondary-on-dark: rgba(232, 236, 241, 0.72);
+  --gi-text-muted-on-dark: rgba(232, 236, 241, 0.55);
+
+  --gi-text-primary: #0b0f14;
+  --gi-text-secondary: #525252;
+  --gi-text-muted: #737373;
+
+  --gi-primary: #3b82f6;
+  --gi-primary-hover: #2563eb;
+  --gi-ink: #0b0f14;
+  --gi-drawer-bg: #ffffff;
+  --gi-border: #e5e5e5;
+  --gi-success: #22c55e;
+}
+
+html.gi-brand body {
+  background-color: #0b0f14;
+  color: #e8ecf1;
+  font-family: var(--font-body);
+  font-weight: var(--font-regular);
+  font-size: var(--text-base);
+  line-height: var(--gi-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.gi-brand body::before {
+  display: none;
 }
 
 /* Viñeta muy suave sobre arena — sensación premium sin oscurecer */
@@ -1011,4 +1094,36 @@ main[data-route="order-success"] .bg-gray-50 {
     );
     pointer-events: none;
   }
+}
+
+@layer utilities {
+  /* Scroll funcional sin barra visible (filtros PLP, tabs PDP, etc.) */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Filtros PLP — fuera de @layer para ganar especificidad en Windows/Chrome */
+.gi-plp-filter-scroll {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+.gi-plp-filter-scroll::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
+}
+
+.gi-plp-filter-scroll::-webkit-scrollbar-track,
+.gi-plp-filter-scroll::-webkit-scrollbar-thumb,
+.gi-plp-filter-scroll::-webkit-scrollbar-corner {
+  display: none !important;
+  background: transparent !important;
 }

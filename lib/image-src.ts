@@ -1,6 +1,9 @@
 /** Fallback editorial cuando no hay imagen válida. */
 export const DEFAULT_IMAGE_PLACEHOLDER = "/assets/images/blog/blog-hero.webp";
 
+export const PRODUCT_BLUR_DATA_URL =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMxMDEyMTQiIC8+PC9zdmc+";
+
 export function isExternalImage(src?: string | null): boolean {
   return typeof src === "string" && /^https?:\/\//i.test(src);
 }

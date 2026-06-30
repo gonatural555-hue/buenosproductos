@@ -4,8 +4,9 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 import type { Locale } from "@/lib/i18n/config";
-import { goodIdeasProductsPath } from "@/lib/routing/brands";
+import { productsPath } from "@/lib/routing/paths";
 import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName";
+import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 import {
   GI_EASE,
   GI_HERO_PRIMARY_CTA_CLASS,
@@ -64,20 +65,17 @@ export default function GoodIdeasHomeHero({
       className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       aria-label={sectionAriaLabel}
     >
+      <HexGridInteractiveBackground />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.22),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.18),transparent_60%)]"
         aria-hidden
       />
       <motion.div
-        className={`relative z-[1] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
+        className={`relative z-[2] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:56px_56px]"
-          aria-hidden
-        />
         <div className="flex min-h-0 flex-1 flex-col justify-center gap-3 md:gap-4">
           <motion.div className="relative flex w-full max-w-[980px] flex-col items-center">
             <motion.p
@@ -115,7 +113,7 @@ export default function GoodIdeasHomeHero({
 
             <motion.div variants={itemVariants} className="mt-6 w-full max-w-md md:mt-7">
               <Link
-                href={goodIdeasProductsPath(locale)}
+                href={productsPath(locale)}
                 className={GI_HERO_PRIMARY_CTA_CLASS}
                 aria-label={ctaLabel}
               >

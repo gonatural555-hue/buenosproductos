@@ -11,10 +11,14 @@ import {
   type GoodIdeasPriceFilter,
 } from "@/lib/good-ideas-plp-price";
 import {
+  getGoodIdeasBrandLabel,
+  goodIdeasProductMatchesBrand,
+} from "@/lib/good-ideas-plp-brands";
+import {
   buildGoodIdeasPreserveParams,
   buildGoodIdeasProductsListHref,
 } from "@/lib/good-ideas-plp-segments";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 import type { Locale } from "@/lib/i18n/config";
 
 function normalizeText(value: string): string {
@@ -69,6 +73,7 @@ export function filterGoodIdeasProducts(
     locale: Locale;
     query?: string;
     categorySlug?: string | null;
+    brandSlug?: string | null;
     priceFilter?: GoodIdeasPriceFilter;
   }
 ): Product[] {
@@ -82,6 +87,9 @@ export function filterGoodIdeasProducts(
     if (!goodIdeasProductMatchesCategory(product, opts.categorySlug ?? null)) {
       return false;
     }
+    if (!goodIdeasProductMatchesBrand(product, opts.brandSlug ?? null)) {
+      return false;
+    }
     if (!goodIdeasProductMatchesPrice(product, priceFilter)) {
       return false;
     }
@@ -92,18 +100,22 @@ export function filterGoodIdeasProducts(
 export function hasActiveGoodIdeasCatalogFilters(opts: {
   rawQuery: string;
   categorySlug: string | null;
+  brandSlug: string | null;
   priceFilter: GoodIdeasPriceFilter;
 }): boolean {
   return (
     Boolean(opts.rawQuery.trim()) ||
     Boolean(opts.categorySlug) ||
+    Boolean(opts.brandSlug) ||
     isGoodIdeasPriceFilterActive(opts.priceFilter)
   );
 }
 
 export function buildGoodIdeasFilterChips(opts: {
   locale: Locale;
+  products: Product[];
   categorySlug: string | null;
+  brandSlug: string | null;
   rawQuery: string;
   sort?: string;
   priceFilter: GoodIdeasPriceFilter;
@@ -123,6 +135,24 @@ export function buildGoodIdeasFilterChips(opts: {
         buildGoodIdeasPreserveParams({
           q: opts.rawQuery.trim() || undefined,
           sort,
+          brand: opts.brandSlug ?? undefined,
+          priceMin,
+          priceMax,
+        })
+      ),
+    });
+  }
+
+  if (opts.brandSlug) {
+    chips.push({
+      id: "brand",
+      label: getGoodIdeasBrandLabel(opts.brandSlug, opts.products),
+      removeHref: buildGoodIdeasProductsListHref(
+        opts.locale,
+        buildGoodIdeasPreserveParams({
+          q: opts.rawQuery.trim() || undefined,
+          sort,
+          category: opts.categorySlug ?? undefined,
           priceMin,
           priceMax,
         })
@@ -144,6 +174,7 @@ export function buildGoodIdeasFilterChips(opts: {
           q: opts.rawQuery.trim() || undefined,
           sort,
           category: opts.categorySlug ?? undefined,
+          brand: opts.brandSlug ?? undefined,
         })
       ),
     });
@@ -157,6 +188,7 @@ export function buildGoodIdeasFilterChips(opts: {
         opts.locale,
         buildGoodIdeasPreserveParams({
           category: opts.categorySlug ?? undefined,
+          brand: opts.brandSlug ?? undefined,
           sort,
           priceMin,
           priceMax,
@@ -170,4 +202,5 @@ export function buildGoodIdeasFilterChips(opts: {
 
 export { normalizeText };
 export { resolveGoodIdeasCategoryParam } from "@/lib/good-ideas-plp-categories";
+export { resolveGoodIdeasBrandParam } from "@/lib/good-ideas-plp-brands";
 export { parseGoodIdeasPriceFilter } from "@/lib/good-ideas-plp-price";

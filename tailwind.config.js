@@ -21,6 +21,17 @@ const config = {
       },
       fontFamily: {
         sans: [
+          "var(--font-body)",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+        body: [
+          "var(--font-body)",
           "system-ui",
           "-apple-system",
           "Segoe UI",
@@ -40,6 +51,7 @@ const config = {
           "sans-serif",
         ],
         display: [
+          "var(--font-display)",
           "var(--font-tan-nimbus)",
           "Georgia",
           "Times New Roman",
@@ -51,6 +63,15 @@ const config = {
           "Times New Roman",
           "serif",
         ],
+      },
+      fontSize: {
+        xs: ["var(--text-xs)", { lineHeight: "var(--gi-leading-normal)" }],
+        sm: ["var(--text-sm)", { lineHeight: "var(--gi-leading-normal)" }],
+        base: ["var(--text-base)", { lineHeight: "var(--gi-leading-normal)" }],
+        lg: ["var(--text-lg)", { lineHeight: "var(--gi-leading-snug)" }],
+        xl: ["var(--text-xl)", { lineHeight: "var(--gi-leading-heading)" }],
+        "2xl": ["var(--text-2xl)", { lineHeight: "var(--gi-leading-heading)" }],
+        "3xl": ["var(--text-3xl)", { lineHeight: "var(--gi-leading-heading)" }],
       },
       colors: {
         /* Go Natural — sistema editorial (globals :root --gn-*) */

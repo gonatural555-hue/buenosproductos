@@ -1,5 +1,10 @@
 import type { Locale } from "@/lib/i18n/config";
-import { getMessages } from "@/lib/i18n/messages";
+import {
+  getAllGoodIdeasBlogSlugs,
+  getGoodIdeasBlogPostBySlug,
+  getGoodIdeasBlogPostEntries,
+  getGoodIdeasBlogPostsMap,
+} from "@/lib/good-ideas-blog-loader";
 
 export type GoodIdeasBlogSection = {
   heading?: string;
@@ -16,35 +21,26 @@ export type GoodIdeasBlogPost = {
   closing?: string;
   heroImage?: string;
   relatedProductIds?: string[];
+  productId?: string;
+  categorySlug?: string;
+  sortOrder?: number;
+  publishedAt?: string;
 };
 
 export type GoodIdeasBlogPostsMap = Record<string, GoodIdeasBlogPost>;
 
 const FALLBACK_HERO = "/assets/images/blog/blog-hero.webp";
 
+/** @deprecated Posts live in scripts/good-ideas-blog/posts.json — pass locale. */
 export function getGoodIdeasBlogPosts(
-  messages: Record<string, unknown>
+  _messages: Record<string, unknown>,
+  locale: Locale = "en"
 ): GoodIdeasBlogPostsMap {
-  const blog = (messages.goodIdeas as { blog?: { posts?: GoodIdeasBlogPostsMap } })
-    ?.blog;
-  const posts = blog?.posts;
-  if (!posts || typeof posts !== "object") return {};
-  return posts as GoodIdeasBlogPostsMap;
+  return getGoodIdeasBlogPostsMap(locale);
 }
 
-export function getGoodIdeasBlogPostSlugs(messages: Record<string, unknown>): string[] {
-  return Object.keys(getGoodIdeasBlogPosts(messages));
-}
-
-export function getGoodIdeasBlogFeaturedSlug(
-  messages: Record<string, unknown>
-): string | undefined {
-  const blog = (messages.goodIdeas as { blog?: { featuredSlug?: string } })?.blog;
-  const slug = blog?.featuredSlug;
-  const posts = getGoodIdeasBlogPosts(messages);
-  if (slug && posts[slug]) return slug;
-  const keys = Object.keys(posts);
-  return keys[0];
+export function getGoodIdeasBlogPostSlugs(_messages?: Record<string, unknown>): string[] {
+  return getAllGoodIdeasBlogSlugs();
 }
 
 export function resolveGoodIdeasPostHeroImage(post: GoodIdeasBlogPost): string {
@@ -56,6 +52,7 @@ export function resolveGoodIdeasPostHeroImage(post: GoodIdeasBlogPost): string {
 }
 
 export async function loadGoodIdeasBlogPosts(locale: Locale) {
-  const messages = await getMessages(locale);
-  return getGoodIdeasBlogPosts(messages);
+  return getGoodIdeasBlogPostsMap(locale);
 }
+
+export { getGoodIdeasBlogPostBySlug, getGoodIdeasBlogPostEntries };

@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from "fs";
+import { readFileSync, readdirSync, statSync } from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import type {
@@ -95,6 +95,33 @@ export function getGoodIdeasProductFeaturedImage(productId: string): string | nu
 }
 
 /**
+ * Mapa productId → `images.featured[0]` para uso en client components (PDP cross-sell, etc.).
+ */
+export function getAllGoodIdeasProductCardImages(): Record<string, string> {
+  const map: Record<string, string> = {};
+
+  try {
+    const files = readdirSync(GI_PRODUCTS_JSON_DIR).filter((f) =>
+      f.endsWith(".json")
+    );
+    for (const file of files) {
+      const productId = file.replace(/\.json$/, "");
+      const featured = getGoodIdeasProductFeaturedImage(productId);
+      if (featured) {
+        map[productId] = featured;
+      }
+    }
+  } catch (error: unknown) {
+    const err = error as NodeJS.ErrnoException;
+    console.warn(
+      `⚠️  Good Ideas: no se pudo leer directorio de JSON - ${err.message}`
+    );
+  }
+
+  return map;
+}
+
+/**
  * Imagen de product card Good Products.
  * Única fuente: `images.featured[0]` en `scripts/good-ideas-products/{id}.json`.
  * No usa `product.images` del catálogo.
@@ -102,6 +129,7 @@ export function getGoodIdeasProductFeaturedImage(productId: string): string | nu
 export function resolveGoodIdeasProductCardImage(productId: string): string {
   return getGoodIdeasProductFeaturedImage(productId) ?? "";
 }
+
 
 /**
  * Imágenes Good Ideas desde `scripts/good-ideas-products/{productId}.json`.

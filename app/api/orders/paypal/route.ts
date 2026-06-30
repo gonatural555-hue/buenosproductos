@@ -213,7 +213,7 @@ export async function POST(request: NextRequest) {
 
     const itemRows = items.map((it) => ({
       order_id: orderId,
-      product_id: it.id,
+      product_id: (it as { productId?: string }).productId ?? it.id,
       title: it.title,
       price: it.price,
       quantity: it.quantity,

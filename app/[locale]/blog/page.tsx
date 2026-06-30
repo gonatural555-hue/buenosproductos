@@ -1,24 +1,22 @@
-import BlogEditorialHero from "@/components/blog/BlogEditorialHero";
-import BlogHero from "@/components/blog/BlogHero";
-import FeaturedStory from "@/components/blog/FeaturedStory";
-import EditorialGrid from "@/components/blog/EditorialGrid";
-import ImageSection from "@/components/blog/ImageSection";
-import QuoteBlock from "@/components/blog/QuoteBlock";
-import CommunityCTA from "@/components/blog/CommunityCTA";
-import ScrollReveal from "@/components/blog/ScrollReveal";
-import BlogSectionLinks from "@/components/blog/BlogSectionLinks";
-import { blogSections } from "@/lib/blog-sections";
-import { buildHomeHeroCarouselProps } from "@/lib/build-home-hero-carousel-props";
+import { blogPath, blogPostPath, buildPathByLocale } from "@/lib/routing/paths";
+import GoodIdeasBlogHero from "@/components/good-ideas/GoodIdeasBlogHero";
+import GoodIdeasBlogPostRow from "@/components/good-ideas/GoodIdeasBlogPostRow";
+import {
+  getGoodIdeasBlogPostEntries,
+} from "@/lib/good-ideas-blog-loader";
+import {
+  resolveGoodIdeasPostHeroImage,
+} from "@/lib/good-ideas-blog";
+import { getGoodIdeasCategoryLabel } from "@/lib/good-ideas-plp-categories";
+import { GI_BLOG_POSTS_ANCHOR } from "@/lib/ui/goodideas-design";
+import { GI_CART_INNER, GI_CART_OUTER } from "@/lib/ui/gi-cart-light";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
 import { buildMetadata } from "@/lib/seo";
-import { getProducts } from "@/lib/products";
+import GoodIdeasBlogListJsonLd from "@/components/good-ideas/GoodIdeasBlogListJsonLd";
 
-const FEATURED_SLUG = "edge-of-water";
 const FALLBACK_IMAGE = "/assets/images/blog/blog-hero.webp";
-const BLOG_COVER_IMAGE = "/assets/images/blog/banner.png";
-const BLOG_POSTS_ANCHOR = "blog-posts";
 
 export async function generateMetadata({
   params,
@@ -27,38 +25,17 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
-  const seo = messages.seo?.blog;
+  const seo = messages.seo?.goodIdeas?.blog;
 
   return buildMetadata({
     locale,
     title: seo?.title,
     description: seo?.description,
-    pathByLocale: {
-      en: "/en/blog",
-      es: "/es/blog",
-      fr: "/fr/blog",
-      it: "/it/blog",
-    },
-    ogImage: BLOG_COVER_IMAGE,
+    pathByLocale: buildPathByLocale(blogPath),
   });
 }
 
-type JournalCopy = {
-  tagline: string;
-  manifesto: string;
-  featuredLabel: string;
-  sectionsLabel: string;
-  quotes: string[];
-  communityTitle: string;
-  communityBody: string;
-  communityCta: string;
-  imageCaptionTrail: string;
-  imageCaptionDawn: string;
-  imageAria1: string;
-  imageAria2: string;
-};
-
-export default async function BlogPage({
+export default async function GoodIdeasBlogPage({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
@@ -66,118 +43,54 @@ export default async function BlogPage({
   const { locale } = await params;
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
-
-  const journal = (messages.blog as { journal?: JournalCopy } | undefined)
-    ?.journal;
-  const quotes = Array.isArray(journal?.quotes) ? journal!.quotes : [];
-
-  const entries = Object.entries(messages.blog.posts).map(([slug, post]) => {
-    const p = post as {
-      title?: string;
-      excerpt?: string;
-      sections?: { image?: string }[];
-    };
-    return {
-      slug,
-      href: `/${locale}/blog/${slug}`,
-      title: String(p.title ?? ""),
-      excerpt: String(p.excerpt ?? ""),
-      image: p.sections?.[0]?.image || FALLBACK_IMAGE,
-    };
-  });
-
-  const featured =
-    entries.find((e) => e.slug === FEATURED_SLUG) ?? entries[0] ?? null;
-  const rest = featured
-    ? entries.filter((e) => e.slug !== featured.slug)
-    : entries;
-
-  const tagline = journal?.tagline ?? "";
-  const blogTitle = t("blog.title");
-  const blogHeroAriaLabel = blogTitle.split("\n")[0]?.trim() || blogTitle;
-
-  const products = getProducts();
-  const blogHeroProps = buildHomeHeroCarouselProps(locale, t, products, {
-    tagline,
-    title: blogTitle,
-    subtitle: t("blog.subtitle"),
-    ctaProducts: t("hero.cta"),
-    ctaJournal: t("homeJournal.cta"),
-    imageSrc: "/assets/images/blog/blog-hero.webp",
-    imageAlt: `${blogTitle.split("\n")[0]?.trim() ?? blogTitle} — Go Natural`,
-  });
+  const entries = getGoodIdeasBlogPostEntries(locale);
 
   return (
-    <main data-hero-bleed className="bg-gn-page-bg text-dark-base">
-      <BlogEditorialHero
+    <main>
+      <GoodIdeasBlogListJsonLd
         locale={locale}
-        title={blogTitle}
-        subtitle={t("blog.subtitle")}
-        eyebrow={t("blog.heroEyebrow")}
-        exploreCtaLabel={t("blog.heroExploreArticles")}
-        postsAnchorId={BLOG_POSTS_ANCHOR}
-        sectionAriaLabel={blogHeroAriaLabel}
-        coverImageSrc={BLOG_COVER_IMAGE}
-        coverImageAlt={blogHeroAriaLabel}
+        entries={entries}
+        listName={t("goodIdeas.blog.articlesLabel")}
+      />
+      <GoodIdeasBlogHero
+        locale={locale}
+        title={t("goodIdeas.blog.heroTitle")}
+        subtitle={t("goodIdeas.blog.heroSubtitle")}
+        eyebrow={t("goodIdeas.blog.eyebrow")}
+        exploreCtaLabel={t("goodIdeas.blog.exploreCta")}
+        scrollHint={t("goodIdeas.blog.scrollHint")}
+        postsAnchorId={GI_BLOG_POSTS_ANCHOR}
+        sectionAriaLabel={t("goodIdeas.blog.sectionAria")}
       />
 
-      <BlogHero {...blogHeroProps} />
-
-      {featured ? (
-        <FeaturedStory
-          post={{
-            href: featured.href,
-            title: featured.title,
-            excerpt: featured.excerpt,
-            image: featured.image,
-          }}
-          eyebrow={journal?.featuredLabel ?? ""}
-          ctaLabel={t("common.readArticle")}
-          anchorId={BLOG_POSTS_ANCHOR}
+      <section
+        id={GI_BLOG_POSTS_ANCHOR}
+        className={`relative isolate scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] border-t border-white/[0.08] bg-[#0B0F14] py-14 text-[#E8ECF1] md:py-20 ${GI_CART_OUTER}`}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)]"
+          aria-hidden
         />
-      ) : null}
-
-      {quotes[0] ? <QuoteBlock text={quotes[0]} /> : null}
-
-      <ImageSection
-        imageSrc="/assets/images/hero/storysection.webp"
-        caption={journal?.imageCaptionTrail}
-        imageAlt={journal?.imageAria1 ?? ""}
-      />
-
-      <EditorialGrid posts={rest} ctaLabel={t("common.readArticle")} />
-
-      {quotes[1] ? <QuoteBlock text={quotes[1]} /> : null}
-
-      <section className="border-y border-earth-brown/12 bg-gn-page-bg py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-6 sm:px-10 lg:px-12">
-          <ScrollReveal>
-            <p className="text-center text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-accent-gold">
-              {journal?.sectionsLabel ?? ""}
-            </p>
-            <div className="mt-10 flex justify-center">
-              <BlogSectionLinks sections={blogSections} locale={locale} />
-            </div>
-          </ScrollReveal>
+        <div className={`relative ${GI_CART_INNER}`}>
+          <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-[#E8ECF1] md:text-2xl">
+            {t("goodIdeas.blog.articlesLabel")}
+          </h2>
+          <ul className="mt-8 flex flex-col gap-4 md:mt-10 md:gap-5">
+            {entries.map((entry) => (
+              <li key={entry.slug}>
+                <GoodIdeasBlogPostRow
+                  href={blogPostPath(locale, entry.slug)}
+                  title={entry.title}
+                  excerpt={entry.excerpt}
+                  categoryLabel={getGoodIdeasCategoryLabel(entry.categorySlug, t)}
+                  image={resolveGoodIdeasPostHeroImage(entry) || FALLBACK_IMAGE}
+                  ctaLabel={t("common.readArticle")}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-
-      <ImageSection
-        imageSrc="/assets/images/hero/trekking.webp"
-        caption={journal?.imageCaptionDawn}
-        imageAlt={journal?.imageAria2 ?? ""}
-      />
-
-      {quotes[2] ? <QuoteBlock text={quotes[2]} /> : null}
-
-      {quotes[3] ? <QuoteBlock text={quotes[3]} /> : null}
-
-      <CommunityCTA
-        title={journal?.communityTitle ?? ""}
-        body={journal?.communityBody ?? ""}
-        ctaLabel={journal?.communityCta ?? ""}
-        href={`/${locale}/contact`}
-      />
     </main>
   );
 }

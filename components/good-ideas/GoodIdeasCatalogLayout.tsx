@@ -17,6 +17,7 @@ type Props = {
   rawQuery: string;
   sort?: string;
   activeCategorySlug?: string | null;
+  activeBrandSlug?: string | null;
   priceMin?: number;
   priceMax?: number;
   sortBar: React.ReactNode;
@@ -37,6 +38,7 @@ export default function GoodIdeasCatalogLayout({
   rawQuery,
   sort,
   activeCategorySlug,
+  activeBrandSlug,
   priceMin,
   priceMax,
   sortBar,
@@ -51,14 +53,15 @@ export default function GoodIdeasCatalogLayout({
     <div className={giPlpClasses.page}>
       <section className="mx-auto max-w-[1400px] px-4 pt-6 md:px-6 md:pt-8 lg:px-10">
         {searchHint ? (
-          <p className="mb-3 font-inter text-sm text-[rgba(232,236,241,0.65)]">
-            {searchHint}
-          </p>
+          <p className={giPlpClasses.searchHint}>{searchHint}</p>
         ) : null}
 
-        <form action={catalogAction} method="get" className="mb-4 max-w-md">
+        <form action={catalogAction} method="get" className="mb-4 w-[290px] max-w-[290px]">
           {activeCategorySlug ? (
             <input type="hidden" name="category" value={activeCategorySlug} />
+          ) : null}
+          {activeBrandSlug ? (
+            <input type="hidden" name="brand" value={activeBrandSlug} />
           ) : null}
           {sort && sort !== "featured" ? (
             <input type="hidden" name="sort" value={sort} />
@@ -78,7 +81,7 @@ export default function GoodIdeasCatalogLayout({
             type="search"
             defaultValue={rawQuery}
             placeholder={searchPlaceholder}
-            className="w-full rounded-xl border border-white/[0.08] bg-[#151B24] px-4 py-2.5 font-inter text-sm text-[#E8ECF1] placeholder:text-[rgba(232,236,241,0.4)] outline-none focus:border-[#3B82F6]/40 focus:ring-1 focus:ring-[#3B82F6]/30"
+            className={giPlpClasses.searchInput}
           />
         </form>
 
@@ -95,10 +98,8 @@ export default function GoodIdeasCatalogLayout({
           <div className="mt-3 flex justify-end">{sortBar}</div>
         </div>
 
-        <div className="hidden items-center justify-between gap-6 border-b border-white/[0.08] pb-4 lg:flex">
-          <span className="font-inter text-sm font-medium text-[#E8ECF1]">
-            {filtersLabel}
-          </span>
+        <div className={giPlpClasses.toolbarRow}>
+          <span className={giPlpClasses.toolbarLabel}>{filtersLabel}</span>
           <div className="shrink-0">{sortBar}</div>
         </div>
       </section>
@@ -108,8 +109,10 @@ export default function GoodIdeasCatalogLayout({
         className="scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] mx-auto max-w-[1400px] px-4 pb-12 md:px-6 lg:px-10 lg:pb-16"
       >
         <div className="flex gap-10 lg:gap-12">
-          <aside className="hidden w-[260px] shrink-0 lg:block">
-            <div className="sticky top-[calc(env(safe-area-inset-top,0px)+5.5rem)] max-h-[calc(100vh-env(safe-area-inset-top,0px)-6rem)] overflow-y-auto">
+          <aside
+            className={`hidden w-[260px] shrink-0 lg:sticky lg:top-[calc(env(safe-area-inset-top,0px)+5.5rem)] lg:block lg:max-h-[calc(100vh-env(safe-area-inset-top,0px)-6rem)] ${giPlpClasses.filterScrollArea}`}
+          >
+            <div>
               <GoodIdeasActiveFilterChips
                 chips={activeFilterChips}
                 clearAllHref={clearAllFiltersHref}
@@ -119,7 +122,7 @@ export default function GoodIdeasCatalogLayout({
             </div>
           </aside>
 
-          <div className="min-w-0 flex-1">
+          <div className={giPlpClasses.productGrid}>
             <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10">
               {children}
             </div>

@@ -3,7 +3,7 @@ import {
   EXCHANGE_RATES_FROM_USD,
 } from "@/lib/currency/config";
 import { formatDisplayMoney } from "@/lib/currency/format";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 import type { Locale } from "@/lib/i18n/config";
 
 export type GoodIdeasPriceFilter = {
@@ -15,6 +15,7 @@ export type GoodIdeasListPreserveParams = {
   q?: string;
   sort?: string;
   category?: string;
+  brand?: string;
   priceMin?: number;
   priceMax?: number;
 };

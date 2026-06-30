@@ -76,24 +76,24 @@ export default function GoodIdeasFilterTrigger({
             role="dialog"
             aria-modal="true"
             aria-labelledby={`${titleId}-heading`}
-            className="absolute inset-y-0 left-0 flex w-[min(100%,320px)] flex-col bg-[#0B0F14] shadow-xl"
+            className={giPlpClasses.filterDrawer}
           >
-            <div className="flex items-center justify-between border-b border-white/[0.08] px-4 py-4">
+            <div className={giPlpClasses.filterDrawerHeader}>
               <span
                 id={`${titleId}-heading`}
-                className="font-inter text-base font-semibold text-[#E8ECF1]"
+                className={giPlpClasses.filterDrawerTitle}
               >
                 {sidebarTitle}
               </span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="font-inter text-sm text-[rgba(232,236,241,0.65)]"
+                className={giPlpClasses.filterDrawerClose}
               >
                 {closeLabel}
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto px-4 py-4">
+            <div className={`flex-1 px-4 py-4 ${giPlpClasses.filterScrollArea}`}>
               <GoodIdeasActiveFilterChips
                 chips={activeFilterChips}
                 clearAllHref={clearAllFiltersHref}

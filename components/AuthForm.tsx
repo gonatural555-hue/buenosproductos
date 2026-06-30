@@ -4,6 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import {
+  giAuthInputClass,
+  giAuthLabelClass,
+  giAuthSubmitClass,
+  giAuthTabClass,
+  giAuthToggleBtnClass,
+} from "@/lib/ui/gi-auth";
 
 type Tab = "login" | "register";
 
@@ -60,14 +67,7 @@ function EyeSlashIcon({ className }: { className?: string }) {
   );
 }
 
-const inputClass =
-  "w-full rounded-xl border border-[rgba(46,74,54,0.18)] bg-white/95 px-3 py-3 font-inter text-sm text-[#171717] placeholder:text-[#666666]/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] focus:border-[rgba(110,31,40,0.45)] focus:outline-none focus:ring-2 focus:ring-[rgba(217,164,65,0.28)] sm:px-4";
-
-const labelClass =
-  "font-inter text-xs font-semibold uppercase tracking-[0.12em] text-[#FFFFFF]";
-
-const toggleButtonClass =
-  "absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#FFFFFF]/80 transition hover:bg-white/10 hover:text-[#FFFFFF] focus:outline-none focus-visible:ring-2 focus-visible:ring-gn-mustard/40";
+const passwordFieldClass = `${giAuthInputClass} pr-11`;
 
 function AuthTabButton({
   tab,
@@ -87,10 +87,7 @@ function AuthTabButton({
       role="tab"
       aria-selected={isActive}
       onClick={() => onSelect(tab)}
-      className={[
-        "gn-auth-tab relative pb-3 pt-1 font-inter text-sm font-medium transition-colors duration-200",
-        isActive ? "text-[#FFFFFF]" : "text-[#FFFFFF]/70 hover:text-[#FFFFFF]",
-      ].join(" ")}
+      className={giAuthTabClass(isActive)}
     >
       {children}
     </button>
@@ -137,10 +134,10 @@ export default function AuthForm({
 
   const subtitle = useMemo(() => {
     if (activeTab === "login") {
-      return "Accedé a tu cuenta para ver pedidos y guardar datos";
+      return t("goodIdeas.auth.loginSubtitle");
     }
-    return "Creá tu cuenta para acelerar futuras compras";
-  }, [activeTab]);
+    return t("goodIdeas.auth.registerSubtitle");
+  }, [activeTab, t]);
 
   const handleTabSelect = (tab: Tab) => {
     setActiveTab(tab);
@@ -217,53 +214,52 @@ export default function AuthForm({
     }
   };
 
-  const passwordFieldClass = `${inputClass} pl-3 pr-11 sm:pl-4`;
 
   return (
-    <div className="gn-auth-form w-full">
+    <div className="w-full">
       <nav
-        className="flex gap-8 border-b border-white/20"
+        className="flex gap-8 border-b border-white/[0.08]"
         role="tablist"
-        aria-label="Autenticación"
+        aria-label={t("goodIdeas.auth.tablistAria")}
       >
         <AuthTabButton tab="login" activeTab={activeTab} onSelect={handleTabSelect}>
-          Iniciar sesión
+          {t("goodIdeas.auth.loginTab")}
         </AuthTabButton>
         <AuthTabButton tab="register" activeTab={activeTab} onSelect={handleTabSelect}>
-          Crear cuenta
+          {t("goodIdeas.auth.registerTab")}
         </AuthTabButton>
       </nav>
 
       <div className="mt-6 space-y-2">
-        <h2 className="section-display text-[clamp(1.5rem,4vw,2rem)] font-semibold leading-[1.12] tracking-tight text-gn-burgundy">
+        <h2 className="font-body text-2xl font-semibold tracking-tight text-[#E8ECF1]">
           {awaitingEmailConfirmation && activeTab === "register"
-            ? t("authForm.confirmEmailTitle", "Check your email")
+            ? t("authForm.confirmEmailTitle")
             : activeTab === "login"
-              ? "Bienvenido de nuevo"
-              : "Creá tu cuenta"}
+              ? t("goodIdeas.auth.loginTitle")
+              : t("goodIdeas.auth.registerTitle")}
         </h2>
         {!(awaitingEmailConfirmation && activeTab === "register") ? (
-          <p className="font-inter text-sm leading-relaxed text-[#FFFFFF]">
+          <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.65)]">
             {subtitle}
           </p>
         ) : null}
       </div>
 
       {error ? (
-        <p className="mt-4 font-inter text-sm text-gn-burgundy" role="alert">
+        <p className="mt-4 font-body text-sm text-[#F87171]" role="alert">
           {error}
         </p>
       ) : null}
 
       {awaitingEmailConfirmation && activeTab === "register" ? (
         <div
-          className="mt-6 rounded-2xl border border-[rgba(46,74,54,0.12)] bg-white/80 p-5 sm:p-6"
+          className="mt-6 rounded-2xl border border-white/[0.08] bg-[#0B0F14]/80 p-5 sm:p-6"
           role="status"
           aria-live="polite"
         >
           <div className="flex gap-4">
             <div
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[rgba(46,74,54,0.12)] bg-[#F4EBDD] text-gn-burgundy"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#3B82F6]"
               aria-hidden
             >
               <svg
@@ -282,8 +278,8 @@ export default function AuthForm({
               </svg>
             </div>
             <div className="min-w-0 flex-1 space-y-3">
-              <p className="font-inter text-sm leading-relaxed text-[#171717]">
-                {t("authForm.confirmEmailDescription", "").replace(
+              <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.72)]">
+                {t("authForm.confirmEmailDescription").replace(
                   "{email}",
                   pendingEmail
                 )}
@@ -294,9 +290,9 @@ export default function AuthForm({
                   setActiveTab("login");
                   setAwaitingEmailConfirmation(false);
                 }}
-                className="font-inter text-sm font-semibold text-gn-burgundy underline-offset-4 transition-colors hover:text-[#5c1a22] hover:underline"
+                className="font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
               >
-                {t("authForm.goToLogin", "Go to sign in")}
+                {t("authForm.goToLogin")}
               </button>
             </div>
           </div>
@@ -305,36 +301,36 @@ export default function AuthForm({
         <form className="mt-6 space-y-4" onSubmit={(e) => void handleSubmit(e)}>
           {activeTab === "register" && (
             <div className="space-y-2">
-              <label className={labelClass}>Nombre</label>
+              <label className={giAuthLabelClass}>{t("goodIdeas.auth.nameLabel")}</label>
               <input
                 ref={nameInputRef}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 onFocus={() => handleInputFocus(nameInputRef)}
                 type="text"
-                className={inputClass}
-                placeholder="Tu nombre"
+                className={giAuthInputClass}
+                placeholder={t("goodIdeas.auth.namePlaceholder")}
                 required
               />
             </div>
           )}
 
           <div className="space-y-2">
-            <label className={labelClass}>Email</label>
+            <label className={giAuthLabelClass}>{t("goodIdeas.auth.emailLabel")}</label>
             <input
               ref={emailInputRef}
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               onFocus={() => handleInputFocus(emailInputRef)}
               type="email"
-              className={inputClass}
-              placeholder="tuemail@email.com"
+              className={giAuthInputClass}
+              placeholder={t("goodIdeas.auth.emailPlaceholder")}
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className={labelClass}>Contraseña</label>
+            <label className={giAuthLabelClass}>{t("goodIdeas.auth.passwordLabel")}</label>
             <div className="relative">
               <input
                 ref={passwordInputRef}
@@ -352,12 +348,12 @@ export default function AuthForm({
               />
               <button
                 type="button"
-                className={toggleButtonClass}
+                className={giAuthToggleBtnClass}
                 aria-pressed={showPassword}
                 aria-label={
                   showPassword
-                    ? t("authForm.hidePassword", "Hide password")
-                    : t("authForm.showPassword", "Show password")
+                    ? t("authForm.hidePassword")
+                    : t("authForm.showPassword")
                 }
                 onClick={() => setShowPassword((prev) => !prev)}
               >
@@ -372,8 +368,8 @@ export default function AuthForm({
 
           {activeTab === "register" && (
             <div className="space-y-2">
-              <label className={labelClass}>
-                {t("authForm.confirmPassword", "Confirm password")}
+              <label className={giAuthLabelClass}>
+                {t("authForm.confirmPassword")}
               </label>
               <div className="relative">
                 <input
@@ -390,12 +386,12 @@ export default function AuthForm({
                 />
                 <button
                   type="button"
-                  className={toggleButtonClass}
+                  className={giAuthToggleBtnClass}
                   aria-pressed={showPassword}
                   aria-label={
                     showPassword
-                      ? t("authForm.hidePassword", "Hide password")
-                      : t("authForm.showPassword", "Show password")
+                      ? t("authForm.hidePassword")
+                      : t("authForm.showPassword")
                   }
                   onClick={() => setShowPassword((prev) => !prev)}
                 >
@@ -412,13 +408,13 @@ export default function AuthForm({
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-xl bg-gn-burgundy px-4 py-3 font-inter text-sm font-semibold text-[#F4EBDD] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition duration-200 hover:bg-[#5c1a22] disabled:cursor-not-allowed disabled:opacity-60"
+            className={giAuthSubmitClass}
           >
             {submitting
               ? "…"
               : activeTab === "login"
-                ? "Iniciar sesión"
-                : "Crear cuenta"}
+                ? t("goodIdeas.auth.loginTab")
+                : t("goodIdeas.auth.registerTab")}
           </button>
         </form>
       )}

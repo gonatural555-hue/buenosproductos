@@ -5,6 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useUser, type Order } from "@/context/UserContext";
+import {
+  accountPath,
+  productsPath,
+} from "@/lib/routing/paths";
 import OrderSuccessEngagementBlock from "@/components/order-success/OrderSuccessEngagementBlock";
 import UsdChargeNotice from "@/components/currency/UsdChargeNotice";
 import { buildContactHref } from "@/lib/checkout/contact-link";
@@ -149,13 +153,13 @@ export default function OrderSuccessPage() {
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link
-              href={`/${locale}/products`}
+              href={productsPath(locale)}
               className="inline-flex justify-center rounded-lg bg-accent-gold px-8 py-3.5 text-sm font-semibold text-dark-base shadow-lg shadow-accent-gold/20 transition hover:bg-accent-gold/90 active:scale-[0.98]"
             >
               {t("orderSuccessPage.continueShopping")}
             </Link>
             <Link
-              href={`/${locale}/account`}
+              href={accountPath(locale)}
               className="inline-flex justify-center rounded-xl border border-earth-brown/20 bg-white px-8 py-3.5 text-sm font-semibold text-dark-base transition hover:bg-warm-sand/80"
             >
               {t("orderSuccessPage.viewAccount")}
@@ -276,13 +280,13 @@ export default function OrderSuccessPage() {
 
           <div className="flex flex-col justify-center gap-3 pt-2 sm:flex-row sm:gap-4">
             <Link
-              href={`/${locale}/products`}
+              href={productsPath(locale)}
               className="inline-flex items-center justify-center rounded-lg bg-accent-gold px-8 py-3.5 text-sm font-semibold text-dark-base shadow-lg shadow-accent-gold/20 transition hover:bg-accent-gold/90 active:scale-[0.98]"
             >
               {t("orderSuccessPage.continueShopping")}
             </Link>
             <Link
-              href={`/${locale}/account`}
+              href={accountPath(locale)}
               className="inline-flex items-center justify-center rounded-xl border border-earth-brown/20 bg-white px-8 py-3.5 text-sm font-semibold text-dark-base transition hover:bg-warm-sand/80"
             >
               {t("orderSuccessPage.viewAccount")}

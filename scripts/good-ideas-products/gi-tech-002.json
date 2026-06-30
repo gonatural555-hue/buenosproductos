@@ -1,16 +1,16 @@
 {
   "id": "gi-tech-002",
-  "brand": "Good Products",
+  "brand": "MOTO STORE",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-002/image.webp"
+      "https://s.alicdn.com/@sc04/kf/H5e80e6534eef464ab27c9009956f3b84O.jpg?avif=close&webp=close"
     ],
     "gallery": [
-      "/assets/images/good-ideas-products/gi-tech-002/gallery-1.webp",
-      "/assets/images/good-ideas-products/gi-tech-002/gallery-2.webp",
-      "/assets/images/good-ideas-products/gi-tech-002/gallery-3.webp",
-      "/assets/images/good-ideas-products/gi-tech-002/gallery-4.webp",
-      "/assets/images/good-ideas-products/gi-tech-002/gallery-5.webp"
+      "https://s.alicdn.com/@sc04/kf/Hd589475abaa8400583abadff78622895q.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/He403bbf77a044d188bb132ed0af19ad3u.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H8b1c1cb820374b73871edd72ecd7d354g.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H5d27f159b194493a8d7084f1d391b147I.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Had5b0fc2f1e44f1d910b203751172d9fO.png?avif=close&webp=close"
     ],
     "lifestyle": [],
     "extras": []

@@ -1,0 +1,387 @@
+{
+  "common": {
+    "eyebrow": "Información legal",
+    "updatedAt": "Última actualización: junio de 2026"
+  },
+  "nav": {
+    "ariaLabel": "Páginas legales",
+    "terms": "Términos",
+    "returns": "Devoluciones",
+    "shipping": "Envíos",
+    "regret": "Arrepentimiento",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "disclaimer": "Descargo"
+  },
+  "regretForm": {
+    "sectionTitle": "Formulario de arrepentimiento",
+    "intro": "Completá el formulario para revocar tu compra dentro de los 10 días corridos desde la entrega. No necesitás registrarte en el sitio.",
+    "fullName": "Nombre y apellido",
+    "email": "Correo electrónico",
+    "orderNumber": "Número de pedido",
+    "product": "Producto",
+    "notes": "Comentarios (opcional)",
+    "submit": "Enviar solicitud de arrepentimiento",
+    "finePrint": "Al enviar, se abrirá tu cliente de correo con los datos del pedido. Te responderemos con un código de trámite dentro de las 24 horas.",
+    "mailSubject": "Arrepentimiento",
+    "mailCode": "Código de trámite",
+    "successTitle": "Solicitud preparada",
+    "successBody": "Si tu cliente de correo se abrió, enviá el mensaje para confirmar. Guardá este código de referencia:",
+    "successFinePrint": "Te contactaremos a la dirección indicada dentro de las 24 horas con la confirmación oficial del trámite."
+  },
+  "privacy": {
+    "metaTitle": "Política de Privacidad | Buenos Productos",
+    "metaDescription": "Cómo tratamos tus datos personales en Buenos Productos.",
+    "title": "Política de Privacidad",
+    "intro": "Buenos Productos, operado por Francisco Inza, respeta tu privacidad. Esta política explica qué datos recopilamos, para qué los usamos y cuáles son tus derechos.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Responsable del tratamiento",
+        "paragraphs": [
+          "El responsable es Francisco Inza (CUIT 20-40635753-9), operador de la marca Buenos Productos.",
+          "Contacto: go.natural.555@gmail.com"
+        ]
+      },
+      {
+        "title": "Qué datos recopilamos",
+        "bullets": [
+          "Datos de cuenta y pedido: nombre, correo, dirección de envío, teléfono si lo proporcionás.",
+          "Datos de pago: procesados por PayPal; no almacenamos números completos de tarjeta.",
+          "Comunicaciones: mensajes de soporte, solicitudes de arrepentimiento o reclamos.",
+          "Datos técnicos: dispositivo, navegador, páginas visitadas y cookies (ver Política de Cookies)."
+        ]
+      },
+      {
+        "title": "Para qué usamos tus datos",
+        "bullets": [
+          "Procesar pedidos, pagos, envíos y postventa.",
+          "Gestionar devoluciones, arrepentimiento y reclamos.",
+          "Enviar confirmaciones, tracking y comunicaciones operativas.",
+          "Newsletter y marketing solo con tu consentimiento explícito.",
+          "Seguridad, prevención de fraude y cumplimiento legal."
+        ]
+      },
+      {
+        "title": "Encargados y transferencias",
+        "paragraphs": [
+          "Compartimos datos solo con proveedores necesarios para operar el servicio."
+        ],
+        "bullets": [
+          "PayPal — procesamiento de pagos.",
+          "Supabase — autenticación, pedidos y datos de cuenta.",
+          "Brevo — email transaccional y newsletter (con consentimiento).",
+          "Proveedores de hosting, analítica y logística internacional."
+        ]
+      },
+      {
+        "title": "Conservación y seguridad",
+        "paragraphs": [
+          "Conservamos los datos el tiempo necesario para la relación comercial, reclamos y obligaciones fiscales/contables.",
+          "Aplicamos medidas razonables de seguridad; ningún sistema es 100 % infalible."
+        ]
+      },
+      {
+        "title": "Tus derechos",
+        "paragraphs": [
+          "Podés solicitar acceso, rectificación, actualización o supresión de tus datos escribiendo a go.natural.555@gmail.com.",
+          "También podés oponerte a usos basados en consentimiento y retirarlo cuando corresponda."
+        ]
+      }
+    ],
+    "closing": "Podemos actualizar esta política; la versión vigente estará siempre publicada en esta página."
+  },
+  "cookies": {
+    "metaTitle": "Política de Cookies | Buenos Productos",
+    "metaDescription": "Uso de cookies en Buenos Productos.",
+    "title": "Política de Cookies",
+    "intro": "Usamos cookies y tecnologías similares para que el sitio funcione, recuerde preferencias y mejore la experiencia.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Qué son las cookies",
+        "paragraphs": [
+          "Son archivos pequeños que se guardan en tu dispositivo cuando visitás el sitio."
+        ]
+      },
+      {
+        "title": "Tipos que utilizamos",
+        "bullets": [
+          "Esenciales: sesión, carrito, seguridad y checkout.",
+          "Preferencias: idioma y configuraciones básicas.",
+          "Analítica: rendimiento agregado del sitio (si está activa)."
+        ]
+      },
+      {
+        "title": "Cómo gestionarlas",
+        "paragraphs": [
+          "Podés bloquear o eliminar cookies desde tu navegador. Algunas funciones pueden dejar de estar disponibles.",
+          "Consultas: go.natural.555@gmail.com"
+        ]
+      }
+    ],
+    "closing": "Actualizaremos esta política si cambian las herramientas que utilizamos."
+  },
+  "terms": {
+    "metaTitle": "Términos y Condiciones | Buenos Productos",
+    "metaDescription": "Condiciones de compra en Buenos Productos — intermediación comercial con envío internacional a Argentina.",
+    "title": "Términos y Condiciones",
+    "intro": "Estos términos regulan el uso de Buenos Productos y las compras realizadas en el sitio. Al comprar, aceptás estas condiciones y la legislación aplicable en Argentina.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Identificación del vendedor",
+        "paragraphs": [
+          "Buenos Productos es operado por Francisco Inza, CUIT 20-40635753-9, con domicilio en Uruguay 61, Río Cuarto, Córdoba, Argentina.",
+          "Contacto: go.natural.555@gmail.com"
+        ]
+      },
+      {
+        "title": "Naturaleza del servicio",
+        "paragraphs": [
+          "Actuamos como intermediario comercial: seleccionamos productos, gestionamos tu pedido y coordinamos el envío a través de proveedores y operadores logísticos internacionales.",
+          "El contrato de compra se celebra entre vos y Francisco Inza. La logística puede realizarse mediante terceros sin alterar tus derechos frente al operador del sitio."
+        ]
+      },
+      {
+        "title": "Productos e información",
+        "bullets": [
+          "Los productos pueden ser importados y surtidos por proveedores internacionales.",
+          "Imágenes, medidas y colores son orientativos; puede haber variaciones menores de embalaje o tono.",
+          "Las certificaciones mencionadas en fichas provienen del fabricante o proveedor.",
+          "Las marcas citadas son de sus titulares; se usan solo con fines descriptivos."
+        ]
+      },
+      {
+        "title": "Precios y pago",
+        "bullets": [
+          "Los precios se muestran en USD salvo indicación contraria.",
+          "El cobro se procesa mediante PayPal u otros medios habilitados en checkout.",
+          "Un pedido se confirma al completarse el pago y recibir la confirmación por correo."
+        ]
+      },
+      {
+        "title": "Envíos",
+        "paragraphs": [
+          "Los plazos de entrega son estimados (habitualmente entre 13 y 37 días desde la compra, según ubicación y logística).",
+          "Pueden existir demoras por aduana, feriados o fuerza mayor. Consultá la Política de Envíos."
+        ]
+      },
+      {
+        "title": "Devoluciones y arrepentimiento",
+        "paragraphs": [
+          "Aplican dos vías distintas según el motivo. Consultá la Política de Devoluciones y el Botón de Arrepentimiento."
+        ],
+        "bullets": [
+          "Arrepentimiento (sin causa): 10 días corridos desde la entrega — derecho irrenunciable en Argentina.",
+          "Reclamo por defecto, daño, error o no entrega: hasta 15 días desde la entrega, con motivo fundado y evidencia.",
+          "Después de esos plazos solo aplican garantías legales de conformidad cuando corresponda."
+        ]
+      },
+      {
+        "title": "Uso del sitio",
+        "paragraphs": [
+          "Debés usar el sitio de forma lícita. Podemos suspender funciones por mantenimiento, seguridad o fraude."
+        ]
+      },
+      {
+        "title": "Limitación de responsabilidad",
+        "paragraphs": [
+          "No respondemos por daños indirectos o lucro cesante en la medida permitida por ley.",
+          "Nada de estos términos limita derechos irrenunciables del consumidor en Argentina."
+        ]
+      },
+      {
+        "title": "Ley aplicable",
+        "paragraphs": [
+          "Estos términos se rigen por las leyes de la República Argentina. Ante controversias, las partes procurarán una solución amistosa antes de acciones formales."
+        ]
+      }
+    ],
+    "closing": "Podemos modificar estos términos; la versión publicada al momento de tu compra prevalece salvo cambios exigidos por ley."
+  },
+  "returns": {
+    "metaTitle": "Política de Devoluciones | Buenos Productos",
+    "metaDescription": "Devoluciones, arrepentimiento y reembolsos en Buenos Productos.",
+    "title": "Política de Devoluciones y Reembolsos",
+    "intro": "Separamos el arrepentimiento legal del reclamo por problemas con el producto. Así cumplimos la ley argentina y gestionamos cada caso de forma clara.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Vía 1 — Arrepentimiento (Ley 24.240)",
+        "paragraphs": [
+          "Si te arrepentís de la compra sin que haya un defecto, tenés 10 días corridos desde que recibís el producto para revocar la aceptación, sin necesidad de justificar.",
+          "Usá el Botón de Arrepentimiento o escribinos a go.natural.555@gmail.com indicando número de pedido."
+        ],
+        "bullets": [
+          "El producto debe estar sin uso, completo y en embalaje original.",
+          "Te indicaremos cómo poner el bien a disposición para devolución en Argentina.",
+          "Los gastos de devolución por arrepentimiento corren por cuenta del vendedor conforme la ley argentina.",
+          "Reembolsamos el importe abonado dentro de los 10 días posteriores a recibir y verificar el producto, por el mismo medio de pago (PayPal)."
+        ]
+      },
+      {
+        "title": "Vía 2 — Reclamo por problema (defecto, daño, error, no conforme)",
+        "paragraphs": [
+          "Si el producto llegó defectuoso, dañado, incorrecto o no coincide con lo ofrecido, contactanos dentro de los 15 días desde la entrega."
+        ],
+        "bullets": [
+          "Enviá fotos del producto, embalaje y etiqueta de envío.",
+          "Evaluaremos reemplazo, reenvío o reembolso total según el caso.",
+          "En estos supuestos los costos de devolución corren por nuestra cuenta cuando corresponda.",
+          "No incluye cambio de opinión después del plazo de arrepentimiento."
+        ]
+      },
+      {
+        "title": "No entrega",
+        "paragraphs": [
+          "Si el paquete no llegó dentro del plazo estimado publicado, escribinos con tu número de pedido. Gestionaremos la investigación logística y, si confirma la no entrega, el reembolso integral."
+        ]
+      },
+      {
+        "title": "Exclusiones",
+        "bullets": [
+          "Productos personalizados o hechos a medida.",
+          "Artículos de higiene sellados que fueron abiertos.",
+          "Productos dañados por mal uso o modificados por el cliente.",
+          "Solicitudes fuera de los plazos indicados, salvo garantía legal de conformidad."
+        ]
+      },
+      {
+        "title": "Cómo iniciar un trámite",
+        "bullets": [
+          "Arrepentimiento: Botón de Arrepentimiento en el sitio.",
+          "Reclamos: go.natural.555@gmail.com con asunto «Reclamo pedido [número]».",
+          "Respondemos en un plazo razonable (habitualmente 48 h hábiles)."
+        ]
+      }
+    ],
+    "closing": "Ante cualquier duda, contactanos antes de iniciar un contracargo en PayPal; podemos resolverlo más rápido."
+  },
+  "shipping": {
+    "metaTitle": "Política de Envíos | Buenos Productos",
+    "metaDescription": "Envíos internacionales a Argentina — plazos, seguimiento y aduana.",
+    "title": "Política de Envíos",
+    "intro": "Los productos se despachan desde proveedores internacionales hacia Argentina. Los plazos son estimados y pueden variar por logística y aduana.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Cobertura",
+        "paragraphs": [
+          "Enviamos a direcciones dentro de la República Argentina. Verificá que tu código postal y datos sean correctos al checkout."
+        ]
+      },
+      {
+        "title": "Plazos estimados",
+        "paragraphs": [
+          "La ventana habitual de entrega es de 13 a 37 días desde la confirmación del pedido, según tu ubicación y el operador logístico.",
+          "Las fechas en la ficha del producto se calculan dinámicamente y son orientativas, no garantía de día exacto."
+        ]
+      },
+      {
+        "title": "Costo de envío",
+        "paragraphs": [
+          "Muchos productos incluyen envío estándar gratuito, indicado en la ficha. Si no aplica, el costo se muestra antes de pagar."
+        ]
+      },
+      {
+        "title": "Procesamiento y seguimiento",
+        "bullets": [
+          "Procesamos el pedido en cuanto se confirma el pago.",
+          "Recibirás un correo con número de seguimiento cuando el paquete sea despachado.",
+          "El tracking puede demorar en actualizarse en tramos internacionales."
+        ]
+      },
+      {
+        "title": "Aduana e importación",
+        "paragraphs": [
+          "Los envíos internacionales pueden estar sujetos a inspección aduanera. Demoras, retenciones o solicitudes de documentación pueden extender el plazo.",
+          "Cooperá con Correo Argentino o el transportista si te contactan. Costos o trámites aduaneros extraordinarios, cuando correspondan por normativa, pueden ser responsabilidad del destinatario."
+        ]
+      },
+      {
+        "title": "Dirección incorrecta o rechazo",
+        "paragraphs": [
+          "Si el paquete retorna por datos incorrectos o rechazo en destino, podemos coordinar un reenvío con costo adicional o reembolso parcial según el caso."
+        ]
+      }
+    ],
+    "closing": "Para consultas sobre tu envío: go.natural.555@gmail.com con tu número de pedido."
+  },
+  "regret": {
+    "metaTitle": "Botón de Arrepentimiento | Buenos Productos",
+    "metaDescription": "Ejercé tu derecho de arrepentimiento en compras a distancia — Ley 24.240 Argentina.",
+    "title": "Botón de Arrepentimiento",
+    "intro": "Conforme la Ley 24.240 de Defensa del Consumidor y la Resolución 424/2020, podés revocar tu compra dentro de los 10 días corridos desde que recibís el producto, sin necesidad de justificación.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Condiciones",
+        "bullets": [
+          "Plazo: 10 días corridos desde la entrega del bien.",
+          "El producto debe estar sin uso, completo y en su embalaje original.",
+          "No se requiere registrarte en el sitio para usar este formulario.",
+          "Te enviaremos un código de identificación del trámite dentro de las 24 horas."
+        ]
+      },
+      {
+        "title": "Qué ocurre después",
+        "paragraphs": [
+          "Te indicaremos cómo devolver el producto a una dirección en Argentina.",
+          "Una vez verificado el estado del artículo, reembolsaremos el importe abonado por PayPal dentro de los plazos legales."
+        ]
+      },
+      {
+        "title": "Contacto alternativo",
+        "paragraphs": [
+          "También podés escribir a go.natural.555@gmail.com con el asunto «Arrepentimiento» y tu número de pedido."
+        ]
+      }
+    ],
+    "closing": "Este derecho es irrenunciable y no aplica a productos exceptuados por ley (personalizados, higiene abierta, etc.)."
+  },
+  "disclaimer": {
+    "metaTitle": "Descargo de Responsabilidad | Buenos Productos",
+    "metaDescription": "Limitaciones de responsabilidad e información del sitio Buenos Productos.",
+    "title": "Descargo de Responsabilidad",
+    "intro": "Este descargo complementa nuestros Términos y aclara los límites de la información publicada en Buenos Productos.",
+    "updatedAt": "Última actualización: junio de 2026",
+    "sections": [
+      {
+        "title": "Información del sitio",
+        "paragraphs": [
+          "El contenido es informativo y comercial. No sustituye asesoramiento profesional, técnico o de seguridad específico para tu caso."
+        ]
+      },
+      {
+        "title": "Productos importados",
+        "bullets": [
+          "Origen internacional; plazos y disponibilidad pueden cambiar.",
+          "Imágenes y especificaciones son orientativas.",
+          "Certificaciones (CE, FCC, etc.) dependen del fabricante y del lote.",
+          "No somos representantes oficiales de marcas de terceros salvo indicación expresa."
+        ]
+      },
+      {
+        "title": "Uso seguro",
+        "paragraphs": [
+          "Usá cada producto según su manual y precauciones eléctricas, térmicas o de batería. No nos responsabilizamos por uso indebido."
+        ]
+      },
+      {
+        "title": "Reseñas y contenido de terceros",
+        "paragraphs": [
+          "Algunas reseñas pueden provenir de marketplaces internacionales con fines informativos. Enlaces externos no implican respaldo."
+        ]
+      },
+      {
+        "title": "Limitación",
+        "paragraphs": [
+          "En la medida permitida por ley, Buenos Productos no es responsable por daños indirectos derivados del uso del sitio o productos.",
+          "Tus derechos como consumidor en Argentina permanecen intactos."
+        ]
+      }
+    ],
+    "closing": "Consultas: go.natural.555@gmail.com"
+  }
+}

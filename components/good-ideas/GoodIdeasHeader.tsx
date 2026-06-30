@@ -6,14 +6,18 @@ import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
-  brandGatewayPath,
-  goodIdeasBlogPath,
-  goodIdeasCartPath,
-  goodIdeasHomePath,
-  goodIdeasProductsPath,
-} from "@/lib/routing/brands";
+  blogPath,
+  cartPath,
+  homePath,
+  isCartPath,
+  productsPath,
+} from "@/lib/routing/paths";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
+import HeaderAccountMenu from "@/components/good-ideas/HeaderAccountMenu";
+import { useCartHeaderAutoHide } from "@/hooks/useCartHeaderAutoHide";
+import { useSmartHeaderScroll } from "@/hooks/useSmartHeaderScroll";
+import { giType } from "@/lib/ui/gi-typography";
 
 export default function GoodIdeasHeader() {
   const locale = useLocale();
@@ -21,10 +25,17 @@ export default function GoodIdeasHeader() {
   const { totalItems } = useGoodIdeasCart();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isPdp = /^\/[^/]+\/products\/[^/]+$/.test(pathname ?? "");
+  const isCart = isCartPath(pathname ?? "");
+  const hideForPaymentMethods = useCartHeaderAutoHide(isCart);
+  const { hidden: scrollHidden, transitionClass } = useSmartHeaderScroll(
+    isPdp || isCart
+  );
+  const hidden = isCart ? hideForPaymentMethods || scrollHidden : scrollHidden;
 
   const buildLocaleHref = (nextLocale: Locale) => {
     const segments = pathname.split("/").filter(Boolean);
-    if (segments.length === 0) return `/${nextLocale}/good-ideas`;
+    if (segments.length === 0) return homePath(nextLocale);
     if (locales.includes(segments[0] as Locale)) {
       segments[0] = nextLocale;
     } else {
@@ -35,17 +46,21 @@ export default function GoodIdeasHeader() {
   };
 
   const nav = [
-    { href: goodIdeasHomePath(locale), label: t("goodIdeas.nav.home") },
-    { href: goodIdeasProductsPath(locale), label: t("goodIdeas.nav.products") },
-    { href: goodIdeasBlogPath(locale), label: t("goodIdeas.nav.blog") },
+    { href: homePath(locale), label: t("goodIdeas.nav.home") },
+    { href: productsPath(locale), label: t("goodIdeas.nav.products") },
+    { href: blogPath(locale), label: t("goodIdeas.nav.blog") },
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl ${transitionClass} ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-3.5">
         <Link
-          href={goodIdeasHomePath(locale)}
-          className="group font-display text-[1.35rem] tracking-[-0.02em]"
+          href={homePath(locale)}
+          className={`group ${giType.brandLogo}`}
         >
           <GoodProductsBrandName
             locale={locale}
@@ -54,22 +69,19 @@ export default function GoodIdeasHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label={t("goodIdeas.brandName")}>
+        <nav
+          className="hidden items-center gap-8 md:ml-[99px] md:flex"
+          aria-label={t("goodIdeas.brandName")}
+        >
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-inter text-[12px] font-medium uppercase tracking-[0.14em] text-white/55 transition-colors duration-200 hover:text-[#3B82F6]"
+              className={`${giType.navLink} text-white hover:text-[var(--gi-primary)]`}
             >
               {item.label}
             </Link>
           ))}
-          <Link
-            href={brandGatewayPath(locale)}
-            className="font-inter text-[12px] font-medium uppercase tracking-[0.14em] text-white/40 transition-colors duration-200 hover:text-[#3B82F6]"
-          >
-            {t("goodIdeas.nav.allBrands")}
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -79,8 +91,10 @@ export default function GoodIdeasHeader() {
               <Link
                 key={lang}
                 href={buildLocaleHref(lang)}
-                className={`rounded-full px-2 py-1 font-inter text-[10px] font-semibold uppercase tracking-[0.12em] ${
-                  lang === locale ? "bg-white/12 text-white" : "text-white/45 transition-colors duration-200 hover:text-[#3B82F6]"
+                className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
+                  lang === locale
+                    ? "text-[var(--gi-primary)]"
+                    : "text-white hover:text-[var(--gi-primary)]"
                 }`}
               >
                 {lang}
@@ -88,9 +102,11 @@ export default function GoodIdeasHeader() {
             ))}
           </div>
 
+          <HeaderAccountMenu />
+
           <Link
-            href={goodIdeasCartPath(locale)}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]"
+            href={cartPath(locale)}
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]"
             aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
           >
             <svg
@@ -108,7 +124,7 @@ export default function GoodIdeasHeader() {
               />
             </svg>
             {totalItems > 0 ? (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#3B82F6] px-0.5 text-[9px] font-semibold text-white">
+              <span className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}>
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             ) : null}

@@ -2,7 +2,7 @@
 
 import Image, { type ImageProps } from "next/image";
 import { isExternalImage, isValidImageSrc } from "@/lib/image-src";
-import { PRODUCT_BLUR_DATA_URL } from "@/lib/product-image-helper";
+import { PRODUCT_BLUR_DATA_URL } from "@/lib/image-src";
 
 export type SmartImageProps = Omit<ImageProps, "src"> & {
   src?: string | null;

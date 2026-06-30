@@ -1,11 +1,11 @@
 import type { Locale } from "@/lib/i18n/config";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 
-/** Días desde hoy hasta el inicio de la ventana de entrega. */
-export const GOOD_IDEAS_DELIVERY_START_OFFSET_DAYS = 30;
+/** Días desde hoy hasta el inicio de la ventana de entrega (LATAM). */
+export const GOOD_IDEAS_DELIVERY_START_OFFSET_DAYS = 13;
 
-/** Días desde hoy hasta el fin de la ventana (~10 días de margen). */
-export const GOOD_IDEAS_DELIVERY_END_OFFSET_DAYS = 40;
+/** Días desde hoy hasta el fin de la ventana (~Jul 11 – Ago 4 desde fin de junio). */
+export const GOOD_IDEAS_DELIVERY_END_OFFSET_DAYS = 37;
 
 const DELIVERY_LINE_PATTERN =
   /estimated delivery|entrega estimada|free standard shipping on this listing|envío estándar gratis en este producto|free shipping —|envío gratis —/i;
@@ -47,6 +47,13 @@ function formatShortDate(date: Date, locale: Locale): string {
     month: "short",
     day: "numeric",
   }).format(date);
+}
+
+export function formatGoodIdeasDeliveryShortDate(
+  date: Date,
+  locale: Locale
+): string {
+  return formatShortDate(date, locale);
 }
 
 export function formatGoodIdeasDeliveryLongLine(

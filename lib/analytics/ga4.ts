@@ -209,13 +209,14 @@ export function trackPurchase(options: {
 export function cartLineToGa4Item(
   line: {
     id: string;
+    productId?: string;
     title: string;
     price: number;
   },
   quantity: number
 ): Ga4Item {
   return {
-    item_id: line.id,
+    item_id: line.productId ?? line.id,
     item_name: line.title,
     price: line.price,
     quantity: Math.max(1, quantity),

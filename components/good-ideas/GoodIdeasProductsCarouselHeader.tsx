@@ -1,13 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { buildGoodIdeasProductsListHref } from "@/lib/good-ideas-plp-segments";
 import {
+  GI_CATALOG_SECTION_ID,
   GI_EASE,
-  GI_HERO_TOP_PAD,
+  GI_PLP_CAROUSEL_TOP_PAD,
   GI_PRODUCTS_CATEGORY_TONES,
   type GiProductsCategoryTone,
 } from "@/lib/ui/goodideas-design";
+import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 
 export type GoodIdeasCarouselSlide = {
   id: string;
@@ -22,8 +27,10 @@ type Props = {
   slides: GoodIdeasCarouselSlide[];
   prevAria: string;
   nextAria: string;
-  dotAriaTemplate: string;
 };
+
+const CAROUSEL_ARROW_CLASS =
+  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/[0.12] text-[#E8ECF1] transition hover:border-[#3B82F6]/40 hover:text-[#3B82F6] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]";
 
 function splitLineWithAccent(line: string, accent: string | undefined) {
   const a = accent?.trim();
@@ -45,10 +52,11 @@ export default function GoodIdeasProductsCarouselHeader({
   slides,
   prevAria,
   nextAria,
-  dotAriaTemplate,
 }: Props) {
+  const locale = useLocale();
   const reduceMotion = useReducedMotion() ?? false;
   const [index, setIndex] = useState(0);
+  const [blockHovered, setBlockHovered] = useState(false);
   const count = slides.length;
 
   const go = useCallback(
@@ -58,6 +66,10 @@ export default function GoodIdeasProductsCarouselHeader({
     },
     [count]
   );
+
+  useEffect(() => {
+    setBlockHovered(false);
+  }, [index]);
 
   useEffect(() => {
     if (reduceMotion || count <= 1) return;
@@ -79,92 +91,90 @@ export default function GoodIdeasProductsCarouselHeader({
 
   if (!slide || !tone) return null;
 
+  const categoryHref = `${buildGoodIdeasProductsListHref(locale, {
+    category: slide.id,
+  })}#${GI_CATALOG_SECTION_ID}`;
+
   return (
     <section
       className="relative isolate overflow-x-clip border-b border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       aria-roledescription="carousel"
       aria-label={slide.title.replace(/\n/g, " ")}
     >
+      <HexGridInteractiveBackground glowExpanded={blockHovered} />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.22),transparent_60%)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:56px_56px]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.18),transparent_60%)]"
         aria-hidden
       />
 
       <div
-        className={`relative z-[1] mx-auto flex min-h-[min(42svh,380px)] w-full max-w-[1080px] flex-col justify-center px-[18px] py-10 md:min-h-[min(38svh,360px)] md:px-[28px] md:py-12 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
+        className={`relative z-[2] mx-auto flex w-full max-w-[1080px] flex-col justify-center px-[18px] pb-10 md:px-[28px] md:pb-12 lg:px-[48px] ${GI_PLP_CAROUSEL_TOP_PAD}`}
       >
         <motion.div
           key={slide.id}
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: GI_EASE }}
-          className="mx-auto flex w-full max-w-[980px] flex-col items-center text-center"
+          className="relative mx-auto flex min-h-[240px] w-full max-w-[980px] items-center gap-2 sm:gap-3 md:min-h-[260px] md:gap-4"
         >
-          <span
-            className="mb-4 inline-flex min-h-[28px] items-center rounded-full px-4 font-inter text-[10px] font-semibold uppercase tracking-[0.16em]"
-            style={{
-              backgroundColor: tone.bg,
-              color: tone.fg,
-              ...("border" in tone && tone.border
-                ? { border: `1px solid ${tone.border}` }
-                : {}),
-            }}
-          >
-            {slide.categoryLabel}
-          </span>
-
-          <h1 className="w-full font-display text-[clamp(32px,7vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] md:text-[clamp(44px,5vw,72px)] md:leading-[0.88]">
-            {splitLineWithAccent(editorialTitle.line1, slide.accentWord)}
-            {editorialTitle.line2 ? (
-              <span className="mt-1 block text-balance text-[rgba(232,236,241,0.55)]">
-                {editorialTitle.line2}
-              </span>
-            ) : null}
-          </h1>
-
-          <p className="mt-4 max-w-lg font-inter text-[clamp(15px,3.2vw,17px)] leading-relaxed text-[rgba(232,236,241,0.72)] md:mt-5">
-            {slide.subtitle}
-          </p>
-        </motion.div>
-
-        {count > 1 ? (
-          <div className="relative z-[2] mt-8 flex items-center justify-center gap-4">
+          {count > 1 ? (
             <button
               type="button"
               onClick={() => go(index - 1)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.12] text-[#E8ECF1] transition hover:border-[#3B82F6]/40 hover:text-[#3B82F6]"
+              className={CAROUSEL_ARROW_CLASS}
               aria-label={prevAria}
             >
               ‹
             </button>
-            <div className="flex gap-2">
-              {slides.map((s, i) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => setIndex(i)}
-                  className={`h-2 w-2 rounded-full transition ${
-                    i === index ? "bg-[#3B82F6]" : "bg-white/25 hover:bg-white/40"
-                  }`}
-                  aria-label={dotAriaTemplate.replace("{n}", String(i + 1))}
-                  aria-current={i === index ? "true" : undefined}
-                />
-              ))}
-            </div>
+          ) : null}
+
+          <Link
+            href={categoryHref}
+            className="group flex min-w-0 flex-1 flex-col items-center rounded-2xl px-4 py-5 text-center outline-none transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none motion-reduce:hover:scale-100 sm:px-6 sm:py-6"
+            aria-label={`${slide.categoryLabel}: ${slide.title.replace(/\n/g, " ")}`}
+            onMouseEnter={() => setBlockHovered(true)}
+            onMouseLeave={() => setBlockHovered(false)}
+            onFocus={() => setBlockHovered(true)}
+            onBlur={() => setBlockHovered(false)}
+          >
+            <span
+              className="mb-4 inline-flex min-h-[28px] items-center rounded-full px-4 font-inter text-[10px] font-semibold uppercase tracking-[0.16em] transition-opacity duration-300 group-hover:opacity-95"
+              style={{
+                backgroundColor: tone.bg,
+                color: tone.fg,
+                ...("border" in tone && tone.border
+                  ? { border: `1px solid ${tone.border}` }
+                  : {}),
+              }}
+            >
+              {slide.categoryLabel}
+            </span>
+
+            <h1 className="w-full font-display text-[clamp(32px,7vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] transition-colors duration-300 group-hover:text-white md:text-[clamp(44px,5vw,72px)] md:leading-[0.88]">
+              {splitLineWithAccent(editorialTitle.line1, slide.accentWord)}
+              {editorialTitle.line2 ? (
+                <span className="mt-1 block text-balance text-[rgba(232,236,241,0.55)] transition-colors duration-300 group-hover:text-[rgba(232,236,241,0.72)]">
+                  {editorialTitle.line2}
+                </span>
+              ) : null}
+            </h1>
+
+            <p className="mt-4 max-w-lg font-inter text-[clamp(15px,3.2vw,17px)] leading-relaxed text-[rgba(232,236,241,0.72)] transition-colors duration-300 group-hover:text-[rgba(232,236,241,0.88)] md:mt-5">
+              {slide.subtitle}
+            </p>
+          </Link>
+
+          {count > 1 ? (
             <button
               type="button"
               onClick={() => go(index + 1)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.12] text-[#E8ECF1] transition hover:border-[#3B82F6]/40 hover:text-[#3B82F6]"
+              className={CAROUSEL_ARROW_CLASS}
               aria-label={nextAria}
             >
               ›
             </button>
-          </div>
-        ) : null}
+          ) : null}
+        </motion.div>
       </div>
     </section>
   );

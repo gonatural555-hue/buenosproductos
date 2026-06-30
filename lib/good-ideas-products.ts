@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n/config";
 
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 import type { ProductVariants } from "@/lib/product-variants";
 import { applyGoodIdeasDeliveryCopy } from "@/lib/good-ideas-delivery";
 
@@ -14,15 +14,11 @@ export type GoodIdeasProductCategory =
 
   | "Lifestyle"
 
-  | "Regalos"
-
   | "home"
 
   | "tech"
 
-  | "lifestyle"
-
-  | "gifts";
+  | "lifestyle";
 
 
 
@@ -60,173 +56,129 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     id: "gi-tech-001",
 
-    slug: "ai-robot-smart-toy-voice-recognition-kids",
+    slug: "zoco-ai-desktop-robot-voice-recognition-kids",
 
-    title: "AI Robot Smart Toy with Voice Recognition for Kids",
+    title: "ZOCO AI Desktop Robot with Voice Recognition for Kids",
 
-    price: 34.79,
+    price: 1445 / 1,
 
     category: "Tech",
+
+    brand: "ZOCO",
 
     images: getGoodIdeasProductImagePaths("gi-tech-001"),
 
     description:
 
-      "A compact AI robot toy designed for children, with voice interaction, smart learning features, music, storytelling, and playful early-education moments. Fun, intelligent, and gift-ready for everyday discovery at home.",
+      "Interactive desktop AI robot with voice recognition for kids ages 6–14. A playful talking companion with educational games, built-in lithium battery, compact white design, CE-certified by ZOCO, and English interaction to support language learning.",
 
     shortDescription:
 
-      "An interactive AI robot toy for kids, designed for smart play, voice interaction, learning, music, and everyday fun.",
+      "ZOCO AI desktop robot: voice recognition, educational games, built-in battery, and English interaction for kids 6–14.",
 
     longDescription: [
 
-      "Meet a friendly AI robot built for curious kids who love to talk, listen, and play. With voice recognition and responsive interaction, it turns everyday moments into engaging conversations and imaginative discovery.",
+      "This desktop AI robot with voice recognition offers an educational and fun experience for children. Designed to encourage learning through play, it is ideal for curious minds of all ages.",
 
-      "Designed for early learning through play, it supports music, storytelling, and interactive routines that help children explore language, rhythm, and creativity in a natural way.",
+      "With conversational ability and interactive responses, the robot acts as a talking companion that keeps kids entertained while helping develop communication skills and logical thinking.",
 
-      "Its compact, child-friendly body is easy to place on a desk, shelf, or play table, making it a versatile companion for quiet time, shared play, and family gifting.",
+      "Ideal for children ages 6–12 and 14+, this toy promotes learning through interactive games that stimulate creativity, memory, and logical reasoning in a fun way.",
 
-      "Parents appreciate a toy that feels premium and purposeful: smart enough to entertain, approachable enough for daily use, and thoughtful enough to give with confidence.",
+      "Equipped with a non-removable lithium battery, the robot offers stable, long-lasting operation without external batteries — safer and more convenient for daily use.",
 
-      "Whether you are shopping for a birthday, holiday, or just-because surprise, this robot delivers a modern tech gift with warmth, personality, and hours of playful interaction.",
+      "At 30 × 30 × 30 cm and just 0.350 kg, this lightweight white plastic robot fits easily on any desk. CE-certified by ZOCO for safe home and classroom use.",
+
+      "The robot responds and communicates in English, helping children improve comprehension and pronunciation — ideal for bilingual settings or natural English practice.",
 
     ],
 
     features: [
 
-      "Voice recognition interaction",
+      "Interactive AI robot with voice recognition",
 
-      "AI-inspired learning experience",
+      "Talking companion with interactive responses",
 
-      "Music and storytelling modes",
+      "Educational games for ages 6–14",
 
-      "Kid-friendly compact design",
+      "Built-in non-removable lithium battery",
 
-      "Educational early learning toy",
+      "Compact design — 30 × 30 × 30 cm, 0.350 kg",
 
-      "Fun gift idea for children",
+      "White plastic body — safe for children",
 
-      "Rechargeable portable format for everyday play",
+      "ZOCO brand with CE certification",
 
-      "Designed for playful daily use at home",
+      "English interaction language",
 
     ],
 
     freeShipping: true,
 
+    variants: {
+
+      type: "color",
+
+      label: "Color",
+
+      default: "blanco",
+
+      options: [
+
+        { value: "blanco", label: "White", swatchHex: "#F5F5F5" },
+
+      ],
+
+    },
+
     translations: {
 
       es: {
 
-        title: "Robot inteligente AI con reconocimiento de voz para niños",
+        title: "Robot de escritorio con IA y reconocimiento de voz ZOCO",
 
         description:
 
-          "Robot compacto con interacción por voz, aprendizaje lúdico, música, cuentos y juego educativo temprano. Divertido, inteligente y perfecto para regalar.",
+          "Robot de escritorio interactivo con IA y reconocimiento de voz para niños de 6 a 14 años. Compañero parlante, juegos educativos, batería integrada, diseño blanco compacto, certificación CE de ZOCO e interacción en inglés.",
 
         shortDescription:
 
-          "Robot AI interactivo para niños: juego inteligente, voz, aprendizaje, música y diversión diaria.",
+          "Robot ZOCO con IA: reconocimiento de voz, juegos educativos, batería integrada e interacción en inglés para niños de 6 a 14 años.",
 
         longDescription: [
 
-          "Un robot amigable pensado para niños curiosos que disfrutan hablar, escuchar y jugar. Con reconocimiento de voz e interacción fluida, convierte el día a día en descubrimiento y conversación.",
+          "Este robot de escritorio con IA y reconocimiento de voz ofrece una experiencia educativa y divertida para niños. Diseñado para fomentar el aprendizaje a través del juego, es ideal para mentes curiosas de todas las edades.",
 
-          "Apoya el aprendizaje temprano mediante música, narración e interacción guiada para explorar lenguaje, ritmo y creatividad.",
+          "Con capacidad de conversación y respuestas interactivas, el robot actúa como un compañero parlante que mantiene entretenidos a los niños. Perfecto para desarrollar habilidades de comunicación y pensamiento lógico.",
 
-          "Su diseño compacto encaja en escritorio, estantería o mesa de juego, ideal para momentos tranquilos, juego compartido y regalos familiares.",
+          "Ideal para niños de edades entre 6-12 años y 14+, este juguete promueve el aprendizaje a través de juegos interactivos. Estimula la creatividad, la memoria y el razonamiento lógico de forma divertida.",
 
-          "Un juguete con estilo premium: entretenido, cercano y pensado para el uso diario en casa.",
+          "Equipado con una batería de litio no desmontable, el robot ofrece un funcionamiento estable y duradero. No requiere baterías externas, lo que lo hace más seguro y conveniente para uso diario.",
 
-          "Excelente opción de regalo con personalidad, tecnología accesible y horas de juego interactivo.",
+          "Con dimensiones de 30 x 30 x 30 cm y un peso de solo 0.350 kg, este robot es ligero y fácil de colocar en cualquier escritorio. Su diseño en plástico blanco es resistente y seguro para niños.",
+
+          "Fabricado por la marca ZOCO, este robot cumple con estándares europeos de seguridad y calidad, certificados con CE. Apto para uso en hogares y escuelas, con materiales libres de sustancias químicas peligrosas.",
+
+          "El robot responde y se comunica en inglés, ayudando a los niños a mejorar su comprensión y pronunciación del idioma. Ideal para entornos educativos bilingües o para aprender inglés de forma natural.",
 
         ],
 
         features: [
 
-          "Interacción con reconocimiento de voz",
+          "Robot interactivo con inteligencia artificial y reconocimiento de voz",
 
-          "Experiencia de aprendizaje inspirada en AI",
+          "Compañero parlante con respuestas interactivas",
 
-          "Modos de música y narración",
+          "Juegos educativos para niños de 6 a 14 años",
 
-          "Diseño compacto apto para niños",
+          "Batería integrada de litio no desmontable",
 
-          "Juguete educativo de estimulación temprana",
+          "Diseño compacto — 30 x 30 x 30 cm, 0.350 kg",
 
-          "Idea de regalo divertida para niños",
+          "Cuerpo de plástico blanco — seguro para niños",
 
-          "Formato recargable y portátil",
+          "Marca ZOCO con certificación CE",
 
-          "Pensado para el uso lúdico diario",
-
-        ],
-
-      },
-
-      fr: {
-
-        title: "Robot intelligent AI avec reconnaissance vocale pour enfants",
-
-        description:
-
-          "Robot compact pour enfants avec interaction vocale, apprentissage ludique, musique, histoires et jeu éducatif. Intelligent, amusant et idéal en cadeau.",
-
-        shortDescription:
-
-          "Robot AI interactif pour enfants : jeu intelligent, voix, apprentissage, musique et plaisir au quotidien.",
-
-        features: [
-
-          "Interaction par reconnaissance vocale",
-
-          "Expérience d'apprentissage inspirée de l'IA",
-
-          "Modes musique et narration",
-
-          "Design compact adapté aux enfants",
-
-          "Jouet éducatif pour la petite enfance",
-
-          "Idée cadeau ludique pour enfants",
-
-          "Format rechargeable et portable",
-
-          "Conçu pour un usage quotidien",
-
-        ],
-
-      },
-
-      it: {
-
-        title: "Robot intelligente AI con riconoscimento vocale per bambini",
-
-        description:
-
-          "Robot compatto per bambini con interazione vocale, apprendimento ludico, musica, storie e gioco educativo. Divertente, intelligente e perfetto come regalo.",
-
-        shortDescription:
-
-          "Robot AI interattivo per bambini: gioco smart, voce, apprendimento, musica e divertimento quotidiano.",
-
-        features: [
-
-          "Interazione con riconoscimento vocale",
-
-          "Esperienza di apprendimento ispirata all'AI",
-
-          "Modalità musica e storytelling",
-
-          "Design compatto adatto ai bambini",
-
-          "Giocattolo educativo per la prima infanzia",
-
-          "Idea regalo divertente per bambini",
-
-          "Formato ricaricabile e portatile",
-
-          "Pensato per il gioco quotidiano",
+          "Idioma de interacción en inglés",
 
         ],
 
@@ -237,181 +189,224 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+
     id: "gi-tech-002",
-    slug: "gravity-car-phone-holder-air-vent",
-    title: "Gravity Car Phone Holder for Air Vent",
-    price: 2.69,
-    category: "Tech",
+
+    slug: "universal-car-phone-mount-air-vent",
+
+    title: "Universal Car Phone Mount for Air Vent",
+
+    price: 5890 / 1445,
+
+    category: "Lifestyle",
+
+    brand: "MOTO STORE",
+
     images: getGoodIdeasProductImagePaths("gi-tech-002", 5),
+
     description:
-      "Gravity-style car phone holder mounted on the vehicle air vent, designed to hold a smartphone securely while driving with a simple automatic clamping mechanism. Hands-free navigation, easy one-hand placement, compact design, stable grip, and everyday driving convenience.",
+
+      "Universal car phone mount with adjustable air-vent clip. Compatible with iPhone, Samsung, and most smartphones. Compact black design for GPS and hands-free driving.",
+
     shortDescription:
-      "Compact gravity car phone holder for air vents, designed for stable hands-free navigation, calls, and everyday driving.",
+
+      "Universal air-vent phone holder — quick clip install, black finish, ideal for GPS and daily driving.",
+
     longDescription: [
-      "Drive with your phone securely in view and your hands freer for the wheel. This gravity car holder keeps navigation, calls, and alerts accessible without bulky mounts or complicated setup.",
-      "A simple gravity clamp mechanism grips your smartphone automatically when you place it in the holder—easy one-hand placement when you get in the car.",
-      "Air vent installation keeps the mount compact and out of the way, fitting cleanly into your car interior without taking up dashboard space.",
-      "Stable smartphone support helps reduce wobble on everyday roads, so GPS and calls stay readable at a glance.",
-      "A practical everyday driving accessory for commuters, delivery routes, and anyone who relies on navigation throughout the day.",
+
+      "This universal car phone mount is designed to fit most mobile phones, with broad compatibility for devices like iPhone and Samsung.",
+
+      "It attaches easily to the car air vent with an adjustable clip — no tools required and no damage to the vehicle.",
+
+      "Compact and lightweight at 15 × 10 × 5 cm and just 0.032 kg, it stays out of the way on your dashboard.",
+
+      "The elegant black finish suits any car interior and holds up to everyday use.",
+
+      "Ideal for GPS and navigation apps — keep the map in clear view while driving for safer, more comfortable trips.",
+
+      "Made in Mainland China to quality standards for daily driving conditions.",
+
+      "Each package includes 1 universal mount, ready to install on your vent.",
+
     ],
+
     features: [
-      "Gravity clamp phone holder",
-      "Air vent mounting design",
-      "One-hand phone placement",
-      "Stable grip while driving",
-      "Compact car-friendly structure",
-      "Suitable for GPS navigation and calls",
-      "Universal smartphone compatibility positioning",
-      "Practical everyday driving accessory",
+
+      "Universal compatibility for most smartphones",
+
+      "Quick air-vent clip installation",
+
+      "Compact size — 15 × 10 × 5 cm, 0.032 kg",
+
+      "Durable black finish",
+
+      "Ideal for GPS and navigation",
+
+      "Quality manufacturing from Mainland China",
+
+      "Package includes 1 unit",
+
     ],
-    freeShipping: false,
-    translations: {
-      es: {
-        title: "Soporte de gravedad para móvil en rejilla de aire",
-        description:
-          "Soporte de gravedad para coche con montaje en rejilla de ventilación. Sujeta el smartphone de forma segura al conducir con un mecanismo de sujeción automático. Manos libres, colocación con una mano y diseño compacto.",
-        shortDescription:
-          "Soporte compacto de gravedad para rejilla de aire, ideal para navegación manos libres, llamadas y conducción diaria.",
-        longDescription: [
-          "Conduce con el móvil a la vista y las manos más libres para el volante. Mantiene navegación, llamadas y alertas accesibles sin soportes voluminosos.",
-          "El mecanismo de gravedad sujeta el smartphone al colocarlo—colocación sencilla con una mano al entrar al coche.",
-          "Montaje en rejilla de aire: compacto y discreto en el interior del vehículo.",
-          "Sujeción estable para que GPS y llamadas se lean de un vistazo en el día a día.",
-          "Accesorio práctico para commuting, repartos y quien depende de la navegación a diario.",
-        ],
-        features: [
-          "Soporte de gravedad para móvil",
-          "Montaje en rejilla de aire",
-          "Colocación del móvil con una mano",
-          "Agarre estable al conducir",
-          "Estructura compacta para el coche",
-          "Apto para GPS y llamadas",
-          "Posicionamiento de compatibilidad universal con smartphones",
-          "Accesorio práctico para conducción diaria",
-        ],
-      },
-      fr: {
-        title: "Support téléphone gravité pour bouche d'aération",
-        description:
-          "Support voiture à gravité pour bouche d'aération, maintient le smartphone en conduite avec serrage automatique. Navigation mains libres, pose à une main, design compact.",
-        shortDescription:
-          "Support compact à gravité pour bouche d'aération, pour navigation stable, appels et conduite quotidienne.",
-        features: [
-          "Support téléphone à gravité",
-          "Montage sur bouche d'aération",
-          "Pose du téléphone à une main",
-          "Prise stable en conduite",
-          "Structure compacte pour la voiture",
-          "Adapté GPS et appels",
-          "Positionnement compatibilité smartphone universelle",
-          "Accessoire pratique pour la conduite quotidienne",
-        ],
-      },
-      it: {
-        title: "Supporto auto a gravità per bocchetta aria",
-        description:
-          "Supporto auto a gravità per bocchetta dell'aria, tiene lo smartphone in sicurezza in guida con serraggio automatico. Navigazione hands-free, posa con una mano, design compatto.",
-        shortDescription:
-          "Supporto compatto a gravità per bocchetta aria, per navigazione stabile, chiamate e guida quotidiana.",
-        features: [
-          "Supporto telefono a gravità",
-          "Montaggio su bocchetta aria",
-          "Posizionamento con una mano",
-          "Presa stabile in guida",
-          "Struttura compatta per auto",
-          "Adatto a GPS e chiamate",
-          "Posizionamento compatibilità smartphone universale",
-          "Accessorio pratico per la guida quotidiana",
-        ],
-      },
+
+    freeShipping: true,
+
+    variants: {
+
+      type: "color",
+
+      label: "Color",
+
+      default: "negro",
+
+      options: [
+
+        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
+
+      ],
+
     },
+
+    translations: {
+
+      es: {
+
+        title:
+
+          "Soporte universal para teléfono móvil con clip para rejilla de ventilación",
+
+        description:
+
+          "Soporte universal para móvil en coche con clip para rejilla de ventilación. Compatible con iPhone, Samsung y la mayoría de smartphones. Diseño compacto en negro para GPS y conducción manos libres.",
+
+        shortDescription:
+
+          "Soporte universal para rejilla de aire — instalación rápida, acabado negro, ideal para GPS y conducción diaria.",
+
+        longDescription: [
+
+          "Este soporte está diseñado para ajustarse a la mayoría de los teléfonos móviles gracias a su compatibilidad universal, ideal para usar con dispositivos como iPhone y Samsung.",
+
+          "Se fija fácilmente en la rejilla de ventilación del coche mediante un clip ajustable, sin necesidad de herramientas ni daños al vehículo.",
+
+          "Con dimensiones de 15 x 10 x 5 cm y un peso de solo 0.032 kg, es compacto y ligero, ideal para no ocupar espacio en el tablero del coche.",
+
+          "Presenta un acabado en color negro que combina con cualquier interior de coche y resiste el desgaste diario.",
+
+          "Ideal para usar con aplicaciones de GPS, permite una visualización clara del mapa mientras conduces, mejorando la seguridad y comodidad.",
+
+          "Fabricado en Mainland China, este soporte cumple con estándares de calidad y está diseñado para uso diario en condiciones de conducción.",
+
+          "Cada paquete incluye 1 soporte universal, listo para usar inmediatamente tras la instalación en la rejilla del coche.",
+
+        ],
+
+        features: [
+
+          "Compatibilidad universal con la mayoría de smartphones",
+
+          "Instalación rápida con clip para rejilla de ventilación",
+
+          "Diseño compacto — 15 x 10 x 5 cm, 0.032 kg",
+
+          "Acabado negro elegante y duradero",
+
+          "Ideal para GPS y navegación en ruta",
+
+          "Producto de origen Mainland China, calidad garantizada",
+
+          "Contenido del paquete: 1 unidad",
+
+        ],
+
+      },
+
+    },
+
   },
   {
     id: "gi-tech-003",
-    slug: "portable-car-refrigerator-cooler",
-    title: "Portable Car Refrigerator Cooler",
-    price: 96.3,
-    category: "Tech",
-    images: getGoodIdeasProductImagePaths("gi-tech-003", 5),
+    slug: "xmsj-portable-car-refrigerator-32l-42l",
+    title: "XMSJ Portable Car Refrigerator Freezer — 32L / 42L Dual Zone",
+    price: 699000 / 1445,
+    category: "Lifestyle",
+    brand: "XMSJ",
+    salesBadge: "Sale",
+    images: [
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-tech-003/image.webp`,
+      `${GOOD_IDEAS_IMAGE_BASE}/gi-tech-003/model-42l-44qt.webp`,
+    ],
     description:
-      "Portable car refrigerator and cooler for vehicles, travel, camping, and outdoor use—designed to keep drinks, snacks, and food cold on the road. Portable design, car-friendly build, digital control panel, generous storage capacity options (8L–75L positioning), travel convenience, and outdoor practicality.",
+      "XMSJ portable car refrigerator and freezer with compressor cooling from -20°C to 20°C. Dual capacity (32L / 42L), 12/24V DC and 110–240V AC power, LED display, battery protection, and free shipping for road trips, camping, and home use.",
     shortDescription:
-      "Portable car refrigerator cooler designed for road trips, camping, outdoor travel, and keeping drinks or food cold on the go.",
+      "Compressor portable car fridge/freezer — 32L or 42L, -20°C to 20°C, DC/AC power, LED panel, and battery protection for travel and camping.",
     longDescription: [
-      "Hit the road with drinks and snacks kept cool when you need them. This portable car refrigerator cooler is built for road trips, long drives, and travel days where a standard cooler is not enough.",
-      "Designed to keep beverages, snacks, and food chilled on the go, it helps you pack smarter for families, campers, and anyone who spends hours behind the wheel.",
-      "The portable, vehicle-friendly design fits naturally into car, van, and camping setups—ready for weekends away or everyday transport.",
-      "A digital temperature control panel makes it easy to manage cooling settings, while spacious storage capacity positioning (8L–75L range) supports different trip sizes and packing needs.",
-      "From camping and outdoor travel to daily commutes with meal prep, it is a practical companion for convenience on long drives.",
+      "Keep food and drinks cold—or freeze down to -20°C—wherever you go. This XMSJ portable car refrigerator uses a high-performance compressor for efficient cooling from -4°F (-20°C) up to 68°F (20°C), with two capacity options to match your trip.",
+      "Choose 32L (34 Quarts) for compact setups or 42L (44 Quarts) for longer journeys and larger groups. Both models share a modern black-and-grey design, digital control panel, and dual AC/DC power for car, home, camper, boat, and outdoor use.",
+      "Built-in LED interior light, removable wire basket, wine bottle support, integrated ice maker compartment, cup holders on the lid, corner protectors, and a detachable handle make daily use practical on the road.",
+      "Three-level car battery protection and temperature memory help prevent draining your vehicle battery while keeping your set point stable after power cycles.",
+      "Runs quietly under 45 dB, works safely at angles below 45° for short periods, and offers max and eco power modes. CE certified, 60W rated, with durable shock-resistant construction for rough terrain.",
+      "Fast cooling can bring the interior from 20°C toward 0°C in about 15 minutes, and the unit can maintain temperature for extended periods after disconnecting power—ideal for fresh food and cold drinks on long drives.",
     ],
     features: [
-      "Portable car refrigerator cooler",
-      "Designed for road trips and camping",
-      "Keeps drinks, snacks, and food cold",
-      "Vehicle-friendly portable design",
-      "Digital temperature control panel",
-      "Spacious storage capacity positioning",
-      "Practical for outdoor travel",
-      "Suitable for cars, vans, camping, and daily transport",
+      "Brand: XMSJ · CE certified · Origin: China",
+      "Capacity options: 32L (34 Qt) or 42L (44 Qt)",
+      "Cooling range: -20°C to 20°C (-4°F to 68°F)",
+      "Voltage: 12/24V DC and 110–240V AC",
+      "Power: 60W · Net weight: approx. 15–17 kg by model",
+      "High-efficiency compressor — no-frost cooling down to -20°C",
+      "Three-level car battery protection with temperature memory",
+      "Interior: LED light, wire basket, wine bottle support, ice maker area",
+      "Exterior: digital panel, cup holders on lid, corner protectors, durable handle",
+      "Quiet operation under 45 dB · Max and eco power modes",
+      "Suitable for car, jeep, truck, home, gym, taxi, garage, camper, boat, and outdoors",
+      "Shock-resistant build · safe operation below 45° tilt for short periods",
+      "Package: 1 unit",
     ],
     freeShipping: true,
+    variants: {
+      type: "model",
+      label: "Capacity",
+      default: "32l-34qt",
+      options: [
+        { value: "32l-34qt", label: "32L 34 Quarts", priceModifier: 0 },
+        {
+          value: "42l-44qt",
+          label: "42L 44 Quarts",
+          priceModifier: (855000 - 699000) / 1445,
+        },
+      ],
+    },
     translations: {
       es: {
-        title: "Nevera portátil para coche 8L–75L",
+        title:
+          "Refrigerador portátil de coche XMSJ 32L/42L — nevera, congelador dual",
+        salesBadge: "Oferta",
         description:
-          "Nevera/enfriador portátil para coche, viajes, camping y exterior. Mantiene bebidas, snacks y comida fríos en ruta. Diseño portátil, panel digital, gran capacidad (8L–75L) y uso práctico en vehículo.",
+          "Refrigerador portátil de coche XMSJ con compresor, de -20°C a 20°C. Dos capacidades (32L / 42L), alimentación 12/24V CC y 110–240V CA, pantalla LED, protección de batería y envío gratis para viajes, camping y hogar.",
         shortDescription:
-          "Nevera portátil para coche ideal para viajes por carretera, camping y mantener bebidas o comida fría en movimiento.",
+          "Nevera/congelador portátil con compresor — 32L o 42L, -20°C a 20°C, alimentación CC/CA, panel LED y protección de batería para viajes y camping.",
         longDescription: [
-          "Viaja con bebidas y snacks fríos cuando los necesitas. Pensada para road trips, trayectos largos y días de viaje.",
-          "Mantiene bebidas, snacks y comida refrigerada en ruta—ideal para familias, camping y quien pasa muchas horas conduciendo.",
-          "Diseño portátil y apto para coche, furgoneta y camping.",
-          "Panel digital de temperatura y opciones de capacidad generosa (rango 8L–75L) según el tamaño del viaje.",
-          "Compañera práctica para camping, exterior y trayectos largos del día a día.",
+          "Mantén comida y bebidas frías — o congela hasta -20°C — donde vayas. Este refrigerador portátil XMSJ usa un compresor de alto rendimiento para enfriar de -4°F (-20°C) hasta 68°F (20°C), con dos capacidades según tu viaje.",
+          "Elige 32L (34 Quarts) para espacios compactos o 42L (44 Quarts) para trayectos largos y grupos más grandes. Ambos modelos comparten diseño moderno en negro y gris, panel digital y alimentación dual CA/CC para coche, hogar, camper, barco y exterior.",
+          "Luz LED interior, canasta extraíble, soporte para botellas de vino, compartimento para hielo, portavasos en la tapa, protectores de esquina y asa desmontable facilitan el uso diario en ruta.",
+          "Protección de batería del automóvil en tres niveles y memoria de temperatura evitan agotar la batería del vehículo y mantienen el punto de ajuste tras cortes de energía.",
+          "Funciona en silencio por debajo de 45 dB, de forma segura con inclinación inferior a 45° durante periodos cortos, y ofrece modos máximo y eco. Certificación CE, 60W, construcción resistente a golpes para terrenos difíciles.",
+          "Enfriamiento rápido: puede bajar de 20°C hacia 0°C en unos 15 minutos y mantener la temperatura tras desconectar la alimentación — ideal para comida fresca y bebidas frías en viajes largos.",
         ],
         features: [
-          "Nevera portátil para coche",
-          "Diseñada para viajes y camping",
-          "Mantiene bebidas, snacks y comida fría",
-          "Diseño portátil apto para vehículo",
-          "Panel digital de control de temperatura",
-          "Amplia capacidad de almacenamiento",
-          "Práctica para viajes al aire libre",
-          "Apta para coches, furgonetas, camping y transporte diario",
-        ],
-      },
-      fr: {
-        title: "Réfrigérateur portable voiture 8L–75L",
-        description:
-          "Réfrigérateur/glacière portable pour voiture, voyage, camping et extérieur. Garde boissons, snacks et nourriture au frais. Design portable, panneau digital, grande capacité (8L–75L).",
-        shortDescription:
-          "Glacière portable voiture pour road trips, camping et garder boissons ou nourriture au frais en déplacement.",
-        features: [
-          "Réfrigérateur portable voiture",
-          "Conçu pour road trips et camping",
-          "Garde boissons, snacks et nourriture au frais",
-          "Design portable adapté au véhicule",
-          "Panneau de contrôle digital de température",
-          "Grande capacité de stockage",
-          "Pratique pour voyage outdoor",
-          "Adapté voitures, vans, camping et transport quotidien",
-        ],
-      },
-      it: {
-        title: "Frigorifero portatile auto 8L–75L",
-        description:
-          "Frigorifero/ cooler portatile per auto, viaggi, campeggio e outdoor. Mantiene bevande, snack e cibo freddi. Design portatile, pannello digitale, ampia capacità (8L–75L).",
-        shortDescription:
-          "Frigorifero portatile auto per road trip, campeggio e tenere bevande o cibo freddi in movimento.",
-        features: [
-          "Frigorifero portatile per auto",
-          "Progettato per viaggi e campeggio",
-          "Mantiene bevande, snack e cibo freddi",
-          "Design portatile adatto al veicolo",
-          "Pannello digitale controllo temperatura",
-          "Ampia capacità di stoccaggio",
-          "Pratico per viaggi outdoor",
-          "Adatto ad auto, van, campeggio e trasporto quotidiano",
+          "Marca: XMSJ · Certificación CE · Origen: China",
+          "Capacidades: 32L (34 Qt) o 42L (44 Qt)",
+          "Rango de enfriamiento: -20°C a 20°C (-4°F a 68°F)",
+          "Voltaje: 12/24V CC y 110–240V CA",
+          "Potencia: 60W · Peso neto: aprox. 15–17 kg según modelo",
+          "Compresor de alta eficiencia — sin congelación hasta -20°C",
+          "Protección de batería del auto en tres niveles con memoria de temperatura",
+          "Interior: luz LED, canasta, soporte para vino, zona de hielo",
+          "Exterior: panel digital, portavasos en tapa, protectores de esquina, asa duradera",
+          "Funcionamiento silencioso < 45 dB · Modos máximo y ahorro de energía",
+          "Apto para coche, jeep, camión, hogar, gimnasio, taxi, garaje, camper, barco y exterior",
+          "Construcción resistente a golpes · uso seguro con inclinación < 45° en periodos cortos",
+          "Contenido: 1 unidad",
         ],
       },
     },
@@ -598,7 +593,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     id: "gi-hogar-002",
     slug: "portable-travel-kettle-450ml",
     title: "Portable Travel Kettle 450ML",
-    price: 44.25,
+    price: 98700 / 1445,
     category: "Hogar",
     images: [
       ...getGoodIdeasProductImagePaths("gi-hogar-002", 5),
@@ -696,123 +691,69 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
   {
     id: "gi-hogar-003",
-    slug: "portable-800ml-stainless-steel-electric-kettle-220v",
-    title: "800ML Stainless Steel Electric Kettle 220V",
-    price: 17.41,
+    slug: "2l-stainless-steel-electric-kettle-eu",
+    title: "2L Stainless Steel Electric Kettle — EU Plug",
+    price: 10000 / 1445,
     category: "Hogar",
-    images: [
-      ...getGoodIdeasProductImagePaths("gi-hogar-003", 5),
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/eu.webp`,
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/uk.webp`,
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/au.webp`,
-    ],
+    salesBadge: "Super Sale",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/image.webp`],
     description:
-      "800ML portable electric kettle in brushed stainless steel for tea, Turkish or Greek coffee, moka-style brewing, and everyday hot water at home or the office. Compact six-cup capacity, 220V–240V, light gray finish, and EU, UK, or AU plug options.",
+      "Food-grade 2L stainless steel electric kettle with fast boil, classic safe design, comfortable handle, and power switch. EU plug, 1000W–1500W, ideal for families, offices, and daily tea or coffee.",
     shortDescription:
-      "800ML stainless steel electric kettle for tea and coffee—portable, 220V, with EU, UK, and AU plug options.",
+      "2L stainless steel electric kettle with EU plug — fast heating, food-safe build, perfect for home, office, and daily hot drinks.",
     longDescription: [
-      "A compact 800ML kettle keeps daily hot drinks within reach without claiming half the counter. Sized for roughly six cups, it fits kitchens, desks, and small apartments where space matters.",
-      "Brushed stainless steel delivers a clean, durable look with a light gray finish, black handle, and a simple base with an illuminated power switch for quick, confident use.",
-      "Brew tea, prepare Turkish or Greek coffee, or heat water for moka-style routines and instant meals—one honest appliance for multiple morning and evening habits.",
-      "220V–240V operation suits European and compatible regions; choose EU, UK, or AU plug options so the same compact design works at home or when you travel with the right adapter setup.",
-      "Built for Good Products home essentials: practical capacity, straightforward controls, and a footprint that earns a permanent spot beside the coffee setup or on a work desk.",
+      "This 2.0L electric kettle heats water in larger batches—ideal for families or office use without constant refills.",
+      "Built from high-quality stainless steel for durability, corrosion resistance, and food-safe heating without contaminants.",
+      "Classic, safe home appliance design with a comfortable handle and power switch for easy pouring and simple start/stop control.",
+      "Fast, efficient boiling saves time and energy for daily tea, coffee, and hot beverages at home, in the office, or on the go.",
+      "EU plug compatibility (220V, 50Hz) suits European outlets. No hazardous substances—food-grade materials for everyday use.",
+      "Package includes 1 electric kettle. Allow 1–2 cm variance on dimensions due to manual measurement; monitor color may vary slightly from photos.",
     ],
     features: [
-      "800ML capacity (~6 cups)",
-      "Brushed stainless steel body",
-      "Light gray finish with black handle",
-      "220V–240V operation",
-      "Suitable for tea, coffee, and hot water",
-      "Compact portable design",
-      "EU, UK, and AU plug options",
-      "Illuminated base power switch",
-      "Ideal for home, office, and daily routines",
+      "2.0L capacity for daily family or office use",
+      "High-quality stainless steel — durable and food-safe",
+      "Fast, efficient boiling — saves time and energy",
+      "Classic design with handle and power switch",
+      "Item: Electric kettle",
+      "Material: Stainless steel",
+      "Rated voltage: EU 220V / UK 230V",
+      "Rated frequency: 50Hz",
+      "Rated power: 1000W–1500W",
+      "Plug type: EU plug",
+      "No hazardous chemical substances — food-grade materials",
+      "Package includes: 1 × kettle",
     ],
     freeShipping: true,
-    variants: {
-      type: "plug",
-      label: "Plug type",
-      default: "eu",
-      options: [
-        { value: "eu", label: "EU plug" },
-        { value: "uk", label: "UK plug" },
-        { value: "au", label: "AU plug" },
-      ],
-    },
     translations: {
       es: {
-        title: "Hervidor eléctrico de acero inoxidable 800 ml 220V",
+        title:
+          "Hervidor eléctrico de acero inoxidable 2L — enchufe europeo",
+        salesBadge: "Super Oferta",
         description:
-          "Hervidor eléctrico portátil de 800 ml en acero inoxidable cepillado para té, café turco o griego, estilo moka y agua caliente diaria. Capacidad compacta de seis tazas, 220V–240V, acabado gris claro y opciones de enchufe EU, UK o AU.",
+          "Hervidor eléctrico de acero inoxidable 2L de calidad alimentaria, ebullición rápida, diseño clásico y seguro, mango cómodo e interruptor. Enchufe EU, 1000W–1500W, ideal para familias, oficinas y té o café diario.",
         shortDescription:
-          "Hervidor eléctrico de 800 ml en acero inoxidable para té y café—portátil, 220V, con enchufes EU, UK y AU.",
+          "Hervidor eléctrico 2L en acero inoxidable con enchufe EU — calentamiento rápido, materiales aptos alimentos, para hogar, oficina y bebidas calientes.",
         longDescription: [
-          "Un hervidor compacto de 800 ml mantiene las bebidas calientes al alcance sin ocupar media encimera. Tamaño para unas seis tazas, ideal en cocinas, escritorios y pisos pequeños.",
-          "Acero inoxidable cepillado con acabado gris claro, mango negro y base sencilla con interruptor iluminado para un uso rápido y claro.",
-          "Prepara té, café turco o griego, o calienta agua para rutinas tipo moka y comidas instantáneas en un solo electrodoméstico versátil.",
-          "Operación 220V–240V; elige enchufe EU, UK o AU según tu región para el mismo diseño compacto en casa o viaje.",
-          "Esencial de hogar Buenos Productos: capacidad práctica, controles directos y un formato que merece quedarse junto al café o en el escritorio.",
+          "Capacidad de 2.0L para preparar agua caliente en grandes cantidades, ideal para familias o uso en oficinas sin necesidad de llenarlo constantemente.",
+          "Construcción en acero inoxidable de alta calidad: durabilidad, resistencia a la corrosión y seguridad alimentaria, sin contaminantes al calentar el agua.",
+          "Diseño clásico y seguro con mango cómodo e interruptor para recoger, verter e iniciar o detener el calentamiento con facilidad.",
+          "Calentamiento rápido y eficiente que ahorra tiempo y energía en el uso diario en casa o en la oficina.",
+          "Compatible con enchufe europeo (220V, 50Hz). Materiales seguros para uso alimentario, sin sustancias químicas de preocupación.",
+          "Incluye 1 tetera eléctrica. Las medidas pueden variar 1–2 cm por medición manual; el color puede verse ligeramente distinto según el monitor.",
         ],
         features: [
-          "Capacidad de 800 ml (~6 tazas)",
-          "Cuerpo de acero inoxidable cepillado",
-          "Acabado gris claro con mango negro",
-          "Operación 220V–240V",
-          "Para té, café y agua caliente",
-          "Diseño compacto y portátil",
-          "Opciones de enchufe EU, UK y AU",
-          "Interruptor iluminado en la base",
-          "Ideal para hogar, oficina y rutinas diarias",
-        ],
-      },
-      fr: {
-        title: "Bouilloire électrique inox 800 ml 220V",
-        description:
-          "Bouilloire électrique portable 800 ml en acier inoxydable brossé pour thé, café turc ou grec, style moka et eau chaude quotidienne. Capacité compacte six tasses, 220V–240V, finition gris clair, prises EU, UK ou AU.",
-        shortDescription:
-          "Bouilloire électrique 800 ml en inox pour thé et café—portable, 220V, prises EU, UK et AU.",
-        longDescription: [
-          "Une bouilloire compacte 800 ml garde les boissons chaudes à portée de main sans envahir le plan de travail. Environ six tasses, idéale en cuisine, bureau ou petit logement.",
-          "Acier inoxydable brossé, finition gris clair, poignée noire et base simple avec interrupteur lumineux pour une utilisation rapide.",
-          "Préparez thé, café turc ou grec, ou chauffez l'eau pour routines moka et plats instantanés.",
-          "Fonctionnement 220V–240V ; choisissez prise EU, UK ou AU selon votre région.",
-          "Essentiel maison Good Products : capacité pratique, commandes directes, format compact.",
-        ],
-        features: [
-          "Capacité 800 ml (~6 tasses)",
-          "Corps en acier inoxydable brossé",
-          "Finition gris clair, poignée noire",
-          "Fonctionnement 220V–240V",
-          "Pour thé, café et eau chaude",
-          "Design compact et portable",
-          "Options prise EU, UK et AU",
-          "Interrupteur lumineux sur la base",
-          "Idéal maison, bureau et quotidien",
-        ],
-      },
-      it: {
-        title: "Bollitore elettrico in acciaio inox 800 ml 220V",
-        description:
-          "Bollitore elettrico portatile 800 ml in acciaio inox spazzolato per tè, caffè turco o greco, stile moka e acqua calda quotidiana. Capacità compatta sei tazze, 220V–240V, finitura grigio chiaro, spine EU, UK o AU.",
-        shortDescription:
-          "Bollitore elettrico 800 ml in acciaio inox per tè e caffè—portatile, 220V, spine EU, UK e AU.",
-        longDescription: [
-          "Un bollitore compatto da 800 ml tiene le bevande calde a portata di mano senza occupare metà piano cucina. Circa sei tazze, ideale in cucina, scrivania o monolocale.",
-          "Acciaio inox spazzolato, finitura grigio chiaro, manico nero e base con interruttore illuminato per un uso rapido.",
-          "Prepara tè, caffè turco o greco, o scalda l'acqua per routine moka e pasti instant.",
-          "Funzionamento 220V–240V; scegli spina EU, UK o AU in base alla regione.",
-          "Essenziale casa Good Products: capacità pratica, comandi semplici, ingombro ridotto.",
-        ],
-        features: [
-          "Capacità 800 ml (~6 tazze)",
-          "Corpo in acciaio inox spazzolato",
-          "Finitura grigio chiaro, manico nero",
-          "Funzionamento 220V–240V",
-          "Per tè, caffè e acqua calda",
-          "Design compatto e portatile",
-          "Opzioni spina EU, UK e AU",
-          "Interruttore illuminato sulla base",
-          "Ideale per casa, ufficio e routine quotidiane",
+          "Capacidad 2.0L para familia u oficina",
+          "Acero inoxidable de alta calidad — duradero y apto alimentos",
+          "Ebullición rápida y eficiente — ahorra tiempo y energía",
+          "Diseño clásico con mango e interruptor",
+          "Artículo: Tetera eléctrica",
+          "Material: Acero inoxidable",
+          "Voltaje nominal: UE 220V / Reino Unido 230V",
+          "Frecuencia nominal: 50Hz",
+          "Potencia nominal: 1000W–1500W",
+          "Tipo de enchufe: Enchufe europeo",
+          "Sin sustancias químicas de preocupación — materiales aptos alimentos",
+          "Contenido: 1 × tetera",
         ],
       },
     },
@@ -824,7 +765,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     brand: "Searide",
     title:
       "Searide 180ML Mini USB Air Humidifier & Aroma Diffuser — H09 Pro",
-    price: 6.92,
+    price: 9999 / 1445,
     category: "Hogar",
     images: [
       "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close",
@@ -1205,9 +1146,11 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     title: "Lenovo Thinkplus XT80 Wireless Sports Earbuds",
 
-    price: 12.89,
+    price: 45000 / 1445,
 
-    category: "Lifestyle",
+    category: "Tech",
+
+    brand: "Lenovo",
 
     images: getGoodIdeasProductImagePaths("gi-lifestyle-001"),
 
@@ -1221,41 +1164,60 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     longDescription: [
 
-      "Enjoy wireless listening built for workouts, commuting, and everyday movement. These sports earbuds keep your soundtrack close whether you are training, walking, or switching between tasks on the go.",
+      "High-speed Bluetooth 5.3 delivers a stable, fast connection for music, calls, and daily use—with wireless range up to 10 meters for uninterrupted freedom.",
 
-      "Bluetooth 5.3 delivers a stable wireless connection for music and calls, with pairing that feels simple enough for daily routines and travel days alike.",
+      "Lenovo TWS earbuds deliver hi-fi stereo sound with a 20 Hz–20,000 Hz frequency response for deep bass and crisp highs on every track.",
 
-      "The compact charging case includes an LED digital battery display, so you can see remaining power at a glance instead of guessing mid-commute or mid-session.",
+      "Integrated physical buttons let you control playback, calls, and volume easily—adjust sound to your preference without reaching for your phone.",
 
-      "An ergonomic sports fit is designed to stay comfortable during longer wear, with a lightweight profile that is easy to carry in a pocket or bag.",
+      "Each earbud packs a 300 mAh battery for up to 4–5 hours of continuous playback. The charging case provides multiple top-ups for extended listening.",
 
-      "From gym sessions to calls on the move, stereo sound and a lifestyle-ready design make them a practical pick for music, travel, and everyday listening.",
+      "Built for sport with IPX5 water resistance—protected against sweat and splashes during intense workouts or rainy days.",
 
     ],
 
     features: [
 
-      "Bluetooth 5.3 wireless connection",
+      "Bluetooth 5.3 — stable connection up to 10 m",
 
-      "LED digital battery display",
+      "Hi-fi stereo sound — 20 Hz–20 kHz response",
+
+      "IPX5 water resistance — sweat and splash protection",
+
+      "Long battery — 300 mAh per bud, 4–5 h playback",
+
+      "Bluetooth version: 5.3",
+
+      "Wireless range: Up to 10 meters",
+
+      "Frequency response: 20 Hz–20,000 Hz",
+
+      "Controls: Physical buttons — playback, calls, volume",
+
+      "Battery per earbud: 300 mAh",
+
+      "Playback time: Up to 4–5 hours continuous",
+
+      "Charging case: Multiple extra charges",
+
+      "Water resistance: IPX5",
+
+      "LED digital battery display on charging case",
 
       "Ergonomic sports fit",
 
-      "Compact charging case",
-
-      "Stereo sound for music and calls",
-
-      "Lightweight daily carry design",
-
-      "Suitable for workouts, commuting, and travel",
-
-      "Long battery life for extended listening sessions",
-
-      "Easy everyday pairing",
+      "Color: Black",
 
     ],
 
     freeShipping: true,
+
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [{ value: "negro", label: "Black", swatchHex: "#1A1A1A" }],
+    },
 
     translations: {
 
@@ -1273,37 +1235,49 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
         longDescription: [
 
-          "Escucha sin cables pensada para entrenamientos, desplazamientos y movimiento diario. Mantén tu música cerca al entrenar, caminar o cambiar de actividad sobre la marcha.",
+          "Conexión Bluetooth 5.3 de alta velocidad: disfruta de una conexión estable y rápida con Bluetooth 5.3, ideal para música, llamadas y uso diario. El rango inalámbrico alcanza hasta 10 metros, ofreciendo libertad sin interrupciones.",
 
-          "Bluetooth 5.3 ofrece una conexión estable para música y llamadas, con emparejamiento sencillo para rutinas cotidianas y viajes.",
+          "Audio de alta fidelidad con sonido estéreo: los auriculares TWS de Lenovo ofrecen un sonido estéreo de alta fidelidad con respuesta de frecuencia de 20–20.000 Hz, garantizando graves profundos y agudos nítidos en cada canción.",
 
-          "El estuche de carga compacto incluye pantalla LED digital de batería para ver la autonomía restante de un vistazo.",
+          "Control por botones y volumen ajustable: con botones físicos integrados, puedes controlar reproducción, llamadas y volumen fácilmente. El control de volumen permite ajustar el sonido según tus preferencias sin necesidad de usar el móvil.",
 
-          "El ajuste ergonómico deportivo está pensado para mayor comodidad en sesiones largas, con un perfil ligero fácil de llevar.",
+          "Batería de larga duración con carga rápida: cada auricular tiene una capacidad de 300 mAh, con una duración de hasta 4–5 horas de reproducción continua. El estuche de carga ofrece múltiples recargas para un uso prolongado.",
 
-          "Desde el gimnasio hasta las llamadas en movimiento, el sonido estéreo y el diseño lifestyle los convierten en una opción práctica para música, viajes y uso diario.",
+          "Protección IPX5 y resistencia al agua: diseñados para el deporte, estos auriculares son resistentes al agua con certificación IPX5, protegiéndolos de sudor y salpicaduras durante entrenamientos intensos o días lluviosos.",
 
         ],
 
         features: [
 
-          "Conexión inalámbrica Bluetooth 5.3",
+          "Bluetooth 5.3 — conexión estable hasta 10 m",
 
-          "Pantalla LED digital de batería",
+          "Sonido estéreo hi-fi — respuesta 20 Hz–20 kHz",
+
+          "Resistencia IPX5 — protección contra sudor y salpicaduras",
+
+          "Batería prolongada — 300 mAh por auricular, 4–5 h de reproducción",
+
+          "Versión Bluetooth: 5.3",
+
+          "Alcance inalámbrico: Hasta 10 metros",
+
+          "Respuesta de frecuencia: 20 Hz–20.000 Hz",
+
+          "Controles: Botones físicos — reproducción, llamadas, volumen",
+
+          "Batería por auricular: 300 mAh",
+
+          "Autonomía: Hasta 4–5 horas continuas",
+
+          "Estuche de carga: Múltiples recargas adicionales",
+
+          "Resistencia al agua: IPX5",
+
+          "Pantalla LED digital de batería en el estuche",
 
           "Ajuste ergonómico deportivo",
 
-          "Estuche de carga compacto",
-
-          "Sonido estéreo para música y llamadas",
-
-          "Diseño ligero para llevar a diario",
-
-          "Apto para entrenamientos, desplazamientos y viajes",
-
-          "Batería de larga duración para sesiones extendidas",
-
-          "Emparejamiento fácil para el uso diario",
+          "Color: Negro",
 
         ],
 
@@ -1389,8 +1363,9 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     id: "gi-lifestyle-002",
     slug: "lenovo-gm2-pro-bluetooth-gaming-earbuds",
     title: "Lenovo GM2 Pro Bluetooth 5.3 Gaming Wireless Earbuds",
-    price: 10.71,
-    category: "Lifestyle",
+    price: 32255 / 1445,
+    category: "Tech",
+    brand: "Lenovo",
     images: getGoodIdeasProductImagePaths("gi-lifestyle-002", 5),
     description:
       "Lenovo GM2 Pro wireless gaming earbuds designed for music, gaming, calls, commuting, and daily lifestyle use. Bluetooth 5.3, low-latency game mode, dual HD calls, noise reduction microphone, compact charging case, and lightweight portable design.",
@@ -1414,6 +1389,15 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
       "Suitable for gaming, commuting, travel, and daily use",
     ],
     freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [
+        { value: "blanco", label: "White", swatchHex: "#F5F5F5" },
+        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
+      ],
+    },
     translations: {
       es: {
         title: "Auriculares gaming inalámbricos Lenovo GM2 Pro Bluetooth 5.3",
@@ -1477,306 +1461,216 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
   {
     id: "gi-lifestyle-003",
-    slug: "rechargeable-electric-nose-hair-trimmer-men",
-    title: "Rechargeable Electric Nose Hair Trimmer for Men",
-    price: 3.49,
-    category: "Lifestyle",
+    slug: "professional-2-in-1-nose-ear-hair-trimmer",
+    title: "Professional 2-in-1 Nose & Ear Hair Trimmer",
+    price: 8399 / 1445,
+    category: "Hogar",
     images: getGoodIdeasProductImagePaths("gi-lifestyle-003", 5),
     description:
-      "Portable rechargeable electric nose hair trimmer designed for men's grooming. A compact tool for nose hair, eyebrow touch-ups, and precise facial trimming—with portability, rechargeable use, pocket-size body, protective cap, and simple daily grooming.",
+      "Portable professional 2-in-1 electric hair trimmer for nose and ears. ROTARY motor, smart power selection, auto-clean system, rechargeable battery, and interchangeable tips—ideal for daily personal care at home or on travel.",
     shortDescription:
-      "Compact rechargeable electric trimmer for nose, eyebrow, and facial grooming, designed for quick daily touch-ups at home or on the go.",
+      "2-in-1 rechargeable nose and ear trimmer with ROTARY motor, smart power control, and 15–30 min battery life for daily grooming.",
     longDescription: [
-      "Keep your grooming routine quick and effortless. This rechargeable electric trimmer is built for everyday personal care, from nose hair to eyebrow touch-ups and precise facial trimming.",
-      "The portable rechargeable design means you can maintain a clean look at home or on the go without bulky tools or complicated setup.",
-      "Designed for nose and eyebrow trimming, it helps you handle detail areas with control and a minimalist grooming routine that fits busy mornings.",
-      "A compact pocket-size body and protective transparent cap make it easy to store in a bag, drawer, or travel kit.",
-      "Simple daily maintenance and travel-friendly use make it a practical lightweight accessory for men who want a cleaner, more polished look in minutes.",
+      "This portable professional 2-in-1 electric trimmer is designed for nose and ear hair, delivering precision and comfort for daily personal care at home or on the go.",
+      "A high-performance ROTARY motor ensures smooth, efficient operation with clean, fast trimming—especially in sensitive areas like nose and ears.",
+      "Battery life runs 15–30 minutes per charge—enough for multiple sessions. A full charge takes up to 2 hours for reliable everyday use.",
+      "Smart features include automatic power selection based on hair density and a charge indicator. An auto-clean system simplifies maintenance and extends product life.",
+      "Interchangeable tips (1–2 nozzles included) help adjust trim length. Available in orange, blue, and black to match your preference.",
     ],
     features: [
-      "Rechargeable electric grooming tool",
-      "Designed for nose hair trimming",
-      "Suitable for eyebrow touch-ups",
-      "Compact pocket-size design",
-      "Protective transparent cap",
-      "Portable for travel and daily use",
-      "Simple one-button operation",
-      "Lightweight personal care accessory",
+      "Professional 2-in-1 nose and ear trimmer",
+      "ROTARY motor — smooth, efficient cutting",
+      "Smart auto power by hair density",
+      "15–30 min battery, ~2 h full charge",
+      "Motor type: ROTARY",
+      "Use: Nose and ear hair trimming",
+      "Battery life: 15–30 minutes per charge",
+      "Full charge time: Up to 2 hours",
+      "Smart features: Auto power selection, charge indicator",
+      "Maintenance: Auto-clean system",
+      "Tips included: 1–2 interchangeable nozzles",
+      "Colors available: Orange, blue, black",
+      "Portable design for home and travel",
     ],
-    freeShipping: false,
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [
+        { value: "naranja", label: "Orange", swatchHex: "#F97316" },
+        { value: "azul", label: "Blue", swatchHex: "#3B82F6" },
+        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
+      ],
+    },
     translations: {
       es: {
-        title: "Cortapelos eléctrico recargable para nariz y cejas",
+        title: "Cortadora de pelo 2 en 1 profesional — nariz y orejas",
         description:
-          "Recortador eléctrico recargable y portátil para el cuidado masculino: vello nasal, retoques de cejas y recorte facial preciso. Compacto, con tapa protectora y uso diario sencillo.",
+          "Cortadora eléctrica portátil 2 en 1 profesional para nariz y orejas. Motor ROTARY, selección inteligente de potencia, limpieza automática, batería recargable y boquillas intercambiables — ideal para cuidado personal diario en casa o viajes.",
         shortDescription:
-          "Recortador eléctrico recargable compacto para nariz, cejas y grooming facial, ideal para retoques rápidos en casa o de viaje.",
+          "Recortador 2 en 1 recargable para nariz y orejas con motor ROTARY, control inteligente de potencia y 15–30 min de autonomía.",
         longDescription: [
-          "Mantén tu rutina de grooming rápida y sin complicaciones. Pensado para el cuidado diario: vello nasal, cejas y detalles faciales.",
-          "Diseño recargable y portátil para usar en casa o fuera, sin herramientas voluminosas.",
-          "Ayuda a trabajar zonas de detalle con control y una rutina minimalista que encaja en mañanas ocupadas.",
-          "Cuerpo compacto de bolsillo y tapa protectora transparente para guardar en bolso, cajón o neceser.",
-          "Mantenimiento sencillo y uso viajero: accesorio ligero para un aspecto más cuidado en minutos.",
+          "Esta cortadora de pelo eléctrica portátil 2 en 1 profesional está diseñada para uso en orejas y nariz, ofreciendo precisión y comodidad en cada uso. Ideal para cuidados personales diarios en casa o en viajes.",
+          "Equipada con un motor ROTARY de alto rendimiento, garantiza un funcionamiento suave y eficiente. Su diseño permite un corte limpio y rápido, especialmente en zonas sensibles como nariz y orejas.",
+          "Con una vida útil de batería de 15 a 30 minutos, ofrece suficiente autonomía para múltiples usos. La carga completa toma hasta 2 horas, ideal para uso continuo.",
+          "Incluye selección automática de potencia según densidad del vello e indicador de carga. Además, el sistema de limpieza automática facilita el mantenimiento y prolonga la vida útil del producto.",
+          "Disponible en naranja, azul y negro, con 1 a 2 boquillas intercambiables para ajustar el largo de corte según necesidad.",
         ],
         features: [
-          "Herramienta eléctrica recargable de grooming",
-          "Diseñada para vello nasal",
-          "Apta para retoques de cejas",
-          "Diseño compacto de bolsillo",
-          "Tapa protectora transparente",
-          "Portátil para viaje y uso diario",
-          "Operación simple de un botón",
-          "Accesorio ligero de cuidado personal",
-        ],
-      },
-      fr: {
-        title: "Tondeuse électrique rechargeable nez et sourcils homme",
-        description:
-          "Tondeuse électrique rechargeable portable pour le grooming masculin : poils du nez, retouches des sourcils et taille faciale précise. Compacte, capuchon protecteur, usage quotidien simple.",
-        shortDescription:
-          "Tondeuse électrique rechargeable compacte pour nez, sourcils et grooming facial, idéale pour les retouches rapides à domicile ou en déplacement.",
-        features: [
-          "Outil de grooming électrique rechargeable",
-          "Conçu pour les poils du nez",
-          "Adapté aux retouches des sourcils",
-          "Design compact de poche",
-          "Capuchon protecteur transparent",
-          "Portable pour voyage et quotidien",
-          "Fonctionnement simple à un bouton",
-          "Accessoire léger de soins personnels",
-        ],
-      },
-      it: {
-        title: "Tagliacapelli elettrico ricaricabile per naso e sopracciglia",
-        description:
-          "Tagliacapelli elettrico ricaricabile portatile per la cura maschile: peli del naso, ritocchi sopracciglia e rifinitura facciale. Compatto, cappuccio protettivo, uso quotidiano semplice.",
-        shortDescription:
-          "Tagliacapelli elettrico ricaricabile compatto per naso, sopracciglia e grooming facciale, ideale per ritocchi rapidi a casa o in viaggio.",
-        features: [
-          "Strumento di grooming elettrico ricaricabile",
-          "Progettato per peli del naso",
-          "Adatto a ritocchi delle sopracciglia",
-          "Design compatto tascabile",
-          "Cappuccio protettivo trasparente",
-          "Portatile per viaggio e uso quotidiano",
-          "Funzionamento semplice a un pulsante",
-          "Accessorio leggero per la cura personale",
+          "Cortadora profesional 2 en 1 nariz y orejas",
+          "Motor ROTARY — corte suave y eficiente",
+          "Potencia automática según densidad del vello",
+          "Batería 15–30 min, carga completa ~2 h",
+          "Tipo de motor: ROTARY",
+          "Uso: Vello nasal y de orejas",
+          "Autonomía: 15–30 minutos por carga",
+          "Tiempo de carga completa: Hasta 2 horas",
+          "Funciones inteligentes: Potencia automática, indicador de carga",
+          "Mantenimiento: Sistema de limpieza automática",
+          "Incluye: 1–2 boquillas intercambiables",
+          "Colores disponibles: Naranja, azul, negro",
+          "Diseño portátil para hogar y viaje",
         ],
       },
     },
   },
   {
     id: "gi-lifestyle-004",
-    slug: "bluetooth-sleep-headband-wireless-earphones",
-    title: "Bluetooth Sleep Headband Wireless Earphones",
-    price: 4.19,
-    category: "Lifestyle",
+    slug: "bluetooth-sleep-elastic-headband",
+    title: "Bluetooth Sleep Elastic Headband with Wireless Audio",
+    price: 25000 / 1445,
+    category: "Hogar",
+    salesBadge: "Super Sale",
     images: getGoodIdeasProductImagePaths("gi-lifestyle-004", 5),
     description:
-      "Wireless Bluetooth headband with integrated earphones, designed for sleeping, relaxing, sports, running, travel, and hands-free music listening. Soft stretch fabric, wireless audio, built-in control panel, comfortable fit, sleep-friendly design, and versatile everyday use.",
+      "Bluetooth 5.0 sleep elastic headband with integrated wireless earphones, active noise cancellation, button controls, and lightweight plastic build—ideal for sleep, sport, and daily rest.",
     shortDescription:
-      "Soft Bluetooth sleep headband with built-in wireless earphones, designed for music, rest, workouts, travel, and comfortable daily use.",
+      "Elastic Bluetooth 5.0 sleep headband with ANC, integrated eye mask zone, button controls, and lightweight design for sleep and daily use.",
     longDescription: [
-      "Listen comfortably while you sleep, relax, or unwind. This Bluetooth sleep headband combines soft fabric with built-in wireless earphones for a cozy way to enjoy music, podcasts, or meditation without bulky headphones.",
-      "Bluetooth wireless audio keeps your setup cable-free, with a stable connection for bedtime listening, light workouts, and everyday lifestyle use.",
-      "Soft stretch fabric wraps gently around your head for a comfortable fit that works for rest, travel, and hands-free listening on the go.",
-      "From running and light sports to flights and daily commutes, the headband design stays practical for movement while keeping audio close.",
-      "An integrated control panel and lightweight everyday design make it easy to manage playback—ideal for wellness routines, relaxation, and sleep-friendly listening.",
+      "These sports-style wireless earphones deliver stable Bluetooth 5.0 audio for high-quality, uninterrupted listening during workouts or rest.",
+      "Active noise cancellation reduces ambient noise for a more immersive, clearer listening experience.",
+      "The elastic headband design fits comfortably for sleep, while the integrated eye mask area helps block light and improve rest quality.",
+      "Button controls and adjustable volume let you manage music, calls, and settings without reaching for your phone.",
+      "Made from durable, lightweight plastic—resistant and comfortable for daily wear, sport, or sleeping without bulk.",
     ],
     features: [
-      "Bluetooth wireless audio",
-      "Built-in stereo earphones",
-      "Soft stretch fabric headband",
-      "Comfortable for sleep and relaxation",
-      "Suitable for running, workouts, and travel",
-      "Integrated control panel",
-      "Lightweight everyday design",
-      "Ideal for music, podcasts, meditation, and rest",
+      "Bluetooth 5.0 — stable wireless audio",
+      "Active noise cancellation (ANC)",
+      "Elastic sleep headband with light-blocking mask",
+      "Button controls and volume adjustment",
+      "Bluetooth version: 5.0",
+      "Noise cancellation: Active ANC",
+      "Design: Elastic headband for sleep",
+      "Controls: Button + volume control",
+      "Material: Lightweight durable plastic",
+      "Use: Sleep, sport, daily listening",
+      "Color: Black",
     ],
-    freeShipping: false,
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [{ value: "negro", label: "Black", swatchHex: "#1A1A1A" }],
+    },
     translations: {
       es: {
-        title: "Diadema Bluetooth para dormir con auriculares inalámbricos",
+        title: "Diadema elástica Bluetooth para dormir",
+        salesBadge: "Super Oferta",
         description:
-          "Diadema Bluetooth inalámbrica con auriculares integrados para dormir, relajarse, deporte, running, viajes y música manos libres. Tejido suave elástico, audio inalámbrico, panel de control y diseño cómodo para el descanso.",
+          "Diadema elástica para dormir con Bluetooth 5.0, auriculares integrados, cancelación activa de ruido, controles por botón y construcción ligera en plástico — ideal para descanso, deporte y uso diario.",
         shortDescription:
-          "Diadema suave Bluetooth para dormir con auriculares inalámbricos integrados, ideal para música, descanso, entrenamientos, viajes y uso diario cómodo.",
+          "Diadema elástica Bluetooth 5.0 para dormir con ANC, zona tipo antifaz integrada, controles y diseño ligero para descanso y día a día.",
         longDescription: [
-          "Escucha con comodidad mientras duermes, descansas o te relajas. Combina tejido suave y auriculares inalámbricos integrados para música, podcasts o meditación sin auriculares voluminosos.",
-          "Audio Bluetooth sin cables para escucha nocturna, entrenamientos ligeros y uso lifestyle diario.",
-          "Tejido suave y elástico para un ajuste cómodo en reposo, viajes y escucha manos libres.",
-          "Práctica para running, deporte ligero, vuelos y desplazamientos con el audio siempre cerca.",
-          "Panel de control integrado y diseño ligero para gestionar la reproducción: ideal para bienestar, relajación y sueño.",
+          "Audio inalámbrico con Bluetooth 5.0: conexión estable y transmisión de audio de alta calidad sin interrupciones durante el ejercicio o el descanso.",
+          "Cancelación activa de ruido: reduce eficazmente el ruido ambiental para una experiencia auditiva más inmersiva y clara.",
+          "Diseño de diadema elástica para dormir: ajuste cómodo durante el sueño; la máscara de ojos integrada ayuda a bloquear la luz y mejorar la calidad del descanso.",
+          "Control por botón y volumen ajustable: gestiona música, llamadas y ajustes sin usar tu dispositivo.",
+          "Material duradero y ligero: fabricados en plástico, resistentes y livianos, ideales para uso diario, deporte o dormir sin incomodidad.",
         ],
         features: [
-          "Audio inalámbrico Bluetooth",
-          "Auriculares estéreo integrados",
-          "Diadema de tejido suave elástico",
-          "Cómoda para dormir y relajarse",
-          "Apta para running, entrenamientos y viajes",
-          "Panel de control integrado",
-          "Diseño ligero para el día a día",
-          "Ideal para música, podcasts, meditación y descanso",
-        ],
-      },
-      fr: {
-        title: "Bandeau Bluetooth sommeil avec écouteurs sans fil",
-        description:
-          "Bandeau Bluetooth sans fil avec écouteurs intégrés pour dormir, se détendre, sport, course, voyage et musique mains libres. Tissu doux extensible, audio sans fil, commandes intégrées et confort au repos.",
-        shortDescription:
-          "Bandeau doux Bluetooth pour le sommeil avec écouteurs sans fil intégrés, pour musique, repos, entraînement, voyage et usage quotidien confortable.",
-        features: [
-          "Audio sans fil Bluetooth",
-          "Écouteurs stéréo intégrés",
-          "Bandeau en tissu doux extensible",
-          "Confortable pour dormir et se détendre",
-          "Adapté course, entraînement et voyage",
-          "Panneau de commande intégré",
-          "Design léger pour le quotidien",
-          "Idéal musique, podcasts, méditation et repos",
-        ],
-      },
-      it: {
-        title: "Fascia Bluetooth per dormire con auricolari wireless",
-        description:
-          "Fascia Bluetooth wireless con auricolari integrati per dormire, rilassarsi, sport, corsa, viaggio e musica hands-free. Tessuto morbido elastico, audio wireless, pannello comandi e comfort per il riposo.",
-        shortDescription:
-          "Fascia morbida Bluetooth per il sonno con auricolari wireless integrati, per musica, riposo, allenamento, viaggio e uso quotidiano confortevole.",
-        features: [
-          "Audio wireless Bluetooth",
-          "Auricolari stereo integrati",
-          "Fascia in tessuto morbido elastico",
-          "Comoda per sonno e relax",
-          "Adatta a corsa, allenamento e viaggio",
-          "Pannello comandi integrato",
-          "Design leggero per tutti i giorni",
-          "Ideale per musica, podcast, meditazione e riposo",
+          "Bluetooth 5.0 — audio inalámbrico estable",
+          "Cancelación activa de ruido (ANC)",
+          "Diadema elástica para dormir con antifaz integrado",
+          "Control por botón y volumen ajustable",
+          "Versión Bluetooth: 5.0",
+          "Cancelación de ruido: ANC activa",
+          "Diseño: Diadema elástica para dormir",
+          "Controles: Botón + control de volumen",
+          "Material: Plástico ligero y duradero",
+          "Uso: Dormir, deporte, escucha diaria",
+          "Color: Negro",
         ],
       },
     },
   },
   {
     id: "gi-regalos-001",
-    slug: "ai-remote-control-robot-dog",
-    title: "AI Remote Control Robot Dog",
-    price: 54.39,
-    category: "Regalos",
-    images: [
-      ...getGoodIdeasProductImagePaths("gi-regalos-001", 5),
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/normal.webp`,
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/housekeeping-claw.webp`,
-      `${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/watergun.webp`,
-    ],
+    slug: "intelligent-ai-rc-robot-dog",
+    title: "Intelligent AI RC Robot Dog — Voice, App & Remote Control",
+    price: 249000 / 1445,
+    category: "Tech",
+    salesBadge: "Super Sale",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/image.webp`],
     description:
-      "AI-inspired remote control robot dog designed as an interactive tech gift. Remote control play, app programming, movement tricks, acrobatic actions, and playful interaction—ideal for kids, tech lovers, and families.",
+      "Intelligent AI remote-control robot dog with voice dialogue, singing, mobile app control, custom programming, dancing, and lithium battery included—ready to use out of the box.",
     shortDescription:
-      "AI-inspired remote control robot dog with interactive movement, app programming, playful tricks, and multiple versions for smart entertainment.",
+      "AI robot dog with remote control, voice dialogue, app programming, singing, and dancing—includes lithium battery, white finish.",
     longDescription: [
-      "Bring interactive robot dog play into the room with movement, personality, and tech-forward fun. Designed for kids, families, and anyone curious about robotics-style entertainment.",
-      "Remote control and app programming open up custom routines, tricks, and playful interaction that keeps sessions fresh beyond a simple toy.",
-      "Acrobatic movement and trick modes add spectacle—roll, spin, and respond in ways that feel lively and engaging during playtime.",
-      "Choose from three versions: Normal Robot Dog, Housekeeping Robot with Claw, or Robot Dog with Water Gun—each with its own play personality.",
-      "A smart gift for birthdays, holidays, and tech-curious households looking for modern robotic toy experiences and shared family entertainment.",
-      "Not suitable for children under 36 months.",
+      "This intelligent remote-control robot dog uses AI technology for advanced interaction with children—ideal for entertainment and early robotics learning.",
+      "Voice dialogue and singing respond to commands and entertain with music. Remote mobile app compatibility adds extra control.",
+      "Program custom movements and routines, including dance modes. Recommended for ages 14+ who enjoy interactive, creative play.",
+      "Includes a lithium battery and ships ready to use—no assembly required.",
+      "Electric-powered with a compact, functional design. Made in Mainland China—a high-tech toy for modern play.",
     ],
     features: [
-      "AI-inspired interactive robot dog",
-      "Remote control operation",
-      "App programming support",
-      "Acrobatic movement and tricks",
-      "Available in three versions",
-      "Smart gift for kids and tech lovers",
-      "Interactive family entertainment",
-      "Modern robotic toy design",
+      "Intelligent AI robot dog with remote control",
+      "Voice dialogue and singing functions",
+      "Mobile app remote control and programming",
+      "Dynamic movement — dance and custom routines",
+      "Power: Electric",
+      "Battery: Lithium included",
+      "Assembly: Ready to use out of the box",
+      "Recommended age: 14+",
+      "Origin: Mainland China",
+      "Compact functional design",
+      "Color: White",
     ],
     freeShipping: true,
     variants: {
-      type: "version",
-      label: "Version",
-      default: "normal",
-      options: [
-        { value: "normal", label: "Normal Robot Dog" },
-        {
-          value: "housekeeping-claw",
-          label: "Housekeeping Robot with Claw",
-        },
-        { value: "watergun", label: "Robot Dog with Water Gun" },
-      ],
+      type: "color",
+      label: "Color",
+      default: "blanco",
+      options: [{ value: "blanco", label: "White", swatchHex: "#F5F5F5" }],
     },
     translations: {
       es: {
-        title: "Perro robot AI con control remoto",
+        title: "Robot perro inteligente AI con control remoto",
+        salesBadge: "Super Oferta",
         description:
-          "Perro robot con control remoto e inspiración AI: regalo tecnológico interactivo con programación por app, trucos, movimiento acrobático y tres versiones disponibles.",
+          "Robot perro inteligente con control remoto, diálogo por voz, canto, app móvil, programación personalizada, baile y batería de litio incluida — listo para usar.",
         shortDescription:
-          "Perro robot AI con control remoto, movimiento interactivo, programación por app, trucos y varias versiones para entretenimiento inteligente.",
+          "Robot perro AI con control remoto, diálogo por voz, app, programación, canto y baile — batería incluida, acabado blanco.",
         longDescription: [
-          "Juego interactivo con un perro robot que combina movimiento, personalidad y diversión tecnológica para niños, familias y curiosos de la robótica.",
-          "Control remoto y programación por app para rutinas, trucos e interacción que va más allá de un juguete básico.",
-          "Movimiento acrobático y modos de trucos para sesiones de juego más dinámicas.",
-          "Tres versiones: perro robot normal, robot de limpieza con pinza o perro robot con pistola de agua.",
-          "Regalo inteligente para cumpleaños, fiestas y hogares con curiosidad tecnológica.",
-          "No apto para niños menores de 36 meses.",
+          "Robot perro inteligente con control remoto y tecnología AI, permitiendo una interacción avanzada con los niños. Ideal para entretenimiento y aprendizaje temprano en robótica.",
+          "Diálogo y canto con aplicación móvil: responde a comandos y entretiene con música. Compatible con aplicación remota para mayor control.",
+          "Programación personalizada y movimiento dinámico: programá movimientos y rutinas, incluyendo bailar. Perfecto para mayores de 14 años que disfrutan de juegos interactivos y creativos.",
+          "Batería de litio incluida y listo para usar al recibirlo. No requiere ensamblaje.",
+          "Alimentado por energía eléctrica y diseño compacto. Fabricado en China continental — juguete de alta tecnología.",
         ],
         features: [
-          "Perro robot interactivo inspirado en AI",
-          "Funcionamiento con control remoto",
-          "Soporte de programación por app",
-          "Movimiento acrobático y trucos",
-          "Disponible en tres versiones",
-          "Regalo inteligente para niños y amantes de la tech",
-          "Entretenimiento familiar interactivo",
-          "Diseño de juguete robótico moderno",
-        ],
-      },
-      fr: {
-        title: "Chien robot AI télécommandé",
-        description:
-          "Chien robot télécommandé inspiré de l'IA : cadeau tech interactif avec programmation app, tricks, mouvements acrobatiques et trois versions.",
-        shortDescription:
-          "Chien robot AI télécommandé avec mouvement interactif, programmation app, tricks et plusieurs versions pour divertissement intelligent.",
-        longDescription: [
-          "Jeu interactif avec un chien robot au mouvement vivant et une touche tech pour enfants, familles et curieux.",
-          "Télécommande et programmation app pour routines et tricks personnalisés.",
-          "Mouvements acrobatiques et modes tricks pour des sessions dynamiques.",
-          "Trois versions : chien robot normal, robot ménage avec pince, ou chien robot avec pistolet à eau.",
-          "Cadeau intelligent pour anniversaires, fêtes et foyers curieux de technologie.",
-          "Ne convient pas aux enfants de moins de 36 mois.",
-        ],
-        features: [
-          "Chien robot interactif inspiré IA",
-          "Fonctionnement télécommandé",
-          "Programmation via application",
-          "Mouvements acrobatiques et tricks",
-          "Disponible en trois versions",
-          "Cadeau intelligent pour enfants et passionnés tech",
-          "Divertissement familial interactif",
-          "Design jouet robotique moderne",
-        ],
-      },
-      it: {
-        title: "Cane robot AI telecomandato",
-        description:
-          "Cane robot telecomandato ispirato all'AI: regalo tech interattivo con programmazione app, trick, movimenti acrobatici e tre versioni.",
-        shortDescription:
-          "Cane robot AI telecomandato con movimento interattivo, programmazione app, trick e più versioni per intrattenimento smart.",
-        longDescription: [
-          "Gioco interattivo con un cane robot dal movimento vivace per bambini, famiglie e curiosi di tecnologia.",
-          "Telecomando e programmazione app per routine e trick personalizzati.",
-          "Movimenti acrobatici e modalità trick per sessioni di gioco dinamiche.",
-          "Tre versioni: cane robot normale, robot pulizie con pinza, o cane robot con pistola ad acqua.",
-          "Regalo smart per compleanni, feste e famiglie appassionate di tech.",
-          "Non adatto a bambini di età inferiore a 36 mesi.",
-        ],
-        features: [
-          "Cane robot interattivo ispirato all'AI",
-          "Funzionamento con telecomando",
-          "Supporto programmazione via app",
-          "Movimenti acrobatici e trick",
-          "Disponibile in tre versioni",
-          "Regalo smart per bambini e amanti della tech",
-          "Intrattenimento familiare interattivo",
-          "Design giocattolo robotico moderno",
+          "Robot perro inteligente AI con control remoto",
+          "Diálogo por voz y función de canto",
+          "Control y programación vía app móvil",
+          "Movimiento dinámico — baile y rutinas personalizadas",
+          "Alimentación: Eléctrica",
+          "Batería: Litio incluida",
+          "Ensamblaje: Listo para usar",
+          "Edad recomendada: 14+",
+          "Origen: China continental",
+          "Diseño compacto y funcional",
+          "Color: Blanco",
         ],
       },
     },
@@ -1846,6 +1740,8 @@ export function localizeGoodIdeasProduct(product: Product, locale: Locale): Prod
     longDescription: localized?.longDescription ?? product.longDescription,
 
     features: localized?.features ?? product.features,
+
+    salesBadge: localized?.salesBadge ?? product.salesBadge,
 
   };
 

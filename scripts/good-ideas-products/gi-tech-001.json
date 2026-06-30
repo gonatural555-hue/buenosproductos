@@ -1,12 +1,36 @@
 {
   "id": "gi-tech-001",
-  "brand": "Good Products",
+  "brand": "ZOCO",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-001/ia-robot-kids-01.webp"
+      "https://s.alicdn.com/@sc04/kf/H30bfae0a3d7840418ab0c2602bd04fcbf.jpg?avif=close&webp=close"
     ],
-    "gallery": [],
+    "gallery": [
+      "https://s.alicdn.com/@sc04/kf/H7ada2a6402c745a3bdf771da8c0061416.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hdf8ae4201d754c55baf15a9ba6b61801K.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H30bfae0a3d7840418ab0c2602bd04fcbf.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Heb48a2019df2447baafbd0ed6c0a2bba8.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hd34d0bfeb743411da989cee62d1ef084K.jpg?avif=close&webp=close"
+    ],
     "lifestyle": [],
-    "extras": []
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "blanco": {
+          "featured": [
+            "https://s.alicdn.com/@sc04/kf/H30bfae0a3d7840418ab0c2602bd04fcbf.jpg?avif=close&webp=close"
+          ],
+          "gallery": [
+            "https://s.alicdn.com/@sc04/kf/H7ada2a6402c745a3bdf771da8c0061416.jpg?avif=close&webp=close",
+            "https://s.alicdn.com/@sc04/kf/Hdf8ae4201d754c55baf15a9ba6b61801K.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/H30bfae0a3d7840418ab0c2602bd04fcbf.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Heb48a2019df2447baafbd0ed6c0a2bba8.jpg?avif=close&webp=close",
+      "https://s.alicdn.com/@sc04/kf/Hd34d0bfeb743411da989cee62d1ef084K.jpg?avif=close&webp=close"
+          ],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
   }
 }

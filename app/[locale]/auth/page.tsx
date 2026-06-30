@@ -3,15 +3,16 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import AuthForm from "@/components/AuthForm";
-import AuthExperienceShell from "@/components/auth/AuthExperienceShell";
-import { useLocale } from "@/components/i18n/LocaleProvider";
-import { goNaturalHomePath } from "@/lib/routing/brands";
+import GiAuthExperienceShell from "@/components/auth/GiAuthExperienceShell";
+import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
+import { homePath } from "@/lib/routing/paths";
 import { useUser } from "@/context/UserContext";
 
 function AuthPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations();
   const { isLoggedIn, authLoading } = useUser();
   const [mounted, setMounted] = useState(false);
 
@@ -32,9 +33,11 @@ function AuthPageContent() {
 
   if (!mounted || authLoading) {
     return (
-      <AuthExperienceShell mode="page" backHref={goNaturalHomePath(locale)}>
-        <p className="font-inter text-sm text-[#FFFFFF]">Cargando...</p>
-      </AuthExperienceShell>
+      <GiAuthExperienceShell mode="page" backHref={homePath(locale)}>
+        <p className="font-body text-sm text-[rgba(232,236,241,0.65)]">
+          {t("checkoutPage.loadingAuth")}
+        </p>
+      </GiAuthExperienceShell>
     );
   }
 
@@ -43,23 +46,23 @@ function AuthPageContent() {
   }
 
   return (
-    <AuthExperienceShell mode="page" backHref={goNaturalHomePath(locale)}>
-      <AuthForm
-        initialTab={tab}
-        isPage={true}
-        redirectTo={redirectTo}
-      />
-    </AuthExperienceShell>
+    <GiAuthExperienceShell mode="page" backHref={homePath(locale)}>
+      <AuthForm initialTab={tab} isPage redirectTo={redirectTo} />
+    </GiAuthExperienceShell>
   );
 }
 
 export default function AuthPage() {
+  const t = useTranslations();
+
   return (
     <Suspense
       fallback={
-        <AuthExperienceShell mode="page">
-          <p className="font-inter text-sm text-[#FFFFFF]">Cargando...</p>
-        </AuthExperienceShell>
+        <GiAuthExperienceShell mode="page">
+          <p className="font-body text-sm text-[rgba(232,236,241,0.65)]">
+            {t("checkoutPage.loadingAuth")}
+          </p>
+        </GiAuthExperienceShell>
       }
     >
       <AuthPageContent />

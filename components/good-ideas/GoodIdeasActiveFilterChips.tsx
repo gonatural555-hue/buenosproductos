@@ -28,7 +28,7 @@ export default function GoodIdeasActiveFilterChips({
         {chips.map((chip) => (
           <Link key={chip.id} href={chip.removeHref} className={giPlpClasses.chip}>
             <span>{chip.label}</span>
-            <span aria-hidden className="text-sm leading-none text-[rgba(232,236,241,0.5)]">
+            <span aria-hidden className="text-sm leading-none text-neutral-400">
               ×
             </span>
           </Link>

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import GoodIdeasBrandFilter from "@/components/good-ideas/GoodIdeasBrandFilter";
 import GoodIdeasPriceFilter from "@/components/good-ideas/GoodIdeasPriceFilter";
+import type { GoodIdeasFilterBrandOption } from "@/lib/good-ideas-plp-brands";
 import type { GoodIdeasFilterCategoryNode } from "@/lib/good-ideas-plp-categories";
 import type { GoodIdeasPriceFilter as PriceFilterState } from "@/lib/good-ideas-plp-price";
 import type { Locale } from "@/lib/i18n/config";
@@ -9,19 +11,19 @@ export type GoodIdeasFilterSidebarProps = {
   title: string;
   locale: Locale;
   categories: GoodIdeasFilterCategoryNode[];
+  brands: GoodIdeasFilterBrandOption[];
   activeCategorySlug?: string | null;
+  activeBrandSlug?: string | null;
   activePriceFilter: PriceFilterState;
   preserve: {
     q?: string;
     sort?: string;
     category?: string | null;
+    brand?: string | null;
   };
   attributeLabels: {
     brands: string;
     price: string;
-    sizes: string;
-    color: string;
-    sale: string;
   };
   categorySectionLabel: string;
   priceMinLabel: string;
@@ -29,22 +31,6 @@ export type GoodIdeasFilterSidebarProps = {
   priceApplyLabel: string;
   pricePresetLabels: Record<string, string>;
 };
-
-function FilterRowEmpty({ label }: { label: string }) {
-  return (
-    <details className={`group border-t ${giPlpClasses.sidebarDivider} first:border-t-0`}>
-      <summary className={giPlpClasses.filterSummary}>
-        <span
-          className={`${giPlpClasses.filterChevron} transition-transform group-open:rotate-180`}
-          aria-hidden
-        >
-          ▾
-        </span>
-        <span>{label}</span>
-      </summary>
-    </details>
-  );
-}
 
 function CategoryTree({
   nodes,
@@ -56,7 +42,7 @@ function CategoryTree({
   depth?: number;
 }) {
   return (
-    <ul className={depth > 0 ? "ml-3 space-y-0 border-l border-white/[0.08] pl-3" : "space-y-0"}>
+    <ul className={depth > 0 ? giPlpClasses.categoryTreeNestedBorder : "space-y-0"}>
       {nodes.map((node) => {
         const isActive = activeCategorySlug === node.slug;
         return (
@@ -87,7 +73,9 @@ export default function GoodIdeasFilterSidebar({
   title,
   locale,
   categories,
+  brands,
   activeCategorySlug,
+  activeBrandSlug,
   activePriceFilter,
   preserve,
   attributeLabels,
@@ -99,7 +87,11 @@ export default function GoodIdeasFilterSidebar({
 }: GoodIdeasFilterSidebarProps) {
   return (
     <nav aria-label={title} className="font-inter">
-      <FilterRowEmpty label={attributeLabels.brands} />
+      <GoodIdeasBrandFilter
+        label={attributeLabels.brands}
+        brands={brands}
+        activeBrandSlug={activeBrandSlug}
+      />
 
       <GoodIdeasPriceFilter
         locale={locale}
@@ -111,10 +103,6 @@ export default function GoodIdeasFilterSidebar({
         activeFilter={activePriceFilter}
         preserve={preserve}
       />
-
-      <FilterRowEmpty label={attributeLabels.sizes} />
-      <FilterRowEmpty label={attributeLabels.color} />
-      <FilterRowEmpty label={attributeLabels.sale} />
 
       <details
         className={`group border-t ${giPlpClasses.sidebarDivider}`}
