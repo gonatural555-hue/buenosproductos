@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  // turbopack.root solo aplica con `npm run dev:turbo`. En Windows/OneDrive usar `npm run dev` (webpack).
   turbopack: {
     root: projectRoot,
   },

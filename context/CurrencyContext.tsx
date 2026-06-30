@@ -46,46 +46,12 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<DisplayCurrency>(
     DEFAULT_DISPLAY_CURRENCY
   );
-  const [rates, setRates] = useState<ExchangeRatesFromUsd>(
-    EXCHANGE_RATES_FROM_USD
-  );
-  const [ratesLoading, setRatesLoading] = useState(true);
-  const [ratesSource, setRatesSource] = useState<string | null>(null);
+  const [rates] = useState<ExchangeRatesFromUsd>(EXCHANGE_RATES_FROM_USD);
+  const ratesLoading = false;
+  const ratesSource = "fixed";
 
   useEffect(() => {
     setCurrencyState(readStoredCurrency());
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadRates() {
-      try {
-        const res = await fetch("/api/exchange-rates");
-        if (!res.ok) return;
-        const data = (await res.json()) as {
-          rates: ExchangeRatesFromUsd;
-          source?: string;
-        };
-        if (!cancelled && data.rates) {
-          setRates({
-            USD: 1,
-            ARS: data.rates.ARS ?? EXCHANGE_RATES_FROM_USD.ARS,
-            BRL: data.rates.BRL ?? EXCHANGE_RATES_FROM_USD.BRL,
-          });
-          setRatesSource(data.source ?? null);
-        }
-      } catch {
-        /* fallback rates already set */
-      } finally {
-        if (!cancelled) setRatesLoading(false);
-      }
-    }
-
-    void loadRates();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const setCurrency = useCallback((next: DisplayCurrency) => {

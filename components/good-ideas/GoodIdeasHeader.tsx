@@ -15,7 +15,6 @@ import {
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
 import HeaderAccountMenu from "@/components/good-ideas/HeaderAccountMenu";
-import { useCartHeaderAutoHide } from "@/hooks/useCartHeaderAutoHide";
 import { useSmartHeaderScroll } from "@/hooks/useSmartHeaderScroll";
 import { giType } from "@/lib/ui/gi-typography";
 
@@ -27,11 +26,7 @@ export default function GoodIdeasHeader() {
   const searchParams = useSearchParams();
   const isPdp = /^\/[^/]+\/products\/[^/]+$/.test(pathname ?? "");
   const isCart = isCartPath(pathname ?? "");
-  const hideForPaymentMethods = useCartHeaderAutoHide(isCart);
-  const { hidden: scrollHidden, transitionClass } = useSmartHeaderScroll(
-    isPdp || isCart
-  );
-  const hidden = isCart ? hideForPaymentMethods || scrollHidden : scrollHidden;
+  const { hidden, transitionClass } = useSmartHeaderScroll(isPdp || isCart);
 
   const buildLocaleHref = (nextLocale: Locale) => {
     const segments = pathname.split("/").filter(Boolean);

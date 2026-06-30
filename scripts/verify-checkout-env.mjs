@@ -19,6 +19,7 @@ const REQUIRED = [
 ];
 
 const RECOMMENDED = [
+  { key: "NEXT_PUBLIC_WHATSAPP_NUMBER", hint: "Coordinación transferencia / MP" },
   { key: "BREVO_API_KEY", hint: "Emails post-compra y arrepentimiento" },
   { key: "BREVO_SENDER_EMAIL", hint: "Sender verificado en Brevo" },
   { key: "BREVO_SENDER_NAME", hint: "Ej. Buenos Productos" },

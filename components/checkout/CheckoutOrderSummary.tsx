@@ -5,6 +5,7 @@ import SmartImage from "@/components/SmartImage";
 import CartPaymentMethods from "@/components/good-ideas/CartPaymentMethods";
 import UsdChargeNotice from "@/components/currency/UsdChargeNotice";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
+import type { CheckoutPaymentMethod } from "@/lib/checkout/payment-methods";
 
 type CartLine = {
   id: string;
@@ -17,18 +18,26 @@ type CartLine = {
 
 type Props = {
   items: CartLine[];
-  subtotal: number;
+  cartSubtotal: number;
+  checkoutTotal: number;
+  paymentMethod: CheckoutPaymentMethod;
+  paypalSurcharge?: number;
   formatPrice: (n: number) => string;
   shippingReady: boolean;
 };
 
 export default function CheckoutOrderSummary({
   items,
-  subtotal,
+  cartSubtotal,
+  checkoutTotal,
+  paymentMethod,
+  paypalSurcharge = 0,
   formatPrice,
   shippingReady,
 }: Props) {
   const t = useTranslations();
+  const showPayPalSurcharge =
+    paymentMethod === "paypal" && paypalSurcharge > 0.001;
 
   return (
     <div>
@@ -67,8 +76,16 @@ export default function CheckoutOrderSummary({
       <div className="mt-6 space-y-3 border-t border-[#E5E5E5] pt-6 text-sm">
         <div className="flex justify-between gap-4 text-[#737373]">
           <span>{t("checkoutPage.subtotal")}</span>
-          <span className="tabular-nums text-[#111]">{formatPrice(subtotal)}</span>
+          <span className="tabular-nums text-[#111]">{formatPrice(cartSubtotal)}</span>
         </div>
+        {showPayPalSurcharge ? (
+          <div className="flex justify-between gap-4 text-[#737373]">
+            <span>{t("checkoutPage.paypalSurchargeLabel")}</span>
+            <span className="tabular-nums text-[#111]">
+              {formatPrice(paypalSurcharge)}
+            </span>
+          </div>
+        ) : null}
         <div className="flex justify-between gap-4 text-[#737373]">
           <span>{t("checkoutPage.shipping")}</span>
           <span className="text-[#111]">
@@ -79,14 +96,20 @@ export default function CheckoutOrderSummary({
         </div>
       </div>
 
-      <UsdChargeNotice amountUsd={subtotal} variant="compact" className="mt-4" />
+      {paymentMethod === "paypal" ? (
+        <UsdChargeNotice amountUsd={checkoutTotal} variant="compact" className="mt-4" />
+      ) : (
+        <p className="mt-4 rounded-xl border border-[#E5E5E5] bg-[#FAFAFA] px-4 py-3 text-xs leading-relaxed text-[#737373]">
+          {t("checkoutPage.whatsappTransferNote")}
+        </p>
+      )}
 
       <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-[#E5E5E5] pt-6">
         <span className="text-base font-semibold text-[#111]">
           {t("checkoutPage.total")}
         </span>
         <span className="text-xl font-semibold tabular-nums text-[#111]">
-          {formatPrice(subtotal)}
+          {formatPrice(checkoutTotal)}
         </span>
       </div>
 
@@ -95,12 +118,7 @@ export default function CheckoutOrderSummary({
   );
 }
 
-export function CheckoutMobileSummaryAccordion({
-  items,
-  subtotal,
-  formatPrice,
-  shippingReady,
-}: Props) {
+export function CheckoutMobileSummaryAccordion(props: Props) {
   const t = useTranslations();
   const [open, setOpen] = useState(false);
 
@@ -116,7 +134,7 @@ export function CheckoutMobileSummaryAccordion({
           {t("checkoutPage.mobileSummaryToggle")}
         </span>
         <span className="flex items-center gap-2 text-sm font-semibold tabular-nums text-[#111]">
-          {formatPrice(subtotal)}
+          {props.formatPrice(props.checkoutTotal)}
           <svg
             className={`h-4 w-4 transition ${open ? "rotate-180" : ""}`}
             fill="none"
@@ -130,12 +148,7 @@ export function CheckoutMobileSummaryAccordion({
       </button>
       {open ? (
         <div className="mt-4 border-t border-[#E5E5E5] pt-4">
-          <CheckoutOrderSummary
-            items={items}
-            subtotal={subtotal}
-            formatPrice={formatPrice}
-            shippingReady={shippingReady}
-          />
+          <CheckoutOrderSummary {...props} />
         </div>
       ) : null}
     </div>

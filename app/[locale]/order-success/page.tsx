@@ -76,13 +76,46 @@ export default function OrderSuccessPage() {
 
   let flowSteps: FlowStep[] = [];
   if (order) {
-    const key =
-      order.paymentMethod === "paypal" && order.status === "paid"
-        ? "orderSuccessPage.flows.paypalPaid"
-        : "orderSuccessPage.flows.default";
+    let key = "orderSuccessPage.flows.default";
+    if (order.paymentMethod === "whatsapp") {
+      key = "orderSuccessPage.flows.whatsapp";
+    } else if (order.paymentMethod === "paypal" && order.status === "paid") {
+      key = "orderSuccessPage.flows.paypalPaid";
+    }
     const raw = t(key);
     flowSteps = Array.isArray(raw) ? (raw as FlowStep[]) : [];
   }
+
+  const paymentBanner = useMemo(() => {
+    if (!order) return null;
+    if (order.paymentMethod === "whatsapp" || order.status === "pending") {
+      return {
+        title: t("orderSuccessPage.paymentBanner.whatsappTitle"),
+        body: t("orderSuccessPage.paymentBanner.whatsappBody"),
+        tone: "amber" as const,
+      };
+    }
+    if (order.paymentMethod === "paypal" && order.status === "paid") {
+      return {
+        title: t("orderSuccessPage.paymentBanner.paidTitle"),
+        body: t("orderSuccessPage.paymentBanner.paidBody"),
+        tone: "emerald" as const,
+      };
+    }
+    return {
+      title: t("orderSuccessPage.paymentBanner.manualTitle"),
+      body: t("orderSuccessPage.paymentBanner.manualBody"),
+      tone: "amber" as const,
+    };
+  }, [order, t]);
+
+  const headlineEmailLine = useMemo(() => {
+    if (!order) return t("orderSuccessPage.emailLine");
+    if (order.paymentMethod === "whatsapp" || order.status === "pending") {
+      return t("orderSuccessPage.emailLineCoordinatingWhatsapp");
+    }
+    return t("orderSuccessPage.emailLine");
+  }, [order, t]);
 
   const contactHref = useMemo(() => {
     if (!order) return null;
@@ -130,7 +163,7 @@ export default function OrderSuccessPage() {
           {t("orderSuccessPage.subheadline")}
         </p>
         <p className="mx-auto mt-6 max-w-lg text-sm leading-relaxed text-muted-gray">
-          {t("orderSuccessPage.emailLine")}
+          {headlineEmailLine}
         </p>
         {order ? (
           <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-xl border border-earth-brown/18 bg-soft-stone px-5 py-3 shadow-sm">
@@ -171,11 +204,15 @@ export default function OrderSuccessPage() {
         <div className="mx-auto max-w-5xl space-y-10 md:space-y-12">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="rounded-2xl border border-earth-brown/15 bg-soft-stone p-6 shadow-[0_10px_36px_-18px_rgba(17,23,19,0.12)] md:p-8">
-              <div className="mb-6 rounded-xl border border-emerald-500/25 bg-emerald-50 px-4 py-3 text-sm leading-relaxed text-emerald-900">
-                <p className="mb-1 font-semibold">
-                  {t("orderSuccessPage.paymentBanner.paidTitle")}
-                </p>
-                <p>{t("orderSuccessPage.paymentBanner.paidBody")}</p>
+              <div
+                className={`mb-6 rounded-xl border px-4 py-3 text-sm leading-relaxed ${
+                  paymentBanner?.tone === "emerald"
+                    ? "border-emerald-500/25 bg-emerald-50 text-emerald-900"
+                    : "border-amber-500/25 bg-amber-50 text-amber-950"
+                }`}
+              >
+                <p className="mb-1 font-semibold">{paymentBanner?.title}</p>
+                <p>{paymentBanner?.body}</p>
               </div>
 
               <h2 className="mb-6 text-lg font-semibold text-dark-base">
@@ -204,11 +241,13 @@ export default function OrderSuccessPage() {
                 ))}
               </ul>
 
-              <UsdChargeNotice
-                amountUsd={order.subtotal}
-                variant="compact"
-                className="mb-6"
-              />
+              {order.paymentMethod === "paypal" ? (
+                <UsdChargeNotice
+                  amountUsd={order.subtotal}
+                  variant="compact"
+                  className="mb-6"
+                />
+              ) : null}
 
               <div className="border-t border-earth-brown/15 pt-4">
                 <div className="mb-2 flex items-center justify-between text-lg font-semibold text-dark-base">

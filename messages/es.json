@@ -1619,10 +1619,20 @@
     "goToLogin": "Iniciar sesión",
     "paypalOnlyHint": "Solo aceptamos PayPal para pagos online.",
     "paymentHintPaypalAndWhatsapp": "Podés pagar con PayPal o abrir WhatsApp con el resumen del pedido para coordinar el pago.",
-    "whatsappCoordinarTitle": "Coordinar por WhatsApp",
+    "paymentHintManual": "Transferencia o alias Mercado Pago al precio de lista, o PayPal online con recargo por comisiones.",
+    "manualPaymentDescription": "Coordinás el pago por WhatsApp y ahí te pasamos los datos para transferir o el alias de Mercado Pago.",
+    "manualPaymentCta": "Coordinar pago",
+    "checkoutQuestionsTitle": "¿Tenés dudas?",
+    "checkoutQuestionsBody": "Escribinos por WhatsApp si tenés preguntas sobre tu pedido, envíos o productos.",
+    "checkoutQuestionsCta": "Contactar por WhatsApp",
+    "checkoutQuestionsPrefill": "Hola, tengo una consulta sobre Buenos Productos.",
     "whatsappCoordinarDescription": "Se abre WhatsApp con un mensaje listo que incluye tu pedido y la dirección de envío. El pago queda pendiente hasta que lo confirmemos.",
     "whatsappCoordinarCta": "Abrir WhatsApp con mi pedido",
     "whatsappNeedsAddress": "Agregá una dirección de envío para usar esta opción.",
+    "whatsappNotConfigured": "WhatsApp no está configurado en el servidor (falta NEXT_PUBLIC_WHATSAPP_NUMBER).",
+    "whatsappTransferNote": "Coordinás transferencia o Mercado Pago por WhatsApp al precio de lista, sin recargo.",
+    "paypalSurchargeLabel": "Recargo PayPal (30%)",
+    "paypalSurchargeHint": "Incluye un 30% de recargo para cubrir comisiones PayPal. El cobro es en USD.",
     "paymentDividerOr": "O pagá online",
     "whatsappPrefillBody": "Hola, quiero coordinar el pago de mi pedido {orderId}.\n\nTotal: {total}\nEmail: {email}\n\nProductos:\n{items}\n\nEnvío:\n{address}",
     "paypalNeedsAddress": "Completá la dirección de envío para pagar con PayPal.",
@@ -1652,8 +1662,8 @@
     "paymentMethod": "Método de pago",
     "paymentOptions": {
       "manual": {
-        "label": "Transferencia / Pago manual",
-        "hint": "Te contactaremos con los datos para el pago"
+        "label": "Transferencia bancaria / Pago por alias Mercado Pago",
+        "hint": "Coordinás el pago por WhatsApp"
       },
       "whatsapp": {
         "label": "Contacto por WhatsApp",

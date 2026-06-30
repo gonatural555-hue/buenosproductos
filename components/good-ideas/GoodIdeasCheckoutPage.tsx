@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import PayPalButton from "@/components/PayPalButton";
+import {
+  MercadoPagoMark,
+  PayPalMark,
+  WhatsAppMark,
+} from "@/components/payment/PaymentBrandMarks";
 import CheckoutAddressFields from "@/components/checkout/CheckoutAddressFields";
 import CheckoutLegalFooter from "@/components/checkout/CheckoutLegalFooter";
 import CheckoutOrderSummary, {
@@ -23,22 +28,36 @@ import {
   trimCheckoutAddress,
 } from "@/lib/checkout/validation";
 import {
+  computePayPalCheckoutTotal,
+  computePayPalSurcharge,
+  type CheckoutPaymentMethod,
+} from "@/lib/checkout/payment-methods";
+import {
+  buildWhatsAppHref,
+  buildWhatsAppOrderMessage,
+  buildWhatsAppSupportHref,
+  getWhatsAppNumber,
+  isWhatsAppConfigured,
+} from "@/lib/checkout/whatsapp";
+import {
   authPath,
   orderSuccessPath,
   productsPath,
 } from "@/lib/routing/paths";
-import { isSupabaseConfigured } from "@/lib/supabase/browser";
 import {
   cartLineToGa4Item,
   trackBeginCheckout,
   trackPurchase,
 } from "@/lib/analytics/ga4";
 import { getColorVariantLabel } from "@/lib/cart-line-id";
+import { isSupabaseConfigured } from "@/lib/supabase/browser";
+
 import {
   checkoutInputClass,
-  checkoutRadioCardClass,
+  checkoutPaymentCardClass,
   checkoutSectionTitleClass,
 } from "@/lib/ui/checkout-form";
+import { giCartText } from "@/lib/ui/gi-cart-light";
 
 type BillingMode = "same" | "different";
 
@@ -69,9 +88,26 @@ export default function GoodIdeasCheckoutPage() {
   const [saveAsDefault, setSaveAsDefault] = useState(true);
   const [editShipping, setEditShipping] = useState(false);
   const [shippingInfoOpen, setShippingInfoOpen] = useState(false);
+  const [paymentMethod, setPaymentMethod] =
+    useState<CheckoutPaymentMethod>("whatsapp");
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isPaying, setIsPaying] = useState(false);
   const beginCheckoutTracked = useRef(false);
+
+  const paypalSurcharge = useMemo(
+    () => computePayPalSurcharge(subtotal),
+    [subtotal]
+  );
+  const paypalTotal = useMemo(
+    () => computePayPalCheckoutTotal(subtotal),
+    [subtotal]
+  );
+  const checkoutTotal =
+    paymentMethod === "paypal" ? paypalTotal : subtotal;
+  const whatsappReady = isWhatsAppConfigured();
+  const supportWhatsAppHref = buildWhatsAppSupportHref(
+    t("checkoutPage.checkoutQuestionsPrefill")
+  );
 
   const savedAddress =
     addresses.find((a) => a.isDefault) || addresses[0];
@@ -141,7 +177,10 @@ export default function GoodIdeasCheckoutPage() {
 
   const summaryProps = {
     items: cartLines,
-    subtotal,
+    cartSubtotal: subtotal,
+    checkoutTotal,
+    paymentMethod,
+    paypalSurcharge,
     formatPrice,
     shippingReady: Boolean(resolvedShipping),
   };
@@ -158,6 +197,105 @@ export default function GoodIdeasCheckoutPage() {
       isDefault: true,
     });
     return saved ?? resolvedShipping;
+  };
+
+  const handleWhatsAppCoordinar = async () => {
+    if (items.length === 0 || !canPay) return;
+    if (!whatsappReady) {
+      setPaymentError(t("checkoutPage.whatsappNotConfigured"));
+      return;
+    }
+
+    const phone = getWhatsAppNumber();
+    if (!phone) {
+      setPaymentError(t("checkoutPage.whatsappNotConfigured"));
+      return;
+    }
+
+    setIsPaying(true);
+    setPaymentError(null);
+
+    const shippingAddress = await ensureAddressSaved();
+    if (!shippingAddress) {
+      setPaymentError(t("checkoutPage.whatsappNeedsAddress"));
+      setIsPaying(false);
+      return;
+    }
+
+    const orderId = `order_${Date.now()}`;
+    const email = isLoggedIn ? user?.email || "" : contactEmail.trim();
+
+    try {
+      const response = await fetch("/api/orders/whatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          orderId,
+          email,
+          items: items.map((item) => ({
+            id: item.productId,
+            title: item.title,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+          totalAmount: subtotal,
+          currency: "USD",
+          shippingAddress,
+          billingAddress:
+            billingMode === "same" ? null : resolvedBilling,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || !data?.success) {
+        setPaymentError(
+          typeof data?.error === "string"
+            ? data.error
+            : t("checkoutPage.paymentFailed")
+        );
+        setIsPaying(false);
+        return;
+      }
+
+      if (isLoggedIn) await refreshOrders();
+
+      const totalLabel = formatMoney(subtotal);
+      const message = buildWhatsAppOrderMessage({
+        template: t("checkoutPage.whatsappPrefillBody"),
+        orderId,
+        totalLabel,
+        email,
+        items: items.map((item) => ({
+          title: item.title,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        address: shippingAddress,
+      });
+
+      const order: Order = {
+        id: orderId,
+        items,
+        subtotal,
+        address: shippingAddress,
+        date: new Date().toISOString(),
+        status: "pending",
+        paymentMethod: "whatsapp",
+      };
+
+      addOrder(order);
+      if (!isLoggedIn) persistGuestOrderSnapshot(order);
+
+      clearCart();
+      window.open(buildWhatsAppHref(phone, message), "_blank", "noopener,noreferrer");
+      router.push(orderSuccessPath(locale));
+    } catch (err) {
+      console.error("[Checkout] WhatsApp", err);
+      setPaymentError(t("checkoutPage.paymentFailed"));
+      setIsPaying(false);
+    }
   };
 
   const handlePayPalSuccess = async (details: { id?: string }) => {
@@ -186,7 +324,7 @@ export default function GoodIdeasCheckoutPage() {
           price: item.price,
           quantity: item.quantity,
         })),
-        totalAmount: subtotal,
+        totalAmount: paypalTotal,
         currency: "USD" as const,
         paypalOrderId: details?.id,
         shippingAddress,
@@ -217,7 +355,7 @@ export default function GoodIdeasCheckoutPage() {
 
       trackPurchase({
         transaction_id: orderId,
-        value: subtotal,
+        value: paypalTotal,
         currency: "USD",
         items: items.map((item) =>
           cartLineToGa4Item(item, item.quantity)
@@ -227,7 +365,7 @@ export default function GoodIdeasCheckoutPage() {
       const order: Order = {
         id: orderId,
         items,
-        subtotal,
+        subtotal: paypalTotal,
         address: shippingAddress,
         date: new Date().toISOString(),
         status: "paid",
@@ -399,45 +537,131 @@ export default function GoodIdeasCheckoutPage() {
         <h2 className={`${checkoutSectionTitleClass} mb-2`}>
           {t("checkoutPage.paymentMethod")}
         </h2>
-        <p className="mb-4 text-sm text-[#737373]">
-          {t("checkoutPage.paymentSecureNote")}
+        <p className="mb-4 font-body text-sm text-[#737373]">
+          {t("checkoutPage.paymentHintManual")}
         </p>
 
-        <UsdChargeNotice amountUsd={subtotal} className="mb-4" />
-
-        <div className={checkoutRadioCardClass(true)}>
-          <div className="flex items-center gap-3">
-            <span
-              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-[5px] border-[#111]"
-              aria-hidden
-            />
-            <span className="text-sm font-semibold text-[#111]">PayPal</span>
-          </div>
-          <p className="mt-3 text-xs leading-relaxed text-[#737373]">
-            {t("checkoutPage.paymentPayPalHighlight")}{" "}
-            {t("checkoutPage.trustPayPalProtection")}
-          </p>
-          <div className="mt-4 rounded-md bg-[#F5F5F5] p-4">
-            {canPay ? (
-              <div className={isPaying ? "pointer-events-none opacity-60" : ""}>
-                <PayPalButton
-                  amount={subtotal}
-                  currency="USD"
-                  onSuccess={handlePayPalSuccess}
-                  onError={() => {
-                    setPaymentError(t("checkoutPage.paymentFailed"));
-                    setIsPaying(false);
-                  }}
-                  onCancel={() => setIsPaying(false)}
-                />
+        <div className="space-y-4">
+          {/* Transferencia / Mercado Pago */}
+          <div
+            className={checkoutPaymentCardClass(paymentMethod === "whatsapp")}
+            role="button"
+            tabIndex={0}
+            onClick={() => setPaymentMethod("whatsapp")}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setPaymentMethod("whatsapp");
+              }
+            }}
+          >
+            <label className="flex cursor-pointer items-start gap-3">
+              <input
+                type="radio"
+                name="payment-method"
+                className="mt-1.5"
+                checked={paymentMethod === "whatsapp"}
+                onChange={() => setPaymentMethod("whatsapp")}
+              />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <MercadoPagoMark size="md" />
+                  <span className="font-body text-base font-semibold text-[#111]">
+                    {t("checkoutPage.paymentOptions.manual.label")}
+                  </span>
+                </div>
+                <p className="mt-2 font-body text-sm leading-relaxed text-[#737373]">
+                  {t("checkoutPage.manualPaymentDescription")}
+                </p>
               </div>
-            ) : (
-              <p className="text-sm text-[#737373]">
-                {!contactReady
-                  ? t("checkoutPage.guestEmailRequired")
-                  : t("checkoutPage.paypalNeedsAddress")}
-              </p>
-            )}
+            </label>
+            {paymentMethod === "whatsapp" ? (
+              <div className="mt-4 border-t border-accent-gold/25 pt-4">
+                {!whatsappReady ? (
+                  <p className="text-sm text-red-700" role="alert">
+                    {t("checkoutPage.whatsappNotConfigured")}
+                  </p>
+                ) : canPay ? (
+                  <button
+                    type="button"
+                    disabled={isPaying}
+                    onClick={handleWhatsAppCoordinar}
+                    className={giCartText.cta}
+                  >
+                    {t("checkoutPage.manualPaymentCta")}
+                  </button>
+                ) : (
+                  <p className="font-body text-sm text-[#737373]">
+                    {!contactReady
+                      ? t("checkoutPage.guestEmailRequired")
+                      : t("checkoutPage.whatsappNeedsAddress")}
+                  </p>
+                )}
+              </div>
+            ) : null}
+          </div>
+
+          {/* PayPal + recargo */}
+          <div
+            className={checkoutPaymentCardClass(paymentMethod === "paypal")}
+            role="button"
+            tabIndex={0}
+            onClick={() => setPaymentMethod("paypal")}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setPaymentMethod("paypal");
+              }
+            }}
+          >
+            <label className="flex cursor-pointer items-start gap-3">
+              <input
+                type="radio"
+                name="payment-method"
+                className="mt-1.5"
+                checked={paymentMethod === "paypal"}
+                onChange={() => setPaymentMethod("paypal")}
+              />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <PayPalMark />
+                </div>
+                <p className="mt-2 font-body text-sm leading-relaxed text-[#737373]">
+                  {t("checkoutPage.paypalSurchargeHint")}
+                </p>
+              </div>
+            </label>
+            {paymentMethod === "paypal" ? (
+              <div className="mt-4 space-y-4 border-t border-accent-gold/25 pt-4">
+                <UsdChargeNotice amountUsd={paypalTotal} />
+                <div className="rounded-lg border border-[#E5E5E5] bg-white/80 p-4">
+                  {canPay ? (
+                    <div
+                      className={
+                        isPaying ? "pointer-events-none opacity-60" : ""
+                      }
+                    >
+                      <PayPalButton
+                        amount={paypalTotal}
+                        currency="USD"
+                        onSuccess={handlePayPalSuccess}
+                        onError={() => {
+                          setPaymentError(t("checkoutPage.paymentFailed"));
+                          setIsPaying(false);
+                        }}
+                        onCancel={() => setIsPaying(false)}
+                      />
+                    </div>
+                  ) : (
+                    <p className="font-body text-sm text-[#737373]">
+                      {!contactReady
+                        ? t("checkoutPage.guestEmailRequired")
+                        : t("checkoutPage.paypalNeedsAddress")}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -486,6 +710,31 @@ export default function GoodIdeasCheckoutPage() {
             />
           </div>
         ) : null}
+      </section>
+
+      {/* Consultas — fuera de métodos de pago */}
+      <section className="rounded-xl border border-[#E5E5E5] bg-[#FAFAFA] px-5 py-5">
+        <h2 className={`${checkoutSectionTitleClass} mb-2 text-[22px] md:text-[24px]`}>
+          {t("checkoutPage.checkoutQuestionsTitle")}
+        </h2>
+        <p className="font-body text-sm leading-relaxed text-[#737373]">
+          {t("checkoutPage.checkoutQuestionsBody")}
+        </p>
+        {supportWhatsAppHref ? (
+          <a
+            href={supportWhatsAppHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#25D366]/40 bg-white px-5 py-2.5 font-body text-sm font-semibold text-[#128C7E] transition hover:border-[#25D366] hover:bg-[#25D366]/5"
+          >
+            <WhatsAppMark size="sm" />
+            {t("checkoutPage.checkoutQuestionsCta")}
+          </a>
+        ) : (
+          <p className="mt-3 text-sm text-[#737373]">
+            {t("checkoutPage.whatsappNotConfigured")}
+          </p>
+        )}
       </section>
 
       <CheckoutLegalFooter />

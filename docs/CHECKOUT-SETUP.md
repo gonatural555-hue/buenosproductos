@@ -17,6 +17,8 @@ Guía para que el checkout cobre con PayPal y guarde pedidos en Supabase.
 
 Verificación local: `npm run verify-checkout-env`
 
+**WhatsApp local:** `NEXT_PUBLIC_WHATSAPP_NUMBER` en `.env.local` — reiniciá `npm run dev` después de cambiarla (Next embebe variables `NEXT_PUBLIC_*` al arrancar).
+
 ---
 
 ## Paso 1 — Supabase (base de datos)

@@ -13,9 +13,13 @@ export default function CheckoutHeader() {
     <header className="flex min-h-[104px] shrink-0 items-center justify-between gap-4 border-b border-[#E5E5E5] bg-white px-4 sm:px-6 lg:px-8">
       <Link
         href={homePath(locale)}
-        className="flex min-w-0 items-center gap-3 font-display text-lg font-medium tracking-tight text-[#111] sm:text-xl"
+        className="flex min-w-0 items-center gap-3 font-display text-lg font-medium tracking-tight sm:text-xl"
       >
-        <GoodProductsBrandName locale={locale} />
+        <GoodProductsBrandName
+          locale={locale}
+          prefixClassName="text-[#111111]"
+          suffixClassName="text-[#3B82F6]"
+        />
       </Link>
       <Link
         href={cartPath(locale)}

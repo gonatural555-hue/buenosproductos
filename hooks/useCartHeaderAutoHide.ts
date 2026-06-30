@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * Oculta el header cuando el bloque de medios de pago entra en el viewport (carrito).
+ * @deprecated Ya no se usa en GoodIdeasHeader — ocultaba el header al ver
+ * #cart-payment-methods al cargar el carrito. El carrito usa solo useSmartHeaderScroll.
  */
 export function useCartHeaderAutoHide(
   enabled: boolean,

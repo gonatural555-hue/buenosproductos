@@ -1,6 +1,10 @@
 "use client";
 
 import SmartImage from "@/components/SmartImage";
+import {
+  MercadoPagoMark,
+  PayPalMark,
+} from "@/components/payment/PaymentBrandMarks";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 
 const CARDS_LOGO_SRC = "/assets/images/payment/cards.png";
@@ -10,30 +14,22 @@ type Props = {
   className?: string;
 };
 
-function PayPalMark() {
-  return (
-    <span
-      className="inline-flex h-7 items-center rounded border border-[#E5E5E5] bg-white px-2 font-body text-[11px] font-bold tracking-tight text-[#003087]"
-      aria-hidden
-    >
-      Pay<span className="text-[#009CDE]">Pal</span>
-    </span>
-  );
-}
-
 function CardsMark() {
   return (
     <SmartImage
       src={CARDS_LOGO_SRC}
       alt="Visa, Mastercard, American Express"
-      width={160}
-      height={28}
-      className="h-7 w-auto object-contain"
+      width={200}
+      height={36}
+      className="h-9 w-auto object-contain sm:h-10"
     />
   );
 }
 
-export default function CartPaymentMethods({ id = "cart-payment-methods", className = "" }: Props) {
+export default function CartPaymentMethods({
+  id = "cart-payment-methods",
+  className = "",
+}: Props) {
   const t = useTranslations();
 
   return (
@@ -42,9 +38,10 @@ export default function CartPaymentMethods({ id = "cart-payment-methods", classN
         {t("goodIdeas.cart.paymentMethodsTitle")}
       </p>
       <div
-        className="mt-3 flex flex-wrap items-center gap-3"
+        className="mt-3 flex flex-wrap items-center gap-3 sm:gap-4"
         aria-label={t("goodIdeas.cart.paymentMethodsTitle")}
       >
+        <MercadoPagoMark size="lg" />
         <PayPalMark />
         <CardsMark />
       </div>

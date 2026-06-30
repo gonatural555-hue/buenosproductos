@@ -1619,10 +1619,20 @@
     "goToLogin": "Sign in",
     "paypalOnlyHint": "We only accept PayPal for online payments.",
     "paymentHintPaypalAndWhatsapp": "Pay with PayPal or open WhatsApp with your order summary to coordinate payment.",
-    "whatsappCoordinarTitle": "Coordinate via WhatsApp",
+    "paymentHintManual": "Bank transfer or Mercado Pago alias at list price, or PayPal online with a processing surcharge.",
+    "manualPaymentDescription": "Coordinate payment on WhatsApp — we'll send transfer details or a Mercado Pago alias there.",
+    "manualPaymentCta": "Coordinate payment",
+    "checkoutQuestionsTitle": "Questions?",
+    "checkoutQuestionsBody": "Message us on WhatsApp if you have questions about your order, shipping, or products.",
+    "checkoutQuestionsCta": "Contact us on WhatsApp",
+    "checkoutQuestionsPrefill": "Hi, I have a question about Buenos Productos.",
     "whatsappCoordinarDescription": "WhatsApp opens with a ready message including your order and shipping address. Payment stays pending until we confirm it.",
     "whatsappCoordinarCta": "Open WhatsApp with my order",
     "whatsappNeedsAddress": "Add a shipping address to use this option.",
+    "whatsappNotConfigured": "WhatsApp is not configured (missing NEXT_PUBLIC_WHATSAPP_NUMBER).",
+    "whatsappTransferNote": "Coordinate bank transfer or Mercado Pago via WhatsApp at list price — no surcharge.",
+    "paypalSurchargeLabel": "PayPal surcharge (30%)",
+    "paypalSurchargeHint": "Includes a 30% surcharge to cover PayPal fees. You will be charged in USD.",
     "paymentDividerOr": "Or pay online",
     "whatsappPrefillBody": "Hi, I'd like to coordinate payment for my order {orderId}.\n\nTotal: {total}\nEmail: {email}\n\nItems:\n{items}\n\nShipping:\n{address}",
     "paypalNeedsAddress": "Complete your shipping address to pay with PayPal.",
@@ -1652,8 +1662,8 @@
     "paymentMethod": "Payment method",
     "paymentOptions": {
       "manual": {
-        "label": "Transfer / Manual payment",
-        "hint": "We will contact you with payment details"
+        "label": "Bank transfer / Mercado Pago alias",
+        "hint": "Coordinate payment on WhatsApp"
       },
       "whatsapp": {
         "label": "Contact via WhatsApp",

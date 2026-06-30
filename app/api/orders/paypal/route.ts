@@ -7,6 +7,10 @@ import {
 import { createOrder, markOrderAsPaid, type OrderItem } from "@/lib/orders";
 import { verifyPayPalCapture } from "@/lib/paypal/verify-capture";
 import {
+  computePayPalSurcharge,
+  paypalTotalsMatch,
+} from "@/lib/checkout/payment-methods";
+import {
   getPaidOrderCountForUser,
   getWelcomeFreeShippingRemaining,
 } from "@/lib/shipping/welcome-free-shipping-server";
@@ -88,6 +92,20 @@ export async function POST(request: NextRequest) {
     if (typeof totalAmount !== "number" || Number.isNaN(totalAmount)) {
       return NextResponse.json(
         { success: false, error: "totalAmount debe ser un número." },
+        { status: 400 }
+      );
+    }
+
+    const cartSubtotalUsd = items.reduce(
+      (sum, it) => sum + Number(it.price) * Number(it.quantity),
+      0
+    );
+    if (!paypalTotalsMatch(cartSubtotalUsd, totalAmount)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "El total PayPal no coincide con el subtotal + recargo.",
+        },
         { status: 400 }
       );
     }
@@ -179,6 +197,10 @@ export async function POST(request: NextRequest) {
       billingAddress: billingAddress ?? null,
       welcomeFreeShippingApplied,
       standardShippingAlwaysFree: true,
+      paymentChannel: "paypal",
+      cartSubtotalUsd,
+      paypalSurchargeUsd: computePayPalSurcharge(cartSubtotalUsd),
+      paypalSurchargeRate: 0.3,
     };
 
     const safeEmail = isGuest
