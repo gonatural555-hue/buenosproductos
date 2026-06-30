@@ -60,7 +60,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     title: "ZOCO AI Desktop Robot with Voice Recognition for Kids",
 
-    price: 1,
+    price: 0.2,
 
     category: "Tech",
 
