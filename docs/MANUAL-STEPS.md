@@ -20,7 +20,7 @@ El agente ya preparó el código local. **Vos completás estos pasos** en orden.
 ```powershell
 cd "c:\Users\inzaf\OneDrive\Desktop\buenos-productos-v2`"
 
-# Ver remotos (debe existir legacy-go-natural + origin → buenos-productos)
+# Ver remotos (debe existir legacy-go-natural + origin → buenosproductos)
 git remote -v
 
 # Si origin aún no apunta al repo nuevo:
@@ -50,7 +50,7 @@ Si ya no usás Go Natural en producción, podés ignorar este paso.
 ### Paso 4: Nuevo proyecto en Vercel
 
 1. https://vercel.com → **Add New → Project**  
-2. Importá **`gonatural555-hue/buenos-productos`** (no `ecommerce-headless`)  
+2. Importá **`gonatural555-hue/buenosproductos`** (no `ecommerce-headless`)  
 3. Framework: **Next.js** (detectado solo)  
 4. **Deploy** (puede fallar sin env vars — normal en el primer intento)
 
@@ -145,7 +145,7 @@ Si tenés dominio propio después, actualizá ambos.
 Después de la preparación del agente:
 
 ```
-origin              → buenos-productos.git      (push acá siempre)
+origin              → buenosproductos.git         (push acá siempre)
 legacy-go-natural   → ecommerce-headless.git    (solo referencia Go Natural)
 ```
 
