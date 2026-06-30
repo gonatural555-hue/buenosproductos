@@ -1,4 +1,5 @@
 import GoodIdeasCheckoutPage from "@/components/good-ideas/GoodIdeasCheckoutPage";
+import { resolveWhatsAppCheckoutConfig } from "@/lib/checkout/whatsapp";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import type { Locale } from "@/lib/i18n/config";
@@ -24,5 +25,12 @@ export async function generateMetadata({
 }
 
 export default function CheckoutPage() {
-  return <GoodIdeasCheckoutPage />;
+  const whatsapp = resolveWhatsAppCheckoutConfig();
+
+  return (
+    <GoodIdeasCheckoutPage
+      whatsappNumber={whatsapp.number}
+      whatsappConfigured={whatsapp.configured}
+    />
+  );
 }

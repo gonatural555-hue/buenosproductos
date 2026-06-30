@@ -11,6 +11,7 @@ import {
 } from "@/components/payment/PaymentBrandMarks";
 import CheckoutAddressFields from "@/components/checkout/CheckoutAddressFields";
 import CheckoutLegalFooter from "@/components/checkout/CheckoutLegalFooter";
+import CheckoutShippingRequiredModal from "@/components/checkout/CheckoutShippingRequiredModal";
 import CheckoutOrderSummary, {
   CheckoutMobileSummaryAccordion,
 } from "@/components/checkout/CheckoutOrderSummary";
@@ -35,9 +36,7 @@ import {
 import {
   buildWhatsAppHref,
   buildWhatsAppOrderMessage,
-  buildWhatsAppSupportHref,
-  getWhatsAppNumber,
-  isWhatsAppConfigured,
+  buildWhatsAppSupportHrefFromNumber,
 } from "@/lib/checkout/whatsapp";
 import {
   authPath,
@@ -50,6 +49,7 @@ import {
   trackPurchase,
 } from "@/lib/analytics/ga4";
 import { getColorVariantLabel } from "@/lib/cart-line-id";
+import { formatCartVariantSummary } from "@/lib/cart-formatting";
 import { isSupabaseConfigured } from "@/lib/supabase/browser";
 
 import {
@@ -61,7 +61,15 @@ import { giCartText } from "@/lib/ui/gi-cart-light";
 
 type BillingMode = "same" | "different";
 
-export default function GoodIdeasCheckoutPage() {
+type Props = {
+  whatsappNumber: string | null;
+  whatsappConfigured: boolean;
+};
+
+export default function GoodIdeasCheckoutPage({
+  whatsappNumber,
+  whatsappConfigured,
+}: Props) {
   const { items, subtotal, clearCart } = useGoodIdeasCart();
   const router = useRouter();
   const locale = useLocale();
@@ -92,6 +100,8 @@ export default function GoodIdeasCheckoutPage() {
     useState<CheckoutPaymentMethod>("whatsapp");
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isPaying, setIsPaying] = useState(false);
+  const [shippingRequiredModalOpen, setShippingRequiredModalOpen] =
+    useState(false);
   const beginCheckoutTracked = useRef(false);
 
   const paypalSurcharge = useMemo(
@@ -104,8 +114,9 @@ export default function GoodIdeasCheckoutPage() {
   );
   const checkoutTotal =
     paymentMethod === "paypal" ? paypalTotal : subtotal;
-  const whatsappReady = isWhatsAppConfigured();
-  const supportWhatsAppHref = buildWhatsAppSupportHref(
+  const whatsappReady = whatsappConfigured;
+  const supportWhatsAppHref = buildWhatsAppSupportHrefFromNumber(
+    whatsappNumber,
     t("checkoutPage.checkoutQuestionsPrefill")
   );
 
@@ -199,14 +210,44 @@ export default function GoodIdeasCheckoutPage() {
     return saved ?? resolvedShipping;
   };
 
+  const shippingDataReady = Boolean(resolvedShipping && resolvedBilling);
+
+  const scrollToShippingSection = () => {
+    document
+      .getElementById("checkout-shipping")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleFinishPurchaseClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.stopPropagation();
+    if (!whatsappReady || items.length === 0 || isPaying) return;
+
+    if (!shippingDataReady) {
+      setShippingRequiredModalOpen(true);
+      return;
+    }
+
+    if (!contactReady) {
+      setPaymentError(t("checkoutPage.guestEmailRequired"));
+      document
+        .getElementById("checkout-contact")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    void handleWhatsAppCoordinar();
+  };
+
   const handleWhatsAppCoordinar = async () => {
-    if (items.length === 0 || !canPay) return;
+    if (items.length === 0) return;
     if (!whatsappReady) {
       setPaymentError(t("checkoutPage.whatsappNotConfigured"));
       return;
     }
 
-    const phone = getWhatsAppNumber();
+    const phone = whatsappNumber;
     if (!phone) {
       setPaymentError(t("checkoutPage.whatsappNotConfigured"));
       return;
@@ -271,6 +312,12 @@ export default function GoodIdeasCheckoutPage() {
           title: item.title,
           quantity: item.quantity,
           price: item.price,
+          priceLabel: formatMoney(item.price),
+          variantSummary: formatCartVariantSummary(
+            item.variantSelections,
+            undefined,
+            t
+          ),
         })),
         address: shippingAddress,
       });
@@ -421,7 +468,7 @@ export default function GoodIdeasCheckoutPage() {
   const left = (
     <div className="space-y-10">
       {/* Contacto */}
-      <section>
+      <section id="checkout-contact">
         <div className="mb-4 flex items-center justify-between gap-3">
           <h2 className={checkoutSectionTitleClass}>
             {t("checkoutPage.contactSection")}
@@ -454,7 +501,7 @@ export default function GoodIdeasCheckoutPage() {
       </section>
 
       {/* Entrega */}
-      <section>
+      <section id="checkout-shipping">
         <h2 className={`${checkoutSectionTitleClass} mb-4`}>
           {t("checkoutPage.shippingAddress")}
         </h2>
@@ -581,21 +628,17 @@ export default function GoodIdeasCheckoutPage() {
                   <p className="text-sm text-red-700" role="alert">
                     {t("checkoutPage.whatsappNotConfigured")}
                   </p>
-                ) : canPay ? (
+                ) : (
                   <button
                     type="button"
                     disabled={isPaying}
-                    onClick={handleWhatsAppCoordinar}
-                    className={giCartText.cta}
+                    onClick={handleFinishPurchaseClick}
+                    className={`${giCartText.cta} disabled:cursor-not-allowed disabled:opacity-60`}
                   >
-                    {t("checkoutPage.manualPaymentCta")}
+                    {isPaying
+                      ? t("checkoutPage.processingPayment")
+                      : t("checkoutPage.manualPaymentCta")}
                   </button>
-                ) : (
-                  <p className="font-body text-sm text-[#737373]">
-                    {!contactReady
-                      ? t("checkoutPage.guestEmailRequired")
-                      : t("checkoutPage.whatsappNeedsAddress")}
-                  </p>
                 )}
               </div>
             ) : null}
@@ -750,5 +793,21 @@ export default function GoodIdeasCheckoutPage() {
     </>
   );
 
-  return <CheckoutShell left={left} right={right} />;
+  return (
+    <>
+      <CheckoutShell left={left} right={right} />
+      <CheckoutShippingRequiredModal
+        open={shippingRequiredModalOpen}
+        title={t("checkoutPage.shippingRequiredModalTitle")}
+        body={t("checkoutPage.shippingRequiredModalBody")}
+        closeLabel={t("checkoutPage.shippingRequiredModalClose")}
+        actionLabel={t("checkoutPage.shippingRequiredModalAction")}
+        onClose={() => setShippingRequiredModalOpen(false)}
+        onAction={() => {
+          setShippingRequiredModalOpen(false);
+          scrollToShippingSection();
+        }}
+      />
+    </>
+  );
 }

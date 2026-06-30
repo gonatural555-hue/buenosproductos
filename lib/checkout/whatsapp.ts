@@ -10,9 +10,26 @@ export function getWhatsAppNumber(): string | null {
   return raw;
 }
 
+export function isWhatsAppNumberValid(
+  phone: string | null | undefined
+): boolean {
+  return normalizeWhatsAppDigits(phone).length >= 10;
+}
+
 export function isWhatsAppConfigured(): boolean {
-  const digits = normalizeWhatsAppDigits(getWhatsAppNumber());
-  return digits.length >= 10;
+  return isWhatsAppNumberValid(getWhatsAppNumber());
+}
+
+/** Lectura en servidor (p. ej. RSC) — evita depender del bundle del cliente. */
+export function resolveWhatsAppCheckoutConfig(): {
+  number: string | null;
+  configured: boolean;
+} {
+  const number = getWhatsAppNumber();
+  return {
+    number,
+    configured: isWhatsAppNumberValid(number),
+  };
 }
 
 function normalizeWhatsAppDigits(phone: string | null | undefined): string {
@@ -29,7 +46,14 @@ export function buildWhatsAppHref(phone: string, message: string): string {
 /** Enlace de soporte/consultas (sin crear pedido). */
 export function buildWhatsAppSupportHref(message: string): string | null {
   const phone = getWhatsAppNumber();
-  if (!phone || !isWhatsAppConfigured()) return null;
+  return buildWhatsAppSupportHrefFromNumber(phone, message);
+}
+
+export function buildWhatsAppSupportHrefFromNumber(
+  phone: string | null | undefined,
+  message: string
+): string | null {
+  if (!phone || !isWhatsAppNumberValid(phone)) return null;
   return buildWhatsAppHref(phone, message);
 }
 
@@ -49,6 +73,8 @@ type OrderLine = {
   title: string;
   quantity: number;
   price: number;
+  priceLabel?: string;
+  variantSummary?: string;
 };
 
 export function buildWhatsAppOrderMessage(params: {
@@ -60,7 +86,11 @@ export function buildWhatsAppOrderMessage(params: {
   address: Address;
 }): string {
   const itemsBlock = params.items
-    .map((item) => `• ${item.title} × ${item.quantity}`)
+    .map((item) => {
+      const variant = item.variantSummary ? ` (${item.variantSummary})` : "";
+      const unitPrice = item.priceLabel ? ` — ${item.priceLabel}` : "";
+      return `• ${item.title}${variant} × ${item.quantity}${unitPrice}`;
+    })
     .join("\n");
 
   return params.template
