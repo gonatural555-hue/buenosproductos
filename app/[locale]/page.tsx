@@ -38,7 +38,6 @@ export default async function HomePage({
       subtitle={t("goodIdeas.hero.subtitle")}
       eyebrow={t("goodIdeas.hero.eyebrow")}
       cta={t("goodIdeas.hero.cta")}
-      comingSoon={t("goodIdeas.hero.comingSoon")}
       sectionAriaLabel={t("goodIdeas.hero.sectionAria")}
     />
   );

@@ -7,7 +7,6 @@ export default function GoodIdeasHomePage({
   subtitle,
   eyebrow,
   cta,
-  comingSoon,
   sectionAriaLabel,
 }: {
   locale: Locale;
@@ -15,7 +14,6 @@ export default function GoodIdeasHomePage({
   subtitle: string;
   eyebrow: string;
   cta: string;
-  comingSoon: string;
   sectionAriaLabel: string;
 }) {
   return (
@@ -28,14 +26,6 @@ export default function GoodIdeasHomePage({
         ctaLabel={cta}
         sectionAriaLabel={sectionAriaLabel}
       />
-      <section
-        id="coming-soon"
-        className="scroll-mt-24 border-t border-white/[0.08] px-6 py-16 sm:px-10 md:py-20"
-      >
-        <p className="mx-auto max-w-xl text-center font-inter text-[16px] leading-relaxed text-[rgba(232,236,241,0.72)] md:text-[17px]">
-          {comingSoon}
-        </p>
-      </section>
     </main>
   );
 }
