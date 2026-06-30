@@ -69,6 +69,18 @@ function CategoryTree({
   );
 }
 
+export function GoodIdeasCategoryFilterList({
+  categories,
+  activeCategorySlug,
+}: {
+  categories: GoodIdeasFilterCategoryNode[];
+  activeCategorySlug?: string | null;
+}) {
+  return (
+    <CategoryTree nodes={categories} activeCategorySlug={activeCategorySlug} />
+  );
+}
+
 export default function GoodIdeasFilterSidebar({
   title,
   locale,

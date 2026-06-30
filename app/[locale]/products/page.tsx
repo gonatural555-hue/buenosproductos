@@ -262,6 +262,9 @@ export default async function GoodIdeasProductsPage({
           clearAllFiltersHref={buildGoodIdeasProductsListHref(locale)}
           clearAllFiltersLabel={t("goodIdeas.products.clearAllFilters")}
           searchHint={searchHint}
+          categoryFilterLabel={t("goodIdeas.products.categorySectionLabel")}
+          brandFilterLabel={t("goodIdeas.products.filterBrands")}
+          priceFilterLabel={t("goodIdeas.products.filterPrice")}
           sidebarProps={sidebarProps}
           sortBar={
             <GoodIdeasSortingBar

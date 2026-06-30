@@ -32,6 +32,7 @@ type Props = {
     category?: string | null;
     brand?: string | null;
   };
+  embedded?: boolean;
 };
 
 function buildPresetHref(
@@ -58,6 +59,7 @@ export default function GoodIdeasPriceFilter({
   presetLabels,
   activeFilter,
   preserve,
+  embedded = false,
 }: Props) {
   const { currency, rates, formatMoney, convertMoney } = useCurrency();
   const isActive =
@@ -116,6 +118,82 @@ export default function GoodIdeasPriceFilter({
     window.location.href = href;
   };
 
+  const body = (
+    <div className="space-y-3 pb-1">
+      <ul className="space-y-1">
+        {presetLinks.map(({ preset, href, active, label: presetLabel }) => (
+          <li key={preset.id}>
+            <Link
+              href={href}
+              className={
+                active
+                  ? giPlpClasses.categoryLinkActive
+                  : giPlpClasses.categoryLink
+              }
+            >
+              {presetLabel}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <form onSubmit={handleApply} className="space-y-2 pt-1">
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label
+              htmlFor={embedded ? "gi-price-min-mobile" : "gi-price-min"}
+              className={giPlpClasses.priceFieldLabel}
+            >
+              {minLabel}
+            </label>
+            <input
+              id={embedded ? "gi-price-min-mobile" : "gi-price-min"}
+              name="gi-price-min"
+              type="number"
+              min={0}
+              step={1}
+              inputMode="numeric"
+              value={minInput}
+              onChange={(e) => setMinInput(e.target.value)}
+              placeholder="0"
+              className={giPlpClasses.priceFieldInput}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor={embedded ? "gi-price-max-mobile" : "gi-price-max"}
+              className={giPlpClasses.priceFieldLabel}
+            >
+              {maxLabel}
+            </label>
+            <input
+              id={embedded ? "gi-price-max-mobile" : "gi-price-max"}
+              name="gi-price-max"
+              type="number"
+              min={0}
+              step={1}
+              inputMode="numeric"
+              value={maxInput}
+              onChange={(e) => setMaxInput(e.target.value)}
+              placeholder="—"
+              className={giPlpClasses.priceFieldInput}
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          className={`w-full rounded-full border border-[var(--gi-primary)]/40 bg-[var(--gi-primary)]/15 py-2 ${giType.btnSm} text-[var(--gi-primary)] transition hover:bg-[var(--gi-primary)]/25`}
+        >
+          {applyLabel}
+        </button>
+      </form>
+    </div>
+  );
+
+  if (embedded) {
+    return body;
+  }
+
   return (
     <details
       className={`group border-t ${giPlpClasses.sidebarDivider}`}
@@ -130,75 +208,7 @@ export default function GoodIdeasPriceFilter({
         </span>
         <span>{label}</span>
       </summary>
-      <div className="space-y-3 pb-4 pl-5">
-        <ul className="space-y-1">
-          {presetLinks.map(({ preset, href, active, label: presetLabel }) => (
-            <li key={preset.id}>
-              <Link
-                href={href}
-                className={
-                  active
-                    ? giPlpClasses.categoryLinkActive
-                    : giPlpClasses.categoryLink
-                }
-              >
-                {presetLabel}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <form onSubmit={handleApply} className="space-y-2 pt-1">
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label
-                htmlFor="gi-price-min"
-                className={giPlpClasses.priceFieldLabel}
-              >
-                {minLabel}
-              </label>
-              <input
-                id="gi-price-min"
-                name="gi-price-min"
-                type="number"
-                min={0}
-                step={1}
-                inputMode="numeric"
-                value={minInput}
-                onChange={(e) => setMinInput(e.target.value)}
-                placeholder="0"
-                className={giPlpClasses.priceFieldInput}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="gi-price-max"
-                className={giPlpClasses.priceFieldLabel}
-              >
-                {maxLabel}
-              </label>
-              <input
-                id="gi-price-max"
-                name="gi-price-max"
-                type="number"
-                min={0}
-                step={1}
-                inputMode="numeric"
-                value={maxInput}
-                onChange={(e) => setMaxInput(e.target.value)}
-                placeholder="—"
-                className={giPlpClasses.priceFieldInput}
-              />
-            </div>
-          </div>
-          <button
-            type="submit"
-            className={`w-full rounded-full border border-[var(--gi-primary)]/40 bg-[var(--gi-primary)]/15 py-2 ${giType.btnSm} text-[var(--gi-primary)] transition hover:bg-[var(--gi-primary)]/25`}
-          >
-            {applyLabel}
-          </button>
-        </form>
-      </div>
+      <div className="pb-4 pl-5">{body}</div>
     </details>
   );
 }

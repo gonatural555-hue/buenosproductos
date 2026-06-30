@@ -97,8 +97,10 @@ export function PdpPremiumAccordion({
           isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
-        <div className="overflow-hidden" aria-hidden={!isOpen}>
-          <div className="pb-6 pt-1 sm:pb-7">{isOpen ? children : null}</div>
+        <div className="min-h-0 overflow-hidden" aria-hidden={!isOpen}>
+          <div className="pdp-accordion-scroll max-h-[500px] overflow-y-auto pb-6 pt-1 sm:pb-7">
+            {isOpen ? children : null}
+          </div>
         </div>
       </div>
     </div>

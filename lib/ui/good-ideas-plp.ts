@@ -39,7 +39,21 @@ export const giPlpClasses = {
     "absolute inset-x-3 bottom-3 z-[2] translate-y-1 opacity-100 transition-all duration-300 ease-out md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 motion-reduce:transition-none motion-reduce:md:opacity-100 motion-reduce:md:translate-y-0",
   addNowBtn: `w-full rounded-full border border-[var(--gi-primary)] bg-[var(--gi-primary)] px-4 py-2.5 ${giType.btnSm} text-white shadow-[0_8px_24px_-8px_rgba(59,130,246,0.45)] transition duration-200 hover:bg-[var(--gi-primary-hover)] hover:border-[var(--gi-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gi-primary)]/50 active:scale-[0.99] motion-reduce:transition-none`,
   filterTrigger: `flex w-full items-center justify-between rounded-xl border border-neutral-200 bg-white px-4 py-3 ${giType.filterHeading} text-[var(--gi-text-primary)] shadow-sm`,
-  productGrid: "-mt-[103px] min-w-0 flex-1",
+  productGrid: "min-w-0 flex-1 lg:-mt-[103px]",
+  mobileFilterBar:
+    "-mx-4 border-y border-neutral-200 bg-white sm:-mx-6 lg:hidden",
+  mobileFilterScroll:
+    "gi-plp-filter-scroll flex items-stretch overflow-x-auto overscroll-x-contain",
+  mobileFilterDivider: "border-l border-neutral-200",
+  mobileFilterPill: `flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-3.5 ${giType.filterHeading} text-[var(--gi-text-primary)] transition-colors hover:text-[var(--gi-primary)]`,
+  mobileFilterPillActive: `flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-3.5 ${giType.filterHeading} text-[var(--gi-primary)]`,
+  mobileFilterPillAccent: `flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-3.5 ${giType.filterHeading} text-[var(--gi-primary)]`,
+  mobileFilterSheet:
+    "absolute inset-x-0 bottom-0 flex max-h-[min(85vh,640px)] flex-col rounded-t-2xl bg-white shadow-[0_-12px_40px_rgba(15,23,42,0.18)]",
+  mobileFilterSheetHeader:
+    "flex shrink-0 items-center justify-between border-b border-neutral-200 px-4 py-4",
+  mobileFilterSheetTitle: `${giType.filterHeading} text-base text-[var(--gi-text-primary)]`,
+  mobileFilterSheetClose: `${giType.cardSecondary} font-medium text-[var(--gi-primary)]`,
   chip: `inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 ${giType.badge} text-neutral-800 hover:border-[var(--gi-primary)]/40`,
   chipClear:
     "text-xs text-[var(--gi-primary)] underline underline-offset-2 hover:text-[var(--gi-primary-hover)]",

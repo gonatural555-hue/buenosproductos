@@ -1127,3 +1127,26 @@ main[data-route="order-success"] .bg-gray-50 {
   display: none !important;
   background: transparent !important;
 }
+
+/* PDP acordeones — scroll interno con barra sutil GI */
+.pdp-accordion-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 236, 241, 0.14) transparent;
+}
+
+.pdp-accordion-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.pdp-accordion-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pdp-accordion-scroll::-webkit-scrollbar-thumb {
+  background: rgba(232, 236, 241, 0.12);
+  border-radius: 999px;
+}
+
+.pdp-accordion-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 236, 241, 0.22);
+}
