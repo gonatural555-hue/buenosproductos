@@ -10,7 +10,7 @@ El agente ya preparó el código local. **Vos completás estos pasos** en orden.
 
 1. Entrá a https://github.com/new  
 2. **Owner:** `gonatural555-hue` (tu cuenta)  
-3. **Repository name:** `buenos-productos`  
+3. **Repository name:** `buenosproductos`  
 4. **Público** o privado (como prefieras)  
 5. **No** marques “Add a README”, .gitignore ni license  
 6. Click **Create repository**
@@ -24,7 +24,7 @@ cd "c:\Users\inzaf\OneDrive\Desktop\buenos-productos-v2`"
 git remote -v
 
 # Si origin aún no apunta al repo nuevo:
-git remote set-url origin https://github.com/gonatural555-hue/buenos-productos.git
+git remote set-url origin https://github.com/gonatural555-hue/buenosproductos.git
 
 # Primer push
 git push -u origin main

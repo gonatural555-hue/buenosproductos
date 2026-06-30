@@ -4,11 +4,10 @@
 
 | Repo | Uso |
 |------|-----|
-| **`buenos-productos`** (nuevo) | Este proyecto — Good Products / Buenos Productos |
+| **`buenosproductos`** (nuevo) | Este proyecto — Good Products / Buenos Productos |
 | **`ecommerce-headless`** (legacy) | Go Natural — remoto local: `legacy-go-natural` |
 
-**URL nueva (después de crear el repo):**  
-`https://github.com/gonatural555-hue/buenos-productos`
+**URL:** `https://github.com/gonatural555-hue/buenosproductos`
 
 ## Comandos habituales
 
