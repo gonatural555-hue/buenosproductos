@@ -9,7 +9,8 @@
     "lint": "eslint",
     "import-reviews": "node scripts/import-aliexpress-reviews.mjs",
     "cleanup-reviews": "node scripts/cleanup-product-reviews.mjs",
-    "generate-blog-posts": "npx tsx scripts/generate-good-ideas-blog-posts.ts"
+    "generate-blog-posts": "npx tsx scripts/generate-good-ideas-blog-posts.ts",
+    "verify-checkout-env": "node scripts/verify-checkout-env.mjs"
   },
   "dependencies": {
     "@getbrevo/brevo": "^3.0.1",

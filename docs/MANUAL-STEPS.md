@@ -87,11 +87,17 @@ Anotá la URL final, ej. `https://buenos-productos.vercel.app`
 
 ## Fase 3 — Supabase (≈10 min)
 
-### Paso 7: Migraciones SQL
+### Paso 7: Checkout — verificar y parchear SQL
 
-1. Supabase Dashboard → **SQL Editor**  
-2. Ejecutá en orden los archivos en `supabase/migrations/` (si no lo hiciste antes), especialmente:  
-   - `005_withdrawal_requests.sql`
+**Si ya tenés tablas** (`orders`, `order_items`, `profiles`):
+
+1. SQL Editor → ejecutá `supabase/verify-checkout-schema.sql`  
+2. Si alguna fila dice **FALTA** → ejecutá `supabase/apply-checkout-patch.sql`  
+3. Si falta arrepentimiento → `supabase/migrations/005_withdrawal_requests.sql`
+
+**Proyecto nuevo:** migraciones `001` → `005` en orden (ver `supabase/README.md`).
+
+**Guía completa checkout:** [`docs/CHECKOUT-SETUP.md`](./CHECKOUT-SETUP.md)
 
 ### Paso 8: Auth URLs
 
@@ -161,9 +167,10 @@ git remote -v
 
 | Problema | Qué revisar |
 |----------|-------------|
-| `push` rechazado | ¿Creaste el repo `buenos-productos` en GitHub? |
+| `push` rechazado | ¿Creaste el repo `buenosproductos` en GitHub? |
 | Build falla en Vercel | Logs del deploy; corré `npm run build` local |
 | Checkout no carga PayPal | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` en Vercel |
+| Pago OK pero error al guardar | `SUPABASE_SERVICE_ROLE_KEY` + `apply-checkout-patch.sql` |
 | Arrepentimiento error 503 | `SUPABASE_SERVICE_ROLE_KEY` + migración 005 |
 | Emails no llegan | `BREVO_API_KEY` + sender verificado en Brevo |
 
