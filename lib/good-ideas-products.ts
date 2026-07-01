@@ -1074,6 +1074,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
         { value: "black", label: "Black", swatchHex: "#3A3A3A" },
       ],
     },
+    variantMatrix: [{ color: "white" }],
     translations: {
       es: {
         title:
@@ -1685,7 +1686,10 @@ export function resolveGoodIdeasProductVariants(
   const variants = Array.isArray(product.variants)
     ? product.variants
     : [product.variants];
-  return { variants, variantMatrix: undefined };
+  return {
+    variants,
+    variantMatrix: product.variantMatrix,
+  };
 }
 
 

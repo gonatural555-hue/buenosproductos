@@ -15,6 +15,9 @@ export type ProductVariants = {
   options: ProductVariantOption[];
 };
 
+/** Combinaciones de variantes disponibles (stock). Si falta, todas las opciones son válidas. */
+export type ProductVariantMatrix = Record<string, string>[];
+
 export type ProductTranslation = {
   title?: string;
   description?: string;
@@ -54,4 +57,6 @@ export type Product = {
   };
   translations?: Partial<Record<Locale, ProductTranslation>>;
   variants?: ProductVariants | ProductVariants[];
+  /** Filas de combinaciones en stock; ej. `[{ color: "white" }]` excluye otras opciones de color. */
+  variantMatrix?: ProductVariantMatrix;
 };
