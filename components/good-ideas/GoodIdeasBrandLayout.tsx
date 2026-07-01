@@ -8,6 +8,7 @@ import GoodIdeasHeader from "@/components/good-ideas/GoodIdeasHeader";
 import {
   shouldHideGiHeader,
   shouldUseLightCommerceFooter,
+  shouldUseLightOrderSuccessChrome,
   shouldUseLightPdpChrome,
 } from "@/lib/routing/paths";
 
@@ -28,7 +29,8 @@ export default function GoodIdeasBrandLayout({
   const hideHeader = shouldHideGiHeader(pathname);
   const lightFooter = shouldUseLightCommerceFooter(pathname);
   const lightPdp = shouldUseLightPdpChrome(pathname);
-  const lightShell = lightFooter || lightPdp;
+  const lightOrderSuccess = shouldUseLightOrderSuccessChrome(pathname);
+  const lightShell = lightFooter || lightPdp || lightOrderSuccess;
 
   return (
     <GoodIdeasCartProvider>

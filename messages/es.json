@@ -1774,24 +1774,75 @@
     "summaryReassurance": "Checkout cifrado · PayPal disponible · Política de devolución clara"
   },
   "orderSuccessPage": {
-    "headline": "¡Gracias por tu compra!",
-    "subheadline": "Estamos preparando tu pedido.",
-    "emailLine": "Te enviamos un email de confirmación con los detalles de tu pedido.",
-    "emailLineCoordinatingWhatsapp": "Coordinamos el pago por WhatsApp. Si no enviaste el mensaje, podés contactarnos con tu número de pedido.",
+    "headline": "¡Pedido recibido!",
+    "subheadline": "Ya tenemos tu orden. En breve vamos a coordinar los próximos pasos por WhatsApp.",
+    "emailLine": "Guardá esta página o copiá tu número de pedido para futuras consultas.",
+    "emailLineCoordinatingWhatsapp": "Guardá esta página o copiá tu número de pedido para futuras consultas.",
     "orderNumber": "Número de pedido",
+    "copyOrder": "Copiar",
+    "copiedOrder": "Copiado",
     "orderSummary": "Resumen del pedido",
+    "deliveryTitle": "Datos de entrega",
     "shippingTitle": "Dirección de envío",
+    "shippingMethod": "Envío estándar con seguimiento",
+    "subtotal": "Subtotal",
+    "shippingLine": "Envío",
+    "shippingFree": "Gratis",
     "total": "Total",
     "placedOn": "Realizado el {date}",
     "noOrderTitle": "Todavía no pudimos cargar este pedido",
     "noOrderHint": "Si acabás de finalizar el checkout, los datos pueden tardar unos segundos.",
     "continueShopping": "Seguir comprando",
-    "viewAccount": "Ver mi cuenta",
+    "viewAccount": "Ver mi pedido",
     "contactCta": "Contactanos",
+    "whatsappCta": "Contactarnos por WhatsApp",
     "contactSubject": "Consulta sobre pedido #{orderId}",
     "contactPrefill": "Hola, tengo una consulta sobre mi pedido #{orderId}.\n\n",
     "whatsappMessage": "Hola! Quiero coordinar el pago del pedido {orderId} ({amount}).",
-    "stepsTitle": "Qué pasa ahora",
+    "stepsTitle": "¿Qué pasa ahora?",
+    "stepsSubtitle": "Estos son los próximos pasos de tu compra.",
+    "paymentCoordinateTitle": "Pago por coordinar",
+    "paymentCoordinateBody": "Te vamos a contactar por WhatsApp para finalizar el pago y confirmar el despacho.",
+    "paymentPendingBadge": "Pendiente",
+    "timelineSteps": [
+      { "id": "received", "label": "Pedido recibido" },
+      { "id": "payment", "label": "Pago por coordinar" },
+      { "id": "preparing", "label": "Preparando pedido" },
+      { "id": "shipped", "label": "Enviado" },
+      { "id": "delivered", "label": "Entregado" }
+    ],
+    "whatHappensSteps": [
+      {
+        "title": "Te escribimos por WhatsApp",
+        "description": "Confirmamos tus datos y coordinamos el pago."
+      },
+      {
+        "title": "Preparamos tu pedido",
+        "description": "Revisamos el producto y lo dejamos listo para despachar."
+      },
+      {
+        "title": "Te enviamos el seguimiento",
+        "description": "Cuando salga el pedido, te compartimos la información de envío."
+      }
+    ],
+    "trustItems": [
+      {
+        "title": "Compra protegida",
+        "description": "Tu pedido queda registrado con número único de seguimiento."
+      },
+      {
+        "title": "Pago seguro",
+        "description": "Coordinamos el pago por canales verificados antes del despacho."
+      },
+      {
+        "title": "Envío protegido",
+        "description": "Empacamos con cuidado y te avisamos cuando salga el paquete."
+      },
+      {
+        "title": "Soporte por WhatsApp",
+        "description": "Estamos disponibles para ayudarte en cada paso del proceso."
+      }
+    ],
     "brandQuote": "Gracias por confiar en nosotros.",
     "recommendTitle": "Seguí explorando",
     "recommendBody": "Descubrí más productos para tu día a día.",

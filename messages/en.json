@@ -1779,19 +1779,70 @@
     "emailLine": "We've sent a confirmation email with the details of your order.",
     "emailLineCoordinatingWhatsapp": "We'll coordinate payment on WhatsApp. If you didn't send the message, you can still reach us with your order number.",
     "orderNumber": "Order number",
+    "copyOrder": "Copy",
+    "copiedOrder": "Copied",
     "orderSummary": "Order summary",
+    "deliveryTitle": "Delivery details",
     "shippingTitle": "Shipping address",
+    "shippingMethod": "Standard tracked shipping",
+    "subtotal": "Subtotal",
+    "shippingLine": "Shipping",
+    "shippingFree": "Free",
     "total": "Total",
     "placedOn": "Placed on {date}",
     "noOrderTitle": "We couldn't load this order yet",
     "noOrderHint": "If you just completed checkout, details may take a moment to appear.",
     "continueShopping": "Continue shopping",
-    "viewAccount": "View account",
+    "viewAccount": "View my order",
     "contactCta": "Contact us",
+    "whatsappCta": "Contact us on WhatsApp",
     "contactSubject": "Inquiry about order #{orderId}",
     "contactPrefill": "Hi, I have a question about my order #{orderId}.\n\n",
     "whatsappMessage": "Hi! I'd like to coordinate payment for order {orderId} ({amount}).",
-    "stepsTitle": "What happens next",
+    "stepsTitle": "What happens next?",
+    "stepsSubtitle": "Here are the next steps for your purchase.",
+    "paymentCoordinateTitle": "Payment to coordinate",
+    "paymentCoordinateBody": "We'll contact you on WhatsApp to finalize payment and confirm dispatch.",
+    "paymentPendingBadge": "Pending",
+    "timelineSteps": [
+      { "id": "received", "label": "Order received" },
+      { "id": "payment", "label": "Payment to coordinate" },
+      { "id": "preparing", "label": "Preparing order" },
+      { "id": "shipped", "label": "Shipped" },
+      { "id": "delivered", "label": "Delivered" }
+    ],
+    "whatHappensSteps": [
+      {
+        "title": "We'll message you on WhatsApp",
+        "description": "We confirm your details and coordinate payment."
+      },
+      {
+        "title": "We prepare your order",
+        "description": "We review the product and get it ready to ship."
+      },
+      {
+        "title": "We send tracking info",
+        "description": "When your order ships, we'll share shipping updates."
+      }
+    ],
+    "trustItems": [
+      {
+        "title": "Protected purchase",
+        "description": "Your order is registered with a unique tracking number."
+      },
+      {
+        "title": "Secure payment",
+        "description": "We coordinate payment through verified channels before dispatch."
+      },
+      {
+        "title": "Protected shipping",
+        "description": "We pack carefully and notify you when your package ships."
+      },
+      {
+        "title": "WhatsApp support",
+        "description": "We're available to help at every step."
+      }
+    ],
     "brandQuote": "Thanks for shopping with us.",
     "recommendTitle": "Keep exploring",
     "recommendBody": "Discover more products for everyday life.",

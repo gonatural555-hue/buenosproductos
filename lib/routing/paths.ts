@@ -118,7 +118,7 @@ export function isCartPath(pathname: string): boolean {
 }
 
 export function shouldHideGiHeader(pathname: string): boolean {
-  return isCheckoutPath(pathname) || isOrderSuccessPath(pathname);
+  return isCheckoutPath(pathname);
 }
 
 /** @deprecated Use shouldHideGiHeader */
@@ -127,7 +127,16 @@ export function shouldHideGiChrome(pathname: string): boolean {
 }
 
 export function shouldUseLightCommerceFooter(pathname: string): boolean {
-  return isCartPath(pathname) || isCheckoutPath(pathname);
+  return (
+    isCartPath(pathname) ||
+    isCheckoutPath(pathname) ||
+    isOrderSuccessPath(pathname)
+  );
+}
+
+/** Order success — shell blanco continuo (PDP / cart). */
+export function shouldUseLightOrderSuccessChrome(pathname: string): boolean {
+  return isOrderSuccessPath(pathname);
 }
 
 /** PDP de producto Good Products: `/{locale}/products/{id}`. */

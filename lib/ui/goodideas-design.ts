@@ -29,6 +29,9 @@ export const GI_PDP_DTC_TOP_PAD =
 export const GI_PDP_STICKY_TOP =
   "lg:top-[calc(env(safe-area-inset-top,0px)+4.5rem+8px)]";
 
+/** Order success — mismo clearance que PDP DTC (header blanco visible). */
+export const GI_ORDER_SUCCESS_TOP_PAD = GI_PDP_DTC_TOP_PAD;
+
 /** PLP carousel — clearance del header fijo, sin aire extra de hero full-screen. */
 export const GI_PLP_CAROUSEL_TOP_PAD =
   "pt-[calc(env(safe-area-inset-top,0px)+4.25rem)] md:pt-[calc(env(safe-area-inset-top,0px)+4.5rem)]";
