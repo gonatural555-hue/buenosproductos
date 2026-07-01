@@ -139,6 +139,51 @@ export function shouldUseLightOrderSuccessChrome(pathname: string): boolean {
   return isOrderSuccessPath(pathname);
 }
 
+function pathSegments(pathname: string): string[] {
+  return pathname.split("/").filter(Boolean);
+}
+
+function hasLocalePrefix(segments: string[]): boolean {
+  return segments.length >= 1 && locales.includes(segments[0] as Locale);
+}
+
+/** Home Good Products: `/{locale}`. */
+export function isHomePath(pathname: string): boolean {
+  const segments = pathSegments(pathname);
+  return segments.length === 1 && hasLocalePrefix(segments);
+}
+
+/** PLP catálogo: `/{locale}/products` (sin slug de producto). */
+export function isProductsListPath(pathname: string): boolean {
+  const segments = pathSegments(pathname);
+  return (
+    segments.length === 2 &&
+    hasLocalePrefix(segments) &&
+    segments[1] === "products"
+  );
+}
+
+/** Listado blog: `/{locale}/blog`. */
+export function isBlogListPath(pathname: string): boolean {
+  const segments = pathSegments(pathname);
+  return (
+    segments.length === 2 &&
+    hasLocalePrefix(segments) &&
+    segments[1] === "blog"
+  );
+}
+
+/** Artículo blog: `/{locale}/blog/{slug}`. */
+export function isBlogPostPath(pathname: string): boolean {
+  const segments = pathSegments(pathname);
+  return (
+    segments.length === 3 &&
+    hasLocalePrefix(segments) &&
+    segments[1] === "blog" &&
+    Boolean(segments[2])
+  );
+}
+
 /** PDP de producto Good Products: `/{locale}/products/{id}`. */
 export function isProductPdpPath(pathname: string): boolean {
   const segments = pathname.split("/").filter(Boolean);

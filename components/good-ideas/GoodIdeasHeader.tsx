@@ -9,15 +9,16 @@ import {
   blogPath,
   cartPath,
   homePath,
-  isCartPath,
-  isProductPdpPath,
   productsPath,
   shouldUseLightGiHeader,
 } from "@/lib/routing/paths";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
 import HeaderAccountMenu from "@/components/good-ideas/HeaderAccountMenu";
-import { useSmartHeaderScroll } from "@/hooks/useSmartHeaderScroll";
+import {
+  resolveSmartHeaderScrollConfig,
+  useSmartHeaderScroll,
+} from "@/hooks/useSmartHeaderScroll";
 import { giType } from "@/lib/ui/gi-typography";
 
 export default function GoodIdeasHeader() {
@@ -26,10 +27,9 @@ export default function GoodIdeasHeader() {
   const { totalItems } = useGoodIdeasCart();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const isPdp = isProductPdpPath(pathname ?? "");
-  const isCart = isCartPath(pathname ?? "");
   const lightHeader = shouldUseLightGiHeader(pathname ?? "");
-  const { hidden, transitionClass } = useSmartHeaderScroll(isPdp || isCart);
+  const scrollConfig = resolveSmartHeaderScrollConfig(pathname ?? "");
+  const { hidden, transitionClass } = useSmartHeaderScroll(scrollConfig);
 
   const buildLocaleHref = (nextLocale: Locale) => {
     const segments = pathname.split("/").filter(Boolean);

@@ -10,6 +10,7 @@ import {
   productsPath,
 } from "@/lib/routing/paths";
 import { LEGAL_SLUGS, type LegalSlugKey } from "@/lib/seo";
+import { GI_SITE_FOOTER_ID } from "@/lib/ui/goodideas-design";
 import { giType } from "@/lib/ui/gi-typography";
 
 function legalHref(key: LegalSlugKey, locale: Locale) {
@@ -56,6 +57,7 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
 
   return (
     <footer
+      id={GI_SITE_FOOTER_ID}
       className={
         isLight
           ? "border-t border-[#E5E5E5] bg-white text-[#111111]"

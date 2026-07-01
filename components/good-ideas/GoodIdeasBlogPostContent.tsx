@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import SmartImage from "@/components/SmartImage";
+import { GI_BLOG_ARTICLE_CONTENT_ID } from "@/lib/ui/goodideas-design";
 
 type Section = {
   heading?: string;
@@ -38,7 +39,7 @@ export default function GoodIdeasBlogPostContent({
   };
 
   return (
-    <section className="bg-white py-12 md:py-16">
+    <section id={GI_BLOG_ARTICLE_CONTENT_ID} className="bg-white py-12 md:py-16">
       <div className="mx-auto max-w-[calc(1315px+4rem)] px-8">
         <div className="mx-auto max-w-[1315px] lg:max-w-3xl lg:px-0">
           {intro ? (

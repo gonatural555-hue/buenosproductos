@@ -10,7 +10,32 @@ export const GI_COLORS = {
   border: "rgba(255, 255, 255, 0.08)",
   textMuted: "rgba(232, 236, 241, 0.72)",
   textDim: "rgba(232, 236, 241, 0.5)",
+  gray400: "#9CA3AF",
+  gray500: "#6B7280",
+  grayBlue: "#94A3B8",
+  blueLight: "#60A5FA",
+  white: "#FFFFFF",
+  black: "#111111",
 } as const;
+
+/** Copy de heroes oscuros (Home + Products) sobre grilla hex blanca. */
+export const GI_HERO_EDITORIAL = {
+  eyebrow:
+    "text-center font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[#94A3B8] md:mb-4",
+  titleMuted: "text-[#CBD5E1]",
+  titleAccent: "text-[#3B82F6]",
+  titleAccentSoft: "text-[#60A5FA]",
+  subtitle:
+    "max-w-lg text-center font-inter text-[clamp(16px,3.8vw,18px)] leading-relaxed text-[#9CA3AF] md:mt-5",
+  plpTitle: "text-balance text-[#FFFFFF]",
+  plpTitleLine2: "text-balance text-[#94A3B8]",
+  plpSubtitle:
+    "max-w-lg font-inter text-[clamp(15px,3.2vw,17px)] leading-relaxed text-[#9CA3AF] md:mt-5",
+} as const;
+
+/** CTA azul marca en heroes oscuros (hex wireframe). */
+export const GI_HERO_DARK_CTA_CLASS =
+  "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center rounded-full bg-[#3B82F6] px-9 text-center font-body text-sm font-semibold text-white shadow-[0_12px_40px_rgba(59,130,246,0.35)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-[#2563EB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60A5FA]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[58px] md:min-h-[58px] md:px-10 md:text-base";
 
 export const GI_HERO_TOP_PAD =
   "pt-[calc(env(safe-area-inset-top,0px)+5.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+6.5rem)]";
@@ -46,6 +71,10 @@ export const GI_HERO_GRID_OVERLAY = {
 
 export const GI_CATALOG_SECTION_ID = "gi-products-catalog";
 export const GI_BLOG_POSTS_ANCHOR = "gi-blog-posts";
+export const GI_SITE_FOOTER_ID = "gi-site-footer";
+export const GI_PLP_ROW2_SENTINEL_SM = "gi-plp-row2-sentinel-sm";
+export const GI_PLP_ROW2_SENTINEL_LG = "gi-plp-row2-sentinel-lg";
+export const GI_BLOG_ARTICLE_CONTENT_ID = "gi-blog-article-content";
 
 /** Tonos para CTAs de categoría en hero productos GI. */
 export const GI_PRODUCTS_CATEGORY_TONES = {

@@ -8,6 +8,7 @@ import { buildGoodIdeasProductsListHref } from "@/lib/good-ideas-plp-segments";
 import {
   GI_CATALOG_SECTION_ID,
   GI_EASE,
+  GI_HERO_EDITORIAL,
   GI_PLP_CAROUSEL_TOP_PAD,
   GI_PRODUCTS_CATEGORY_TONES,
   type GiProductsCategoryTone,
@@ -30,19 +31,19 @@ type Props = {
 };
 
 const CAROUSEL_ARROW_CLASS =
-  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/[0.12] text-[#E8ECF1] transition hover:border-[#3B82F6]/40 hover:text-[#3B82F6] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]";
+  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#94A3B8]/40 text-[#E8ECF1] transition hover:border-[#3B82F6] hover:text-[#60A5FA] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]";
 
 function splitLineWithAccent(line: string, accent: string | undefined) {
   const a = accent?.trim();
   if (!line) return null;
   if (!a || !line.includes(a)) {
-    return <span className="text-balance text-[#E8ECF1]">{line}</span>;
+    return <span className={GI_HERO_EDITORIAL.plpTitle}>{line}</span>;
   }
   const i = line.indexOf(a);
   return (
-    <span className="text-balance text-[#E8ECF1]">
+    <span className={GI_HERO_EDITORIAL.plpTitle}>
       {line.slice(0, i)}
-      <span className="text-[#3B82F6]">{a}</span>
+      <span className={GI_HERO_EDITORIAL.titleAccent}>{a}</span>
       {line.slice(i + a.length)}
     </span>
   );
@@ -150,16 +151,20 @@ export default function GoodIdeasProductsCarouselHeader({
               {slide.categoryLabel}
             </span>
 
-            <h1 className="w-full font-display text-[clamp(32px,7vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] transition-colors duration-300 group-hover:text-white md:text-[clamp(44px,5vw,72px)] md:leading-[0.88]">
+            <h1 className="w-full font-display text-[clamp(32px,7vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] text-[#FFFFFF] transition-colors duration-300 group-hover:text-white md:text-[clamp(44px,5vw,72px)] md:leading-[0.88]">
               {splitLineWithAccent(editorialTitle.line1, slide.accentWord)}
               {editorialTitle.line2 ? (
-                <span className="mt-1 block text-balance text-[rgba(232,236,241,0.55)] transition-colors duration-300 group-hover:text-[rgba(232,236,241,0.72)]">
+                <span
+                  className={`mt-1 block transition-colors duration-300 group-hover:text-[#CBD5E1] ${GI_HERO_EDITORIAL.plpTitleLine2}`}
+                >
                   {editorialTitle.line2}
                 </span>
               ) : null}
             </h1>
 
-            <p className="mt-4 max-w-lg font-inter text-[clamp(15px,3.2vw,17px)] leading-relaxed text-[rgba(232,236,241,0.72)] transition-colors duration-300 group-hover:text-[rgba(232,236,241,0.88)] md:mt-5">
+            <p
+              className={`mt-4 transition-colors duration-300 group-hover:text-[#CBD5E1] ${GI_HERO_EDITORIAL.plpSubtitle}`}
+            >
               {slide.subtitle}
             </p>
           </Link>

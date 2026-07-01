@@ -9,7 +9,8 @@ import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName
 import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 import {
   GI_EASE,
-  GI_HERO_PRIMARY_CTA_CLASS,
+  GI_HERO_DARK_CTA_CLASS,
+  GI_HERO_EDITORIAL,
   GI_HERO_TOP_PAD,
   parseGoodIdeasEditorialTitle,
 } from "@/lib/ui/goodideas-design";
@@ -80,14 +81,14 @@ export default function GoodIdeasHomeHero({
           <motion.div className="relative flex w-full max-w-[980px] flex-col items-center">
             <motion.p
               variants={itemVariants}
-              className="mb-3 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[rgba(232,236,241,0.45)] md:mb-4"
+              className={`mb-3 md:mb-4 ${GI_HERO_EDITORIAL.eyebrow}`}
             >
               {eyebrow}
             </motion.p>
 
             <motion.h1
               variants={itemVariants}
-              className="w-full text-center font-display text-[clamp(38px,9.5vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] md:text-[clamp(58px,6.5vw,102px)] md:leading-[0.88]"
+              className="w-full text-center font-display text-[clamp(38px,9.5vw,56px)] font-semibold leading-[0.92] tracking-[-0.02em] text-[#FFFFFF] md:text-[clamp(58px,6.5vw,102px)] md:leading-[0.88]"
             >
               <span className="block text-balance">
                 <GoodProductsBrandName locale={locale} />
@@ -95,10 +96,10 @@ export default function GoodIdeasHomeHero({
               {row1Accent || row2Muted ? (
                 <span className="mt-0 block text-balance">
                   {row1Accent ? (
-                    <span className="text-[rgba(232,236,241,0.55)]">{row1Accent} </span>
+                    <span className={GI_HERO_EDITORIAL.titleMuted}>{row1Accent} </span>
                   ) : null}
                   {row2Muted ? (
-                    <span className="text-[#3B82F6]">{row2Muted}</span>
+                    <span className={GI_HERO_EDITORIAL.titleAccent}>{row2Muted}</span>
                   ) : null}
                 </span>
               ) : null}
@@ -106,7 +107,7 @@ export default function GoodIdeasHomeHero({
 
             <motion.p
               variants={itemVariants}
-              className="mt-4 max-w-lg text-center font-inter text-[clamp(16px,3.8vw,18px)] leading-relaxed text-[rgba(232,236,241,0.72)] md:mt-5"
+              className={`mt-4 ${GI_HERO_EDITORIAL.subtitle}`}
             >
               {subtitle}
             </motion.p>
@@ -114,7 +115,7 @@ export default function GoodIdeasHomeHero({
             <motion.div variants={itemVariants} className="mt-6 w-full max-w-md md:mt-7">
               <Link
                 href={productsPath(locale)}
-                className={GI_HERO_PRIMARY_CTA_CLASS}
+                className={GI_HERO_DARK_CTA_CLASS}
                 aria-label={ctaLabel}
               >
                 {ctaLabel}

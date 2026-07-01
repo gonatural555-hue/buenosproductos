@@ -84,7 +84,7 @@ export default function GoodIdeasBlogHero({
           aria-hidden
         />
         <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 md:gap-4">
-          <motion.div className="relative flex w-full max-w-[980px] flex-col items-center">
+          <motion.div className="relative mt-[40px] flex w-full max-w-[980px] flex-col items-center">
             <motion.p
               variants={itemVariants}
               className="mb-3 text-center font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[rgba(232,236,241,0.45)] md:mb-4"

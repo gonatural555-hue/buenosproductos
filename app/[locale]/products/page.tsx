@@ -6,6 +6,7 @@ import GoodIdeasProductsCarouselHeader, {
   type GoodIdeasCarouselSlide,
 } from "@/components/good-ideas/GoodIdeasProductsCarouselHeader";
 import GoodIdeasSortingBar from "@/components/good-ideas/GoodIdeasSortingBar";
+import { Fragment } from "react";
 import { getGoodIdeasProducts } from "@/lib/good-ideas-products";
 import { buildGoodIdeasFilterCategoryTree } from "@/lib/good-ideas-plp-categories";
 import { buildGoodIdeasFilterBrandOptions } from "@/lib/good-ideas-plp-brands";
@@ -24,7 +25,11 @@ import {
   buildGoodIdeasProductsListHref,
 } from "@/lib/good-ideas-plp-segments";
 import { sortProductsList } from "@/lib/products-page-segments";
-import { GI_CATALOG_SECTION_ID } from "@/lib/ui/goodideas-design";
+import {
+  GI_CATALOG_SECTION_ID,
+  GI_PLP_ROW2_SENTINEL_LG,
+  GI_PLP_ROW2_SENTINEL_SM,
+} from "@/lib/ui/goodideas-design";
 import type { GiProductsCategoryTone } from "@/lib/ui/goodideas-design";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
@@ -296,15 +301,30 @@ export default async function GoodIdeasProductsPage({
               clearLabel={t("goodIdeas.products.searchViewAll")}
             />
           ) : (
-            displayProducts.map((product) => (
-              <GoodIdeasProductCard
-                key={product.id}
-                product={product}
-                locale={locale}
-                viewProductLabel={t("common.viewProduct")}
-                noImageLabel={t("common.noImage")}
-                addNowLabel={t("common.addNow")}
-              />
+            displayProducts.map((product, index) => (
+              <Fragment key={product.id}>
+                <GoodIdeasProductCard
+                  product={product}
+                  locale={locale}
+                  viewProductLabel={t("common.viewProduct")}
+                  noImageLabel={t("common.noImage")}
+                  addNowLabel={t("common.addNow")}
+                />
+                {index === 1 ? (
+                  <div
+                    id={GI_PLP_ROW2_SENTINEL_SM}
+                    className="pointer-events-none col-span-2 h-0 lg:hidden"
+                    aria-hidden
+                  />
+                ) : null}
+                {index === 2 ? (
+                  <div
+                    id={GI_PLP_ROW2_SENTINEL_LG}
+                    className="pointer-events-none col-span-3 hidden h-0 lg:block"
+                    aria-hidden
+                  />
+                ) : null}
+              </Fragment>
             ))
           )}
         </GoodIdeasCatalogLayout>

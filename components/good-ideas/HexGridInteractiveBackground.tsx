@@ -7,13 +7,12 @@ type Point = { x: number; y: number };
 type Edge = { a: Point; b: Point };
 
 const HEX_RADIUS = 28;
-const GAP_SCALE = 0.9;
-const GLOW_RADIUS = 130;
-const GLOW_RADIUS_EXPANDED = 400;
+const GLOW_RADIUS = 163;
+const GLOW_RADIUS_EXPANDED = 500;
 const MOUSE_LERP = 0.38;
 const BASE_BG = "#0B0F14";
-const HEX_FILL = "#121820";
-const HEX_HIGHLIGHT = "#1a2430";
+/** Solo contorno hex — sin relleno (Home + Products heroes). */
+const HEX_EDGE = "#FFFFFF";
 
 function distToSegment(
   px: number,
@@ -78,15 +77,6 @@ function buildHexGrid(width: number, height: number): { hexes: Point[]; edges: E
   return { hexes, edges: [...edgeMap.values()] };
 }
 
-function traceHexagon(ctx: CanvasRenderingContext2D, cx: number, cy: number, radius: number) {
-  for (let i = 0; i < 6; i++) {
-    const { x, y } = hexVertex(cx, cy, i, radius);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.closePath();
-}
-
 function drawFrame(
   ctx: CanvasRenderingContext2D,
   width: number,
@@ -100,36 +90,12 @@ function drawFrame(
   ctx.fillStyle = BASE_BG;
   ctx.fillRect(0, 0, width, height);
 
-  const fillRadius = HEX_RADIUS * GAP_SCALE;
-
-  for (const hex of grid.hexes) {
-    ctx.beginPath();
-    traceHexagon(ctx, hex.x, hex.y, fillRadius);
-    ctx.fillStyle = HEX_FILL;
-    ctx.fill();
-
-    ctx.beginPath();
-    traceHexagon(ctx, hex.x, hex.y, fillRadius * 0.92);
-    const shade = ctx.createRadialGradient(
-      hex.x,
-      hex.y - fillRadius * 0.15,
-      0,
-      hex.x,
-      hex.y,
-      fillRadius
-    );
-    shade.addColorStop(0, HEX_HIGHLIGHT);
-    shade.addColorStop(1, "rgba(18, 24, 32, 0)");
-    ctx.fillStyle = shade;
-    ctx.fill();
-  }
-
   ctx.beginPath();
   for (const edge of grid.edges) {
     ctx.moveTo(edge.a.x, edge.a.y);
     ctx.lineTo(edge.b.x, edge.b.y);
   }
-  ctx.strokeStyle = "rgba(28, 42, 58, 0.55)";
+  ctx.strokeStyle = HEX_EDGE;
   ctx.lineWidth = 1;
   ctx.stroke();
 
