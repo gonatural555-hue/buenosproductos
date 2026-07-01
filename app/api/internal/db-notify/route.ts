@@ -17,6 +17,25 @@ function isAuthorized(request: NextRequest): boolean {
   return header === secret;
 }
 
+/** Health check — abrí esta URL en el navegador para verificar deploy. */
+export async function GET() {
+  const configured = Boolean(
+    process.env.SUPABASE_WEBHOOK_SECRET?.trim() &&
+      (process.env.ADMIN_NOTIFY_EMAIL?.trim() ||
+        process.env.BREVO_API_KEY?.trim())
+  );
+
+  return NextResponse.json({
+    ok: true,
+    service: "supabase-db-notify",
+    configured,
+    methods: ["GET", "POST"],
+    usage:
+      "POST desde Supabase Database Webhooks con header x-webhook-secret y body { type, table, record }.",
+    tables: ["orders", "profiles", "newsletter_subscriptions"],
+  });
+}
+
 export async function POST(request: NextRequest) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });

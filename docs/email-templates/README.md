@@ -41,3 +41,5 @@ Pegar HTML con el mismo estilo en **Authentication → Email templates**:
 ## Webhook admin
 
 `POST /api/internal/db-notify` con header `x-webhook-secret`.
+
+Verificar deploy en navegador: `GET /api/internal/db-notify` → JSON `{ ok: true, service: "supabase-db-notify" }`.
