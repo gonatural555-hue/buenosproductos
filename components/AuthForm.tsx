@@ -13,6 +13,7 @@ import {
 } from "@/lib/ui/gi-auth";
 
 type Tab = "login" | "register";
+type FormView = "auth" | "forgot-password";
 
 type Props = {
   initialTab?: Tab;
@@ -100,11 +101,12 @@ export default function AuthForm({
   isPage = false,
   redirectTo,
 }: Props) {
-  const { login, register } = useUser();
+  const { login, register, requestPasswordReset } = useUser();
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations();
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
+  const [formView, setFormView] = useState<FormView>("auth");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -114,6 +116,8 @@ export default function AuthForm({
   const [submitting, setSubmitting] = useState(false);
   const [awaitingEmailConfirmation, setAwaitingEmailConfirmation] =
     useState(false);
+  const [resetEmailSent, setResetEmailSent] = useState(false);
+  const [emailAlreadyRegistered, setEmailAlreadyRegistered] = useState(false);
   const [pendingEmail, setPendingEmail] = useState("");
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
@@ -128,24 +132,75 @@ export default function AuthForm({
     setShowPassword(false);
     setError(null);
     setAwaitingEmailConfirmation(false);
+    setResetEmailSent(false);
+    setEmailAlreadyRegistered(false);
+    setFormView("auth");
     setPendingEmail("");
     setActiveTab(initialTab);
   }, [initialTab]);
 
   const subtitle = useMemo(() => {
+    if (formView === "forgot-password") {
+      return resetEmailSent
+        ? ""
+        : t("authForm.forgotPasswordDescription");
+    }
     if (activeTab === "login") {
       return t("goodIdeas.auth.loginSubtitle");
     }
     return t("goodIdeas.auth.registerSubtitle");
-  }, [activeTab, t]);
+  }, [activeTab, formView, resetEmailSent, t]);
+
+  const heading = useMemo(() => {
+    if (formView === "forgot-password") {
+      return resetEmailSent
+        ? t("authForm.resetEmailSentTitle")
+        : t("authForm.forgotPasswordTitle");
+    }
+    if (awaitingEmailConfirmation && activeTab === "register") {
+      return t("authForm.confirmEmailTitle");
+    }
+    if (emailAlreadyRegistered && activeTab === "register") {
+      return t("authForm.emailAlreadyRegisteredTitle");
+    }
+    return activeTab === "login"
+      ? t("goodIdeas.auth.loginTitle")
+      : t("goodIdeas.auth.registerTitle");
+  }, [
+    activeTab,
+    awaitingEmailConfirmation,
+    emailAlreadyRegistered,
+    formView,
+    resetEmailSent,
+    t,
+  ]);
 
   const handleTabSelect = (tab: Tab) => {
     setActiveTab(tab);
+    setFormView("auth");
+    setEmailAlreadyRegistered(false);
     if (tab === "login") {
       setAwaitingEmailConfirmation(false);
+      setResetEmailSent(false);
       setConfirmPassword("");
       setShowPassword(false);
     }
+  };
+
+  const goToLogin = () => {
+    setActiveTab("login");
+    setFormView("auth");
+    setAwaitingEmailConfirmation(false);
+    setResetEmailSent(false);
+    setEmailAlreadyRegistered(false);
+    setError(null);
+  };
+
+  const openForgotPassword = () => {
+    setFormView("forgot-password");
+    setError(null);
+    setResetEmailSent(false);
+    setEmailAlreadyRegistered(false);
   };
 
   const handleInputFocus = (inputRef: React.RefObject<HTMLInputElement | null>) => {
@@ -175,6 +230,23 @@ export default function AuthForm({
     }
   };
 
+  const handleForgotPasswordSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    try {
+      const { error: resetError } = await requestPasswordReset(email, locale);
+      if (resetError) {
+        setError(resetError);
+        return;
+      }
+      setResetEmailSent(true);
+      setPendingEmail(email);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError(null);
@@ -197,9 +269,14 @@ export default function AuthForm({
           error: err,
           needsEmailConfirmation,
           pendingEmail: registeredEmail,
+          emailAlreadyRegistered: duplicateEmail,
         } = await register({ name, email, password });
         if (err) {
           setError(err);
+          return;
+        }
+        if (duplicateEmail) {
+          setEmailAlreadyRegistered(true);
           return;
         }
         if (needsEmailConfirmation) {
@@ -217,28 +294,26 @@ export default function AuthForm({
 
   return (
     <div className="w-full">
-      <nav
-        className="flex gap-8 border-b border-white/[0.08]"
-        role="tablist"
-        aria-label={t("goodIdeas.auth.tablistAria")}
-      >
-        <AuthTabButton tab="login" activeTab={activeTab} onSelect={handleTabSelect}>
-          {t("goodIdeas.auth.loginTab")}
-        </AuthTabButton>
-        <AuthTabButton tab="register" activeTab={activeTab} onSelect={handleTabSelect}>
-          {t("goodIdeas.auth.registerTab")}
-        </AuthTabButton>
-      </nav>
+      {formView === "auth" ? (
+        <nav
+          className="flex gap-8 border-b border-white/[0.08]"
+          role="tablist"
+          aria-label={t("goodIdeas.auth.tablistAria")}
+        >
+          <AuthTabButton tab="login" activeTab={activeTab} onSelect={handleTabSelect}>
+            {t("goodIdeas.auth.loginTab")}
+          </AuthTabButton>
+          <AuthTabButton tab="register" activeTab={activeTab} onSelect={handleTabSelect}>
+            {t("goodIdeas.auth.registerTab")}
+          </AuthTabButton>
+        </nav>
+      ) : null}
 
       <div className="mt-6 space-y-2">
         <h2 className="font-body text-2xl font-semibold tracking-tight text-[#E8ECF1]">
-          {awaitingEmailConfirmation && activeTab === "register"
-            ? t("authForm.confirmEmailTitle")
-            : activeTab === "login"
-              ? t("goodIdeas.auth.loginTitle")
-              : t("goodIdeas.auth.registerTitle")}
+          {heading}
         </h2>
-        {!(awaitingEmailConfirmation && activeTab === "register") ? (
+        {subtitle ? (
           <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.65)]">
             {subtitle}
           </p>
@@ -251,7 +326,56 @@ export default function AuthForm({
         </p>
       ) : null}
 
-      {awaitingEmailConfirmation && activeTab === "register" ? (
+      {formView === "forgot-password" && resetEmailSent ? (
+        <div
+          className="mt-6 rounded-2xl border border-white/[0.08] bg-[#0B0F14]/80 p-5 sm:p-6"
+          role="status"
+          aria-live="polite"
+        >
+          <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.72)]">
+            {t("authForm.resetEmailSentDescription").replace(
+              "{email}",
+              pendingEmail
+            )}
+          </p>
+          <button
+            type="button"
+            onClick={goToLogin}
+            className="mt-4 font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
+          >
+            {t("authForm.backToLogin")}
+          </button>
+        </div>
+      ) : null}
+
+      {emailAlreadyRegistered && activeTab === "register" && formView === "auth" ? (
+        <div
+          className="mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 sm:p-6"
+          role="alert"
+        >
+          <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.85)]">
+            {t("authForm.emailAlreadyRegisteredDescription")}
+          </p>
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            <button
+              type="button"
+              onClick={goToLogin}
+              className="font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
+            >
+              {t("authForm.emailAlreadyRegisteredLogin")}
+            </button>
+            <button
+              type="button"
+              onClick={openForgotPassword}
+              className="font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
+            >
+              {t("authForm.emailAlreadyRegisteredForgot")}
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {awaitingEmailConfirmation && activeTab === "register" && formView === "auth" ? (
         <div
           className="mt-6 rounded-2xl border border-white/[0.08] bg-[#0B0F14]/80 p-5 sm:p-6"
           role="status"
@@ -286,10 +410,7 @@ export default function AuthForm({
               </p>
               <button
                 type="button"
-                onClick={() => {
-                  setActiveTab("login");
-                  setAwaitingEmailConfirmation(false);
-                }}
+                onClick={goToLogin}
                 className="font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
               >
                 {t("authForm.goToLogin")}
@@ -297,7 +418,40 @@ export default function AuthForm({
             </div>
           </div>
         </div>
-      ) : (
+      ) : formView === "forgot-password" && !resetEmailSent ? (
+        <form
+          className="mt-6 space-y-4"
+          onSubmit={(e) => void handleForgotPasswordSubmit(e)}
+        >
+          <div className="space-y-2">
+            <label className={giAuthLabelClass}>{t("goodIdeas.auth.emailLabel")}</label>
+            <input
+              ref={emailInputRef}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              onFocus={() => handleInputFocus(emailInputRef)}
+              type="email"
+              className={giAuthInputClass}
+              placeholder={t("goodIdeas.auth.emailPlaceholder")}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={submitting}
+            className={giAuthSubmitClass}
+          >
+            {submitting ? "…" : t("authForm.sendResetLink")}
+          </button>
+          <button
+            type="button"
+            onClick={goToLogin}
+            className="w-full font-body text-sm font-semibold text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
+          >
+            {t("authForm.backToLogin")}
+          </button>
+        </form>
+      ) : emailAlreadyRegistered && activeTab === "register" ? null : (
         <form className="mt-6 space-y-4" onSubmit={(e) => void handleSubmit(e)}>
           {activeTab === "register" && (
             <div className="space-y-2">
@@ -364,6 +518,15 @@ export default function AuthForm({
                 )}
               </button>
             </div>
+            {activeTab === "login" ? (
+              <button
+                type="button"
+                onClick={openForgotPassword}
+                className="font-body text-sm font-medium text-[#3B82F6] underline-offset-4 transition-colors hover:text-[#60A5FA] hover:underline"
+              >
+                {t("authForm.forgotPasswordLink")}
+              </button>
+            ) : null}
           </div>
 
           {activeTab === "register" && (

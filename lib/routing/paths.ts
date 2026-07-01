@@ -40,6 +40,10 @@ export function accountPath(locale: Locale): string {
   return `/${locale}/account`;
 }
 
+export function resetPasswordPath(locale: Locale): string {
+  return `/${locale}/account/reset-password`;
+}
+
 export type AccountSection = "account" | "orders" | "addresses";
 
 const ACCOUNT_SECTIONS = new Set<AccountSection>(["account", "orders", "addresses"]);

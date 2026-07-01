@@ -371,7 +371,25 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "confirmPassword": "Confirm password",
-    "passwordMismatch": "Passwords do not match."
+    "passwordMismatch": "Passwords do not match.",
+    "forgotPasswordLink": "Forgot your password?",
+    "forgotPasswordTitle": "Reset password",
+    "forgotPasswordDescription": "Enter your account email and we'll send you a link to choose a new password.",
+    "sendResetLink": "Send recovery link",
+    "backToLogin": "Back to sign in",
+    "resetEmailSentTitle": "Check your email",
+    "resetEmailSentDescription": "If an account exists for {email}, we sent a link to reset your password (check spam too).",
+    "resetPasswordTitle": "New password",
+    "resetPasswordDescription": "Choose a new password for your account.",
+    "newPassword": "New password",
+    "resetPasswordSubmit": "Save password",
+    "resetPasswordSuccess": "Your password was updated successfully.",
+    "resetPasswordInvalidSession": "This link is invalid or expired. Request a new one from sign in.",
+    "authCallbackError": "We couldn't complete sign-in. Try again or request a new link.",
+    "emailAlreadyRegisteredTitle": "This email already has an account",
+    "emailAlreadyRegisteredDescription": "This email already has an account. Sign in or reset your password.",
+    "emailAlreadyRegisteredLogin": "Go to sign in",
+    "emailAlreadyRegisteredForgot": "Forgot your password?"
   },
   "seo": {
     "gateway": {

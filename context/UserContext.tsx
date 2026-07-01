@@ -12,6 +12,8 @@ import type {
   Session,
   User as SupabaseUser,
 } from "@supabase/supabase-js";
+import type { Locale } from "@/lib/i18n/config";
+import { resetPasswordPath } from "@/lib/routing/paths";
 import { getSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/browser";
 import {
   countPaidOrders,
@@ -101,6 +103,21 @@ function addressToRow(
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
+function isEmailAlreadyRegisteredMessage(message: string): boolean {
+  const lower = message.toLowerCase();
+  return (
+    lower.includes("already registered") ||
+    lower.includes("already been registered") ||
+    lower.includes("user already")
+  );
+}
+
+function isObfuscatedDuplicateSignUp(user: SupabaseUser | null): boolean {
+  return Boolean(
+    user && (!user.identities || user.identities.length === 0)
+  );
+}
+
 type UserState = {
   authLoading: boolean;
   sessionUser: SupabaseUser | null;
@@ -124,7 +141,13 @@ type UserContextValue = UserState & {
     error: string | null;
     needsEmailConfirmation?: boolean;
     pendingEmail?: string;
+    emailAlreadyRegistered?: boolean;
   }>;
+  requestPasswordReset: (
+    email: string,
+    locale: Locale
+  ) => Promise<{ error: string | null }>;
+  updatePassword: (password: string) => Promise<{ error: string | null }>;
   logout: () => Promise<void>;
   setAddresses: (next: Address[]) => void;
   upsertAddress: (next: Address) => Promise<Address | null>;
@@ -344,7 +367,13 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         },
       });
       if (error) {
+        if (isEmailAlreadyRegisteredMessage(error.message)) {
+          return { error: null, emailAlreadyRegistered: true };
+        }
         return { error: error.message };
+      }
+      if (isObfuscatedDuplicateSignUp(data.user)) {
+        return { error: null, emailAlreadyRegistered: true };
       }
       if (data.session) {
         return { error: null, needsEmailConfirmation: false };
@@ -358,6 +387,34 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     },
     []
   );
+
+  const requestPasswordReset = useCallback(
+    async (email: string, locale: Locale) => {
+      if (!isSupabaseConfigured()) {
+        return { error: "Supabase no está configurado." };
+      }
+      const supabase = getSupabaseBrowserClient();
+      const nextPath = resetPasswordPath(locale);
+      const redirectTo =
+        typeof window !== "undefined"
+          ? `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`
+          : undefined;
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo,
+      });
+      return { error: error?.message ?? null };
+    },
+    []
+  );
+
+  const updatePassword = useCallback(async (password: string) => {
+    if (!isSupabaseConfigured()) {
+      return { error: "Supabase no está configurado." };
+    }
+    const supabase = getSupabaseBrowserClient();
+    const { error } = await supabase.auth.updateUser({ password });
+    return { error: error?.message ?? null };
+  }, []);
 
   const logout = useCallback(async () => {
     if (!isSupabaseConfigured()) return;
@@ -493,6 +550,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       isLoggedIn,
       login,
       register,
+      requestPasswordReset,
+      updatePassword,
       logout,
       setAddresses,
       upsertAddress,
@@ -513,6 +572,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       isLoggedIn,
       login,
       register,
+      requestPasswordReset,
+      updatePassword,
       logout,
       setAddresses,
       upsertAddress,

@@ -31,6 +31,7 @@ export default function AccountPage() {
   const locale = useLocale();
   const t = useTranslations();
   const sectionFromUrl = searchParams.get("section");
+  const passwordUpdated = searchParams.get("passwordUpdated") === "1";
   const initialSection: SectionKey = isAccountSection(sectionFromUrl)
     ? sectionFromUrl
     : "account";
@@ -177,6 +178,17 @@ export default function AccountPage() {
             {t("accountPage.subtitle")}
           </p>
         </header>
+
+        {passwordUpdated ? (
+          <div
+            className="mb-8 rounded-2xl border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-5 py-4"
+            role="status"
+          >
+            <p className="font-body text-sm text-[#E8ECF1]">
+              {t("authForm.resetPasswordSuccess")}
+            </p>
+          </div>
+        ) : null}
 
         <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
           <aside className="space-y-3">

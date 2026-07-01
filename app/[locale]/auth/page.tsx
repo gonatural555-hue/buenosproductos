@@ -18,6 +18,7 @@ function AuthPageContent() {
 
   const tab = (searchParams.get("tab") as "login" | "register" | null) || "login";
   const redirectParam = searchParams.get("redirect");
+  const authError = searchParams.get("error");
   const redirectTo =
     redirectParam && redirectParam.startsWith("/") ? redirectParam : undefined;
 
@@ -47,6 +48,16 @@ function AuthPageContent() {
 
   return (
     <GiAuthExperienceShell mode="page" backHref={homePath(locale)}>
+      {authError === "auth" ? (
+        <p className="mb-4 font-body text-sm text-[#F87171]" role="alert">
+          {t("authForm.authCallbackError")}
+        </p>
+      ) : null}
+      {authError === "reset" ? (
+        <p className="mb-4 font-body text-sm text-[#F87171]" role="alert">
+          {t("authForm.resetPasswordInvalidSession")}
+        </p>
+      ) : null}
       <AuthForm initialTab={tab} isPage redirectTo={redirectTo} />
     </GiAuthExperienceShell>
   );
