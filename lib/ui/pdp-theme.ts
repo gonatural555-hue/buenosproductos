@@ -20,7 +20,7 @@ export function getPdpBuyBoxTheme(
   if (gi) {
     return {
       brandLink: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)] underline-offset-2 hover:text-[#60A5FA] hover:underline`,
-      title: `font-body text-[clamp(1.75rem,2.8vw,2.375rem)] font-bold leading-[1.22] tracking-[var(--gi-tracking-tight)] text-[var(--gi-text-on-dark)]`,
+      title: `${giType.pdpTitle} text-[clamp(1.75rem,2.8vw,2.375rem)] text-[var(--gi-text-on-dark)]`,
       reviewsRating: "text-text-muted",
       reviewsScore: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,
       reviewsDot: "text-white/20",

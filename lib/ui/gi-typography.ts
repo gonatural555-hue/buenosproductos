@@ -19,7 +19,9 @@ export const giType = {
   breadcrumbCurrent: "font-body text-xs font-normal text-[var(--gi-text-muted)]",
   breadcrumbSep: "mx-2 text-[var(--gi-text-muted)]/45 select-none",
 
-  /** PDP */
+  /** PDP — título producto (buy box) */
+  pdpTitle:
+    "font-body font-bold leading-[1.22] tracking-[var(--gi-tracking-tight)]",
   productTitle:
     "font-body text-[length:var(--gi-text-product-title)] font-bold leading-[var(--gi-leading-heading)] tracking-[var(--gi-tracking-tight)] line-clamp-2",
   productMeta:
@@ -79,4 +81,8 @@ export const giType = {
     "font-display text-[clamp(1.5rem,3vw,2.25rem)] font-normal tracking-[var(--gi-tracking-tight)]",
   pageTitle:
     "font-display text-[clamp(2rem,5vw,3rem)] font-normal tracking-[var(--gi-tracking-tight)]",
+
+  /** Blog — cards de listado (misma familia/peso/leading que PDP) */
+  blogPostTitle:
+    "font-body text-[clamp(1.125rem,2.2vw,1.375rem)] font-bold leading-[1.22] tracking-[var(--gi-tracking-tight)] line-clamp-2 sm:text-[clamp(1.25rem,2.4vw,1.5rem)]",
 } as const;

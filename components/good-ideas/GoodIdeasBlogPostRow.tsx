@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SmartImage from "@/components/SmartImage";
+import { giType } from "@/lib/ui/gi-typography";
 
 type Props = {
   href: string;
@@ -34,7 +35,7 @@ export default function GoodIdeasBlogPostRow({
           <p className="font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B82F6]">
             {categoryLabel}
           </p>
-          <h2 className="mt-1.5 line-clamp-2 font-display text-lg font-semibold leading-snug tracking-[-0.02em] text-[#111111] transition group-hover:text-[#3B82F6] sm:text-xl">
+          <h2 className={`mt-1.5 ${giType.blogPostTitle} text-[#111111] transition group-hover:text-[#3B82F6]`}>
             {title}
           </h2>
           {excerpt ? (
