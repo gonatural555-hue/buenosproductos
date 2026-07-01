@@ -97,6 +97,18 @@ export default function ResetPasswordForm() {
         setError(updateError);
         return;
       }
+
+      try {
+        await fetch("/api/auth/notify-password-updated", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ locale }),
+        });
+      } catch {
+        /* email opcional — no bloquea redirect */
+      }
+
       router.replace(`${accountPath(locale)}?passwordUpdated=1`);
       router.refresh();
     } finally {

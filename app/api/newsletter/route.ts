@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { syncNewsletterSubscriberToBrevo } from "@/lib/brevo";
+import { sendNewsletterWelcomeEmail } from "@/lib/email/transactional-templates";
+import type { GiEmailLocale } from "@/lib/email/layout";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LOCALES = new Set(["en", "es", "fr", "it"]);
@@ -93,6 +96,18 @@ export async function POST(request: NextRequest) {
       { ok: false, code: "server" as const },
       { status: 500 }
     );
+  }
+
+  const emailLocale: GiEmailLocale = locale === "en" ? "en" : "es";
+
+  try {
+    await syncNewsletterSubscriberToBrevo(email, {
+      idioma: emailLocale,
+      consentimiento: true,
+    });
+    await sendNewsletterWelcomeEmail(email, emailLocale);
+  } catch (brevoErr) {
+    console.error("[newsletter] Brevo sync/welcome email:", brevoErr);
   }
 
   return NextResponse.json({ ok: true as const }, { status: 201 });

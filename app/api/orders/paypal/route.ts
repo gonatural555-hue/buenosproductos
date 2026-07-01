@@ -10,6 +10,12 @@ import {
   computePayPalSurcharge,
   paypalTotalsMatch,
 } from "@/lib/checkout/payment-methods";
+import { sendOrderConfirmationEmail } from "@/lib/email/order-confirmation";
+import {
+  inferCountryFromShipping,
+  inferOrderEmailLocale,
+} from "@/lib/email/infer-locale";
+import { syncBuyerToBrevo } from "@/lib/brevo";
 import {
   getPaidOrderCountForUser,
   getWelcomeFreeShippingRemaining,
@@ -267,6 +273,33 @@ export async function POST(request: NextRequest) {
         "[PayPal Order API] Sheets/eventos tras guardar en DB:",
         sheetErr
       );
+    }
+
+    const emailLocale = inferOrderEmailLocale(enrichedShippingAddress);
+
+    try {
+      await sendOrderConfirmationEmail({
+        email: safeEmail,
+        orderId,
+        total: totalAmount,
+        currency: currency || "USD",
+        items,
+        locale: emailLocale,
+      });
+    } catch (emailErr) {
+      console.error("[PayPal Order API] Order confirmation email:", emailErr);
+    }
+
+    try {
+      await syncBuyerToBrevo(safeEmail, {
+        fechaPrimeraCompra: new Date(),
+        totalGastado: totalAmount,
+        idioma: emailLocale,
+        pais: inferCountryFromShipping(enrichedShippingAddress),
+        consentimiento: true,
+      });
+    } catch (brevoErr) {
+      console.error("[PayPal Order API] Brevo buyer sync:", brevoErr);
     }
 
     return NextResponse.json({
