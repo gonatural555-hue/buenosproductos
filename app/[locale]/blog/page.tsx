@@ -72,7 +72,7 @@ export default async function GoodIdeasBlogPage({
           aria-hidden
         />
         <div className={`relative ${GI_CART_INNER}`}>
-          <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-[#E8ECF1] md:text-2xl">
+          <h2 className="text-center font-display text-xl font-semibold tracking-[-0.02em] text-[#E8ECF1] md:text-2xl">
             {t("goodIdeas.blog.articlesLabel")}
           </h2>
           <ul className="mt-8 flex flex-col gap-4 md:mt-10 md:gap-5">
