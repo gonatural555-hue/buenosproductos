@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import SmartImage from "@/components/SmartImage";
+import GoodIdeasCartDrawerLineRow from "@/components/good-ideas/GoodIdeasCartDrawerLineRow";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
@@ -24,10 +24,14 @@ export default function GoodIdeasCartDrawer() {
   const t = useTranslations();
   const { formatMoney } = useCurrency();
   const {
+    items,
     totalItems,
     isDrawerOpen,
     lastAddedLine,
     closeDrawer,
+    increaseQty,
+    decreaseQty,
+    removeItem,
   } = useGoodIdeasCart();
 
   const titleId = useId();
@@ -53,6 +57,12 @@ export default function GoodIdeasCartDrawer() {
     const timer = window.setTimeout(() => setShowSuccessHint(false), 2000);
     return () => window.clearTimeout(timer);
   }, [isDrawerOpen, lastAddedLine?.title, lastAddedLine?.price]);
+
+  useEffect(() => {
+    if (isDrawerOpen && items.length === 0) {
+      closeDrawer();
+    }
+  }, [closeDrawer, isDrawerOpen, items.length]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -93,8 +103,9 @@ export default function GoodIdeasCartDrawer() {
     router.push(cartPath(locale));
   }, [closeDrawer, locale, router]);
 
-  if (!mounted || !lastAddedLine) return null;
+  if (!mounted || items.length === 0) return null;
 
+  const formatPrice = (n: number) => formatMoney(n);
   const goToCartLabel = t("addedToCartDrawer.goToCart", "").replace(
     "{count}",
     String(totalItems)
@@ -181,55 +192,19 @@ export default function GoodIdeasCartDrawer() {
 
         <div className="mx-6 border-b border-[var(--gi-border)]" />
 
-        <div className="flex-1 overflow-y-auto px-6 py-6">
-          <div className="flex gap-4">
-            {lastAddedLine.image ? (
-              <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-lg bg-neutral-100 sm:h-[90px] sm:w-[90px]">
-                <SmartImage
-                  src={lastAddedLine.image}
-                  alt={lastAddedLine.title}
-                  fill
-                  className="object-cover object-center"
-                  sizes="90px"
-                />
-              </div>
-            ) : (
-              <div
-                className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-lg bg-neutral-100 sm:h-[90px] sm:w-[90px]"
-                role="img"
-                aria-label={t("common.noImage")}
+        <div className="flex-1 overflow-y-auto px-6 py-4">
+          <ul>
+            {items.map((item) => (
+              <GoodIdeasCartDrawerLineRow
+                key={item.id}
+                item={item}
+                formatPrice={formatPrice}
+                onIncrease={() => increaseQty(item.id)}
+                onDecrease={() => decreaseQty(item.id)}
+                onRemove={() => removeItem(item.id)}
               />
-            )}
-
-            <div className="min-w-0 flex-1">
-              <p className={`line-clamp-2 ${giType.drawerProduct} text-[var(--gi-ink)]`}>
-                {lastAddedLine.title}
-              </p>
-
-              {lastAddedLine.variantSelections?.map((selection) => {
-                const label = t(
-                  `cartPage.variantLabels.${selection.type}`,
-                  selection.typeLabel || selection.type
-                );
-                const value = t(
-                  `cartPage.variantOptions.${selection.type}.${selection.value}`,
-                  selection.label || selection.value
-                );
-                return (
-                  <p
-                    key={`${selection.type}-${selection.value}`}
-                    className={`mt-1.5 ${giType.drawerMeta}`}
-                  >
-                    {label}: {value}
-                  </p>
-                );
-              })}
-
-              <p className={`mt-3 ${giType.drawerPrice} text-[var(--gi-ink)]`}>
-                {formatMoney(lastAddedLine.price)}
-              </p>
-            </div>
-          </div>
+            ))}
+          </ul>
         </div>
 
         <div className="flex shrink-0 flex-col gap-3 px-6 pb-8 pt-2">

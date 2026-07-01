@@ -16,6 +16,14 @@ export function isValidImageSrc(src?: string | null): src is string {
   return false;
 }
 
+const VIDEO_SRC_PATTERN = /\.(?:mp4|webm|mov|m4v|ogg)(?:\?|#|$)/i;
+
+/** Archivo de vídeo directo (`/…` o URL absoluta con extensión de vídeo). */
+export function isVideoSrc(src?: string | null): src is string {
+  if (!isValidImageSrc(src)) return false;
+  return VIDEO_SRC_PATTERN.test(src);
+}
+
 /** Primera URL válida de una lista, o placeholder opcional. */
 export function resolveImageSrc(
   sources: Array<string | null | undefined>,

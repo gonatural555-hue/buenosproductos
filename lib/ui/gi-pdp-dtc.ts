@@ -17,4 +17,33 @@ export const GI_DTC = {
   heroGrid:
     "hidden lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-start lg:gap-x-10 xl:gap-x-14",
   buyBoxSticky: `lg:sticky ${GI_PDP_STICKY_TOP} lg:self-start`,
+  /** Fila horizontal lifestyle (382×622 px). */
+  horizontalTileWidthPx: 382,
+  horizontalTileHeightPx: 622,
+  /** Tiles promos DTC (382×305 px). */
+  horizontalPromoTileHeightPx: 305,
+  horizontalTileRow:
+    "flex flex-nowrap justify-start gap-4 overflow-x-auto pb-1 md:justify-center md:gap-6 md:overflow-x-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+  /** Ancho contenido 3 tiles (382×3 + gap-6×2). */
+  horizontalThreeTileRowMaxWidthPx: 382 * 3 + 24 * 2,
+  horizontalThreeTileRowContainer: "mx-auto w-full max-w-[1194px]",
+  horizontalTileItem:
+    "relative shrink-0 overflow-hidden rounded-2xl border border-[#ECECEC]",
+  /** Hover en tiles promo destacados (azul marca GI #3B82F6). */
+  promoTileHoverHighlight:
+    "group relative z-0 overflow-visible transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:scale-[1.03] hover:border-[#3B82F6]/45 hover:shadow-[0_0_0_1px_rgba(59,130,246,0.32),0_12px_40px_rgba(59,130,246,0.18)] motion-reduce:transition-none motion-reduce:hover:scale-100",
+  promoTileHoverTitle:
+    "transition-colors duration-300 group-hover:text-[#3B82F6]",
 } as const;
+
+export function giDtcHorizontalTileItemStyle(heightPx = GI_DTC.horizontalTileHeightPx): {
+  width: number;
+  height: number;
+  scrollSnapAlign: "center";
+} {
+  return {
+    width: GI_DTC.horizontalTileWidthPx,
+    height: heightPx,
+    scrollSnapAlign: "center",
+  };
+}

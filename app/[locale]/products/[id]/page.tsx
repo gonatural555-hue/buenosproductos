@@ -16,6 +16,7 @@ import { getGoodIdeasBrandName } from "@/lib/good-ideas-brand";
 import { buildGoodIdeasPdpAccordionBundle } from "@/lib/good-ideas-pdp-content";
 import { resolveGoodIdeasProductBrandLink } from "@/lib/good-ideas-plp-brands";
 import PdpDtcPostSections from "@/components/good-ideas/PdpDtcPostSections";
+import PdpDtcLifestyleSection from "@/components/good-ideas/PdpDtcLifestyleSection";
 import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 import { GI_PDP_DTC_TOP_PAD } from "@/lib/ui/goodideas-design";
 import ProductDetailClient from "@/components/ProductDetailClient";
@@ -158,6 +159,11 @@ export default async function GoodIdeasProductPage({ params }: Props) {
             suppressMobileSticky
           />
         </div>
+
+        <PdpDtcLifestyleSection
+          images={productImages.lifestyle}
+          productTitle={localizedProduct.title}
+        />
 
         <PdpDtcPostSections
           accordionBundle={accordionBundle}
