@@ -36,7 +36,9 @@ export const GI_DTC = {
     "transition-colors duration-300 group-hover:text-[#3B82F6]",
 } as const;
 
-export function giDtcHorizontalTileItemStyle(heightPx = GI_DTC.horizontalTileHeightPx): {
+export function giDtcHorizontalTileItemStyle(
+  heightPx: number = GI_DTC.horizontalTileHeightPx
+): {
   width: number;
   height: number;
   scrollSnapAlign: "center";
