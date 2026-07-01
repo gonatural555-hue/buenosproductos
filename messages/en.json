@@ -304,6 +304,8 @@
         "anonymousCustomer": "Verified customer",
         "reviewsEmptyTitle": "No reviews yet",
         "reviewsEmptyBody": "Be the first to share your experience with this product.",
+        "reviewsShowMore": "Show more reviews ({count})",
+        "reviewsShowLess": "Show fewer reviews",
         "crossSellTitle": "You may also like",
         "crossSellSubtitle": "Related picks curated for you."
       },

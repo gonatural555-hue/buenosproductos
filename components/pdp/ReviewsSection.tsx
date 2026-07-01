@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import ReviewCard from "@/components/pdp/ReviewCard";
 import RatingSummary from "@/components/pdp/RatingSummary";
 import { PdpReviewsSkeleton } from "@/components/pdp/PdpSectionSkeletons";
@@ -17,6 +18,8 @@ type Props = {
   surface?: "dark" | "light";
 };
 
+const INITIAL_REVIEWS_VISIBLE = 3;
+
 function ReviewsContent({
   productId,
   light,
@@ -28,6 +31,11 @@ function ReviewsContent({
   const locale = useLocale();
   const dateLocale = locale === "es" ? "es-AR" : "en-US";
   const { reviews, stats, loading, hasReviews } = useProductReviews(productId);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [productId]);
 
   if (loading) {
     return <PdpReviewsSkeleton light={light} />;
@@ -62,6 +70,22 @@ function ReviewsContent({
     ? "mt-2 font-body text-[15px] text-[#6B7280]"
     : "mt-2 font-body text-[15px] text-[rgba(232,236,241,0.6)]";
 
+  const visibleReviews = expanded
+    ? reviews
+    : reviews.slice(0, INITIAL_REVIEWS_VISIBLE);
+  const hasMoreReviews = reviews.length > INITIAL_REVIEWS_VISIBLE;
+  const hiddenCount = reviews.length - INITIAL_REVIEWS_VISIBLE;
+
+  const showMoreLabel = t("goodIdeas.pdp.phase3.reviewsShowMore", "").replace(
+    "{count}",
+    String(hiddenCount)
+  );
+  const showLessLabel = t("goodIdeas.pdp.phase3.reviewsShowLess", "");
+
+  const expandBtnClass = light
+    ? "mt-2 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-[#111111] bg-white px-6 font-body text-sm font-semibold text-[#111111] transition-colors hover:bg-[#FAFAFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111]/20 focus-visible:ring-offset-2"
+    : "mt-2 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/[0.2] bg-transparent px-6 font-body text-sm font-semibold text-[#E8ECF1] transition-colors hover:border-white/[0.35] hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]";
+
   return (
     <>
       <header className="mb-10 space-y-3 md:mb-12">
@@ -78,7 +102,7 @@ function ReviewsContent({
             surface={light ? "light" : "dark"}
           />
           <div className="flex min-w-0 flex-col gap-5 sm:gap-6">
-            {reviews.map((review) => (
+            {visibleReviews.map((review) => (
               <ReviewCard
                 key={review.id}
                 review={review}
@@ -88,6 +112,16 @@ function ReviewsContent({
                 surface={light ? "light" : "dark"}
               />
             ))}
+            {hasMoreReviews ? (
+              <button
+                type="button"
+                onClick={() => setExpanded((value) => !value)}
+                className={expandBtnClass}
+                aria-expanded={expanded}
+              >
+                {expanded ? showLessLabel : showMoreLabel}
+              </button>
+            ) : null}
           </div>
         </div>
       ) : (
