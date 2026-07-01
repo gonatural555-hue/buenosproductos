@@ -113,7 +113,7 @@ export default function ReviewCard({
             >
               <SmartImage
                 src={src}
-                alt=""
+                alt={`${displayName} — foto ${index + 1}`}
                 fill
                 sizes="64px"
                 className="object-cover"

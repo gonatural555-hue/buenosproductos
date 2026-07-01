@@ -24,6 +24,7 @@ function parseArgs(argv) {
     dryRun: false,
     headless: true,
     debug: false,
+    dumpJson: null,
     maxReviews: 20,
     minRating: 4,
     delayMs: 6000,
@@ -39,6 +40,8 @@ function parseArgs(argv) {
       args.headless = false;
     } else if (arg === "--debug") {
       args.debug = true;
+    } else if (arg === "--dump-json") {
+      args.dumpJson = true;
     } else if (arg.startsWith("--max=")) {
       args.maxReviews = Math.max(1, Number(arg.split("=")[1]) || 20);
     } else if (arg.startsWith("--delay=")) {
@@ -139,6 +142,7 @@ async function main() {
           minRating: args.minRating,
           headless: args.headless,
           debug: args.debug,
+          dumpJson: args.dumpJson ? `${productId}.raw.json` : null,
           session,
         });
         if (reviews.length > 0) break;
@@ -149,6 +153,12 @@ async function main() {
       }
 
       console.log(`  Parsed: ${reviews.length} review(s)`);
+      const withImages = reviews.filter((r) => (r.images?.length ?? 0) > 0).length;
+      const imageCount = reviews.reduce(
+        (acc, r) => acc + (r.images?.length ?? 0),
+        0
+      );
+      console.log(`  Fotos: ${imageCount} en ${withImages} reseña(s)`);
 
       if (reviews.length === 0) {
         summary.empty += 1;

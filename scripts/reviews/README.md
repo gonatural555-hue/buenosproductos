@@ -40,6 +40,7 @@ npm run import-reviews -- --product=gi-tech-001 --no-headless --debug
 | `--product=gi-tech-001` | Solo un producto |
 | `--dry-run` | Scrape sin insertar en Supabase |
 | `--debug` | Log de URLs capturadas + sample JSON |
+| `--dump-json` | Guarda JSON crudo en `scripts/reviews/debug/{productId}.raw.json` |
 | `--no-headless` | Browser visible (útil con CAPTCHA) |
 | `--max=20` | Máximo de reviews por producto |
 | `--min-rating=4` | Solo importar reseñas con esta estrella o más (default **4**) |
@@ -62,5 +63,27 @@ Editá `scripts/reviews/aliexpress-sources.json`:
 - Reemplaza reviews previas del mismo `product_id` en cada import.
 - **Solo 4★ y 5★** por defecto (`--min-rating=4`). Usá `--min-rating=1` si querés todas.
 - **Sin duplicados EN/ES:** una sola versión del texto por reseña; dedup por ID AliExpress o fingerprint.
+- **Fotos de reseñas:** el scraper extrae URLs de AliExpress y las guarda en `product_reviews.images`. El PDP las muestra en miniatura.
 - `verified` no aplica — reviews de AliExpress.
 - Si obtenés 0 reviews, probá `--no-headless --debug`.
+
+## Fotos en reseñas (primera vez)
+
+1. En **Supabase → SQL Editor**, ejecutá `docs/supabase-product-reviews-images.sql` (añade columna `images text[]` si falta).
+2. Confirmá que `aliexpress-sources.json` tiene tu producto (`productId` + `listingUrl` de AliExpress).
+3. Dry-run para ver si llegan fotos:
+   ```bash
+   npm run import-reviews -- --product=gi-hogar-004 --dry-run --debug
+   ```
+   Deberías ver `Fotos: N en M reseña(s)` y en el sample JSON un array `images: ["https://..."]`.
+4. Import real:
+   ```bash
+   npm run import-reviews -- --product=gi-hogar-004
+   ```
+5. Abrí el PDP del producto y bajá a **Lo que opinan nuestros clientes** — las fotos aparecen bajo el texto de cada reseña.
+
+Si `Fotos: 0`, probá:
+```bash
+npm run import-reviews -- --product=gi-hogar-004 --dry-run --no-headless --debug --dump-json
+```
+Revisá `scripts/reviews/debug/gi-hogar-004.raw.json` para ver qué devuelve AliExpress.
