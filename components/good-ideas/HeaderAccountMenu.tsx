@@ -46,7 +46,11 @@ type MenuItem = {
   label: string;
 };
 
-export default function HeaderAccountMenu() {
+export default function HeaderAccountMenu({
+  variant = "dark",
+}: {
+  variant?: "dark" | "light";
+}) {
   const locale = useLocale();
   const t = useTranslations();
   const router = useRouter();
@@ -95,11 +99,16 @@ export default function HeaderAccountMenu() {
     router.push(homePath(locale));
   };
 
+  const light = variant === "light";
+  const iconBtnClass = light
+    ? "relative flex h-10 w-10 items-center justify-center rounded-full text-[#111111] transition-colors duration-200 hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+    : "relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]";
+
   if (!isLoggedIn) {
     return (
       <Link
         href={authPath(locale, accountPath(locale))}
-        className="relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]"
+        className={iconBtnClass}
         aria-label={t("goodIdeas.nav.account")}
       >
         <AccountIcon className="h-5 w-5" />
@@ -111,14 +120,22 @@ export default function HeaderAccountMenu() {
     <div ref={rootRef} className="relative">
       <button
         type="button"
-        className="flex max-w-[11rem] items-center gap-2 rounded-full py-1.5 pl-1.5 pr-3 text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6] sm:max-w-[14rem]"
+        className={`flex max-w-[11rem] items-center gap-2 rounded-full py-1.5 pl-1.5 pr-3 transition-colors duration-200 sm:max-w-[14rem] ${
+          light
+            ? "text-[#111111] hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+            : "text-white hover:bg-white/8 hover:text-[#3B82F6]"
+        }`}
         aria-label={t("goodIdeas.nav.accountMenuAria")}
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={menuId}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/[0.08]">
+        <span
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+            light ? "bg-[#F3F4F6]" : "bg-white/[0.08]"
+          }`}
+        >
           <AccountIcon className="h-[18px] w-[18px]" />
         </span>
         <span className={`hidden truncate ${giType.navUtility} sm:inline`}>{helloLabel}</span>
@@ -128,7 +145,11 @@ export default function HeaderAccountMenu() {
         <div
           id={menuId}
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.5rem)] z-[70] min-w-[12.5rem] overflow-hidden rounded-xl border border-white/[0.1] bg-[rgba(11,15,20,0.96)] py-1.5 shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+          className={`absolute right-0 top-[calc(100%+0.5rem)] z-[70] min-w-[12.5rem] overflow-hidden rounded-xl border py-1.5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] ${
+            light
+              ? "border-[#E5E7EB] bg-white"
+              : "border-white/[0.1] bg-[rgba(11,15,20,0.96)] shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+          }`}
         >
           <p className="border-b border-white/[0.08] px-4 py-2.5 font-body text-sm font-semibold text-[#E8ECF1] sm:hidden">
             {helloLabel}

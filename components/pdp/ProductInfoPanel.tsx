@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { AddToCartLinePayload } from "@/lib/cart-line";
 import Breadcrumbs, { type BreadcrumbItem } from "@/components/Breadcrumbs";
 import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
+import GiDtcBuyBox from "@/components/good-ideas/GiDtcBuyBox";
 import GoodIdeasPdpAccordions from "@/components/good-ideas/GoodIdeasPdpAccordions";
 import VariantSelector from "@/components/VariantSelector";
 import ColorSwatchSelector from "@/components/pdp/ColorSwatchSelector";
@@ -171,6 +172,7 @@ export default function ProductInfoPanel({
   const ctaDisabled = needsSizePick;
   const ctaText = needsSizePick ? selectSizeLabel : ctaLabel;
   const isGi = pdpBrand === "good-ideas";
+  const isGiDtc = isGi && surface === "light";
 
   const forestCta = isGi
     ? GI_PDP_CTA_CLASS
@@ -237,6 +239,43 @@ export default function ProductInfoPanel({
   ]
     .filter(Boolean)
     .join(" ");
+
+  if (isGiDtc) {
+    return (
+      <GiDtcBuyBox
+        brandLabel={brandLabel}
+        brandHref={brandHref}
+        seoH1={seoH1}
+        salesBadge={salesBadge}
+        resolvedPrice={resolvedPrice}
+        freeShipping={freeShipping}
+        freeShippingLabel={freeShippingLabel}
+        taxNote={taxNote}
+        reviewsAverage={reviewsAverage}
+        reviewsCount={reviewsCount}
+        reviewsLinkLabel={reviewsLinkLabel}
+        productVariants={productVariants}
+        colorDef={colorDef}
+        sizeDef={sizeDef}
+        otherVariantDefs={otherVariantDefs}
+        selections={selections}
+        onSelectionsChange={onSelectionsChange}
+        quantity={quantity}
+        onQuantityChange={onQuantityChange}
+        quantityLabel={quantityLabel}
+        sizeGuideHref={sizeGuideHref}
+        sizeGuideLabel={sizeGuideLabel}
+        selectSizeLabel={selectSizeLabel}
+        ctaLabel={ctaLabel}
+        pdpDesktop={pdpDesktop}
+        cartPayload={cartPayload}
+        onAfterAdd={onAfterAdd}
+        sticky={sticky}
+        sizeConfirmed={sizeConfirmed}
+        onSizeInteract={onSizeInteract}
+      />
+    );
+  }
 
   if (isGi) {
     return (

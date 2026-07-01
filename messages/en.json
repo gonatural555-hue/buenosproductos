@@ -313,6 +313,42 @@
         "navCrossSell": "Related",
         "buyNow": "Buy now",
         "stickyCartLabel": "Quick purchase"
+      },
+      "dtc": {
+        "viralBadge": "TRENDING | LIMITED AVAILABILITY",
+        "socialProof": "Trusted by hundreds of customers",
+        "socialProofWithCount": "Trusted by {count}+ happy customers",
+        "saveBadge": "SAVE {percent}%",
+        "benefitCompact": "Compact",
+        "benefitEasy": "Easy to use",
+        "benefitShipping": "Free shipping",
+        "inStock": "In stock — ready to ship",
+        "trustSecure": "Secure payment",
+        "trustGuarantee": "Guarantee",
+        "trustShipping": "Protected shipping",
+        "updateLabel": "UPDATE:",
+        "updateBody": "This product is in high demand and stock may sell out soon.",
+        "featuredReviewsTitle": "What our customers say",
+        "launchOfferTitle": "Launch offer",
+        "launchOfferBody": "For a limited time, enjoy this special price with free shipping included.",
+        "guaranteeTitle": "30-day money-back guarantee",
+        "guaranteeBody": "Shop with confidence. If your product arrives damaged or doesn't work as expected, you're protected. You have up to 30 days to request a return or refund.",
+        "shippingTitle": "Free & protected shipping",
+        "shippingBody": "We process orders promptly. Estimated delivery between {start} and {end}. You'll receive tracking by email when we ship.",
+        "specsTitle": "Specifications",
+        "faqTitle": "Frequently asked questions",
+        "placeholderReview1": {
+          "author": "Maria G.",
+          "text": "Arrived quickly and works perfectly. Very practical for everyday use."
+        },
+        "placeholderReview2": {
+          "author": "Lucas R.",
+          "text": "Excellent value for money. Highly recommend."
+        },
+        "placeholderReview3": {
+          "author": "Ana P.",
+          "text": "Easy purchase, smooth shipping, and the product delivers as promised."
+        }
       }
     },
     "footer": {

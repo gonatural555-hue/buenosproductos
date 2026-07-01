@@ -21,9 +21,9 @@ export const GI_PDP_HEADER_HEIGHT = "4.75rem";
 /** Aire entre el borde inferior del header y el contenido del PDP. */
 export const GI_PDP_HEADER_GAP_PX = 90;
 
-/** PDP — clearance del header + 90px de separación visual. */
-export const GI_PDP_TOP_PAD =
-  "pt-[calc(env(safe-area-inset-top,0px)+4.75rem+90px)]";
+/** PDP DTC — clearance header blanco (~72px) + aire. */
+export const GI_PDP_DTC_TOP_PAD =
+  "pt-[calc(env(safe-area-inset-top,0px)+5.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+6rem)]";
 
 /** PLP carousel — clearance del header fijo, sin aire extra de hero full-screen. */
 export const GI_PLP_CAROUSEL_TOP_PAD =

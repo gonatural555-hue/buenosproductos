@@ -9,13 +9,21 @@ import {
 } from "@/components/i18n/LocaleProvider";
 import { usePdpLazySection } from "@/hooks/usePdpLazySection";
 import { useProductReviews } from "@/hooks/useProductReviews";
+import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 import { GI_PDP_INNER } from "@/lib/ui/gi-pdp-layout";
 
 type Props = {
   productId: string;
+  surface?: "dark" | "light";
 };
 
-function ReviewsContent({ productId }: { productId: string }) {
+function ReviewsContent({
+  productId,
+  light,
+}: {
+  productId: string;
+  light?: boolean;
+}) {
   const t = useTranslations();
   const locale = useLocale();
   const dateLocale = locale === "es" ? "es-AR" : "en-US";
@@ -31,11 +39,19 @@ function ReviewsContent({ productId }: { productId: string }) {
   return (
     <>
       <header className="mb-8 space-y-2">
-        <h2 className="font-body text-2xl font-semibold tracking-tight text-[#E8ECF1] sm:text-[1.65rem]">
+        <h2
+          className={`font-body text-2xl font-semibold tracking-tight sm:text-[1.65rem] ${
+            light ? "text-[#111111]" : "text-[#E8ECF1]"
+          }`}
+        >
           {title}
         </h2>
         {subtitle ? (
-          <p className="font-body text-[15px] leading-relaxed text-[rgba(232,236,241,0.65)]">
+          <p
+            className={`font-body text-[15px] leading-relaxed ${
+              light ? "text-[#6B7280]" : "text-[rgba(232,236,241,0.65)]"
+            }`}
+          >
             {subtitle}
           </p>
         ) : null}
@@ -59,11 +75,25 @@ function ReviewsContent({ productId }: { productId: string }) {
           </div>
         </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-white/[0.1] bg-[#151B24]/40 px-6 py-10 text-center">
-          <p className="font-body text-base font-semibold text-[#E8ECF1]">
+        <div
+          className={`rounded-xl border border-dashed px-6 py-10 text-center ${
+            light
+              ? "border-[#E5E7EB] bg-[#FAFAFA]"
+              : "border-white/[0.1] bg-[#151B24]/40"
+          }`}
+        >
+          <p
+            className={`font-body text-base font-semibold ${
+              light ? "text-[#111111]" : "text-[#E8ECF1]"
+            }`}
+          >
             {t("goodIdeas.pdp.phase3.reviewsEmptyTitle")}
           </p>
-          <p className="mt-2 font-body text-[15px] text-[rgba(232,236,241,0.6)]">
+          <p
+            className={`mt-2 font-body text-[15px] ${
+              light ? "text-[#6B7280]" : "text-[rgba(232,236,241,0.6)]"
+            }`}
+          >
             {t("goodIdeas.pdp.phase3.reviewsEmptyBody")}
           </p>
         </div>
@@ -72,23 +102,27 @@ function ReviewsContent({ productId }: { productId: string }) {
   );
 }
 
-export default function ReviewsSection({ productId }: Props) {
+export default function ReviewsSection({
+  productId,
+  surface = "dark",
+}: Props) {
   const t = useTranslations();
   const title = t("goodIdeas.pdp.phase3.reviewsTitle");
   const { ref, visible } = usePdpLazySection();
+  const light = surface === "light";
 
   return (
     <section
       ref={ref}
-      id="pdp-reviews"
+      id="pdp-reviews-full"
       aria-label={title}
-      className="border-t border-white/[0.08] py-14 md:py-16"
+      className={`py-14 md:py-16 ${light ? "bg-transparent" : "border-t border-white/[0.08]"}`}
     >
-      <div className={GI_PDP_INNER}>
+      <div className={light ? GI_DTC.container : GI_PDP_INNER}>
         {!visible ? (
           <PdpReviewsSkeleton />
         ) : (
-          <ReviewsContent productId={productId} />
+          <ReviewsContent productId={productId} light={light} />
         )}
       </div>
     </section>

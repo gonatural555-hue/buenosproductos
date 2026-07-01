@@ -313,6 +313,42 @@
         "navCrossSell": "Relacionados",
         "buyNow": "Comprar ahora",
         "stickyCartLabel": "Compra rápida"
+      },
+      "dtc": {
+        "viralBadge": "TENDENCIA | DISPONIBILIDAD LIMITADA",
+        "socialProof": "Confiado por cientos de clientes",
+        "socialProofWithCount": "Confiado por {count}+ clientes satisfechos",
+        "saveBadge": "AHORRÁ {percent}%",
+        "benefitCompact": "Compacto",
+        "benefitEasy": "Fácil de usar",
+        "benefitShipping": "Envío gratis",
+        "inStock": "En stock — listo para enviar",
+        "trustSecure": "Pago seguro",
+        "trustGuarantee": "Garantía",
+        "trustShipping": "Envío protegido",
+        "updateLabel": "ACTUALIZACIÓN:",
+        "updateBody": "Este producto está teniendo alta demanda y el stock puede agotarse pronto.",
+        "featuredReviewsTitle": "Lo que dicen nuestros clientes",
+        "launchOfferTitle": "Oferta de lanzamiento",
+        "launchOfferBody": "Por tiempo limitado, aprovechá este precio especial con envío gratis incluido.",
+        "guaranteeTitle": "Garantía de devolución de 30 días",
+        "guaranteeBody": "Comprá con confianza. Si el producto llega dañado o no funciona como esperás, estás protegido. Tenés hasta 30 días para solicitar una devolución o reembolso.",
+        "shippingTitle": "Envío gratis y protegido",
+        "shippingBody": "Procesamos tu pedido con prontitud. Entrega estimada entre {start} y {end}. Recibirás seguimiento por email cuando despachemos.",
+        "specsTitle": "Especificaciones",
+        "faqTitle": "Preguntas frecuentes",
+        "placeholderReview1": {
+          "author": "María G.",
+          "text": "Llegó rápido y funciona perfecto. Muy práctico para el día a día."
+        },
+        "placeholderReview2": {
+          "author": "Lucas R.",
+          "text": "Excelente relación calidad-precio. Lo recomiendo sin dudas."
+        },
+        "placeholderReview3": {
+          "author": "Ana P.",
+          "text": "Compra fácil, envío sin problemas y el producto cumple lo prometido."
+        }
       }
     },
     "footer": {

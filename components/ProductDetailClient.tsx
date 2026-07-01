@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { AddToCartLinePayload } from "@/lib/cart-line";
 import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
+import ProductGalleryDtc from "@/components/pdp/ProductGalleryDtc";
 import ProductGalleryRei, {
   PDP_GALLERY_WIDTH_PX,
 } from "@/components/pdp/ProductGalleryRei";
@@ -22,6 +23,7 @@ import {
 import type { ProductVariants, VariantDefinition } from "@/lib/product-variants";
 import { useCurrency } from "@/context/CurrencyContext";
 import { resolvePdpBrandTheme } from "@/lib/ui/pdp-theme";
+import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 import {
   GI_PDP_CTA_CLASS,
   GI_PDP_GALLERY_STICKY,
@@ -144,7 +146,7 @@ export default function ProductDetailClient({
   noImageLabel,
   freeShippingLabel,
   pdpDesktop,
-  surface = "dark",
+  surface = "light",
   reviewsAverage = 0,
   reviewsCount = 0,
   reviewsLinkLabel,
@@ -253,7 +255,15 @@ export default function ProductDetailClient({
 
   const galleryColumns = resolvePdpGalleryColumns(galleryLayout, 2);
 
-  const gallery = (
+  const giDtc = gi && surface === "light";
+
+  const gallery = giDtc ? (
+    <ProductGalleryDtc
+      images={pdpGalleryImages}
+      title={product.title}
+      noImageLabel={noImageLabel}
+    />
+  ) : (
     <ProductGalleryRei
       images={pdpGalleryImages}
       title={product.title}
@@ -266,18 +276,20 @@ export default function ProductDetailClient({
     />
   );
 
-  const desktopGridClass = gi
-    ? GI_PDP_GRID
-    : "hidden lg:grid lg:grid-cols-[minmax(0,1.68fr)_minmax(280px,0.32fr)] lg:items-start lg:gap-x-10 xl:gap-x-12";
+  const desktopGridClass = giDtc
+    ? GI_DTC.heroGrid
+    : gi
+      ? GI_PDP_GRID
+      : "hidden lg:grid lg:grid-cols-[minmax(0,1.68fr)_minmax(280px,0.32fr)] lg:items-start lg:gap-x-10 xl:gap-x-12";
 
-  const galleryWrapClass = gi ? GI_PDP_GALLERY_STICKY : "min-w-0";
+  const galleryWrapClass = giDtc ? "min-w-0" : gi ? GI_PDP_GALLERY_STICKY : "min-w-0";
 
-  const panelSticky = !gi;
+  const panelSticky = giDtc ? true : !gi;
 
   return (
     <div id="pdp-hero">
       {/* Mobile: galería → información (sin sticky) */}
-      <section className="mx-auto grid max-w-full gap-8 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-0 sm:gap-10 lg:hidden">
+      <section className={`mx-auto grid max-w-full gap-8 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-0 sm:gap-10 lg:hidden ${giDtc ? "px-0" : ""}`}>
         <div className="min-w-0">{gallery}</div>
         <ProductInfoPanel {...buildInfoPanelProps(panelCommon, false)} />
       </section>
@@ -308,7 +320,9 @@ export default function ProductDetailClient({
       {!suppressMobileSticky ? (
       <div
         className={
-          gi
+          giDtc
+            ? "fixed bottom-0 left-0 right-0 z-50 border-t border-[#E5E7EB] bg-white/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
+            : gi
             ? "fixed bottom-0 left-0 right-0 z-50 border-t border-white/[0.08] bg-[#0B0F14]/98 px-4 pt-3 shadow-[0_-4px_20px_rgba(0,0,0,0.45)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
             : L
               ? "fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
@@ -319,7 +333,9 @@ export default function ProductDetailClient({
           <div className="mb-2 text-center">
             <p
               className={
-                gi
+                giDtc
+                  ? "text-xl font-bold tabular-nums text-[#111111]"
+                  : gi
                   ? "text-2xl font-bold tabular-nums text-[#E8ECF1]"
                   : L
                     ? "text-2xl font-bold text-neutral-900"
@@ -338,16 +354,21 @@ export default function ProductDetailClient({
             variantSelections={variantSelections}
             label={mobileCtaText}
             disabled={ctaDisabled}
+            variant={giDtc ? "dtc" : "default"}
             className={
-              gi
-                ? `${GI_PDP_CTA_CLASS} mt-0`
-                : "mt-0 w-full rounded-md py-3.5 text-base"
+              giDtc
+                ? `${GI_DTC.cta} mt-0`
+                : gi
+                  ? `${GI_PDP_CTA_CLASS} mt-0`
+                  : "mt-0 w-full rounded-md py-3.5 text-base"
             }
           />
 
           <div
             className={
-              gi
+              giDtc
+                ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-[#6B7280]"
+                : gi
                 ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-[rgba(232,236,241,0.5)]"
                 : L
                   ? "mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[10px] leading-tight text-neutral-500"
@@ -357,14 +378,14 @@ export default function ProductDetailClient({
             <span>{mobileStickyTrustLines[0]}</span>
             <span
               aria-hidden
-              className={gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
+              className={giDtc ? "text-[#D1D5DB]" : gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
             >
               ·
             </span>
             <span>{mobileStickyTrustLines[1]}</span>
             <span
               aria-hidden
-              className={gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
+              className={giDtc ? "text-[#D1D5DB]" : gi ? "text-white/20" : L ? "text-neutral-300" : "text-white/25"}
             >
               ·
             </span>

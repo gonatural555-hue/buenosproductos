@@ -2,9 +2,10 @@
 
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 import { useCurrency } from "@/context/CurrencyContext";
-import { giType } from "@/lib/ui/gi-typography";import { currencies, type DisplayCurrency } from "@/lib/currency/config";
+import { giType } from "@/lib/ui/gi-typography";
+import { currencies, type DisplayCurrency } from "@/lib/currency/config";
 
-type Variant = "utility" | "good-ideas";
+type Variant = "utility" | "good-ideas" | "light";
 
 type Props = {
   variant?: Variant;
@@ -13,6 +14,31 @@ type Props = {
 export default function HeaderCurrencySwitcher({ variant = "utility" }: Props) {
   const t = useTranslations();
   const { currency, setCurrency } = useCurrency();
+
+  if (variant === "light") {
+    return (
+      <nav
+        className="flex items-center gap-0.5 rounded-full border border-[#E5E7EB] px-1 py-0.5"
+        aria-label={t("header.currencyNavAria")}
+      >
+        {currencies.map((code) => (
+          <button
+            key={code}
+            type="button"
+            onClick={() => setCurrency(code)}
+            className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
+              code === currency
+                ? "text-[#111111] font-semibold"
+                : "text-[#6B7280] hover:text-[#111111]"
+            }`}
+            aria-pressed={code === currency}
+          >
+            {code}
+          </button>
+        ))}
+      </nav>
+    );
+  }
 
   if (variant === "good-ideas") {
     return (

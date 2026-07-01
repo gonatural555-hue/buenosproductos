@@ -18,6 +18,57 @@ export function getPdpBuyBoxTheme(
   const gi = brand === "good-ideas";
 
   if (gi) {
+    if (L) {
+      return {
+        brandLink:
+          "font-body text-sm font-medium text-[#6B7280] underline-offset-2 hover:text-[#111111] hover:underline",
+        title:
+          "font-body text-[clamp(1.65rem,2.6vw,2.125rem)] font-bold leading-[1.2] tracking-[var(--gi-tracking-tight)] text-[#111111]",
+        reviewsRating: "text-[#D1D5DB]",
+        reviewsScore: "font-body text-sm font-medium text-[#374151]",
+        reviewsDot: "text-[#D1D5DB]",
+        reviewsLink:
+          "font-body text-sm text-[#6B7280] underline-offset-2 hover:text-[#111111] hover:underline",
+        price:
+          "font-body text-[clamp(1.5rem,2.2vw,1.875rem)] font-bold tabular-nums tracking-[var(--gi-tracking-tight)] text-[#111111]",
+        comparePrice:
+          "font-body text-lg font-medium tabular-nums text-[#9CA3AF] line-through",
+        freeShipping:
+          "font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-[#16A34A]",
+        taxNote: "font-body text-xs text-[#6B7280]",
+        currencyDisclaimer: "font-body text-[11px] leading-relaxed text-[#9CA3AF]",
+        variantLabelHeading:
+          "font-body text-xs font-semibold uppercase tracking-[0.12em] text-[#374151]",
+        variantLabelMuted: "font-body text-sm text-[#6B7280]",
+        variantSelected:
+          "border-[#111111] bg-white text-[#111111] ring-1 ring-[#111111]",
+        variantDefault:
+          "border-[#E5E7EB] bg-white text-[#111111] hover:border-[#9CA3AF]",
+        variantDisabled:
+          "opacity-40 cursor-not-allowed border-[#E5E7EB] bg-[#F9FAFB] text-[#9CA3AF]",
+        variantFocusRing:
+          "focus-visible:ring-[#111111]/30 focus-visible:ring-offset-white",
+        colorLabel:
+          "font-body text-xs font-semibold uppercase tracking-[0.12em] text-[#374151]",
+        colorValue: "font-body text-sm text-[#111111]",
+        colorSwatchActive: "border-[#111111] shadow-[0_0_0_1px_#111111]",
+        colorSwatchIdle: "border-[#D1D5DB] hover:border-[#9CA3AF]",
+        colorSwatchFocus:
+          "focus-visible:ring-[#111111]/30 focus-visible:ring-offset-white",
+        qtyLabel:
+          "font-body text-xs font-semibold uppercase tracking-[0.12em] text-[#374151]",
+        qtyContainer:
+          "inline-flex items-center overflow-hidden rounded-sm border border-[#E5E7EB] bg-white",
+        qtyBtn:
+          "flex h-11 w-11 items-center justify-center text-lg font-medium text-[#111111] transition-colors hover:bg-[#F9FAFB] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#111111]/20 disabled:cursor-not-allowed disabled:opacity-40",
+        qtyValue:
+          "min-w-[3rem] px-3 text-center font-body text-base font-semibold tabular-nums text-[#111111]",
+        availCard: "rounded-sm border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-3.5",
+        availTitle: "font-body text-sm font-semibold text-[#111111]",
+        availStatus: "font-body text-sm font-medium text-[#16A34A]",
+        availDetail: "font-body text-xs leading-snug text-[#6B7280]",
+      };
+    }
     return {
       brandLink: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)] underline-offset-2 hover:text-[#60A5FA] hover:underline`,
       title: `${giType.pdpTitle} text-[clamp(1.75rem,2.8vw,2.375rem)] text-[var(--gi-text-on-dark)]`,

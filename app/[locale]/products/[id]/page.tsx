@@ -11,14 +11,13 @@ import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import { locales, type Locale } from "@/lib/i18n/config";
 import { buildMetadata, formatTemplate } from "@/lib/seo";
-import { buildPathByLocale, productPath, productsPath } from "@/lib/routing/paths";
+import { buildPathByLocale, productPath } from "@/lib/routing/paths";
 import { getGoodIdeasBrandName } from "@/lib/good-ideas-brand";
 import { buildGoodIdeasPdpAccordionBundle } from "@/lib/good-ideas-pdp-content";
 import { resolveGoodIdeasProductBrandLink } from "@/lib/good-ideas-plp-brands";
-import { GI_PDP_INNER } from "@/lib/ui/gi-pdp-layout";
-import { GI_PDP_TOP_PAD } from "@/lib/ui/goodideas-design";
-import { parseFeatureSpecRows } from "@/lib/pdp-spec-rows";
-import GiHeroGridOverlay from "@/components/good-ideas/GiHeroGridOverlay";
+import PdpDtcPostSections from "@/components/good-ideas/PdpDtcPostSections";
+import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
+import { GI_PDP_DTC_TOP_PAD } from "@/lib/ui/goodideas-design";
 import ProductDetailClient from "@/components/ProductDetailClient";
 import PdpPhase4Shell from "@/components/pdp/PdpPhase4Shell";
 import VideoShowcaseSection from "@/components/pdp/VideoShowcaseSection";
@@ -26,6 +25,7 @@ import ReviewsSection from "@/components/pdp/ReviewsSection";
 import CrossSellCarousel from "@/components/pdp/CrossSellCarousel";
 import PdpGoodIdeasProductManual from "@/components/good-ideas/PdpGoodIdeasProductManual";
 import { getGoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
+import { parseFeatureSpecRows } from "@/lib/pdp-spec-rows";
 
 type Props = {
   params: Promise<{ locale: Locale; id: string }>;
@@ -120,8 +120,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
   };
 
   return (
-    <main className={`relative overflow-x-hidden bg-[#0B0F14] text-[#E8ECF1] ${GI_PDP_TOP_PAD}`}>
-      <GiHeroGridOverlay />
+    <main className={`relative overflow-x-hidden bg-white text-[#111111] ${GI_PDP_DTC_TOP_PAD}`}>
       <PdpPhase4Shell
         product={{ ...localizedProduct, freeShipping: true }}
         productImages={productImages}
@@ -131,7 +130,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         sizeGuideLabel={t("productPage.pdpDesktop.sizeGuide")}
       >
       <div className="relative z-[1]">
-        <div className={`${GI_PDP_INNER} pb-16 pt-0 md:pb-32 lg:pb-28`}>
+        <div className={`${GI_DTC.container} pb-10 pt-6 md:pb-16 md:pt-10`}>
           <ProductDetailClient
             product={{ ...localizedProduct, freeShipping: true }}
             seoH1={localizedProduct.title}
@@ -141,34 +140,38 @@ export default async function GoodIdeasProductPage({ params }: Props) {
             noImageLabel={t("common.noImage")}
             freeShippingLabel={t("productPage.freeShipping")}
             pdpDesktop={pdpDesktop}
-            surface="dark"
+            surface="light"
             taxNote={t("productPage.pdpDesktop.taxNote")}
             selectSizeLabel={t("productPage.pdpDesktop.selectSize")}
             sizeGuideLabel={t("productPage.pdpDesktop.sizeGuide")}
             quantityLabel={t("productPage.pdpDesktop.quantityLabel")}
             mobileStickyTrustLines={[
-              t("productPage.pdpDesktop.mobileStickyLine1"),
-              t("productPage.pdpDesktop.mobileStickyLine2"),
-              t("productPage.pdpDesktop.mobileStickyLine3"),
+              t("goodIdeas.pdp.dtc.trustSecure"),
+              t("goodIdeas.pdp.dtc.trustGuarantee"),
+              t("goodIdeas.pdp.dtc.trustShipping"),
             ]}
             salesBadge={localizedProduct.salesBadge}
             cartBrand="good-ideas"
             brandLabel={brandLink?.label}
             brandHref={brandLink?.href}
-            breadcrumbItems={[
-              { label: t("goodIdeas.nav.products"), href: productsPath(locale) },
-              { label: localizedProduct.title },
-            ]}
             accordionBundle={accordionBundle}
             suppressMobileSticky
           />
         </div>
 
-        <div id="pdp-videos">
+        <PdpDtcPostSections
+          productId={product.id}
+          accordionBundle={accordionBundle}
+          specRows={specRows}
+        />
+
+        <div id="pdp-videos" className="border-t border-[#E5E7EB] bg-white">
           <VideoShowcaseSection productId={product.id} />
         </div>
-        <ReviewsSection productId={product.id} />
-        <div id="pdp-cross-sell">
+        <div id="pdp-reviews" className="border-t border-[#E5E7EB] bg-[#FAFAFA]">
+          <ReviewsSection productId={product.id} surface="light" />
+        </div>
+        <div id="pdp-cross-sell" className="border-t border-[#E5E7EB] bg-white">
           <CrossSellCarousel productId={product.id} cardImagesById={cardImagesById} />
         </div>
 
@@ -179,7 +182,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
             description={t("goodIdeas.product.manualDescription")}
             downloadLabel={t("goodIdeas.product.manualDownload")}
             openLabel={t("goodIdeas.product.manualOpen")}
-            surface="dark"
+            surface="light"
           />
         ) : null}
       </div>

@@ -1032,6 +1032,80 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-hogar-009",
+    slug: "rechargeable-portable-mini-plastic-bag-heat-sealer-usb-c",
+    title:
+      "Rechargeable Portable Mini Plastic Bag Heat Sealer — 6 Heat Levels, USB-C",
+    price: 13699 / 1445,
+    category: "Hogar",
+    images: [
+      "/assets/images/good-ideas-products/gi-hogar-009/image.webp",
+    ],
+    description:
+      "Compact rechargeable portable mini plastic bag heat sealer for kitchen food storage. Six heat levels seal everything from thin cereal liners to heavy chip bags, with a built-in magnet for fridge or microwave storage and USB-C charging that lasts weeks of daily use.",
+    shortDescription:
+      "USB-C rechargeable mini bag sealer with 6 heat levels, LED display, built-in magnet, and airtight thermal sealing for snacks and pantry staples.",
+    longDescription: [
+      "Keep snacks crunchy and pantry staples fresher longer with a pocket-sized thermal sealer that lives on your fridge door instead of buried in a drawer.",
+      "Six adjustable heat levels (P1–P6) let you match intensity to the bag — gentle for thin liners, stronger for heavy Costco-style and kettle chip bags.",
+      "Creates a professional thermal weld that locks out moisture and air. The compact handheld body includes an LED level display and a built-in magnet so it sticks to metal surfaces when not in use.",
+      "Rechargeable via USB-C: one charge supports weeks of everyday sealing — no disposable AA batteries. Ideal for kitchen counters, desks, and travel snack packing.",
+    ],
+    features: [
+      "Rechargeable portable mini plastic bag heat sealer",
+      "6 heat levels — thin liners to heavy chip bags",
+      "Airtight professional thermal seal",
+      "Built-in magnet — store on fridge or microwave",
+      "USB-C rechargeable — weeks of daily use per charge",
+      "LED display for heat level (P1–P6)",
+      "Compact handheld design for kitchen food packing",
+      "Seals snack, cereal, freezer, and storage bags",
+      "For home, office, and travel",
+      "Available in White and Black",
+      "Origin China (supplier data)",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "white",
+      options: [
+        { value: "white", label: "White", swatchHex: "#F0F0F0" },
+        { value: "black", label: "Black", swatchHex: "#3A3A3A" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "Mini sellador térmico de bolsas recargable portátil — 6 niveles de calor, USB-C",
+        description:
+          "Mini sellador térmico de bolsas de plástico compacto, recargable y portátil para conservar alimentos en la cocina. Seis niveles de calor sellan desde liners finos hasta bolsas gruesas de papas fritas, con imán integrado para guardar en heladera o microondas y carga USB-C que rinde semanas de uso diario.",
+        shortDescription:
+          "Sellador mini de bolsas recargable USB-C con 6 niveles de calor, pantalla LED, imán integrado y sellado térmico hermético para snacks y despensa.",
+        longDescription: [
+          "Mantené snacks crocantes y alimentos de despensa más frescos con un sellador térmico compacto que podés pegar en la puerta de la heladera en lugar de perderlo en un cajón.",
+          "Seis niveles de calor ajustables (P1–P6) para adaptar la intensidad a cada bolsa — suave en liners finos, más fuerte en bolsas gruesas tipo Costco o papas kettle.",
+          "Genera un sellado térmico profesional que bloquea humedad y aire. El cuerpo portátil incluye pantalla LED del nivel y un imán integrado para adherirlo a superficies metálicas cuando no lo usás.",
+          "Recargable por USB-C: una carga alcanza para semanas de uso cotidiano — sin pilas AA descartables. Ideal para cocina, escritorio y viajes.",
+        ],
+        features: [
+          "Mini sellador térmico de bolsas de plástico recargable y portátil",
+          "6 niveles de calor — liners finos a bolsas gruesas de snacks",
+          "Sellado térmico hermético profesional",
+          "Imán integrado — guardalo en heladera o microondas",
+          "Recarga USB-C — semanas de uso diario por carga",
+          "Pantalla LED con nivel de calor (P1–P6)",
+          "Diseño compacto de mano para empacar alimentos",
+          "Sellá bolsas de snacks, cereales, freezer y almacenamiento",
+          "Para hogar, oficina y viajes",
+          "Disponible en Blanco y Negro",
+          "Origen China (dato de proveedor)",
+        ],
+      },
+    },
+  },
+
+  {
 
     id: "gi-lifestyle-001",
 

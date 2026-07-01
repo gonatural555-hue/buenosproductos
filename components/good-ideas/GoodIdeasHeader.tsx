@@ -10,7 +10,9 @@ import {
   cartPath,
   homePath,
   isCartPath,
+  isProductPdpPath,
   productsPath,
+  shouldUseLightGiHeader,
 } from "@/lib/routing/paths";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
@@ -24,8 +26,9 @@ export default function GoodIdeasHeader() {
   const { totalItems } = useGoodIdeasCart();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const isPdp = /^\/[^/]+\/products\/[^/]+$/.test(pathname ?? "");
+  const isPdp = isProductPdpPath(pathname ?? "");
   const isCart = isCartPath(pathname ?? "");
+  const lightHeader = shouldUseLightGiHeader(pathname ?? "");
   const { hidden, transitionClass } = useSmartHeaderScroll(isPdp || isCart);
 
   const buildLocaleHref = (nextLocale: Locale) => {
@@ -48,31 +51,47 @@ export default function GoodIdeasHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl ${transitionClass} ${
+      className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
         hidden ? "-translate-y-full" : "translate-y-0"
+      } ${
+        lightHeader
+          ? "border-b border-[#E5E7EB] bg-white/95 backdrop-blur-sm"
+          : "border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl"
       }`}
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-3.5">
+      <div className="mx-auto flex h-[64px] max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6 md:h-[72px]">
         <Link
           href={homePath(locale)}
           className={`group ${giType.brandLogo}`}
         >
           <GoodProductsBrandName
             locale={locale}
-            prefixClassName="text-white transition-colors duration-200 group-hover:text-[#3B82F6]"
-            suffixClassName="text-[#3B82F6] transition-colors duration-200 group-hover:text-white"
+            prefixClassName={
+              lightHeader
+                ? "text-[#111111] transition-colors duration-200 group-hover:text-[#3B82F6]"
+                : "text-white transition-colors duration-200 group-hover:text-[#3B82F6]"
+            }
+            suffixClassName={
+              lightHeader
+                ? "text-[#3B82F6] transition-colors duration-200 group-hover:text-[#111111]"
+                : "text-[#3B82F6] transition-colors duration-200 group-hover:text-white"
+            }
           />
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:ml-[99px] md:flex"
+          className="hidden items-center gap-8 md:flex"
           aria-label={t("goodIdeas.brandName")}
         >
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`${giType.navLink} text-white hover:text-[var(--gi-primary)]`}
+              className={`font-body text-sm font-medium transition-colors duration-200 ${
+                lightHeader
+                  ? "text-[#374151] hover:text-[#111111]"
+                  : `${giType.navLink} text-white hover:text-[var(--gi-primary)]`
+              }`}
             >
               {item.label}
             </Link>
@@ -80,8 +99,12 @@ export default function GoodIdeasHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <HeaderCurrencySwitcher variant="good-ideas" />
-          <div className="flex items-center gap-0.5 rounded-full border border-white/10 px-1 py-0.5">
+          <HeaderCurrencySwitcher variant={lightHeader ? "light" : "good-ideas"} />
+          <div
+            className={`flex items-center gap-0.5 rounded-full border px-1 py-0.5 ${
+              lightHeader ? "border-[#E5E7EB]" : "border-white/10"
+            }`}
+          >
             {headerLocales.map((lang) => (
               <Link
                 key={lang}
@@ -89,7 +112,9 @@ export default function GoodIdeasHeader() {
                 className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
                   lang === locale
                     ? "text-[var(--gi-primary)]"
-                    : "text-white hover:text-[var(--gi-primary)]"
+                    : lightHeader
+                      ? "text-[#6B7280] hover:text-[#111111]"
+                      : "text-white hover:text-[var(--gi-primary)]"
                 }`}
               >
                 {lang}
@@ -97,11 +122,15 @@ export default function GoodIdeasHeader() {
             ))}
           </div>
 
-          <HeaderAccountMenu />
+          <HeaderAccountMenu variant={lightHeader ? "light" : "dark"} />
 
           <Link
             href={cartPath(locale)}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]"
+            className={`relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-200 ${
+              lightHeader
+                ? "text-[#111111] hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+                : "text-white hover:bg-white/8 hover:text-[#3B82F6]"
+            }`}
             aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
           >
             <svg

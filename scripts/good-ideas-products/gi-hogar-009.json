@@ -1,0 +1,30 @@
+{
+  "id": "gi-hogar-009",
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-hogar-009/image.webp"
+    ],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "white": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "black": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  }
+}

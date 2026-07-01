@@ -130,6 +130,26 @@ export function shouldUseLightCommerceFooter(pathname: string): boolean {
   return isCartPath(pathname) || isCheckoutPath(pathname);
 }
 
+/** PDP de producto Good Products: `/{locale}/products/{id}`. */
+export function isProductPdpPath(pathname: string): boolean {
+  const segments = pathname.split("/").filter(Boolean);
+  return (
+    segments.length >= 3 &&
+    locales.includes(segments[0] as Locale) &&
+    segments[1] === "products" &&
+    Boolean(segments[2])
+  );
+}
+
+export function shouldUseLightPdpChrome(pathname: string): boolean {
+  return isProductPdpPath(pathname);
+}
+
+/** Header minimalista blanco (estilo PDP) — todo el sitio salvo checkout. */
+export function shouldUseLightGiHeader(pathname: string): boolean {
+  return !isCheckoutPath(pathname);
+}
+
 /** @deprecated Use `homePath` — migration alias. */
 export const goodIdeasHomePath = homePath;
 /** @deprecated Use `productsPath` — migration alias. */
