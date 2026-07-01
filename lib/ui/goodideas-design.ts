@@ -15,15 +15,19 @@ export const GI_COLORS = {
 export const GI_HERO_TOP_PAD =
   "pt-[calc(env(safe-area-inset-top,0px)+5.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+6.5rem)]";
 
-/** Altura efectiva del header fijo (alineado con galería sticky PDP). */
-export const GI_PDP_HEADER_HEIGHT = "4.75rem";
+/** Altura efectiva del header fijo (64px móvil, 72px md — GoodIdeasHeader). */
+export const GI_PDP_HEADER_HEIGHT = "4.5rem";
 
 /** Aire entre el borde inferior del header y el contenido del PDP. */
-export const GI_PDP_HEADER_GAP_PX = 90;
+export const GI_PDP_HEADER_GAP_PX = 8;
 
-/** PDP DTC — clearance header blanco (~72px) + aire. */
+/** PDP DTC — clearance header + gap mínimo (≈50px menos que layout anterior). */
 export const GI_PDP_DTC_TOP_PAD =
-  "pt-[calc(env(safe-area-inset-top,0px)+5.5rem)] md:pt-[calc(env(safe-area-inset-top,0px)+6rem)]";
+  "pt-[calc(env(safe-area-inset-top,0px)+4rem)] md:pt-[calc(env(safe-area-inset-top,0px)+4.5rem+8px)]";
+
+/** Offset sticky buy box / galería en desktop PDP. */
+export const GI_PDP_STICKY_TOP =
+  "lg:top-[calc(env(safe-area-inset-top,0px)+4.5rem+8px)]";
 
 /** PLP carousel — clearance del header fijo, sin aire extra de hero full-screen. */
 export const GI_PLP_CAROUSEL_TOP_PAD =

@@ -291,7 +291,7 @@ export default function GiDtcBuyBox({
 
       {showReviews && reviewsLinkLabel ? (
         <Link
-          href="#pdp-dtc-reviews"
+          href="#pdp-reviews"
           className="font-body text-sm text-[#6B7280] underline-offset-2 hover:text-[#111111] hover:underline"
         >
           {reviewsLinkLabel}

@@ -130,7 +130,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         sizeGuideLabel={t("productPage.pdpDesktop.sizeGuide")}
       >
       <div className="relative z-[1]">
-        <div className={`${GI_DTC.container} pb-10 pt-6 md:pb-16 md:pt-10`}>
+        <div className={`${GI_DTC.container} pb-10 pt-0 md:pb-16`}>
           <ProductDetailClient
             product={{ ...localizedProduct, freeShipping: true }}
             seoH1={localizedProduct.title}
@@ -160,7 +160,6 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         </div>
 
         <PdpDtcPostSections
-          productId={product.id}
           accordionBundle={accordionBundle}
           specRows={specRows}
         />
@@ -168,7 +167,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         <div id="pdp-videos" className="border-t border-[#E5E7EB] bg-white">
           <VideoShowcaseSection productId={product.id} />
         </div>
-        <div id="pdp-reviews" className="border-t border-[#E5E7EB] bg-[#FAFAFA]">
+        <div id="pdp-reviews" className="border-t border-[#E5E7EB] bg-white">
           <ReviewsSection productId={product.id} surface="light" />
         </div>
         <div id="pdp-cross-sell" className="border-t border-[#E5E7EB] bg-white">

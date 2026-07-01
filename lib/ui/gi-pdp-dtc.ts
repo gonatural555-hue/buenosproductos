@@ -1,3 +1,5 @@
+import { GI_PDP_STICKY_TOP } from "@/lib/ui/goodideas-design";
+
 /** PDP estilo DTC premium (referencia Sealify) — fondo blanco, tipografía sans, CTAs negros. */
 export const GI_DTC = {
   pageBg: "bg-white text-[#111111]",
@@ -14,6 +16,5 @@ export const GI_DTC = {
   container: "mx-auto w-full max-w-[1320px] px-5 sm:px-6 lg:px-8",
   heroGrid:
     "hidden lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-start lg:gap-x-10 xl:gap-x-14",
-  buyBoxSticky:
-    "lg:sticky lg:top-[calc(env(safe-area-inset-top,0px)+5.5rem)] lg:self-start",
+  buyBoxSticky: `lg:sticky ${GI_PDP_STICKY_TOP} lg:self-start`,
 } as const;

@@ -15,8 +15,9 @@ export const GI_PDP_INNER = `${GI_PDP_CONTAINER} ${GI_PDP_SECTION_PAD}`;
 export const GI_PDP_GRID =
   "hidden lg:grid lg:grid-cols-[minmax(0,1.68fr)_minmax(280px,0.32fr)] lg:items-start lg:gap-x-10 xl:gap-x-12";
 
-export const GI_PDP_GALLERY_STICKY =
-  "lg:sticky lg:top-[calc(env(safe-area-inset-top,0px)+4.75rem)] lg:self-start";
+import { GI_PDP_STICKY_TOP } from "@/lib/ui/goodideas-design";
+
+export const GI_PDP_GALLERY_STICKY = `lg:sticky ${GI_PDP_STICKY_TOP} lg:self-start`;
 
 export const GI_PDP_CTA_CLASS =
   "w-full min-h-[52px] rounded-full px-8 py-4 text-base font-semibold tracking-normal";
