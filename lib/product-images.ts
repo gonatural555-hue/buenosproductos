@@ -1,5 +1,6 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { normalizeImageSrcList } from "@/lib/image-src";
 import {
   parsePdpGalleryLayout,
   type PdpGalleryLayout,
@@ -94,45 +95,32 @@ export async function getProductImages(
       Array.isArray(productData.images.featured) &&
       productData.images.featured.length > 0
     ) {
-      result.featured = productData.images.featured[0];
+      result.featured = normalizeImageSrcList(productData.images.featured)[0] ?? null;
     }
 
-    // Gallery: todas las URLs del array
     if (
       productData.images.gallery &&
       Array.isArray(productData.images.gallery)
     ) {
-      result.gallery = productData.images.gallery.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
+      result.gallery = normalizeImageSrcList(productData.images.gallery);
     }
 
-    // Lifestyle: todas las URLs del array
     if (
       productData.images.lifestyle &&
       Array.isArray(productData.images.lifestyle)
     ) {
-      result.lifestyle = productData.images.lifestyle.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
+      result.lifestyle = normalizeImageSrcList(productData.images.lifestyle);
     }
 
-    // Extras: todas las URLs del array
     if (
       productData.images.extras &&
       Array.isArray(productData.images.extras)
     ) {
-      result.extras = productData.images.extras.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
+      result.extras = normalizeImageSrcList(productData.images.extras);
     }
 
-    // Variant images: estructura opcional por variante
     if (productData.variantImages && typeof productData.variantImages === "object") {
-      const normalizeArray = (arr: unknown): string[] => {
-        if (!Array.isArray(arr)) return [];
-        return arr.filter((url) => typeof url === "string" && url.length > 0);
-      };
+      const normalizeArray = (arr: unknown): string[] => normalizeImageSrcList(arr);
 
       const isImageSet = (value: unknown): value is VariantImageSet => {
         if (!value || typeof value !== "object") return false;

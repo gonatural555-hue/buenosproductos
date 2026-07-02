@@ -12,6 +12,8 @@ export type PdpProductSummary = {
   id: string;
   title: string;
   price: number;
+  compareAtPrice?: number;
+  flashSaleHours?: number;
   category: string;
   description: string;
   shortDescription?: string;

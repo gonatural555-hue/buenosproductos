@@ -8,9 +8,8 @@ import ColorSwatchSelector from "@/components/pdp/ColorSwatchSelector";
 import SizeSelector from "@/components/pdp/SizeSelector";
 import PdpQuantitySelector from "@/components/pdp/PdpQuantitySelector";
 import VariantSelector from "@/components/VariantSelector";
-import CurrencyDisclaimer from "@/components/currency/CurrencyDisclaimer";
+import PdpPromoPriceBlock from "@/components/pdp/PdpPromoPriceBlock";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
-import { useCurrency } from "@/context/CurrencyContext";
 import type { PdpDesktopContent } from "@/components/ProductDetailClient";
 import { resolvePdpSalesBadge } from "@/lib/pdp-sales-badge";
 import { isValidCombination } from "@/lib/product-variant-matrix";
@@ -45,6 +44,9 @@ type Props = {
   seoH1: string;
   salesBadge?: string;
   resolvedPrice: number;
+  compareAtPrice?: number;
+  flashSaleHours?: number;
+  productId: string;
   freeShipping?: boolean;
   freeShippingLabel?: string;
   taxNote?: string | null;
@@ -84,6 +86,9 @@ export default function GiDtcBuyBox({
   seoH1,
   salesBadge,
   resolvedPrice,
+  compareAtPrice,
+  flashSaleHours,
+  productId,
   freeShipping,
   freeShippingLabel,
   taxNote,
@@ -111,7 +116,6 @@ export default function GiDtcBuyBox({
   onSizeInteract,
 }: Props) {
   const t = useTranslations();
-  const { formatMoney } = useCurrency();
   const theme = getPdpBuyBoxTheme("good-ideas", "light");
   const matrix = productVariants?.variantMatrix;
   const displaySalesBadge = resolvePdpSalesBadge(salesBadge);
@@ -178,14 +182,16 @@ export default function GiDtcBuyBox({
       </div>
 
       <div className="space-y-2">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <p className={theme.price}>{formatMoney(resolvedPrice)}</p>
-          {freeShipping && freeShippingLabel ? (
-            <span className={theme.freeShipping}>{freeShippingLabel}</span>
-          ) : null}
-        </div>
-        {taxNote ? <p className={theme.taxNote}>{taxNote}</p> : null}
-        <CurrencyDisclaimer className={theme.currencyDisclaimer} />
+        <PdpPromoPriceBlock
+          productId={productId}
+          salePriceUsd={resolvedPrice}
+          compareAtPriceUsd={compareAtPrice}
+          flashSaleHours={flashSaleHours}
+          freeShipping={freeShipping}
+          freeShippingLabel={freeShippingLabel}
+          taxNote={taxNote}
+          currencyDisclaimerClassName={theme.currencyDisclaimer}
+        />
       </div>
 
       <ul className="space-y-2.5">

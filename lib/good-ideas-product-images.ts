@@ -7,8 +7,8 @@ import type {
   VariantImagesMap,
   VariantImagesValueMap,
 } from "@/lib/product-images";
+import { normalizeImageSrcList } from "@/lib/image-src";
 import { parsePdpGalleryLayout } from "@/lib/pdp-gallery-framing";
-import { isValidImageSrc } from "@/lib/image-src";
 
 export type { ProductImages, VariantImageSet, VariantImagesMap, VariantImagesValueMap };
 
@@ -56,11 +56,118 @@ function parseGoodIdeasProductJson(
   }
 }
 
-function pickFeaturedUrl(productData: GoodIdeasProductJson): string | null {
-  const url = productData.images.featured?.find(
-    (src) => typeof src === "string" && src.length > 0
+function normalizeVariantImageSet(set: VariantImageSet): VariantImageSet {
+  return {
+    featured: normalizeImageSrcList(set.featured),
+    gallery: normalizeImageSrcList(set.gallery),
+    lifestyle: normalizeImageSrcList(set.lifestyle),
+    extras: normalizeImageSrcList(set.extras),
+  };
+}
+
+function isVariantImageSet(value: unknown): value is VariantImageSet {
+  if (!value || typeof value !== "object") return false;
+  return (
+    "featured" in (value as VariantImageSet) ||
+    "gallery" in (value as VariantImageSet) ||
+    "lifestyle" in (value as VariantImageSet) ||
+    "extras" in (value as VariantImageSet)
   );
-  return url && isValidImageSrc(url) ? url : null;
+}
+
+function normalizeVariantImages(
+  variantImages: VariantImagesMap | VariantImagesValueMap
+): VariantImagesMap | VariantImagesValueMap | undefined {
+  const values = Object.values(variantImages);
+  const isFlatMap =
+    values.length > 0 &&
+    values.every((value) => Array.isArray(value) || isVariantImageSet(value));
+
+  if (isFlatMap) {
+    const normalizedFlat: VariantImagesValueMap = {};
+
+    Object.entries(variantImages).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        const urls = normalizeImageSrcList(value);
+        if (urls.length > 0) normalizedFlat[key] = urls;
+        return;
+      }
+
+      if (isVariantImageSet(value)) {
+        const normalizedSet = normalizeVariantImageSet(value);
+        const hasAny =
+          (normalizedSet.featured?.length ?? 0) > 0 ||
+          (normalizedSet.gallery?.length ?? 0) > 0 ||
+          (normalizedSet.lifestyle?.length ?? 0) > 0 ||
+          (normalizedSet.extras?.length ?? 0) > 0;
+        if (hasAny) normalizedFlat[key] = normalizedSet;
+      }
+    });
+
+    return Object.keys(normalizedFlat).length > 0 ? normalizedFlat : undefined;
+  }
+
+  const normalizedVariantImages: VariantImagesMap = {};
+
+  Object.entries(variantImages as VariantImagesMap).forEach(
+    ([variantType, variantValues]) => {
+      if (!variantValues || typeof variantValues !== "object") return;
+
+      const normalizedValues: Record<string, VariantImageSet> = {};
+
+      Object.entries(variantValues).forEach(([valueKey, imageSet]) => {
+        if (!imageSet || typeof imageSet !== "object") return;
+
+        const normalizedSet = Array.isArray(imageSet)
+          ? { gallery: normalizeImageSrcList(imageSet) }
+          : normalizeVariantImageSet(imageSet as VariantImageSet);
+
+        const hasAny =
+          (normalizedSet.featured?.length ?? 0) > 0 ||
+          (normalizedSet.gallery?.length ?? 0) > 0 ||
+          (normalizedSet.lifestyle?.length ?? 0) > 0 ||
+          (normalizedSet.extras?.length ?? 0) > 0;
+
+        if (hasAny) normalizedValues[valueKey] = normalizedSet;
+      });
+
+      if (Object.keys(normalizedValues).length > 0) {
+        normalizedVariantImages[variantType] = normalizedValues;
+      }
+    }
+  );
+
+  return Object.keys(normalizedVariantImages).length > 0
+    ? normalizedVariantImages
+    : undefined;
+}
+
+function pickFeaturedUrl(productData: GoodIdeasProductJson): string | null {
+  return normalizeImageSrcList(productData.images.featured)[0] ?? null;
+}
+
+function applyGoodIdeasProductImagesFromJson(
+  productData: GoodIdeasProductJson
+): ProductImages {
+  const result: ProductImages = {
+    featured: pickFeaturedUrl(productData),
+    gallery: normalizeImageSrcList(productData.images.gallery),
+    lifestyle: normalizeImageSrcList(productData.images.lifestyle),
+    extras: normalizeImageSrcList(productData.images.extras),
+    variantImages: undefined,
+  };
+
+  const rawVariantImages =
+    productData.images.variantImages ?? productData.variantImages;
+  if (rawVariantImages && typeof rawVariantImages === "object") {
+    result.variantImages = normalizeVariantImages(rawVariantImages);
+  }
+
+  if (productData.pdpGalleryLayout != null) {
+    result.pdpGalleryLayout = parsePdpGalleryLayout(productData.pdpGalleryLayout);
+  }
+
+  return result;
 }
 
 /**
@@ -130,15 +237,14 @@ export function resolveGoodIdeasProductCardImage(productId: string): string {
   return getGoodIdeasProductFeaturedImage(productId) ?? "";
 }
 
-
 /**
  * Imágenes Good Ideas desde `scripts/good-ideas-products/{productId}.json`.
- * No usa `scripts/products/` ni rutas Go Natural.
+ * Acepta rutas locales (`/assets/…` o `assets/…`) y URLs externas (`https://…`).
  */
 export async function getGoodIdeasProductImages(
   productId: string
 ): Promise<ProductImages> {
-  const result: ProductImages = {
+  const empty: ProductImages = {
     featured: null,
     gallery: [],
     lifestyle: [],
@@ -151,41 +257,10 @@ export async function getGoodIdeasProductImages(
     const fileContent = await readFile(jsonPath, "utf-8");
     const productData = parseGoodIdeasProductJson(productId, fileContent);
     if (!productData) {
-      return result;
+      return empty;
     }
 
-    const featured = pickFeaturedUrl(productData);
-    if (featured) {
-      result.featured = featured;
-    }
-
-    if (Array.isArray(productData.images.gallery)) {
-      result.gallery = productData.images.gallery.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
-    }
-
-    if (Array.isArray(productData.images.lifestyle)) {
-      result.lifestyle = productData.images.lifestyle.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
-    }
-
-    if (Array.isArray(productData.images.extras)) {
-      result.extras = productData.images.extras.filter(
-        (url) => typeof url === "string" && url.length > 0
-      );
-    }
-
-    const variantImages =
-      productData.images.variantImages ?? productData.variantImages;
-    if (variantImages && typeof variantImages === "object") {
-      result.variantImages = variantImages;
-    }
-
-    if (productData.pdpGalleryLayout != null) {
-      result.pdpGalleryLayout = parsePdpGalleryLayout(productData.pdpGalleryLayout);
-    }
+    const result = applyGoodIdeasProductImagesFromJson(productData);
 
     const totalImages =
       (result.featured ? 1 : 0) +
@@ -194,10 +269,10 @@ export async function getGoodIdeasProductImages(
       result.extras.length;
 
     if (totalImages === 0) {
-      console.warn(
-        `⚠️  Good Ideas ${productId}: JSON sin URLs de imagen`
-      );
+      console.warn(`⚠️  Good Ideas ${productId}: JSON sin URLs de imagen`);
     }
+
+    return result;
   } catch (error: unknown) {
     const err = error as NodeJS.ErrnoException;
     if (err.code !== "ENOENT") {
@@ -205,7 +280,6 @@ export async function getGoodIdeasProductImages(
         `⚠️  Good Ideas ${productId}: error leyendo JSON - ${err.message}`
       );
     }
+    return empty;
   }
-
-  return result;
 }

@@ -11,6 +11,8 @@ import { usePdpHeroVisibility } from "@/hooks/usePdpHeroVisibility";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { checkoutPath, isProductPdpPath } from "@/lib/routing/paths";
+import PdpPromoPriceBlock from "@/components/pdp/PdpPromoPriceBlock";
+import { hasActivePromoPrice } from "@/lib/flash-sale-countdown";
 import { isValidImageSrc } from "@/lib/image-src";
 import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 
@@ -80,13 +82,25 @@ function StickyAddToCartInner({
           >
             {shortTitle}
           </p>
-          <p
-            className={`font-body text-base font-bold tabular-nums sm:text-lg ${
-              dtc ? "text-[#111111]" : "text-[#E8ECF1]"
-            }`}
-          >
-            {formatMoney(resolvedPrice)}
-          </p>
+          {hasActivePromoPrice(resolvedPrice, product.compareAtPrice) ? (
+            <div className="mt-0.5">
+              <PdpPromoPriceBlock
+                productId={product.id}
+                salePriceUsd={resolvedPrice}
+                compareAtPriceUsd={product.compareAtPrice}
+                flashSaleHours={product.flashSaleHours}
+                variant="compact"
+              />
+            </div>
+          ) : (
+            <p
+              className={`font-body text-base font-bold tabular-nums sm:text-lg ${
+                dtc ? "text-[#111111]" : "text-[#E8ECF1]"
+              }`}
+            >
+              {formatMoney(resolvedPrice)}
+            </p>
+          )}
         </div>
 
         {hasVariants && !dtc ? (

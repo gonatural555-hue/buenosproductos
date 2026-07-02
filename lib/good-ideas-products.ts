@@ -60,7 +60,9 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     title: "ZOCO AI Desktop Robot with Voice Recognition for Kids",
 
-    price: 180000 / 1445,
+    price: 100000 / 1445,
+    compareAtPrice: 180000 / 1445,
+    flashSaleHours: 24,
 
     category: "Tech",
 
@@ -196,7 +198,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
 
     title: "Universal Car Phone Mount for Air Vent",
 
-    price: 5890 / 1445,
+    price: 17000 / 1445,
 
     category: "Lifestyle",
 
@@ -415,7 +417,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     id: "gi-tech-004",
     slug: "13-piece-type-c-phone-port-cleaning-kit",
     title: "13-Piece Type-C Port & Speaker Cleaning Kit for Phones",
-    price: 4.15,
+    price: 13000 / 1445,
     category: "Tech",
     images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-004/image.webp`],
     description:
@@ -658,11 +660,11 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     brand: "Searide",
     title:
       "Searide 180ML Mini USB Air Humidifier & Aroma Diffuser — H09 Pro",
-    price: 9999 / 1445,
+    price: 8500 / 1445,
+    compareAtPrice: 9999 / 1445,
+    flashSaleHours: 24,
     category: "Hogar",
-    images: [
-      "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close",
-    ],
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-004/humidificador.webp`],
     description:
       "180ML mini ultrasonic humidifier and electric aroma diffuser by Searide. USB-powered, touch controls, RGB atmosphere light, aromatherapy mist, and auto shut-off when water runs low — for home, bedroom, desk, or car cup holder.",
     shortDescription:

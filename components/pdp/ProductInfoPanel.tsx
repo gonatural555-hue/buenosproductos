@@ -42,6 +42,8 @@ type Props = {
   seoH1: string;
   salesBadge?: string;
   resolvedPrice: number;
+  compareAtPrice?: number;
+  flashSaleHours?: number;
   freeShipping?: boolean;
   freeShippingLabel?: string;
   taxNote?: string | null;
@@ -115,12 +117,15 @@ function MiniStars({
 }
 
 export default function ProductInfoPanel({
+  productId,
   surface,
   brandLabel,
   brandHref,
   seoH1,
   salesBadge,
   resolvedPrice,
+  compareAtPrice,
+  flashSaleHours,
   freeShipping,
   freeShippingLabel,
   taxNote,
@@ -243,11 +248,14 @@ export default function ProductInfoPanel({
   if (isGiDtc) {
     return (
       <GiDtcBuyBox
+        productId={productId}
         brandLabel={brandLabel}
         brandHref={brandHref}
         seoH1={seoH1}
         salesBadge={salesBadge}
         resolvedPrice={resolvedPrice}
+        compareAtPrice={compareAtPrice}
+        flashSaleHours={flashSaleHours}
         freeShipping={freeShipping}
         freeShippingLabel={freeShippingLabel}
         taxNote={taxNote}

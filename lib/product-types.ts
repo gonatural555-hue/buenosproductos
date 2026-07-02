@@ -38,6 +38,10 @@ export type Product = {
   slug?: string;
   title: string;
   price: number;
+  /** Precio anterior (USD base) para tachado y ofertas flash. */
+  compareAtPrice?: number;
+  /** Duración del contador de oferta en horas (p. ej. 24). */
+  flashSaleHours?: number;
   category: string;
   /** Marca comercial (opcional). Si falta, se infiere del título o categoría. */
   brand?: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-import { isExternalImage, isValidImageSrc } from "@/lib/image-src";
+import { isExternalImage, normalizeImageSrc } from "@/lib/image-src";
 import { PRODUCT_BLUR_DATA_URL } from "@/lib/image-src";
 
 export type SmartImageProps = Omit<ImageProps, "src"> & {
@@ -28,18 +28,19 @@ export default function SmartImage({
   unoptimized: unoptimizedProp,
   ...rest
 }: SmartImageProps) {
-  if (!isValidImageSrc(src)) {
+  const resolvedSrc = normalizeImageSrc(src);
+  if (!resolvedSrc) {
     return null;
   }
 
-  const external = isExternalImage(src);
+  const external = isExternalImage(resolvedSrc);
   const unoptimized = unoptimizedProp ?? external;
   const useBlur =
     !external && (placeholder === "blur" || placeholder === undefined);
 
   return (
     <Image
-      src={src}
+      src={resolvedSrc}
       alt={alt}
       fill={fill}
       width={fill ? undefined : width}

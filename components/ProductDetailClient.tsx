@@ -37,6 +37,8 @@ type ProductSummary = {
   id: string;
   title: string;
   price: number;
+  compareAtPrice?: number;
+  flashSaleHours?: number;
   category: string;
   description: string;
   shortDescription?: string;
@@ -98,6 +100,8 @@ function buildInfoPanelProps(
     seoH1: string;
     salesBadge?: string;
     resolvedPrice: number;
+    compareAtPrice?: number;
+    flashSaleHours?: number;
     freeShipping?: boolean;
     freeShippingLabel?: string;
     taxNote?: string | null;
@@ -218,6 +222,8 @@ export default function ProductDetailClient({
     salesBadge,
     seoH1,
     resolvedPrice,
+    compareAtPrice: product.compareAtPrice,
+    flashSaleHours: product.flashSaleHours,
     freeShipping: product.freeShipping,
     freeShippingLabel,
     taxNote,

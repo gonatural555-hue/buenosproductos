@@ -3,14 +3,13 @@
   "brand": "Searide",
   "images": {
     "featured": [
-      "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
+      "/assets/images/good-ideas-products/gi-hogar-004/humidificador.webp"
     ],
     "gallery": [
-      "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H744bb6a17e9741f99c06e022a40a0d09z.jpg?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H7f87fd24fe6b44a0b19341810aa4ce9cO.png?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H35dc7a6b2e4b425d9237dabd55b9bf4ez.png?avif=close&webp=close",
-      "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
+      "/assets/images/good-ideas-products/gi-hogar-004/humidificador-01.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/humidificador-02.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/humidificador-03.webp",
+      "/assets/images/good-ideas-products/gi-hogar-004/humidificador-04.webp"
     ],
     "lifestyle": [
       "https://gv-vod-cdn.aliexpress-media.com/ae_sg_gmc/video_target/gv93-b5de1a3d-a181efca-93063e31-0fdc/trans/37469532-ff94-4f2d-b4ed-9fc5a674344b-h265-hd.mp4?auth_key=1782941160-0-0-ad1127e181e01e892694d4f29da4d590"
@@ -20,28 +19,25 @@
       "color": {
         "white": {
           "featured": [
-            "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador.webp"
           ],
           "gallery": [
-            "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H744bb6a17e9741f99c06e022a40a0d09z.jpg?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H7f87fd24fe6b44a0b19341810aa4ce9cO.png?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H35dc7a6b2e4b425d9237dabd55b9bf4ez.png?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-01.webp",
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-02.webp",
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-03.webp",
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-04.webp"
           ],
           "lifestyle": [],
           "extras": []
         },
         "black": {
           "featured": [
-            "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close"
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-01.webp"
           ],
           "gallery": [
-            "https://s.alicdn.com/@sc04/kf/H94522a27bdc8486796514311c0bd25689.jpg?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H744bb6a17e9741f99c06e022a40a0d09z.jpg?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H7f87fd24fe6b44a0b19341810aa4ce9cO.png?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H35dc7a6b2e4b425d9237dabd55b9bf4ez.png?avif=close&webp=close",
-            "https://s.alicdn.com/@sc04/kf/H4a6ed9dfa2f749f9be975ce01fa1f4297.jpg?avif=close&webp=close"
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-02.webp",
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-03.webp",
+            "/assets/images/good-ideas-products/gi-hogar-004/humidificador-04.webp"
           ],
           "lifestyle": [],
           "extras": []
