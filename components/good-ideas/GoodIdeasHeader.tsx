@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useId, useState } from "react";
 import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
-  blogPath,
+  buildGiHeaderNavItems,
+  isGiHeaderNavItemActive,
+} from "@/lib/good-ideas-header-nav";
+import {
   cartPath,
   homePath,
-  productsPath,
   shouldUseLightGiHeader,
 } from "@/lib/routing/paths";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
@@ -19,18 +22,52 @@ import {
   resolveSmartHeaderScrollConfig,
   useSmartHeaderScroll,
 } from "@/hooks/useSmartHeaderScroll";
-import { GI_HEADER_NAV_CENTER_OFFSET_PX } from "@/lib/ui/goodideas-design";
+import { giHeaderClasses } from "@/lib/ui/gi-header";
 import { giType } from "@/lib/ui/gi-typography";
+
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.75}
+      stroke="currentColor"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      {open ? (
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+      ) : (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      )}
+    </svg>
+  );
+}
 
 export default function GoodIdeasHeader() {
   const locale = useLocale();
   const t = useTranslations();
   const { totalItems } = useGoodIdeasCart();
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const searchParams = useSearchParams();
-  const lightHeader = shouldUseLightGiHeader(pathname ?? "");
-  const scrollConfig = resolveSmartHeaderScrollConfig(pathname ?? "");
+  const lightHeader = shouldUseLightGiHeader(pathname);
+  const scrollConfig = resolveSmartHeaderScrollConfig(pathname);
   const { hidden, transitionClass } = useSmartHeaderScroll(scrollConfig);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [locationHash, setLocationHash] = useState("");
+  const mobileMenuId = useId();
+
+  const navItems = buildGiHeaderNavItems(locale, {
+    home: t("goodIdeas.nav.home"),
+    products: t("goodIdeas.nav.products"),
+    categories: t("goodIdeas.nav.categories"),
+    blog: t("goodIdeas.nav.blog"),
+  });
 
   const buildLocaleHref = (nextLocale: Locale) => {
     const segments = pathname.split("/").filter(Boolean);
@@ -44,80 +81,129 @@ export default function GoodIdeasHeader() {
     return `/${segments.join("/")}${query ? `?${query}` : ""}`;
   };
 
-  const nav = [
-    { href: homePath(locale), label: t("goodIdeas.nav.home") },
-    { href: productsPath(locale), label: t("goodIdeas.nav.products") },
-    { href: blogPath(locale), label: t("goodIdeas.nav.blog") },
-  ];
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  useEffect(() => {
+    closeMobile();
+  }, [pathname, closeMobile]);
+
+  useEffect(() => {
+    const syncHash = () => setLocationHash(window.location.hash.replace(/^#/, ""));
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMobile();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen, closeMobile]);
+
+  const navLinkClass = (active: boolean) => {
+    if (lightHeader) {
+      return `${giHeaderClasses.navLinkLight} ${
+        active ? giHeaderClasses.navLinkLightActive : ""
+      }`;
+    }
+    return `${giHeaderClasses.navLinkDark} ${
+      active ? giHeaderClasses.navLinkDarkActive : ""
+    }`;
+  };
+
+  const mobileNavLinkClass = (active: boolean) => {
+    if (lightHeader) {
+      return `${giHeaderClasses.mobileNavLink} ${
+        active ? giHeaderClasses.mobileNavLinkActive : ""
+      }`;
+    }
+    return `${giHeaderClasses.mobileNavLinkDark} ${
+      active ? giHeaderClasses.mobileNavLinkDarkActive : ""
+    }`;
+  };
+
+  const pillGroupClass = lightHeader
+    ? giHeaderClasses.pillGroup
+    : giHeaderClasses.pillGroupDark;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
         hidden ? "-translate-y-full" : "translate-y-0"
-      } ${
-        lightHeader
-          ? "border-b border-[#E5E7EB] bg-white/95 backdrop-blur-sm"
-          : "border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl"
-      }`}
+      } ${lightHeader ? giHeaderClasses.shell : giHeaderClasses.shellDark}`}
     >
-      <div className="relative mx-auto flex h-[64px] max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6 md:h-[72px]">
-        <Link
-          href={homePath(locale)}
-          className={`group shrink-0 ${giType.brandLogo}`}
-        >
-          <GoodProductsBrandName
-            locale={locale}
-            prefixClassName={
-              lightHeader
-                ? "text-[#111111] transition-colors duration-200 group-hover:text-[#3B82F6]"
-                : "text-white transition-colors duration-200 group-hover:text-[#3B82F6]"
-            }
-            suffixClassName={
-              lightHeader
-                ? "text-[#3B82F6] transition-colors duration-200 group-hover:text-[#111111]"
-                : "text-[#3B82F6] transition-colors duration-200 group-hover:text-white"
-            }
-          />
-        </Link>
+      <div className={giHeaderClasses.inner}>
+        <div className="flex min-w-0 items-center gap-2">
+          <Link
+            href={homePath(locale)}
+            className={`group shrink-0 ${giType.brandLogo}`}
+          >
+            <GoodProductsBrandName
+              locale={locale}
+              prefixClassName={
+                lightHeader
+                  ? "text-[#0B0F14] transition-colors duration-200 group-hover:text-[#3B82F6]"
+                  : "text-white transition-colors duration-200 group-hover:text-[#3B82F6]"
+              }
+              suffixClassName={
+                lightHeader
+                  ? "text-[#3B82F6] transition-colors duration-200 group-hover:text-[#0B0F14]"
+                  : "text-[#3B82F6] transition-colors duration-200 group-hover:text-white"
+              }
+            />
+          </Link>
+        </div>
 
         <nav
-          className="pointer-events-none absolute top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex"
-          style={{
-            left: `calc(57% - ${GI_HEADER_NAV_CENTER_OFFSET_PX}px)`,
-          }}
+          className={giHeaderClasses.navDesktop}
           aria-label={t("goodIdeas.brandName")}
         >
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`pointer-events-auto font-body text-sm font-medium transition-colors duration-200 ${
-                lightHeader
-                  ? "text-[#374151] hover:text-[#111111]"
-                  : `${giType.navLink} text-white hover:text-[var(--gi-primary)]`
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isGiHeaderNavItemActive(pathname, item, locationHash);
+            return (
+              <Link
+                key={item.id}
+                href={item.href}
+                className={navLinkClass(active)}
+                aria-current={active ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <HeaderCurrencySwitcher variant={lightHeader ? "light" : "good-ideas"} />
-          <div
-            className={`flex items-center gap-0.5 rounded-full border px-1 py-0.5 ${
-              lightHeader ? "border-[#E5E7EB]" : "border-white/10"
-            }`}
+        <div className={giHeaderClasses.utilityCluster}>
+          <button
+            type="button"
+            className={lightHeader ? giHeaderClasses.menuBtn : giHeaderClasses.menuBtnDark}
+            aria-expanded={mobileOpen}
+            aria-controls={mobileMenuId}
+            aria-label={mobileOpen ? t("goodIdeas.nav.closeMenu") : t("goodIdeas.nav.openMenu")}
+            onClick={() => setMobileOpen((v) => !v)}
           >
+            <MenuIcon open={mobileOpen} />
+          </button>
+
+          <div className={giHeaderClasses.divider} aria-hidden />
+
+          <HeaderCurrencySwitcher variant={lightHeader ? "light" : "good-ideas"} />
+
+          <div className={pillGroupClass}>
             {headerLocales.map((lang) => (
               <Link
                 key={lang}
                 href={buildLocaleHref(lang)}
                 className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
                   lang === locale
-                    ? "text-[var(--gi-primary)]"
+                    ? lightHeader
+                      ? "bg-white font-semibold text-[#0B0F14] shadow-sm"
+                      : "text-[var(--gi-primary)]"
                     : lightHeader
-                      ? "text-[#6B7280] hover:text-[#111111]"
+                      ? "text-[#6B7280] hover:text-[#0B0F14]"
                       : "text-white hover:text-[var(--gi-primary)]"
                 }`}
               >
@@ -126,15 +212,16 @@ export default function GoodIdeasHeader() {
             ))}
           </div>
 
+          <div
+            className={`hidden sm:block ${lightHeader ? giHeaderClasses.divider : giHeaderClasses.dividerDark}`}
+            aria-hidden
+          />
+
           <HeaderAccountMenu variant={lightHeader ? "light" : "dark"} />
 
           <Link
             href={cartPath(locale)}
-            className={`relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-200 ${
-              lightHeader
-                ? "text-[#111111] hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
-                : "text-white hover:bg-white/8 hover:text-[#3B82F6]"
-            }`}
+            className={lightHeader ? giHeaderClasses.iconBtnLight : giHeaderClasses.iconBtnDark}
             aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
           >
             <svg
@@ -152,13 +239,41 @@ export default function GoodIdeasHeader() {
               />
             </svg>
             {totalItems > 0 ? (
-              <span className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}>
+              <span
+                className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}
+              >
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             ) : null}
           </Link>
         </div>
       </div>
+
+      {mobileOpen ? (
+        <nav
+          id={mobileMenuId}
+          className={lightHeader ? giHeaderClasses.mobilePanel : giHeaderClasses.mobilePanelDark}
+          aria-label={t("goodIdeas.brandName")}
+        >
+          <ul className="flex flex-col gap-0.5">
+            {navItems.map((item) => {
+              const active = isGiHeaderNavItemActive(pathname, item, locationHash);
+              return (
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    className={mobileNavLinkClass(active)}
+                    aria-current={active ? "page" : undefined}
+                    onClick={closeMobile}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 }

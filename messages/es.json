@@ -77,10 +77,13 @@
     "nav": {
       "home": "Inicio",
       "products": "Productos",
+      "categories": "Categorías",
       "blog": "Blog",
       "cart": "Carrito",
       "account": "Mi cuenta",
       "accountMenuAria": "Menú de cuenta",
+      "openMenu": "Abrir menú de navegación",
+      "closeMenu": "Cerrar menú de navegación",
       "helloUser": "Hola, {name}",
       "allBrands": "Todas las marcas"
     },
@@ -101,11 +104,131 @@
     },
     "hero": {
       "eyebrow": "Hogar & Tech",
-      "title": "Buenos Productos\npara el día a día.",
-      "subtitle": "Productos útiles para hogar, tecnología, estilo de vida y el día a día.",
+      "titleBefore": "Soluciones que mejoran ",
+      "titleAccent": "tu día a día.",
+      "subtitle": "Productos útiles para hogar, tecnología, cocina, auto y estilo de vida. Calidad, innovación y buenos precios en un solo lugar.",
       "cta": "Explorar productos",
+      "socialProof": "+25K clientes satisfechos",
+      "showcaseBadge": "Tecnología que se adapta a tu vida.",
       "comingSoon": "Estamos preparando el catálogo. Pronto encontrarás gadgets para el hogar, electrónica y esenciales del día a día.",
       "sectionAria": "Buenos Productos — inicio"
+    },
+    "trustBar": {
+      "ariaLabel": "Beneficios de compra",
+      "shippingTitle": "Envío gratis",
+      "shippingDesc": "a todo el país",
+      "secureTitle": "Compra segura",
+      "secureDesc": "Tus datos protegidos",
+      "innovativeTitle": "Productos innovadores",
+      "innovativeDesc": "Lo último en tendencia",
+      "supportTitle": "Soporte rápido",
+      "supportDesc": "Estamos para ayudarte"
+    },
+    "featured": {
+      "eyebrow": "DESTACADOS",
+      "title": "Lo más elegido por nuestros clientes",
+      "viewAll": "Ver todos los productos",
+      "reviewsCount": "({count} reseñas)",
+      "sectionAria": "Productos destacados"
+    },
+    "shopByCategory": {
+      "eyebrow": "COMPRA POR CATEGORÍA",
+      "title": "Encuentra la solución perfecta",
+      "viewAll": "Ver todas las categorías",
+      "viewMore": "Ver más",
+      "sectionAria": "Compra por categoría",
+      "tiles": {
+        "home": {
+          "title": "Hogar",
+          "description": "Confort, organización y esenciales para tu espacio."
+        },
+        "tech": {
+          "title": "Tecnología",
+          "description": "Gadgets, accesorios y tech para el día a día."
+        },
+        "cocina": {
+          "title": "Cocina",
+          "description": "Electrodomésticos y utensilios para cocinar mejor."
+        },
+        "accesorios-para-auto": {
+          "title": "Auto",
+          "description": "Soportes, organizadores y accesorios para el vehículo."
+        },
+        "lifestyle": {
+          "title": "Estilo de vida",
+          "description": "Audio, cuidado personal y productos para tu rutina."
+        }
+      }
+    },
+    "whyChoose": {
+      "titleBefore": "¿Por qué elegir ",
+      "titleAccent": "Buenos Productos",
+      "titleAfter": "?",
+      "sectionAria": "Por qué elegir Buenos Productos",
+      "items": {
+        "quality": {
+          "title": "Calidad garantizada",
+          "description": "Productos seleccionados y probados para durar."
+        },
+        "innovation": {
+          "title": "Innovación constante",
+          "description": "Traemos soluciones útiles para hacer tu día más fácil."
+        },
+        "pricing": {
+          "title": "Buenos precios",
+          "description": "La mejor relación precio-calidad todos los días."
+        },
+        "returns": {
+          "title": "Cambios y devoluciones",
+          "description": "Fáciles y sin complicaciones."
+        }
+      }
+    },
+    "socialProof": {
+      "eyebrow": "LO QUE DICEN NUESTROS CLIENTES",
+      "title": "Miles de personas ya confían en nosotros",
+      "viewMore": "Ver más opiniones",
+      "sectionAria": "Opiniones de clientes",
+      "anonymous": "Cliente verificado",
+      "placeholders": {
+        "one": {
+          "author": "María G.",
+          "country": "Argentina",
+          "text": "Llegó rápido y la calidad superó lo que esperaba. Muy recomendable."
+        },
+        "two": {
+          "author": "Carlos R.",
+          "country": "México",
+          "text": "Producto útil y bien presentado. La compra fue simple y segura."
+        },
+        "three": {
+          "author": "Laura M.",
+          "country": "España",
+          "text": "Buena relación precio-calidad. Lo uso todos los días sin problemas."
+        },
+        "four": {
+          "author": "Diego P.",
+          "country": "Colombia",
+          "text": "Atención clara y entrega dentro del plazo. Volvería a comprar."
+        }
+      }
+    },
+    "promoBanner": {
+      "title": "Ofertas que no podés perder",
+      "highlight": "HASTA 30% OFF",
+      "subtitle": "En productos seleccionados por tiempo limitado.",
+      "cta": "Aprovechar ofertas",
+      "sectionAria": "Ofertas destacadas"
+    },
+    "newsletter": {
+      "title": "Recibí ofertas y novedades antes que nadie",
+      "subtitle": "Promociones, lanzamientos y productos seleccionados directo en tu correo.",
+      "emailPlaceholder": "Tu correo electrónico",
+      "cta": "Suscribirme",
+      "marketingLabel": "Acepto recibir comunicaciones comerciales y el newsletter. Consultá la",
+      "privacyLink": "política de privacidad",
+      "sectionAria": "Suscripción al newsletter",
+      "successMessage": "¡Listo! Revisá tu bandeja de entrada pronto."
     },
     "products": {
       "heroTitle": "Esenciales\npara el día a día",

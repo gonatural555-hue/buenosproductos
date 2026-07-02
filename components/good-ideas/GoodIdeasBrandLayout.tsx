@@ -14,8 +14,8 @@ import {
 
 function GoodIdeasHeaderFallback() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E5E7EB] bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-[64px] max-w-[1400px] items-center px-4 sm:px-6 md:h-[72px]" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E5E7EB] bg-white/95 shadow-[0_1px_0_rgba(11,15,20,0.04)] backdrop-blur-md">
+      <div className="mx-auto flex h-[64px] max-w-[1400px] items-center px-4 sm:px-6 md:h-[72px] lg:h-[76px]" />
     </header>
   );
 }

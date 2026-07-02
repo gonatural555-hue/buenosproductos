@@ -18,7 +18,7 @@ export default function HeaderCurrencySwitcher({ variant = "utility" }: Props) {
   if (variant === "light") {
     return (
       <nav
-        className="flex items-center gap-0.5 rounded-full border border-[#E5E7EB] px-1 py-0.5"
+        className="flex items-center gap-0.5 rounded-full border border-[#E5E7EB] bg-[#F9FAFB] p-0.5"
         aria-label={t("header.currencyNavAria")}
       >
         {currencies.map((code) => (
@@ -28,8 +28,8 @@ export default function HeaderCurrencySwitcher({ variant = "utility" }: Props) {
             onClick={() => setCurrency(code)}
             className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
               code === currency
-                ? "text-[#111111] font-semibold"
-                : "text-[#6B7280] hover:text-[#111111]"
+                ? "bg-white font-semibold text-[#0B0F14] shadow-sm"
+                : "text-[#6B7280] hover:text-[#0B0F14]"
             }`}
             aria-pressed={code === currency}
           >

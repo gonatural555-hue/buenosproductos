@@ -77,10 +77,13 @@
     "nav": {
       "home": "Home",
       "products": "Products",
+      "categories": "Categories",
       "blog": "Blog",
       "cart": "Cart",
       "account": "My account",
       "accountMenuAria": "Account menu",
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu",
       "helloUser": "Hi, {name}",
       "allBrands": "All brands"
     },
@@ -101,11 +104,131 @@
     },
     "hero": {
       "eyebrow": "Home & Tech",
-      "title": "Good Products\nfor everyday life.",
-      "subtitle": "Useful products for home, tech, lifestyle and everyday life.",
-      "cta": "Explore Products",
+      "titleBefore": "Solutions that improve ",
+      "titleAccent": "your everyday life.",
+      "subtitle": "Useful products for home, tech, kitchen, car and lifestyle. Quality, innovation and great prices in one place.",
+      "cta": "Explore products",
+      "socialProof": "+25K happy customers",
+      "showcaseBadge": "Technology that adapts to your life.",
       "comingSoon": "Our catalog is being curated. Check back soon for smart home gadgets, electronics and everyday essentials.",
       "sectionAria": "Good Products — home"
+    },
+    "trustBar": {
+      "ariaLabel": "Shopping benefits",
+      "shippingTitle": "Free shipping",
+      "shippingDesc": "nationwide",
+      "secureTitle": "Secure checkout",
+      "secureDesc": "Your data protected",
+      "innovativeTitle": "Innovative products",
+      "innovativeDesc": "Latest trends",
+      "supportTitle": "Fast support",
+      "supportDesc": "We are here to help"
+    },
+    "featured": {
+      "eyebrow": "FEATURED",
+      "title": "Most chosen by our customers",
+      "viewAll": "View all products",
+      "reviewsCount": "({count} reviews)",
+      "sectionAria": "Featured products"
+    },
+    "shopByCategory": {
+      "eyebrow": "SHOP BY CATEGORY",
+      "title": "Find the perfect solution",
+      "viewAll": "View all categories",
+      "viewMore": "View more",
+      "sectionAria": "Shop by category",
+      "tiles": {
+        "home": {
+          "title": "Home",
+          "description": "Comfort, organization, and essentials for your space."
+        },
+        "tech": {
+          "title": "Technology",
+          "description": "Gadgets, accessories, and everyday tech."
+        },
+        "cocina": {
+          "title": "Kitchen",
+          "description": "Appliances and tools to cook better."
+        },
+        "accesorios-para-auto": {
+          "title": "Auto",
+          "description": "Mounts, organizers, and accessories for your vehicle."
+        },
+        "lifestyle": {
+          "title": "Lifestyle",
+          "description": "Audio, personal care, and products for your routine."
+        }
+      }
+    },
+    "whyChoose": {
+      "titleBefore": "Why choose ",
+      "titleAccent": "Buenos Productos",
+      "titleAfter": "?",
+      "sectionAria": "Why choose Buenos Productos",
+      "items": {
+        "quality": {
+          "title": "Guaranteed quality",
+          "description": "Products selected and tested to last."
+        },
+        "innovation": {
+          "title": "Constant innovation",
+          "description": "We bring useful solutions to make your day easier."
+        },
+        "pricing": {
+          "title": "Great prices",
+          "description": "The best value for money, every day."
+        },
+        "returns": {
+          "title": "Easy returns & exchanges",
+          "description": "Simple and hassle-free."
+        }
+      }
+    },
+    "socialProof": {
+      "eyebrow": "WHAT OUR CUSTOMERS SAY",
+      "title": "Thousands already trust us",
+      "viewMore": "Read more reviews",
+      "sectionAria": "Customer reviews",
+      "anonymous": "Verified customer",
+      "placeholders": {
+        "one": {
+          "author": "Maria G.",
+          "country": "Argentina",
+          "text": "Arrived quickly and quality exceeded my expectations. Highly recommend."
+        },
+        "two": {
+          "author": "Carlos R.",
+          "country": "Mexico",
+          "text": "Useful product and neat packaging. Checkout was simple and secure."
+        },
+        "three": {
+          "author": "Laura M.",
+          "country": "Spain",
+          "text": "Great value for money. I use it every day without issues."
+        },
+        "four": {
+          "author": "Diego P.",
+          "country": "Colombia",
+          "text": "Clear communication and delivery on time. I would buy again."
+        }
+      }
+    },
+    "promoBanner": {
+      "title": "Deals you can't miss",
+      "highlight": "UP TO 30% OFF",
+      "subtitle": "On selected products for a limited time.",
+      "cta": "Shop deals",
+      "sectionAria": "Featured deals"
+    },
+    "newsletter": {
+      "title": "Get deals and news before anyone else",
+      "subtitle": "Promotions, launches, and curated products straight to your inbox.",
+      "emailPlaceholder": "Your email address",
+      "cta": "Subscribe",
+      "marketingLabel": "I agree to receive marketing communications and the newsletter. See our",
+      "privacyLink": "privacy policy",
+      "sectionAria": "Newsletter signup",
+      "successMessage": "You're in! Check your inbox soon."
     },
     "products": {
       "heroTitle": "Everyday\nEssentials",

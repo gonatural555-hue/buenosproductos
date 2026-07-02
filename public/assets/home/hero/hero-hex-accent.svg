@@ -1,0 +1,34 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hexStroke" x1="120" y1="80" x2="600" y2="440">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.05"/>
+      <stop offset="48%" stop-color="#3B82F6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <filter id="hexGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <g stroke="url(#hexStroke)" stroke-width="1.5">
+    <path d="M180 84L220 107V153L180 176L140 153V107L180 84Z"/>
+    <path d="M260 84L300 107V153L260 176L220 153V107L260 84Z"/>
+    <path d="M340 84L380 107V153L340 176L300 153V107L340 84Z"/>
+    <path d="M220 153L260 176V222L220 245L180 222V176L220 153Z"/>
+    <path d="M300 153L340 176V222L300 245L260 222V176L300 153Z"/>
+    <path d="M380 153L420 176V222L380 245L340 222V176L380 153Z"/>
+    <path d="M260 222L300 245V291L260 314L220 291V245L260 222Z"/>
+    <path d="M340 222L380 245V291L340 314L300 291V245L340 222Z"/>
+    <path d="M420 222L460 245V291L420 314L380 291V245L420 222Z"/>
+    <path d="M300 291L340 314V360L300 383L260 360V314L300 291Z"/>
+    <path d="M380 291L420 314V360L380 383L340 360V314L380 291Z"/>
+    <path d="M460 291L500 314V360L460 383L420 360V314L460 291Z"/>
+  </g>
+
+  <g filter="url(#hexGlow)">
+    <path d="M380 153L420 176V222L380 245L340 222V176L380 153Z" stroke="#38BDF8" stroke-opacity="0.75" stroke-width="2"/>
+    <path d="M340 222L380 245V291L340 314L300 291V245L340 222Z" stroke="#3B82F6" stroke-opacity="0.7" stroke-width="2"/>
+    <path d="M420 222L460 245V291L420 314L380 291V245L420 222Z" stroke="#60A5FA" stroke-opacity="0.55" stroke-width="2"/>
+  </g>
+</svg>

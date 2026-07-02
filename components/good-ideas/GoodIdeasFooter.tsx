@@ -47,13 +47,30 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
     { href: legalHref("disclaimer", locale), label: t("goodIdeas.footer.disclaimer") },
   ];
 
+  const darkLinkClass =
+    "font-body text-sm text-[rgba(232,236,241,0.72)] transition-colors duration-200 hover:text-[#3B82F6]";
+  const darkHighlightLinkClass =
+    "font-body text-sm font-semibold text-[#93C5FD] transition-colors duration-200 hover:text-[#3B82F6]";
+  const darkHeadingClass =
+    "font-body text-[11px] font-semibold uppercase tracking-[0.24em] text-[rgba(232,236,241,0.55)]";
+  const darkTaglineClass =
+    "font-body text-sm leading-relaxed text-[rgba(232,236,241,0.55)]";
+
   const linkClass = isLight
     ? "font-body text-sm text-[#111111] transition hover:text-[#3B82F6]"
-    : giType.footerLink;
+    : darkLinkClass;
 
   const highlightLinkClass = isLight
     ? "font-body text-sm font-semibold text-[#2563EB] transition hover:text-[#3B82F6]"
-    : "font-body text-sm font-semibold text-[#93C5FD] transition-colors hover:text-[#BFDBFE]";
+    : darkHighlightLinkClass;
+
+  const headingClass = isLight
+    ? "font-body text-sm font-semibold text-[#111111]"
+    : darkHeadingClass;
+
+  const taglineClass = isLight
+    ? "font-body text-sm leading-relaxed text-[#737373]"
+    : darkTaglineClass;
 
   return (
     <footer
@@ -64,34 +81,24 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
           : "border-t border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       }
     >
-      <div className="mx-auto max-w-[1315px] px-8 py-14 md:py-16">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-12">
+      <div className="mx-auto max-w-[1320px] px-6 py-16 sm:px-10 md:py-20 lg:px-12">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-10 lg:gap-14">
           <div>
             <p className={giType.brandLogo}>
               <GoodProductsBrandName
                 locale={locale}
-                prefixClassName={isLight ? "text-[#111111]" : undefined}
-                suffixClassName={isLight ? "text-[#3B82F6]" : undefined}
+                prefixClassName={isLight ? "text-[#111111]" : "text-[#E8ECF1]"}
+                suffixClassName={isLight ? "text-[#3B82F6]" : "text-[#3B82F6]"}
               />
             </p>
-            <p
-              className={`mt-3 max-w-xs font-body text-sm leading-relaxed ${
-                isLight ? "text-[#737373]" : giType.footerBody
-              }`}
-            >
+            <p className={`mt-4 max-w-xs ${taglineClass}`}>
               {t("goodIdeas.footer.tagline")}
             </p>
           </div>
 
           <div>
-            <p
-              className={`${giType.footerHeading} ${
-                isLight ? "text-[#111111]" : "text-[var(--gi-text-muted-on-dark)]"
-              }`}
-            >
-              {t("goodIdeas.footer.shopHeading")}
-            </p>
-            <ul className="mt-4 space-y-2.5">
+            <p className={headingClass}>{t("goodIdeas.footer.shopHeading")}</p>
+            <ul className="mt-5 space-y-3">
               {shopLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClass}>
@@ -103,14 +110,8 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
           </div>
 
           <div>
-            <p
-              className={`${giType.footerHeading} ${
-                isLight ? "text-[#111111]" : "text-[var(--gi-text-muted-on-dark)]"
-              }`}
-            >
-              {t("goodIdeas.footer.legalHeading")}
-            </p>
-            <ul className="mt-4 space-y-2.5">
+            <p className={headingClass}>{t("goodIdeas.footer.legalHeading")}</p>
+            <ul className="mt-5 space-y-3">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -126,17 +127,17 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
         </div>
 
         <p
-          className={`mt-12 border-t pt-6 text-center font-body text-xs ${
+          className={`mt-14 border-t pt-8 text-center font-body text-xs md:mt-16 ${
             isLight
               ? "border-[#E5E5E5] text-[#737373]"
-              : `border-white/[0.08] ${giType.footerLegal}`
+              : "border-white/[0.08] text-[rgba(232,236,241,0.55)]"
           }`}
         >
           © {year}{" "}
           <GoodProductsBrandName
             locale={locale}
-            prefixClassName={isLight ? "text-[#111111]" : undefined}
-            suffixClassName={isLight ? "text-[#3B82F6]" : undefined}
+            prefixClassName={isLight ? "text-[#111111]" : "text-[#E8ECF1]"}
+            suffixClassName="text-[#3B82F6]"
           />
           . {t("goodIdeas.footer.rights")}
         </p>
