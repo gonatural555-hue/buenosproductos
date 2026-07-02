@@ -16,7 +16,7 @@ import type {
 import type { GoodIdeasHomePromoProductVisual } from "@/lib/good-ideas-home-promo";
 import type { GoodIdeasHomeReviewCard } from "@/lib/good-ideas-home-reviews";
 import type { GoodIdeasWhyChooseItem } from "@/lib/good-ideas-home-why-choose";
-import type { HeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
+import type { GoodIdeasHomeHeroCardEntry } from "@/lib/good-ideas-home-hero-cards";
 import type { ProductReviewStatsSnapshot } from "@/lib/good-ideas-product-review-stats";
 import type { Locale } from "@/lib/i18n/config";
 
@@ -29,7 +29,9 @@ export default function GoodIdeasHomePage({
   cta,
   socialProof,
   showcaseBadge,
-  showcaseProductLayers,
+  heroCardEntries,
+  heroReviewStatsMap,
+  viewProductLabel,
   trustBarItems,
   trustBarAriaLabel,
   sectionAriaLabel,
@@ -86,7 +88,9 @@ export default function GoodIdeasHomePage({
   cta: string;
   socialProof: string;
   showcaseBadge: string;
-  showcaseProductLayers: HeroProductShowcaseLayers;
+  heroCardEntries: GoodIdeasHomeHeroCardEntry[];
+  heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
+  viewProductLabel: string;
   trustBarItems: GoodIdeasTrustBarItem[];
   trustBarAriaLabel: string;
   sectionAriaLabel: string;
@@ -149,7 +153,9 @@ export default function GoodIdeasHomePage({
         ctaLabel={cta}
         socialProof={socialProof}
         showcaseBadge={showcaseBadge}
-        showcaseProductLayers={showcaseProductLayers}
+        heroCardEntries={heroCardEntries}
+        heroReviewStatsMap={heroReviewStatsMap}
+        viewProductLabel={viewProductLabel}
         sectionAriaLabel={sectionAriaLabel}
       />
       <GoodIdeasHomeTrustBar items={trustBarItems} ariaLabel={trustBarAriaLabel} />

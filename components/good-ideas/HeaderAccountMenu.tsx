@@ -48,8 +48,11 @@ type MenuItem = {
 
 export default function HeaderAccountMenu({
   variant = "dark",
+  iconOnly = false,
 }: {
   variant?: "dark" | "light";
+  /** Mobile: solo ícono, sin “Hola, usuario”. */
+  iconOnly?: boolean;
 }) {
   const locale = useLocale();
   const t = useTranslations();
@@ -101,14 +104,30 @@ export default function HeaderAccountMenu({
 
   const light = variant === "light";
   const iconBtnClass = light
-    ? "relative flex h-10 w-10 items-center justify-center rounded-full text-[#111111] transition-colors duration-200 hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
-    : "relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]";
+    ? "relative flex h-11 w-11 items-center justify-center rounded-full text-[#111111] transition-colors duration-200 hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+    : "relative flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]";
+
+  const loggedInIconBtnClass = light
+    ? "relative flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(59,130,246,0.14)] text-[#3B82F6] transition-colors duration-200 hover:bg-[rgba(59,130,246,0.22)]"
+    : "relative flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(59,130,246,0.2)] text-[#3B82F6] transition-colors duration-200 hover:bg-[rgba(59,130,246,0.28)]";
 
   if (!isLoggedIn) {
     return (
       <Link
         href={authPath(locale, accountPath(locale))}
         className={iconBtnClass}
+        aria-label={t("goodIdeas.nav.account")}
+      >
+        <AccountIcon className="h-5 w-5" />
+      </Link>
+    );
+  }
+
+  if (iconOnly) {
+    return (
+      <Link
+        href={accountPath(locale)}
+        className={loggedInIconBtnClass}
         aria-label={t("goodIdeas.nav.account")}
       >
         <AccountIcon className="h-5 w-5" />

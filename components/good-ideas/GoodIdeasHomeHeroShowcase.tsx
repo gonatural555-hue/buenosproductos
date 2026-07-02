@@ -1,2 +1,2 @@
-/** @deprecated Usar `@/components/home/HeroProductShowcase`. */
-export { default } from "@/components/home/HeroProductShowcase";
+/** @deprecated Usar `@/components/home/HeroFloatingProductCards` en home hero. */
+export { default } from "@/components/home/HeroFloatingProductCards";

@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import HeroProductShowcase from "@/components/home/HeroProductShowcase";
+import HeroFloatingProductCards from "@/components/home/HeroFloatingProductCards";
 import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
-import type { HeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
+import type { GoodIdeasHomeHeroCardEntry } from "@/lib/good-ideas-home-hero-cards";
+import type { ProductReviewStatsSnapshot } from "@/lib/good-ideas-product-review-stats";
 import type { Locale } from "@/lib/i18n/config";
 import { productsPath } from "@/lib/routing/paths";
 import { GI_EASE, GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
@@ -24,7 +25,9 @@ export type GoodIdeasHomeHeroProps = {
   ctaLabel: string;
   socialProof: string;
   showcaseBadge: string;
-  showcaseProductLayers: HeroProductShowcaseLayers;
+  heroCardEntries: GoodIdeasHomeHeroCardEntry[];
+  heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
+  viewProductLabel: string;
   sectionAriaLabel: string;
 };
 
@@ -103,7 +106,9 @@ export default function GoodIdeasHomeHero({
   ctaLabel,
   socialProof,
   showcaseBadge,
-  showcaseProductLayers,
+  heroCardEntries,
+  heroReviewStatsMap,
+  viewProductLabel,
   sectionAriaLabel,
 }: GoodIdeasHomeHeroProps) {
   const t = useTranslations();
@@ -206,11 +211,13 @@ export default function GoodIdeasHomeHero({
             variants={itemVariants}
             className="relative w-full min-w-0 lg:justify-self-end"
           >
-            <HeroProductShowcase
-              layers={showcaseProductLayers}
+            <HeroFloatingProductCards
+              entries={heroCardEntries}
+              reviewStatsMap={heroReviewStatsMap}
               badge={showcaseBadge}
               microBadgeShipping={t("goodIdeas.trustBar.shippingTitle")}
               microBadgeSecure={t("goodIdeas.trustBar.secureTitle")}
+              viewProductLabel={viewProductLabel}
             />
           </motion.div>
         </div>

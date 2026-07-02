@@ -21,13 +21,13 @@ export const giHeaderClasses = {
     "flex items-center gap-0.5 rounded-full border border-[#E5E7EB] bg-[#F9FAFB] p-0.5",
   pillGroupDark: "flex items-center gap-0.5 rounded-full border border-white/10 bg-white/[0.06] p-0.5",
   iconBtnLight:
-    "relative flex h-10 w-10 items-center justify-center rounded-full text-[#0B0F14] transition-colors duration-200 hover:bg-[#F3F4F6] hover:text-[#3B82F6]",
+    "relative flex h-11 w-11 items-center justify-center rounded-full text-[#0B0F14] transition-colors duration-200 hover:bg-[#F3F4F6] hover:text-[#3B82F6]",
   iconBtnDark:
-    "relative flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]",
+    "relative flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors duration-200 hover:bg-white/8 hover:text-[#3B82F6]",
   menuBtn:
-    "flex h-10 w-10 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6] lg:hidden",
+    "flex h-11 w-11 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6] lg:hidden",
   menuBtnDark:
-    "flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8 lg:hidden",
+    "flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8 lg:hidden",
   mobilePanel:
     "border-t border-[#E5E7EB] bg-white px-4 py-3 shadow-[0_12px_32px_rgba(15,23,42,0.08)] lg:hidden",
   mobilePanelDark:

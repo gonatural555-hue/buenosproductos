@@ -7,7 +7,7 @@ export type HeroProductShowcaseSlot = "main" | "secondary" | "tertiary";
 export type HeroProductShowcaseLayer = {
   src: string;
   alt: string;
-  /** `true` si existe `public/assets/home/hero/hero-product-{slot}.png|webp`. */
+  /** `true` si existe un asset dedicado en `public/assets/home/hero/`. */
   usesDedicatedAsset: boolean;
   /** Imagen de catálogo (JSON `featured`) usada como fallback. */
   catalogFallbackSrc: string;
@@ -25,7 +25,28 @@ const SLOT_FILE_BASE: Record<HeroProductShowcaseSlot, string> = {
   tertiary: "hero-product-tertiary",
 };
 
-/** Rutas dedicadas — reemplazar PNG/WebP transparentes en `public/assets/home/hero/`. */
+const DEDICATED_EXTENSIONS = ["png", "webp", "svg"] as const;
+
+const HERO_ASSETS_DIR = path.join(
+  process.cwd(),
+  "public",
+  "assets",
+  "home",
+  "hero"
+);
+
+function resolveDedicatedAssetSrc(base: string): string | null {
+  for (const ext of DEDICATED_EXTENSIONS) {
+    const abs = path.join(HERO_ASSETS_DIR, `${base}.${ext}`);
+    if (fs.existsSync(abs)) {
+      return `/assets/home/hero/${base}.${ext}`;
+    }
+  }
+
+  return null;
+}
+
+/** Ruta pública por defecto del asset dedicado del slot. */
 export function dedicatedHeroProductPublicPath(
   slot: HeroProductShowcaseSlot
 ): string {
@@ -35,17 +56,7 @@ export function dedicatedHeroProductPublicPath(
 function resolveDedicatedHeroProductSrc(
   slot: HeroProductShowcaseSlot
 ): string | null {
-  const base = SLOT_FILE_BASE[slot];
-  const dir = path.join(process.cwd(), "public", "assets", "home", "hero");
-
-  for (const ext of ["png", "webp"] as const) {
-    const abs = path.join(dir, `${base}.${ext}`);
-    if (fs.existsSync(abs)) {
-      return `/assets/home/hero/${base}.${ext}`;
-    }
-  }
-
-  return null;
+  return resolveDedicatedAssetSrc(SLOT_FILE_BASE[slot]);
 }
 
 function toLayer(

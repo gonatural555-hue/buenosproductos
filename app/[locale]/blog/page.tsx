@@ -7,6 +7,8 @@ import {
 import {
   resolveGoodIdeasPostHeroImage,
 } from "@/lib/good-ideas-blog";
+import { resolveGoodIdeasHomeHeroShowcase } from "@/lib/good-ideas-home-showcase";
+import { buildHeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
 import { getGoodIdeasCategoryLabel } from "@/lib/good-ideas-plp-categories";
 import { GI_BLOG_POSTS_ANCHOR } from "@/lib/ui/goodideas-design";
 import { GI_CART_INNER, GI_CART_OUTER } from "@/lib/ui/gi-cart-light";
@@ -44,6 +46,9 @@ export default async function GoodIdeasBlogPage({
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
   const entries = getGoodIdeasBlogPostEntries(locale);
+  const blogHeroProductLayers = buildHeroProductShowcaseLayers(
+    resolveGoodIdeasHomeHeroShowcase(locale)
+  );
 
   return (
     <main>
@@ -61,6 +66,7 @@ export default async function GoodIdeasBlogPage({
         scrollHint={t("goodIdeas.blog.scrollHint")}
         postsAnchorId={GI_BLOG_POSTS_ANCHOR}
         sectionAriaLabel={t("goodIdeas.blog.sectionAria")}
+        productLayers={blogHeroProductLayers}
       />
 
       <section

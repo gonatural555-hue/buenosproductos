@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
+import GoodIdeasMobileNavDrawer from "@/components/good-ideas/GoodIdeasMobileNavDrawer";
 import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName";
+import GoodProductsCompactLogo from "@/components/good-ideas/GoodProductsCompactLogo";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
@@ -25,7 +27,7 @@ import {
 import { giHeaderClasses } from "@/lib/ui/gi-header";
 import { giType } from "@/lib/ui/gi-typography";
 
-function MenuIcon({ open }: { open: boolean }) {
+function MenuIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,15 +38,31 @@ function MenuIcon({ open }: { open: boolean }) {
       className="h-5 w-5"
       aria-hidden
     >
-      {open ? (
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-      ) : (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-        />
-      )}
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+      />
+    </svg>
+  );
+}
+
+function CartIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.65}
+      stroke="currentColor"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+      />
     </svg>
   );
 }
@@ -82,6 +100,12 @@ export default function GoodIdeasHeader() {
   };
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  const isNavActive = useCallback(
+    (item: (typeof navItems)[number]) =>
+      isGiHeaderNavItemActive(pathname, item, locationHash),
+    [locationHash, pathname]
+  );
 
   useEffect(() => {
     closeMobile();
@@ -129,14 +153,77 @@ export default function GoodIdeasHeader() {
     ? giHeaderClasses.pillGroup
     : giHeaderClasses.pillGroupDark;
 
+  const currencyVariant = lightHeader ? "light" : "good-ideas";
+  const accountVariant = lightHeader ? "light" : "dark";
+
+  const mobileMenuBtnClass = lightHeader
+    ? "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6]"
+    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8";
+
+  const mobileCartBtnClass = lightHeader
+    ? "relative flex h-11 w-11 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+    : "relative flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8 hover:text-[#3B82F6]";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${lightHeader ? giHeaderClasses.shell : giHeaderClasses.shellDark}`}
     >
-      <div className={giHeaderClasses.inner}>
-        <div className="flex min-w-0 items-center gap-2">
+      <div
+        className={`${giHeaderClasses.inner} flex md:grid md:grid-cols-[auto_1fr_auto]`}
+      >
+        {/* ——— Mobile < md ——— */}
+        <div className="flex w-full min-w-0 items-center justify-between gap-2 md:hidden">
+          <div className="flex min-w-0 items-center gap-0.5">
+            <Link
+              href={homePath(locale)}
+              className="group shrink-0 py-1"
+              aria-label={t("goodIdeas.brandName")}
+            >
+              <GoodProductsCompactLogo
+                prefixClassName={
+                  lightHeader
+                    ? "text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
+                    : "text-white transition-colors group-hover:text-[#3B82F6]"
+                }
+                suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
+              />
+            </Link>
+            <button
+              type="button"
+              className={mobileMenuBtnClass}
+              aria-expanded={mobileOpen}
+              aria-controls={mobileMenuId}
+              aria-label={t("goodIdeas.nav.openMenu")}
+              onClick={() => setMobileOpen(true)}
+            >
+              <MenuIcon />
+            </button>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1">
+            <HeaderCurrencySwitcher variant={currencyVariant} compact />
+            <HeaderAccountMenu variant={accountVariant} iconOnly />
+            <Link
+              href={cartPath(locale)}
+              className={mobileCartBtnClass}
+              aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
+            >
+              <CartIcon />
+              {totalItems > 0 ? (
+                <span
+                  className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#3B82F6] px-0.5 ${giType.btnSm} text-white`}
+                >
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              ) : null}
+            </Link>
+          </div>
+        </div>
+
+        {/* ——— Desktop / tablet md+ (sin cambios) ——— */}
+        <div className="hidden min-w-0 items-center gap-2 md:flex">
           <Link
             href={homePath(locale)}
             className={`group shrink-0 ${giType.brandLogo}`}
@@ -162,7 +249,7 @@ export default function GoodIdeasHeader() {
           aria-label={t("goodIdeas.brandName")}
         >
           {navItems.map((item) => {
-            const active = isGiHeaderNavItemActive(pathname, item, locationHash);
+            const active = isNavActive(item);
             return (
               <Link
                 key={item.id}
@@ -176,7 +263,7 @@ export default function GoodIdeasHeader() {
           })}
         </nav>
 
-        <div className={giHeaderClasses.utilityCluster}>
+        <div className={`${giHeaderClasses.utilityCluster} hidden md:flex`}>
           <button
             type="button"
             className={lightHeader ? giHeaderClasses.menuBtn : giHeaderClasses.menuBtnDark}
@@ -185,12 +272,12 @@ export default function GoodIdeasHeader() {
             aria-label={mobileOpen ? t("goodIdeas.nav.closeMenu") : t("goodIdeas.nav.openMenu")}
             onClick={() => setMobileOpen((v) => !v)}
           >
-            <MenuIcon open={mobileOpen} />
+            <MenuIcon />
           </button>
 
           <div className={giHeaderClasses.divider} aria-hidden />
 
-          <HeaderCurrencySwitcher variant={lightHeader ? "light" : "good-ideas"} />
+          <HeaderCurrencySwitcher variant={currencyVariant} />
 
           <div className={pillGroupClass}>
             {headerLocales.map((lang) => (
@@ -217,27 +304,14 @@ export default function GoodIdeasHeader() {
             aria-hidden
           />
 
-          <HeaderAccountMenu variant={lightHeader ? "light" : "dark"} />
+          <HeaderAccountMenu variant={accountVariant} />
 
           <Link
             href={cartPath(locale)}
             className={lightHeader ? giHeaderClasses.iconBtnLight : giHeaderClasses.iconBtnDark}
             aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.65}
-              stroke="currentColor"
-              className="h-5 w-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-              />
-            </svg>
+            <CartIcon />
             {totalItems > 0 ? (
               <span
                 className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}
@@ -249,15 +323,24 @@ export default function GoodIdeasHeader() {
         </div>
       </div>
 
+      <GoodIdeasMobileNavDrawer
+        open={mobileOpen}
+        onClose={closeMobile}
+        navItems={navItems}
+        buildLocaleHref={buildLocaleHref}
+        isNavItemActive={isNavActive}
+      />
+
+      {/* Panel tablet md–lg (sin nav desktop) */}
       {mobileOpen ? (
         <nav
           id={mobileMenuId}
-          className={lightHeader ? giHeaderClasses.mobilePanel : giHeaderClasses.mobilePanelDark}
+          className={`${lightHeader ? giHeaderClasses.mobilePanel : giHeaderClasses.mobilePanelDark} hidden md:block lg:hidden`}
           aria-label={t("goodIdeas.brandName")}
         >
           <ul className="flex flex-col gap-0.5">
             {navItems.map((item) => {
-              const active = isGiHeaderNavItemActive(pathname, item, locationHash);
+              const active = isNavActive(item);
               return (
                 <li key={item.id}>
                   <Link

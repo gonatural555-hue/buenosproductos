@@ -4,8 +4,7 @@ import {
   buildGoodIdeasHomeCategoryTileCopyMap,
   resolveGoodIdeasHomeCategoryTiles,
 } from "@/lib/good-ideas-home-categories";
-import { resolveGoodIdeasHomeHeroShowcase } from "@/lib/good-ideas-home-showcase";
-import { buildHeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
+import { resolveGoodIdeasHomeHeroCardEntries } from "@/lib/good-ideas-home-hero-cards";
 import { buildGoodIdeasHomeTrustBarItems } from "@/lib/good-ideas-home-trust-bar";
 import { buildGoodIdeasHomeWhyChooseItems } from "@/lib/good-ideas-home-why-choose";
 import {
@@ -48,8 +47,10 @@ export default async function HomePage({
   const { locale } = await params;
   const messages = await getMessages(locale);
   const t = createTranslator(messages);
-  const showcaseItems = resolveGoodIdeasHomeHeroShowcase(locale);
-  const showcaseProductLayers = buildHeroProductShowcaseLayers(showcaseItems);
+  const heroCardEntries = resolveGoodIdeasHomeHeroCardEntries(locale);
+  const heroReviewStatsMap = await fetchGoodIdeasProductReviewStatsMap(
+    heroCardEntries.map((entry) => entry.product.id)
+  );
   const featuredEntries = resolveGoodIdeasHomeFeaturedProducts(4);
   const featuredReviewStatsMap = await fetchGoodIdeasProductReviewStatsMap(
     featuredEntries.map((entry) => entry.product.id)
@@ -94,7 +95,9 @@ export default async function HomePage({
       cta={t("goodIdeas.hero.cta")}
       socialProof={t("goodIdeas.hero.socialProof")}
       showcaseBadge={t("goodIdeas.hero.showcaseBadge")}
-      showcaseProductLayers={showcaseProductLayers}
+      heroCardEntries={heroCardEntries}
+      heroReviewStatsMap={heroReviewStatsMap}
+      viewProductLabel={t("common.viewProduct")}
       trustBarItems={trustBarItems}
       trustBarAriaLabel={t("goodIdeas.trustBar.ariaLabel")}
       sectionAriaLabel={t("goodIdeas.hero.sectionAria")}

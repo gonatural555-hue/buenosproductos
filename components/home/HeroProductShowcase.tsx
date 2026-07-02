@@ -15,6 +15,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useState } from "react";
 import { GoodIdeasTrustBarIcon } from "@/components/good-ideas/home/GoodIdeasTrustBarIcons";
+import HeroCutoutImage from "@/components/home/HeroCutoutImage";
 import SmartImage from "@/components/SmartImage";
 import type { HeroProductShowcaseLayer, HeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
 import { GI_EASE } from "@/lib/ui/goodideas-design";
@@ -69,6 +70,7 @@ function ProductCard({
   reduceMotion,
   delay = 0,
   rotate = 0,
+  presentation = "card",
 }: {
   layer: HeroProductShowcaseLayer;
   size: "main" | "secondary" | "tertiary";
@@ -78,21 +80,34 @@ function ProductCard({
   reduceMotion: boolean;
   delay?: number;
   rotate?: number;
+  presentation?: "card" | "cutout";
 }) {
   const [src, setSrc] = useState(layer.src);
   const handleError = useCallback(() => {
     setSrc(layer.catalogFallbackSrc);
   }, [layer.catalogFallbackSrc]);
 
-  const sizeClass =
+  const cardSizeClass =
     size === "main"
       ? "w-[min(58vw,220px)] sm:w-[240px] md:w-[260px] lg:w-[min(52%,300px)] xl:w-[320px]"
       : size === "secondary"
         ? "w-[min(36vw,130px)] sm:w-[140px] md:w-[160px] lg:w-[180px]"
         : "w-[min(30vw,110px)] sm:w-[120px] md:w-[135px] lg:w-[150px]";
 
+  const cutoutHeightClass =
+    size === "main"
+      ? "h-[min(58vw,220px)] sm:h-[240px] md:h-[260px] lg:h-[300px] xl:h-[320px]"
+      : size === "secondary"
+        ? "h-[min(36vw,130px)] sm:h-[140px] md:h-[160px] lg:h-[180px]"
+        : "h-[min(30vw,110px)] sm:h-[120px] md:h-[135px] lg:h-[150px]";
+
   const paddingClass =
     size === "main" ? "p-4 lg:p-5" : size === "secondary" ? "p-3 lg:p-3.5" : "p-2.5 lg:p-3";
+
+  const isSvgAsset = src.toLowerCase().endsWith(".svg");
+  const isCutout = presentation === "cutout";
+  const imageClassName =
+    "object-contain object-center p-2 transition duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100";
 
   const floatAnim = float && !reduceMotion
     ? {
@@ -118,31 +133,55 @@ function ProductCard({
       className={`group absolute ${className}`}
       style={{ rotate: reduceMotion ? `${rotate}deg` : undefined }}
     >
+      {isCutout ? (
+        <div className="transition duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+          <HeroCutoutImage
+            src={src}
+            alt={layer.alt}
+            heightClass={cutoutHeightClass}
+            fallbackSrc={layer.catalogFallbackSrc}
+            priority={priority}
+            hoverClass="group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+          />
+        </div>
+      ) : (
       <div
-        className={`relative overflow-hidden rounded-[28px] border border-white/[0.18] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_32px_96px_rgba(0,0,0,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 lg:rounded-[32px] ${sizeClass} ${paddingClass}`}
+        className={`relative overflow-hidden rounded-[28px] border border-white/[0.18] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_32px_96px_rgba(0,0,0,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 lg:rounded-[32px] ${cardSizeClass} ${paddingClass}`}
       >
         <div
           className={`relative w-full overflow-hidden rounded-[20px] bg-[#F8FAFC] ${
             size === "main" ? "aspect-[4/5]" : "aspect-square"
           }`}
         >
-          <SmartImage
-            src={src}
-            alt={layer.alt}
-            fill
-            priority={priority}
-            sizes={
-              size === "main"
-                ? "(max-width: 1024px) 240px, 320px"
-                : size === "secondary"
-                  ? "180px"
-                  : "150px"
-            }
-            className="object-contain object-center p-2 transition duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-            onError={handleError}
-          />
+          {isSvgAsset ? (
+            // SVG local con raster embebido — `next/image` no optimiza `.svg` sin config extra.
+            <img
+              src={src}
+              alt={layer.alt}
+              onError={handleError}
+              draggable={false}
+              className={`absolute inset-0 h-full w-full ${imageClassName}`}
+            />
+          ) : (
+            <SmartImage
+              src={src}
+              alt={layer.alt}
+              fill
+              priority={priority}
+              sizes={
+                size === "main"
+                  ? "(max-width: 1024px) 240px, 320px"
+                  : size === "secondary"
+                    ? "180px"
+                    : "150px"
+              }
+              className={imageClassName}
+              onError={handleError}
+            />
+          )}
         </div>
       </div>
+      )}
     </motion.div>
   );
 }
@@ -255,6 +294,7 @@ export default function HeroProductShowcase({
           priority
           reduceMotion={reduceMotion}
           delay={0.12}
+          presentation={main.usesDedicatedAsset ? "cutout" : "card"}
           className="right-[2%] top-[18%] z-[14] sm:right-[4%] lg:right-[0%] lg:top-[14%]"
         />
 
@@ -266,6 +306,7 @@ export default function HeroProductShowcase({
             delay={0.22}
             rotate={2}
             float
+            presentation={secondary.usesDedicatedAsset ? "cutout" : "card"}
             className="bottom-[14%] left-[0%] z-[13] sm:left-[2%] lg:bottom-[12%] lg:left-[0%]"
           />
         ) : null}
@@ -278,6 +319,7 @@ export default function HeroProductShowcase({
             delay={0.3}
             rotate={-3}
             float
+            presentation={tertiary.usesDedicatedAsset ? "cutout" : "card"}
             className="right-[4%] top-[2%] z-[15] sm:right-[6%] lg:right-[10%] lg:top-[0%]"
           />
         ) : null}
