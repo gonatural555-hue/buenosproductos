@@ -743,7 +743,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     brand: "HAOYUNMA",
     title:
       "HAOYUNMA Cordless Rechargeable Electric Egg Beater & Hand Whisk",
-    price: 17.3,
+    price: 33000 / 1445,
     category: "Hogar",
     images: [
       "/assets/images/good-ideas-products/gi-hogar-005/image.webp",
@@ -899,7 +899,9 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     brand: "Sokany",
     title:
       "Sokany SK-999 2.5L High-Power Multifunction Blender — Ice Crusher & Kitchen Machine",
-    price: 186.85,
+    price: 205000 / 1445,
+    compareAtPrice: 186.85,
+    flashSaleHours: 24,
     category: "Hogar",
     images: [
       "/assets/images/good-ideas-products/gi-hogar-007/image.webp",
@@ -965,7 +967,9 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     brand: "BioloMix",
     title:
       "BioloMix BHB1200 4-in-1 Immersion Hand Blender — 1200W, 6 Speeds & Turbo",
-    price: 176.47,
+    price: 198000 / 1445,
+    compareAtPrice: 176.47,
+    flashSaleHours: 24,
     category: "Hogar",
     images: [
       "/assets/images/good-ideas-products/gi-hogar-008/image.webp",
