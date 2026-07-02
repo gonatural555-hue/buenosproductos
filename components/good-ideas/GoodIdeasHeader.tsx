@@ -19,6 +19,7 @@ import {
   resolveSmartHeaderScrollConfig,
   useSmartHeaderScroll,
 } from "@/hooks/useSmartHeaderScroll";
+import { GI_HEADER_NAV_CENTER_OFFSET_PX } from "@/lib/ui/goodideas-design";
 import { giType } from "@/lib/ui/gi-typography";
 
 export default function GoodIdeasHeader() {
@@ -59,10 +60,10 @@ export default function GoodIdeasHeader() {
           : "border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl"
       }`}
     >
-      <div className="mx-auto flex h-[64px] max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6 md:h-[72px]">
+      <div className="relative mx-auto flex h-[64px] max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6 md:h-[72px]">
         <Link
           href={homePath(locale)}
-          className={`group ${giType.brandLogo}`}
+          className={`group shrink-0 ${giType.brandLogo}`}
         >
           <GoodProductsBrandName
             locale={locale}
@@ -80,14 +81,17 @@ export default function GoodIdeasHeader() {
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="pointer-events-none absolute top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex"
+          style={{
+            left: `calc(57% - ${GI_HEADER_NAV_CENTER_OFFSET_PX}px)`,
+          }}
           aria-label={t("goodIdeas.brandName")}
         >
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`font-body text-sm font-medium transition-colors duration-200 ${
+              className={`pointer-events-auto font-body text-sm font-medium transition-colors duration-200 ${
                 lightHeader
                   ? "text-[#374151] hover:text-[#111111]"
                   : `${giType.navLink} text-white hover:text-[var(--gi-primary)]`
@@ -98,7 +102,7 @@ export default function GoodIdeasHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <HeaderCurrencySwitcher variant={lightHeader ? "light" : "good-ideas"} />
           <div
             className={`flex items-center gap-0.5 rounded-full border px-1 py-0.5 ${

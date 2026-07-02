@@ -43,6 +43,9 @@ export const GI_HERO_TOP_PAD =
 /** Altura efectiva del header fijo (64px móvil, 72px md — GoodIdeasHeader). */
 export const GI_PDP_HEADER_HEIGHT = "4.5rem";
 
+/** Offset horizontal del nav central (Home / Products / Blog) desde el centro del header. */
+export const GI_HEADER_NAV_CENTER_OFFSET_PX = 109;
+
 /** Aire entre el borde inferior del header y el contenido del PDP. */
 export const GI_PDP_HEADER_GAP_PX = 8;
 
