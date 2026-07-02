@@ -90,7 +90,7 @@ export default function GoodIdeasMobileNavDrawer({
     }`;
 
   return (
-    <div className="fixed inset-0 z-[60] md:hidden" role="presentation">
+    <div className="fixed inset-0 z-[100] md:hidden" role="presentation">
       <button
         type="button"
         className="absolute inset-0 bg-[rgba(11,15,20,0.45)] backdrop-blur-[2px]"
@@ -99,7 +99,7 @@ export default function GoodIdeasMobileNavDrawer({
       />
 
       <aside
-        className="absolute left-0 top-0 flex h-full w-[min(88vw,320px)] flex-col bg-white shadow-[0_24px_64px_rgba(0,0,0,0.18)]"
+        className="absolute left-0 top-0 z-[1] flex h-full w-[min(88vw,320px)] flex-col bg-white shadow-[0_24px_64px_rgba(0,0,0,0.18)]"
         aria-label={t("goodIdeas.brandName")}
       >
         <div className="flex items-center justify-between border-b border-[#E5E7EB] px-4 py-4">

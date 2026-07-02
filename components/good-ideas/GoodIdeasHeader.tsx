@@ -165,42 +165,31 @@ export default function GoodIdeasHeader() {
     : "relative flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8 hover:text-[#3B82F6]";
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      } ${lightHeader ? giHeaderClasses.shell : giHeaderClasses.shellDark}`}
-    >
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${lightHeader ? giHeaderClasses.shell : giHeaderClasses.shellDark}`}
+      >
       <div
         className={`${giHeaderClasses.inner} flex md:grid md:grid-cols-[auto_1fr_auto]`}
       >
         {/* ——— Mobile < md ——— */}
         <div className="flex w-full min-w-0 items-center justify-between gap-2 md:hidden">
-          <div className="flex min-w-0 items-center gap-0.5">
-            <Link
-              href={homePath(locale)}
-              className="group shrink-0 py-1"
-              aria-label={t("goodIdeas.brandName")}
-            >
-              <GoodProductsCompactLogo
-                prefixClassName={
-                  lightHeader
-                    ? "text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
-                    : "text-white transition-colors group-hover:text-[#3B82F6]"
-                }
-                suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
-              />
-            </Link>
-            <button
-              type="button"
-              className={mobileMenuBtnClass}
-              aria-expanded={mobileOpen}
-              aria-controls={mobileMenuId}
-              aria-label={t("goodIdeas.nav.openMenu")}
-              onClick={() => setMobileOpen(true)}
-            >
-              <MenuIcon />
-            </button>
-          </div>
+          <Link
+            href={homePath(locale)}
+            className="group shrink-0 py-1"
+            aria-label={t("goodIdeas.brandName")}
+          >
+            <GoodProductsCompactLogo
+              prefixClassName={
+                lightHeader
+                  ? "text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
+                  : "text-white transition-colors group-hover:text-[#3B82F6]"
+              }
+              suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
+            />
+          </Link>
 
           <div className="flex shrink-0 items-center gap-1">
             <HeaderCurrencySwitcher variant={currencyVariant} compact />
@@ -219,6 +208,16 @@ export default function GoodIdeasHeader() {
                 </span>
               ) : null}
             </Link>
+            <button
+              type="button"
+              className={mobileMenuBtnClass}
+              aria-expanded={mobileOpen}
+              aria-controls={mobileMenuId}
+              aria-label={t("goodIdeas.nav.openMenu")}
+              onClick={() => setMobileOpen(true)}
+            >
+              <MenuIcon />
+            </button>
           </div>
         </div>
 
@@ -323,14 +322,6 @@ export default function GoodIdeasHeader() {
         </div>
       </div>
 
-      <GoodIdeasMobileNavDrawer
-        open={mobileOpen}
-        onClose={closeMobile}
-        navItems={navItems}
-        buildLocaleHref={buildLocaleHref}
-        isNavItemActive={isNavActive}
-      />
-
       {/* Panel tablet md–lg (sin nav desktop) */}
       {mobileOpen ? (
         <nav
@@ -357,6 +348,15 @@ export default function GoodIdeasHeader() {
           </ul>
         </nav>
       ) : null}
-    </header>
+      </header>
+
+      <GoodIdeasMobileNavDrawer
+        open={mobileOpen}
+        onClose={closeMobile}
+        navItems={navItems}
+        buildLocaleHref={buildLocaleHref}
+        isNavItemActive={isNavActive}
+      />
+    </>
   );
 }
