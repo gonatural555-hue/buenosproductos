@@ -45,7 +45,7 @@ function HeroEditorialTitle({
   if (locale === "es") {
     return (
       <>
-        <span className="block">Soluciones que</span>
+        <span className="block">Productos que</span>
         <span className="block">
           mejoran{" "}
           <span className="text-[#3B82F6]">tu día a</span>
@@ -57,7 +57,7 @@ function HeroEditorialTitle({
 
   return (
     <>
-      <span className="block">Solutions that</span>
+      <span className="block">Products that</span>
       <span className="block">improve </span>
       <span className="block text-[#3B82F6]">{titleAccent.trim()}</span>
     </>

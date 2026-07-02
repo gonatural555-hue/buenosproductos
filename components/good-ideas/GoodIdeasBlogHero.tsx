@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
-import BlogHeroProductMontage from "@/components/good-ideas/BlogHeroProductMontage";
-import type { HeroProductShowcaseLayers } from "@/lib/hero-product-showcase";
 import type { Locale } from "@/lib/i18n/config";
 import {
   GI_BLOG_POSTS_ANCHOR,
@@ -25,7 +23,6 @@ export type GoodIdeasBlogHeroProps = {
   scrollHint: string;
   postsAnchorId?: string;
   sectionAriaLabel: string;
-  productLayers: HeroProductShowcaseLayers;
 };
 
 export default function GoodIdeasBlogHero({
@@ -37,7 +34,6 @@ export default function GoodIdeasBlogHero({
   scrollHint,
   postsAnchorId = GI_BLOG_POSTS_ANCHOR,
   sectionAriaLabel,
-  productLayers,
 }: GoodIdeasBlogHeroProps) {
   const reduceMotion = useReducedMotion();
   const off = reduceMotion ?? false;
@@ -73,21 +69,12 @@ export default function GoodIdeasBlogHero({
       className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       aria-label={sectionAriaLabel}
     >
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(59,130,246,0.22),transparent_60%)]"
-        aria-hidden
-      />
-      <BlogHeroProductMontage layers={productLayers} />
       <motion.div
         className={`relative z-[1] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:56px_56px]"
-          aria-hidden
-        />
         <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 md:gap-4">
           <motion.div className="relative mt-[40px] flex w-full max-w-[980px] flex-col items-center">
             <motion.p
