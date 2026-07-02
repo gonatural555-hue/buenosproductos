@@ -589,7 +589,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     price: 10000 / 1445,
     category: "Hogar",
     salesBadge: "Super Sale",
-    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/image.webp`],
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-hogar-003/pava-electrica.webp`],
     description:
       "Food-grade 2L stainless steel electric kettle with fast boil, classic safe design, comfortable handle, and power switch. EU plug, 1000W–1500W, ideal for families, offices, and daily tea or coffee.",
     shortDescription:
