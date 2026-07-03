@@ -12,11 +12,7 @@ import {
   buildGiHeaderNavItems,
   isGiHeaderNavItemActive,
 } from "@/lib/good-ideas-header-nav";
-import {
-  cartPath,
-  homePath,
-  shouldUseLightGiHeader,
-} from "@/lib/routing/paths";
+import { cartPath, homePath } from "@/lib/routing/paths";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import HeaderCurrencySwitcher from "@/components/header/HeaderCurrencySwitcher";
 import HeaderAccountMenu from "@/components/good-ideas/HeaderAccountMenu";
@@ -73,7 +69,6 @@ export default function GoodIdeasHeader() {
   const { totalItems } = useGoodIdeasCart();
   const pathname = usePathname() ?? "";
   const searchParams = useSearchParams();
-  const lightHeader = shouldUseLightGiHeader(pathname);
   const scrollConfig = resolveSmartHeaderScrollConfig(pathname);
   const { hidden, transitionClass } = useSmartHeaderScroll(scrollConfig);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -127,227 +122,183 @@ export default function GoodIdeasHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen, closeMobile]);
 
-  const navLinkClass = (active: boolean) => {
-    if (lightHeader) {
-      return `${giHeaderClasses.navLinkLight} ${
-        active ? giHeaderClasses.navLinkLightActive : ""
-      }`;
-    }
-    return `${giHeaderClasses.navLinkDark} ${
-      active ? giHeaderClasses.navLinkDarkActive : ""
+  const navLinkClass = (active: boolean) =>
+    `${giHeaderClasses.navLinkLight} ${
+      active ? giHeaderClasses.navLinkLightActive : ""
     }`;
-  };
 
-  const mobileNavLinkClass = (active: boolean) => {
-    if (lightHeader) {
-      return `${giHeaderClasses.mobileNavLink} ${
-        active ? giHeaderClasses.mobileNavLinkActive : ""
-      }`;
-    }
-    return `${giHeaderClasses.mobileNavLinkDark} ${
-      active ? giHeaderClasses.mobileNavLinkDarkActive : ""
+  const mobileNavLinkClass = (active: boolean) =>
+    `${giHeaderClasses.mobileNavLink} ${
+      active ? giHeaderClasses.mobileNavLinkActive : ""
     }`;
-  };
-
-  const pillGroupClass = lightHeader
-    ? giHeaderClasses.pillGroup
-    : giHeaderClasses.pillGroupDark;
-
-  const currencyVariant = lightHeader ? "light" : "good-ideas";
-  const accountVariant = lightHeader ? "light" : "dark";
-
-  const mobileMenuBtnClass = lightHeader
-    ? "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6]"
-    : "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8";
-
-  const mobileCartBtnClass = lightHeader
-    ? "relative flex h-11 w-11 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
-    : "relative flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/8 hover:text-[#3B82F6]";
 
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 ${transitionClass} ${
           hidden ? "-translate-y-full" : "translate-y-0"
-        } ${lightHeader ? giHeaderClasses.shell : giHeaderClasses.shellDark}`}
+        } ${giHeaderClasses.shell}`}
       >
-      <div
-        className={`${giHeaderClasses.inner} flex md:grid md:grid-cols-[auto_1fr_auto]`}
-      >
-        {/* ——— Mobile < md ——— */}
-        <div className="flex w-full min-w-0 items-center justify-between gap-2 md:hidden">
-          <Link
-            href={homePath(locale)}
-            className="group shrink-0 py-1"
+        <div
+          className={`${giHeaderClasses.inner} flex md:grid md:grid-cols-[auto_1fr_auto]`}
+        >
+          {/* ——— Mobile < md ——— */}
+          <div className="flex w-full min-w-0 items-center justify-between gap-2 md:hidden">
+            <Link
+              href={homePath(locale)}
+              className="group shrink-0 py-1"
+              aria-label={t("goodIdeas.brandName")}
+            >
+              <GoodProductsCompactLogo
+                prefixClassName="text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
+                suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
+              />
+            </Link>
+
+            <div className="flex shrink-0 items-center gap-1">
+              <HeaderCurrencySwitcher variant="light" compact />
+              <HeaderAccountMenu variant="light" iconOnly />
+              <Link
+                href={cartPath(locale)}
+                className="relative flex h-11 w-11 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6] hover:text-[#3B82F6]"
+                aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
+              >
+                <CartIcon />
+                {totalItems > 0 ? (
+                  <span
+                    className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#3B82F6] px-0.5 ${giType.btnSm} text-white`}
+                  >
+                    {totalItems > 99 ? "99+" : totalItems}
+                  </span>
+                ) : null}
+              </Link>
+              <button
+                type="button"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[#0B0F14] transition-colors hover:bg-[#F3F4F6]"
+                aria-expanded={mobileOpen}
+                aria-controls={mobileMenuId}
+                aria-label={t("goodIdeas.nav.openMenu")}
+                onClick={() => setMobileOpen(true)}
+              >
+                <MenuIcon />
+              </button>
+            </div>
+          </div>
+
+          {/* ——— Desktop / tablet md+ ——— */}
+          <div className="hidden min-w-0 items-center gap-2 md:flex">
+            <Link
+              href={homePath(locale)}
+              className={`group shrink-0 ${giType.brandLogo}`}
+            >
+              <GoodProductsBrandName
+                locale={locale}
+                prefixClassName="text-[#0B0F14] transition-colors duration-200 group-hover:text-[#3B82F6]"
+                suffixClassName="text-[#3B82F6] transition-colors duration-200 group-hover:text-[#0B0F14]"
+              />
+            </Link>
+          </div>
+
+          <nav
+            className={giHeaderClasses.navDesktop}
             aria-label={t("goodIdeas.brandName")}
           >
-            <GoodProductsCompactLogo
-              prefixClassName={
-                lightHeader
-                  ? "text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
-                  : "text-white transition-colors group-hover:text-[#3B82F6]"
-              }
-              suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
-            />
-          </Link>
+            {navItems.map((item) => {
+              const active = isNavActive(item);
+              return (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className={navLinkClass(active)}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-          <div className="flex shrink-0 items-center gap-1">
-            <HeaderCurrencySwitcher variant={currencyVariant} compact />
-            <HeaderAccountMenu variant={accountVariant} iconOnly />
+          <div className={`${giHeaderClasses.utilityCluster} hidden md:flex`}>
+            <button
+              type="button"
+              className={giHeaderClasses.menuBtn}
+              aria-expanded={mobileOpen}
+              aria-controls={mobileMenuId}
+              aria-label={
+                mobileOpen ? t("goodIdeas.nav.closeMenu") : t("goodIdeas.nav.openMenu")
+              }
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <MenuIcon />
+            </button>
+
+            <div className={giHeaderClasses.divider} aria-hidden />
+
+            <HeaderCurrencySwitcher variant="light" />
+
+            <div className={giHeaderClasses.pillGroup}>
+              {headerLocales.map((lang) => (
+                <Link
+                  key={lang}
+                  href={buildLocaleHref(lang)}
+                  className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
+                    lang === locale
+                      ? "bg-white font-semibold text-[#0B0F14] shadow-sm"
+                      : "text-[#6B7280] hover:text-[#0B0F14]"
+                  }`}
+                >
+                  {lang}
+                </Link>
+              ))}
+            </div>
+
+            <div className={`hidden sm:block ${giHeaderClasses.divider}`} aria-hidden />
+
+            <HeaderAccountMenu variant="light" />
+
             <Link
               href={cartPath(locale)}
-              className={mobileCartBtnClass}
+              className={giHeaderClasses.iconBtnLight}
               aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
             >
               <CartIcon />
               {totalItems > 0 ? (
                 <span
-                  className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#3B82F6] px-0.5 ${giType.btnSm} text-white`}
+                  className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}
                 >
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
               ) : null}
             </Link>
-            <button
-              type="button"
-              className={mobileMenuBtnClass}
-              aria-expanded={mobileOpen}
-              aria-controls={mobileMenuId}
-              aria-label={t("goodIdeas.nav.openMenu")}
-              onClick={() => setMobileOpen(true)}
-            >
-              <MenuIcon />
-            </button>
           </div>
         </div>
 
-        {/* ——— Desktop / tablet md+ (sin cambios) ——— */}
-        <div className="hidden min-w-0 items-center gap-2 md:flex">
-          <Link
-            href={homePath(locale)}
-            className={`group shrink-0 ${giType.brandLogo}`}
+        {/* Panel tablet md–lg (sin nav desktop) */}
+        {mobileOpen ? (
+          <nav
+            id={mobileMenuId}
+            className={`${giHeaderClasses.mobilePanel} hidden md:block lg:hidden`}
+            aria-label={t("goodIdeas.brandName")}
           >
-            <GoodProductsBrandName
-              locale={locale}
-              prefixClassName={
-                lightHeader
-                  ? "text-[#0B0F14] transition-colors duration-200 group-hover:text-[#3B82F6]"
-                  : "text-white transition-colors duration-200 group-hover:text-[#3B82F6]"
-              }
-              suffixClassName={
-                lightHeader
-                  ? "text-[#3B82F6] transition-colors duration-200 group-hover:text-[#0B0F14]"
-                  : "text-[#3B82F6] transition-colors duration-200 group-hover:text-white"
-              }
-            />
-          </Link>
-        </div>
-
-        <nav
-          className={giHeaderClasses.navDesktop}
-          aria-label={t("goodIdeas.brandName")}
-        >
-          {navItems.map((item) => {
-            const active = isNavActive(item);
-            return (
-              <Link
-                key={item.id}
-                href={item.href}
-                className={navLinkClass(active)}
-                aria-current={active ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className={`${giHeaderClasses.utilityCluster} hidden md:flex`}>
-          <button
-            type="button"
-            className={lightHeader ? giHeaderClasses.menuBtn : giHeaderClasses.menuBtnDark}
-            aria-expanded={mobileOpen}
-            aria-controls={mobileMenuId}
-            aria-label={mobileOpen ? t("goodIdeas.nav.closeMenu") : t("goodIdeas.nav.openMenu")}
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            <MenuIcon />
-          </button>
-
-          <div className={giHeaderClasses.divider} aria-hidden />
-
-          <HeaderCurrencySwitcher variant={currencyVariant} />
-
-          <div className={pillGroupClass}>
-            {headerLocales.map((lang) => (
-              <Link
-                key={lang}
-                href={buildLocaleHref(lang)}
-                className={`rounded-full px-2.5 py-1 ${giType.navUtility} ${
-                  lang === locale
-                    ? lightHeader
-                      ? "bg-white font-semibold text-[#0B0F14] shadow-sm"
-                      : "text-[var(--gi-primary)]"
-                    : lightHeader
-                      ? "text-[#6B7280] hover:text-[#0B0F14]"
-                      : "text-white hover:text-[var(--gi-primary)]"
-                }`}
-              >
-                {lang}
-              </Link>
-            ))}
-          </div>
-
-          <div
-            className={`hidden sm:block ${lightHeader ? giHeaderClasses.divider : giHeaderClasses.dividerDark}`}
-            aria-hidden
-          />
-
-          <HeaderAccountMenu variant={accountVariant} />
-
-          <Link
-            href={cartPath(locale)}
-            className={lightHeader ? giHeaderClasses.iconBtnLight : giHeaderClasses.iconBtnDark}
-            aria-label={`${t("goodIdeas.nav.cart")} (${totalItems})`}
-          >
-            <CartIcon />
-            {totalItems > 0 ? (
-              <span
-                className={`absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--gi-primary)] px-0.5 ${giType.btnSm} text-white`}
-              >
-                {totalItems > 99 ? "99+" : totalItems}
-              </span>
-            ) : null}
-          </Link>
-        </div>
-      </div>
-
-      {/* Panel tablet md–lg (sin nav desktop) */}
-      {mobileOpen ? (
-        <nav
-          id={mobileMenuId}
-          className={`${lightHeader ? giHeaderClasses.mobilePanel : giHeaderClasses.mobilePanelDark} hidden md:block lg:hidden`}
-          aria-label={t("goodIdeas.brandName")}
-        >
-          <ul className="flex flex-col gap-0.5">
-            {navItems.map((item) => {
-              const active = isNavActive(item);
-              return (
-                <li key={item.id}>
-                  <Link
-                    href={item.href}
-                    className={mobileNavLinkClass(active)}
-                    aria-current={active ? "page" : undefined}
-                    onClick={closeMobile}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      ) : null}
+            <ul className="flex flex-col gap-0.5">
+              {navItems.map((item) => {
+                const active = isNavActive(item);
+                return (
+                  <li key={item.id}>
+                    <Link
+                      href={item.href}
+                      className={mobileNavLinkClass(active)}
+                      aria-current={active ? "page" : undefined}
+                      onClick={closeMobile}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        ) : null}
       </header>
 
       <GoodIdeasMobileNavDrawer
