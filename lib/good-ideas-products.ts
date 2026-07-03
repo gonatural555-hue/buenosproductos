@@ -595,6 +595,69 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-tech-008",
+    slug: "pc-gaming-desktop-soundbar-stereo",
+    title: "PC Gaming Desktop Soundbar — Stereo USB Speaker for Monitor Setup",
+    price: 155000 / 1445,
+    compareAtPrice: 180000 / 1445,
+    category: "Tech",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-008/image.webp`],
+    description:
+      "Compact desktop soundbar for PC and gaming setups — low-profile stereo speaker designed to sit under your monitor for clearer dialogue, music, and in-game audio without bulky bookshelf speakers.",
+    shortDescription:
+      "Slim USB desktop soundbar for PC gaming and work — stereo audio in a single bar under your monitor.",
+    longDescription: [
+      "Upgrade laptop or monitor speakers with a horizontal soundbar that fits neatly under your display — more presence for games, calls, and music without taking over the desk.",
+      "Stereo drivers in a slim enclosure deliver fuller sound than built-in monitor audio while keeping cables minimal for a clean battlestation.",
+      "Ideal for desktop PCs, gaming rigs, and compact workstations where space matters but you still want dedicated speakers.",
+      "Plug-and-play friendly for everyday use — a simple single-unit speaker bar that matches PC & Games setups focused on clarity and footprint.",
+      "Verified-brand listing quality with free shipping — one model, ready to place under your screen and go.",
+    ],
+    features: [
+      "Desktop soundbar for PC and gaming",
+      "Low-profile bar — fits under monitor",
+      "Stereo speaker configuration",
+      "USB / desktop power friendly",
+      "Compact single-unit design",
+      "For games, calls, music, and media",
+      "Slim footprint for small desks",
+      "Single model — no assembly required",
+      "Package included",
+      "Origin China",
+    ],
+    freeShipping: true,
+    translations: {
+      es: {
+        title:
+          "Barra de sonido de escritorio para PC gaming — altavoz estéreo USB",
+        description:
+          "Barra de sonido compacta para PC y gaming — altavoz estéreo de perfil bajo pensado para colocar bajo el monitor y mejorar diálogos, música y audio en juego sin parlantes voluminosos.",
+        shortDescription:
+          "Barra de sonido USB fina para PC gaming y trabajo — audio estéreo bajo el monitor.",
+        longDescription: [
+          "Mejorá el audio del portátil o monitor con una barra horizontal que encaja bajo la pantalla — más presencia en juegos, llamadas y música sin ocupar el escritorio.",
+          "Drivers estéreo en carcasa delgada con más cuerpo que los altavoces integrados del monitor, manteniendo el cableado al mínimo.",
+          "Ideal para PC de escritorio, setups gaming y estaciones compactas donde importa el espacio pero querés parlantes dedicados.",
+          "Uso plug-and-play para el día a día — una sola unidad lista para colocar bajo la pantalla.",
+          "Un solo modelo con envío gratis — colocala bajo el monitor y listo.",
+        ],
+        features: [
+          "Barra de sonido para PC y gaming",
+          "Perfil bajo — bajo el monitor",
+          "Configuración estéreo",
+          "Compatible USB / alimentación de escritorio",
+          "Diseño compacto de una sola pieza",
+          "Para juegos, llamadas, música y multimedia",
+          "Huella reducida para escritorios chicos",
+          "Un solo modelo — sin ensamblaje",
+          "Paquete incluido",
+          "Origen China",
+        ],
+      },
+    },
+  },
+
+  {
     id: "gi-hogar-002",
     slug: "portable-travel-kettle-450ml",
     title: "Portable Travel Kettle 450ML",
