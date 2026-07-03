@@ -1584,6 +1584,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     slug: "intelligent-ai-rc-robot-dog",
     title: "Intelligent AI RC Robot Dog — Voice, App & Remote Control",
     price: 249000 / 1445,
+    compareAtPrice: 320000 / 1445,
     category: "Tech",
     salesBadge: "Super Sale",
     images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/image.webp`],
