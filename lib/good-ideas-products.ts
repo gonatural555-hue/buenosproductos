@@ -512,6 +512,89 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-tech-007",
+    slug: "ajazz-akp03e-desktop-control-panel",
+    title: "AJAZZ AKP03E Desktop Control Panel — Programmable LCD Keys & Knobs",
+    price: 135000 / 1445,
+    category: "Tech",
+    brand: "AJAZZ",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-007/image.webp`],
+    description:
+      "AJAZZ AKP03E wired USB desktop control console with customizable LCD key displays, programmable buttons, and rotary knobs for streaming, editing, and productivity. All-in-one software, visual programming, and RGB ambient lighting — white or black finish.",
+    shortDescription:
+      "Desktop stream controller with LCD keys, programmable knobs, and USB — AJAZZ AKP03E in white or black.",
+    longDescription: [
+      "Control your stream, creative apps, and daily shortcuts from one angled desktop console. The AKP03E combines visual LCD keys with tactile buttons and rotary encoders for fast, glanceable macros.",
+      "Program each key with custom icons and actions through AJAZZ software — ideal for OBS, browsers, folders, audio levels, and multimedia controls without alt-tabbing.",
+      "Multiple rotary knobs handle volume, fine adjustments, and layered shortcuts. Visual programming keeps setup on a single software page for quicker onboarding.",
+      "Wired USB connection — no battery to manage. Mechanical-style operation with English software, ergonomic wedge design, and RGB base lighting for desk setups.",
+      "Choose white or black to match your workspace. Built for desktop and laptop use as a multifunctional mini control deck for gaming, streaming, and office workflows.",
+    ],
+    features: [
+      "Brand: AJAZZ · Model AKP03E",
+      "Desktop control panel with LCD visual keys",
+      "Programmable buttons and rotary knobs",
+      "Visual programming · all-in-one software",
+      "Multiple audio / media control profiles",
+      "Wired USB interface",
+      "Mechanical operation style · English software",
+      "Mini multifunction keyboard / console",
+      "RGB ambient base lighting",
+      "For desktop, laptop, and creative workflows",
+      "No battery included · no wrist rest",
+      "Package included · origin China",
+      "Colors: White, Black",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "blanco",
+      options: [
+        { value: "blanco", label: "White", swatchHex: "#F5F5F0", priceModifier: 0 },
+        {
+          value: "negro",
+          label: "Black",
+          swatchHex: "#1A1A1A",
+          priceModifier: (145000 - 135000) / 1445,
+        },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "AJAZZ AKP03E panel de control de escritorio — teclas LCD y perillas programables",
+        description:
+          "Consola de control de escritorio AJAZZ AKP03E USB cableada con pantallas LCD personalizables, botones programables y perillas rotativas para streaming, edición y productividad. Software todo en uno, programación visual e iluminación RGB — acabado blanco o negro.",
+        shortDescription:
+          "Controlador de escritorio con teclas LCD, perillas programables y USB — AJAZZ AKP03E en blanco o negro.",
+        longDescription: [
+          "Controlá tu stream, apps creativas y atajos diarios desde una consola inclinada en el escritorio. El AKP03E combina teclas LCD visuales con botones táctiles y encoders rotativos para macros rápidas.",
+          "Programá cada tecla con íconos y acciones mediante el software AJAZZ — ideal para OBS, navegadores, carpetas, audio y multimedia sin cambiar de ventana.",
+          "Varias perillas rotativas para volumen, ajustes finos y capas de atajos. La programación visual concentra la configuración en una sola página del software.",
+          "Conexión USB cableada sin batería. Operación mecánica, software en inglés, diseño ergonómico en cuña e iluminación RGB en la base.",
+          "Elegí blanco o negro para tu espacio de trabajo. Mini consola multifuncional para gaming, streaming y oficina en PC o portátil.",
+        ],
+        features: [
+          "Marca: AJAZZ · Modelo AKP03E",
+          "Panel de control con teclas LCD visuales",
+          "Botones y perillas programables",
+          "Programación visual · software todo en uno",
+          "Perfiles de control de audio y multimedia",
+          "Interfaz USB cableada",
+          "Estilo mecánico · software en inglés",
+          "Mini teclado / consola multifuncional",
+          "Iluminación RGB ambiental en la base",
+          "Para escritorio, portátil y flujos creativos",
+          "Sin batería · sin reposamuñecas",
+          "Paquete incluido · origen China",
+          "Colores: Blanco, Negro",
+        ],
+      },
+    },
+  },
+
+  {
     id: "gi-hogar-002",
     slug: "portable-travel-kettle-450ml",
     title: "Portable Travel Kettle 450ML",

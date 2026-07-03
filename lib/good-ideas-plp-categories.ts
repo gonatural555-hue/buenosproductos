@@ -21,6 +21,7 @@ export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
   "gi-tech-004": "herramientas-limpieza-celulares",
   "gi-tech-005": "pc-games",
   "gi-tech-006": "pc-games",
+  "gi-tech-007": "pc-games",
   "gi-hogar-002": "hervidores-electricos",
   "gi-hogar-003": "hervidores-electricos",
   "gi-hogar-004": "home",
