@@ -10,7 +10,9 @@
       "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-3.webp",
       "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-4.webp"
     ],
-    "lifestyle": [],
+    "lifestyle": [
+      "/assets/images/good-ideas-products/gi-tech-008/video.MOV"
+    ],
     "extras": []
   }
 }
