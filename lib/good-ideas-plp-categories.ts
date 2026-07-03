@@ -17,7 +17,6 @@ export type GoodIdeasFilterCategoryNode = {
 /** Slug de categoría hoja o padre asignado a un producto GI. */
 export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
   "gi-tech-001": "robots-ia",
-  "gi-tech-002": "accesorios-para-auto",
   "gi-tech-003": "accesorios-para-auto",
   "gi-tech-004": "herramientas-limpieza-celulares",
   "gi-tech-005": "pc-games",
@@ -25,7 +24,6 @@ export const GOOD_IDEAS_PRODUCT_CATEGORY_MAP: Record<string, string> = {
   "gi-hogar-003": "hervidores-electricos",
   "gi-hogar-004": "home",
   "gi-hogar-005": "cocina",
-  "gi-hogar-006": "cocina",
   "gi-hogar-007": "cocina",
   "gi-hogar-008": "cocina",
   "gi-hogar-009": "home",
