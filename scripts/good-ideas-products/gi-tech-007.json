@@ -10,22 +10,44 @@
   },
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-007/image.webp"
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio.webp"
     ],
-    "gallery": [],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-01.webp",
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escrito-02.webp",
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-03.webp",
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-04.webp",
+      "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-05.webp"
+    ],
     "lifestyle": [],
     "extras": [],
     "variantImages": {
       "color": {
         "blanco": {
-          "featured": [],
-          "gallery": [],
+          "featured": [
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-01.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-02.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-03.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-04.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-05.webp"
+          ],
           "lifestyle": [],
           "extras": []
         },
         "negro": {
-          "featured": [],
-          "gallery": [],
+          "featured": [
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-01.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-02.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-03.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-04.webp",
+            "/assets/images/good-ideas-products/gi-tech-007/panel-de-escritorio-05.webp"
+          ],
           "lifestyle": [],
           "extras": []
         }

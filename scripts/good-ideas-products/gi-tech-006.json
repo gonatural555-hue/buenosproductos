@@ -11,28 +11,54 @@
   },
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-006/image.webp"
+      "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad.webp"
     ],
-    "gallery": [],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-01.webp",
+      "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-02.webp",
+      "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-03.webp",
+      "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-04.webp"
+    ],
     "lifestyle": [],
     "extras": [],
     "variantImages": {
       "color": {
         "rosa": {
-          "featured": [],
-          "gallery": [],
+          "featured": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-03.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-01.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-02.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-04.webp"
+          ],
           "lifestyle": [],
           "extras": []
         },
         "blanco": {
-          "featured": [],
-          "gallery": [],
+          "featured": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-02.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-01.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-03.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-04.webp"
+          ],
           "lifestyle": [],
           "extras": []
         },
         "negro": {
-          "featured": [],
-          "gallery": [],
+          "featured": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-01.webp"
+          ],
+          "gallery": [
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-04.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-02.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad-03.webp",
+            "/assets/images/good-ideas-products/gi-tech-006/mini-macro-keypad.webp"
+          ],
           "lifestyle": [],
           "extras": []
         }

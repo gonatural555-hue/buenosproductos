@@ -2,9 +2,14 @@
   "id": "gi-tech-008",
   "images": {
     "featured": [
-      "/assets/images/good-ideas-products/gi-tech-008/image.webp"
+      "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop.webp"
     ],
-    "gallery": [],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-1.webp",
+      "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-2.webp",
+      "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-3.webp",
+      "/assets/images/good-ideas-products/gi-tech-008/pc-gaming-desktop-4.webp"
+    ],
     "lifestyle": [],
     "extras": []
   }

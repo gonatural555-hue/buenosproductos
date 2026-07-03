@@ -36,7 +36,6 @@ import type { GoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 
 type ProductSummary = {
   id: string;
-  slug?: string;
   title: string;
   price: number;
   compareAtPrice?: number;
@@ -268,11 +267,7 @@ export default function ProductDetailClient({
   const galleryColumns = resolvePdpGalleryColumns(galleryLayout, 2);
 
   const giDtc = gi && surface === "light";
-  const useDtcStackedGallery =
-    product.id === "gi-hogar-005" ||
-    product.id === "gi-tech-005" ||
-    product.slug === "haoyunma-cordless-rechargeable-electric-egg-beater-whisk" ||
-    product.slug === "ajazz-ak820-ak820-pro-gaming-mechanical-keyboard";
+  const useDtcStackedGallery = giDtc;
   const stackedGalleryPanelRef = useRef<HTMLDivElement | null>(null);
   const [stackedGalleryMaxHeight, setStackedGalleryMaxHeight] = useState<
     number | null
@@ -321,7 +316,7 @@ export default function ProductDetailClient({
       window.removeEventListener("resize", measure);
       observer.disconnect();
     };
-  }, [useDtcStackedGallery, product.id, product.slug]);
+  }, [useDtcStackedGallery, product.id]);
 
   const gallery = giDtc ? (
     <ProductGalleryDtc
