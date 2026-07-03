@@ -14,6 +14,12 @@ export const GOOD_IDEAS_CATEGORIES: GoodIdeasCategory[] = [
   { slug: "home", name: "Hogar", description: "Hogar, cocina y confort." },
   { slug: "lifestyle", name: "Lifestyle", description: "Estilo de vida y uso diario." },
   {
+    slug: "pc-games",
+    name: "PC & Games",
+    description: "Teclados, periféricos y accesorios para PC y gaming.",
+    parentSlug: "tech",
+  },
+  {
     slug: "celulares",
     name: "Celulares",
     description: "Accesorios y cuidado para smartphones.",

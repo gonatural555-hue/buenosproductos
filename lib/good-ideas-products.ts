@@ -485,6 +485,90 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-tech-005",
+    slug: "ajazz-ak820-ak820-pro-gaming-mechanical-keyboard",
+    title:
+      "AJAZZ AK820 / AK820 Pro Gaming Mechanical Keyboard — Bluetooth 5.1, 2.4G & USB-C",
+    price: 106831 / 1445,
+    category: "Tech",
+    brand: "AJAZZ",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-005/image.webp`],
+    description:
+      "Ajazz AK820 and AK820 Pro 75% gasket-mounted mechanical gaming keyboard with metal volume knob, hot-swappable switches, PBT keycaps, and RGB south-facing lighting. AK820 Pro adds a 0.85\" TFT screen and tri-mode connectivity (USB-C wired, 2.4GHz wireless, Bluetooth 5.1). Seven colorways available.",
+    shortDescription:
+      "75% mechanical gaming keyboard with volume knob, hot swap, gasket mount, and RGB — AK820 Pro with TFT screen and tri-mode wireless.",
+    longDescription: [
+      "The Ajazz AK820 / AK820 Pro brings a compact 75% layout with 81 keys and a metal volume knob — ideal for gaming and productivity setups that need more desk space without losing function keys.",
+      "AK820 Pro features a 0.85-inch TFT color screen you can customize in real time: visual effects, battery status, date and time, connection mode, OS display, and backlight settings. Switch between Win and Mac modes from the screen for smoother daily use.",
+      "Tri-mode connectivity on AK820 Pro: USB-C wired, 2.4GHz wireless, or Bluetooth 5.1 — responsive, power-efficient, and easy to switch between devices. AK820 is wired-only via Type-C for a streamlined setup.",
+      "Gasket mounting with flex-cut PC plate and PCB reduces vibration and typing noise while keeping a stable, slightly flexible feel. South-facing RGB LEDs deliver 1.6M color combinations across 20 lighting presets.",
+      "PBT OEM-height keycaps, full-key no-conflict matrix, hot-swappable switches, and ABS injection-molded shell. Compatible with Windows Vista/7/8/10/11, Mac, and Android.",
+      "Package includes keyboard, 1.6 m Type-C cable, instruction manual, dust cover, and 2-in-1 key/switch puller. Choose from seven color models — pricing per model defined separately.",
+    ],
+    features: [
+      "Brand: AJAZZ · Models: AK820 (wired) / AK820 Pro (tri-mode)",
+      "75% layout — 81 keys with metal volume knob",
+      "AK820 Pro: 0.85\" TFT color screen — customizable display",
+      "AK820 Pro: USB-C + 2.4G wireless + Bluetooth 5.1",
+      "AK820: wired Type-C only · Weight ≈ 960 g",
+      "AK820 Pro: ≈ 1,057 g · 4,000 mAh battery",
+      "Gasket mount · flex-cut PC plate & PCB · hot-swappable",
+      "South-facing RGB — 1.6M colors, 20 lighting effects (Pro)",
+      "PBT OEM keycaps · ABS shell · full-key no conflict",
+      "Systems: Windows, Mac, Android",
+      "Includes: keyboard, Type-C cable, manual, dust cover, puller",
+      "7 color models available",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "model",
+      label: "Model",
+      default: "gris-blanco-naranja",
+      options: [
+        { value: "gris-blanco-naranja", label: "Grey White Orange", priceModifier: 0 },
+        { value: "gris-blanco-amarillo", label: "Grey White Yellow", priceModifier: 0 },
+        { value: "negro", label: "Black", priceModifier: 0 },
+        { value: "negro-lateral", label: "Black Side-Print", priceModifier: 0 },
+        { value: "azul-blanco", label: "Blue White", priceModifier: 0 },
+        { value: "gris-oscuro", label: "Dark Grey Two-Tone", priceModifier: 0 },
+        { value: "morado-blanco", label: "White Purple", priceModifier: 0 },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "Teclado mecánico gaming AJAZZ AK820 / AK820 Pro — Bluetooth 5.1, 2.4G y USB-C",
+        description:
+          "Teclado mecánico gaming Ajazz AK820 y AK820 Pro 75% con montaje gasket, perilla de volumen metálica, switches hot-swap, keycaps PBT y RGB south-facing. El AK820 Pro incluye pantalla TFT de 0,85\" y conectividad triple (USB-C, 2.4G inalámbrico, Bluetooth 5.1). Siete modelos de color.",
+        shortDescription:
+          "Teclado mecánico gaming 75% con perilla de volumen, hot swap, gasket y RGB — AK820 Pro con pantalla TFT y triple modo inalámbrico.",
+        longDescription: [
+          "El Ajazz AK820 / AK820 Pro ofrece un layout compacto 75% con 81 teclas y perilla de volumen metálica — ideal para gaming y productividad cuando necesitás más espacio en el escritorio sin perder teclas de función.",
+          "El AK820 Pro incluye una pantalla TFT a color de 0,85\" personalizable en tiempo real: efectos visuales, estado de batería, fecha y hora, modo de conexión, sistema operativo y ajustes de retroiluminación. Cambiá entre modos Win y Mac desde la pantalla.",
+          "Conectividad triple en AK820 Pro: USB-C cableado, 2.4 GHz inalámbrico o Bluetooth 5.1 — más responsivo, eficiente en energía y fácil de alternar entre dispositivos. El AK820 es solo cableado por Type-C.",
+          "Montaje gasket con placa PC y PCB flex-cut reduce vibración y ruido al tipear, manteniendo una sensación estable y ligeramente flexible. LEDs RGB south-facing con 1,6 millones de colores y 20 efectos de iluminación.",
+          "Keycaps PBT altura OEM, matriz full-key sin ghosting, switches hot-swap y carcasa ABS por inyección. Compatible con Windows Vista/7/8/10/11, Mac y Android.",
+          "Incluye teclado, cable Type-C de 1,6 m, manual, funda antipolvo y extractor 2 en 1 de teclas/switches. Elegí entre siete modelos de color — el precio por modelo se define por separado.",
+        ],
+        features: [
+          "Marca: AJAZZ · Modelos: AK820 (cableado) / AK820 Pro (triple modo)",
+          "Layout 75% — 81 teclas con perilla de volumen metálica",
+          "AK820 Pro: pantalla TFT a color 0,85\" — display personalizable",
+          "AK820 Pro: USB-C + 2.4G inalámbrico + Bluetooth 5.1",
+          "AK820: solo cableado Type-C · Peso ≈ 960 g",
+          "AK820 Pro: ≈ 1.057 g · Batería 4.000 mAh",
+          "Gasket mount · placa PC y PCB flex-cut · hot-swap",
+          "RGB south-facing — 1,6M colores, 20 efectos (Pro)",
+          "Keycaps PBT OEM · carcasa ABS · full-key sin conflicto",
+          "Sistemas: Windows, Mac, Android",
+          "Incluye: teclado, cable Type-C, manual, funda, extractor",
+          "7 modelos de color disponibles",
+        ],
+      },
+    },
+  },
+
+  {
     id: "gi-hogar-002",
     slug: "portable-travel-kettle-450ml",
     title: "Portable Travel Kettle 450ML",

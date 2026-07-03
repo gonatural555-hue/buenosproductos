@@ -1,0 +1,66 @@
+{
+  "id": "gi-tech-005",
+  "brand": "AJAZZ",
+  "variants": {
+    "type": "model",
+    "options": [
+      { "value": "gris-blanco-naranja" },
+      { "value": "gris-blanco-amarillo" },
+      { "value": "negro" },
+      { "value": "negro-lateral" },
+      { "value": "azul-blanco" },
+      { "value": "gris-oscuro" },
+      { "value": "morado-blanco" }
+    ]
+  },
+  "images": {
+    "featured": [],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "gris-blanco-naranja": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-blanco-amarillo": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro-lateral": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "azul-blanco": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-oscuro": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "morado-blanco": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  }
+}
