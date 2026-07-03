@@ -2,7 +2,7 @@
 
 export const giHeaderClasses = {
   shell:
-    "border-b border-[#E5E7EB] bg-white/95 shadow-[0_1px_0_rgba(11,15,20,0.04)] backdrop-blur-md supports-[backdrop-filter]:bg-white/90",
+    "border-b border-[#E5E7EB] bg-white shadow-[0_1px_0_rgba(11,15,20,0.04)]",
   shellDark:
     "border-b border-white/[0.08] bg-[rgba(11,15,20,0.88)] backdrop-blur-xl",
   inner:
