@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useSearchParams } from "next/navigation";
 import type { AddToCartLinePayload } from "@/lib/cart-line";
 import GoodIdeasAddToCartButton from "@/components/good-ideas/GoodIdeasAddToCartButton";
@@ -32,9 +32,11 @@ import {
 import type { UISurface } from "@/lib/ui-surface";
 import type { BreadcrumbItem } from "@/components/Breadcrumbs";
 import type { GoodIdeasPdpAccordionBundle } from "@/lib/good-ideas-pdp-content";
+import type { GoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 
 type ProductSummary = {
   id: string;
+  slug?: string;
   title: string;
   price: number;
   compareAtPrice?: number;
@@ -89,6 +91,7 @@ type Props = {
   accordionBundle?: GoodIdeasPdpAccordionBundle;
   /** Fase 4: el sticky inteligente reemplaza la barra móvil legacy. */
   suppressMobileSticky?: boolean;
+  productManual?: GoodIdeasProductManual | null;
 };
 
 function buildInfoPanelProps(
@@ -135,6 +138,7 @@ function buildInfoPanelProps(
     onSizeInteract: () => void;
     breadcrumbItems?: BreadcrumbItem[];
     accordionBundle?: GoodIdeasPdpAccordionBundle;
+    productManual?: GoodIdeasProductManual | null;
   },
   sticky: boolean
 ) {
@@ -171,6 +175,7 @@ export default function ProductDetailClient({
   breadcrumbItems,
   accordionBundle,
   suppressMobileSticky = false,
+  productManual = null,
 }: Props) {
   const L = surface === "light";
   const gi = resolvePdpBrandTheme(cartBrand) === "good-ideas";
@@ -257,17 +262,73 @@ export default function ProductDetailClient({
     onSizeInteract: () => setSizeConfirmed(true),
     breadcrumbItems,
     accordionBundle,
+    productManual,
   };
 
   const galleryColumns = resolvePdpGalleryColumns(galleryLayout, 2);
 
   const giDtc = gi && surface === "light";
+  const useDtcStackedGallery =
+    product.id === "gi-hogar-005" ||
+    product.id === "gi-tech-005" ||
+    product.slug === "haoyunma-cordless-rechargeable-electric-egg-beater-whisk" ||
+    product.slug === "ajazz-ak820-ak820-pro-gaming-mechanical-keyboard";
+  const stackedGalleryPanelRef = useRef<HTMLDivElement | null>(null);
+  const [stackedGalleryMaxHeight, setStackedGalleryMaxHeight] = useState<
+    number | null
+  >(null);
+
+  useEffect(() => {
+    if (!useDtcStackedGallery) {
+      return;
+    }
+
+    const panel = stackedGalleryPanelRef.current;
+    if (!panel) return;
+
+    const measure = () => {
+      const limit = panel.querySelector<HTMLElement>(
+        '[data-pdp-gallery-height-limit="update-card"]'
+      );
+
+      if (!limit) {
+        setStackedGalleryMaxHeight(null);
+        return;
+      }
+
+      const panelRect = panel.getBoundingClientRect();
+      const limitRect = limit.getBoundingClientRect();
+      const nextHeight = Math.ceil(limitRect.bottom - panelRect.top);
+
+      setStackedGalleryMaxHeight((current) =>
+        current === nextHeight ? current : nextHeight
+      );
+    };
+
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(panel);
+
+    const limit = panel.querySelector<HTMLElement>(
+      '[data-pdp-gallery-height-limit="update-card"]'
+    );
+    if (limit) observer.observe(limit);
+
+    window.addEventListener("resize", measure);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+      observer.disconnect();
+    };
+  }, [useDtcStackedGallery, product.id, product.slug]);
 
   const gallery = giDtc ? (
     <ProductGalleryDtc
       images={pdpGalleryImages}
       title={product.title}
       noImageLabel={noImageLabel}
+      desktopPresentation={useDtcStackedGallery ? "stacked-grid" : "default"}
     />
   ) : (
     <ProductGalleryRei
@@ -288,7 +349,18 @@ export default function ProductDetailClient({
       ? GI_PDP_GRID
       : "hidden lg:grid lg:grid-cols-[minmax(0,1.68fr)_minmax(280px,0.32fr)] lg:items-start lg:gap-x-10 xl:gap-x-12";
 
-  const galleryWrapClass = giDtc ? "min-w-0" : gi ? GI_PDP_GALLERY_STICKY : "min-w-0";
+  const galleryWrapClass = useDtcStackedGallery
+    ? "min-w-0 lg:overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    : giDtc
+      ? "min-w-0"
+      : gi
+        ? GI_PDP_GALLERY_STICKY
+        : "min-w-0";
+
+  const galleryWrapStyle: CSSProperties | undefined =
+    useDtcStackedGallery && stackedGalleryMaxHeight
+      ? { maxHeight: stackedGalleryMaxHeight }
+      : undefined;
 
   const panelSticky = giDtc ? true : !gi;
 
@@ -305,8 +377,13 @@ export default function ProductDetailClient({
         El sticky termina al final de esta sección (antes de Features).
       */}
       <section className={desktopGridClass}>
-        <div className={galleryWrapClass}>{gallery}</div>
-        <div className="min-w-0">
+        <div className={galleryWrapClass} style={galleryWrapStyle}>
+          {gallery}
+        </div>
+        <div
+          ref={useDtcStackedGallery ? stackedGalleryPanelRef : undefined}
+          className="min-w-0"
+        >
           <ProductInfoPanel {...buildInfoPanelProps(panelCommon, panelSticky)} />
         </div>
       </section>

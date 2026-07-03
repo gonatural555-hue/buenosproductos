@@ -1,0 +1,51 @@
+---
+description: Manuales de usuario en PDP Good Products — datos, assets y UI buy box
+alwaysApply: true
+---
+
+# Manuales de usuario (PDP)
+
+## Ubicación en UI (obligatorio)
+
+- El manual se muestra **solo en el buy box DTC** (`GiDtcBuyBox`), **inmediatamente debajo** del bloque UPDATE (`goodIdeas.pdp.dtc.updateLabel` / `updateBody`).
+- Usar **`PdpBuyBoxManualCard`** — misma tarjeta que UPDATE (`GI_DTC.buyBoxInfoCard` en `lib/ui/gi-pdp-dtc.ts`).
+- **No** crear secciones full-width con iframe PDF al final del PDP. **No** duplicar el manual fuera del buy box.
+
+## Datos del producto
+
+En `scripts/good-ideas-products/{id}.json`:
+
+```json
+"manual": {
+  "url": "/assets/documents/good-ideas-products/{id}/user-manual.pdf",
+  "filename": "Nombre-legible-al-descargar.pdf"
+}
+```
+
+- `url` debe empezar con `/` (ruta pública bajo `public/`).
+- `filename` es el nombre sugerido al descargar (opcional; default `{id}-user-manual.pdf`).
+- Resolver en servidor con `getGoodIdeasProductManual(productId)` (`lib/good-ideas-product-manual.ts`).
+- Pasar a `ProductDetailClient` → `ProductInfoPanel` → `GiDtcBuyBox` como `productManual`.
+
+## Asset PDF
+
+Guardar el archivo en:
+
+```
+public/assets/documents/good-ideas-products/{id}/user-manual.pdf
+```
+
+No inventar URLs externas para manuales salvo que el usuario lo pida explícitamente.
+
+## i18n (solo ES + EN en copy de producto)
+
+Claves del bloque manual en PDP:
+
+- `goodIdeas.product.manualTitle`
+- `goodIdeas.product.manualDescription`
+- `goodIdeas.product.manualDownload`
+- `goodIdeas.product.manualOpen`
+
+## Productos con manual hoy
+
+Referencia: buscar `"manual":` en `scripts/good-ideas-products/*.json` (ej. `gi-hogar-004`, `gi-hogar-007`, `gi-hogar-008`, `gi-tech-006`).

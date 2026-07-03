@@ -24,7 +24,6 @@ import PdpPhase4Shell from "@/components/pdp/PdpPhase4Shell";
 import VideoShowcaseSection from "@/components/pdp/VideoShowcaseSection";
 import ReviewsSection from "@/components/pdp/ReviewsSection";
 import CrossSellCarousel from "@/components/pdp/CrossSellCarousel";
-import PdpGoodIdeasProductManual from "@/components/good-ideas/PdpGoodIdeasProductManual";
 import { getGoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 import { parseFeatureSpecRows } from "@/lib/pdp-spec-rows";
 
@@ -157,6 +156,7 @@ export default async function GoodIdeasProductPage({ params }: Props) {
             brandHref={brandLink?.href}
             accordionBundle={accordionBundle}
             suppressMobileSticky
+            productManual={productManual}
           />
         </div>
 
@@ -179,17 +179,6 @@ export default async function GoodIdeasProductPage({ params }: Props) {
         <div id="pdp-cross-sell" className="border-t border-[#E5E7EB] bg-white">
           <CrossSellCarousel productId={product.id} cardImagesById={cardImagesById} />
         </div>
-
-        {productManual ? (
-          <PdpGoodIdeasProductManual
-            manual={productManual}
-            title={t("goodIdeas.product.manualTitle")}
-            description={t("goodIdeas.product.manualDescription")}
-            downloadLabel={t("goodIdeas.product.manualDownload")}
-            openLabel={t("goodIdeas.product.manualOpen")}
-            surface="light"
-          />
-        ) : null}
       </div>
       </PdpPhase4Shell>
     </main>

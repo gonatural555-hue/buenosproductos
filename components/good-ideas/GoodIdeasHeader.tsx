@@ -5,7 +5,6 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 import GoodIdeasMobileNavDrawer from "@/components/good-ideas/GoodIdeasMobileNavDrawer";
 import GoodProductsBrandName from "@/components/good-ideas/GoodProductsBrandName";
-import GoodProductsCompactLogo from "@/components/good-ideas/GoodProductsCompactLogo";
 import { useGoodIdeasCart } from "@/context/GoodIdeasCartContext";
 import { headerLocales, locales, type Locale } from "@/lib/i18n/config";
 import {
@@ -143,19 +142,21 @@ export default function GoodIdeasHeader() {
           className={`${giHeaderClasses.inner} flex md:grid md:grid-cols-[auto_1fr_auto]`}
         >
           {/* ——— Mobile < md ——— */}
-          <div className="flex w-full min-w-0 items-center justify-between gap-2 md:hidden">
+          <div className="flex w-full min-w-0 items-center gap-1.5 md:hidden">
             <Link
               href={homePath(locale)}
-              className="group shrink-0 py-1"
+              className="group min-w-0 shrink py-1 pr-1"
               aria-label={t("goodIdeas.brandName")}
             >
-              <GoodProductsCompactLogo
+              <GoodProductsBrandName
+                locale={locale}
+                className={`block truncate font-display text-[0.9375rem] font-bold leading-tight tracking-[-0.02em] sm:text-base`}
                 prefixClassName="text-[#0B0F14] transition-colors group-hover:text-[#3B82F6]"
                 suffixClassName="text-[#3B82F6] transition-colors group-hover:text-[#2563EB]"
               />
             </Link>
 
-            <div className="flex shrink-0 items-center gap-1">
+            <div className="-mr-1 ml-auto flex shrink-0 items-center gap-0.5 sm:-mr-2">
               <HeaderCurrencySwitcher variant="light" compact />
               <HeaderAccountMenu variant="light" iconOnly />
               <Link

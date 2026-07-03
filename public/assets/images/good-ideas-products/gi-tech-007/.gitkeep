@@ -1,0 +1,9 @@
+# Good Ideas — gi-tech-007 (AJAZZ AKP03E Desktop Control Panel)
+# 2 colores — pegar URLs en scripts/good-ideas-products/gi-tech-007.json
+#
+# Card PLP (obligatorio):
+# - image.webp  →  images.featured[0]
+#
+# Por color (variantImages.color.{value}.featured / gallery):
+# - blanco
+# - negro

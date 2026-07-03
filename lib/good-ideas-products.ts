@@ -191,141 +191,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
-
-    id: "gi-tech-002",
-
-    slug: "universal-car-phone-mount-air-vent",
-
-    title: "Universal Car Phone Mount for Air Vent",
-
-    price: 17000 / 1445,
-
-    category: "Lifestyle",
-
-    brand: "MOTO STORE",
-
-    images: getGoodIdeasProductImagePaths("gi-tech-002", 5),
-
-    description:
-
-      "Universal car phone mount with adjustable air-vent clip. Compatible with iPhone, Samsung, and most smartphones. Compact black design for GPS and hands-free driving.",
-
-    shortDescription:
-
-      "Universal air-vent phone holder — quick clip install, black finish, ideal for GPS and daily driving.",
-
-    longDescription: [
-
-      "This universal car phone mount is designed to fit most mobile phones, with broad compatibility for devices like iPhone and Samsung.",
-
-      "It attaches easily to the car air vent with an adjustable clip — no tools required and no damage to the vehicle.",
-
-      "Compact and lightweight at 15 × 10 × 5 cm and just 0.032 kg, it stays out of the way on your dashboard.",
-
-      "The elegant black finish suits any car interior and holds up to everyday use.",
-
-      "Ideal for GPS and navigation apps — keep the map in clear view while driving for safer, more comfortable trips.",
-
-      "Made in Mainland China to quality standards for daily driving conditions.",
-
-      "Each package includes 1 universal mount, ready to install on your vent.",
-
-    ],
-
-    features: [
-
-      "Universal compatibility for most smartphones",
-
-      "Quick air-vent clip installation",
-
-      "Compact size — 15 × 10 × 5 cm, 0.032 kg",
-
-      "Durable black finish",
-
-      "Ideal for GPS and navigation",
-
-      "Quality manufacturing from Mainland China",
-
-      "Package includes 1 unit",
-
-    ],
-
-    freeShipping: true,
-
-    variants: {
-
-      type: "color",
-
-      label: "Color",
-
-      default: "negro",
-
-      options: [
-
-        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
-
-      ],
-
-    },
-
-    translations: {
-
-      es: {
-
-        title:
-
-          "Soporte universal para teléfono móvil con clip para rejilla de ventilación",
-
-        description:
-
-          "Soporte universal para móvil en coche con clip para rejilla de ventilación. Compatible con iPhone, Samsung y la mayoría de smartphones. Diseño compacto en negro para GPS y conducción manos libres.",
-
-        shortDescription:
-
-          "Soporte universal para rejilla de aire — instalación rápida, acabado negro, ideal para GPS y conducción diaria.",
-
-        longDescription: [
-
-          "Este soporte está diseñado para ajustarse a la mayoría de los teléfonos móviles gracias a su compatibilidad universal, ideal para usar con dispositivos como iPhone y Samsung.",
-
-          "Se fija fácilmente en la rejilla de ventilación del coche mediante un clip ajustable, sin necesidad de herramientas ni daños al vehículo.",
-
-          "Con dimensiones de 15 x 10 x 5 cm y un peso de solo 0.032 kg, es compacto y ligero, ideal para no ocupar espacio en el tablero del coche.",
-
-          "Presenta un acabado en color negro que combina con cualquier interior de coche y resiste el desgaste diario.",
-
-          "Ideal para usar con aplicaciones de GPS, permite una visualización clara del mapa mientras conduces, mejorando la seguridad y comodidad.",
-
-          "Fabricado en Mainland China, este soporte cumple con estándares de calidad y está diseñado para uso diario en condiciones de conducción.",
-
-          "Cada paquete incluye 1 soporte universal, listo para usar inmediatamente tras la instalación en la rejilla del coche.",
-
-        ],
-
-        features: [
-
-          "Compatibilidad universal con la mayoría de smartphones",
-
-          "Instalación rápida con clip para rejilla de ventilación",
-
-          "Diseño compacto — 15 x 10 x 5 cm, 0.032 kg",
-
-          "Acabado negro elegante y duradero",
-
-          "Ideal para GPS y navegación en ruta",
-
-          "Producto de origen Mainland China, calidad garantizada",
-
-          "Contenido del paquete: 1 unidad",
-
-        ],
-
-      },
-
-    },
-
-  },
-  {
     id: "gi-tech-003",
     slug: "xmsj-portable-car-refrigerator-32l-42l",
     title: "XMSJ Portable Car Refrigerator Freezer — 32L / 42L Dual Zone",
@@ -479,6 +344,313 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "10 × mini cepillos de grietas nailon — 6 × 0,5 cm, blanco",
           "Limpieza profunda de grietas, puertos y altavoces sin dañar la superficie",
           "Diseño portátil inteligente — fácil de guardar y llevar",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-tech-005",
+    slug: "ajazz-ak820-ak820-pro-gaming-mechanical-keyboard",
+    title:
+      "AJAZZ AK820 / AK820 Pro Gaming Mechanical Keyboard — Bluetooth 5.1, 2.4G & USB-C",
+    price: 106831 / 1445,
+    category: "Tech",
+    brand: "AJAZZ",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-005/image.webp`],
+    description:
+      "Ajazz AK820 and AK820 Pro 75% gasket-mounted mechanical gaming keyboard with metal volume knob, hot-swappable switches, PBT keycaps, and RGB south-facing lighting. AK820 Pro adds a 0.85\" TFT screen and tri-mode connectivity (USB-C wired, 2.4GHz wireless, Bluetooth 5.1). Six colorways available.",
+    shortDescription:
+      "75% mechanical gaming keyboard with volume knob, hot swap, gasket mount, and RGB — AK820 Pro with TFT screen and tri-mode wireless.",
+    longDescription: [
+      "The Ajazz AK820 / AK820 Pro brings a compact 75% layout with 81 keys and a metal volume knob — ideal for gaming and productivity setups that need more desk space without losing function keys.",
+      "AK820 Pro features a 0.85-inch TFT color screen you can customize in real time: visual effects, battery status, date and time, connection mode, OS display, and backlight settings. Switch between Win and Mac modes from the screen for smoother daily use.",
+      "Tri-mode connectivity on AK820 Pro: USB-C wired, 2.4GHz wireless, or Bluetooth 5.1 — responsive, power-efficient, and easy to switch between devices. AK820 is wired-only via Type-C for a streamlined setup.",
+      "Gasket mounting with flex-cut PC plate and PCB reduces vibration and typing noise while keeping a stable, slightly flexible feel. South-facing RGB LEDs deliver 1.6M color combinations across 20 lighting presets.",
+      "PBT OEM-height keycaps, full-key no-conflict matrix, hot-swappable switches, and ABS injection-molded shell. Compatible with Windows Vista/7/8/10/11, Mac, and Android.",
+      "Package includes keyboard, 1.6 m Type-C cable, instruction manual, dust cover, and 2-in-1 key/switch puller. Choose from six color models — pricing per model defined separately.",
+    ],
+    features: [
+      "Brand: AJAZZ · Models: AK820 (wired) / AK820 Pro (tri-mode)",
+      "75% layout — 81 keys with metal volume knob",
+      "AK820 Pro: 0.85\" TFT color screen — customizable display",
+      "AK820 Pro: USB-C + 2.4G wireless + Bluetooth 5.1",
+      "AK820: wired Type-C only · Weight ≈ 960 g",
+      "AK820 Pro: ≈ 1,057 g · 4,000 mAh battery",
+      "Gasket mount · flex-cut PC plate & PCB · hot-swappable",
+      "South-facing RGB — 1.6M colors, 20 lighting effects (Pro)",
+      "PBT OEM keycaps · ABS shell · full-key no conflict",
+      "Systems: Windows, Mac, Android",
+      "Includes: keyboard, Type-C cable, manual, dust cover, puller",
+      "6 color models available",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "model",
+      label: "Model",
+      default: "gris-blanco-naranja",
+      options: [
+        { value: "gris-blanco-naranja", label: "Grey White Orange", priceModifier: 0 },
+        { value: "gris-blanco-amarillo", label: "Black & Yellow", priceModifier: 0 },
+        { value: "negro", label: "Black", priceModifier: 0 },
+        { value: "negro-lateral", label: "Black & Yellow PRO", priceModifier: 0 },
+        { value: "azul-blanco", label: "Grey & White", priceModifier: 0 },
+        { value: "morado-blanco", label: "White & Violet PRO", priceModifier: 0 },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "Teclado mecánico gaming AJAZZ AK820 / AK820 Pro — Bluetooth 5.1, 2.4G y USB-C",
+        description:
+          "Teclado mecánico gaming Ajazz AK820 y AK820 Pro 75% con montaje gasket, perilla de volumen metálica, switches hot-swap, keycaps PBT y RGB south-facing. El AK820 Pro incluye pantalla TFT de 0,85\" y conectividad triple (USB-C, 2.4G inalámbrico, Bluetooth 5.1). Seis modelos de color.",
+        shortDescription:
+          "Teclado mecánico gaming 75% con perilla de volumen, hot swap, gasket y RGB — AK820 Pro con pantalla TFT y triple modo inalámbrico.",
+        longDescription: [
+          "El Ajazz AK820 / AK820 Pro ofrece un layout compacto 75% con 81 teclas y perilla de volumen metálica — ideal para gaming y productividad cuando necesitás más espacio en el escritorio sin perder teclas de función.",
+          "El AK820 Pro incluye una pantalla TFT a color de 0,85\" personalizable en tiempo real: efectos visuales, estado de batería, fecha y hora, modo de conexión, sistema operativo y ajustes de retroiluminación. Cambiá entre modos Win y Mac desde la pantalla.",
+          "Conectividad triple en AK820 Pro: USB-C cableado, 2.4 GHz inalámbrico o Bluetooth 5.1 — más responsivo, eficiente en energía y fácil de alternar entre dispositivos. El AK820 es solo cableado por Type-C.",
+          "Montaje gasket con placa PC y PCB flex-cut reduce vibración y ruido al tipear, manteniendo una sensación estable y ligeramente flexible. LEDs RGB south-facing con 1,6 millones de colores y 20 efectos de iluminación.",
+          "Keycaps PBT altura OEM, matriz full-key sin ghosting, switches hot-swap y carcasa ABS por inyección. Compatible con Windows Vista/7/8/10/11, Mac y Android.",
+          "Incluye teclado, cable Type-C de 1,6 m, manual, funda antipolvo y extractor 2 en 1 de teclas/switches. Elegí entre seis modelos de color — el precio por modelo se define por separado.",
+        ],
+        features: [
+          "Marca: AJAZZ · Modelos: AK820 (cableado) / AK820 Pro (triple modo)",
+          "Layout 75% — 81 teclas con perilla de volumen metálica",
+          "AK820 Pro: pantalla TFT a color 0,85\" — display personalizable",
+          "AK820 Pro: USB-C + 2.4G inalámbrico + Bluetooth 5.1",
+          "AK820: solo cableado Type-C · Peso ≈ 960 g",
+          "AK820 Pro: ≈ 1.057 g · Batería 4.000 mAh",
+          "Gasket mount · placa PC y PCB flex-cut · hot-swap",
+          "RGB south-facing — 1,6M colores, 20 efectos (Pro)",
+          "Keycaps PBT OEM · carcasa ABS · full-key sin conflicto",
+          "Sistemas: Windows, Mac, Android",
+          "Incluye: teclado, cable Type-C, manual, funda, extractor",
+          "6 modelos de color disponibles",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-tech-006",
+    slug: "sayodevice-mini-macro-keypad-rotary-knob",
+    title: "SayoDevice Mini Macro Keypad with Rotary Knob — Wired USB",
+    price: 99500 / 1445,
+    compareAtPrice: 115000 / 1445,
+    category: "Tech",
+    brand: "SayoDevice",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-006/image.webp`],
+    description:
+      "SayoDevice compact 3-key mechanical macro keypad with rotary encoder knob, multicolor RGB backlight, and hot-swappable Outemu magnetic red switches with rapid trigger. Wired USB for desktop, laptop, and tablet — programmable shortcuts and copy-paste macros.",
+    shortDescription:
+      "Mini 3-key macro pad with volume knob, RGB, hot-swap magnetic switches, and USB — pink, white, or black.",
+    longDescription: [
+      "Streamline copy-paste, media controls, and game macros with this compact SayoDevice pad — three mechanical keys plus a large rotary knob in a desk-friendly footprint.",
+      "Outemu magnetic red switches with rapid trigger respond fast for rhythm games, OSU, and productivity shortcuts. Hot-swappable design lets you tune feel without soldering.",
+      "Multicolor RGB backlight shines through the sandwich acrylic case for a clean glow on your setup. Laser-printed ABS keycaps in a mini layout built for macros, not full typing.",
+      "Wired USB connection — plug into desktop, laptop, or tablet with no battery to charge. Capacitive-style controls, English layout software, certified build from China.",
+      "Choose pink, white, or black to match your battlestation. Ideal for streamers, editors, and gamers who want dedicated keys without a full secondary keyboard.",
+    ],
+    features: [
+      "Brand: SayoDevice · Mini macro keypad + rotary knob",
+      "3 mechanical keys + rotary encoder",
+      "Outemu magnetic red switches · rapid trigger",
+      "Hot-swappable switches",
+      "Multicolor RGB backlight",
+      "Wired USB interface",
+      "Laser-printed ABS keycaps",
+      "Capacitive operation style · English software",
+      "For desktop, laptop, tablet, and number-pad use",
+      "No battery · no wrist rest",
+      "Certified · origin China",
+      "Colors: Pink, White, Black",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [
+        { value: "rosa", label: "Pink", swatchHex: "#F2A8C0" },
+        { value: "blanco", label: "White", swatchHex: "#F5F5F0" },
+        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "SayoDevice mini teclado macro con perilla giratoria — USB cableado",
+        description:
+          "Pad macro mecánico compacto SayoDevice de 3 teclas con perilla codificadora, retroiluminación RGB multicolor y switches magnéticos rojos Outemu hot-swap con rapid trigger. USB cableado para escritorio, portátil y tablet — atajos programables y macros de copiar/pegar.",
+        shortDescription:
+          "Mini pad macro de 3 teclas con perilla, RGB, switches magnéticos hot-swap y USB — rosa, blanco o negro.",
+        longDescription: [
+          "Optimizá copiar/pegar, controles multimedia y macros de juego con este pad compacto SayoDevice — tres teclas mecánicas más una perilla giratoria grande en un formato que no ocupa el escritorio.",
+          "Switches magnéticos rojos Outemu con rapid trigger para juegos de ritmo, OSU y atajos de productividad. Diseño hot-swap para ajustar la sensación sin soldar.",
+          "Retroiluminación RGB multicolor a través de la carcasa acrílica sandwich. Keycaps ABS con leyenda láser en layout mini pensado para macros.",
+          "Conexión USB cableada — conectá a PC, portátil o tablet sin batería. Controles estilo capacitivo, software en inglés, fabricación certificada.",
+          "Elegí rosa, blanco o negro para tu setup. Ideal para streamers, editores y gamers que quieren teclas dedicadas sin un teclado secundario completo.",
+        ],
+        features: [
+          "Marca: SayoDevice · Mini teclado macro + perilla",
+          "3 teclas mecánicas + encoder rotatorio",
+          "Switches magnéticos rojos Outemu · rapid trigger",
+          "Hot-swap",
+          "Retroiluminación RGB multicolor",
+          "Interfaz USB cableada",
+          "Keycaps ABS con impresión láser",
+          "Estilo capacitivo · software en inglés",
+          "Para escritorio, portátil, tablet y teclado numérico",
+          "Sin batería · sin reposamuñecas",
+          "Certificado · origen China",
+          "Colores: Rosa, Blanco, Negro",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-tech-007",
+    slug: "ajazz-akp03e-desktop-control-panel",
+    title: "AJAZZ AKP03E Desktop Control Panel — Programmable LCD Keys & Knobs",
+    price: 135000 / 1445,
+    category: "Tech",
+    brand: "AJAZZ",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-007/image.webp`],
+    description:
+      "AJAZZ AKP03E wired USB desktop control console with customizable LCD key displays, programmable buttons, and rotary knobs for streaming, editing, and productivity. All-in-one software, visual programming, and RGB ambient lighting — white or black finish.",
+    shortDescription:
+      "Desktop stream controller with LCD keys, programmable knobs, and USB — AJAZZ AKP03E in white or black.",
+    longDescription: [
+      "Control your stream, creative apps, and daily shortcuts from one angled desktop console. The AKP03E combines visual LCD keys with tactile buttons and rotary encoders for fast, glanceable macros.",
+      "Program each key with custom icons and actions through AJAZZ software — ideal for OBS, browsers, folders, audio levels, and multimedia controls without alt-tabbing.",
+      "Multiple rotary knobs handle volume, fine adjustments, and layered shortcuts. Visual programming keeps setup on a single software page for quicker onboarding.",
+      "Wired USB connection — no battery to manage. Mechanical-style operation with English software, ergonomic wedge design, and RGB base lighting for desk setups.",
+      "Choose white or black to match your workspace. Built for desktop and laptop use as a multifunctional mini control deck for gaming, streaming, and office workflows.",
+    ],
+    features: [
+      "Brand: AJAZZ · Model AKP03E",
+      "Desktop control panel with LCD visual keys",
+      "Programmable buttons and rotary knobs",
+      "Visual programming · all-in-one software",
+      "Multiple audio / media control profiles",
+      "Wired USB interface",
+      "Mechanical operation style · English software",
+      "Mini multifunction keyboard / console",
+      "RGB ambient base lighting",
+      "For desktop, laptop, and creative workflows",
+      "No battery included · no wrist rest",
+      "Package included · origin China",
+      "Colors: White, Black",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "blanco",
+      options: [
+        { value: "blanco", label: "White", swatchHex: "#F5F5F0", priceModifier: 0 },
+        {
+          value: "negro",
+          label: "Black",
+          swatchHex: "#1A1A1A",
+          priceModifier: (145000 - 135000) / 1445,
+        },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "AJAZZ AKP03E panel de control de escritorio — teclas LCD y perillas programables",
+        description:
+          "Consola de control de escritorio AJAZZ AKP03E USB cableada con pantallas LCD personalizables, botones programables y perillas rotativas para streaming, edición y productividad. Software todo en uno, programación visual e iluminación RGB — acabado blanco o negro.",
+        shortDescription:
+          "Controlador de escritorio con teclas LCD, perillas programables y USB — AJAZZ AKP03E en blanco o negro.",
+        longDescription: [
+          "Controlá tu stream, apps creativas y atajos diarios desde una consola inclinada en el escritorio. El AKP03E combina teclas LCD visuales con botones táctiles y encoders rotativos para macros rápidas.",
+          "Programá cada tecla con íconos y acciones mediante el software AJAZZ — ideal para OBS, navegadores, carpetas, audio y multimedia sin cambiar de ventana.",
+          "Varias perillas rotativas para volumen, ajustes finos y capas de atajos. La programación visual concentra la configuración en una sola página del software.",
+          "Conexión USB cableada sin batería. Operación mecánica, software en inglés, diseño ergonómico en cuña e iluminación RGB en la base.",
+          "Elegí blanco o negro para tu espacio de trabajo. Mini consola multifuncional para gaming, streaming y oficina en PC o portátil.",
+        ],
+        features: [
+          "Marca: AJAZZ · Modelo AKP03E",
+          "Panel de control con teclas LCD visuales",
+          "Botones y perillas programables",
+          "Programación visual · software todo en uno",
+          "Perfiles de control de audio y multimedia",
+          "Interfaz USB cableada",
+          "Estilo mecánico · software en inglés",
+          "Mini teclado / consola multifuncional",
+          "Iluminación RGB ambiental en la base",
+          "Para escritorio, portátil y flujos creativos",
+          "Sin batería · sin reposamuñecas",
+          "Paquete incluido · origen China",
+          "Colores: Blanco, Negro",
+        ],
+      },
+    },
+  },
+
+  {
+    id: "gi-tech-008",
+    slug: "pc-gaming-desktop-soundbar-stereo",
+    title: "PC Gaming Desktop Soundbar — Stereo USB Speaker for Monitor Setup",
+    price: 155000 / 1445,
+    compareAtPrice: 180000 / 1445,
+    category: "Tech",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-008/image.webp`],
+    description:
+      "Compact desktop soundbar for PC and gaming setups — low-profile stereo speaker designed to sit under your monitor for clearer dialogue, music, and in-game audio without bulky bookshelf speakers.",
+    shortDescription:
+      "Slim USB desktop soundbar for PC gaming and work — stereo audio in a single bar under your monitor.",
+    longDescription: [
+      "Upgrade laptop or monitor speakers with a horizontal soundbar that fits neatly under your display — more presence for games, calls, and music without taking over the desk.",
+      "Stereo drivers in a slim enclosure deliver fuller sound than built-in monitor audio while keeping cables minimal for a clean battlestation.",
+      "Ideal for desktop PCs, gaming rigs, and compact workstations where space matters but you still want dedicated speakers.",
+      "Plug-and-play friendly for everyday use — a simple single-unit speaker bar that matches PC & Games setups focused on clarity and footprint.",
+      "Verified-brand listing quality with free shipping — one model, ready to place under your screen and go.",
+    ],
+    features: [
+      "Desktop soundbar for PC and gaming",
+      "Low-profile bar — fits under monitor",
+      "Stereo speaker configuration",
+      "USB / desktop power friendly",
+      "Compact single-unit design",
+      "For games, calls, music, and media",
+      "Slim footprint for small desks",
+      "Single model — no assembly required",
+      "Package included",
+      "Origin China",
+    ],
+    freeShipping: true,
+    translations: {
+      es: {
+        title:
+          "Barra de sonido de escritorio para PC gaming — altavoz estéreo USB",
+        description:
+          "Barra de sonido compacta para PC y gaming — altavoz estéreo de perfil bajo pensado para colocar bajo el monitor y mejorar diálogos, música y audio en juego sin parlantes voluminosos.",
+        shortDescription:
+          "Barra de sonido USB fina para PC gaming y trabajo — audio estéreo bajo el monitor.",
+        longDescription: [
+          "Mejorá el audio del portátil o monitor con una barra horizontal que encaja bajo la pantalla — más presencia en juegos, llamadas y música sin ocupar el escritorio.",
+          "Drivers estéreo en carcasa delgada con más cuerpo que los altavoces integrados del monitor, manteniendo el cableado al mínimo.",
+          "Ideal para PC de escritorio, setups gaming y estaciones compactas donde importa el espacio pero querés parlantes dedicados.",
+          "Uso plug-and-play para el día a día — una sola unidad lista para colocar bajo la pantalla.",
+          "Un solo modelo con envío gratis — colocala bajo el monitor y listo.",
+        ],
+        features: [
+          "Barra de sonido para PC y gaming",
+          "Perfil bajo — bajo el monitor",
+          "Configuración estéreo",
+          "Compatible USB / alimentación de escritorio",
+          "Diseño compacto de una sola pieza",
+          "Para juegos, llamadas, música y multimedia",
+          "Huella reducida para escritorios chicos",
+          "Un solo modelo — sin ensamblaje",
+          "Paquete incluido",
+          "Origen China",
         ],
       },
     },
@@ -808,85 +980,6 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
           "Certificación CE (según proveedor)",
           "Producto químico de alta preocupación: ninguno",
           "Disponible en Blanco y Violeta",
-          "Origen China (dato de proveedor)",
-        ],
-      },
-    },
-  },
-
-  {
-    id: "gi-hogar-006",
-    slug: "zuumaa-mf101-usb-rechargeable-mini-milk-frother-3-speed",
-    brand: "ZuuMaa",
-    title:
-      "ZuuMaa MF101 USB Rechargeable Mini Milk Frother — 3-Speed Handheld Coffee & Egg Whisk",
-    price: 8.3,
-    category: "Hogar",
-    images: [
-      "/assets/images/good-ideas-products/gi-hogar-006/image.webp",
-    ],
-    description:
-      "Compact USB-rechargeable mini milk frother and handheld mixer by ZuuMaa. Three speed settings, 11,000 RPM, under 750W — for coffee foam, lattes, eggs, and light kitchen mixing. Portable electric design, 220–240V.",
-    shortDescription:
-      "USB rechargeable 3-speed mini frother with whisk attachment for coffee foam, milk, and eggs — portable handheld design.",
-    longDescription: [
-      "Froth milk for lattes and cappuccinos, blend coffee drinks, or whisk eggs without bulky countertop gear. This mini handheld frother keeps everyday kitchen prep quick and tidy.",
-      "Three speed settings with push-button control let you adjust intensity — gentle for milk foam, faster for eggs and light batters.",
-      "Rechargeable via USB with cordless operation when charged; rated under 750W with rotation up to 11,000 RPM for efficient mixing in cups and small bowls.",
-      "Model MF101 by ZuuMaa. Capacity under 0.5 L per supplier listing; no substances of very high concern listed. Voltage 220–240V.",
-    ],
-    features: [
-      "Brand ZuuMaa — model MF101",
-      "USB rechargeable mini milk frother & hand whisk",
-      "3 speed settings with push-button control",
-      "Rotation rate up to 11,000 RPM",
-      "Power under 750W",
-      "Rechargeable / electric — works in both modes",
-      "Portable handheld design",
-      "For milk foam, coffee, eggs, and light mixing",
-      "Capacity under 0.5 L (supplier listing)",
-      "Voltage 220–240V",
-      "No substances of very high concern",
-      "Available in Black and White",
-      "Origin China (supplier data)",
-    ],
-    freeShipping: true,
-    variants: {
-      type: "color",
-      label: "Color",
-      default: "black",
-      options: [
-        { value: "black", label: "Black", swatchHex: "#1C1C1C" },
-        { value: "white", label: "White", swatchHex: "#F0F0F0" },
-      ],
-    },
-    translations: {
-      es: {
-        title:
-          "ZuuMaa MF101 Mini espumador de leche USB recargable — Batidor de café 3 velocidades",
-        description:
-          "Mini espumador de leche y mezclador de mano compacto ZuuMaa con carga USB. Tres velocidades, 11.000 RPM, menos de 750W — para espuma de café, lattes, huevos y mezclas ligeras. Diseño eléctrico portátil, 220–240V.",
-        shortDescription:
-          "Mini espumador recargable USB de 3 velocidades con batidor para espuma de leche, café y huevos — diseño portátil de mano.",
-        longDescription: [
-          "Espumá leche para lattes y cappuccinos, mezclá bebidas de café o batí huevos sin electrodomésticos voluminosos. Este mini espumador de mano agiliza la preparación diaria en la cocina.",
-          "Tres velocidades con botón pulsador para ajustar la intensidad — suave para espuma de leche, más rápido para huevos y batidos ligeros.",
-          "Recargable por USB con funcionamiento inalámbrico cuando está cargado; menos de 750W con rotación de hasta 11.000 RPM para mezclar eficientemente en tazas y bowls pequeños.",
-          "Modelo MF101 de ZuuMaa. Capacidad inferior a 0,5 L según ficha del proveedor; sin productos químicos de alta preocupación. Voltaje 220–240V.",
-        ],
-        features: [
-          "Marca ZuuMaa — modelo MF101",
-          "Mini espumador de leche USB recargable y batidor de mano",
-          "3 configuraciones de velocidad con botón pulsador",
-          "Tasa de rotación hasta 11.000 RPM",
-          "Potencia inferior a 750W",
-          "Recargable/eléctrico — funciona en ambos modos",
-          "Estilo portátil de mano",
-          "Para espuma de leche, café, huevos y mezclas ligeras",
-          "Capacidad inferior a 0,5 L (según proveedor)",
-          "Voltaje 220–240V",
-          "Producto químico de alta preocupación: ninguno",
-          "Disponible en Negro y Blanco",
           "Origen China (dato de proveedor)",
         ],
       },
@@ -1584,6 +1677,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     slug: "intelligent-ai-rc-robot-dog",
     title: "Intelligent AI RC Robot Dog — Voice, App & Remote Control",
     price: 249000 / 1445,
+    compareAtPrice: 320000 / 1445,
     category: "Tech",
     salesBadge: "Super Sale",
     images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-regalos-001/image.webp`],

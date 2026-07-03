@@ -9,8 +9,10 @@ import SizeSelector from "@/components/pdp/SizeSelector";
 import PdpQuantitySelector from "@/components/pdp/PdpQuantitySelector";
 import VariantSelector from "@/components/VariantSelector";
 import PdpPromoPriceBlock from "@/components/pdp/PdpPromoPriceBlock";
+import PdpBuyBoxManualCard from "@/components/pdp/PdpBuyBoxManualCard";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
 import type { PdpDesktopContent } from "@/components/ProductDetailClient";
+import type { GoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 import { resolvePdpSalesBadge } from "@/lib/pdp-sales-badge";
 import { isValidCombination } from "@/lib/product-variant-matrix";
 import type {
@@ -78,6 +80,7 @@ type Props = {
   sticky?: boolean;
   sizeConfirmed: boolean;
   onSizeInteract: () => void;
+  productManual?: GoodIdeasProductManual | null;
 };
 
 export default function GiDtcBuyBox({
@@ -114,6 +117,7 @@ export default function GiDtcBuyBox({
   sticky = true,
   sizeConfirmed,
   onSizeInteract,
+  productManual = null,
 }: Props) {
   const t = useTranslations();
   const theme = getPdpBuyBoxTheme("good-ideas", "light");
@@ -286,14 +290,27 @@ export default function GiDtcBuyBox({
         <span>{t("goodIdeas.pdp.dtc.trustShipping")}</span>
       </div>
 
-      <div className="rounded-sm border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-4">
-        <p className="font-body text-xs font-semibold uppercase tracking-[0.12em] text-[#111111]">
+      <div
+        className={GI_DTC.buyBoxInfoCard}
+        data-pdp-gallery-height-limit="update-card"
+      >
+        <p className={GI_DTC.buyBoxInfoLabel}>
           {t("goodIdeas.pdp.dtc.updateLabel")}
         </p>
-        <p className="mt-2 font-body text-sm leading-relaxed text-[#6B7280]">
+        <p className={GI_DTC.buyBoxInfoBody}>
           {t("goodIdeas.pdp.dtc.updateBody")}
         </p>
       </div>
+
+      {productManual ? (
+        <PdpBuyBoxManualCard
+          manual={productManual}
+          title={t("goodIdeas.product.manualTitle")}
+          description={t("goodIdeas.product.manualDescription")}
+          downloadLabel={t("goodIdeas.product.manualDownload")}
+          openLabel={t("goodIdeas.product.manualOpen")}
+        />
+      ) : null}
 
       {showReviews && reviewsLinkLabel ? (
         <Link

@@ -1,0 +1,35 @@
+{
+  "id": "gi-tech-007",
+  "brand": "AJAZZ",
+  "variants": {
+    "type": "color",
+    "options": [
+      { "value": "blanco" },
+      { "value": "negro" }
+    ]
+  },
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-tech-007/image.webp"
+    ],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "blanco": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "negro": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
+  }
+}

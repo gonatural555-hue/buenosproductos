@@ -17,6 +17,17 @@ export const GI_DTC = {
   heroGrid:
     "hidden lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-start lg:gap-x-10 xl:gap-x-14",
   buyBoxSticky: `lg:sticky ${GI_PDP_STICKY_TOP} lg:self-start`,
+  /** Tarjeta informativa del buy box DTC (UPDATE, manual de usuario, etc.). */
+  buyBoxInfoCard:
+    "rounded-sm border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-4",
+  buyBoxInfoLabel:
+    "font-body text-xs font-semibold uppercase tracking-[0.12em] text-[#111111]",
+  buyBoxInfoBody:
+    "mt-2 font-body text-sm leading-relaxed text-[#6B7280]",
+  buyBoxInfoActions:
+    "mt-2 flex flex-wrap items-center gap-x-3 gap-y-1",
+  buyBoxInfoLink:
+    "font-body text-sm font-medium text-[#111111] underline-offset-2 transition hover:text-[#3B82F6] hover:underline",
   /** Fila horizontal lifestyle (382×622 px). */
   horizontalTileWidthPx: 382,
   horizontalTileHeightPx: 622,

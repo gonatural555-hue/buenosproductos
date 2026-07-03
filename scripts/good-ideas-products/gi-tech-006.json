@@ -1,0 +1,46 @@
+{
+  "id": "gi-tech-006",
+  "brand": "SayoDevice",
+  "variants": {
+    "type": "color",
+    "options": [
+      { "value": "rosa" },
+      { "value": "blanco" },
+      { "value": "negro" }
+    ]
+  },
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-tech-006/image.webp"
+    ],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "rosa": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "blanco": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "negro": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
+  },
+  "manual": {
+    "url": "/assets/documents/good-ideas-products/gi-tech-006/user-manual.pdf",
+    "filename": "Manual_Buenos_Productos_Teclado_Premium.pdf"
+  }
+}

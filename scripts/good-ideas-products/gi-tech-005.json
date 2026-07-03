@@ -1,0 +1,120 @@
+{
+  "id": "gi-tech-005",
+  "brand": "AJAZZ",
+  "variants": {
+    "type": "model",
+    "options": [
+      { "value": "gris-blanco-naranja" },
+      { "value": "gris-blanco-amarillo" },
+      { "value": "negro" },
+      { "value": "negro-lateral" },
+      { "value": "azul-blanco" },
+      { "value": "morado-blanco" }
+    ]
+  },
+  "images": {
+    "featured": [
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-white&violet.webp"
+    ],
+    "gallery": [
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+      "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"
+    ],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "gris-blanco-naranja": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-orange&white.webp"
+        ],
+        "gallery": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "gris-blanco-amarillo": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-black&yellow.webp"
+        ],
+        "gallery": [      
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+        "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-black.webp"
+        ],
+        "gallery": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"],
+        "lifestyle": [],
+        "extras": []
+      },
+      "negro-lateral": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-black&yellow-pro.webp"
+        ],
+        "gallery": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "azul-blanco": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-grey&white.webp"
+        ],
+        "gallery": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "morado-blanco": {
+        "featured": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-white&violet.webp"
+        ],
+        "gallery": [
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-01.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-02.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-03.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-04.webp",
+          "assets/images/good-ideas-products/gi-tech-005/teclado-mecanico-gaming-05.webp"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  }
+}

@@ -20,6 +20,7 @@ import { giType } from "@/lib/ui/gi-typography";
 import { useCurrency } from "@/context/CurrencyContext";
 import type { PdpDesktopContent } from "@/components/ProductDetailClient";
 import type { GoodIdeasPdpAccordionBundle } from "@/lib/good-ideas-pdp-content";
+import type { GoodIdeasProductManual } from "@/lib/good-ideas-product-manual";
 import { resolvePdpSalesBadge } from "@/lib/pdp-sales-badge";
 import { isValidCombination } from "@/lib/product-variant-matrix";
 import type {
@@ -84,6 +85,7 @@ type Props = {
   onSizeInteract: () => void;
   breadcrumbItems?: BreadcrumbItem[];
   accordionBundle?: GoodIdeasPdpAccordionBundle;
+  productManual?: GoodIdeasProductManual | null;
 };
 
 function MiniStars({
@@ -155,6 +157,7 @@ export default function ProductInfoPanel({
   onSizeInteract,
   breadcrumbItems,
   accordionBundle,
+  productManual = null,
 }: Props) {
   const pdpBrand = resolvePdpBrandTheme(cartBrand);
   const theme = getPdpBuyBoxTheme(pdpBrand, surface);
@@ -281,6 +284,7 @@ export default function ProductInfoPanel({
         sticky={sticky}
         sizeConfirmed={sizeConfirmed}
         onSizeInteract={onSizeInteract}
+        productManual={productManual}
       />
     );
   }
