@@ -1,0 +1,40 @@
+{
+  "id": "gi-tech-006",
+  "brand": "SayoDevice",
+  "variants": {
+    "type": "color",
+    "options": [
+      { "value": "rosa" },
+      { "value": "blanco" },
+      { "value": "negro" }
+    ]
+  },
+  "images": {
+    "featured": [],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "color": {
+        "rosa": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "blanco": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        },
+        "negro": {
+          "featured": [],
+          "gallery": [],
+          "lifestyle": [],
+          "extras": []
+        }
+      }
+    }
+  }
+}

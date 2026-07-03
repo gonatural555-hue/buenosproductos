@@ -434,6 +434,84 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
   },
 
   {
+    id: "gi-tech-006",
+    slug: "sayodevice-mini-macro-keypad-rotary-knob",
+    title: "SayoDevice Mini Macro Keypad with Rotary Knob — Wired USB",
+    price: 99500 / 1445,
+    compareAtPrice: 115000 / 1445,
+    category: "Tech",
+    brand: "SayoDevice",
+    images: [`${GOOD_IDEAS_IMAGE_BASE}/gi-tech-006/image.webp`],
+    description:
+      "SayoDevice compact 3-key mechanical macro keypad with rotary encoder knob, multicolor RGB backlight, and hot-swappable Outemu magnetic red switches with rapid trigger. Wired USB for desktop, laptop, and tablet — programmable shortcuts and copy-paste macros.",
+    shortDescription:
+      "Mini 3-key macro pad with volume knob, RGB, hot-swap magnetic switches, and USB — pink, white, or black.",
+    longDescription: [
+      "Streamline copy-paste, media controls, and game macros with this compact SayoDevice pad — three mechanical keys plus a large rotary knob in a desk-friendly footprint.",
+      "Outemu magnetic red switches with rapid trigger respond fast for rhythm games, OSU, and productivity shortcuts. Hot-swappable design lets you tune feel without soldering.",
+      "Multicolor RGB backlight shines through the sandwich acrylic case for a clean glow on your setup. Laser-printed ABS keycaps in a mini layout built for macros, not full typing.",
+      "Wired USB connection — plug into desktop, laptop, or tablet with no battery to charge. Capacitive-style controls, English layout software, certified build from China.",
+      "Choose pink, white, or black to match your battlestation. Ideal for streamers, editors, and gamers who want dedicated keys without a full secondary keyboard.",
+    ],
+    features: [
+      "Brand: SayoDevice · Mini macro keypad + rotary knob",
+      "3 mechanical keys + rotary encoder",
+      "Outemu magnetic red switches · rapid trigger",
+      "Hot-swappable switches",
+      "Multicolor RGB backlight",
+      "Wired USB interface",
+      "Laser-printed ABS keycaps",
+      "Capacitive operation style · English software",
+      "For desktop, laptop, tablet, and number-pad use",
+      "No battery · no wrist rest",
+      "Certified · origin China",
+      "Colors: Pink, White, Black",
+    ],
+    freeShipping: true,
+    variants: {
+      type: "color",
+      label: "Color",
+      default: "negro",
+      options: [
+        { value: "rosa", label: "Pink", swatchHex: "#F2A8C0" },
+        { value: "blanco", label: "White", swatchHex: "#F5F5F0" },
+        { value: "negro", label: "Black", swatchHex: "#1A1A1A" },
+      ],
+    },
+    translations: {
+      es: {
+        title:
+          "SayoDevice mini teclado macro con perilla giratoria — USB cableado",
+        description:
+          "Pad macro mecánico compacto SayoDevice de 3 teclas con perilla codificadora, retroiluminación RGB multicolor y switches magnéticos rojos Outemu hot-swap con rapid trigger. USB cableado para escritorio, portátil y tablet — atajos programables y macros de copiar/pegar.",
+        shortDescription:
+          "Mini pad macro de 3 teclas con perilla, RGB, switches magnéticos hot-swap y USB — rosa, blanco o negro.",
+        longDescription: [
+          "Optimizá copiar/pegar, controles multimedia y macros de juego con este pad compacto SayoDevice — tres teclas mecánicas más una perilla giratoria grande en un formato que no ocupa el escritorio.",
+          "Switches magnéticos rojos Outemu con rapid trigger para juegos de ritmo, OSU y atajos de productividad. Diseño hot-swap para ajustar la sensación sin soldar.",
+          "Retroiluminación RGB multicolor a través de la carcasa acrílica sandwich. Keycaps ABS con leyenda láser en layout mini pensado para macros.",
+          "Conexión USB cableada — conectá a PC, portátil o tablet sin batería. Controles estilo capacitivo, software en inglés, fabricación certificada.",
+          "Elegí rosa, blanco o negro para tu setup. Ideal para streamers, editores y gamers que quieren teclas dedicadas sin un teclado secundario completo.",
+        ],
+        features: [
+          "Marca: SayoDevice · Mini teclado macro + perilla",
+          "3 teclas mecánicas + encoder rotatorio",
+          "Switches magnéticos rojos Outemu · rapid trigger",
+          "Hot-swap",
+          "Retroiluminación RGB multicolor",
+          "Interfaz USB cableada",
+          "Keycaps ABS con impresión láser",
+          "Estilo capacitivo · software en inglés",
+          "Para escritorio, portátil, tablet y teclado numérico",
+          "Sin batería · sin reposamuñecas",
+          "Certificado · origen China",
+          "Colores: Rosa, Blanco, Negro",
+        ],
+      },
+    },
+  },
+
+  {
     id: "gi-hogar-002",
     slug: "portable-travel-kettle-450ml",
     title: "Portable Travel Kettle 450ML",
