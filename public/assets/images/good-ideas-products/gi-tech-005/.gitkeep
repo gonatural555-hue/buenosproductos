@@ -1,4 +1,14 @@
 # Good Ideas — gi-tech-005 (AJAZZ AK820 / AK820 Pro)
-# Coloca aquí:
-# - image.webp (card / fallback PDP)
-# - model-gris-blanco-naranja.webp … por variante si aplica
+# 7 modelos — pegar URLs en scripts/good-ideas-products/gi-tech-005.json
+#
+# Card PLP (obligatorio):
+# - image.webp  →  images.featured[0]
+#
+# Por modelo (variantImages.{value}.featured / gallery):
+# - gris-blanco-naranja   (default)
+# - gris-blanco-amarillo
+# - negro
+# - negro-lateral
+# - azul-blanco
+# - gris-oscuro
+# - morado-blanco

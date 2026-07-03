@@ -1,3 +1,8 @@
 # Good Ideas — gi-tech-008 (PC Gaming Desktop Soundbar)
-# Coloca aquí:
-# - image.webp (card / fallback PDP)
+# Un solo modelo — pegar URLs en scripts/good-ideas-products/gi-tech-008.json
+#
+# Card PLP + PDP (obligatorio):
+# - image.webp  →  images.featured[0]
+#
+# Galería opcional:
+# - gallery-1.webp … gallery-N.webp  →  images.gallery[]

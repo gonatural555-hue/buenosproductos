@@ -10,7 +10,9 @@
     ]
   },
   "images": {
-    "featured": [],
+    "featured": [
+      "/assets/images/good-ideas-products/gi-tech-006/image.webp"
+    ],
     "gallery": [],
     "lifestyle": [],
     "extras": [],
