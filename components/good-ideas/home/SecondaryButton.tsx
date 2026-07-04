@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { giHomeClasses, giHomeJoinClasses } from "@/lib/ui/gi-home";
+import { giHomeClasses, giHomeJoinClasses, giHomeLightClasses } from "@/lib/ui/gi-home";
 
 type BaseProps = {
   children: React.ReactNode;
   className?: string;
-  /** `outline` sobre oscuro · `light` pill claro (#E8ECF1). */
-  variant?: "outline" | "light";
+  /** `outline` sobre oscuro · `light` pill claro · `onLight` contorno sobre blanco. */
+  variant?: "outline" | "light" | "onLight";
 };
 
 type LinkProps = BaseProps & {
@@ -28,7 +28,9 @@ export default function SecondaryButton(props: Props) {
   const base =
     variant === "light"
       ? giHomeClasses.secondaryButtonLight
-      : giHomeClasses.secondaryButton;
+      : variant === "onLight"
+        ? giHomeLightClasses.secondaryButtonOnLight
+        : giHomeClasses.secondaryButton;
   const classes = giHomeJoinClasses(base, className);
 
   if ("href" in props && props.href) {

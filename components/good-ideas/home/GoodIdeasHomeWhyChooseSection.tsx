@@ -5,6 +5,7 @@ import {
   GoodIdeasWhyChooseIcon,
   type GoodIdeasWhyChooseItem,
 } from "@/components/good-ideas/home/GoodIdeasHomeWhyChooseIcons";
+import { GI_HOME_LIGHT_SECTION_CLASS } from "@/lib/ui/gi-home";
 
 type Props = {
   titleBefore: string;
@@ -21,10 +22,10 @@ function WhyChooseCard({ item }: { item: GoodIdeasWhyChooseItem }) {
         <GoodIdeasWhyChooseIcon id={item.id} className="h-6 w-6" />
       </span>
       <div className="min-w-0 space-y-2">
-        <h3 className="font-body text-base font-semibold leading-snug text-[#E8ECF1] sm:text-lg">
+        <h3 className="font-body text-base font-semibold leading-snug text-[#E8ECF1] sm:text-lg lg:text-[#111111]">
           {item.title}
         </h3>
-        <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.72)] sm:text-[15px]">
+        <p className="font-body text-sm leading-relaxed text-[rgba(232,236,241,0.72)] sm:text-[15px] lg:text-[#6B7280]">
           {item.description}
         </p>
       </div>
@@ -43,11 +44,11 @@ export default function GoodIdeasHomeWhyChooseSection({
 
   return (
     <section
-      className="border-t border-white/[0.08] bg-[#0B0F14] py-16 md:py-20 lg:py-28"
+      className={`${GI_HOME_LIGHT_SECTION_CLASS} lg:py-28`}
       aria-label={sectionAriaLabel}
     >
       <HomeContainer innerClassName="max-w-[1320px]">
-        <SectionTitle align="center" className="mx-auto max-w-3xl">
+        <SectionTitle align="center" theme="light" className="mx-auto max-w-3xl">
           {titleBefore}
           <span className="text-[#3B82F6]">{titleAccent}</span>
           {titleAfter}
@@ -67,7 +68,7 @@ export default function GoodIdeasHomeWhyChooseSection({
               </li>
               {index < items.length - 1 ? (
                 <li
-                  className="mx-1 mt-6 h-24 w-px shrink-0 bg-white/[0.08] xl:mx-2"
+                  className="mx-1 mt-6 h-24 w-px shrink-0 bg-[#E5E7EB] xl:mx-2"
                   aria-hidden
                 />
               ) : null}

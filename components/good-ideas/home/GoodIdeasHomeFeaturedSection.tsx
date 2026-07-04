@@ -7,6 +7,7 @@ import type { GoodIdeasHomeFeaturedEntry } from "@/lib/good-ideas-home-featured"
 import type { ProductReviewStatsSnapshot } from "@/lib/good-ideas-product-review-stats";
 import type { Locale } from "@/lib/i18n/config";
 import { productsPath } from "@/lib/routing/paths";
+import { GI_HOME_LIGHT_SECTION_CLASS } from "@/lib/ui/gi-home";
 
 type Props = {
   locale: Locale;
@@ -36,18 +37,18 @@ export default function GoodIdeasHomeFeaturedSection({
   if (entries.length === 0) return null;
 
   return (
-    <section
-      className="border-t border-white/[0.08] bg-[#0B0F14] py-16 md:py-20 lg:py-24"
-      aria-label={sectionAriaLabel}
-    >
+    <section className={GI_HOME_LIGHT_SECTION_CLASS} aria-label={sectionAriaLabel}>
       <HomeContainer innerClassName="max-w-[1320px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
           <div className="max-w-2xl">
-            <SectionEyebrow>{eyebrow}</SectionEyebrow>
-            <SectionTitle className="mt-3">{title}</SectionTitle>
+            <SectionEyebrow theme="light">{eyebrow}</SectionEyebrow>
+            <SectionTitle theme="light" className="mt-3">
+              {title}
+            </SectionTitle>
           </div>
           <SecondaryButton
             href={productsPath(locale)}
+            variant="onLight"
             className="w-full shrink-0 sm:w-auto lg:mb-1"
           >
             {viewAllLabel}

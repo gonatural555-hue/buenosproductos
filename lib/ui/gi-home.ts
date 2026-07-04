@@ -18,6 +18,35 @@ export const GI_HOME_INNER = "mx-auto w-full max-w-[1200px]";
 
 export const GI_HOME_SECTION_PAD = "py-16 md:py-24";
 
+/** Sección home sobre fondo blanco (post-hero). */
+export const GI_HOME_LIGHT_SECTION_CLASS =
+  "border-t border-[#E5E7EB] bg-[#FFFFFF] py-16 md:py-20 lg:py-24";
+
+export const GI_HOME_LIGHT_TRUST_BAR_CLASS =
+  "border-y border-[#E5E7EB] bg-[#FFFFFF]";
+
+export const giHomeLightClasses = {
+  eyebrow:
+    "font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[#3B82F6]",
+  eyebrowCenter: "text-center",
+  title:
+    "font-display text-balance text-[clamp(1.75rem,4.5vw,2.75rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-[#111111] md:text-[clamp(2rem,3.5vw,3rem)]",
+  titleCenter: "text-center",
+  secondaryButtonOnLight: [
+    "inline-flex h-[52px] min-h-[52px] items-center justify-center rounded-full",
+    "border border-[#E5E7EB] bg-[#FFFFFF] px-8",
+    "text-center font-body text-sm font-semibold text-[#111111]",
+    "transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+    "hover:border-[rgba(59,130,246,0.35)] hover:bg-[#FAFAFA]",
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/50",
+    "focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF]",
+    "motion-reduce:transition-none",
+    "md:h-[56px] md:min-h-[56px] md:px-9 md:text-base",
+  ].join(" "),
+} as const;
+
+export type GiHomeSectionTheme = "dark" | "light";
+
 export const giHomeClasses = {
   page: "bg-[#0B0F14] text-[#E8ECF1]",
   section: `${GI_HOME_SECTION_PAD} border-t border-white/[0.08]`,

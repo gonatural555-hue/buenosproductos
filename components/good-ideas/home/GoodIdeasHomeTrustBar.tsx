@@ -3,6 +3,7 @@ import {
   GoodIdeasTrustBarIcon,
   type GoodIdeasTrustBarItem,
 } from "@/components/good-ideas/home/GoodIdeasTrustBarIcons";
+import { GI_HOME_LIGHT_TRUST_BAR_CLASS } from "@/lib/ui/gi-home";
 
 type Props = {
   items: GoodIdeasTrustBarItem[];
@@ -16,10 +17,10 @@ function TrustBarCell({ item }: { item: GoodIdeasTrustBarItem }) {
         <GoodIdeasTrustBarIcon id={item.id} className="h-[22px] w-[22px]" />
       </span>
       <div className="min-w-0 pt-0.5">
-        <p className="font-body text-sm font-semibold leading-snug text-[#E8ECF1] sm:text-[15px]">
+        <p className="font-body text-sm font-semibold leading-snug text-[#111111] sm:text-[15px]">
           {item.title}
         </p>
-        <p className="mt-0.5 font-body text-xs leading-relaxed text-[rgba(232,236,241,0.55)] sm:text-[13px]">
+        <p className="mt-0.5 font-body text-xs leading-relaxed text-[#6B7280] sm:text-[13px]">
           {item.description}
         </p>
       </div>
@@ -31,10 +32,7 @@ export default function GoodIdeasHomeTrustBar({ items, ariaLabel }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <section
-      className="border-y border-white/[0.08] bg-[linear-gradient(180deg,#151B24_0%,#121820_50%,#0B0F14_100%)]"
-      aria-label={ariaLabel}
-    >
+    <section className={GI_HOME_LIGHT_TRUST_BAR_CLASS} aria-label={ariaLabel}>
       <div className="mx-auto max-w-[1320px] px-4 py-[22px] sm:px-6 sm:py-7 md:py-8 lg:px-10">
         <ul className="grid grid-cols-2 gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-7 lg:hidden">
           {items.map((item) => (
@@ -52,7 +50,7 @@ export default function GoodIdeasHomeTrustBar({ items, ariaLabel }: Props) {
               </li>
               {index < items.length - 1 ? (
                 <li
-                  className="mx-1 h-12 w-px shrink-0 bg-white/[0.12] xl:mx-2"
+                  className="mx-1 h-12 w-px shrink-0 bg-[#E5E7EB] xl:mx-2"
                   aria-hidden
                 />
               ) : null}

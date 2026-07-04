@@ -1,10 +1,11 @@
-import { giHomeClasses, giHomeJoinClasses } from "@/lib/ui/gi-home";
+import { giHomeClasses, giHomeJoinClasses, giHomeLightClasses, type GiHomeSectionTheme } from "@/lib/ui/gi-home";
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   align?: "left" | "center";
   as?: "h2" | "h3";
+  theme?: GiHomeSectionTheme;
 };
 
 export default function SectionTitle({
@@ -12,12 +13,15 @@ export default function SectionTitle({
   className,
   align = "left",
   as: Tag = "h2",
+  theme = "dark",
 }: Props) {
+  const tokens = theme === "light" ? giHomeLightClasses : giHomeClasses;
+
   return (
     <Tag
       className={giHomeJoinClasses(
-        giHomeClasses.title,
-        align === "center" && giHomeClasses.titleCenter,
+        tokens.title,
+        align === "center" && tokens.titleCenter,
         className
       )}
     >

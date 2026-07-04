@@ -4,6 +4,7 @@ import GoodIdeasPromoHexPattern from "@/components/good-ideas/home/GoodIdeasProm
 import { PrimaryButton } from "@/components/good-ideas/home";
 import type { GoodIdeasHomePromoProductVisual } from "@/lib/good-ideas-home-promo";
 import { GI_HERO_GRID_OVERLAY } from "@/lib/ui/goodideas-design";
+import { GI_HOME_LIGHT_SECTION_CLASS } from "@/lib/ui/gi-home";
 
 type Props = {
   title: string;
@@ -64,10 +65,7 @@ export default function GoodIdeasHomePromoBanner({
   products,
 }: Props) {
   return (
-    <section
-      className="border-t border-white/[0.08] bg-[#0B0F14] py-16 md:py-20 lg:py-24"
-      aria-label={sectionAriaLabel}
-    >
+    <section className={GI_HOME_LIGHT_SECTION_CLASS} aria-label={sectionAriaLabel}>
       <HomeContainer innerClassName="max-w-[1320px]">
         <div className="relative overflow-hidden rounded-[24px] border border-[rgba(59,130,246,0.35)] bg-[#151B24] shadow-[0_24px_64px_rgba(59,130,246,0.12)]">
           <div
