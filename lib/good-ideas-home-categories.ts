@@ -1,4 +1,5 @@
 import { buildGoodIdeasProductsListHref } from "@/lib/good-ideas-plp-segments";
+import { getGoodIdeasHomeCategoryImagePrimary } from "@/lib/good-ideas-home-category-images";
 import type { Locale } from "@/lib/i18n/config";
 
 /** Slugs reales de `GOOD_IDEAS_CATEGORIES` — orden editorial home (sin Auto). */
@@ -40,14 +41,6 @@ const SLUG_TO_ICON: Record<
   lifestyle: "lifestyle",
 };
 
-/** Imágenes editoriales home — `public/assets/images/`. */
-const HOME_CATEGORY_IMAGES: Record<GoodIdeasHomeCategorySlug, string> = {
-  home: "/assets/images/categoria-home.webp",
-  tech: "/assets/images/categoria-tech.webp",
-  cocina: "/assets/images/categoria-cocina.webp",
-  lifestyle: "/assets/images/categoria-lifestyle.webp",
-};
-
 export function resolveGoodIdeasHomeCategoryTiles(
   locale: Locale
 ): GoodIdeasHomeCategoryTileData[] {
@@ -55,7 +48,7 @@ export function resolveGoodIdeasHomeCategoryTiles(
     slug,
     href: buildGoodIdeasProductsListHref(locale, { category: slug }),
     iconId: SLUG_TO_ICON[slug],
-    image: HOME_CATEGORY_IMAGES[slug],
+    image: getGoodIdeasHomeCategoryImagePrimary(slug),
   }));
 }
 
