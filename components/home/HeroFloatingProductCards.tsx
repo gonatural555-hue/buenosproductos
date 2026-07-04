@@ -317,19 +317,19 @@ function getDesktopSlotStyle(slot: CarouselSlot, reduceMotion: boolean): CSSProp
       return {
         ...base,
         left: "24%",
-        top: "58%",
+        top: "52%",
         zIndex: 22,
-        opacity: 0.84,
-        transform: "translate3d(-50%, -50%, 0) scale(0.78) rotate(-4deg)",
+        opacity: 0.88,
+        transform: "translate3d(-50%, -50%, 0) scale(0.8) rotate(0deg)",
       };
     case "right":
       return {
         ...base,
         left: "76%",
-        top: "42%",
+        top: "52%",
         zIndex: 22,
-        opacity: 0.84,
-        transform: "translate3d(-50%, -50%, 0) scale(0.78) rotate(4deg)",
+        opacity: 0.88,
+        transform: "translate3d(-50%, -50%, 0) scale(0.8) rotate(0deg)",
       };
     case "hidden":
     default:
