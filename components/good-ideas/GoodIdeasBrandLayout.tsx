@@ -11,6 +11,7 @@ import {
   shouldUseLightOrderSuccessChrome,
   shouldUseLightPdpChrome,
   isHomePath,
+  isBlogListPath,
 } from "@/lib/routing/paths";
 
 function GoodIdeasHeaderFallback() {
@@ -32,7 +33,8 @@ export default function GoodIdeasBrandLayout({
   const lightPdp = shouldUseLightPdpChrome(pathname);
   const lightOrderSuccess = shouldUseLightOrderSuccessChrome(pathname);
   const lightHome = isHomePath(pathname);
-  const lightShell = lightFooter || lightPdp || lightOrderSuccess || lightHome;
+  const lightBlogList = isBlogListPath(pathname);
+  const lightShell = lightFooter || lightPdp || lightOrderSuccess || lightHome || lightBlogList;
 
   return (
     <GoodIdeasCartProvider>

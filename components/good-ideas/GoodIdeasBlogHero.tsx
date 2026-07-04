@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
+import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 import type { Locale } from "@/lib/i18n/config";
 import {
   GI_BLOG_POSTS_ANCHOR,
@@ -69,8 +70,18 @@ export default function GoodIdeasBlogHero({
       className="relative isolate flex min-h-[100svh] flex-col overflow-x-clip border-b border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       aria-label={sectionAriaLabel}
     >
+      <HexGridInteractiveBackground />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_55%_at_28%_-8%,rgba(59,130,246,0.22),transparent_58%)]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_55%_50%_at_88%_55%,rgba(59,130,246,0.14),transparent_58%)]"
+        aria-hidden
+      />
+
       <motion.div
-        className={`relative z-[1] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
+        className={`relative z-[2] mx-auto flex min-h-[100svh] w-full min-w-0 max-w-[1080px] flex-col px-[18px] pb-3 md:px-[28px] md:pb-4 lg:px-[48px] ${GI_HERO_TOP_PAD}`}
         variants={containerVariants}
         initial="hidden"
         animate="show"
