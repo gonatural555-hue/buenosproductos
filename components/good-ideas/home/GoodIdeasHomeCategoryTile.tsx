@@ -18,24 +18,24 @@ export default function GoodIdeasHomeCategoryTile({
   description,
   viewMoreLabel,
 }: Props) {
-  const imageSrc = image && isValidImageSrc(image) ? image : null;
+  const imageSrc = isValidImageSrc(image) ? image : null;
 
   return (
     <Link
       href={href}
-      className="group flex h-full min-h-[280px] flex-col overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#151B24] transition duration-300 hover:border-[rgba(59,130,246,0.35)] hover:shadow-[0_20px_48px_rgba(59,130,246,0.14)] motion-reduce:transition-none sm:min-h-[300px]"
+      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-white/[0.08] bg-[#151B24] transition duration-300 hover:border-[rgba(59,130,246,0.35)] hover:shadow-[0_20px_48px_rgba(59,130,246,0.14)] motion-reduce:transition-none lg:rounded-[24px]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#0B0F14]/70">
+      <div className="relative aspect-square overflow-hidden bg-[#0B0F14]/70">
         {imageSrc ? (
           <>
             <SmartImage
               src={imageSrc}
               alt={title}
               fill
-              sizes="(max-width: 640px) 82vw, (max-width: 1024px) 45vw, 20vw"
-              className="object-cover transition duration-500 group-hover:scale-[1.05]"
+              sizes="(max-width: 640px) 78vw, (max-width: 1024px) 45vw, 25vw"
+              className="object-cover object-center transition duration-500 group-hover:scale-[1.04]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#151B24] via-[#151B24]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#151B24]/90 via-[#151B24]/10 to-transparent" />
           </>
         ) : (
           <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_50%_40%,rgba(59,130,246,0.14),transparent_62%)]">
@@ -46,8 +46,8 @@ export default function GoodIdeasHomeCategoryTile({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
-        <h3 className="font-body text-lg font-semibold leading-snug text-[#E8ECF1] sm:text-xl">
+      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-5 lg:p-6">
+        <h3 className="font-body text-lg font-semibold leading-snug text-[#E8ECF1] lg:text-xl">
           {title}
         </h3>
         <p className="line-clamp-2 font-body text-sm leading-relaxed text-[rgba(232,236,241,0.62)]">

@@ -1,15 +1,11 @@
-import { getGoodIdeasProducts } from "@/lib/good-ideas-products";
-import { resolveGoodIdeasProductCardImage } from "@/lib/good-ideas-product-images";
-import { goodIdeasProductMatchesCategory } from "@/lib/good-ideas-plp-filters";
 import { buildGoodIdeasProductsListHref } from "@/lib/good-ideas-plp-segments";
 import type { Locale } from "@/lib/i18n/config";
 
-/** Slugs reales de `GOOD_IDEAS_CATEGORIES` — orden editorial home. */
+/** Slugs reales de `GOOD_IDEAS_CATEGORIES` — orden editorial home (sin Auto). */
 export const GOOD_IDEAS_HOME_CATEGORY_SLUGS = [
   "home",
   "tech",
   "cocina",
-  "accesorios-para-auto",
   "lifestyle",
 ] as const;
 
@@ -20,14 +16,13 @@ export type GoodIdeasHomeCategoryIconId =
   | "home"
   | "tech"
   | "cocina"
-  | "auto"
   | "lifestyle";
 
 export type GoodIdeasHomeCategoryTileData = {
   slug: GoodIdeasHomeCategorySlug;
   href: string;
   iconId: GoodIdeasHomeCategoryIconId;
-  image?: string;
+  image: string;
 };
 
 export type GoodIdeasHomeCategoryTileCopy = {
@@ -42,20 +37,16 @@ const SLUG_TO_ICON: Record<
   home: "home",
   tech: "tech",
   cocina: "cocina",
-  "accesorios-para-auto": "auto",
   lifestyle: "lifestyle",
 };
 
-function resolveCategoryRepresentativeImage(
-  categorySlug: GoodIdeasHomeCategorySlug
-): string | undefined {
-  for (const product of getGoodIdeasProducts()) {
-    if (!goodIdeasProductMatchesCategory(product, categorySlug)) continue;
-    const image = resolveGoodIdeasProductCardImage(product.id);
-    if (image) return image;
-  }
-  return undefined;
-}
+/** Imágenes editoriales home — `public/assets/images/`. */
+const HOME_CATEGORY_IMAGES: Record<GoodIdeasHomeCategorySlug, string> = {
+  home: "/assets/images/categoria-home.webp",
+  tech: "/assets/images/categoria-tech.webp",
+  cocina: "/assets/images/categoria-cocina.webp",
+  lifestyle: "/assets/images/categoria-lifestyle.webp",
+};
 
 export function resolveGoodIdeasHomeCategoryTiles(
   locale: Locale
@@ -64,7 +55,7 @@ export function resolveGoodIdeasHomeCategoryTiles(
     slug,
     href: buildGoodIdeasProductsListHref(locale, { category: slug }),
     iconId: SLUG_TO_ICON[slug],
-    image: resolveCategoryRepresentativeImage(slug),
+    image: HOME_CATEGORY_IMAGES[slug],
   }));
 }
 
@@ -80,7 +71,6 @@ export function buildGoodIdeasHomeCategoryTileCopyMap(
     home: tile("home"),
     tech: tile("tech"),
     cocina: tile("cocina"),
-    "accesorios-para-auto": tile("accesorios-para-auto"),
     lifestyle: tile("lifestyle"),
   };
 }

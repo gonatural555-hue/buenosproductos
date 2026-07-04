@@ -48,9 +48,11 @@ export default function GoodIdeasHomeCategoriesSection({
     >
       <HomeContainer innerClassName="max-w-[1320px]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <div className="max-w-2xl">
+          <div className="min-w-0 flex-1">
             <SectionEyebrow>{eyebrow}</SectionEyebrow>
-            <SectionTitle className="mt-3">{title}</SectionTitle>
+            <SectionTitle className="mt-3 max-w-none text-[clamp(1.55rem,2.8vw,2.65rem)] md:whitespace-nowrap lg:text-[clamp(1.75rem,2.35vw,2.85rem)]">
+              {title}
+            </SectionTitle>
           </div>
           <SecondaryButton
             href={viewAllHref}
@@ -60,13 +62,13 @@ export default function GoodIdeasHomeCategoriesSection({
           </SecondaryButton>
         </div>
 
-        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 lg:grid-cols-3 xl:grid-cols-5 xl:gap-5 [&::-webkit-scrollbar]:hidden">
+        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 lg:grid-cols-4 lg:gap-6 [&::-webkit-scrollbar]:hidden">
           {tiles.map((tile) => {
             const copy = tileCopyBySlug[tile.slug];
             return (
               <div
                 key={tile.slug}
-                className="w-[min(82vw,320px)] shrink-0 snap-start sm:w-auto sm:shrink"
+                className="w-[min(78vw,360px)] shrink-0 snap-start sm:w-auto sm:shrink"
               >
                 <GoodIdeasHomeCategoryTile
                   {...tile}
