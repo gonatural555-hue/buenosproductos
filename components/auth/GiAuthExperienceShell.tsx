@@ -33,7 +33,7 @@ export default function GiAuthExperienceShell({
       className={
         isModal
           ? "fixed inset-0 z-[120] flex min-h-[100dvh] flex-col bg-[#0B0F14]/90 backdrop-blur-sm"
-          : `relative flex min-h-[100dvh] flex-col bg-[#0B0F14] ${GI_HERO_TOP_PAD}`
+          : `relative flex min-h-[100dvh] flex-col bg-[#FFFFFF] ${GI_HERO_TOP_PAD}`
       }
       role={isModal ? "dialog" : undefined}
       aria-modal={isModal ? true : undefined}
