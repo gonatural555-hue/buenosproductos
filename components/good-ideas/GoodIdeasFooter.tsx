@@ -6,7 +6,7 @@ import GoodIdeasFooterAccordion from "@/components/good-ideas/footer/GoodIdeasFo
 import GoodIdeasFooterNewsletter from "@/components/good-ideas/footer/GoodIdeasFooterNewsletter";
 import GoodIdeasFooterPaymentMethods from "@/components/good-ideas/footer/GoodIdeasFooterPaymentMethods";
 import GoodIdeasFooterSocialLinks from "@/components/good-ideas/footer/GoodIdeasFooterSocialLinks";
-import GoodIdeasPromoHexPattern from "@/components/good-ideas/home/GoodIdeasPromoHexPattern";
+import HexGridInteractiveBackground from "@/components/good-ideas/HexGridInteractiveBackground";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import type { Locale } from "@/lib/i18n/config";
 import {
@@ -159,22 +159,24 @@ export default function GoodIdeasFooter({ variant = "dark" }: Props) {
       className={
         isLight
           ? "relative border-t border-[#E5E5E5] bg-white text-[#111111]"
-          : "relative border-t border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
+          : "relative isolate overflow-hidden border-t border-white/[0.08] bg-[#0B0F14] text-[#E8ECF1]"
       }
     >
       {!isLight ? (
         <>
+          <HexGridInteractiveBackground />
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_center_top,rgba(59,130,246,0.16),transparent_45%)]"
+            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_55%_at_28%_-8%,rgba(59,130,246,0.22),transparent_58%)]"
             aria-hidden
           />
-          <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.35]" aria-hidden>
-            <GoodIdeasPromoHexPattern patternId="gi-footer-hex-pattern" />
-          </div>
+          <div
+            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_55%_50%_at_88%_55%,rgba(59,130,246,0.14),transparent_58%)]"
+            aria-hidden
+          />
         </>
       ) : null}
 
-      <div className="relative mx-auto max-w-[1320px] px-5 pb-12 pt-12 sm:px-6 md:pb-14 md:pt-16 lg:px-10 lg:pb-12 lg:pt-16">
+      <div className="relative z-[2] mx-auto max-w-[1320px] px-5 pb-12 pt-12 sm:px-6 md:pb-14 md:pt-16 lg:px-10 lg:pb-12 lg:pt-16">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,0.85fr)_minmax(0,0.85fr)_minmax(0,0.85fr)] lg:gap-x-10 lg:gap-y-0 xl:gap-x-12">
           <div className="min-w-0">
             <p className={giType.brandLogo}>
