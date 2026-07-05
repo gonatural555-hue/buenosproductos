@@ -1,0 +1,20 @@
+{
+  "id": "gi-hogar-010",
+  "brand": "ZHUYIYAN",
+  "variants": {
+    "type": "kit",
+    "options": [
+      { "value": "steamer-cup-mat" },
+      { "value": "steamer-cup-mat-board" },
+      { "value": "steamer-cup-mat-board-bag" }
+    ]
+  },
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-hogar-010/image.webp"
+    ],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": []
+  }
+}
