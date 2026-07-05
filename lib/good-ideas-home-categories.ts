@@ -1,15 +1,12 @@
-import { getGoodIdeasProducts } from "@/lib/good-ideas-products";
-import { resolveGoodIdeasProductCardImage } from "@/lib/good-ideas-product-images";
-import { goodIdeasProductMatchesCategory } from "@/lib/good-ideas-plp-filters";
 import { buildGoodIdeasProductsListHref } from "@/lib/good-ideas-plp-segments";
+import { getGoodIdeasHomeCategoryImagePrimary } from "@/lib/good-ideas-home-category-images";
 import type { Locale } from "@/lib/i18n/config";
 
-/** Slugs reales de `GOOD_IDEAS_CATEGORIES` — orden editorial home. */
+/** Slugs reales de `GOOD_IDEAS_CATEGORIES` — orden editorial home (sin Auto). */
 export const GOOD_IDEAS_HOME_CATEGORY_SLUGS = [
   "home",
   "tech",
   "cocina",
-  "accesorios-para-auto",
   "lifestyle",
 ] as const;
 
@@ -20,14 +17,13 @@ export type GoodIdeasHomeCategoryIconId =
   | "home"
   | "tech"
   | "cocina"
-  | "auto"
   | "lifestyle";
 
 export type GoodIdeasHomeCategoryTileData = {
   slug: GoodIdeasHomeCategorySlug;
   href: string;
   iconId: GoodIdeasHomeCategoryIconId;
-  image?: string;
+  image: string;
 };
 
 export type GoodIdeasHomeCategoryTileCopy = {
@@ -42,10 +38,10 @@ const SLUG_TO_ICON: Record<
   home: "home",
   tech: "tech",
   cocina: "cocina",
-  "accesorios-para-auto": "auto",
   lifestyle: "lifestyle",
 };
 
+<<<<<<< HEAD
 const HOME_CATEGORY_TILE_IMAGE: Partial<
   Record<GoodIdeasHomeCategorySlug, string>
 > = {
@@ -69,6 +65,8 @@ function resolveCategoryRepresentativeImage(
   return undefined;
 }
 
+=======
+>>>>>>> c6e7fa10a1dbdb993564a3bfba65c376ac3772a8
 export function resolveGoodIdeasHomeCategoryTiles(
   locale: Locale
 ): GoodIdeasHomeCategoryTileData[] {
@@ -76,7 +74,7 @@ export function resolveGoodIdeasHomeCategoryTiles(
     slug,
     href: buildGoodIdeasProductsListHref(locale, { category: slug }),
     iconId: SLUG_TO_ICON[slug],
-    image: resolveCategoryRepresentativeImage(slug),
+    image: getGoodIdeasHomeCategoryImagePrimary(slug),
   }));
 }
 
@@ -92,7 +90,6 @@ export function buildGoodIdeasHomeCategoryTileCopyMap(
     home: tile("home"),
     tech: tile("tech"),
     cocina: tile("cocina"),
-    "accesorios-para-auto": tile("accesorios-para-auto"),
     lifestyle: tile("lifestyle"),
   };
 }

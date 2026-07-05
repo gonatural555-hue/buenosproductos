@@ -1,6 +1,6 @@
 import { blogPath, blogPostPath, buildPathByLocale } from "@/lib/routing/paths";
 import GoodIdeasBlogHero from "@/components/good-ideas/GoodIdeasBlogHero";
-import GoodIdeasBlogPostRow from "@/components/good-ideas/GoodIdeasBlogPostRow";
+import GoodIdeasBlogPostCard from "@/components/good-ideas/GoodIdeasBlogPostCard";
 import {
   getGoodIdeasBlogPostEntries,
 } from "@/lib/good-ideas-blog-loader";
@@ -46,7 +46,7 @@ export default async function GoodIdeasBlogPage({
   const entries = getGoodIdeasBlogPostEntries(locale);
 
   return (
-    <main>
+    <main className="bg-[#FFFFFF] text-[#111111]">
       <GoodIdeasBlogListJsonLd
         locale={locale}
         entries={entries}
@@ -65,20 +65,16 @@ export default async function GoodIdeasBlogPage({
 
       <section
         id={GI_BLOG_POSTS_ANCHOR}
-        className={`relative isolate scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] border-t border-white/[0.08] bg-[#0B0F14] py-14 text-[#E8ECF1] md:py-20 ${GI_CART_OUTER}`}
+        className={`relative scroll-mt-[calc(env(safe-area-inset-top,0px)+6.5rem)] border-t border-[#E5E7EB] bg-[#FFFFFF] py-14 md:py-20 ${GI_CART_OUTER}`}
       >
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)]"
-          aria-hidden
-        />
         <div className={`relative ${GI_CART_INNER}`}>
-          <h2 className="text-center font-display text-xl font-semibold tracking-[-0.02em] text-[#E8ECF1] md:text-2xl">
+          <h2 className="text-center font-display text-xl font-semibold tracking-[-0.02em] text-[#111111] md:text-2xl">
             {t("goodIdeas.blog.articlesLabel")}
           </h2>
-          <ul className="mt-8 flex flex-col gap-4 md:mt-10 md:gap-5">
+          <ul className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {entries.map((entry) => (
-              <li key={entry.slug}>
-                <GoodIdeasBlogPostRow
+              <li key={entry.slug} className="min-w-0">
+                <GoodIdeasBlogPostCard
                   href={blogPostPath(locale, entry.slug)}
                   title={entry.title}
                   excerpt={entry.excerpt}

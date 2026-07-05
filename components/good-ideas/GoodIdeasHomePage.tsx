@@ -143,7 +143,7 @@ export default function GoodIdeasHomePage({
   newsletterSubmitLoading: string;
 }) {
   return (
-    <main className="bg-[#0B0F14] text-[#E8ECF1]">
+    <main className="bg-[#FFFFFF] text-[#111111]">
       <GoodIdeasHomeHero
         locale={locale}
         eyebrow={eyebrow}

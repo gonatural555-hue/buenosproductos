@@ -1,0 +1,85 @@
+{
+  "id": "gi-hogar-010",
+  "brand": "ZHUYIYAN",
+  "variants": {
+    "type": "kit",
+    "options": [
+      {
+        "value": "steamer-cup-mat"
+      },
+      {
+        "value": "steamer-cup-mat-board"
+      },
+      {
+        "value": "steamer-cup-mat-board-bag"
+      }
+    ]
+  },
+  "images": {
+    "featured": [
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil.png"
+    ],
+    "gallery": [
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-01.png",
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-02.png",
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-03.png",
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-04.png"
+    ],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "steamer-cup-mat": {
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor-op1.png"
+        ],
+        "gallery": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-01.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-02.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-03.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-04.png"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "steamer-cup-mat-board": {
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor-op2.png"
+        ],
+        "gallery": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-01.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-02.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-03.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-04.png"
+        ],
+        "lifestyle": [],
+        "extras": []
+      },
+      "steamer-cup-mat-board-bag": {
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor-op3.png"
+        ],
+        "gallery": [
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-01.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-02.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-03.png",
+          "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil-04.png"
+        ],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  },
+  "imagePrompts": {
+    "productCard": "Product card for Buenos Productos portable 5-in-1 garment steamer ZHUYIYAN: compact white handheld steam iron on clean neutral background, smart display visible, premium e-commerce crop, Buenos Productos brand feel.",
+    "pdpMain": "PDP hero for portable garment steamer 5-in-1: front three-quarter view of compact steam iron with measuring cup and iron rest mat, bright studio lighting, white background, sharp product detail.",
+    "pdpLifestyle": "Lifestyle scene: person steaming a hanging shirt with portable garment steamer in a modern apartment or hotel room, natural light, practical everyday use, no cluttered background.",
+    "pdpDetail": "Detail collage: smart temperature display, steam output, water tank, EU plug, anti-scald design, mini ironing board and storage bag accessories for higher kit tiers.",
+    "blogHero": "Blog hero image: portable 5-in-1 steam iron for clothes with wrinkle-free shirt nearby, editorial home lifestyle photography, Buenos Productos aesthetic.",
+    "blogSection": "Blog section images: travel packing with compact steamer, steaming dresses on hanger, kitchen counter storage, accessory flat lay (cup, mat, mini board, bag).",
+    "productImageFolder": "good-ideas-products/gi-hogar-010",
+    "blogImageFolder": "good-ideas-blog/plancha-vapor-portatil-5-en-1-ropa"
+  }
+}

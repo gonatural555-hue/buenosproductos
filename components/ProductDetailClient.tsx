@@ -103,6 +103,8 @@ function buildInfoPanelProps(
     salesBadge?: string;
     resolvedPrice: number;
     compareAtPrice?: number;
+    basePrice: number;
+    baseCompareAtPrice?: number;
     flashSaleHours?: number;
     freeShipping?: boolean;
     freeShippingLabel?: string;
@@ -195,6 +197,7 @@ export default function ProductDetailClient({
     quantity,
     setQuantity,
     resolvedPrice,
+    resolvedCompareAtPrice,
     variantSelections,
     cartImage,
     pdpGalleryImages,
@@ -226,7 +229,9 @@ export default function ProductDetailClient({
     salesBadge,
     seoH1,
     resolvedPrice,
-    compareAtPrice: product.compareAtPrice,
+    compareAtPrice: resolvedCompareAtPrice,
+    basePrice: product.price,
+    baseCompareAtPrice: product.compareAtPrice,
     flashSaleHours: product.flashSaleHours,
     freeShipping: product.freeShipping,
     freeShippingLabel,

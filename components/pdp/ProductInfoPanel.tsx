@@ -44,6 +44,8 @@ type Props = {
   salesBadge?: string;
   resolvedPrice: number;
   compareAtPrice?: number;
+  basePrice: number;
+  baseCompareAtPrice?: number;
   flashSaleHours?: number;
   freeShipping?: boolean;
   freeShippingLabel?: string;
@@ -127,6 +129,8 @@ export default function ProductInfoPanel({
   salesBadge,
   resolvedPrice,
   compareAtPrice,
+  basePrice,
+  baseCompareAtPrice,
   flashSaleHours,
   freeShipping,
   freeShippingLabel,
@@ -258,6 +262,8 @@ export default function ProductInfoPanel({
         salesBadge={salesBadge}
         resolvedPrice={resolvedPrice}
         compareAtPrice={compareAtPrice}
+        basePrice={basePrice}
+        baseCompareAtPrice={baseCompareAtPrice}
         flashSaleHours={flashSaleHours}
         freeShipping={freeShipping}
         freeShippingLabel={freeShippingLabel}

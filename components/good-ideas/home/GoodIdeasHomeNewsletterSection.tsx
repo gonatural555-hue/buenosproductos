@@ -7,6 +7,7 @@ import SectionTitle from "@/components/good-ideas/home/SectionTitle";
 import { useLocale, useTranslations } from "@/components/i18n/LocaleProvider";
 import { submitNewsletterSubscription } from "@/lib/newsletter-client";
 import { LEGAL_SLUGS } from "@/lib/seo";
+import { GI_HOME_LIGHT_SECTION_CLASS } from "@/lib/ui/gi-home";
 
 type Props = {
   title: string;
@@ -78,10 +79,7 @@ export default function GoodIdeasHomeNewsletterSection({
   };
 
   return (
-    <section
-      className="border-t border-white/[0.08] bg-[#0B0F14] py-16 md:py-20 lg:py-24"
-      aria-label={sectionAriaLabel}
-    >
+    <section className={GI_HOME_LIGHT_SECTION_CLASS} aria-label={sectionAriaLabel}>
       <HomeContainer innerClassName="max-w-[1320px]">
         <div className="rounded-[24px] border border-white/[0.08] bg-[#151B24] p-6 sm:p-8 md:p-10 lg:p-12">
           <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">

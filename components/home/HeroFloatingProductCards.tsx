@@ -42,6 +42,11 @@ const AUTOPLAY_MS = 1500;
 const TRANSITION_MS = 600;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const SWIPE_THRESHOLD = 48;
+/** Caja fija para cards laterales — evita saltos verticales al rotar. */
+const DESKTOP_SIDE_CARD_WIDTH = 210;
+const DESKTOP_SIDE_CARD_HEIGHT = 296;
+const DESKTOP_SIDE_SCALE = 0.8;
+const DESKTOP_CAROUSEL_ANCHOR_TOP = "52%";
 
 function getCarouselSlot(cardIndex: number, activeIndex: number, total: number): CarouselSlot {
   const diff = (cardIndex - activeIndex + total) % total;
@@ -178,7 +183,9 @@ function HeroCarouselProductCard({
     ? variant === "mobile"
       ? "w-[min(88vw,340px)]"
       : "w-[min(100%,330px)]"
-    : "w-[min(100%,210px)]";
+    : variant === "desktop"
+      ? "h-full w-full"
+      : "w-[min(100%,210px)]";
 
   const imageHeightClass = isMain
     ? "h-[200px] sm:h-[220px] lg:h-[240px]"
@@ -277,6 +284,8 @@ function HeroCarouselProductCard({
                 ({reviewStats.totalReviews})
               </span>
             </div>
+          ) : isSide && variant === "desktop" ? (
+            <div className="h-[18px] shrink-0" aria-hidden />
           ) : null}
 
           <span
@@ -294,13 +303,21 @@ function HeroCarouselProductCard({
 }
 
 function getDesktopSlotStyle(slot: CarouselSlot, reduceMotion: boolean): CSSProperties {
+  const transition = reduceMotion
+    ? "opacity 120ms ease-out"
+    : `transform ${TRANSITION_MS}ms ${EASE}, opacity ${TRANSITION_MS}ms ${EASE}, left ${TRANSITION_MS}ms ${EASE}`;
+
+  const sideBox: Pick<CSSProperties, "width" | "height"> = {
+    width: DESKTOP_SIDE_CARD_WIDTH,
+    height: DESKTOP_SIDE_CARD_HEIGHT,
+  };
+
   const base: CSSProperties = {
     position: "absolute",
-    top: "50%",
-    transition: reduceMotion
-      ? "opacity 120ms ease-out"
-      : `transform ${TRANSITION_MS}ms ${EASE}, opacity ${TRANSITION_MS}ms ${EASE}`,
-    willChange: "transform, opacity",
+    top: DESKTOP_CAROUSEL_ANCHOR_TOP,
+    transition,
+    willChange: "transform, opacity, left",
+    transformOrigin: "center center",
   };
 
   switch (slot) {
@@ -308,38 +325,37 @@ function getDesktopSlotStyle(slot: CarouselSlot, reduceMotion: boolean): CSSProp
       return {
         ...base,
         left: "50%",
-        top: "52%",
         zIndex: 30,
         opacity: 1,
-        transform: "translate3d(-50%, -50%, 0) scale(1) rotate(0deg)",
+        transform: "translate3d(-50%, -50%, 0) scale(1)",
       };
     case "left":
       return {
         ...base,
+        ...sideBox,
         left: "24%",
-        top: "58%",
         zIndex: 22,
-        opacity: 0.84,
-        transform: "translate3d(-50%, -50%, 0) scale(0.78) rotate(-4deg)",
+        opacity: 0.88,
+        transform: `translate3d(-50%, -50%, 0) scale(${DESKTOP_SIDE_SCALE})`,
       };
     case "right":
       return {
         ...base,
+        ...sideBox,
         left: "76%",
-        top: "42%",
         zIndex: 22,
-        opacity: 0.84,
-        transform: "translate3d(-50%, -50%, 0) scale(0.78) rotate(4deg)",
+        opacity: 0.88,
+        transform: `translate3d(-50%, -50%, 0) scale(${DESKTOP_SIDE_SCALE})`,
       };
     case "hidden":
     default:
       return {
         ...base,
-        left: "50%",
-        top: "50%",
+        ...sideBox,
+        left: "24%",
         zIndex: 5,
         opacity: 0,
-        transform: "translate3d(-50%, -50%, 0) scale(0.6) rotate(0deg)",
+        transform: `translate3d(-50%, -50%, 0) scale(${DESKTOP_SIDE_SCALE * 0.9})`,
         pointerEvents: "none",
       };
   }

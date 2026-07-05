@@ -4,6 +4,8 @@ export type ProductVariantOption = {
   label: string;
   value?: string;
   priceModifier?: number;
+  /** Delta USD sobre `compareAtPrice` del producto (misma lógica que `priceModifier`). */
+  compareAtPriceModifier?: number;
   /** Color del círculo swatch en PDP y cards (ej. "#EDE6D6"). */
   swatchHex?: string;
 };
