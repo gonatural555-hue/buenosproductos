@@ -62,6 +62,62 @@ function HeroEditorialTitle({
   );
 }
 
+/** Composición editorial palabra a palabra — solo desktop (lg+). */
+function HeroEditorialTitleDesktop({
+  titleLine1,
+  titleLine2,
+  titleLine3,
+  titleAccent,
+}: {
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
+  titleAccent: string;
+}) {
+  const [wordPrimary, wordProducts] = titleLine1.split(" ");
+  const [wordQue, wordReally] = titleLine2.split(" ");
+  const wordMakeThe = titleLine3.trim();
+  const wordDifference = titleAccent;
+
+  const wordClass =
+    "block font-display font-semibold leading-none tracking-[-0.03em] text-[#E8ECF1]";
+
+  return (
+    <span className="relative mx-auto block w-full text-left">
+      <span
+        className={`${wordClass} text-[clamp(2.35rem,3.45vw,3.55rem)]`}
+      >
+        {wordPrimary}
+      </span>
+      <span
+        className={`${wordClass} mt-2 text-[clamp(1.5rem,2.15vw,2.3rem)] ml-[16%]`}
+      >
+        {wordProducts}
+      </span>
+      <span
+        className={`${wordClass} mt-3 text-[clamp(1.05rem,1.5vw,1.6rem)] ml-[5%]`}
+      >
+        {wordQue}
+      </span>
+      <span
+        className={`${wordClass} mt-1.5 text-[clamp(1.85rem,2.65vw,2.85rem)] ml-[22%]`}
+      >
+        {wordReally}
+      </span>
+      <span
+        className={`${wordClass} mt-2.5 text-[clamp(1.28rem,1.85vw,1.95rem)] ml-[38%]`}
+      >
+        {wordMakeThe}
+      </span>
+      <span
+        className={`${wordClass} mt-3 text-[clamp(2.2rem,3.25vw,3.35rem)] text-[#3B82F6] ml-[46%] xl:ml-[48%]`}
+      >
+        {wordDifference}
+      </span>
+    </span>
+  );
+}
+
 function HeroTrustAvatars() {
   return (
     <div className="flex shrink-0 -space-x-3" aria-hidden>
@@ -164,14 +220,24 @@ export default function GoodIdeasHomeHero({
 
             <motion.h1
               variants={itemVariants}
-              className="mt-6 w-full max-w-[22rem] font-display text-[clamp(1.85rem,5.4vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#E8ECF1] sm:max-w-[26rem] md:text-[clamp(2rem,4.8vw,3rem)] lg:mt-8 lg:max-w-[28rem] lg:text-[clamp(2.15rem,3.2vw,3.35rem)] xl:max-w-[32rem]"
+              className="mt-6 w-full max-w-[22rem] font-display text-[clamp(1.85rem,5.4vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#E8ECF1] sm:max-w-[26rem] md:text-[clamp(2rem,4.8vw,3rem)] lg:mt-8 lg:max-w-[36rem] lg:text-[length:unset] xl:max-w-[40rem]"
             >
-              <HeroEditorialTitle
-                titleLine1={titleLine1}
-                titleLine2={titleLine2}
-                titleLine3={titleLine3}
-                titleAccent={titleAccent}
-              />
+              <span className="block lg:hidden">
+                <HeroEditorialTitle
+                  titleLine1={titleLine1}
+                  titleLine2={titleLine2}
+                  titleLine3={titleLine3}
+                  titleAccent={titleAccent}
+                />
+              </span>
+              <span className="hidden lg:block">
+                <HeroEditorialTitleDesktop
+                  titleLine1={titleLine1}
+                  titleLine2={titleLine2}
+                  titleLine3={titleLine3}
+                  titleAccent={titleAccent}
+                />
+              </span>
             </motion.h1>
 
             <motion.div
