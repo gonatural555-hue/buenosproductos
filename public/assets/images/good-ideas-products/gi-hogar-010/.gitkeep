@@ -1,0 +1,20 @@
+# Good Ideas — gi-hogar-010 (Plancha a vapor portátil 5 en 1)
+# Pegar archivos locales aquí o URLs en scripts/good-ideas-products/gi-hogar-010.json
+#
+# Card PLP (obligatorio):
+# - plancha-vapor-portatil.webp  →  images.featured[0]
+#
+# Galería PDP (images.gallery):
+# - plancha-vapor-portatil-01.webp
+# - plancha-vapor-portatil-02.webp
+# - plancha-vapor-portatil-03.webp
+# - plancha-vapor-portatil-04.webp
+# - plancha-vapor-portatil-05.webp
+#
+# Por kit (variantImages.{value}.featured / gallery) — opcional, cambia imagen al elegir kit:
+# - steamer-cup-mat              (Kit 1: plancha + vaso + apoya)
+# - steamer-cup-mat-board        (Kit 2: + mini tabla) — recomendado
+# - steamer-cup-mat-board-bag    (Kit 3: + bolsa)
+#
+# Fase 1: arrays vacíos en JSON o rutas locales sin archivo (placeholder).
+# Fase 2: commitear .webp/.png aquí o pegar URLs externas en el JSON.

@@ -29,9 +29,11 @@ function isModelVariantDefinition(variant: VariantDefinition): boolean {
   return (
     type === "model" ||
     type === "capacity" ||
+    type === "kit" ||
     label.includes("model") ||
     label.includes("capacity") ||
-    label.includes("capacidad")
+    label.includes("capacidad") ||
+    label.includes("kit")
   );
 }
 
