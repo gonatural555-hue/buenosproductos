@@ -45,23 +45,14 @@ export default function GoodIdeasHomeCategoriesSection({
   return (
     <section className={GI_HOME_LIGHT_SECTION_CLASS} aria-label={sectionAriaLabel}>
       <HomeContainer innerClassName="max-w-[1320px]">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <div className="min-w-0 flex-1">
-            <SectionEyebrow theme="light">{eyebrow}</SectionEyebrow>
-            <SectionTitle
-              theme="light"
-              className="mt-3 max-w-none text-[clamp(1.55rem,2.8vw,2.65rem)] md:whitespace-nowrap lg:text-[clamp(1.75rem,2.35vw,2.85rem)]"
-            >
-              {title}
-            </SectionTitle>
-          </div>
-          <SecondaryButton
-            href={viewAllHref}
-            variant="onLight"
-            className="w-full shrink-0 sm:w-auto lg:mb-1"
+        <div className="min-w-0">
+          <SectionEyebrow theme="light">{eyebrow}</SectionEyebrow>
+          <SectionTitle
+            theme="light"
+            className="mt-3 max-w-none text-[clamp(1.55rem,2.8vw,2.65rem)] md:whitespace-nowrap lg:text-[clamp(1.75rem,2.35vw,2.85rem)]"
           >
-            {viewAllLabel}
-          </SecondaryButton>
+            {title}
+          </SectionTitle>
         </div>
 
         <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 lg:grid-cols-4 lg:gap-6 [&::-webkit-scrollbar]:hidden">
@@ -81,6 +72,16 @@ export default function GoodIdeasHomeCategoriesSection({
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-10 flex justify-center sm:mt-12">
+          <SecondaryButton
+            href={viewAllHref}
+            variant="onLight"
+            className="w-full max-w-[320px] sm:w-auto"
+          >
+            {viewAllLabel}
+          </SecondaryButton>
         </div>
       </HomeContainer>
     </section>
