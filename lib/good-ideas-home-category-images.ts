@@ -2,7 +2,7 @@ import type { GoodIdeasHomeCategorySlug } from "@/lib/good-ideas-home-categories
 
 /**
  * Bases de archivo en `public/assets/images/` (sin extensión).
- * Archivos esperados: categoria-home, categoria-tech, categoria-cocina, categoria-lifestyle
+ * Archivos esperados: categoria-home, categoria-tech, categoria-kitchen, categoria-lifestyle
  */
 export const GOOD_IDEAS_HOME_CATEGORY_IMAGE_BASE: Record<
   GoodIdeasHomeCategorySlug,
@@ -10,7 +10,7 @@ export const GOOD_IDEAS_HOME_CATEGORY_IMAGE_BASE: Record<
 > = {
   home: "/assets/images/categoria-home",
   tech: "/assets/images/categoria-tech",
-  cocina: "/assets/images/categoria-cocina",
+  cocina: "/assets/images/categoria-kitchen",
   lifestyle: "/assets/images/categoria-lifestyle",
 };
 

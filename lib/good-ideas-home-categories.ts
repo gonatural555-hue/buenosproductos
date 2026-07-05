@@ -41,32 +41,6 @@ const SLUG_TO_ICON: Record<
   lifestyle: "lifestyle",
 };
 
-<<<<<<< HEAD
-const HOME_CATEGORY_TILE_IMAGE: Partial<
-  Record<GoodIdeasHomeCategorySlug, string>
-> = {
-  home: "/assets/images/categoria-home.webp",
-  tech: "/assets/images/categoria-tech.webp",
-  cocina: "/assets/images/categoria-kitchen.webp",
-  lifestyle: "/assets/images/categoria-lifestyle.webp",
-};
-
-function resolveCategoryRepresentativeImage(
-  categorySlug: GoodIdeasHomeCategorySlug
-): string | undefined {
-  const staticImage = HOME_CATEGORY_TILE_IMAGE[categorySlug];
-  if (staticImage) return staticImage;
-
-  for (const product of getGoodIdeasProducts()) {
-    if (!goodIdeasProductMatchesCategory(product, categorySlug)) continue;
-    const image = resolveGoodIdeasProductCardImage(product.id);
-    if (image) return image;
-  }
-  return undefined;
-}
-
-=======
->>>>>>> c6e7fa10a1dbdb993564a3bfba65c376ac3772a8
 export function resolveGoodIdeasHomeCategoryTiles(
   locale: Locale
 ): GoodIdeasHomeCategoryTileData[] {
