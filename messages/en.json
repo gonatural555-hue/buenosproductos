@@ -430,6 +430,11 @@
         "reviewsEmptyBody": "Be the first to share your experience with this product.",
         "reviewsShowMore": "Show more reviews ({count})",
         "reviewsShowLess": "Show fewer reviews",
+        "reviewsTextOnlyTitle": "More reviews",
+        "reviewsCarouselPrev": "Previous reviews",
+        "reviewsCarouselNext": "Next reviews",
+        "reviewsCarouselAria": "Customer photo reviews",
+        "reviewsCarouselHint": "Swipe to see more photo reviews",
         "crossSellTitle": "You may also like",
         "crossSellSubtitle": "Related picks curated for you."
       },

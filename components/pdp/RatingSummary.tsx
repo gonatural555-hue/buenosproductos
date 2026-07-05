@@ -1,5 +1,4 @@
 import StarRating from "@/components/pdp/StarRating";
-import { GI_PDP_STICKY_TOP } from "@/lib/ui/goodideas-design";
 import type { ReviewStats } from "@/lib/pdp-review-stats";
 
 type Props = {
@@ -48,9 +47,7 @@ export default function RatingSummary({
     : "h-2 flex-1 overflow-hidden rounded-full bg-white/[0.08]";
 
   return (
-    <aside
-      className={`${panelClass} lg:sticky ${GI_PDP_STICKY_TOP} lg:self-start`}
-    >
+    <aside className={panelClass}>
       <div className="space-y-3 text-center lg:text-left">
         <p className={averageClass}>{stats.averageRating.toFixed(1)}</p>
         <div className="flex justify-center lg:justify-start">

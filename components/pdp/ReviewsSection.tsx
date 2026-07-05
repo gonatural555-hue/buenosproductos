@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ReviewCard from "@/components/pdp/ReviewCard";
+import ReviewsPhotoCarousel from "@/components/pdp/ReviewsPhotoCarousel";
 import RatingSummary from "@/components/pdp/RatingSummary";
 import { PdpReviewsSkeleton } from "@/components/pdp/PdpSectionSkeletons";
 import {
@@ -10,6 +11,8 @@ import {
 } from "@/components/i18n/LocaleProvider";
 import { usePdpLazySection } from "@/hooks/usePdpLazySection";
 import { useProductReviews } from "@/hooks/useProductReviews";
+import { isValidImageSrc } from "@/lib/image-src";
+import type { ProductReviewRow } from "@/lib/pdp-supabase-types";
 import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 import { GI_PDP_INNER } from "@/lib/ui/gi-pdp-layout";
 
@@ -18,7 +21,11 @@ type Props = {
   surface?: "dark" | "light";
 };
 
-const INITIAL_REVIEWS_VISIBLE = 3;
+const INITIAL_TEXT_REVIEWS_VISIBLE = 3;
+
+function reviewHasPhotos(review: ProductReviewRow): boolean {
+  return (review.images ?? []).some(isValidImageSrc);
+}
 
 function ReviewsContent({
   productId,
@@ -36,6 +43,19 @@ function ReviewsContent({
   useEffect(() => {
     setExpanded(false);
   }, [productId]);
+
+  const { photoReviews, textOnlyReviews } = useMemo(() => {
+    const photo: ProductReviewRow[] = [];
+    const textOnly: ProductReviewRow[] = [];
+    for (const review of reviews) {
+      if (reviewHasPhotos(review)) {
+        photo.push(review);
+      } else {
+        textOnly.push(review);
+      }
+    }
+    return { photoReviews: photo, textOnlyReviews: textOnly };
+  }, [reviews]);
 
   if (loading) {
     return <PdpReviewsSkeleton light={light} />;
@@ -70,21 +90,27 @@ function ReviewsContent({
     ? "mt-2 font-body text-[15px] text-[#6B7280]"
     : "mt-2 font-body text-[15px] text-[rgba(232,236,241,0.6)]";
 
-  const visibleReviews = expanded
-    ? reviews
-    : reviews.slice(0, INITIAL_REVIEWS_VISIBLE);
-  const hasMoreReviews = reviews.length > INITIAL_REVIEWS_VISIBLE;
-  const hiddenCount = reviews.length - INITIAL_REVIEWS_VISIBLE;
+  const visibleTextReviews = expanded
+    ? textOnlyReviews
+    : textOnlyReviews.slice(0, INITIAL_TEXT_REVIEWS_VISIBLE);
+  const hasMoreTextReviews =
+    textOnlyReviews.length > INITIAL_TEXT_REVIEWS_VISIBLE;
+  const hiddenTextCount =
+    textOnlyReviews.length - INITIAL_TEXT_REVIEWS_VISIBLE;
 
   const showMoreLabel = t("goodIdeas.pdp.phase3.reviewsShowMore", "").replace(
     "{count}",
-    String(hiddenCount)
+    String(hiddenTextCount)
   );
   const showLessLabel = t("goodIdeas.pdp.phase3.reviewsShowLess", "");
 
   const expandBtnClass = light
     ? "mt-2 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-[#111111] bg-white px-6 font-body text-sm font-semibold text-[#111111] transition-colors hover:bg-[#FAFAFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111111]/20 focus-visible:ring-offset-2"
     : "mt-2 inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/[0.2] bg-transparent px-6 font-body text-sm font-semibold text-[#E8ECF1] transition-colors hover:border-white/[0.35] hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14]";
+
+  const textSectionTitleClass = light
+    ? "font-body text-lg font-semibold tracking-[-0.02em] text-[#111111]"
+    : "font-body text-lg font-semibold text-[#E8ECF1]";
 
   return (
     <>
@@ -94,35 +120,60 @@ function ReviewsContent({
       </header>
 
       {hasReviews ? (
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,28%)_minmax(0,72%)] lg:gap-12">
-          <RatingSummary
-            stats={stats}
-            basedOnLabel={basedOnLabel}
-            verifiedLabel={verifiedLabel}
-            surface={light ? "light" : "dark"}
-          />
-          <div className="flex min-w-0 flex-col gap-5 sm:gap-6">
-            {visibleReviews.map((review) => (
-              <ReviewCard
-                key={review.id}
-                review={review}
-                verifiedLabel={verifiedLabel}
-                anonymousLabel={anonymousLabel}
-                locale={dateLocale}
-                surface={light ? "light" : "dark"}
-              />
-            ))}
-            {hasMoreReviews ? (
-              <button
-                type="button"
-                onClick={() => setExpanded((value) => !value)}
-                className={expandBtnClass}
-                aria-expanded={expanded}
-              >
-                {expanded ? showLessLabel : showMoreLabel}
-              </button>
-            ) : null}
+        <div className="space-y-10 md:space-y-12">
+          <div className="mx-auto max-w-md lg:max-w-sm lg:mx-0">
+            <RatingSummary
+              stats={stats}
+              basedOnLabel={basedOnLabel}
+              verifiedLabel={verifiedLabel}
+              surface={light ? "light" : "dark"}
+            />
           </div>
+
+          {photoReviews.length > 0 ? (
+            <ReviewsPhotoCarousel
+              reviews={photoReviews}
+              verifiedLabel={verifiedLabel}
+              anonymousLabel={anonymousLabel}
+              locale={dateLocale}
+              surface={light ? "light" : "dark"}
+            />
+          ) : null}
+
+          {textOnlyReviews.length > 0 ? (
+            <div className="space-y-5">
+              {photoReviews.length > 0 ? (
+                <h3 className={textSectionTitleClass}>
+                  {t(
+                    "goodIdeas.pdp.phase3.reviewsTextOnlyTitle",
+                    "Más opiniones"
+                  )}
+                </h3>
+              ) : null}
+              <div className="flex min-w-0 flex-col gap-5 sm:gap-6">
+                {visibleTextReviews.map((review) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    verifiedLabel={verifiedLabel}
+                    anonymousLabel={anonymousLabel}
+                    locale={dateLocale}
+                    surface={light ? "light" : "dark"}
+                  />
+                ))}
+                {hasMoreTextReviews ? (
+                  <button
+                    type="button"
+                    onClick={() => setExpanded((value) => !value)}
+                    className={expandBtnClass}
+                    aria-expanded={expanded}
+                  >
+                    {expanded ? showLessLabel : showMoreLabel}
+                  </button>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className={emptyWrapClass}>
