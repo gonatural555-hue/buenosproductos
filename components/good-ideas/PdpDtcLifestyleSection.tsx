@@ -61,15 +61,17 @@ export default function PdpDtcLifestyleSection({
     >
       <div className={`${GI_DTC.container} py-10 md:py-14`}>
         {videoSrc ? (
-          <div className="mx-auto w-full max-w-[892px] overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#0B0F14]">
-            <video
-              src={videoSrc}
-              className="aspect-[892/485] w-full bg-[#0B0F14] object-contain"
-              controls
-              playsInline
-              preload="metadata"
-              aria-label={productTitle}
-            />
+          <div className="mx-auto w-full max-w-[960px]">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#0B0F14]">
+              <video
+                src={videoSrc}
+                className="absolute inset-0 h-full w-full object-contain object-center"
+                controls
+                playsInline
+                preload="metadata"
+                aria-label={productTitle}
+              />
+            </div>
           </div>
         ) : (
           <PdpDtcHorizontalTileRow aria-label={productTitle}>
