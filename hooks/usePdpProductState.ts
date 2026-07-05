@@ -119,6 +119,31 @@ export function usePdpProductState({
     return price;
   }, [product.price, productVariants, selections]);
 
+  const resolvedCompareAtPrice = useMemo(() => {
+    if (
+      product.compareAtPrice == null ||
+      !Number.isFinite(product.compareAtPrice)
+    ) {
+      return undefined;
+    }
+    if (!productVariants) return product.compareAtPrice;
+
+    let compareAt = product.compareAtPrice;
+
+    productVariants.variants.forEach((variant) => {
+      const selectedValue = selections[variant.type];
+      if (!selectedValue) return;
+      const option = variant.options.find(
+        (opt) => (opt.value || opt.label) === selectedValue
+      );
+      if (option && typeof option.compareAtPriceModifier === "number") {
+        compareAt += option.compareAtPriceModifier;
+      }
+    });
+
+    return compareAt;
+  }, [product.compareAtPrice, productVariants, selections]);
+
   const variantSelections = useMemo(() => {
     if (!productVariants) return undefined;
     const selectionsList = productVariants.variants
@@ -189,6 +214,7 @@ export function usePdpProductState({
     quantity,
     setQuantity,
     resolvedPrice,
+    resolvedCompareAtPrice,
     activeImages,
     variantSelections,
     cartImage,

@@ -38,6 +38,7 @@ function StickyAddToCartInner({
     product,
     seoH1,
     resolvedPrice,
+    resolvedCompareAtPrice,
     cartImage,
     cartPayload,
     ctaDisabled,
@@ -82,12 +83,12 @@ function StickyAddToCartInner({
           >
             {shortTitle}
           </p>
-          {hasActivePromoPrice(resolvedPrice, product.compareAtPrice) ? (
+          {hasActivePromoPrice(resolvedPrice, resolvedCompareAtPrice) ? (
             <div className="mt-0.5">
               <PdpPromoPriceBlock
                 productId={product.id}
                 salePriceUsd={resolvedPrice}
-                compareAtPriceUsd={product.compareAtPrice}
+                compareAtPriceUsd={resolvedCompareAtPrice}
                 flashSaleHours={product.flashSaleHours}
                 variant="compact"
               />
