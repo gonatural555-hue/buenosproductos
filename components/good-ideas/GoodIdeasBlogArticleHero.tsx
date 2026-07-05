@@ -5,6 +5,7 @@ type Props = {
   subtitle?: string;
   categoryLabel?: string;
   image: string;
+  imageFit?: "cover" | "contain";
 };
 
 export default function GoodIdeasBlogArticleHero({
@@ -12,7 +13,10 @@ export default function GoodIdeasBlogArticleHero({
   subtitle,
   categoryLabel,
   image,
+  imageFit = "cover",
 }: Props) {
+  const contain = imageFit === "contain";
+
   return (
     <section className="border-b border-[#E5E5E5] bg-white">
       <div className="mx-auto max-w-[calc(1315px+4rem)] px-8 py-10 md:py-14">
@@ -30,13 +34,23 @@ export default function GoodIdeasBlogArticleHero({
               {subtitle}
             </p>
           ) : null}
-          <div className="relative mt-8 aspect-[21/9] min-h-[180px] overflow-hidden rounded-2xl border border-[#E5E5E5] bg-[#FAFAFA] md:min-h-[260px]">
+          <div
+            className={`relative mt-8 overflow-hidden rounded-2xl border border-[#E5E5E5] bg-[#FAFAFA] ${
+              contain
+                ? "aspect-[16/10] min-h-[220px] md:min-h-[320px]"
+                : "aspect-[21/9] min-h-[180px] md:min-h-[260px]"
+            }`}
+          >
             <SmartImage
               src={image}
               alt={title}
               fill
               priority
-              className="object-cover object-center"
+              className={
+                contain
+                  ? "object-contain object-center p-6 md:p-10"
+                  : "object-cover object-center"
+              }
               sizes="(max-width: 1315px) 100vw, 1315px"
             />
           </div>

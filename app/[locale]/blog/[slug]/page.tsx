@@ -47,11 +47,12 @@ export async function generateMetadata({
   }
 
   const seo = messages.seo?.goodIdeas?.blogPost;
-  const title = formatTemplate(
-    seo?.titleTemplate ?? `{title} | ${brandName} Blog`,
-    { title: post.title }
-  );
-  const description = formatTemplate(
+  const metaTitle =
+    post.seoTitle ??
+    formatTemplate(seo?.titleTemplate ?? `{title} | ${brandName} Blog`, {
+      title: post.title,
+    });
+  const metaDescription = post.seoDescription ?? formatTemplate(
     seo?.descriptionTemplate ?? "{excerpt}",
     { excerpt: post.excerpt }
   );
@@ -59,8 +60,8 @@ export async function generateMetadata({
 
   return buildMetadata({
     locale,
-    title,
-    description,
+    title: metaTitle ?? post.title,
+    description: metaDescription ?? post.excerpt,
     ogImage,
     ogType: "article",
     pathByLocale: buildPathByLocale((l) => blogPostPath(l, slug)),
@@ -101,6 +102,7 @@ export default async function GoodIdeasBlogPostPage({
         subtitle={post.subtitle}
         categoryLabel={getGoodIdeasCategoryLabel(post.categorySlug, t)}
         image={heroImage}
+        imageFit={post.heroImageFit}
       />
       <GoodIdeasBlogPostContent
         intro={intro}
@@ -108,7 +110,8 @@ export default async function GoodIdeasBlogPostPage({
         closing={closing}
         locale={locale}
         productHref={post.productId ? productPath(locale, post.productId) : undefined}
-        productCtaLabel={t("goodIdeas.blog.viewProductCta")}
+        productCtaLabel={post.productCtaLabel ?? t("goodIdeas.blog.viewProductCta")}
+        introCtaLabel={post.introCtaLabel}
       />
       {relatedProducts.length > 0 ? (
         <div className="border-t border-[#E5E5E5] bg-white">
