@@ -28,7 +28,9 @@
       "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor-06.png",
       "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor-07.png"
     ],
-    "lifestyle": [],
+    "lifestyle": [
+      "assets/images/good-ideas-products/gi-hogar-010/video.MOV"
+    ],
     "extras": [],
     "variantImages": {
       "steamer-cup-mat": {
