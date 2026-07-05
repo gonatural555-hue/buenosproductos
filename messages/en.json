@@ -480,6 +480,27 @@
           "author": "Ana P.",
           "text": "Easy purchase, smooth shipping, and the product delivers as promised."
         }
+      },
+      "kitOptions": {
+        "heading": "Choose your kit",
+        "mostPopular": "Most popular",
+        "basicBadge": "Basic",
+        "freeShippingBullet": "Free shipping",
+        "offer24hFooter": "24h offer — ends in {time}",
+        "giHogar010": {
+          "steamerCupMat": {
+            "title": "Steamer + cup + mat",
+            "includes": "Includes portable steamer, measuring cup, and iron rest mat."
+          },
+          "steamerCupMatBoard": {
+            "title": "Steamer + cup + mat + mini board",
+            "includes": "Includes steamer, measuring cup, iron rest mat, and mini ironing board."
+          },
+          "steamerCupMatBoardBag": {
+            "title": "Steamer + cup + mat + board + bag",
+            "includes": "Includes steamer, measuring cup, mat, mini board, and storage bag."
+          }
+        }
       }
     },
     "footer": {

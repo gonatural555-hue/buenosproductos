@@ -8,6 +8,7 @@ import ColorSwatchSelector from "@/components/pdp/ColorSwatchSelector";
 import SizeSelector from "@/components/pdp/SizeSelector";
 import PdpQuantitySelector from "@/components/pdp/PdpQuantitySelector";
 import VariantSelector from "@/components/VariantSelector";
+import GiDtcKitOptionCards from "@/components/good-ideas/GiDtcKitOptionCards";
 import PdpPromoPriceBlock from "@/components/pdp/PdpPromoPriceBlock";
 import PdpBuyBoxManualCard from "@/components/pdp/PdpBuyBoxManualCard";
 import { useTranslations } from "@/components/i18n/LocaleProvider";
@@ -20,6 +21,7 @@ import type {
   VariantDefinition,
 } from "@/lib/product-variants";
 import { getPdpBuyBoxTheme } from "@/lib/ui/pdp-theme";
+import { shouldUseGiKitOptionCards } from "@/lib/good-ideas-kit-option-copy";
 import { GI_DTC } from "@/lib/ui/gi-pdp-dtc";
 
 function MiniStars({ rating }: { rating: number }) {
@@ -47,6 +49,8 @@ type Props = {
   salesBadge?: string;
   resolvedPrice: number;
   compareAtPrice?: number;
+  basePrice: number;
+  baseCompareAtPrice?: number;
   flashSaleHours?: number;
   productId: string;
   freeShipping?: boolean;
@@ -90,6 +94,8 @@ export default function GiDtcBuyBox({
   salesBadge,
   resolvedPrice,
   compareAtPrice,
+  basePrice,
+  baseCompareAtPrice,
   flashSaleHours,
   productId,
   freeShipping,
@@ -138,6 +144,11 @@ export default function GiDtcBuyBox({
   const needsSizePick = Boolean(sizeDef) && !sizeConfirmed;
   const ctaDisabled = needsSizePick;
   const ctaText = needsSizePick ? selectSizeLabel : ctaLabel;
+  const kitDef = otherVariantDefs.find((variant) => variant.type === "kit");
+  const useKitCards = shouldUseGiKitOptionCards(productId, kitDef);
+  const nonKitOtherDefs = otherVariantDefs.filter(
+    (variant) => variant.type !== "kit"
+  );
 
   const quickBenefits =
     pdpDesktop.benefits.length >= 3
@@ -239,10 +250,25 @@ export default function GiDtcBuyBox({
           />
         ) : null}
 
-        {otherVariantDefs.length > 0 && productVariants ? (
+        {useKitCards && kitDef ? (
+          <GiDtcKitOptionCards
+            productId={productId}
+            kitVariant={kitDef}
+            selections={selections}
+            onSelectionsChange={onSelectionsChange}
+            variantMatrix={matrix}
+            basePrice={basePrice}
+            baseCompareAtPrice={baseCompareAtPrice}
+            productImage={cartPayload.image}
+            flashSaleHours={flashSaleHours}
+            freeShipping={freeShipping}
+          />
+        ) : null}
+
+        {nonKitOtherDefs.length > 0 && productVariants ? (
           <VariantSelector
             variants={{
-              variants: otherVariantDefs,
+              variants: nonKitOtherDefs,
               variantMatrix: matrix,
             }}
             value={selections}

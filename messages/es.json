@@ -480,6 +480,27 @@
           "author": "Ana P.",
           "text": "Compra fácil, envío sin problemas y el producto cumple lo prometido."
         }
+      },
+      "kitOptions": {
+        "heading": "Elegí tu kit",
+        "mostPopular": "Más elegido",
+        "basicBadge": "Básico",
+        "freeShippingBullet": "Envío gratis",
+        "offer24hFooter": "Oferta 24 hs — termina en {time}",
+        "giHogar010": {
+          "steamerCupMat": {
+            "title": "Plancha + vaso + apoya plancha",
+            "includes": "Incluye plancha a vapor, vaso medidor y apoya plancha."
+          },
+          "steamerCupMatBoard": {
+            "title": "Plancha + vaso + apoya + mini tabla",
+            "includes": "Incluye plancha, vaso medidor, apoya plancha y mini tabla para planchar."
+          },
+          "steamerCupMatBoardBag": {
+            "title": "Plancha + vaso + apoya + tabla + bolsa",
+            "includes": "Incluye plancha, vaso medidor, apoya plancha, mini tabla y bolsa de guardado."
+          }
+        }
       }
     },
     "footer": {
