@@ -89,11 +89,13 @@ export default async function HomePage({
     <GoodIdeasHomePage
       locale={locale}
       eyebrow={t("goodIdeas.hero.eyebrow")}
-      titleBefore={t("goodIdeas.hero.titleBefore")}
+      titleLine1={t("goodIdeas.hero.titleLine1")}
+      titleLine2={t("goodIdeas.hero.titleLine2")}
+      titleLine3={t("goodIdeas.hero.titleLine3")}
       titleAccent={t("goodIdeas.hero.titleAccent")}
-      subtitle={t("goodIdeas.hero.subtitle")}
       cta={t("goodIdeas.hero.cta")}
-      socialProof={t("goodIdeas.hero.socialProof")}
+      socialProofHighlight={t("goodIdeas.hero.socialProofHighlight")}
+      socialProofLabel={t("goodIdeas.hero.socialProofLabel")}
       heroCardEntries={heroCardEntries}
       heroReviewStatsMap={heroReviewStatsMap}
       viewProductLabel={t("common.viewProduct")}

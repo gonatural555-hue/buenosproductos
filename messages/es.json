@@ -104,11 +104,13 @@
     },
     "hero": {
       "eyebrow": "Hogar & Tech",
-      "titleBefore": "Productos que mejoran ",
-      "titleAccent": "tu día a día.",
-      "subtitle": "Productos útiles para hogar, tecnología, cocina, auto y estilo de vida. Calidad, innovación y buenos precios en un solo lugar.",
+      "titleLine1": "Descubrí productos",
+      "titleLine2": "que realmente",
+      "titleLine3": "hacen la ",
+      "titleAccent": "diferencia.",
       "cta": "Explorar productos",
-      "socialProof": "+25K clientes satisfechos",
+      "socialProofHighlight": "Más de 25.000",
+      "socialProofLabel": "clientes satisfechos",
       "comingSoon": "Estamos preparando el catálogo. Pronto encontrarás gadgets para el hogar, electrónica y esenciales del día a día.",
       "sectionAria": "Buenos Productos — inicio"
     },

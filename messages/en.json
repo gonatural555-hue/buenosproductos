@@ -104,11 +104,13 @@
     },
     "hero": {
       "eyebrow": "Home & Tech",
-      "titleBefore": "Products that improve ",
-      "titleAccent": "your everyday life.",
-      "subtitle": "Useful products for home, tech, kitchen, car and lifestyle. Quality, innovation and great prices in one place.",
+      "titleLine1": "Discover products",
+      "titleLine2": "that truly",
+      "titleLine3": "make the ",
+      "titleAccent": "difference.",
       "cta": "Explore products",
-      "socialProof": "+25K happy customers",
+      "socialProofHighlight": "Over 25,000",
+      "socialProofLabel": "happy customers",
       "comingSoon": "Our catalog is being curated. Check back soon for smart home gadgets, electronics and everyday essentials.",
       "sectionAria": "Good Products — home"
     },

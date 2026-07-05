@@ -16,63 +16,60 @@ const easeOut = GI_EASE;
 const HERO_CTA_CLASS =
   "group inline-flex h-[56px] min-h-[56px] w-full max-w-md items-center justify-center gap-2.5 rounded-full bg-[#3B82F6] px-8 text-center font-body text-sm font-semibold text-white shadow-[0_14px_44px_rgba(59,130,246,0.32)] transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-[#2563EB] hover:shadow-[0_18px_52px_rgba(59,130,246,0.38)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#60A5FA]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F14] motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:h-[60px] md:min-h-[60px] md:px-10 md:text-base lg:h-[64px] lg:min-h-[64px]";
 
+const HERO_TRUST_AVATAR_STYLES = [
+  "bg-[linear-gradient(145deg,#D4A574_0%,#8B5E3C_55%,#6B4423_100%)]",
+  "bg-[linear-gradient(145deg,#8EB4C8_0%,#4A6FA5_55%,#2C5282_100%)]",
+  "bg-[linear-gradient(145deg,#B8D4A0_0%,#6B8F5E_55%,#4A6741_100%)]",
+  "bg-[linear-gradient(145deg,#D4A0B8_0%,#9B6B8A_55%,#6B4A5E_100%)]",
+] as const;
+
 export type GoodIdeasHomeHeroProps = {
   locale: Locale;
   eyebrow: string;
-  titleBefore: string;
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
   titleAccent: string;
-  subtitle: string;
   ctaLabel: string;
-  socialProof: string;
+  socialProofHighlight: string;
+  socialProofLabel: string;
   heroCardEntries: GoodIdeasHomeHeroCardEntry[];
   heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
   viewProductLabel: string;
   sectionAriaLabel: string;
 };
 
-const SOCIAL_AVATARS = ["B", "P", "+"] as const;
-
 function HeroEditorialTitle({
-  locale,
-  titleBefore,
+  titleLine1,
+  titleLine2,
+  titleLine3,
   titleAccent,
 }: {
-  locale: Locale;
-  titleBefore: string;
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
   titleAccent: string;
 }) {
-  if (locale === "es") {
-    return (
-      <>
-        <span className="block">Productos que</span>
-        <span className="block">
-          mejoran{" "}
-          <span className="text-[#3B82F6]">tu día a</span>
-        </span>
-        <span className="block text-[#3B82F6]">día.</span>
-      </>
-    );
-  }
-
   return (
     <>
-      <span className="block">Products that</span>
-      <span className="block">improve </span>
-      <span className="block text-[#3B82F6]">{titleAccent.trim()}</span>
+      <span className="block">{titleLine1}</span>
+      <span className="block">{titleLine2}</span>
+      <span className="block">
+        {titleLine3}
+        <span className="text-[#3B82F6]">{titleAccent}</span>
+      </span>
     </>
   );
 }
 
-function SocialProofAvatars() {
+function HeroTrustAvatars() {
   return (
-    <div className="flex -space-x-2.5" aria-hidden>
-      {SOCIAL_AVATARS.map((initial) => (
+    <div className="flex shrink-0 -space-x-3" aria-hidden>
+      {HERO_TRUST_AVATAR_STYLES.map((style, index) => (
         <span
-          key={initial}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#0B0F14] bg-[#151B24] font-body text-xs font-bold text-[#E8ECF1] shadow-[0_4px_12px_rgba(0,0,0,0.25)] ring-1 ring-white/[0.12]"
-        >
-          {initial}
-        </span>
+          key={index}
+          className={`inline-flex h-11 w-11 rounded-full border-2 border-white shadow-[0_4px_16px_rgba(0,0,0,0.28)] ring-1 ring-white/[0.08] ${style}`}
+        />
       ))}
     </div>
   );
@@ -99,16 +96,19 @@ function CtaArrow() {
 export default function GoodIdeasHomeHero({
   locale,
   eyebrow,
-  titleBefore,
+  titleLine1,
+  titleLine2,
+  titleLine3,
   titleAccent,
-  subtitle,
   ctaLabel,
-  socialProof,
+  socialProofHighlight,
+  socialProofLabel,
   heroCardEntries,
   heroReviewStatsMap,
   viewProductLabel,
   sectionAriaLabel,
 }: GoodIdeasHomeHeroProps) {
+  void locale;
   const t = useTranslations();
   const reduceMotion = useReducedMotion();
   const off = reduceMotion ?? false;
@@ -153,8 +153,8 @@ export default function GoodIdeasHomeHero({
         initial="hidden"
         animate="show"
       >
-        <div className="grid min-h-0 items-center gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-10 xl:gap-14 lg:min-h-[600px] lg:max-h-[760px]">
-          <div className="flex flex-col items-center text-center lg:max-w-[36rem] lg:items-start lg:text-left">
+        <div className="grid min-h-0 items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 xl:gap-24 lg:min-h-[600px] lg:max-h-[760px]">
+          <div className="mx-auto flex w-full max-w-[34rem] flex-col items-center text-center lg:max-w-none lg:px-2 xl:px-6">
             <motion.p
               variants={itemVariants}
               className="font-inter text-[11px] font-semibold uppercase tracking-[0.28em] text-[rgba(232,236,241,0.55)]"
@@ -164,25 +164,35 @@ export default function GoodIdeasHomeHero({
 
             <motion.h1
               variants={itemVariants}
-              className="mt-4 w-full max-w-[18rem] font-display text-[clamp(2rem,6.2vw,3.15rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#E8ECF1] sm:max-w-[20rem] lg:mt-5 lg:max-w-[15.5rem] lg:text-[clamp(2.4rem,3.6vw,3.55rem)] lg:leading-[1.06] xl:max-w-[16.5rem]"
+              className="mt-6 w-full max-w-[22rem] font-display text-[clamp(1.85rem,5.4vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#E8ECF1] sm:max-w-[26rem] md:text-[clamp(2rem,4.8vw,3rem)] lg:mt-8 lg:max-w-[28rem] lg:text-[clamp(2.15rem,3.2vw,3.35rem)] xl:max-w-[32rem]"
             >
               <HeroEditorialTitle
-                locale={locale}
-                titleBefore={titleBefore}
+                titleLine1={titleLine1}
+                titleLine2={titleLine2}
+                titleLine3={titleLine3}
                 titleAccent={titleAccent}
               />
             </motion.h1>
 
-            <motion.p
+            <motion.div
               variants={itemVariants}
-              className="mt-5 max-w-md font-inter text-[15px] leading-relaxed text-[rgba(232,236,241,0.72)] sm:text-base lg:mt-6 lg:max-w-[32rem]"
+              className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:items-center lg:mt-10"
+              aria-label={`${socialProofHighlight} ${socialProofLabel}`}
             >
-              {subtitle}
-            </motion.p>
+              <HeroTrustAvatars />
+              <div className="text-center">
+                <p className="font-body text-base font-semibold leading-tight text-[#E8ECF1] sm:text-[17px] lg:text-lg">
+                  {socialProofHighlight}
+                </p>
+                <p className="mt-0.5 font-body text-sm leading-snug text-[rgba(232,236,241,0.62)] sm:text-[15px]">
+                  {socialProofLabel}
+                </p>
+              </div>
+            </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="mt-8 w-full max-w-md lg:mt-9"
+              className="mt-10 w-full max-w-md lg:mt-12"
             >
               <Link
                 href={productsPath(locale)}
@@ -192,16 +202,6 @@ export default function GoodIdeasHomeHero({
                 <span>{ctaLabel}</span>
                 <CtaArrow />
               </Link>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:mt-8 lg:justify-start"
-            >
-              <SocialProofAvatars />
-              <p className="font-body text-[14px] font-medium leading-snug text-[rgba(232,236,241,0.72)] sm:text-[15px]">
-                {socialProof}
-              </p>
             </motion.div>
           </div>
 
