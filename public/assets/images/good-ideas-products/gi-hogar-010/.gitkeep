@@ -17,4 +17,6 @@
 # - steamer-cup-mat-board-bag    (Kit 3: + bolsa)
 #
 # Fase 1: arrays vacíos en JSON o rutas locales sin archivo (placeholder).
-# Fase 2: commitear .webp/.png aquí o pegar URLs externas en el JSON.
+# Fase 2: pegar URLs en gi-hogar-010.images.json y ejecutar:
+#   node scripts/sync-good-ideas-product-images.mjs gi-hogar-010
+# Ver scripts/good-ideas-products/README-gi-hogar-010-images.md

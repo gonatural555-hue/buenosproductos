@@ -1,0 +1,37 @@
+{
+  "productId": "gi-hogar-010",
+  "brand": "ZHUYIYAN",
+  "listingUrl": "",
+  "notes": "Pegar URLs de AliExpress en \"url\". Dejar vacío para usar ruta local en public/. Ejecutar: node scripts/sync-good-ideas-product-images.mjs gi-hogar-010",
+  "localBasePath": "/assets/images/good-ideas-products/gi-hogar-010",
+  "featured": {
+    "file": "plancha-vapor-portatil.webp",
+    "url": ""
+  },
+  "gallery": [
+    { "file": "plancha-vapor-portatil-01.webp", "url": "" },
+    { "file": "plancha-vapor-portatil-02.webp", "url": "" },
+    { "file": "plancha-vapor-portatil-03.webp", "url": "" },
+    { "file": "plancha-vapor-portatil-04.webp", "url": "" },
+    { "file": "plancha-vapor-portatil-05.webp", "url": "" }
+  ],
+  "lifestyle": [],
+  "extras": [],
+  "kits": {
+    "steamer-cup-mat": {
+      "label": "Kit 1 — plancha + vaso + apoya plancha",
+      "featured": { "file": "kit-steamer-cup-mat.webp", "url": "" },
+      "gallery": []
+    },
+    "steamer-cup-mat-board": {
+      "label": "Kit 2 — + mini tabla (más elegido)",
+      "featured": { "file": "kit-steamer-cup-mat-board.webp", "url": "" },
+      "gallery": []
+    },
+    "steamer-cup-mat-board-bag": {
+      "label": "Kit 3 — + tabla + bolsa",
+      "featured": { "file": "kit-steamer-cup-mat-board-bag.webp", "url": "" },
+      "gallery": []
+    }
+  }
+}

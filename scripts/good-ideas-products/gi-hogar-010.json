@@ -4,9 +4,15 @@
   "variants": {
     "type": "kit",
     "options": [
-      { "value": "steamer-cup-mat" },
-      { "value": "steamer-cup-mat-board" },
-      { "value": "steamer-cup-mat-board-bag" }
+      {
+        "value": "steamer-cup-mat"
+      },
+      {
+        "value": "steamer-cup-mat-board"
+      },
+      {
+        "value": "steamer-cup-mat-board-bag"
+      }
     ]
   },
   "images": {
@@ -24,19 +30,25 @@
     "extras": [],
     "variantImages": {
       "steamer-cup-mat": {
-        "featured": [],
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/kit-steamer-cup-mat.webp"
+        ],
         "gallery": [],
         "lifestyle": [],
         "extras": []
       },
       "steamer-cup-mat-board": {
-        "featured": [],
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/kit-steamer-cup-mat-board.webp"
+        ],
         "gallery": [],
         "lifestyle": [],
         "extras": []
       },
       "steamer-cup-mat-board-bag": {
-        "featured": [],
+        "featured": [
+          "/assets/images/good-ideas-products/gi-hogar-010/kit-steamer-cup-mat-board-bag.webp"
+        ],
         "gallery": [],
         "lifestyle": [],
         "extras": []
