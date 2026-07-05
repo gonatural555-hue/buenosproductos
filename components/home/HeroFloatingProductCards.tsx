@@ -236,7 +236,7 @@ function HeroCarouselProductCard({
         className={`flex h-full flex-col overflow-hidden rounded-[28px] border bg-white ${borderClass} ${shadowClass} transition-[transform,box-shadow,border-color] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none lg:rounded-[30px] ${hoverClass}`}
         style={reduceMotion ? undefined : { willChange: "transform, opacity" }}
       >
-        <div className={`relative ${imageHeightClass} overflow-hidden bg-[#FAFAFA]`}>
+        <div className={`relative ${imageHeightClass} overflow-hidden bg-white`}>
           {salesBadge ? (
             <span className="absolute left-3 top-3 z-[2] rounded-full bg-[#3B82F6] px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-white shadow-[0_6px_16px_rgba(59,130,246,0.35)]">
               {salesBadge}
@@ -251,7 +251,7 @@ function HeroCarouselProductCard({
               priority={isCenter}
               placeholder="empty"
               sizes={isMain ? "(max-width: 1024px) 340px, 330px" : "210px"}
-              className="object-contain object-center p-3 transition duration-[220ms] group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              className="object-cover object-center transition duration-[220ms] group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             />
           ) : (
             <div className="flex h-full items-center justify-center font-body text-xs text-[#6B7280]">
