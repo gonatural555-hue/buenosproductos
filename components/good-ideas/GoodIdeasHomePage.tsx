@@ -28,7 +28,6 @@ export default function GoodIdeasHomePage({
   subtitle,
   cta,
   socialProof,
-  showcaseBadge,
   heroCardEntries,
   heroReviewStatsMap,
   viewProductLabel,
@@ -87,7 +86,6 @@ export default function GoodIdeasHomePage({
   subtitle: string;
   cta: string;
   socialProof: string;
-  showcaseBadge: string;
   heroCardEntries: GoodIdeasHomeHeroCardEntry[];
   heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
   viewProductLabel: string;
@@ -152,7 +150,6 @@ export default function GoodIdeasHomePage({
         subtitle={subtitle}
         ctaLabel={cta}
         socialProof={socialProof}
-        showcaseBadge={showcaseBadge}
         heroCardEntries={heroCardEntries}
         heroReviewStatsMap={heroReviewStatsMap}
         viewProductLabel={viewProductLabel}

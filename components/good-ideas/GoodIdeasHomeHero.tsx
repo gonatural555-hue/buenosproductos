@@ -24,7 +24,6 @@ export type GoodIdeasHomeHeroProps = {
   subtitle: string;
   ctaLabel: string;
   socialProof: string;
-  showcaseBadge: string;
   heroCardEntries: GoodIdeasHomeHeroCardEntry[];
   heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
   viewProductLabel: string;
@@ -105,7 +104,6 @@ export default function GoodIdeasHomeHero({
   subtitle,
   ctaLabel,
   socialProof,
-  showcaseBadge,
   heroCardEntries,
   heroReviewStatsMap,
   viewProductLabel,
@@ -214,7 +212,6 @@ export default function GoodIdeasHomeHero({
             <HeroFloatingProductCards
               entries={heroCardEntries}
               reviewStatsMap={heroReviewStatsMap}
-              badge={showcaseBadge}
               microBadgeShipping={t("goodIdeas.trustBar.shippingTitle")}
               microBadgeSecure={t("goodIdeas.trustBar.secureTitle")}
               viewProductLabel={viewProductLabel}

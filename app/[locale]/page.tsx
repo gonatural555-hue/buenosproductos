@@ -94,7 +94,6 @@ export default async function HomePage({
       subtitle={t("goodIdeas.hero.subtitle")}
       cta={t("goodIdeas.hero.cta")}
       socialProof={t("goodIdeas.hero.socialProof")}
-      showcaseBadge={t("goodIdeas.hero.showcaseBadge")}
       heroCardEntries={heroCardEntries}
       heroReviewStatsMap={heroReviewStatsMap}
       viewProductLabel={t("common.viewProduct")}
