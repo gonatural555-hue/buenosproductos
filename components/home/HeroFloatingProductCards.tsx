@@ -24,7 +24,6 @@ import { GI_EASE } from "@/lib/ui/goodideas-design";
 type Props = {
   entries: GoodIdeasHomeHeroCardEntry[];
   reviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
-  badge: string;
   microBadgeShipping: string;
   microBadgeSecure: string;
   viewProductLabel: string;
@@ -130,21 +129,6 @@ function CarouselDots({
           />
         );
       })}
-    </div>
-  );
-}
-
-function BottomBadge({ badge }: { badge: string }) {
-  return (
-    <div className="mx-auto max-w-[300px] rounded-[22px] border border-white/[0.12] bg-[#151B24] px-4 py-3.5 shadow-[0_12px_40px_rgba(0,0,0,0.3)] sm:max-w-[320px] sm:px-[18px] sm:py-4 lg:max-w-[272px]">
-      <div className="flex items-start gap-3">
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-[#3B82F6]/25 bg-[#3B82F6]/10">
-          <GoodIdeasTrustBarIcon id="innovative" className="h-4 w-4" />
-        </span>
-        <p className="font-body text-[13px] font-medium leading-snug text-[#E8ECF1] sm:text-sm">
-          {badge}
-        </p>
-      </div>
     </div>
   );
 }
@@ -423,7 +407,6 @@ function ShowcaseDecor({ reduceMotion }: { reduceMotion: boolean }) {
 export default function HeroFloatingProductCards({
   entries,
   reviewStatsMap,
-  badge,
   microBadgeShipping,
   microBadgeSecure,
   viewProductLabel,
@@ -562,8 +545,6 @@ export default function HeroFloatingProductCards({
           onSelect={goToIndex}
           productTitles={productTitles}
         />
-
-        <BottomBadge badge={badge} />
       </div>
 
       {/* ——— Desktop carousel ——— */}
@@ -603,7 +584,7 @@ export default function HeroFloatingProductCards({
           })}
         </div>
 
-        <div className="absolute bottom-[14%] left-1/2 z-[25] -translate-x-1/2">
+        <div className="absolute bottom-[8%] left-1/2 z-[25] -translate-x-1/2">
           <CarouselDots
             count={count}
             activeIndex={activeIndex}
@@ -611,15 +592,6 @@ export default function HeroFloatingProductCards({
             productTitles={productTitles}
           />
         </div>
-
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.34, ease: GI_EASE }}
-          className="absolute bottom-[2%] left-1/2 z-[32] -translate-x-1/2 lg:translate-x-[-8%]"
-        >
-          <BottomBadge badge={badge} />
-        </motion.div>
       </div>
     </div>
   );
