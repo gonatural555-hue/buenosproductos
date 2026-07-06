@@ -86,6 +86,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  const segments = pathname.split("/").filter(Boolean);
+  if (
+    segments.length >= 2 &&
+    locales.includes(segments[0] as Locale) &&
+    locales.includes(segments[1] as Locale)
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${segments.slice(1).join("/")}`;
+    return NextResponse.redirect(url, { status: 308 });
+  }
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 

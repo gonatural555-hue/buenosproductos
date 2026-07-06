@@ -1135,7 +1135,8 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     slug: "rechargeable-portable-mini-plastic-bag-heat-sealer-usb-c",
     title:
       "Rechargeable Portable Mini Plastic Bag Heat Sealer — 6 Heat Levels, USB-C",
-    price: 13699 / 1445,
+    price: 28000 / 1445,
+    compareAtPrice: 40000 / 1445,
     category: "Hogar",
     images: [
       "/assets/images/good-ideas-products/gi-hogar-009/image.webp",
@@ -1216,7 +1217,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     salesBadge: "24h Offer",
     category: "Hogar",
     images: [
-      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil.webp",
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor.png",
     ],
     description:
       "Portable 5-in-1 garment steamer for clothes with smart display, fast heat-up, multi-level temperature control, and compact design. Steam hanging garments, quick touch-ups at home, or pack it for travel without a full-size ironing board setup.",

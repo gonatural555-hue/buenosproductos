@@ -20,7 +20,7 @@ type Props = {
   freeShippingLabel?: string;
   taxNote?: string | null;
   currencyDisclaimerClassName?: string;
-  variant?: "default" | "compact";
+  variant?: "default" | "compact" | "sticky";
 };
 
 export default function PdpPromoPriceBlock({
@@ -57,6 +57,14 @@ export default function PdpPromoPriceBlock({
   }, [endMs, promoActive]);
 
   if (!promoActive || !compareAtPriceUsd) {
+    if (variant === "sticky") {
+      return (
+        <p className="font-body text-lg font-bold tabular-nums text-[#111111]">
+          {formatMoney(salePriceUsd)}
+        </p>
+      );
+    }
+
     return (
       <div className="space-y-2">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -84,6 +92,26 @@ export default function PdpPromoPriceBlock({
   const savePercent = Math.round(
     ((compareAtPriceUsd - salePriceUsd) / compareAtPriceUsd) * 100
   );
+
+  if (variant === "sticky") {
+    return (
+      <div className="min-w-0">
+        <p className="font-body text-lg font-bold tabular-nums text-[#EF4444]">
+          {formatMoney(salePriceUsd)}
+        </p>
+        {!countdown.expired ? (
+          <p className="mt-0.5 font-body text-[11px] font-semibold tabular-nums text-[#B91C1C]">
+            <span className="uppercase tracking-[0.04em]">
+              {t("goodIdeas.pdp.dtc.countdownLabel")}{" "}
+            </span>
+            <time dateTime={new Date(endMs).toISOString()}>
+              {formatFlashSaleCountdown(countdown)}
+            </time>
+          </p>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-2.5">

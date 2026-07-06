@@ -23,12 +23,13 @@ import type { Locale } from "@/lib/i18n/config";
 export default function GoodIdeasHomePage({
   locale,
   eyebrow,
-  titleBefore,
+  titleLine1,
+  titleLine2,
+  titleLine3,
   titleAccent,
-  subtitle,
   cta,
-  socialProof,
-  showcaseBadge,
+  socialProofHighlight,
+  socialProofLabel,
   heroCardEntries,
   heroReviewStatsMap,
   viewProductLabel,
@@ -82,12 +83,13 @@ export default function GoodIdeasHomePage({
 }: {
   locale: Locale;
   eyebrow: string;
-  titleBefore: string;
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
   titleAccent: string;
-  subtitle: string;
   cta: string;
-  socialProof: string;
-  showcaseBadge: string;
+  socialProofHighlight: string;
+  socialProofLabel: string;
   heroCardEntries: GoodIdeasHomeHeroCardEntry[];
   heroReviewStatsMap: Record<string, ProductReviewStatsSnapshot>;
   viewProductLabel: string;
@@ -147,12 +149,13 @@ export default function GoodIdeasHomePage({
       <GoodIdeasHomeHero
         locale={locale}
         eyebrow={eyebrow}
-        titleBefore={titleBefore}
+        titleLine1={titleLine1}
+        titleLine2={titleLine2}
+        titleLine3={titleLine3}
         titleAccent={titleAccent}
-        subtitle={subtitle}
         ctaLabel={cta}
-        socialProof={socialProof}
-        showcaseBadge={showcaseBadge}
+        socialProofHighlight={socialProofHighlight}
+        socialProofLabel={socialProofLabel}
         heroCardEntries={heroCardEntries}
         heroReviewStatsMap={heroReviewStatsMap}
         viewProductLabel={viewProductLabel}

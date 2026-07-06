@@ -56,6 +56,11 @@ function localizePost(stored: StoredPost, locale: Locale): GoodIdeasBlogPost & {
     sections: es?.sections ?? stored.sections,
     closing: es?.closing ?? stored.closing,
     heroImage: stored.heroImage,
+    heroImageFit: stored.heroImageFit,
+    introCtaLabel: es?.introCtaLabel ?? stored.introCtaLabel,
+    productCtaLabel: es?.productCtaLabel ?? stored.productCtaLabel,
+    seoTitle: es?.seoTitle ?? stored.seoTitle,
+    seoDescription: es?.seoDescription ?? stored.seoDescription,
     relatedProductIds: stored.relatedProductIds ?? [stored.productId],
   };
   return {

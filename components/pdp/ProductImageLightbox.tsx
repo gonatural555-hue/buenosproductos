@@ -149,7 +149,7 @@ export default function ProductImageLightbox({
         )}
 
         {images.length > 1 && (
-          <div className="pointer-events-auto mt-4 flex shrink-0 items-center justify-center gap-2 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="pointer-events-auto mt-4 flex shrink-0 items-center justify-center gap-2 px-4">
             {images.map((_, i) => (
               <button
                 key={`dot-${i}`}
@@ -166,6 +166,19 @@ export default function ProductImageLightbox({
             ))}
           </div>
         )}
+
+        <div className="pointer-events-auto flex shrink-0 justify-center px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3">
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/45 text-white/95 backdrop-blur-sm transition hover:border-white/30 hover:bg-black/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/60"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -6,10 +6,30 @@ import {
   getGoodIdeasBlogPostsMap,
 } from "@/lib/good-ideas-blog-loader";
 
+export type GoodIdeasBlogTable = {
+  headers: string[];
+  rows: string[][];
+  caption?: string;
+};
+
+export type GoodIdeasBlogFaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type GoodIdeasBlogSection = {
   heading?: string;
   paragraphs: string[];
   image?: string;
+  imageFit?: "cover" | "contain";
+  imageAspect?: string;
+  table?: GoodIdeasBlogTable;
+  faq?: GoodIdeasBlogFaqItem[];
+  cta?: {
+    label: string;
+    href?: string;
+  };
+  legalNote?: string;
 };
 
 export type GoodIdeasBlogPost = {
@@ -20,6 +40,11 @@ export type GoodIdeasBlogPost = {
   sections?: GoodIdeasBlogSection[];
   closing?: string;
   heroImage?: string;
+  heroImageFit?: "cover" | "contain";
+  introCtaLabel?: string;
+  productCtaLabel?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   relatedProductIds?: string[];
   productId?: string;
   categorySlug?: string;
