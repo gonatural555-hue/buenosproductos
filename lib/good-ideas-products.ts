@@ -1135,7 +1135,8 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     slug: "rechargeable-portable-mini-plastic-bag-heat-sealer-usb-c",
     title:
       "Rechargeable Portable Mini Plastic Bag Heat Sealer — 6 Heat Levels, USB-C",
-    price: 13699 / 1445,
+    price: 28000 / 1445,
+    compareAtPrice: 40000 / 1445,
     category: "Hogar",
     images: [
       "/assets/images/good-ideas-products/gi-hogar-009/image.webp",
