@@ -73,14 +73,54 @@ export function getSiteUrl() {
   const vercelUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : null;
-  const baseUrl = envUrl || vercelUrl || "http://localhost:3000";
-  return baseUrl.replace(/\/+$/, "");
+  let baseUrl = (envUrl || vercelUrl || "http://localhost:3000").replace(
+    /\/+$/,
+    ""
+  );
+
+  // NEXT_PUBLIC_BASE_URL must be origin-only. Strip accidental /{locale} suffix.
+  for (const locale of locales) {
+    const suffix = `/${locale}`;
+    if (baseUrl.endsWith(suffix)) {
+      baseUrl = baseUrl.slice(0, -suffix.length);
+      break;
+    }
+  }
+
+  return baseUrl;
+}
+
+/** Evita rutas dobles tipo /en/es/products/... en URLs absolutas. */
+function normalizeLocalePath(pathname: string): string {
+  const segments = pathname.split("/").filter(Boolean);
+  if (
+    segments.length >= 2 &&
+    locales.includes(segments[0] as Locale) &&
+    locales.includes(segments[1] as Locale)
+  ) {
+    return `/${segments.slice(1).join("/")}`;
+  }
+  return pathname.startsWith("/") ? pathname : `/${pathname}`;
 }
 
 export function toAbsoluteUrl(path: string) {
   if (!path) return getSiteUrl();
-  if (path.startsWith("http")) return path;
-  return `${getSiteUrl()}${path.startsWith("/") ? path : `/${path}`}`;
+  if (path.startsWith("http")) {
+    try {
+      const parsed = new URL(path);
+      const fixedPath = normalizeLocalePath(parsed.pathname);
+      if (fixedPath !== parsed.pathname) {
+        return `${getSiteUrl()}${fixedPath}${parsed.search}${parsed.hash}`;
+      }
+    } catch {
+      return path;
+    }
+    return path;
+  }
+  const normalizedPath = normalizeLocalePath(
+    path.startsWith("/") ? path : `/${path}`
+  );
+  return `${getSiteUrl()}${normalizedPath}`;
 }
 
 export function buildAlternates({
@@ -142,6 +182,12 @@ export function buildMetadata({
           height: 630,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle || title,
+      description: ogDescription || description,
+      images: [imageUrl],
     },
   };
 }

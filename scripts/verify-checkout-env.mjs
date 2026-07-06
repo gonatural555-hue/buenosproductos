@@ -45,6 +45,12 @@ function warnBaseUrl() {
   if (!url.startsWith("https://") && !url.startsWith("http://localhost")) {
     console.log("  ⚠ NEXT_PUBLIC_BASE_URL debería ser https:// en producción");
   }
+  if (/\/(en|es|fr|it)\/?$/.test(url)) {
+    console.log(
+      "  ⚠ NEXT_PUBLIC_BASE_URL no debe incluir locale (ej. usar https://shopbuenosproductos.com, no .../en)"
+    );
+    return false;
+  }
   return true;
 }
 

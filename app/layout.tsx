@@ -1,13 +1,19 @@
 import "./globals.css";
 import "./header-rei.css";
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { UserProvider } from "@/context/UserContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { defaultLocale } from "@/lib/i18n/config";
+import { getSiteUrl } from "@/lib/seo";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
+};
 
 /** TAN Nimbus — archivo local: `public/fonts/TAN-Nimbus.otf` (variable CSS `--font-tan-nimbus`). */
 const tanNimbus = localFont({
