@@ -6,7 +6,11 @@ import {
   getGoodIdeasProductCopy,
   resolveGoodIdeasProductVariants,
 } from "@/lib/good-ideas-products";
-import { getGoodIdeasProductImages, getAllGoodIdeasProductCardImages } from "@/lib/good-ideas-product-images";
+import {
+  getGoodIdeasProductImages,
+  getAllGoodIdeasProductCardImages,
+  resolveGoodIdeasProductCardImage,
+} from "@/lib/good-ideas-product-images";
 import { getMessages } from "@/lib/i18n/messages";
 import { createTranslator } from "@/lib/i18n/translate";
 import { locales, type Locale } from "@/lib/i18n/config";
@@ -66,7 +70,8 @@ export async function generateMetadata({ params }: Props) {
       localized.description ??
       createTranslator(messages)("seo.goodIdeas.description"),
     pathByLocale: buildPathByLocale((l) => productPath(l, id)),
-    ogImage: product.images[0],
+    ogImage:
+      resolveGoodIdeasProductCardImage(id) || product.images[0] || undefined,
   });
 }
 

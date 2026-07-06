@@ -1216,7 +1216,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     salesBadge: "24h Offer",
     category: "Hogar",
     images: [
-      "/assets/images/good-ideas-products/gi-hogar-010/plancha-vapor-portatil.webp",
+      "/assets/images/good-ideas-products/gi-hogar-010/plancha-a-vapor.png",
     ],
     description:
       "Portable 5-in-1 garment steamer for clothes with smart display, fast heat-up, multi-level temperature control, and compact design. Steam hanging garments, quick touch-ups at home, or pack it for travel without a full-size ironing board setup.",
