@@ -105,22 +105,28 @@ function normalizeLocalePath(pathname: string): string {
 
 export function toAbsoluteUrl(path: string) {
   if (!path) return getSiteUrl();
+
   if (path.startsWith("http")) {
     try {
       const parsed = new URL(path);
       const fixedPath = normalizeLocalePath(parsed.pathname);
       if (fixedPath !== parsed.pathname) {
-        return `${getSiteUrl()}${fixedPath}${parsed.search}${parsed.hash}`;
+        return new URL(
+          `${fixedPath}${parsed.search}${parsed.hash}`,
+          getSiteUrl()
+        ).href;
       }
     } catch {
       return path;
     }
     return path;
   }
+
   const normalizedPath = normalizeLocalePath(
     path.startsWith("/") ? path : `/${path}`
   );
-  return `${getSiteUrl()}${normalizedPath}`;
+  // URL() respeta paths absolutos (/es/...) y no duplica segmentos del base.
+  return new URL(normalizedPath, `${getSiteUrl()}/`).href;
 }
 
 export function buildAlternates({
@@ -131,13 +137,13 @@ export function buildAlternates({
   pathByLocale: Record<Locale, string>;
 }) {
   return {
-    canonical: toAbsoluteUrl(pathByLocale[locale]),
+    canonical: pathByLocale[locale],
     languages: {
-      en: toAbsoluteUrl(pathByLocale.en),
-      es: toAbsoluteUrl(pathByLocale.es),
-      fr: toAbsoluteUrl(pathByLocale.fr),
-      it: toAbsoluteUrl(pathByLocale.it),
-      "x-default": toAbsoluteUrl(pathByLocale[defaultLocale]),
+      en: pathByLocale.en,
+      es: pathByLocale.es,
+      fr: pathByLocale.fr,
+      it: pathByLocale.it,
+      "x-default": pathByLocale[defaultLocale],
     },
   };
 }
@@ -161,7 +167,7 @@ export function buildMetadata({
   ogDescription?: string;
   ogType?: "website" | "article" | "product";
 }): Metadata {
-  const url = toAbsoluteUrl(pathByLocale[locale]);
+  const pagePath = pathByLocale[locale];
   const imageUrl = toAbsoluteUrl(ogImage || "/assets/images/blog/blog-hero.webp");
   const openGraphType = ogType === "product" ? "website" : ogType;
 
@@ -172,7 +178,7 @@ export function buildMetadata({
     openGraph: {
       title: ogTitle || title,
       description: ogDescription || description,
-      url,
+      url: pagePath,
       type: openGraphType,
       locale: OG_LOCALES[locale],
       images: [

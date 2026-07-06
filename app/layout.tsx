@@ -12,7 +12,7 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  metadataBase: new URL(`${getSiteUrl()}/`),
 };
 
 /** TAN Nimbus — archivo local: `public/fonts/TAN-Nimbus.otf` (variable CSS `--font-tan-nimbus`). */
