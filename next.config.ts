@@ -25,7 +25,17 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
+    const localeSegments = ["en", "es", "fr", "it"] as const;
+    const doubleLocaleRedirects = localeSegments.flatMap((from) =>
+      localeSegments.map((to) => ({
+        source: `/${from}/${to}/:path*`,
+        destination: `/${to}/:path*`,
+        permanent: true,
+      }))
+    );
+
     return [
+      ...doubleLocaleRedirects,
       {
         source: "/:locale/good-ideas",
         destination: "/:locale",

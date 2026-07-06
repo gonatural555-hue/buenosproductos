@@ -94,7 +94,7 @@ export async function middleware(request: NextRequest) {
   ) {
     const url = request.nextUrl.clone();
     url.pathname = `/${segments.slice(1).join("/")}`;
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(url, { status: 308 });
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
