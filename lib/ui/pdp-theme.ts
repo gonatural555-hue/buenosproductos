@@ -34,7 +34,7 @@ export function getPdpBuyBoxTheme(
         comparePrice:
           "font-body text-lg font-medium tabular-nums text-[#9CA3AF] line-through",
         freeShipping:
-          "font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-[#16A34A]",
+          "font-body text-xs font-bold uppercase tracking-[0.14em] text-[#3B82F6] sm:text-sm",
         taxNote: "font-body text-xs text-[#6B7280]",
         currencyDisclaimer: "font-body text-[11px] leading-relaxed text-[#9CA3AF]",
         variantLabelHeading:
@@ -77,7 +77,8 @@ export function getPdpBuyBoxTheme(
       reviewsDot: "text-white/20",
       reviewsLink: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)] underline-offset-2 hover:text-[#60A5FA] hover:underline`,
       price: `font-body text-[clamp(1.5rem,2.2vw,1.875rem)] font-bold tabular-nums tracking-[var(--gi-tracking-tight)] text-[var(--gi-text-on-dark)]`,
-      freeShipping: `${giType.badge} text-[#4ADE80]`,
+      freeShipping:
+        "font-body text-xs font-bold uppercase tracking-[0.14em] text-[#3B82F6] sm:text-sm",
       taxNote: `${giType.productMeta} text-[var(--gi-text-muted-on-dark)]`,
       currencyDisclaimer: `${giType.productMeta} text-[var(--gi-text-muted-on-dark)]`,
       variantLabelHeading: `${giType.productMeta} text-[var(--gi-text-secondary-on-dark)]`,

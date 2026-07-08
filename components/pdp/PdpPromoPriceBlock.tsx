@@ -16,8 +16,6 @@ type Props = {
   salePriceUsd: number;
   compareAtPriceUsd?: number;
   flashSaleHours?: number;
-  freeShipping?: boolean;
-  freeShippingLabel?: string;
   taxNote?: string | null;
   currencyDisclaimerClassName?: string;
   variant?: "default" | "compact" | "sticky";
@@ -28,8 +26,6 @@ export default function PdpPromoPriceBlock({
   salePriceUsd,
   compareAtPriceUsd,
   flashSaleHours = 24,
-  freeShipping,
-  freeShippingLabel,
   taxNote,
   currencyDisclaimerClassName = "font-body text-xs text-[#6B7280]",
   variant = "default",
@@ -77,11 +73,6 @@ export default function PdpPromoPriceBlock({
           >
             {formatMoney(salePriceUsd)}
           </p>
-          {freeShipping && freeShippingLabel ? (
-            <span className="font-body text-sm font-medium text-[#16A34A]">
-              {freeShippingLabel}
-            </span>
-          ) : null}
         </div>
         {taxNote ? <p className="font-body text-xs text-[#6B7280]">{taxNote}</p> : null}
         <CurrencyDisclaimer className={currencyDisclaimerClassName} />
@@ -156,11 +147,6 @@ export default function PdpPromoPriceBlock({
         >
           {formatMoney(compareAtPriceUsd)}
         </p>
-        {freeShipping && freeShippingLabel ? (
-          <span className="pb-0.5 font-body text-sm font-medium text-[#16A34A]">
-            {freeShippingLabel}
-          </span>
-        ) : null}
       </div>
 
       {taxNote ? <p className="font-body text-xs text-[#6B7280]">{taxNote}</p> : null}

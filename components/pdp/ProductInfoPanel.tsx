@@ -316,6 +316,10 @@ export default function ProductInfoPanel({
 
         <h1 className={theme.title}>{seoH1}</h1>
 
+        {freeShipping && freeShippingLabel ? (
+          <p className={theme.freeShipping}>{freeShippingLabel}</p>
+        ) : null}
+
         {brandLabel && brandHref ? (
           <Link href={brandHref} className={theme.brandLink}>
             {brandLabel}
@@ -345,9 +349,6 @@ export default function ProductInfoPanel({
         <div className="space-y-2">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <p className={theme.price}>{formatMoney(resolvedPrice)}</p>
-            {freeShipping && freeShippingLabel ? (
-              <span className={theme.freeShipping}>{freeShippingLabel}</span>
-            ) : null}
           </div>
           {taxNote ? <p className={theme.taxNote}>{taxNote}</p> : null}
           <CurrencyDisclaimer className={theme.currencyDisclaimer} />
@@ -404,6 +405,9 @@ export default function ProductInfoPanel({
       <header className="space-y-3">
         <div className="space-y-2">
           <h1 className={theme.title}>{seoH1}</h1>
+          {freeShipping && freeShippingLabel ? (
+            <p className={theme.freeShipping}>{freeShippingLabel}</p>
+          ) : null}
           {displaySalesBadge ? (
             <span
               className={`inline-flex w-fit items-center rounded-md bg-[var(--gi-primary)] px-2.5 py-1 ${giType.badge} text-white`}
@@ -435,9 +439,6 @@ export default function ProductInfoPanel({
 
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-1">
           <p className={theme.price}>{formatMoney(resolvedPrice)}</p>
-          {freeShipping && freeShippingLabel ? (
-            <span className={theme.freeShipping}>{freeShippingLabel}</span>
-          ) : null}
         </div>
         {taxNote ? <p className={theme.taxNote}>{taxNote}</p> : null}
         <CurrencyDisclaimer className={theme.currencyDisclaimer} />

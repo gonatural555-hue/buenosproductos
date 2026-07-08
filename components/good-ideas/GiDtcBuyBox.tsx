@@ -181,6 +181,10 @@ export default function GiDtcBuyBox({
 
       <h1 className={theme.title}>{seoH1}</h1>
 
+      {freeShipping && freeShippingLabel ? (
+        <p className={theme.freeShipping}>{freeShippingLabel}</p>
+      ) : null}
+
       {brandLabel && brandHref ? (
         <Link href={brandHref} className={theme.brandLink}>
           {brandLabel}
@@ -202,8 +206,6 @@ export default function GiDtcBuyBox({
           salePriceUsd={resolvedPrice}
           compareAtPriceUsd={compareAtPrice}
           flashSaleHours={flashSaleHours}
-          freeShipping={freeShipping}
-          freeShippingLabel={freeShippingLabel}
           taxNote={taxNote}
           currencyDisclaimerClassName={theme.currencyDisclaimer}
         />
