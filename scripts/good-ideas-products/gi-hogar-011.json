@@ -14,7 +14,7 @@
   },
   "images": {
     "featured": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_642533-MLA106774610914_022026-F.webp"
+      "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured.png"
     ],
     "gallery": [
       "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -27,38 +27,86 @@
     "extras": [],
     "variantImages": {
       "blender-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-01.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       },
       "blender-processor-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-02.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       },
       "blender-spare-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-03.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       },
       "blender-spare-processor-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-04.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       },
       "blender-jar-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-05.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       },
       "blender-spare-jar-tamper": {
-        "featured": [],
-        "gallery": [],
+        "featured": [
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-06.png"
+        ],
+        "gallery": [
+          "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_797130-MLA106774610910_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_894944-MLA106774610908_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_832244-MLA106774610912_022026-F.webp",
+          "https://http2.mlstatic.com/D_NQ_NP_2X_799435-MLA106774610916_022026-F.webp"
+        ],
         "lifestyle": [],
         "extras": []
       }
