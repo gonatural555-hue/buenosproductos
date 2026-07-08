@@ -28,7 +28,7 @@
     "variantImages": {
       "blender-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-01.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -42,7 +42,7 @@
       },
       "blender-processor-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-02.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-01.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -56,7 +56,7 @@
       },
       "blender-spare-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-03.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-02.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -70,7 +70,7 @@
       },
       "blender-spare-processor-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-04.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-03.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -84,7 +84,7 @@
       },
       "blender-jar-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-05.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-04.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
@@ -98,7 +98,7 @@
       },
       "blender-spare-jar-tamper": {
         "featured": [
-          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-06.png"
+          "assets/images/good-ideas-products/gi-hogar-011/licuadora-featured-05.png"
         ],
         "gallery": [
           "https://http2.mlstatic.com/D_NQ_NP_2X_883736-MLA106774610906_022026-F.webp",
