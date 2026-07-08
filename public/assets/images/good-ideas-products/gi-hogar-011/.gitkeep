@@ -1,0 +1,18 @@
+# Good Ideas — gi-hogar-011 (Licuadora BioloMix 2200W T5200)
+# Pegar archivos locales aquí y rutas en scripts/good-ideas-products/gi-hogar-011.json
+#
+# Card PLP (obligatorio):
+# - featured.webp  →  images.featured[0]
+#
+# Galería PDP (images.gallery):
+# - gallery-01.webp … gallery-07.webp
+#
+# Por kit (variantImages.{value}.featured) — cambia imagen al elegir opción:
+# - blender-tamper                    (Opción 1: licuadora + palo mezclador)
+# - blender-processor-tamper          (Opción 2: + procesadora 500 ml)
+# - blender-spare-tamper              (Opción 3: + accesorios repuesto)
+# - blender-spare-processor-tamper    (Opción 4: repuesto + procesadora)
+# - blender-jar-tamper                (Opción 5: + jarra extra 2 L)
+# - blender-spare-jar-tamper          (Opción 6: repuesto + jarra extra 2 L)
+#
+# Lifestyle opcional: video.MOV o imágenes en lifestyle[]

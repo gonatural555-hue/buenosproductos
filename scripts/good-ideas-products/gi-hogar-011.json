@@ -1,0 +1,72 @@
+{
+  "id": "gi-hogar-011",
+  "brand": "BioloMix",
+  "variants": {
+    "type": "kit",
+    "options": [
+      { "value": "blender-tamper" },
+      { "value": "blender-processor-tamper" },
+      { "value": "blender-spare-tamper" },
+      { "value": "blender-spare-processor-tamper" },
+      { "value": "blender-jar-tamper" },
+      { "value": "blender-spare-jar-tamper" }
+    ]
+  },
+  "images": {
+    "featured": [],
+    "gallery": [],
+    "lifestyle": [],
+    "extras": [],
+    "variantImages": {
+      "blender-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blender-processor-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blender-spare-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blender-spare-processor-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blender-jar-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      },
+      "blender-spare-jar-tamper": {
+        "featured": [],
+        "gallery": [],
+        "lifestyle": [],
+        "extras": []
+      }
+    }
+  },
+  "pdpGalleryLayout": {
+    "columns": 2
+  },
+  "imagePrompts": {
+    "productCard": "Product card for Buenos Productos BioloMix 2200W professional blender T5200: countertop high-speed blender with 2L jar and tamper on clean neutral background, premium e-commerce crop.",
+    "pdpMain": "PDP hero for BioloMix heavy-duty blender: front three-quarter view of 2200W base with 2L low-profile jar, studio lighting, white background.",
+    "pdpLifestyle": "Lifestyle kitchen scene: BioloMix blender making smoothie with fresh fruit on counter, natural light, modern home.",
+    "pdpDetail": "Detail collage: 6 stainless blades, variable speed dial, timer, 2L Tritan jar, tamper, optional 500ml processor cup and spare parts kit.",
+    "blogHero": "Blog hero: BioloMix professional blender on kitchen island with ingredients, editorial home lifestyle photography.",
+    "blogSection": "Blog section: smoothie prep, dry grinding spices, hot soup, accessory flat lay with tamper, processor jar, spare blade kit, extra 2L jar.",
+    "productImageFolder": "good-ideas-products/gi-hogar-011",
+    "blogImageFolder": "good-ideas-blog/licuadora-biolomix-2200w-profesional"
+  }
+}

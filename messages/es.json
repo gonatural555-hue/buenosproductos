@@ -519,6 +519,32 @@
             "title": "Plancha + vaso + apoya + tabla + bolsa",
             "includes": "Incluye plancha, vaso medidor, apoya plancha, mini tabla y bolsa de guardado."
           }
+        },
+        "giHogar011": {
+          "blenderTamper": {
+            "title": "Licuadora + palo mezclador",
+            "includes": "Incluye licuadora profesional 2200 W y palo mezclador."
+          },
+          "blenderProcessorTamper": {
+            "title": "Licuadora + procesadora 500 ml + palo mezclador",
+            "includes": "Incluye licuadora, procesadora de alimentos 500 ml y palo mezclador."
+          },
+          "blenderSpareTamper": {
+            "title": "Licuadora + accesorios de repuesto + palo mezclador",
+            "includes": "Incluye licuadora, kit de accesorios de repuesto y palo mezclador."
+          },
+          "blenderSpareProcessorTamper": {
+            "title": "Licuadora + repuesto + palo mezclador + procesadora 500 ml",
+            "includes": "Incluye licuadora, accesorios de repuesto, palo mezclador y procesadora 500 ml."
+          },
+          "blenderJarTamper": {
+            "title": "Licuadora + jarra extra 2 L + palo mezclador",
+            "includes": "Incluye licuadora, jarra extra de 2 L y palo mezclador."
+          },
+          "blenderSpareJarTamper": {
+            "title": "Licuadora + repuesto + palo mezclador + jarra extra 2 L",
+            "includes": "Incluye licuadora, accesorios de repuesto, palo mezclador y jarra extra de 2 L."
+          }
         }
       }
     },

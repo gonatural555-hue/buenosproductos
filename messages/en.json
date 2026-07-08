@@ -519,6 +519,32 @@
             "title": "Steamer + cup + mat + board + bag",
             "includes": "Includes steamer, measuring cup, mat, mini board, and storage bag."
           }
+        },
+        "giHogar011": {
+          "blenderTamper": {
+            "title": "Blender + tamper",
+            "includes": "Includes 2200W heavy-duty blender and tamper stick."
+          },
+          "blenderProcessorTamper": {
+            "title": "Blender + 500 ml processor + tamper",
+            "includes": "Includes blender, 500 ml food processor cup, and tamper."
+          },
+          "blenderSpareTamper": {
+            "title": "Blender + spare parts + tamper",
+            "includes": "Includes blender, replacement spare parts kit, and tamper."
+          },
+          "blenderSpareProcessorTamper": {
+            "title": "Blender + spare parts + tamper + 500 ml processor",
+            "includes": "Includes blender, spare parts kit, tamper, and 500 ml processor cup."
+          },
+          "blenderJarTamper": {
+            "title": "Blender + extra 2 L jar + tamper",
+            "includes": "Includes blender, extra 2 L jar, and tamper."
+          },
+          "blenderSpareJarTamper": {
+            "title": "Blender + spare parts + tamper + extra 2 L jar",
+            "includes": "Includes blender, spare parts kit, tamper, and extra 2 L jar."
+          }
         }
       }
     },
