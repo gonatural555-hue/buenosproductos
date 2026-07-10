@@ -1,18 +1,27 @@
 /**
- * Google Analytics 4 — helpers mínimos para el dataLayer / gtag.
+ * Google Analytics 4 — helpers mínimos para dataLayer / gtag.
  *
- * Requiere `NEXT_PUBLIC_GA4_ID` (Measurement ID tipo G-XXXXXXXXXX).
+ * Requiere `NEXT_PUBLIC_GA4_ID`
+ * Ejemplo: NEXT_PUBLIC_GA4_ID=G-KVF5B1RW41
+ *
  * Los eventos siguen los nombres recomendados para comercio electrónico en GA4.
  * @see https://developers.google.com/analytics/devguides/collection/ga4/reference/events
  */
 
-/** Measurement ID leído en build; solo se usa en cliente tras comprobar `window.gtag`. */
+/** Measurement ID leído durante el build. */
 export const GA4_MEASUREMENT_ID =
   typeof process !== "undefined"
     ? process.env.NEXT_PUBLIC_GA4_ID?.trim() ?? ""
     : "";
 
-export const GA4_DEFAULT_CURRENCY = "USD";
+/** Monedas admitidas por el sitio. */
+export type Ga4Currency = "USD" | "ARS" | "BRL";
+
+/**
+ * Moneda de respaldo.
+ * Solo se usa cuando una función no recibe una moneda explícitamente.
+ */
+export const GA4_DEFAULT_CURRENCY: Ga4Currency = "USD";
 
 declare global {
   interface Window {
@@ -21,7 +30,7 @@ declare global {
   }
 }
 
-/** Indica si hay ID configurado (el script de GA4 debe haber definido `window.gtag`). */
+/** Indica si GA4 está configurado y disponible en el navegador. */
 export function isGa4Ready(): boolean {
   return (
     Boolean(GA4_MEASUREMENT_ID) &&
@@ -31,7 +40,7 @@ export function isGa4Ready(): boolean {
 }
 
 /**
- * Parámetros de ítem alineados con el esquema `items` de GA4 (campos opcionales omitidos si no aplican).
+ * Parámetros de un producto según el esquema `items` recomendado por GA4.
  */
 export type Ga4Item = {
   item_id: string;
@@ -39,9 +48,14 @@ export type Ga4Item = {
   price?: number;
   quantity?: number;
   item_category?: string;
-  /** Nombre legible de la lista (p. ej. categoría, “related”, carrusel home). */
+  item_variant?: string;
+  item_brand?: string;
+
+  /** Nombre legible de la lista: categoría, relacionados, carrusel home, etc. */
   item_list_name?: string;
   item_list_id?: string;
+
+  /** Posición del producto dentro de una lista. */
   index?: number;
 };
 
@@ -49,55 +63,81 @@ function pushGtag(...args: unknown[]): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") {
     return;
   }
+
   window.gtag(...args);
 }
 
 /**
- * Envía un evento GA4 genérico. No hace nada si gtag no está disponible (p. ej. sin ID o SSR).
+ * Envía un evento genérico a GA4.
+ * No hace nada durante SSR o cuando gtag todavía no está disponible.
  */
 export function sendGa4Event(
   eventName: string,
   params?: Record<string, unknown>
 ): void {
   if (!isGa4Ready()) return;
+
   pushGtag("event", eventName, params ?? {});
 }
 
+/** Calcula el valor total de una lista de productos. */
 function itemsValue(items: Ga4Item[]): number {
-  return items.reduce((sum, it) => {
-    const q = it.quantity ?? 1;
-    const p = it.price ?? 0;
-    return sum + p * q;
+  return items.reduce((sum, item) => {
+    const quantity = item.quantity ?? 1;
+    const price = item.price ?? 0;
+
+    return sum + price * quantity;
   }, 0);
 }
 
+/** Garantiza que todos los productos tengan quantity. */
 function normalizeItems(items: Ga4Item[]): Ga4Item[] {
-  return items.map((it) => ({
-    ...it,
-    quantity: it.quantity ?? 1,
+  return items.map((item) => ({
+    ...item,
+    quantity: item.quantity ?? 1,
   }));
 }
 
-// --- Page ---
+// -----------------------------------------------------------------------------
+// Page view
+// -----------------------------------------------------------------------------
 
 /**
- * `page_view` manual. Usar solo cuando el `config` inicial lleva `send_page_view: false`
- * y este helper se invoca desde el tracker de rutas (evita doble conteo con la carga automática).
+ * Envía un `page_view` manual.
+ *
+ * Usar solamente cuando la configuración inicial de GA4 contiene:
+ *
+ * send_page_view: false
+ *
+ * Este helper debe ser llamado por el tracker de rutas del App Router.
  */
 export function sendGa4PageView(pagePath: string): void {
   if (!isGa4Ready()) return;
+
   const pageLocation =
     typeof window !== "undefined" ? window.location.href : undefined;
+
+  const pageTitle =
+    typeof document !== "undefined" ? document.title : undefined;
+
   pushGtag("event", "page_view", {
     page_path: pagePath,
     ...(pageLocation ? { page_location: pageLocation } : {}),
+    ...(pageTitle ? { page_title: pageTitle } : {}),
   });
 }
 
-// --- Ecommerce (recommended events) ---
+// -----------------------------------------------------------------------------
+// Ecommerce
+// -----------------------------------------------------------------------------
 
-export function trackViewItem(item: Ga4Item, currency = GA4_DEFAULT_CURRENCY) {
+/** El usuario visualiza la ficha de un producto. */
+export function trackViewItem(
+  item: Ga4Item,
+  currency: Ga4Currency = GA4_DEFAULT_CURRENCY
+): void {
   const items = normalizeItems([item]);
+
   sendGa4Event("view_item", {
     currency,
     value: itemsValue(items),
@@ -105,36 +145,44 @@ export function trackViewItem(item: Ga4Item, currency = GA4_DEFAULT_CURRENCY) {
   });
 }
 
-/**
- * El usuario elige un producto en un listado (antes de la ficha).
- * `item_list_*` identifica el origen (categoría, destacados, sugerencias en carrito, etc.).
- */
+/** El usuario selecciona un producto desde una lista o carrusel. */
 export function trackSelectItem(options: {
   item: Ga4Item;
   itemListId?: string;
   itemListName?: string;
-}) {
+}): void {
   const item: Ga4Item = {
     ...options.item,
-    ...(options.itemListId != null ? { item_list_id: options.itemListId } : {}),
-    ...(options.itemListName != null
+    ...(options.itemListId
+      ? { item_list_id: options.itemListId }
+      : {}),
+    ...(options.itemListName
       ? { item_list_name: options.itemListName }
       : {}),
   };
+
   const items = normalizeItems([item]);
+
   sendGa4Event("select_item", {
-    item_list_id: options.itemListId,
-    item_list_name: options.itemListName,
+    ...(options.itemListId
+      ? { item_list_id: options.itemListId }
+      : {}),
+    ...(options.itemListName
+      ? { item_list_name: options.itemListName }
+      : {}),
     items,
   });
 }
 
+/** El usuario agrega uno o más productos al carrito. */
 export function trackAddToCart(
   items: Ga4Item[],
-  currency = GA4_DEFAULT_CURRENCY
-) {
+  currency: Ga4Currency = GA4_DEFAULT_CURRENCY
+): void {
   if (items.length === 0) return;
+
   const normalized = normalizeItems(items);
+
   sendGa4Event("add_to_cart", {
     currency,
     value: itemsValue(normalized),
@@ -142,12 +190,15 @@ export function trackAddToCart(
   });
 }
 
+/** El usuario elimina uno o más productos del carrito. */
 export function trackRemoveFromCart(
   items: Ga4Item[],
-  currency = GA4_DEFAULT_CURRENCY
-) {
+  currency: Ga4Currency = GA4_DEFAULT_CURRENCY
+): void {
   if (items.length === 0) return;
+
   const normalized = normalizeItems(items);
+
   sendGa4Event("remove_from_cart", {
     currency,
     value: itemsValue(normalized),
@@ -155,12 +206,15 @@ export function trackRemoveFromCart(
   });
 }
 
+/** El usuario visualiza el carrito. */
 export function trackViewCart(
   items: Ga4Item[],
-  currency = GA4_DEFAULT_CURRENCY
-) {
+  currency: Ga4Currency = GA4_DEFAULT_CURRENCY
+): void {
   if (items.length === 0) return;
+
   const normalized = normalizeItems(items);
+
   sendGa4Event("view_cart", {
     currency,
     value: itemsValue(normalized),
@@ -168,12 +222,15 @@ export function trackViewCart(
   });
 }
 
+/** El usuario inicia el checkout. */
 export function trackBeginCheckout(
   items: Ga4Item[],
-  currency = GA4_DEFAULT_CURRENCY
-) {
+  currency: Ga4Currency = GA4_DEFAULT_CURRENCY
+): void {
   if (items.length === 0) return;
+
   const normalized = normalizeItems(items);
+
   sendGa4Event("begin_checkout", {
     currency,
     value: itemsValue(normalized),
@@ -181,37 +238,104 @@ export function trackBeginCheckout(
   });
 }
 
+/** El usuario agrega información de envío. */
+export function trackAddShippingInfo(options: {
+  items: Ga4Item[];
+  currency: Ga4Currency;
+  shippingTier?: string;
+}): void {
+  if (options.items.length === 0) return;
+
+  const normalized = normalizeItems(options.items);
+
+  sendGa4Event("add_shipping_info", {
+    currency: options.currency,
+    value: itemsValue(normalized),
+    items: normalized,
+    ...(options.shippingTier
+      ? { shipping_tier: options.shippingTier }
+      : {}),
+  });
+}
+
+/** El usuario agrega o selecciona el método de pago. */
+export function trackAddPaymentInfo(options: {
+  items: Ga4Item[];
+  currency: Ga4Currency;
+  paymentType?: string;
+}): void {
+  if (options.items.length === 0) return;
+
+  const normalized = normalizeItems(options.items);
+
+  sendGa4Event("add_payment_info", {
+    currency: options.currency,
+    value: itemsValue(normalized),
+    items: normalized,
+    ...(options.paymentType
+      ? { payment_type: options.paymentType }
+      : {}),
+  });
+}
+
 /**
- * Compra completada. Llamar una sola vez por transacción con el mismo `transaction_id`.
+ * Compra completada.
+ *
+ * Debe llamarse una sola vez por transacción.
+ * `transaction_id` debe ser único.
  */
 export function trackPurchase(options: {
   transaction_id: string;
   value: number;
-  currency?: string;
+  currency: Ga4Currency;
   items: Ga4Item[];
   tax?: number;
   shipping?: number;
-}) {
-  const { transaction_id, value, items } = options;
+  coupon?: string;
+}): void {
+  const {
+    transaction_id,
+    value,
+    currency,
+    items,
+    tax,
+    shipping,
+    coupon,
+  } = options;
+
   if (!transaction_id || items.length === 0) return;
+
   const normalized = normalizeItems(items);
+
   sendGa4Event("purchase", {
     transaction_id,
     value,
-    currency: options.currency ?? GA4_DEFAULT_CURRENCY,
+    currency,
     items: normalized,
-    ...(options.tax != null ? { tax: options.tax } : {}),
-    ...(options.shipping != null ? { shipping: options.shipping } : {}),
+    ...(tax != null ? { tax } : {}),
+    ...(shipping != null ? { shipping } : {}),
+    ...(coupon ? { coupon } : {}),
   });
 }
 
-/** Construye un ítem GA4 a partir de una línea del carrito local. */
+// -----------------------------------------------------------------------------
+// Helpers
+// -----------------------------------------------------------------------------
+
+/**
+ * Construye un ítem GA4 a partir de una línea del carrito local.
+ *
+ * El precio debe estar expresado en la misma moneda enviada al evento.
+ */
 export function cartLineToGa4Item(
   line: {
     id: string;
     productId?: string;
     title: string;
     price: number;
+    category?: string;
+    variant?: string;
+    brand?: string;
   },
   quantity: number
 ): Ga4Item {
@@ -220,5 +344,8 @@ export function cartLineToGa4Item(
     item_name: line.title,
     price: line.price,
     quantity: Math.max(1, quantity),
+    ...(line.category ? { item_category: line.category } : {}),
+    ...(line.variant ? { item_variant: line.variant } : {}),
+    ...(line.brand ? { item_brand: line.brand } : {}),
   };
 }
