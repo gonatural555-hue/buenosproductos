@@ -1211,7 +1211,7 @@ const GOOD_IDEAS_PRODUCTS: Product[] = [
     slug: "plancha-vapor-portatil-5-en-1-ropa",
     brand: "ZHUYIYAN",
     title: "Portable 5-in-1 Steam Iron for Clothes",
-    price: 112500 / 1445,
+    price: 125000 / 1445,
     compareAtPrice: 150000 / 1445,
     flashSaleHours: 24,
     salesBadge: "24h Offer",
