@@ -9,7 +9,11 @@ import type { GoodIdeasHomeHeroCardEntry } from "@/lib/good-ideas-home-hero-card
 import type { ProductReviewStatsSnapshot } from "@/lib/good-ideas-product-review-stats";
 import type { Locale } from "@/lib/i18n/config";
 import { productsPath } from "@/lib/routing/paths";
-import { GI_EASE, GI_HERO_TOP_PAD } from "@/lib/ui/goodideas-design";
+import {
+  GI_EASE,
+  GI_HERO_EDITORIAL,
+  GI_HERO_TOP_PAD,
+} from "@/lib/ui/goodideas-design";
 
 const easeOut = GI_EASE;
 
@@ -39,31 +43,15 @@ export type GoodIdeasHomeHeroProps = {
   sectionAriaLabel: string;
 };
 
-function HeroEditorialTitle({
-  titleLine1,
-  titleLine2,
-  titleLine3,
-  titleAccent,
-}: {
-  titleLine1: string;
-  titleLine2: string;
-  titleLine3: string;
-  titleAccent: string;
-}) {
-  return (
-    <>
-      <span className="block">{titleLine1}</span>
-      <span className="block">{titleLine2}</span>
-      <span className="block">
-        {titleLine3}
-        <span className="text-[#3B82F6]">{titleAccent}</span>
-      </span>
-    </>
-  );
+function splitFirstWord(line: string): [string, string] {
+  const trimmed = line.trim();
+  const spaceIndex = trimmed.indexOf(" ");
+  if (spaceIndex === -1) return [trimmed, ""];
+  return [trimmed.slice(0, spaceIndex), trimmed.slice(spaceIndex + 1).trim()];
 }
 
-/** Composición editorial palabra a palabra — solo desktop (lg+). */
-function HeroEditorialTitleDesktop({
+/** Stack editorial centrado — 4 líneas con jerarquía cromática. */
+function HeroStackedEditorialTitle({
   titleLine1,
   titleLine2,
   titleLine3,
@@ -74,45 +62,38 @@ function HeroEditorialTitleDesktop({
   titleLine3: string;
   titleAccent: string;
 }) {
-  const [wordPrimary, wordProducts] = titleLine1.split(" ");
-  const [wordQue, wordReally] = titleLine2.split(" ");
-  const wordMakeThe = titleLine3.trim();
-  const wordDifference = titleAccent;
+  const [line1Lead, line1Rest] = splitFirstWord(titleLine1);
+  const [line2Lead, line2Rest] = splitFirstWord(titleLine2);
+  const line4Prefix = titleLine3.trimEnd();
 
-  const wordClass =
-    "block font-display font-semibold leading-none tracking-[-0.03em] text-[#E8ECF1]";
+  const lineClass = `block ${GI_HERO_EDITORIAL.homeTitleStack}`;
 
   return (
-    <span className="relative mx-auto block w-full text-left">
-      <span
-        className={`${wordClass} text-[clamp(2.35rem,3.45vw,3.55rem)]`}
-      >
-        {wordPrimary}
+    <span className="mx-auto block w-full text-center">
+      <span className={`${lineClass} ${GI_HERO_EDITORIAL.homeTitleWhite}`}>
+        {line1Lead}
       </span>
-      <span
-        className={`${wordClass} mt-2 text-[clamp(1.5rem,2.15vw,2.3rem)] ml-[16%]`}
-      >
-        {wordProducts}
+      <span className={`${lineClass} ${GI_HERO_EDITORIAL.homeTitleAccent}`}>
+        {line1Rest}
       </span>
-      <span
-        className={`${wordClass} mt-3 text-[clamp(1.05rem,1.5vw,1.6rem)] ml-[5%]`}
-      >
-        {wordQue}
+      <span className={lineClass}>
+        <span className={GI_HERO_EDITORIAL.homeTitleConnector}>{line2Lead}</span>
+        {line2Rest ? (
+          <>
+            {" "}
+            <span className={GI_HERO_EDITORIAL.homeTitleAccent}>{line2Rest}</span>
+          </>
+        ) : null}
       </span>
-      <span
-        className={`${wordClass} mt-1.5 text-[clamp(1.85rem,2.65vw,2.85rem)] ml-[22%]`}
-      >
-        {wordReally}
-      </span>
-      <span
-        className={`${wordClass} mt-2.5 text-[clamp(1.28rem,1.85vw,1.95rem)] ml-[38%]`}
-      >
-        {wordMakeThe}
-      </span>
-      <span
-        className={`${wordClass} mt-3 text-[clamp(2.2rem,3.25vw,3.35rem)] text-[#3B82F6] ml-[46%] xl:ml-[48%]`}
-      >
-        {wordDifference}
+      <span className={lineClass}>
+        {line4Prefix ? (
+          <>
+            <span className={GI_HERO_EDITORIAL.homeTitleConnector}>
+              {line4Prefix}
+            </span>{" "}
+          </>
+        ) : null}
+        <span className={GI_HERO_EDITORIAL.homeTitleAccent}>{titleAccent}</span>
       </span>
     </span>
   );
@@ -220,24 +201,14 @@ export default function GoodIdeasHomeHero({
 
             <motion.h1
               variants={itemVariants}
-              className="mt-6 w-full max-w-[22rem] font-display text-[clamp(1.85rem,5.4vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[#E8ECF1] sm:max-w-[26rem] md:text-[clamp(2rem,4.8vw,3rem)] lg:mt-8 lg:max-w-[36rem] lg:text-[length:unset] xl:max-w-[40rem]"
+              className="mt-6 w-full max-w-[22rem] sm:max-w-[26rem] lg:mt-8 lg:max-w-[36rem] xl:max-w-[40rem]"
             >
-              <span className="block lg:hidden">
-                <HeroEditorialTitle
-                  titleLine1={titleLine1}
-                  titleLine2={titleLine2}
-                  titleLine3={titleLine3}
-                  titleAccent={titleAccent}
-                />
-              </span>
-              <span className="hidden lg:block">
-                <HeroEditorialTitleDesktop
-                  titleLine1={titleLine1}
-                  titleLine2={titleLine2}
-                  titleLine3={titleLine3}
-                  titleAccent={titleAccent}
-                />
-              </span>
+              <HeroStackedEditorialTitle
+                titleLine1={titleLine1}
+                titleLine2={titleLine2}
+                titleLine3={titleLine3}
+                titleAccent={titleAccent}
+              />
             </motion.h1>
 
             <motion.div

@@ -30,6 +30,12 @@ export const GI_HERO_EDITORIAL = {
   titleMuted: "text-[#CBD5E1]",
   titleAccent: "text-[#3B82F6]",
   titleAccentSoft: "text-[#60A5FA]",
+  /** Home hero — stack centrado 4 líneas (blanco / azul / conector gris). */
+  homeTitleStack:
+    "font-display text-balance text-center font-bold leading-[0.88] tracking-[-0.05em] text-[clamp(2.25rem,5.2vw,4.25rem)]",
+  homeTitleWhite: "text-[#FFFFFF]",
+  homeTitleConnector: "text-[#71717A]",
+  homeTitleAccent: "text-[#3B82F6]",
   subtitle:
     "max-w-lg text-center font-inter text-[clamp(16px,3.8vw,18px)] leading-relaxed text-[#9CA3AF] md:mt-5",
   plpTitle: "text-balance text-[#FFFFFF]",
